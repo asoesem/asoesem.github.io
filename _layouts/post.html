@@ -15,7 +15,7 @@ layout: default
           {% endfor %}
           </div>
           {% endif %}
-          <span class="article__date">•<time datetime="{{ page.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%d %-b, %Y" %}{{ page.date | date: date_format }}</time></span>
+          <span class="article__date">•<time datetime="{{ page.date | date_to_xmlschema }}">{% assign month = page.date | date: "%-m" | minus: 1 %}{{ page.date | date: "%d" }} {{ site.data.settings.months[month] }} {{ page.date | date: "%Y" }}</time></span>
         </div>
   
         {% if page.title %}

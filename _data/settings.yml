@@ -116,3 +116,20 @@ disqus_identifier: anvod-studio-test # Add your shortname for Disqus Comment. Fo
 #-------------------------------------------
 # Google Analytics
 google_analytics: # Add your GA Tracking Id
+
+
+#-------------------------------------------
+# Nombres de los Meses
+months:
+  - Ene
+  - Feb
+  - Mar
+  - Abr
+  - May
+  - Jun
+  - Jul
+  - Ago
+  - Sep
+  - Oct
+  - Nov
+  - Dec
