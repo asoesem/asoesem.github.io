@@ -4,8 +4,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://asoesem.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 timezone: "America/Costa_Rica"
-date_locale: "es"
-date_format: "%d %b %Y"
 
 #-------------------------------
 # Build Settings
@@ -14,7 +12,6 @@ permalink: /:title
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-date-localization
 
 paginate: 12
 paginate_path: "/blog/page/:num"

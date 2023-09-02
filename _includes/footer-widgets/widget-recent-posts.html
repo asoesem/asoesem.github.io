@@ -29,7 +29,7 @@
           {% endfor %}
           </div>
           {% endif %}
-          <span class="article__date">•<time datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.date_format | default: "%d %b %Y" %}{{ post.date | localize: date_format }}</time></span>
+          <span class="article__date">•<time datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%d %-b, %Y" %}{{ post.date | date: date_format }}</time></span>
         </div>
 
         <h4 class="recent-posts__title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
