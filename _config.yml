@@ -1,0 +1,65 @@
+#-------------------------------
+# General Site Settings
+baseurl: "/asoesem" # the subpath of your site, e.g. /blog
+url: "https://edalorzo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+timezone: "America/Costa_Rica"
+
+#-------------------------------
+# Build Settings
+markdown: kramdown
+permalink: /:title
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+
+paginate: 12
+paginate_path: "/blog/page/:num"
+
+
+#-------------------------------
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name
+  posts:
+    output: true
+    permalink: /artículos/:slug
+  authors:
+    output: true
+    permalink: /autores/:name
+  docs:
+    output: true
+    permalink: /documentos/:slug
+
+# Pages Path
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "page"
+
+sass:
+  sass_dir: _sass
+  style: compressed
