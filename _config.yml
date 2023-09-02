@@ -1,12 +1,12 @@
-#-------------------------------
-# General Site Settings
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://asoesem.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+#-------------------------------------
+# Configuraciones Generales del Sitio
 
-timezone: "America/Costa_Rica"
+baseurl: "" # the subruta del sitio, p.ej. /blog
+url: "https://asoesem.github.io" # el hostname base & protocolo del sitio, p.ej. http://example.com
 
 #-------------------------------
-# Build Settings
+# Configuración de Construcción
+
 markdown: kramdown
 permalink: /:title
 plugins:
@@ -16,9 +16,11 @@ plugins:
 paginate: 12
 paginate_path: "/blog/page/:num"
 
+timezone: "America/Costa_Rica"
 
 #-------------------------------
-# Collections
+# Colecciones
+
 collections:
   pages:
     output: true
@@ -33,7 +35,8 @@ collections:
     output: true
     permalink: /documentos/:slug
 
-# Pages Path
+#-------------------------------
+# Rutas de Páginas
 defaults:
   - scope:
       path: ""
