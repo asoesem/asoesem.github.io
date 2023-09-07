@@ -29,8 +29,6 @@ menu_settings:
         title: "COCODI"
     - title: "Documentos"
       url: "/documentos/"
-    - title: "Contacto"
-      url: "/contacto/"
 
 # Botón de llamada a la acción
 cta_button:
