@@ -107,10 +107,9 @@ contact:
 # NOTE
 # Danto theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
 
-
 #-------------------------------------------
 # Sección de Comentarios (Disqus)
-disqus_identifier: anvod-studio-test # Add your shortname for Disqus Comment. For example anvod-studio-test
+disqus_identifier: asoesem
 
 
 #-------------------------------------------
