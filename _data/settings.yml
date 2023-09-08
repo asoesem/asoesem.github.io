@@ -2,8 +2,8 @@
 # Configuración del Sitio
 title: Asoesem
 description: Asociación de Estudiantes de Enseñanza de la Matemática
-logo: "/images/logo-4-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
-logo_dark: "/images/logo-4-dark.png"
+logo: "/images/logo-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
+logo_dark: "/images/logo-dark.png"
 color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predeterminado, se fija el modo auto, lo que implica que el usuario puede escoger modos light o dark.
 
 
@@ -11,24 +11,24 @@ color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predetermina
 # Navigation Settings
 menu_settings:
   menu_items:
-    - title: "Inicio"
-      url: "/"
-    - title: "Blog"
-      url: "/blog/"
-    - title: "Destacados"
-      url: "/destacados/"
-    - title: "Autores"
-      url: "/autores/"
-    - title: "Videos"
-      url: "/videos/"
-    - title: "Comisiones"
-      submenu:
-      - url: "/cofoma/"
-        title: "COFOMA"
-      - url: "/cocodi/"
-        title: "COCODI"
-    - title: "Documentos"
-      url: "/documentos/"
+    # - title: "Inicio"
+    #   url: "/"
+    # - title: "Blog"
+    #   url: "/blog/"
+    # - title: "Destacados"
+    #   url: "/destacados/"
+    # - title: "Autores"
+    #   url: "/autores/"
+    # - title: "Videos"
+    #   url: "/videos/"
+    # - title: "Comisiones"
+    #   submenu:
+    #   - url: "/cofoma/"
+    #     title: "COFOMA"
+    #   - url: "/cocodi/"
+    #     title: "COCODI"
+    # - title: "Documentos"
+    #   url: "/documentos/"
 
 # Botón de llamada a la acción
 cta_button:
@@ -48,7 +48,7 @@ hero:
 # Configuración de la Sección de Etiquetas
 
 tags_section:
-  enable: true
+  enable: false
   number_posts: 3 # Para controlar cuantos artículos mostrar bajo cada sección de etiqueta. Fije el valor a un número. Tres es el valor predeterminado.
   number_columns: 3 # Puedes especificar el número de columnas de 1-4 para monitores de alta resolución. De forma predeterminda el tema usa una cuadrícula de tres columnas.
   tags:
@@ -63,7 +63,7 @@ tags_section:
 #-------------------------------------------
 # Configuración de la Sección de Autores
 authors_section:
-  enable: true
+  enable: false
   section_title: Conozca nuestros autores
 
 
@@ -73,13 +73,13 @@ footer_description: Noticiales, artículos recientes y novedades de la Asociaci�
 
 
 # Social Links
-social:
-- {icon: "twitter", link: "https://twitter.com"}
-- {icon: "facebook", link: "https://facebook.com"}
-- {icon: "codepen", link: "https://codepen.io"}
-- {icon: "pinterest", link: "https://pinterest.com"}
-- {icon: "github", link: "https://github.com"}
-- {icon: "youtube", link: "https://youtube.com"}
+# social:
+# - {icon: "twitter", link: "https://twitter.com"}
+# - {icon: "facebook", link: "https://facebook.com"}
+# - {icon: "codepen", link: "https://codepen.io"}
+# - {icon: "pinterest", link: "https://pinterest.com"}
+# - {icon: "github", link: "https://github.com"}
+# - {icon: "youtube", link: "https://youtube.com"}
 
 # Por ejemplo, para agregar un nuevo enlance al pie de página - {icon: "instagram", link: "https://instagram.com"}
 # Otros íconos se pueden encontrar en https://ionicons.com/v4/
