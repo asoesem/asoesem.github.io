@@ -7,7 +7,7 @@ author: axell
 image: '/images/51.jpg'
 tags: [noticias]
 commissions: [cofoma,cocodi]
-featured: true
+featured: false
 ---
 Un párrafo tiene este aspecto: incubar globalmente canales que cumplan con los estándares antes que obtener beneficios escalables. Difunda rápidamente entregables superiores mediante aplicaciones habilitadas para la web. Impulse rápidamente catalizadores de cambio antes que las arquitecturas verticales. Ideas de backend reintermedias creíbles para modelos multiplataforma. Reintermediar continuamente procesos integrados a través de capital intelectual técnicamente sólido. Fomentar de manera integral metodologías superiores.
 
@@ -143,7 +143,7 @@ li {
 
 ## Youtube Embebido
 
-<p><iframe src="https://www.youtube.com/embed/phiMxtqlFIY" loading="lazy" frameborder="0" allowfullscreen></iframe></p>
+<p><iframe src="https://www.youtube.com/embed/B1J6Ou4q8vE?si=ypIvTDhs0Aqo0E0k" loading="lazy" frameborder="0" allowfullscreen></iframe></p>
 
 ***
 
