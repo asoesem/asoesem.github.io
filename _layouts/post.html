@@ -67,7 +67,9 @@ layout: default
           {{ content }}
         </div>
 
-        {% include share-buttons.html %}
+        {% if page.share %}
+          {% include share-buttons.html %}
+        {% endif %}
 
       </article>
     </div>
@@ -80,6 +82,6 @@ layout: default
 
 {% include related-posts.html %}
 
-{% if site.data.settings.disqus_identifier %}
+{% if site.data.settings.disqus_identifier and page.comments %}
   {% include disqus-comments.html %}
 {% endif %}

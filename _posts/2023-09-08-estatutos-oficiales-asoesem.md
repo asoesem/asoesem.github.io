@@ -8,6 +8,8 @@ image: '/images/51.jpg'
 tags: [reglamentos]
 #commissions: [cofoma,cocodi]
 #featured: false
+comments: false
+share: false
 ---
 
 # Índice
