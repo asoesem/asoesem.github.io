@@ -1,6 +1,6 @@
 {% if site.tags.size >= 1 %}
 <div class="widget-sidebar widget-tags">
-  <h3 class="widget-sidebar-title">Tópicos populares</h4>
+  <h3 class="widget-sidebar-title">Artículos por etiqueta</h4>
 
     {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
     {% assign tag_words = site_tags | split:',' | sort %}

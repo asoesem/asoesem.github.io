@@ -11,8 +11,8 @@ color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predetermina
 # Navigation Settings
 menu_settings:
   menu_items:
-    # - title: "Inicio"
-    #   url: "/"
+    - title: "Inicio"
+      url: "/"
     # - title: "Blog"
     #   url: "/blog/"
     # - title: "Destacados"
@@ -21,12 +21,12 @@ menu_settings:
     #   url: "/autores/"
     # - title: "Videos"
     #   url: "/videos/"
-    # - title: "Comisiones"
-    #   submenu:
-    #   - url: "/cofoma/"
-    #     title: "COFOMA"
-    #   - url: "/cocodi/"
-    #     title: "COCODI"
+    - title: "Comisiones"
+      submenu:
+      - url: "/cofoma/"
+        title: "COFOMA"
+      - url: "/cocodi/"
+        title: "COCODI"
     # - title: "Documentos"
     #   url: "/documentos/"
 
@@ -41,20 +41,20 @@ cta_button:
 # Configuración de la Sección de Heroe
 hero:
   enable: true
-  hero_title: Noticias, Artículos, Inspiración, y Consejos.
+  hero_title: Reglamentos, Noticias, Artículos, y Consejos.
   hero_description: De la Asociación de Estudiantes de Enseñanza de la Matemática de la Universidad Estatal a Distancia.
 
 #-------------------------------------------
 # Configuración de la Sección de Etiquetas
 
 tags_section:
-  enable: false
+  enable: true
   number_posts: 3 # Para controlar cuantos artículos mostrar bajo cada sección de etiqueta. Fije el valor a un número. Tres es el valor predeterminado.
   number_columns: 3 # Puedes especificar el número de columnas de 1-4 para monitores de alta resolución. De forma predeterminda el tema usa una cuadrícula de tres columnas.
   tags:
-    - tag: "álgebra"
-    - tag: "geometría"
-    - tag: "pedagogía"
+    - tag: "reglamentos"
+    # - tag: "geometría"
+    # - tag: "pedagogía"
 
 
 # Puedes agregar muchas secciones de etiquetas a la página de inicio; cada sección mostrará los artículos mas recientes para cada etiqueta.

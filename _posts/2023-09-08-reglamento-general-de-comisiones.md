@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Reglamento de las Comisiones
+title: Reglamento General de Comisiones
 description: Reglamento Oficial de las Comisiones de la Asociación de Estudiantes de la Carrera de Enseñanza de la Matemática de la UNED.
-date: 2023-09-08 12:15:00
+date: 2023-09-08 11:00:00
 author: axell
 image: '/images/45.jpg'
 tags: [reglamentos]

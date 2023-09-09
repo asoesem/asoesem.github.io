@@ -2,9 +2,9 @@
 layout: post
 title: Estatutos Oficiales de la Asociación
 description: Estatutos Oficiales de la Asociación de Estudiantes de la Carrera de Enseñanza de la Matemática de la UNED.
-date: 2023-09-08 10:40:00
+date: 2023-09-08 12:00:00
 author: axell
-image: '/images/51.jpg'
+image: '/images/38.jpg'
 tags: [reglamentos]
 #commissions: [cofoma,cocodi]
 #featured: false
