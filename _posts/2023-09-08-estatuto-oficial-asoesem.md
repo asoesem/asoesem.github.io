@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Estatutos Oficiales de la Asociación
-description: Estatutos Oficiales de la Asociación de Estudiantes de la Carrera de Enseñanza de la Matemática de la UNED.
+title: Estatuto Oficial de la Asociación
+description: Estatuto oficiales de la Asociación de Estudiantes de la Carrera de Enseñanza de la Matemática de la UNED.
 date: 2023-09-08 12:00:00
 author: axell
 image: '/images/38.jpg'

@@ -92,4 +92,4 @@ autorización de la junta directiva.
 
 (Aprobación integral realizada en asamblea general extraordinaria el 19 de septiembre del 2022)
 
-[1]:/artículos/estatutos-oficiales-asoesem
+[1]:/artículos/estatuto-oficial-asoesem

@@ -31,9 +31,9 @@ collections:
   authors:
     output: true
     permalink: /autores/:name
-  docs:
-    output: true
-    permalink: /documentos/:slug
+  # docs:
+  #   output: true
+  #   permalink: /documentos/:slug
 
 #-------------------------------
 # Rutas de Páginas

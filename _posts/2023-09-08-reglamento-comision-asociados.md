@@ -73,4 +73,4 @@ ante la Comisión de Asociados de la ASOESEM:
 
 Las faltas o sanciones de los miembros de la comisión de asociados de la ASOESEM serán las establecidos en el [Estatuto de la ASOESEM][1]. 
 
-[1]:/artículos/estatutos-oficiales-asoesem
+[1]:/artículos/estatut-oficial-asoesem
