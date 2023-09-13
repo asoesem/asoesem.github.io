@@ -12,7 +12,7 @@ image: '/images/36.jpg'
 * **Vicepresidenta**: [Angie Azofeifa Camacho](mailto:angie.azofeifa@uned.cr) <`angie.azofeifa@uned.cr`>
 * **Secretario**: [Denis Vargas Guerrero](mailto:denis.vargas@uned.cr) <`denis.vargas@uned.cr`>
 * **Tesorero**: [Marcio Gómez Barberena](mailto:marcio.gomez@uned.cr) <`marcio.gomez@uned.cr`>
-* **Vocal**: [Susan Jiménez Murillo](mailto:susan.jimenezm@uned.cr) <`susan.jimenezm@uned.cr>
+* **Vocal**: [Susan Jiménez Murillo](mailto:susan.jimenezm@uned.cr) <`susan.jimenezm@uned.cr`>
 
 
 ## Fiscalía
