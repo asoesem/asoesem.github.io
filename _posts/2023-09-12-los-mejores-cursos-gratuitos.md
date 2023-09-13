@@ -13,7 +13,7 @@ share: true
 ---
 A continuación se hace un listado de algunos de los más útiles cursos de matemática y pedagogía gratuitos, impartidos por algunas de las mejores universidades del mundo latinoamericano, en las plataformas  Coursera y Edx.
 
-## Universidad Autónoma de Barcelona (UAB)
+## Universidad Autónoma de Barcelona (UAB) - España
 
 * [Precálculo][1]
 
