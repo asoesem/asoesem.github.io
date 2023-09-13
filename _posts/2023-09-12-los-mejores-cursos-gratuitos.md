@@ -71,6 +71,16 @@ share: true
 * [Bioestadística][36]
 * [Métodos de investigación cuantitativos][37]
 
+## Pontificia Universidad Católica de Chile
+
+* [Hacia una práctica constructivista en el aula][45]
+* [Formación docente basada en la práctica para desarrollar habilidades del siglo XXI][46]
+* [Niños y Adolescentes en la cultura audiovisual y digital][47]
+
+[45]:https://www.coursera.org/learn/aulaconstructivista
+[46]:https://www.coursera.org/learn/formacion-docente-habilidades-siglo-veintiuno
+[47]:https://www.coursera.org/learn/ninosaudiovisualdigital
+
 ## Universidad de Galileo
 
 * [Revisión de Aritmética][39]
