@@ -11,12 +11,13 @@ featured: false
 comments: false
 share: true
 ---
+A continuación se hace un listado de algunos de los más útiles cursos de matemática y pedagogía gratuitos, impartidos por algunas de las mejores universidades del mundo latinoamericano, en las plataformas  Coursera y Edx.
 
 ## Universidad Autónoma de Barcelona (UAB)
 
 * [Precálculo][1]
 
-## Universidad Politécnica de Valencia
+## Universidad Politécnica de Valencia (UPV) - España
 
 * [Bases Matemáticas: Álgebra][28]
 * [Bases Matemáticas: Números y terminología][29]
@@ -24,7 +25,7 @@ share: true
 * [Bases Matemáticas: Integrales][31]
 * [Métodos numéricos para matemáticas con Octave][38]
 
-## Universidad Nacional Autónoma de México (UNAM)
+## Universidad Nacional Autónoma de México (UNAM) - España
 
 * [Álgebra Básica][13]
 * [Matemáticas Financieras][2]
@@ -37,7 +38,7 @@ share: true
 * [Cómo hacer una tesis][25]
 * [Aprender][26]
 
-## Tecnológico de Monterrey
+## Tecnológico de Monterrey (ITESM) - México
 
 * [Cálculo 1 - Modelo Lineal][5]
 * [Cálculo 2 - Modelo Cuadrático][6]
@@ -48,11 +49,11 @@ share: true
 * [Física: Dimensión y Movimiento][10]
 * [Física: Vectores, Trabajo y Energía][11]
 
-## Universidad Autónoma Metropolitana (UAM)
+## Universidad Autónoma Metropolitana (UAM) - México
 
 * [Geometría Analítica Preuniversitaria][27]
 
-## Universidad de los Andes
+## Universidad de los Andes - Colombia
 
 * [Tesoros de la Física y sus Descubridores I][19]
 * [Fundamentos de probabilidad y aplicaciones][20]
@@ -62,7 +63,7 @@ share: true
 * [Educación matemática para profesores de infantil Parte 1][17]
 * [Educación matemática para profesores de infantil Parte 2][18]
 
-## Universidad del Rosario
+## Universidad del Rosario - Colombia
 
 * [Probabilidad y estadística][32]
 * [Matemáticas para la U][33]
@@ -81,7 +82,7 @@ share: true
 [46]:https://www.coursera.org/learn/formacion-docente-habilidades-siglo-veintiuno
 [47]:https://www.coursera.org/learn/ninosaudiovisualdigital
 
-## Universidad de Galileo
+## Universidad de Galileo - Guatemala
 
 * [Revisión de Aritmética][39]
 * [Introducción al Lenguaje Algebraico][40]
@@ -89,7 +90,7 @@ share: true
 * [Introducción a las ecuaciones diferenciales][42]
 * [Cálculo Diferencial][43]
 
-## Universidad de Stanford
+## Universidad de Stanford - EEUU
 
 * [Cómo Aprender Matemáticas - Para Estudiantes][44]
 
