@@ -6,7 +6,7 @@ date: 2023-09-12 22:00:00
 author: edalorzo
 image: '/images/39.jpg'
 tags: [matemáticas,pedagogía]
-#commissions: [cofoma,cocodi]
+commissions: [cofoma]
 featured: false
 comments: false
 share: true
