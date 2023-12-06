@@ -2,7 +2,7 @@
 layout: post
 title: Fecha de Matricula 2024
 description: Fechas de las matriculas del I Cuatrimestre 2024
-date: 2023-12-06 12:00:00
+date: 2023-06-12 12:00:00
 author: axell
 image: '/images/49.jpg'
 tags: [noticias]
