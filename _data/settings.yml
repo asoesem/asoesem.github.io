@@ -13,8 +13,8 @@ menu_settings:
   menu_items:
     - title: "Inicio"
       url: "/"
-    # - title: "Blog"
-    #   url: "/blog/"
+    - title: "Blog"
+      url: "/blog/"
     # - title: "Destacados"
     #   url: "/destacados/"
     # - title: "Autores"
