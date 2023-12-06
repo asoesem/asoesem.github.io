@@ -13,7 +13,7 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
-paginate: 12
+paginate: 10
 paginate_path: "/blog/page/:num"
 
 timezone: "America/Costa_Rica"
