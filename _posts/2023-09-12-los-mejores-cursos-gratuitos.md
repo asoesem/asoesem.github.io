@@ -2,12 +2,12 @@
 layout: post
 title: Cursos Gratuitos de Matemática y Pedagogía
 description: Un listado de algunos de los mejores cursos gratuitos ofrecidos por algunas de las mejores universidades del mundo.
-date: 2023-09-12 22:00:00
+date: 2023-12-06T11:00:00-06:00
 author: edalorzo
 image: '/images/39.jpg'
 tags: [matemáticas,pedagogía]
 commissions: [cofoma]
-featured: false
+featured: true
 comments: false
 share: true
 ---
