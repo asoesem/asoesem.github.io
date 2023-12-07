@@ -7,7 +7,7 @@ author: edalorzo
 image: '/images/39.jpg'
 tags: [matemáticas,pedagogía]
 commissions: [cofoma]
-featured: true
+featured: false
 comments: false
 share: true
 ---
