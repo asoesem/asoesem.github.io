@@ -1,17 +1,19 @@
 ---
 layout: post
-title: Horarios y fechas de matrícula 2024
-description: Un listado de algunos de los mejores cursos gratuitos ofrecidos por algunas de las mejores universidades del mundo.
-date: 2023-06-12 10:00:00
-#author: Axell
-#image: '/images/39.jpg'
-tags: [Anuncios]
+title: Horarios y Fechas de Matrícula 2024
+description: Horarios y fechas de la matríla para el primer cuatrimestre y semestre del 2024.
+date: 2023-12-06T10:00:00-06:00
+#author: axell
+image: '/images/39.jpg'
+tags: [anuncios]
 #commissions: [cofoma]
 featured: true
 comments: true
 share: true
 ---
-#A continuación se presenta el horario y las fechas correspondientes a la matricula para el I cuatrimestre y semestre 2024
+
+A continuación se presenta el horario y las fechas correspondientes a la matricula para el I cuatrimestre y semestre 2024.
+
 |Fecha      |Horario |Modalidad                                                                                                |
 |-----------|--------|---------------------------------------------------------------------------------------------------------|
 |15 de enero|8:00 am |-Postgrado                                                                                               |
@@ -27,4 +29,5 @@ share: true
 |18 de enero|6:00 am |-Estudiantes de primer ingreso de Licenciatura, Bachillerato, Profesorado y Diplomado                    |
 |           |        |-Se mantiene la matrícula para Postgrados, Licenciatura, Bachillerato y Cursos de Extensión Universitaria|
 |-----------|--------|---------------------------------------------------------------------------------------------------------|
+
 **NOTA: LOS CURSOS DE LA DIRECCIÓN DE EXTENSIÓN UNIVERSITARIA CORRESPONDEN A: CURSOS LIBRES, TALLERES, PROGRAMA PERSONA ADULTA MAYOR, IDIOMAS Y TÉCNICOS**
