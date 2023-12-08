@@ -46,77 +46,89 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 
 #### Fundamentos
 
-* $$x=\dfrac{-b \pm \sqrt{b^{2}-4ac}}{2a}$$: $$\texttt{\\}\texttt{(} x=\texttt{\\dfrac{-b \\pm \\sqrt{b^{2}-4ac}}{2a}} \texttt{\\}\texttt{)}$$
+| $$a^{n}$$                  | $$\texttt{\\}\texttt{(}\texttt{a^\{n\}}\texttt{\\}\texttt{)}$$                     |
+| $$\binom{n}{k}$$           | $$\texttt{\\}\texttt{(}\texttt{\\binom\{n\}\{k\}}\texttt{\\}\texttt{)}$$           |
+| $$\dfrac{a}{b}$$           | $$\texttt{\\}\texttt{(}\texttt{\\dfrac\{a\}\{b\}}\texttt{\\}\texttt{)}$$           |
+| $$\sqrt{a}$$               | $$\texttt{\\}\texttt{(}\texttt{\\sqrt\{a\}}\texttt{\\}\texttt{)}$$                 |
+| $$\sqrt[n]{a}$$            | $$\texttt{\\}\texttt{(}\texttt{\\sqrt[n]\{a\}}\texttt{\\}\texttt{)}$$              |
+| $$a_1^2$$                  | $$\texttt{\\}\texttt{(}\texttt{a_1^2}\texttt{\\}\texttt{)}$$                       |
+| $$\int_{i=1}^n$$           | $$\texttt{\\}\texttt{(}\texttt{\\int_\{i=1\}^n}\texttt{\\}\texttt{)}$$             |
+| $$\lim_{x\to\infty} f(x)$$ | $$\texttt{\\}\texttt{(}\texttt{\\lim_\{x\\to\\infty\} f(x)}\texttt{\\}\texttt{)}$$ |
+
+ 
 
 #### Lógica
 
-* $$p \wedge q$$:  $$\texttt{\\}\texttt{(} \texttt{p \wedge q} \texttt{\\}\texttt{)}$$.
-* $$p \vee q$$: $$\texttt{\\}\texttt{(} \texttt{p \vee q} \texttt{\\}\texttt{)}$$. 
-* $$\neg{p}$$:  $$\texttt{\\}\texttt{(}\texttt{\\neg{p}}\texttt{\\}\texttt{)}$$.
-* $$p \rightarrow q$$: $$\texttt{\\}\texttt{(}\texttt{p \rightarrow q}\texttt{\\}\texttt{)}$$.
-* $$p \leftrightarrow q$$: $$\texttt{\\}\texttt{(}\texttt{p \leftrightarrow q}\texttt{\\}\texttt{)}$$.
-* $$P \equiv Q$$: $$\texttt{\\}\texttt{(}\texttt{P \\equiv Q}\texttt{\\}\texttt{)}$$.
-* $$\forall{x} \in X$$: $$\texttt{\\}\texttt{(}\texttt{\\forall{x} \\in X}\texttt{\\}\texttt{)}$$.
-* $$\exists{y} \in Y$$: $$\texttt{\\}\texttt{(}\texttt{\\exists{y} \\in Y}\texttt{\\}\texttt{)}$$.
+| $$p \wedge q$$                        | $$\texttt{\\}\texttt{(} \texttt{p \wedge q} \texttt{\\}\texttt{)}$$                                   |
+| $$p \vee q$$                          | $$\texttt{\\}\texttt{(}\texttt{\\neg{p}}\texttt{\\}\texttt{)}$$                                       |
+| $$\neg{p}$$                           | $$\texttt{\\}\texttt{(}\texttt{\\neg{p}}\texttt{\\}\texttt{)}$$                                       |
+| $$p \rightarrow q$$                   | $$\texttt{\\}\texttt{(}\texttt{p \rightarrow q}\texttt{\\}\texttt{)}$$                                |
+| $$p \leftrightarrow q$$               | $$\texttt{\\}\texttt{(}\texttt{p \leftrightarrow q}\texttt{\\}\texttt{)}$$                            |
+| $$P \equiv Q$$                        | $$\texttt{\\}\texttt{(}\texttt{P \\equiv Q}\texttt{\\}\texttt{)}$$                                    |
+| $$\forall{x} \in X$$                  | $$\texttt{\\}\texttt{(}\texttt{\\forall{x} \\in X}\texttt{\\}\texttt{)}$$                             |
+| $$\exists{y} \in Y$$                  | $$\texttt{\\}\texttt{(}\texttt{\\exists{y} \\in Y}\texttt{\\}\texttt{)}$$                             |
+| $$\sum_{i=1}^{\infty} \frac{1}{n^s}$$ | $$\texttt{\\}\texttt{(} \texttt{\\sum_\{i=1\}^\{\\infty\} \\frac\{1\}\{n^s\}} \texttt{\\}\texttt{)}$$ |
+| $$\prod_p \frac{1}{1 - p^{-s}}$$      | $$\texttt{\\}\texttt{(} \texttt{\\prod_p \\frac\{1\}\{1 - p^\{-s\}}\texttt{\\}\texttt{)}$$                                   |
 
 #### Conjuntos:
 
-* $$\{x_1,\dots,x_n\}$$: $$\texttt{\\}\texttt{(}\texttt{\\{x_1, \dots, x_n\\}}\texttt{\\}\texttt{)}$$.
-* $$\{x \mid p(x)\}$$: $$\texttt{\\}\texttt{(}\texttt{\\{x \mid p(x)\\}}\texttt{\\}\texttt{)}$$.
-* $$a \mid b$$: $$\texttt{\\}\texttt{(}\texttt{a \\mid b}\texttt{\\}\texttt{)}$$.
-* $$a \not\mid b$$: $$\texttt{\\}\texttt{(}\texttt{a \\not\\mid b}\texttt{\\}\texttt{)}$$.
-* $$x \in X$$: $$\texttt{\\}\texttt{(}\texttt{x \\in X}\texttt{\\}\texttt{)}$$.
-* $$x \not\in X$$: $$\texttt{\\}\texttt{(}\texttt{x \\not\\in X}\texttt{\\}\texttt{)}$$.
-* $$\mid X \mid$$: $$\texttt{\\}\texttt{(}\texttt{\left\| X \right\|}\texttt{\\}\texttt{)}$$.
-* $$\overline{X}$$: $$\texttt{\\}\texttt{(}\texttt{\\overline{X}}\texttt{\\}\texttt{)}$$.
-* $$\emptyset$$: $$\texttt{\\}\texttt{(}\texttt{\\emptyset}\texttt{\\}\texttt{)}$$.
-* $$X \subseteq Y$$: $$\texttt{\\}\texttt{(}\texttt{X \\subseteq Y}\texttt{\\}\texttt{)}$$.
-* $$X \subset Y$$: $$\texttt{\\}\texttt{(}\texttt{X \\subset Y}\texttt{\\}\texttt{)}$$.
-* $$\mathcal{P}(x)$$: $$\texttt{\\}\texttt{(}\texttt{\\mathcal{P}(x)}\texttt{\\}\texttt{)}$$.
-* $$X \cup Y$$: $$\texttt{\\}\texttt{(}\texttt{X \\cup Y}\texttt{\\}\texttt{)}$$.
-* $$X \cap Y$$: $$\texttt{\\}\texttt{(}\texttt{X \\cap Y}\texttt{\\}\texttt{)}$$.
-* $$X \times Y$$: $$\texttt{\\}\texttt{(}\texttt{X \\times Y}\texttt{\\}\texttt{)}$$.
-* $$\bigcup_{i=1}^{3}{A_i}$$: $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$.
-* $$\bigcup_{i \in \{1,2,3\}}{A_i}$$: $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$.
-* $$\bigcap_{i=1}^{3}{A_i}$$: $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$.
-* $$\bigcap_{i \in \{1,2,3\}}{A_i}$$: $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$.
-* $$(x,y)$$: $$\texttt{\\}\texttt{(}\texttt{(x,y)}\texttt{\\}\texttt{)}$$.
-* $$(x_1,\dots,y_n)$$: $$\texttt{\\}\texttt{(}\texttt{(x_1, \dots, y_n)}\texttt{\\}\texttt{)}$$.
-* $$\mathbb{N}$$: $$\texttt{\\}\texttt{(}\texttt{\\mathbb{N}}\texttt{\\}\texttt{)}$$.
-* $$\mathbb{Z}$$: $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Z}}\texttt{\\}\texttt{)}$$.
-* $$\mathbb{Q}$$: $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Q}}\texttt{\\}\texttt{)}$$.
-* $$\mathbb{R}$$: $$\texttt{\\}\texttt{(}\texttt{\\mathbb{R}}\texttt{\\}\texttt{)}$$.
+| $$\{x_1,\dots,x_n\}$$              | $$\texttt{\\}\texttt{(}\texttt{\\{x_1, \dots, x_n\\}}\texttt{\\}\texttt{)}$$            |
+| $$\{x \mid p(x)\}$$                | $$\texttt{\\}\texttt{(}\texttt{\\{x \mid p(x)\\}}\texttt{\\}\texttt{)}$$                |
+| $$a \mid b$$                       | $$\texttt{\\}\texttt{(}\texttt{a \\mid b}\texttt{\\}\texttt{)}$$                        |
+| $$a \not\mid b$$                   | $$\texttt{\\}\texttt{(}\texttt{a \\not\\mid b}\texttt{\\}\texttt{)}$$                   |
+| $$x \in X$$                        | $$\texttt{\\}\texttt{(}\texttt{x \\in X}\texttt{\\}\texttt{)}$$                         |
+| $$x \not\in X$$                    | $$\texttt{\\}\texttt{(}\texttt{x \\not\\in X}\texttt{\\}\texttt{)}$$                    |
+| $$\mid X \mid$$                    | $$\texttt{\\}\texttt{(}\texttt{\left\| X \right\|}\texttt{\\}\texttt{)}$$               |
+| $$\overline{X}$$                   | $$\texttt{\\}\texttt{(}\texttt{\\overline{X}}\texttt{\\}\texttt{)}$$                    |
+| $$\emptyset$$                      | $$\texttt{\\}\texttt{(}\texttt{\\emptyset}\texttt{\\}\texttt{)}$$                       |
+| $$X \subseteq Y$$                  | $$\texttt{\\}\texttt{(}\texttt{X \\subseteq Y}\texttt{\\}\texttt{)}$$                   |
+| $$X \subset Y$$                    | $$\texttt{\\}\texttt{(}\texttt{X \\subset Y}\texttt{\\}\texttt{)}$$                     |
+| $$\mathcal{P}(x)$$                 | $$\texttt{\\}\texttt{(}\texttt{\\mathcal{P}(x)}\texttt{\\}\texttt{)}$$                  |
+| $$X \cup Y$$                       | $$\texttt{\\}\texttt{(}\texttt{X \\cup Y}\texttt{\\}\texttt{)}$$                        |
+| $$X \cap Y$$                       | $$\texttt{\\}\texttt{(}\texttt{X \\cap Y}\texttt{\\}\texttt{)}$$                        |
+| $$X \times Y$$                     | $$\texttt{\\}\texttt{(}\texttt{X \\times Y}\texttt{\\}\texttt{)}$$                      |
+| $$\bigcup_{i=1}^{3}{A_i}$$         | $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$          |
+| $$\bigcup_{i \in \{1,2,3\}}{A_i}$$ | $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$ |
+| $$\bigcap_{i=1}^{3}{A_i}$$         | $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$          |
+| $$\bigcap_{i \in \{1,2,3\}}{A_i}$$ | $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$ |
+| $$(x,y)$$                          | $$\texttt{\\}\texttt{(}\texttt{(x,y)}\texttt{\\}\texttt{)}$$                            |
+| $$(x_1,\dots,y_n)$$                | $$\texttt{\\}\texttt{(}\texttt{(x_1, \dots, y_n)}\texttt{\\}\texttt{)}$$                |
+| $$\mathbb{N}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{N}}\texttt{\\}\texttt{)}$$                      |
+| $$\mathbb{Z}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Z}}\texttt{\\}\texttt{)}$$                      |
+| $$\mathbb{Q}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Q}}\texttt{\\}\texttt{)}$$                      |
+| $$\mathbb{R}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{R}}\texttt{\\}\texttt{)}$$                      |
 
 #### Relaciones:
 
-* $${}_{a}\mathfrak{R}_{b}$$: $$\texttt{\\}\texttt{(}\texttt{\{\}_\{a\}\\mathfrak\{R\}_\{b\}}\texttt{\\}\texttt{)}$$.
-* $$[x]$$: $$\texttt{\\}\texttt{(}\texttt{[x]}\texttt{\\}\texttt{)}$$.
-* $$\mathfrak{R}^{-1}$$: $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}^\{-1\}}\texttt{\\}\texttt{)}$$.
-* $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$: $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}_1 \\circ \\mathfrak\{R\}_2}\texttt{\\}\texttt{)}$$.
+| $${}_{a}\mathfrak{R}_{b}$$              | $$\texttt{\\}\texttt{(}\texttt{\{\}_\{a\}\\mathfrak\{R\}_\{b\}}\texttt{\\}\texttt{)}$$            |
+| $$[x]$$                                 | $$\texttt{\\}\texttt{(}\texttt{[x]}\texttt{\\}\texttt{)}$$                                        |
+| $$\mathfrak{R}^{-1}$$                   | $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}^\{-1\}}\texttt{\\}\texttt{)}$$                     |
+| $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$ | $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}_1 \\circ \\mathfrak\{R\}_2}\texttt{\\}\texttt{)}$$ |
+
 
 #### Funciones
 
-* $$f(x)$$: $$\texttt{\\}\texttt{(}\texttt{f(x)}\texttt{\\}\texttt{)}$$.
-* $$f:X \to Y$$: $$\texttt{\\}\texttt{(}\texttt{f:X \\to Y}\texttt{\\}\texttt{)}$$.
-* $$f \circ g$$: $$\texttt{\\}\texttt{(}\texttt{f \\circ g}\texttt{\\}\texttt{)}$$.
-* $$f^{-1}$$: $$\texttt{\\}\texttt{(}\texttt{f^{-1}}\texttt{\\}\texttt{)}$$.
+| $$f(x)$$      | $$\texttt{\\}\texttt{(}\texttt{f(x)}\texttt{\\}\texttt{)}$$       |
+| $$f:X \to Y$$ | $$\texttt{\\}\texttt{(}\texttt{f:X \\to Y}\texttt{\\}\texttt{)}$$ |
+| $$f \circ g$$ | $$\texttt{\\}\texttt{(}\texttt{f \\circ g}\texttt{\\}\texttt{)}$$ |
+| $$f^{-1}$$    | $$\texttt{\\}\texttt{(}\texttt{f^{-1}}\texttt{\\}\texttt{)}$$     |
 
 #### Geometría
 
-* $$P,Q,R$$: $$\texttt{\\}\texttt{(}\texttt{P,Q,R}\texttt{\\}\texttt{)}$$.
-* $$\overline{PQ}$$: $$\texttt{\\}\texttt{(}\texttt{\\overline{PQ}}\texttt{\\}\texttt{)}$$.
-* $$\overleftrightarrow{PQ}$$: $$\texttt{\\}\texttt{(}\texttt{\\overleftrightarrow{PQ}}\texttt{\\}\texttt{)}$$.
-* $$\overrightarrow{PQ}$$: $$\texttt{\\}\texttt{(}\texttt{\\overrightarrow{PQ}}\texttt{\\}\texttt{)}$$.
-* $$\angle{ABC}$$: $$\texttt{\\}\texttt{(}\texttt{\\angle{ABC}}\texttt{\\}\texttt{)}$$.
-* $$m\angle{ABC}=r^{\circ}$$: $$\texttt{\\}\texttt{(}\texttt{m\\angle{ABC}^{\\circ}}\texttt{\\}\texttt{)}$$.
-* $$\angle{1}\cong\angle{2}$$: $$\texttt{\\}\texttt{(}\texttt{\\angle{1} \\cong \\angle{2}}\texttt{\\}\texttt{)}$$.
-* $$\triangle{ABC}$$: $$\texttt{\\}\texttt{(}\texttt{\\triangle{ABC}}\texttt{\\}\texttt{)}$$.
-* $$l \perp m$$: $$\texttt{\\}\texttt{(}\texttt{l \\perp m}\texttt{\\}\texttt{)}$$.
-* $$l \parallel m$$: $$\texttt{\\}\texttt{(}\texttt{l \\parallel m}\texttt{\\}\texttt{)}$$.
-* $$l \not\perp m$$: $$\texttt{\\}\texttt{(}\texttt{l \\not\\perp m}\texttt{\\}\texttt{)}$$.
-* $$l \not\parallel m$$: $$\texttt{\\}\texttt{(}\texttt{l \\not\\parallel m}\texttt{\\}\texttt{)}$$.
-* $$\alpha,\beta,\gamma,\theta$$: $$\texttt{\\}\texttt{(}\texttt{\\alpha, \\beta, \\gamma, \\theta}\texttt{\\}\texttt{)}$$.
-* $$\pi$$: $$\texttt{\\}\texttt{(}\texttt{\\pi}\texttt{\\}\texttt{)}$$.
+| $$P,Q,R$$                      | $$\texttt{\\}\texttt{(}\texttt{P,Q,R}\texttt{\\}\texttt{)}$$                             |
+| $$\overline{PQ}$$              | $$\texttt{\\}\texttt{(}\texttt{\\overline{PQ}}\texttt{\\}\texttt{)}$$                    |
+| $$\overleftrightarrow{PQ}$$    | $$\texttt{\\}\texttt{(}\texttt{\\overleftrightarrow{PQ}}\texttt{\\}\texttt{)}$$          |
+| $$\overrightarrow{PQ}$$        | $$\texttt{\\}\texttt{(}\texttt{\\overrightarrow{PQ}}\texttt{\\}\texttt{)}$$              |
+| $$\angle{ABC}$$                | $$\texttt{\\}\texttt{(}\texttt{\\angle{ABC}}\texttt{\\}\texttt{)}$$                      |
+| $$m\angle{ABC}=r^{\circ}$$     | $$\texttt{\\}\texttt{(}\texttt{m\\angle{ABC}^{\\circ}}\texttt{\\}\texttt{)}$$            |
+| $$\angle{1}\cong\angle{2}$$    | $$\texttt{\\}\texttt{(}\texttt{\\angle{1} \\cong \\angle{2}}\texttt{\\}\texttt{)}$$      |
+| $$\triangle{ABC}$$             | $$\texttt{\\}\texttt{(}\texttt{\\triangle{ABC}}\texttt{\\}\texttt{)}$$                   |
+| $$l \perp m$$                  | $$\texttt{\\}\texttt{(}\texttt{l \\perp m}\texttt{\\}\texttt{)}$$                        |
+| $$l \parallel m$$              | $$\texttt{\\}\texttt{(}\texttt{l \\parallel m}\texttt{\\}\texttt{)}$$                    |
+| $$l \not\perp m$$              | $$\texttt{\\}\texttt{(}\texttt{l \\not\\perp m}\texttt{\\}\texttt{)}$$                   |
+| $$l \not\parallel m$$          | $$\texttt{\\}\texttt{(}\texttt{l \\not\\parallel m}\texttt{\\}\texttt{)}$$               |
+| $$\alpha,\beta,\gamma,\theta$$ | $$\texttt{\\}\texttt{(}\texttt{\\alpha, \\beta, \\gamma, \\theta}\texttt{\\}\texttt{)}$$ |
+| $$\pi$$                        | $$\texttt{\\}\texttt{(}\texttt{\\pi}\texttt{\\}\texttt{)}$$                              |
 
 #### Operaciones Multilíneas
 
