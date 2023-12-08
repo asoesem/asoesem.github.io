@@ -38,11 +38,11 @@ Por ejemplo, $$\texttt{\\}\texttt{[}\texttt{a = \frac{b \cdot h}{2}}\texttt{\\}\
 
 $$a = \frac{b \cdot h}{2}$$
 
-Y el mismo resultado se puede producir usando los dobles signos de dolas, por ejemplo $$\texttt{\$\$}\texttt{a = \frac{b \cdot h}{2}}\texttt{\$\$}$$. 
+Y el mismo resultado se puede producir usando los dobles signos de dolar, por ejemplo $$\texttt{\$\$}\texttt{a = \frac{b \cdot h}{2}}\texttt{\$\$}$$. 
 
 Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede volver algo relativamente sencillo una vez que dominamos los comandos básicos de $$\LaTeX$$. Abajo les dejo algunas referencias que pueden resultar de gran ayuda.
 
-A continuación les dejo unos ejemplos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED y que les pueden servir para realizar consultas en los foros de consultas cuando estén lelvando algún curso de naturaleza matemática.
+A continuación les dejo unos ejemplos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED y que les pueden servir para realizar consultas en los foros de consultas cuando estén llevando algún curso de naturaleza matemática.
 
 #### Fundamentos
 
@@ -140,7 +140,7 @@ $$\begin{aligned} 1 + S(n) &= S(1 + n) \;& \text{[Def. 1, (b)]} \\ &= S(n + 1) \
 
 ### Otras Herramientas Útiles
 
-A menudo, cuando al escribir código $$\LaTeX$$ en el foro, uno no está muy seguro de si se hizo bien hasta que se publica la entrada. Con frecuencia, uno descubre que se equivocó en algún comando, y ya en este punto no queda más remedio que editar la entrada en el foro para corregir el problema. Una forma de evitar este tipo de errores es por medio de escribir el código $$\LaTeX$$ en alguna otra herramienta. Una que me gusta por su sencillez es [CodeCogs][1]. Se Puede escribir el código $$\LaTeX$$ ahí y luego nada más se pasa al foro entre los paréntesis descritos en esta publicación.
+A menudo, al escribir código $$\LaTeX$$ en el foro, uno no está muy seguro de si lo ha hecho bien hasta que se publica la entrada en el foro. Con frecuencia, uno descubre que se equivocó en algún comando, y ya en este punto no queda más remedio que editar la entrada en el foro para corregir el problema. Una forma de evitar este tipo de errores es por medio de escribir el código $$\LaTeX$$ en alguna otra herramienta. Una que me gusta por su sencillez es [CodeCogs][1]. Se Puede escribir el código $$\LaTeX$$ ahí y luego nada más se pasa al foro entre los paréntesis descritos en esta publicación.
 
 Otra alternativa es utilizar algún otro editor popular como [Overleaf][2] o [TexStudio][3] para escribir las entradas del foro en el editor y luego pasarlas al foro una vez que uno está satisfecho. Ambos editores soportan los mismos paréntesis de $$\LaTeX$$ que el foro de consultas y la plataforma virtual.
 
