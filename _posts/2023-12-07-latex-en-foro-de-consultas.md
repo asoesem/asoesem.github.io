@@ -42,7 +42,7 @@ Y el mismo resultado se puede producir usando los dobles signos de dolas, por ej
 
 Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede volver algo relativamente sencillo una vez que dominamos los comandos básicos de $$\LaTeX$$. Abajo les dejo algunas referencias que pueden resultar de gran ayuda.
 
-A continuación les dejo algunos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED.
+A continuación les dejo unos ejemplos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED y que les pueden servir para realizar consultas en los foros de consultas cuando estén lelvando algún curso de naturaleza matemática.
 
 #### Fundamentos
 
