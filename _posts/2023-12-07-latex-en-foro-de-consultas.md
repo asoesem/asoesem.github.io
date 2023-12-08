@@ -14,23 +14,23 @@ share: true
 
 Para aquellos que estamos llevando alguna materia de matemática y, especialmente, para los que somos estudiantes de carreras de ciencias en exactas, puede ser fundamental realizar consultas en los foros del entorno virtual utilizando lenguaje matemático.
 
-Algunos recurren a subir imágenes con fotografías de sus libros o de cosas que han escrito ellos mismos manualmente en papel. Sin embargo, el campus virtual, montado sobre la plataforma Moodle, soporta el uso de $$\LaTeX$$ en los foros. $$\LaTeX$$ es un lenguaje de composición tipográfica especialmente utilizado en matemáticas por su versatilidad para expresar tipográficamente, expresiones de lenguaje matemático. 
+Algunos recurren a subir imágenes con fotografías de sus libros o de cosas que han escrito ellos mismos manualmente en papel. Sin embargo, el campus virtual, montado sobre la plataforma Moodle, soporta el uso de $$\LaTeX$$ en los foros. $$\LaTeX$$ es un lenguaje de composición tipográfica especialmente utilizado en matemáticas por su versatilidad para escribir expresiones de lenguaje matemático. 
 
 En el foro de consultas es posible escribir expresiones en $$\LaTeX$$, el cual soporta los dos modos tradicionales de expresiones matemáticas: en línea y el modo display.
 
 ### Modo en Línea
 
-El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que no son parte del párrafo y deberían ir en una párrafo parte.
+El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que deberían ir su propio párrafo parte.
 
 Para escribir una expresión matemática en línea, colocamos los comandos de LaTeX entre un par de paréntesis redondos, precedidos de una barra inclinada $$\texttt{\\}\texttt{(}\quad\texttt{\\}\texttt{)}$$.
 
-Por ejemplo $$\texttt{\\}\texttt{(} \texttt{c = \sqrt{a^2 + b^2}} \texttt{\\}\texttt{)}$$ produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte del mismo párrafo.
+Por ejemplo $$\texttt{\\}\texttt{(} \texttt{c = \sqrt{a^2 + b^2}} \texttt{\\}\texttt{)}$$ produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte de este mismo párrafo.
 
-Algunos podrían estar familiarizados con herramientas de LaTeX que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica no funciona en el entorno virtual.
+Algunos podrían estar familiarizados con herramientas de LaTeX que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual.
 
 ### Modo Display
 
-Por otro lado, si la expresión que queremos escribir debe ocupar una línea separada, podemos colocar nuestro código LaTeX entre un par de paréntesis cuadrados precedidos de una barra inclinada: $$\texttt{\\}\texttt{[}\quad\texttt{\\}\texttt{]}$$.
+Por otro lado, si la expresión que queremos escribir debe ocupar su propio párrafo separado, podemos colocar nuestro código $$\LaTeX$$ entre un par de paréntesis cuadrados precedidos de una barra inclinada: $$\texttt{\\}\texttt{[}\quad\texttt{\\}\texttt{]}$$.
 
 Igualmente, algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dobles signos de dólar, $$\texttt{\$\$   \$\$}$$. Contrario al caso anterior, esta técnica sí funciona en el entorno virtual.
 
@@ -40,7 +40,7 @@ $$a = \frac{b \cdot h}{2}$$
 
 Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede volver algo relativamente sencillo una vez que dominamos los comandos básicos de $$\LaTeX$$. Abajo les dejo algunas referencias que pueden resultar de gran ayuda.
 
-A continuación les dejo algunos de los comandos más útiles que he ido aprendiendo en diferentes cursos:
+A continuación les dejo algunos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED.
 
 #### Fundamentos
 
@@ -116,9 +116,9 @@ A continuación les dejo algunos de los comandos más útiles que he ido aprendi
 * $$\alpha,\beta,\gamma,\theta$$: $$\texttt{\\}\texttt{(}\texttt{\\alpha, \\beta, \\gamma, \\theta}\texttt{\\}\texttt{)}$$.
 * $$\pi$$: $$\texttt{\\}\texttt{(}\texttt{\\pi}\texttt{\\}\texttt{)}$$.
 
-#### Operaciones Multilineas
+#### Operaciones Multilíneas
 
-En ciertas ocasiones puede ser útil desarrollar una ecuación que ocupa múltiples lineas, como el ejemplo siguiete:
+En ciertas ocasiones puede ser útil desarrollar una ecuación que ocupa múltiples lineas, como el ejemplo siguiente:
 
 $$\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{\circ}} &= a\end{aligned}$$
 
@@ -130,7 +130,7 @@ Para producir una nueva línea se utiliza el operador $$\texttt{\\\\}$$, y para 
 
 $$\texttt{\\begin{aligned}}\texttt{\\cos{43^{\\circ}} &= \\dfrac{a}{27^{\\circ}} \\\\27^{\\circ}\\cos{43^{\\circ}} &= a}\texttt{\\end{aligned}}$$
 
-Donde se puede ver que el punto de alineamiento es el signo de igual y por eso ambas expresiones están alineadas en ese signo: $$\texttt{&=}$$, y se puede ver que hay un retorno de carro o una nueva línea justo donde comienza $$\texttt{\\\\27^{\\circ}}$$. 
+Donde se puede ver que el punto de alineamiento es el signo de igual y por eso ambas expresiones están alineadas en ese signo: $$\texttt{&=}$$. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza $$\texttt{\\\\27^{\\circ}}$$. 
 
 Con algo de paciencia y cuidado es posible escribir expresiones multilíneas complejas como la siguiente:
 
@@ -138,13 +138,13 @@ $$\begin{aligned} 1 + S(n) &= S(1 + n) \;& \text{[Def. 1, (b)]} \\ &= S(n + 1) \
 
 ### Otras Herramientas Útiles
 
-A menudo, un problema es que cuando uno escribe $$\LaTeX$$ en el foro, no se está muy seguro de si se hizo bien hasta que uno publica la entrada. Con frecuencia, uno descubre que se equivocó en algún comando, pero ya en ese punto no queda más remedio que editar la entrada en el foro. Una forma de evitar este problema es escribir el código $$\LaTeX$$ en alguna otra herramienta. Una que me gusta por su sencillez es [CodeCogs][1]. Puedes escribir tu código $$\LaTeX$$ ahí y luego nada más lo pasa al foro entre los paréntesis adecuados.
+A menudo, cuando al escribir código $$\LaTeX$$ en el foro, uno no está muy seguro de si se hizo bien hasta que se publica la entrada. Con frecuencia, uno descubre que se equivocó en algún comando, y ya en este punto no queda más remedio que editar la entrada en el foro para corregir el problema. Una forma de evitar este tipo de errores es por medio de escribir el código $$\LaTeX$$ en alguna otra herramienta. Una que me gusta por su sencillez es [CodeCogs][1]. Se Puede escribir el código $$\LaTeX$$ ahí y luego nada más se pasa al foro entre los paréntesis descritos en esta publicación.
 
 Otra alternativa es utilizar algún otro editor popular como [Overleaf][2] o [TexStudio][3] para escribir las entradas del foro en el editor y luego pasarlas al foro una vez que uno está satisfecho. Ambos editores soportan los mismos paréntesis de $$\LaTeX$$ que el foro de consultas y la plataforma virtual.
 
 ### Lectura Adicional
 
-Si quieres aprender más, puedes consultar innumerables recursos en Internet, pero acá abajo dejo un par de mis favoritos.
+Si quieres aprender más, puedes consultar innumerables recursos en Internet, pero acá abajo dejo algunos de mis favoritos.
 
 * [Listado de Comandos de LaTeX para Estudiantes de Matemática][4]
 * [La Introducción no tan Corta de LaTeX][5]
