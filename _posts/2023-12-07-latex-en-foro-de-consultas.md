@@ -20,7 +20,7 @@ En el foro de consultas es posible escribir expresiones en $$\LaTeX$$, el cual s
 
 ### Modo en Línea
 
-El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que deberían ir su propio párrafo parte.
+El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que deberían ir en su propio párrafo aparte.
 
 Para escribir una expresión matemática en línea, colocamos los comandos de LaTeX entre un par de paréntesis redondos, precedidos de una barra inclinada $$\texttt{\\}\texttt{(}\quad\texttt{\\}\texttt{)}$$.
 
