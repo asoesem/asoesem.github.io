@@ -26,17 +26,19 @@ Para escribir una expresión matemática en línea, colocamos los comandos de La
 
 Por ejemplo $$\texttt{\\}\texttt{(} \texttt{c = \sqrt{a^2 + b^2}} \texttt{\\}\texttt{)}$$ produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte de este mismo párrafo.
 
-Algunos podrían estar familiarizados con herramientas de LaTeX que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual.
+Algunos podrían estar familiarizados con herramientas de LaTeX que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, se deb usar la técnica de paréntesis redondos.
 
 ### Modo Display
 
 Por otro lado, si la expresión que queremos escribir debe ocupar su propio párrafo separado, podemos colocar nuestro código $$\LaTeX$$ entre un par de paréntesis cuadrados precedidos de una barra inclinada: $$\texttt{\\}\texttt{[}\quad\texttt{\\}\texttt{]}$$.
 
-Igualmente, algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dobles signos de dólar, $$\texttt{\$\$   \$\$}$$. Contrario al caso anterior, esta técnica sí funciona en el entorno virtual.
+Igualmente, algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dobles signos de dólar, $$\texttt{\$\$   \$\$}$$. Contrario al caso anterior, esta técnica sí funciona en el entorno virtual. En ese caso, se puede usar cualquiera de las dós técnicas en los foros de consulta.
 
 Por ejemplo, $$\texttt{\\}\texttt{[}\texttt{a = \frac{b \cdot h}{2}}\texttt{\\}\texttt{]}$$, se convierte en algo como lo siguiente: 
 
 $$a = \frac{b \cdot h}{2}$$
+
+Y el mismo resultado se puede producir usando los dobles signos de dolas, por ejemplo $$\texttt{\$\$}\texttt{a = \frac{b \cdot h}{2}}\texttt{\$\$}$$. 
 
 Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede volver algo relativamente sencillo una vez que dominamos los comandos básicos de $$\LaTeX$$. Abajo les dejo algunas referencias que pueden resultar de gran ayuda.
 
