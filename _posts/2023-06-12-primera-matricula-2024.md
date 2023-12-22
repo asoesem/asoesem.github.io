@@ -5,7 +5,7 @@ description: Horarios y fechas de la matrícula para el primer cuatrimestre y se
 date: 2023-12-06T10:00:00-06:00
 #author: axell
 image: '/images/108.jpg'
-tags: [anuncios]
+tags: [anuncios,matrícula]
 #commissions: [cofoma]
 featured: true
 comments: true
