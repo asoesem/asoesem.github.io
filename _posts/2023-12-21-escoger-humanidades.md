@@ -39,7 +39,8 @@ Consulta la [oferta anual de asignaturas][4] para determinar si la materia que t
 ## Material Adicional
 
 * [Programa de Humanidades][1]
-* [Vídeos Explicativos en YouTube][2]
+* [¿Qué es el Programa de Humanidades de la UNED?][5]
+* [Otros Vídeos Explicativos en YouTube][2]
 * [Orientaciones Académicas][3]
 * [Oferta Anual de Asignaturas][4]
 
@@ -47,3 +48,4 @@ Consulta la [oferta anual de asignaturas][4] para determinar si la materia que t
 [2]:https://www.youtube.com/playlist?list=PLGCGIZ6I-C5Tq_F_DwkLgbSdKdtNJA1g2
 [3]:https://orientacionesacademicas.uned.ac.cr/consultas/
 [4]:https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx
+[5]:https://www.youtube.com/watch?v=OtCC8IeU9MY
