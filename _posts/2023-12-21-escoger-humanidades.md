@@ -25,6 +25,7 @@ El programa se divide en módulos temáticos:
 * Investigación Social y Ambiente
 
 Cada módulo tiene un número variado de materias electivas y los estudiantes necesitamos aprobar un número de créditos como requisito para obtener el grado que estemos cursando: diplomado (12 créditos) , bachillerato (6 créditos) o licenciatura (6 créditos). 
+
 Revisa el [Programa de Humanidades][1] para ver las materias disponibles para cada módulo y así poder escoger cuales te interesan más de cada módulo.
 
 Para la carrera de Enseñanza de las Matemáticas, cuyo grado básico es bachillerato, se deben cumplir 18 créditos (12 del nivel de diplomado + 6 del nivel de bachillerato):
@@ -34,7 +35,7 @@ Para la carrera de Enseñanza de las Matemáticas, cuyo grado básico es bachill
 
 Para Licenciatura, los estudiantes debemos aprobar 6 créditos adicionales de materias de humanidades de cualquiera de los módulos.
 
-Consulta la [oferta anual de asignaturas][4] para determinar si la materia que te interesa se oferta en un el cuatrimestre que deseas llevarla, e invierte unos minutos en hojear las [orientaciones académicas][3] de ediciones anteriores de la materia para hacerte una idea de qué se trata.
+Consulta la [oferta anual de asignaturas][4] para determinar si la materia que te interesa se oferta en el cuatrimestre que deseas llevarla, e invierte unos minutos en hojear las [orientaciones académicas][3] de ediciones anteriores de la materia para hacerte una idea de qué se trata.
 
 ## Material Adicional
 
