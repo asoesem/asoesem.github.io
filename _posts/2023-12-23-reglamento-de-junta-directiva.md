@@ -2,7 +2,7 @@
 layout: post
 title: Reglamento de la Junta Directiva
 description: Reglamento Oficial de la Junta Directiva de la Asociación de Estudiantes de la Carrera de Enseñanza de la Matemática de la UNED.
-date: 2023-12-23 10:00:00
+date: 2023-12-23 21:17:00
 author: axell
 image: '/images/109.jpg'
 tags: [reglamentos]
