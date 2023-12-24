@@ -32,7 +32,7 @@ de la ASOESEM.
 
 ### Artículo cuarto: Requisitos para pertenecer al Consejo de Asociados
 
-Para pertenecer al consejo de asociados de la ASOESEM podrá hacerlo por medio de los siguientes mecanismos: 
+Para pertenecer a la comisión de asociados de la ASOESEM podrá hacerlo por medio de los siguientes mecanismos: 
 
 * Ser representante estudiantil nombrado por la UNED, FEUNED o la
 ASOESEM. 
