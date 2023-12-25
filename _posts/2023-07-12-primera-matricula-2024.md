@@ -2,7 +2,7 @@
 layout: post
 title: Horarios y Fechas de Matrícula 2024
 description: Horarios y fechas de la matrícula para el primer cuatrimestre y semestre del 2024.
-date: 2023-12-06T10:00:00-06:00
+date: 2023-12-07T10:00:00-06:00
 #author: axell
 image: '/images/108.jpg'
 tags: [anuncios,matrícula]

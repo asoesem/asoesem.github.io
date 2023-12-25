@@ -27,7 +27,7 @@ collections:
     permalink: /:name
   posts:
     output: true
-    permalink: /artículos/:slug
+    permalink: /articulos/:slug
   authors:
     output: true
     permalink: /autores/:name
