@@ -11,7 +11,7 @@ El asociado activo recibe todas las regalías que la asociación le pueda confer
 
 **¿Cómo me afilio a la ASOESEM?** 
 
-Para afiliarte debees seguir lo estipulado en el artículo 9 del [Estatuto de la ASOESEM][1]. Debes llenar el [formulario de solicitud de afiliación][4] y enviarlo al correo electrónico [asoesem@uned.ac.cr](mailto:asoesem@uned.ac.cr).
+Para afiliarte debees seguir lo estipulado en el artículo 9 del [Estatuto de la ASOESEM][1]. Debes llenar el [formulario de solicitud de afiliación][4] y enviarlo al correo electrónico [asoesem@uned.ac.cr](mailto:asoesem@uned.ac.cr). Además de adjuntar fotocopia de la cédula por ambos lados (puede ser escaneada), y copia del una constancia de estudiante activo (se puede solicitar en el CU por medio del correo) ó el historial académico (se puede descargar en el entorno estudiantil). Estos son documentos importantes que permiten verificar si el estudiante se encuentra empadronado en la carrera de la Enseñanza de la Matemática en la UNED y si es estudiante activo.
 
 **¿Qué es el Estatuto de la Asociación?** 
 
