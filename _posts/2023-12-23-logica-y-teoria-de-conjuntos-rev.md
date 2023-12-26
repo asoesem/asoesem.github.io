@@ -156,7 +156,7 @@ Estos son los videos de las tutorías asíncronas proporcionados por la tutoría
 * [Video Tutoría 1][24]
 * [Video Tutoría 2][25]
 * [Video Tutoría 3][26]
-* [Video Tutoría 4][26]
+* [Video Tutoría 4][27]
 
 Este es un conjunto de videos con material adicional proporcionados por la tutoría del curso.
 
@@ -254,10 +254,10 @@ Si deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que v
 [21]:https://youtu.be/6isDhahJve0?si=at-crbB2J12oo6Xz
 [22]:https://youtu.be/xwQt2RVYH2U?si=J_r2QFyw0eFCN33K
 [23]:https://youtu.be/gNdrxk5yTWU?si=Zx4aqAEQ1tmcutik
-[24]:https://unedaccr-my.sharepoint.com/personal/hviquez_uned_ac_cr/_layouts/15/stream.aspx?id=%2Fpersonal%2Fhviquez%5Funed%5Fac%5Fcr%2FDocuments%2F03423%2DL%C3%B3gica%20y%20Teor%C3%ADa%20de%20Conjuntos%20%28IIIC%2D2023%29%2FTutori%CC%81a%201%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview
-[25]:https://unedaccr-my.sharepoint.com/personal/hviquez_uned_ac_cr/_layouts/15/stream.aspx?id=%2Fpersonal%2Fhviquez%5Funed%5Fac%5Fcr%2FDocuments%2FL%C3%B3gica%20y%20Teor%C3%ADa%20de%20Conjuntos%20IC%2D2023%2FTutori%CC%81a%20II%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview
-[26]:https://unedaccr-my.sharepoint.com/personal/hviquez_uned_ac_cr/_layouts/15/stream.aspx?id=%2Fpersonal%2Fhviquez%5Funed%5Fac%5Fcr%2FDocuments%2F03423%20L%C3%B3gica%20y%20Teor%C3%ADa%20de%20Conjuntos%2FTutori%CC%81a%203%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview
-[27]:https://unedaccr-my.sharepoint.com/personal/hviquez_uned_ac_cr/_layouts/15/stream.aspx?id=%2Fpersonal%2Fhviquez%5Funed%5Fac%5Fcr%2FDocuments%2F03423%20L%C3%B3gica%20y%20Teor%C3%ADa%20de%20Conjuntos%2FTutori%CC%81a%204%2Emp4&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview
+[24]:https://unedcr-my.sharepoint.com/:v:/g/personal/jordy_morales_uned_cr/EZoLhpvSFShPklLLemqSsTsBOSOqvUL8O_bO8V2AmyQcxA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=IoNPx0
+[25]:https://unedcr-my.sharepoint.com/:v:/g/personal/jordy_morales_uned_cr/EYo_mRgEDVlOtjTUmHnFKmYBqDAlbeD_Gc6tj2BUk5lhZw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=jXdAxm
+[26]:https://unedcr-my.sharepoint.com/:v:/g/personal/jordy_morales_uned_cr/EWfhZlMDDARMooBuA0LoMJkB-tWdLXhQHb7kVoH3jvzlaw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=8glupP
+[27]:https://unedcr-my.sharepoint.com/:v:/g/personal/jordy_morales_uned_cr/EaSzSvGFWIVFlq4Oq_rga9kBAMPklG_tRavDAunvZGKGsg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OjnF0Q
 [28]:https://www.uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula
 [29]:https://www.uned.ac.cr/ecen/ensenanza-de-la-matematica
 [30]:https://www.people.vcu.edu/~rhammack/BookOfProof/

@@ -22,11 +22,11 @@ En el foro de consultas es posible escribir expresiones en $$\LaTeX$$, el cual s
 
 El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que deberían ir en su propio párrafo aparte.
 
-Para escribir una expresión matemática en línea, colocamos los comandos de LaTeX entre un par de paréntesis redondos, precedidos de una barra inclinada $$\texttt{\\}\texttt{(}\quad\texttt{\\}\texttt{)}$$.
+Para escribir una expresión matemática en línea, colocamos los comandos de $$\LaTeX$$ entre un par de paréntesis redondos, precedidos de una barra inclinada $$\texttt{\\}\texttt{(}\quad\texttt{\\}\texttt{)}$$.
 
 Por ejemplo $$\texttt{\\}\texttt{(} \texttt{c = \sqrt{a^2 + b^2}} \texttt{\\}\texttt{)}$$ produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte de este mismo párrafo.
 
-Algunos podrían estar familiarizados con herramientas de LaTeX que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, en los foros del entorno virtual se debe usar la técnica de los paréntesis redondos descrita arriba.
+Algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, en los foros del entorno virtual se debe usar la técnica de los paréntesis redondos descrita arriba.
 
 ### Modo Display
 
