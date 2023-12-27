@@ -22,23 +22,23 @@ En el foro de consultas es posible escribir expresiones en $$\LaTeX$$, el cual s
 
 El modo en línea se suele usar para escribir fórmulas matemáticas que son parte del mismo párrafo, mientras que el modo display se usa para escribir fórmulas matemáticas que deberían ir en su propio párrafo aparte.
 
-Para escribir una expresión matemática en línea, colocamos los comandos de $$\LaTeX$$ entre un par de paréntesis redondos, precedidos de una barra inclinada $$\texttt{\\}\texttt{(}\quad\texttt{\\}\texttt{)}$$.
+Para escribir una expresión matemática en línea, colocamos los comandos de $$\LaTeX$$ entre un par de paréntesis redondos, precedidos de una barra inclinada `\( \)`.
 
-Por ejemplo $$\texttt{\\}\texttt{(} \texttt{c = \sqrt{a^2 + b^2}} \texttt{\\}\texttt{)}$$ produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte de este mismo párrafo.
+Por ejemplo `\(c = \sqrt{a^2 + b^2}\)` produce la salida $$c = \sqrt{a^2 + b^2}$$ que es parte de este mismo párrafo.
 
-Algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dos signos de dólar, $$\texttt{\$   \$}$$, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, en los foros del entorno virtual se debe usar la técnica de los paréntesis redondos descrita arriba.
+Algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dos signos de dólar, `$ $`, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, en los foros del entorno virtual se debe usar la técnica de los paréntesis redondos descrita arriba.
 
 ### Modo Display
 
-Por otro lado, si la expresión que queremos escribir debe ocupar su propio párrafo separado, podemos colocar nuestro código $$\LaTeX$$ entre un par de paréntesis cuadrados precedidos de una barra inclinada: $$\texttt{\\}\texttt{[}\quad\texttt{\\}\texttt{]}$$.
+Por otro lado, si la expresión que queremos escribir debe ocupar su propio párrafo separado, podemos colocar nuestro código $$\LaTeX$$ entre un par de paréntesis cuadrados, ambos precedidos de una barra inclinada: `\[ \]`.
 
-Igualmente, algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dobles signos de dólar, $$\texttt{\$\$   \$\$}$$. Contrario al caso anterior, esta técnica sí funciona en el entorno virtual. En ese caso, se puede usar cualquiera de las dós técnicas en los foros de consulta.
+Igualmente, algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dobles signos de dólar, `$$ $$`. Contrario al caso anterior, esta técnica sí funciona en el entorno virtual. En ese caso, se puede usar cualquiera de las dós técnicas en los foros de consulta.
 
-Por ejemplo, $$\texttt{\\}\texttt{[}\texttt{a = \frac{b \cdot h}{2}}\texttt{\\}\texttt{]}$$, se convierte en algo como lo siguiente: 
+Por ejemplo, `\[a = \frac{b \cdot h}{2}\]`, se convierte en algo como lo siguiente: 
 
 $$a = \frac{b \cdot h}{2}$$
 
-Y el mismo resultado se puede producir usando los dobles signos de dolar, por ejemplo $$\texttt{\$\$}\texttt{a = \frac{b \cdot h}{2}}\texttt{\$\$}$$. 
+Y el mismo resultado se puede producir usando los dobles signos de dolar, por ejemplo `$$a = \frac{b \cdot h}{2}$$`. 
 
 Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede volver algo relativamente sencillo una vez que dominamos los comandos básicos de $$\LaTeX$$. Abajo les dejo algunas referencias que pueden resultar de gran ayuda.
 
@@ -46,89 +46,89 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 
 #### Fundamentos
 
-| $$a^{n}$$                  | $$\texttt{\\}\texttt{(}\texttt{a^\{n\}}\texttt{\\}\texttt{)}$$                     |
-| $$\binom{n}{k}$$           | $$\texttt{\\}\texttt{(}\texttt{\\binom\{n\}\{k\}}\texttt{\\}\texttt{)}$$           |
-| $$\dfrac{a}{b}$$           | $$\texttt{\\}\texttt{(}\texttt{\\dfrac\{a\}\{b\}}\texttt{\\}\texttt{)}$$           |
-| $$\sqrt{a}$$               | $$\texttt{\\}\texttt{(}\texttt{\\sqrt\{a\}}\texttt{\\}\texttt{)}$$                 |
-| $$\sqrt[n]{a}$$            | $$\texttt{\\}\texttt{(}\texttt{\\sqrt[n]\{a\}}\texttt{\\}\texttt{)}$$              |
-| $$a_1^2$$                  | $$\texttt{\\}\texttt{(}\texttt{a_1^2}\texttt{\\}\texttt{)}$$                       |
-| $$\int_{i=1}^n$$           | $$\texttt{\\}\texttt{(}\texttt{\\int_\{i=1\}^n}\texttt{\\}\texttt{)}$$             |
-| $$\lim_{x\to\infty} f(x)$$ | $$\texttt{\\}\texttt{(}\texttt{\\lim_\{x\\to\\infty\} f(x)}\texttt{\\}\texttt{)}$$ |
+| $$a^{n}$$                  | `\(a^{n}\)`                  |
+| $$\binom{n}{k}$$           | `\(\binom{n}{k}\)`           |
+| $$\dfrac{a}{b}$$           | `\(\dfrac{a}{b}\)`           |
+| $$\sqrt{a}$$               | `\(\sqrt{a}\)`               |
+| $$\sqrt[n]{a}$$            | `\(\sqrt[n]{a}\)`            |
+| $$a_1^2$$                  | `\(a_1^2\)`                  |
+| $$\int_{i=1}^n$$           | `\(\int_{i=1}^n\)`           |
+| $$\lim_{x\to\infty} f(x)$$ | `\(\lim_{x\to\infty} f(x)\)` |
 
  
 
 #### Lógica
 
-| $$p \wedge q$$                        | $$\texttt{\\}\texttt{(} \texttt{p \wedge q} \texttt{\\}\texttt{)}$$                                   |
-| $$p \vee q$$                          | $$\texttt{\\}\texttt{(}\texttt{\\neg{p}}\texttt{\\}\texttt{)}$$                                       |
-| $$\neg{p}$$                           | $$\texttt{\\}\texttt{(}\texttt{\\neg{p}}\texttt{\\}\texttt{)}$$                                       |
-| $$p \rightarrow q$$                   | $$\texttt{\\}\texttt{(}\texttt{p \rightarrow q}\texttt{\\}\texttt{)}$$                                |
-| $$p \leftrightarrow q$$               | $$\texttt{\\}\texttt{(}\texttt{p \leftrightarrow q}\texttt{\\}\texttt{)}$$                            |
-| $$P \equiv Q$$                        | $$\texttt{\\}\texttt{(}\texttt{P \\equiv Q}\texttt{\\}\texttt{)}$$                                    |
-| $$\forall{x} \in X$$                  | $$\texttt{\\}\texttt{(}\texttt{\\forall{x} \\in X}\texttt{\\}\texttt{)}$$                             |
-| $$\exists{y} \in Y$$                  | $$\texttt{\\}\texttt{(}\texttt{\\exists{y} \\in Y}\texttt{\\}\texttt{)}$$                             |
-| $$\sum_{i=1}^{\infty} \frac{1}{n^s}$$ | $$\texttt{\\}\texttt{(} \texttt{\\sum_\{i=1\}^\{\\infty\} \\frac\{1\}\{n^s\}} \texttt{\\}\texttt{)}$$ |
-| $$\prod_p \frac{1}{1 - p^{-s}}$$      | $$\texttt{\\}\texttt{(} \texttt{\\prod_p \\frac\{1\}\{1 - p^\{-s\}}\texttt{\\}\texttt{)}$$                                   |
+| $$p \wedge q$$                        | `\(p \wedge q\)`                        |
+| $$p \vee q$$                          | `\(p \vee q\)`                          |
+| $$\neg{p}$$                           | `\(\neg{p}\)`                           |
+| $$p \rightarrow q$$                   | `\(p \rightarrow q\)`                   |
+| $$p \leftrightarrow q$$               | `\(p \leftrightarrow q\)`               |
+| $$P \equiv Q$$                        | `\(P \equiv Q\)`                        |
+| $$\forall{x} \in X$$                  | `\(\forall{x} \in X\)`                  |
+| $$\exists{y} \in Y$$                  | `\(\exists{y} \in Y\)`                  |
+| $$\sum_{i=1}^{\infty} \frac{1}{n^s}$$ | `\(\sum_{i=1}^{\infty} \frac{1}{n^s}\)` |
+| $$\prod_p \frac{1}{1 - p^{-s}}$$      | `\(\prod_p \frac{1}{1 - p^{-s}}\)`      |
 
 #### Conjuntos:
 
-| $$\{x_1,\dots,x_n\}$$              | $$\texttt{\\}\texttt{(}\texttt{\\{x_1, \dots, x_n\\}}\texttt{\\}\texttt{)}$$            |
-| $$\{x \mid p(x)\}$$                | $$\texttt{\\}\texttt{(}\texttt{\\{x \mid p(x)\\}}\texttt{\\}\texttt{)}$$                |
-| $$a \mid b$$                       | $$\texttt{\\}\texttt{(}\texttt{a \\mid b}\texttt{\\}\texttt{)}$$                        |
-| $$a \not\mid b$$                   | $$\texttt{\\}\texttt{(}\texttt{a \\not\\mid b}\texttt{\\}\texttt{)}$$                   |
-| $$x \in X$$                        | $$\texttt{\\}\texttt{(}\texttt{x \\in X}\texttt{\\}\texttt{)}$$                         |
-| $$x \not\in X$$                    | $$\texttt{\\}\texttt{(}\texttt{x \\not\\in X}\texttt{\\}\texttt{)}$$                    |
-| $$\mid X \mid$$                    | $$\texttt{\\}\texttt{(}\texttt{\left\| X \right\|}\texttt{\\}\texttt{)}$$               |
-| $$\overline{X}$$                   | $$\texttt{\\}\texttt{(}\texttt{\\overline{X}}\texttt{\\}\texttt{)}$$                    |
-| $$\emptyset$$                      | $$\texttt{\\}\texttt{(}\texttt{\\emptyset}\texttt{\\}\texttt{)}$$                       |
-| $$X \subseteq Y$$                  | $$\texttt{\\}\texttt{(}\texttt{X \\subseteq Y}\texttt{\\}\texttt{)}$$                   |
-| $$X \subset Y$$                    | $$\texttt{\\}\texttt{(}\texttt{X \\subset Y}\texttt{\\}\texttt{)}$$                     |
-| $$\mathcal{P}(x)$$                 | $$\texttt{\\}\texttt{(}\texttt{\\mathcal{P}(x)}\texttt{\\}\texttt{)}$$                  |
-| $$X \cup Y$$                       | $$\texttt{\\}\texttt{(}\texttt{X \\cup Y}\texttt{\\}\texttt{)}$$                        |
-| $$X \cap Y$$                       | $$\texttt{\\}\texttt{(}\texttt{X \\cap Y}\texttt{\\}\texttt{)}$$                        |
-| $$X \times Y$$                     | $$\texttt{\\}\texttt{(}\texttt{X \\times Y}\texttt{\\}\texttt{)}$$                      |
-| $$\bigcup_{i=1}^{3}{A_i}$$         | $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$          |
-| $$\bigcup_{i \in \{1,2,3\}}{A_i}$$ | $$\texttt{\\}\texttt{(}\texttt{\\bigcup_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$ |
-| $$\bigcap_{i=1}^{3}{A_i}$$         | $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i=1}^{3}{A_i}}\texttt{\\}\texttt{)}$$          |
-| $$\bigcap_{i \in \{1,2,3\}}{A_i}$$ | $$\texttt{\\}\texttt{(}\texttt{\\bigcap_{i \\in \{1,2,3\}}{A_i}}\texttt{\\}\texttt{)}$$ |
-| $$(x,y)$$                          | $$\texttt{\\}\texttt{(}\texttt{(x,y)}\texttt{\\}\texttt{)}$$                            |
-| $$(x_1,\dots,y_n)$$                | $$\texttt{\\}\texttt{(}\texttt{(x_1, \dots, y_n)}\texttt{\\}\texttt{)}$$                |
-| $$\mathbb{N}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{N}}\texttt{\\}\texttt{)}$$                      |
-| $$\mathbb{Z}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Z}}\texttt{\\}\texttt{)}$$                      |
-| $$\mathbb{Q}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{Q}}\texttt{\\}\texttt{)}$$                      |
-| $$\mathbb{R}$$                     | $$\texttt{\\}\texttt{(}\texttt{\\mathbb{R}}\texttt{\\}\texttt{)}$$                      |
+| $$\{x_1,\dots,x_n\}$$              | `\(\{x_1,\dots,x_n\}\)`              |
+| $$\{x \mid p(x)\}$$                | `\(\{x \mid p(x)\}\)`                |
+| $$a \mid b$$                       | `\(a \mid b\)`                       |
+| $$a \not\mid b$$                   | `\(a \not\mid b\)`                   |
+| $$x \in X$$                        | `\(x \in X\)`                        |
+| $$x \not\in X$$                    | `\(x \not\in X\)`                    |
+| $$\mid X \mid$$                    | `\(|x|\)`                            |
+| $$\overline{X}$$                   | `\(\overline{X}\)`                   |
+| $$\emptyset$$                      | `\(\emptyset\)`                      |
+| $$X \subseteq Y$$                  | `\(X \subseteq Y\)`                  |
+| $$X \subset Y$$                    | `\(X \subset Y\)`                    |
+| $$\mathcal{P}(x)$$                 | `\(\mathcal{P}(x)\)`                 |
+| $$X \cup Y$$                       | `\(X \cup Y\)`                       |
+| $$X \cap Y$$                       | `\(X \cap Y\)`                       |
+| $$X \times Y$$                     | `\(X \times Y\)`                     |
+| $$\bigcup_{i=1}^{3}{A_i}$$         | `\(\bigcup_{i=1}^{3}{A_i}\)`         |
+| $$\bigcup_{i \in \{1,2,3\}}{A_i}$$ | `\(\bigcup_{i \in \{1,2,3\}}{A_i}\)` |
+| $$\bigcap_{i=1}^{3}{A_i}$$         | `\(\bigcap_{i=1}^{3}{A_i}\)`         |
+| $$\bigcap_{i \in \{1,2,3\}}{A_i}$$ | `\(\bigcap_{i \in \{1,2,3\}}{A_i}\)` |
+| $$(x,y)$$                          | `\((x,y)\)`                          |
+| $$(x_1,\dots,y_n)$$                | `\((x_1,\dots,y_n)\)`                |
+| $$\mathbb{N}$$                     | `\(\mathbb{N}\)`                     |
+| $$\mathbb{Z}$$                     | `\(\mathbb{Z}\)`                     |
+| $$\mathbb{Q}$$                     | `\(\mathbb{Q}\)`                     |
+| $$\mathbb{R}$$                     | `\(\mathbb{R}\)`                     |
 
 #### Relaciones:
 
-| $${}_{a}\mathfrak{R}_{b}$$              | $$\texttt{\\}\texttt{(}\texttt{\{\}_\{a\}\\mathfrak\{R\}_\{b\}}\texttt{\\}\texttt{)}$$            |
-| $$[x]$$                                 | $$\texttt{\\}\texttt{(}\texttt{[x]}\texttt{\\}\texttt{)}$$                                        |
-| $$\mathfrak{R}^{-1}$$                   | $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}^\{-1\}}\texttt{\\}\texttt{)}$$                     |
-| $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$ | $$\texttt{\\}\texttt{(}\texttt{\\mathfrak\{R\}_1 \\circ \\mathfrak\{R\}_2}\texttt{\\}\texttt{)}$$ |
+| $${}_{a}\mathfrak{R}_{b}$$              | `\({}_{a}\mathfrak{R}_{b}\)`              |
+| $$[x]$$                                 | `\([x]\)`                                 |
+| $$\mathfrak{R}^{-1}$$                   | `\(\mathfrak{R}^{-1}\)`                   |
+| $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$ | `\(\mathfrak{R}_1 \circ \mathfrak{R}_2\)` |
 
 
 #### Funciones
 
-| $$f(x)$$      | $$\texttt{\\}\texttt{(}\texttt{f(x)}\texttt{\\}\texttt{)}$$       |
-| $$f:X \to Y$$ | $$\texttt{\\}\texttt{(}\texttt{f:X \\to Y}\texttt{\\}\texttt{)}$$ |
-| $$f \circ g$$ | $$\texttt{\\}\texttt{(}\texttt{f \\circ g}\texttt{\\}\texttt{)}$$ |
-| $$f^{-1}$$    | $$\texttt{\\}\texttt{(}\texttt{f^{-1}}\texttt{\\}\texttt{)}$$     |
+| $$f(x)$$      | `\(f(x)\)`      |
+| $$f:X \to Y$$ | `\(f:X \to Y\)` |
+| $$f \circ g$$ | `\(f \circ g\)` |
+| $$f^{-1}$$    | `\(f^{-1}\)`    |
 
 #### Geometría
 
-| $$P,Q,R$$                      | $$\texttt{\\}\texttt{(}\texttt{P,Q,R}\texttt{\\}\texttt{)}$$                             |
-| $$\overline{PQ}$$              | $$\texttt{\\}\texttt{(}\texttt{\\overline{PQ}}\texttt{\\}\texttt{)}$$                    |
-| $$\overleftrightarrow{PQ}$$    | $$\texttt{\\}\texttt{(}\texttt{\\overleftrightarrow{PQ}}\texttt{\\}\texttt{)}$$          |
-| $$\overrightarrow{PQ}$$        | $$\texttt{\\}\texttt{(}\texttt{\\overrightarrow{PQ}}\texttt{\\}\texttt{)}$$              |
-| $$\angle{ABC}$$                | $$\texttt{\\}\texttt{(}\texttt{\\angle{ABC}}\texttt{\\}\texttt{)}$$                      |
-| $$m\angle{ABC}=r^{\circ}$$     | $$\texttt{\\}\texttt{(}\texttt{m\\angle{ABC}^{\\circ}}\texttt{\\}\texttt{)}$$            |
-| $$\angle{1}\cong\angle{2}$$    | $$\texttt{\\}\texttt{(}\texttt{\\angle{1} \\cong \\angle{2}}\texttt{\\}\texttt{)}$$      |
-| $$\triangle{ABC}$$             | $$\texttt{\\}\texttt{(}\texttt{\\triangle{ABC}}\texttt{\\}\texttt{)}$$                   |
-| $$l \perp m$$                  | $$\texttt{\\}\texttt{(}\texttt{l \\perp m}\texttt{\\}\texttt{)}$$                        |
-| $$l \parallel m$$              | $$\texttt{\\}\texttt{(}\texttt{l \\parallel m}\texttt{\\}\texttt{)}$$                    |
-| $$l \not\perp m$$              | $$\texttt{\\}\texttt{(}\texttt{l \\not\\perp m}\texttt{\\}\texttt{)}$$                   |
-| $$l \not\parallel m$$          | $$\texttt{\\}\texttt{(}\texttt{l \\not\\parallel m}\texttt{\\}\texttt{)}$$               |
-| $$\alpha,\beta,\gamma,\theta$$ | $$\texttt{\\}\texttt{(}\texttt{\\alpha, \\beta, \\gamma, \\theta}\texttt{\\}\texttt{)}$$ |
-| $$\pi$$                        | $$\texttt{\\}\texttt{(}\texttt{\\pi}\texttt{\\}\texttt{)}$$                              |
+| $$P,Q,R$$                      | `\(P,Q,R\)`                      |
+| $$\overline{PQ}$$              | `\(\overline{PQ}\)`              |
+| $$\overleftrightarrow{PQ}$$    | `\(\overleftrightarrow{PQ}\)`    |
+| $$\overrightarrow{PQ}$$        | `\(\overrightarrow{PQ}\)`        |
+| $$\angle{ABC}$$                | `\(\angle{ABC}\)`                |
+| $$m\angle{ABC}=r^{\circ}$$     | `\(m\angle{ABC}=r^{\circ}\)`     |
+| $$\angle{1}\cong\angle{2}$$    | `\(\angle{1}\cong\angle{2}\)`    |
+| $$\triangle{ABC}$$             | `\(\triangle{ABC}\)`             |
+| $$l \perp m$$                  | `\(l \perp m\)`                  |
+| $$l \parallel m$$              | `\(l \parallel m\)`              |
+| $$l \not\perp m$$              | `\(l \not\perp m\)`              |
+| $$l \not\parallel m$$          | `\(l \not\parallel m\)`          |
+| $$\alpha,\beta,\gamma,\theta$$ | `\(\alpha,\beta,\gamma,\theta\)` |
+| $$\pi$$                        | `\(\pi\)`                        |
 
 #### Operaciones Multilíneas
 
@@ -138,13 +138,13 @@ $$\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{
 
 Para conseguir este efecto, debemos escribir el código $$\LaTeX$$ entre dos expresiones de alineamiento como se muestra a continuación:
 
-$$\texttt{\\}\texttt{(}\texttt{\\begin{aligned}}\quad\texttt{\\end{aligned}}\texttt{\\}\texttt{)}$$.
+`\[\begin{aligned} \end{aligned}\]`
 
-Para producir una nueva línea se utiliza el operador $$\texttt{\\\\}$$, y para indicar que las expresiones se deben alinear en algún punto se utiliza el operador  $$\texttt{&}$$ para marcar el punto de alineamiento. Por ejemplo, la expresión de arriba se escribe como:
+Para producir una nueva línea se utiliza el operador `\\`, y para indicar que las expresiones se deben alinear en algún punto se utiliza el operador `&` para marcar el punto de alineamiento. Por ejemplo, la expresión de arriba se escribe como:
 
-$$\texttt{\\begin{aligned}}\texttt{\\cos{43^{\\circ}} &= \\dfrac{a}{27^{\\circ}} \\\\27^{\\circ}\\cos{43^{\\circ}} &= a}\texttt{\\end{aligned}}$$
+`\[\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{\circ}} &= a\end{aligned}\]`
 
-Donde se puede ver que el punto de alineamiento es el signo de igual y por eso ambas expresiones están alineadas en ese signo: $$\texttt{&=}$$. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza $$\texttt{\\\\27^{\\circ}}$$. 
+Donde se puede ver que el punto de alineamiento es el signo de igual y por eso ambas expresiones están alineadas en ese signo: `&=`. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza `\\27^{\circ}`. 
 
 Con algo de paciencia y cuidado es posible escribir expresiones multilíneas complejas como la siguiente:
 
