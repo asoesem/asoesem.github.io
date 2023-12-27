@@ -45,7 +45,7 @@ Es la [Federación de Estudiantes de la UNED][3], compuesta por todas las asocia
 
 Sí, y se encuentra debidamente inscrita en el registro nacional. 
 
-[1]:/artículos/estatuto-oficial-asoesem
-[2]:/artículos/estatuto-oficial-asoesem#título-ii-miembros-de-la-asoesem-deberes-derechos-y-sanciones
+[1]:/articulos/estatuto-oficial-asoesem
+[2]:/articulos/estatuto-oficial-asoesem#título-ii-miembros-de-la-asoesem-deberes-derechos-y-sanciones
 [3]:https://www.uned.ac.cr/feuned
 [4]:/documentos/carta-de-afiliacion.pdf
