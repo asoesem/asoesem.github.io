@@ -97,7 +97,8 @@ De acuerdo con el [plan de estudios][29] de la carrera de Enseñanza de la Matem
 El curso tiene un valor de 3 créditos, entonces se supone que el curso demanda al menos 9 horas de trabajo semanal.
 
 En mi experiencia personal, la cadencia del curso no fue demandante. Y el nivel de dificultad me pareció medio. 
-Lo sentí de una dificultad inferior al del curso Álgebra y Funciones (03421).
+Lo sentí de una dificultad inferior al del curso Álgebra y Funciones (03421). 
+El curso no exige dominio de conceptos algebraicos avanzados, pero si se requiere utilizar álgebra fundamental y, sobre todo, una buena comprensión de algunas propiedades básicas de los números a fin de desarrollar las demostraciones.
 
 El curso se llevó a un paso relajado y además solo se cubrieron las primeras 250 páginas del libro de clase. 
 Hay suficiente espacio de tiempo entre cada evaluación como para estudiar el material a fondo.
