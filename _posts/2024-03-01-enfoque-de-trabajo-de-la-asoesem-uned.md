@@ -7,7 +7,7 @@ date: 2024-01-03T10:00:00-00:00
 image: '/images/110.jpg'
 tags: [anuncios]
 commissions: [cocodi]
-featured: true
+featured: false
 comments: true
 share: true
 ---
