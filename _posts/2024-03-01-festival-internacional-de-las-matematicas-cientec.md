@@ -14,8 +14,14 @@ share: true
 Desde el año 1998 CIENTEC ha estado organizando diferentes actividades para la población costarricense, y en este 2024 se ha predispuesto la organización del Festival Internacional de Matemáticas(FIMAT) y XXVI del CONCITES, Congreso Nacional de Ciencia, Tecnología y Sociedad. (CONCITES) 2024, el cual se estará llevando a cabo de forma presencial en la Universidad Latina de Costa Rica, sede Montes de Oca, San José, Costa Rica.
 
 ## ¿Puedo particpar si soy estudiante universitario?
-Según la página oficial de CIENTEC este festival está dirigido a Educadores y administrativos de preescolar hasta duodécimo año, Educadores de ciencias y artes
-Estudiantes universitarios y estudiantes colegiales, Investigadores de la enseñanza de la matemática, las ciencias exactas, ciencias sociales y culturales, Divulgadores de la ciencia y las matemáticas, Personas jubiladas interesadas en seguir aprendiendo y público general.
+Según la página oficial de CIENTEC este festival está dirigido a:
+- Educadores y administrativos de preescolar hasta duodécimo año,
+- Educadores de ciencias y artes
+- Estudiantes universitarios y estudiantes colegiales,
+- Investigadores de la enseñanza de la matemática, las ciencias exactas, ciencias sociales y culturales,
+- Divulgadores de la ciencia y las matemáticas,
+- Personas jubiladas interesadas en seguir aprendiendo y público general.
+  
 La ECEN (Escuela de Ciencas Exactas y Naturales) de la UNED está formando parte del comité organizador, por lo que aquellos estudiantes de la carrera de la enseñanza de la matemática de la UNED pueden ser parte de este hermoso evento. 
 
 ## ¿Cómo me puedo inscribir?
