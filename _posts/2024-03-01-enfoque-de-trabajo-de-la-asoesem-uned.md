@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Presidente da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024
-description: Horarios y fechas de la matrícula para el primer cuatrimestre y semestre del 2024.
-date: 2023-12-07T10:00:00-06:00
+description: Ruta de trabajo de la ASOESEM UNED
+date: 2024-01-03T10:00:00-00:00
 #author: axell
 image: '/images/110.jpg'
 tags: [anuncios]
