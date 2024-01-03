@@ -12,7 +12,7 @@ comments: true
 share: true
 ---
 ## Presidente da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024
-Durante el pasado mes de diciembre, el presidente de la ASOESEM UNED presentó en la Junta Directiva la nueva modalidad de trabajo de la Asociación para este I Semestre 2024; lo cual fue aprobada y de forma inmediata se dió aviso a todo el personal de la ASOESEM. 
+Durante el pasado mes de diciembre, el presidente de la ASOESEM UNED presentó en la Junta Directiva la nueva modalidad de trabajo de la Asociación para este I Semestre 2024; lo cual fue aprobada y de forma inmediata se dio aviso a todo el personal de la ASOESEM. 
 El presidente menciona que el enfoque será con un enfoque de competencias mediante los siguientes ejes:
 
 ### Eje central: Modelo de competencias
@@ -25,8 +25,8 @@ A continuación se detalla cada uno de los enfoques:
 
 ### Inovación y Adaptabilidad
 Este sub eje se desarrolla de dos formas:
-- **Capacidad de innovación:** El presidente impulsa a fomentar la innovación como una competencia central. Esto implica estar al tanto de las tendencias de educación matemática y la docencia, además de ser receptivo a nuevas ideas y uso de las tecnología,para tener procesos que fomenten la creatividad y la mejora continua.
-- **Adaptabilidad:** El presidente expone la necesidad de construir la capacidad de adaptación de un modelo a distancia en donde las competencias para adaptarse rápidamente a los cambios en el entorno de la ASOESEM y la educación a distancia, mediante el uso de la tecnología; son fundamentales para un desarrollo óptimo.
+- **Capacidad de innovación:** El presidente impulsa a fomentar la innovación como una competencia central. Esto implica estar al tanto de las tendencias de educación matemática y la docencia, además de ser receptivo a nuevas ideas y uso de las tecnologías,para tener procesos que fomenten la creatividad y la mejora continua.
+- **Adaptabilidad:** El presidente expone la necesidad de construir la capacidad de adaptación de un modelo a distancia en donde las competencias para adaptarse rápidamente a los cambios en el entorno de la ASOESEM y la educación a distancia, mediante el uso de las tecnologías; son fundamentales para un desarrollo óptimo.
 
 ### Análisis y competencias CORE
 Este sub eje se desarrolla de dos formas:
