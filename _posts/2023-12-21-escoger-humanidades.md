@@ -6,7 +6,7 @@ date: 2023-12-21T18:00:00-06:00
 author: edalorzo
 image: '/images/53.jpg'
 video_embed: https://www.youtube.com/embed/Cri1-Wwe2p8?si=tg4_ny-ojwzTK7Pj
-tags: [humanidades,matrícula]
+tags: [anuncios,matrícula]
 commissions: [cocodi]
 featured: true
 comments: true
