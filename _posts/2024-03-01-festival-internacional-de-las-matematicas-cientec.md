@@ -25,7 +25,7 @@ Según la página oficial de CIENTEC este festival está dirigido a:
 La ECEN (Escuela de Ciencas Exactas y Naturales) de la UNED está formando parte del comité organizador, por lo que aquellos estudiantes de la carrera de la enseñanza de la matemática de la UNED pueden ser parte de este hermoso evento. 
 
 ## ¿Cómo me puedo inscribir?
-Para inscribirse, los estudianted universitarios de pregado deberán hacer un pago de 12000, llenar el siguiente formulario [este formulario](https://forms.gle/cc8Qo1gDeyieg7dC6). 
+Para inscribirse, los estudiantes universitarios de pregado deberán hacer un pago de 12000 colones, llenar el siguiente formulario [este formulario](https://forms.gle/cc8Qo1gDeyieg7dC6). 
 Para depósitos y transferencias:
 CUENTA BANCARIA de la Fundación para el Centro Nacional de la Ciencia y la Tecnología, CIENTEC, cédula jurídica 3-006-097205:
 - IBAN
