@@ -18,12 +18,12 @@ Estudiantes universitarios y estudiantes colegiales, Investigadores de la enseñ
 La ECEN (Escuela de Ciencas Exactas y Naturales) de la UNED está formando parte del comité organizador, por lo que aquellos estudiantes de la carrera de la enseñanza de la matemática de la UNED pueden ser parte de este hermoso evento. 
 
 ## ¿Cómo me puedo inscribir?
-Para inscribirse, los estudianted universitarios de pregado deberán hacer un pago de 12000, llenar el siguiente formulario [https://forms.gle/cc8Qo1gDeyieg7dC6]. 
+Para inscribirse, los estudianted universitarios de pregado deberán hacer un pago de 12000, llenar el siguiente formulario [este formulario](https://forms.gle/cc8Qo1gDeyieg7dC6). 
 Para depósitos y transferencias:
 CUENTA BANCARIA de la Fundación para el Centro Nacional de la Ciencia y la Tecnología, CIENTEC, cédula jurídica 3-006-097205:
 IBAN
 BCR  CR85015201001014695250
-Enviar comprobante de pago a [programa.cientec@gmail.com]
+Enviar comprobante de pago a [programa.cientec@gmail.com](maito:programa.cliente@gmail.com)
 
 O por SINPE MÓVIL  Tel. 8925-6977 (Alejandra León Castellá, Ced. 106030356)
 
