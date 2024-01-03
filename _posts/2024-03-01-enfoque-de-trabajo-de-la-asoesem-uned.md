@@ -14,27 +14,29 @@ share: true
 ## Presidente da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024
 Durante el pasado mes de diciembre, el presidente de la ASOESEM UNED presentó en la Junta Directiva la nueva modalidad de trabajo de la Asociación para este I Semestre 2024; lo cual fue aprobada y de forma inmediata se dió aviso a todo el personal de la ASOESEM. 
 El presidente menciona que el enfoque será con un enfoque de competencias mediante los siguientes ejes:
+
 ### Eje central: Modelo de competencias
-- Inovación y Adaptabilidad
+- Innovación y Adaptabilidad
 - Analisis de competencias CORE
 - Enfoque en la audiencia
 - Desarrollo de competencias organizacionales
+  
 A continuación se detalla cada uno de los enfoques:
 
 ### Inovación y Adaptabilidad
 Este sub eje se desarrolla de dos formas:
-- **Capacidad de invocación:** El presidente impulsa a fomentar la invocación como una competencia central. Esto implica estar al tanto de las tendencias de educación matemática y la docencia, además de ser receptivo a nuevas ideas y uso de las tecnología,para tener procesos que fomenten la creatividad y la mejora continua.
+- **Capacidad de innovación:** El presidente impulsa a fomentar la innovación como una competencia central. Esto implica estar al tanto de las tendencias de educación matemática y la docencia, además de ser receptivo a nuevas ideas y uso de las tecnología,para tener procesos que fomenten la creatividad y la mejora continua.
 - **Adaptabilidad:** El presidente expone la necesidad de construir la capacidad de adaptación de un modelo a distancia en donde las competencias para adaptarse rápidamente a los cambios en el entorno de la ASOESEM y la educación a distancia, mediante el uso de la tecnología; son fundamentales para un desarrollo óptimo.
 
-### Analisis y competencias CORE
+### Análisis y competencias CORE
 Este sub eje se desarrolla de dos formas:
-- **Identificación de las competencias clabe:** Se busca identificar las competencias centrales que son escenciales para el éxito de la ASOESEM y el público en general, estas pueden ser habilidades específicas, conocimientos específicos o técnicos, capacidad de innovación o cualquier otro factor distintivo que permita una ventaja en la sociedad.
-- **Evaluación de fortalezas y debilidades:** El presidente Axell Paz expone la necesidad de evaluar las competencias actuales de la sociedad identificando, mediante un FODA, permitiendo la potencializaión de nuevas estrategias.
+- **Identificación de las competencias clave:** Se busca identificar las competencias centrales que son esenciales para el éxito de la ASOESEM y el público en general, estas pueden ser habilidades específicas, conocimientos específicos o técnicos, capacidad de innovación o cualquier otro factor distintivo que permita una ventaja en la sociedad.
+- **Evaluación de fortalezas y debilidades:** El presidente Axell Paz expone la necesidad de evaluar las competencias actuales de la sociedad identificando, mediante un FODA, permitiendo la potencialización de nuevas estrategias.
 
 ### Enfoque de audiencia
 Este sub eje se desarrolla de las siguientes formas:
 - **Comprensión de la audiencia:** Se busca desarrollar competencias que buscan comprender las necesidades y expectativas de los asociados y la población en general, implicando la recopilación de datos, la retroalimentación y el ajuste continuo de los servicios dados, para satisfacer las demandas a los objetivos de la Asociación.
-- **Experiencia del asociado:** Incluye competencias que mejoren la experiencia de cada una de las personas que reciban servicios de la ASOESEM, desde el diseño de productos, hasta el servicio a los asociados, cada interaccion debe reflejar un compromiso de satisfacción de la audiencia.
+- **Experiencia del asociado:** Incluye competencias que mejoren la experiencia de cada una de las personas que reciban servicios de la ASOESEM, desde el diseño de productos, hasta el servicio a los asociados, cada interacción debe reflejar un compromiso de satisfacción de la audiencia.
 
 ### Desarrollo de competencias organizacionales
 Este sub eje se desarrolla de dos formas:
