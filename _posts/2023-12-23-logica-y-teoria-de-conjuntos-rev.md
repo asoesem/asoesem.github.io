@@ -22,7 +22,7 @@ Durante todo el curso se pone gran énfasis en el desarrollo de habilidades fund
 
 A pesar de que muchos de nosotros ya estamos familiarizados con las propiedades básicas de los conjuntos numéricos, como la asociatividad, conmutatividad y distributividad, así como con operaciones fundamentales como la suma, resta, multiplicación y división, el segundo módulo del curso nos desafía a explorar estos conceptos con un nivel de abstracción y formalismo mucho mayor. Aquí, no solo repasamos estas propiedades y operaciones, sino que también aprendemos a demostrarlas matemáticamente, lo cual aporta una comprensión más profunda y rigurosa de los fundamentos matemáticos.
 
-## Temario del Curso
+## Libro del Curso
 
 La siguiente tabla de contenidos es una muestra de lo que se cubre en el índice de la Unidad Didáctica Modular (UDM) del curso, el libro [Lógica y Teoría de Conjuntos][12] de Allan Gen Palma e Ismael Morales Garay. 
 
@@ -69,7 +69,7 @@ Desafortunadamente el libro no existe en formato digital, pero aquellos que dese
         * Conjugado de un número complejo.
         * Módulo de un número complejo.
 
-## Quizzes, Tareas, Talleres y Comprensivas
+## Evaluación
 
 La evaluación consistió en los siguientes instrumentos:
 
@@ -200,7 +200,7 @@ Abajo les dejo algunos solucionarios de ediciones anteriores del curso que algun
 | [Comprensiva 2][58]  | 2022-I  |
 | [Comprensiva 3][59]  | 2022-I  |
 
-## Materiales Adicional Recomendado
+## Otros Libros Recomendados
 
 Para los que desean conseguir un libro adicional en español:
 
