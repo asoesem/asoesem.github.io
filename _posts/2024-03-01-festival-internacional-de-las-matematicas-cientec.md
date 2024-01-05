@@ -5,7 +5,7 @@ description: CIENTEC organiza la XXVI edición del Festival Internacional de Mat
 date: 2024-01-03T00:00:00-06:00
 #author: axell
 image: '/images/111.png'
-tags: [anuncios]
+tags: [noticias]
 commissions: [cocodi]
 featured: false
 comments: true

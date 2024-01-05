@@ -5,7 +5,7 @@ description: Ruta de trabajo de la ASOESEM UNED
 date: 2024-01-03T10:00:00-00:00
 #author: axell
 image: '/images/110.jpg'
-tags: [anuncios]
+tags: [noticias]
 commissions: [cocodi]
 featured: false
 comments: true
