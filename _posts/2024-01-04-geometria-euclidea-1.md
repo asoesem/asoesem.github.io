@@ -132,9 +132,9 @@ Las siguientes herramientas tecnológicas pueden resultar útiles:
 
 Si deseas llevar el curso de Geometría Euclídea I (03420), te recomiendo que vistes los siguientes enlaces:
 
-* [Orientaciones Académicas][34]: para ver el programa del curso.
-* [Oferta Anual de Asignatura][35]: para comprobar disponibilidad del curso.
-* [Formulario de Autorización de Matrículas][28]: para solicitar que se te habilite el curso para matrícula.
+* [Orientaciones Académicas][69]: para ver el programa del curso.
+* [Oferta Anual de Asignatura][70]: para comprobar disponibilidad del curso.
+* [Formulario de Autorización de Matrículas][71]: para solicitar que se te habilite el curso para matrícula.
 
 ## Material Adicional
 
@@ -251,3 +251,6 @@ El siguiente es material adicional que los tutores hicieron disponible en la pla
 [66]:https://www.geogebra.org/calculator
 [67]:https://es.symbolab.com/geometry-calculator
 [68]:https://www.geogebra.org/calculator/tjyryahc
+[69]:https://orientacionesacademicas.uned.ac.cr/consultas/
+[70]:https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx
+[71]:https://www.uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula
