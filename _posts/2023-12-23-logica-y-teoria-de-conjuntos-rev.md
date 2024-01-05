@@ -224,7 +224,7 @@ Además de [Geogebra][42], con el que creo que a estas alturas todos estamos fam
 * [HP Prime][44]: la poderosa calculadora científica de HP se puede descargar de forma digital, gratuitamente, y la misma tiene soporte para una amplia variedad de operaciones, incluyendo cálculos de álgebra simbólica, lógica proposicional, números complejos, etc.
 * [ChatGPT][45]: el bot es increíblemente efectivo para discutir ejercicios de demostración. Se le puede solicitar que realice demostraciones matemáticas básicas usando diferentes estrategias y usualmente lo hace bien. Se requiere dominio del tema por parte del estudiante porque ChatGPT a menudo ofrece respuestas incorrectas o con errores, sin embargo, suele ser de gran ayuda como herramienta exploratoria, o para obtener explicaciones de cosas que uno no entiende bien. ChatGPT entiende $$\LaTeX$$, entonces es posible expresar las preguntas usando ese formato. Para los que tengan la versión de pago, se puede combinar con el plugin de Wolfram Alpha para obtener respuestas incluso más avanzadas.
 
-## Otras Referencias Importantes
+## Si Deseo LLevar el Curso
 
 Si deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que vistes los siguientes enlaces:
 
