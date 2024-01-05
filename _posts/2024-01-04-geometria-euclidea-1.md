@@ -104,9 +104,10 @@ Sin importar el resultado, pienso que la experiencia de llevar el curso y aproba
 
 * [Introducción a la Geometría Euclídea][59] de Teodora Tsijli Angelaki y Manuel Murillo Tsijli.
 En español, es la mejor alternativa a la UDM que encontré.  Este libro se puede comprar, tanto físico como en formato digital, en la página de la Editorial del Tecnológico de Costa Rica. Si lo compras físico, la editorial se encarga de enviarlo a la puerta de la casa.
-Este libro cubre todo el mismo material que la UDM y, para mi gusto,  en muchos aspectos es superior a la UDM. Así que vale la pena tenerlo disponible, incluso si solo es para referencia o para obra de consulta adicional.
-* [A First Course in Geometry][58] de Edward T. Walsh se puede adquirir tanto en formato físico como digital en la página del editorial Dover Books. 
-Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, esta es la mejor obra para prepararse para tener éxito en este curso.
+Este libro cubre todo el mismo material que la UDM y, para mi gusto,  en muchos aspectos es superior a la UDM. Así que vale la pena tenerlo disponible, incluso si solo es para referencia o como obra de consulta adicional.
+* [A First Course in Geometry][58] de Edward T. Walsh se puede adquirir tanto en formato físico como digital en la página de la editorial Dover Books. 
+Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, esta fue el mejor libro alternative en mi bibliote para prepararse para tener éxito en este curso.
+* [Everything You Need to Ace Geometry in One Big Fat Notebook][72]: es un excelente para estudiar la mayoría de los teoremas que se necesita aprender durante este curso. El libro es muy visual, bellamente diseñado, y simplifica el aprendizaje de muchos teoremas increíblemente. Además agrupa y representa los teoremas de una forma que tiene muchísimo más sentido que como lo hace la UDM, lo cual ayuda mucho en el aprendizaje de los mismos.
 
 ## Otros Solucionarios
 
@@ -125,7 +126,7 @@ A continuación algunos solucionarios adicionales de ediciones anteriores del cu
 
 Las siguientes herramientas tecnológicas pueden resultar útiles:
 
-* [Geogebra][66]: lo utilicé muchas veces para diagramar la hipótesis de problemas que deseaba estudiar a mayor profundidad o simplemente para comprobar si mis deducciones eran correctas. La diagramación de algunos problemas puede ser intricada y se requiere tener mucho cuidado a fin de asegurarse que el diagrama efectivamente es una representación real de las hipótesis del problema bajo estudio. Consideren, por ejemplo, [este diagrama][68] que desarrollé para uno de los problemas.
+* [Geogebra][66]: lo utilicé muchas veces para diagramar las hipótesis de los problemas que deseaba estudiar a mayor profundidad o simplemente para comprobar si mis deducciones eran correctas. La diagramación de algunos problemas puede ser intricada y se requiere tener mucho cuidado a fin de asegurarse que el diagrama efectivamente es una representación real de las hipótesis del problema bajo estudio. Consideren, por ejemplo, [este diagrama][68] que desarrollé para uno de los problemas.
 * [Symbolab][67]: tienen una calculadora geométrica que permite ingresar las hipótesis de un problema y hace un esfuerzo por demostrar la tesis. Honestamente, solo logré hacerlo funcionar para problemas relativamente sencillos, pero en algunas ocasiones me ayudó a descubrir deducciones útiles.
 
 ## Si Deseo Llevar el Curso
@@ -254,3 +255,4 @@ El siguiente es material adicional que los tutores hicieron disponible en la pla
 [69]:https://orientacionesacademicas.uned.ac.cr/consultas/
 [70]:https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx
 [71]:https://www.uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula
+[72]:https://www.amazon.com/Everything-Need-Geometry-Notebook-Notebooks/dp/1523504374
