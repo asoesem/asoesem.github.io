@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Como Usar LaTeX en los Foros de Consultas
+title: Como usar LaTeX en los foros de consulta
 description: Guía de como escribir expresiones de LaTeX en los foros de consultas de los entornos virtuales de la UNED.
 date: 2023-12-06T18:00:00-06:00
 author: edalorzo
