@@ -69,7 +69,7 @@ Haz clic en los enlaces proporcionados para ver solucionarios y ejemplos de los 
 * **Los quizzes** son lo que, usualmente, llamamos "actividad en plataforma", y que son preguntas con selección de respuesta única. Con frecuencia, los quizzes comprueban que se ha leído y comprendido el material de un capítulo del libro.
 * **Los talleres** consistieron en escribir un taller para estudiantes de secundaria aplicando alguno de los conceptos estudiados en alguno de los módulos bajo estudio.
 * **Las tareas** son un instrumento muy similar a una comprensiva, con cinco o seis problemas a resolver, solo que se concede una semana de tiempo para entregarla. Algunos problemas pueden tener grados de dificultad alto, así que es bueno comenzarlas tan pronto como sea posible.
-* **Las comprensivas** son exámenes cronometrados que usualmente contienen cinco problemas del material correspondiente a una unidad de estudio y que se realizan en un día sábado de 6 AM a 12 PM. A menudo los problemas son adaptaciones de problemas de olimpiadas matemáticas, entonces, usualmente, no son problemas sencillos de resolver 
+* **Las comprensivas** son exámenes cronometrados que usualmente contienen cinco problemas del material correspondiente a una unidad de estudio y que se realizan en un día sábado de 6 AM a 12 PM. A menudo los problemas son adaptaciones de problemas de olimpiadas matemáticas, entonces, usualmente, no son problemas sencillos de resolver. 
 
 ## Prerrequisitos y Nivel de Dificultad
 
