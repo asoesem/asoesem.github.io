@@ -124,21 +124,6 @@ El libro del curso se siente, con frecuencia, como una larga letanía que recita
 
 Otro aspecto que suele ser retador es prepararse adecuadamente para las comprensivas. Tuve un buen desempeño en la primera y la última, y un desempeño mediocre en la segunda. Mi principal error en la segunda comprensiva fue no haber practicado ejercicios de relaciones binarias del mismo nivel de dificultad a los que se presentaron en la evaluación. Fallé en conectar conceptos de divisibilidad y relaciones binarias en uno de los ejercicios, además de que fallé en utilizar demostraciones por contraejemplo para simplificar mis soluciones. Esta falta de dominio del tema me costó tiempo valioso que repercutió en mi rendimiento en la segunda comprensiva.
 
-## Experiencia Personal de Aprendizaje
-
-Este curso cubre un temario lindísimo, increíblemente interesante y de un valor práctico invaluable. 
-Aunque el curso solo araña la superficie del tema, sentí que es probablemente el primer curso donde comenzamos a estudiar las matemáticas de una forma más pura, donde usamos matemáticas con un nivel de abstracción superior al de las matemáticas operativas, donde descubrimos como usar las matemáticas como un lenguaje formal para expresar y demostrar ideas complejas. 
-
-Por ejemplo, es fascinante darse cuenta de que solo usando las propiedades básicas que conocemos de los números es posible demostrar que un teorema se cumple para todo un conjunto de ellos. 
-Uno de los ejercicios que más me llamó la atención fue el de demostrar que $$\mathbb{\sqrt{2}}$$ es un número irracional. 
-Además de que el famoso teorema tiena una interesante historia asociada a los pitagóricos, quienes, cuenta la historia, se deshicieron de [Hipaso de Metaponto][37] cuando les demostró el famoso teorema de irracionalidad, porque ellos no querían que nadie supiera de la existencia de los números irracionales.
-También me gustó muchó la demostración del teorema de Euclides para probar que existen infinitos números primos.
-
-Creo que entre los aspectos que más me disfruté están el haber aprendido a demostrar teoremas matemáticos con una variedad de estrategias y el comprender cómo la lógica y la teoría de conjuntos se conectan con otras áreas de las matemáticas que hemos estudiado previamente en otros cursos, por ejemplo, una función o una figura geométrica no son más que un conjunto de puntos en el plano cartesiano. Siento que lo aprendido en este curso me faculta para acceder y comprender material matemático de más alto nivel y realmente me emociona lo increíblemente práctico y valioso que es lo aprendido en este curso, no solo en el campo de las matemáticas, sino incluso en otras áreas, por ejemplo, en ciencias de la computación, el desarrollo de circuitos y compuertas lógicas se basa en la misma teoría matemática de los conectores lógicos y la lógica proposicional. 
-Asimismo, la programación de computadoras hace uso de lógica proposicional y teoría de conjuntos de forma importante.
-
-Este curso ha sido, sin duda, uno de los más enriquecedores y reveladores en mi trayectoria académica en la UNED. Por ejemplo, el estudio detallado de la inducción matemática no solo mejoró mi habilidad de realizar demostraciones de las propiedades matemáticas de los enteros, sino que también me proporcionó herramientas valiosas para abordar problemas complejos del tipo que veremos en otros cursos, como en el de Teoría de Números (03442) que espero poder llevar en algún momento del próximo año.
-
 ## Consejos para el Éxito
 
 Sin duda, todos tenemos estrategias muy diferentes para estudiar, abordar el material didáctico y prepararnos para las evaluaciones. 
@@ -226,7 +211,7 @@ Además de [Geogebra][42], con el que creo que a estas alturas todos estamos fam
 
 ## Si Deseo LLevar el Curso
 
-Si deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que vistes los siguientes enlaces:
+Si ya probaste Matemática Introductoria (03463) y deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que vistes los siguientes enlaces:
 
 * [Orientaciones Académicas][34]: para ver el programa del curso.
 * [Oferta Anual de Asignatura][35]: para comprobar disponibilidad del curso.
