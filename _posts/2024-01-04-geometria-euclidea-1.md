@@ -105,6 +105,10 @@ Sin importar el resultado, pienso que la experiencia de llevar el curso y aproba
 * [Introducción a la Geometría Euclídea][59] de Teodora Tsijli Angelaki y Manuel Murillo Tsijli.
 En español, es la mejor alternativa a la UDM que encontré.  Este libro se puede comprar, tanto físico como en formato digital, en la página de la Editorial del Tecnológico de Costa Rica. Si lo compras físico, la editorial se encarga de enviarlo a la puerta de la casa.
 Este libro cubre todo el mismo material que la UDM y, para mi gusto,  en muchos aspectos es superior a la UDM. Así que vale la pena tenerlo disponible, incluso si solo es para referencia o como obra de consulta adicional.
+
+En mi caso, utilicé otros libros clave en mi preparación. Desafortunadamente, estos libros solo están en idioma inglés; sin embargo, con tecnologías como [Google Translate][73] y [ChatGPT][74] es posible traducir las secciones relevantes con facilidad. 
+Por ejemplo, pueden tomar un pantallazo de una página del libro y luego subirla a ChatGPT y pedirle que se las traduzca al español, lo cual hace magistralmente bien.
+
 * [A First Course in Geometry][58] de Edward T. Walsh se puede adquirir tanto en formato físico como digital en la página de la editorial Dover Books. 
 Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, esta fue el mejor libro alternative en mi bibliote para prepararse para tener éxito en este curso.
 * [Everything You Need to Ace Geometry in One Big Fat Notebook][72]: es un excelente libro para estudiar la mayoría de los teoremas que se necesita aprender durante este curso. El libro es muy visual, bellamente diseñado, y simplifica el aprendizaje de muchos teoremas increíblemente. Además agrupa y representa los teoremas de una forma que tiene muchísimo más sentido que como lo hace la UDM, lo cual ayuda mucho en el aprendizaje de los mismos. Honestamente, este libro fue uno de mis favoritos todo el cuatrimestre y nunca dejó mi escritorio mientras llevé el curso. Lo consulté incontables veces y lo utilicé para mejorar muchas de mis fichas de los teoremas que venían en la UDM.
@@ -256,3 +260,5 @@ El siguiente es material adicional que los tutores hicieron disponible en la pla
 [70]:https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx
 [71]:https://www.uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula
 [72]:https://www.amazon.com/Everything-Need-Geometry-Notebook-Notebooks/dp/1523504374
+[73]:https://translate.google.com/
+[74]:https://chat.openai.com/
