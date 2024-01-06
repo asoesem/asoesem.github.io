@@ -137,16 +137,16 @@ En mi caso, mi estrategia consistió en lo siguiente:
 * **Redacción de Notas de Estudio**: A medida que estudiaba el material didáctico iba redactando mis propias notas de referencia que utilizaba luego para repasar puntos clave. Acá les dejo [mis notas][38] para que las descarguen, por si de algo les sirven a otros que planean llevar el curso.
 * **Apoyo Tecnológico**: me apoyé en herramientas tecnológicas como [Wolfram Alpha][40], [HP Prime][44], [Geogebra][42] y [ChatGPT][43] para ayudarme a comprender y dominar el material, comprobar mis respuestas, explorar soluciones alternativas, etc.
 
-## Videos de Soporte Adicional
+## Vídeos de Soporte Adicional
 
-Estos son los videos de las tutorías asíncronas proporcionados por la tutoría
+Estos son los vídeos de las tutorías asíncronas proporcionados por la tutoría
 
 * [Video Tutoría 1][24]
 * [Video Tutoría 2][25]
 * [Video Tutoría 3][26]
 * [Video Tutoría 4][27]
 
-Este es un conjunto de videos con material adicional proporcionados por la tutoría del curso.
+Este es un conjunto de vídeos con material adicional proporcionados por la tutoría del curso.
 
 * [Proposiciones y Leyes de Lógica][1]
 * [Demostración Directa][2]
