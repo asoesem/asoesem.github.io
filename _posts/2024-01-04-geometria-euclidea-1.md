@@ -111,7 +111,7 @@ En mi caso, utilicé otros libros clave en mi preparación. Desafortunadamente, 
 Por ejemplo, pueden tomar un pantallazo de una página del libro y luego subirla a ChatGPT y pedirle que se las traduzca al español, lo cual hace magistralmente bien.
 
 * [A First Course in Geometry][58] de Edward T. Walsh se puede adquirir tanto en formato físico como digital en la página de la editorial Dover Books. 
-Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, esta fue el mejor libro alternative en mi bibliote para prepararse para tener éxito en este curso.
+Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, este fue el mejor libro alternativo en mi biblioteca que usé en mi preparación durante este curso.
 * [Everything You Need to Ace Geometry in One Big Fat Notebook][72]: es un excelente libro para estudiar la mayoría de los teoremas que se necesita aprender durante este curso. El libro es muy visual, bellamente diseñado, y simplifica el aprendizaje de muchos teoremas increíblemente. Además agrupa y representa los teoremas de una forma que tiene muchísimo más sentido que como lo hace la UDM, lo cual ayuda mucho en el aprendizaje de los mismos. Honestamente, este libro fue uno de mis favoritos todo el cuatrimestre y nunca dejó mi escritorio mientras llevé el curso. Lo consulté incontables veces y lo utilicé para mejorar muchas de mis fichas de los teoremas que venían en la UDM.
 
 ## Otros Solucionarios
