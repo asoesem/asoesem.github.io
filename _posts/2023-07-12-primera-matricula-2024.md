@@ -32,13 +32,13 @@ A continuación se presenta el horario y las fechas correspondientes a la matric
 
 ### Recursos Valiosos
 
-* [Formulario de Autorización de Matrículas][1]: formulario que deben llenar los estudiantes que desean llevar materias que tienen como prerequisito otras materias que ya has aprobado previamente.
+* [Formulario de Autorización de Matrículas][1]: formulario que deben llenar los estudiantes que desean llevar materias que tienen como prerequisito otras materias que ya han aprobado previamente.
 * [Plan de Estudios de Carrera][2]: para consultar las materias del plan de carrera de Enseñanza de la Matemática.
 * [Programa de Humanidades][3]: para consultar las materias del programa de humanidades.
 * [Cursos de Extensión][9]: que son cursos libres para mejoramiento y aprendizaje de habilidades y competencias.
 * [Consulta de Orientaciones Académicas][4]: para consultar el plan de estudios de una materia en particular que les interese matricular.
 * [Consulta de Oferta Anual de Asignaturas][5]: para consultar en que cuatrimestres del año se ofrece una asignatura en particular.
-* [Folleto Instructivo de Matrícula y Oferta Anual de Asignaturas][10]: folleto que detalla todo lo concerniete a la matrícula y la oferta de asignaturas para el 2024.
+* [Folleto Instructivo de Matrícula y Oferta Anual de Asignaturas][10]: folleto que detalla todo lo concerniente a la matrícula y la oferta de asignaturas para el 2024.
 * [Programa de Becas][6]: consulta la página de atención socioeconómica para saber todo lo que necesitas saber sobre becas.
 * [Matrícula Web][7]: el sitio en donde se realiza la matrícula de tus asignaturas una vez que se abra el período de matrícula que te corresponde.
 
