@@ -141,10 +141,10 @@ En mi caso, mi estrategia consistió en lo siguiente:
 
 Estos son los vídeos de las tutorías asíncronas proporcionados por la tutoría
 
-* [Video Tutoría 1][24]
-* [Video Tutoría 2][25]
-* [Video Tutoría 3][26]
-* [Video Tutoría 4][27]
+* [Vídeo Tutoría 1][24]
+* [Vídeo Tutoría 2][25]
+* [Vídeo Tutoría 3][26]
+* [Vídeo Tutoría 4][27]
 
 Este es un conjunto de vídeos con material adicional proporcionados por la tutoría del curso.
 
