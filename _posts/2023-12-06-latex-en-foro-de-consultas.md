@@ -144,7 +144,7 @@ Para producir una nueva línea se utiliza el operador `\\`, y para indicar que l
 
 `\[\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{\circ}} &= a\end{aligned}\]`
 
-Donde se puede ver que el punto de alineamiento es el signo de igual y por eso ambas expresiones están alineadas en ese signo: `&=`. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza `\\27^{\circ}`. 
+Donde se puede ver que el punto de alineamiento es el punto antes del signo de igual y por eso ambas expresiones están alineadas en ese signo: `&=`. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza `\\27^{\circ}`. 
 
 Con algo de paciencia y cuidado es posible escribir expresiones multilíneas complejas como la siguiente:
 
