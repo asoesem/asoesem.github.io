@@ -66,7 +66,7 @@ La evaluación consistió en los siguientes instrumentos:
 
 Haz clic en los enlaces proporcionados para ver solucionarios y ejemplos de los instrumentos en cuestión. Los enlaces apuntan a recursos en el OneDrive de la UNED, así que necesitarás ingresar con tu cuenta institucional para tener acceso a estos recursos.
 
-* **Los quizzes** son lo que, usualmente, llamamos "actividad en plataforma", y que son preguntas con selección de respuesta única. Con frecuencia, los quizzes comprueban que se ha leído y comprendido el material de un capítulo del libro.
+* **Los quizzes** son lo que, usualmente, llamamos "actividad en plataforma", y que son preguntas con selección de respuesta única. Con frecuencia, los quizzes comprueban que se ha leído y comprendido el material de un capítulo del libro. El quiz es relativamente sencillo si se ha estudiado el material de un módulo, sin embargo, no se deben tomar a la ligera, porque es fácil equivocarse y perder puntos valiosos. Es mejor hacerlos hasta haber completado la lectura de los capítulos que se cubren y tener claro el material bajo estudio.
 * **Los talleres** consistieron en escribir un taller para estudiantes de secundaria aplicando alguno de los conceptos estudiados en alguno de los módulos bajo estudio.
 * **Las tareas** son un instrumento muy similar a una comprensiva, con cinco o seis problemas a resolver, solo que se concede una semana de tiempo para entregarla. Algunos problemas pueden tener grados de dificultad alto, así que es bueno comenzarlas tan pronto como sea posible.
 * **Las comprensivas** son exámenes cronometrados que usualmente contienen cinco problemas del material correspondiente a una unidad de estudio y que se realizan en un día sábado de 6 AM a 12 PM. A menudo los problemas son adaptaciones de [problemas de olimpiadas matemáticas][75], entonces, usualmente, no son problemas sencillos de resolver. 
@@ -113,6 +113,7 @@ Por ejemplo, pueden tomar un pantallazo de una página del libro y luego subirla
 * [A First Course in Geometry][58] de Edward T. Walsh se puede adquirir tanto en formato físico como digital en la página de la editorial Dover Books. 
 Este libro cubre todo el mismo material que la UDM pero de una forma magistralmente superior, en explicaciones, ejemplos y ejercicios. Para mi gusto, este fue el mejor libro alternativo en mi biblioteca que usé en mi preparación durante este curso.
 * [Everything You Need to Ace Geometry in One Big Fat Notebook][72]: es un excelente libro para estudiar la mayoría de los teoremas que se necesita aprender durante este curso. El libro es muy visual, bellamente diseñado, y simplifica el aprendizaje de muchos teoremas increíblemente. Además agrupa y representa los teoremas de una forma que tiene muchísimo más sentido que como lo hace la UDM, lo cual ayuda mucho en el aprendizaje de los mismos. Honestamente, este libro fue uno de mis favoritos todo el cuatrimestre y nunca dejó mi escritorio mientras llevé el curso. Lo consulté incontables veces y lo utilicé para mejorar muchas de mis fichas de los teoremas que venían en la UDM.
+* [Geometry for Dummies][76] de Mark Ryan es un excelente libro que me ayudó, sobre todo, a aprender como hacer demostraciones geométricas. Se dedican varios capítulos del libro a este tema y se ofrecen ejemplos sencillos y prácticos. Aunque el libro cubre muchos de los teoremos que se ven en el curso, yo lo utilicé primordialemente para el dominio del tema de demostraciones.
 
 ## Otros Solucionarios
 
@@ -264,3 +265,4 @@ El siguiente es material adicional que los tutores hicieron disponible en la pla
 [73]:https://translate.google.com/
 [74]:https://chat.openai.com/
 [75]:https://unedcr-my.sharepoint.com/:b:/g/personal/jordy_morales_uned_cr/EcGnGnLONKdKsLqe7_I9kKABABxDPy4RQgLe1MiksGk7ZA?e=6opqAA
+[76]:https://www.amazon.com/Geometry-Dummies-Mark-Ryan/dp/1119181550/ref=sr_1_1?adgrpid=76793619490&hvadid=585479352401&hvdev=c&hvlocphy=9075466&hvnetw=g&hvqmt=e&hvrand=987644976689458625&hvtargid=kwd-142836496&hydadcr=28013_14525458&keywords=geometry+for+dummies&qid=1704574862&sr=8-1
