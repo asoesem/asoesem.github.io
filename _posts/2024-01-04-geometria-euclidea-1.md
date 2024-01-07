@@ -137,7 +137,7 @@ Las siguientes herramientas tecnológicas pueden resultar útiles:
 
 ## Si Deseo Llevar el Curso
 
-Si ya probaste Matemática Introductoria (03463) y deseas llevar el curso de Geometría Euclídea I (03420), te recomiendo que vistes los siguientes enlaces:
+Si ya has aprobado Matemática Introductoria (03463) y deseas llevar el curso de Geometría Euclídea I (03420), te recomiendo que vistes los siguientes enlaces:
 
 * [Orientaciones Académicas][69]: para ver el programa del curso.
 * [Oferta Anual de Asignatura][70]: para comprobar disponibilidad del curso.

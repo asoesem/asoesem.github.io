@@ -211,7 +211,7 @@ Además de [Geogebra][42], con el que creo que a estas alturas todos estamos fam
 
 ## Si Deseo LLevar el Curso
 
-Si ya probaste Matemática Introductoria (03463) y deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que vistes los siguientes enlaces:
+Si ya has aprobado Matemática Introductoria (03463) y deseas llevar el curso de Lógica y Teoría de Conjuntos, te recomiendo que vistes los siguientes enlaces:
 
 * [Orientaciones Académicas][34]: para ver el programa del curso.
 * [Oferta Anual de Asignatura][35]: para comprobar disponibilidad del curso.
