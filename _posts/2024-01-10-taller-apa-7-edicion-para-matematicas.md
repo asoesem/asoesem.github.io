@@ -5,7 +5,7 @@ description: Se presenta un breve video de un taller impartido por CIDREB de la 
 date: 2023-01-10T15:00:00-06:00
 #author: axell
 image: '/images/113.png'
-video_embed: https://youtu.be/8cMi_gAW39o?si=vWgB4HwTziF-BlFx
+video_embed: https://www.youtube.com/watch?v=8cMi_gAW39o
 tags: [noticias]
 commissions: [cocodi]
 featured: true
