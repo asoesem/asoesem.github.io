@@ -21,5 +21,5 @@ Puedes consultar los siguientes documentos:
 * [Citación formato APA 7][1]
 * [Matemática en Formato APA][2]
 
-[1]:/documentos/CITACIÓN APA7.pdf
-[2]:/documentos/Matemática-Formato APA.pdf
+[1]:/documentos/CITACIÓN-APA7.pdf
+[2]:/documentos/Matemática-Formato-APA.pdf
