@@ -5,7 +5,7 @@ description: Se presenta un breve video de un taller impartido por CIDREB de la 
 date: 2023-01-10T15:00:00-06:00
 #author: axell
 image: '/images/113.png'
-video_embed: https://www.youtube.com/watch?v=8cMi_gAW39o
+video_embed: https://www.youtube.com/embed/8cMi_gAW39o?si=nEPW38h1Mu92PlMv
 tags: [noticias]
 commissions: [cocodi]
 featured: true
@@ -20,6 +20,8 @@ En el video se da una explicanción importante sobre los pasos que se debe utili
 Puedes consultar los siguientes documentos: 
 * [Citación formato APA 7][1]
 * [Matemática en Formato APA][2]
+
+
 
 [1]:/documentos/CITACIÓN-APA7.pdf
 [2]:/documentos/Matemática-Formato-APA.pdf
