@@ -4,7 +4,7 @@ title: ¿Cómo solicitar mi constancia de estudiante matriculado?
 description: Se presenta un breve video de explicación de cómo obtener la constancia de estudiante matriculado en la UNED
 date: 2024-02-02T15:00:00-06:00
 #author: axell
-#image: '/images/113.png'
+image: '/images/114.png'
 video_embed: https://youtu.be/rIkv-1aYbfE
 tags: [noticias]
 commissions: [cocodi]
