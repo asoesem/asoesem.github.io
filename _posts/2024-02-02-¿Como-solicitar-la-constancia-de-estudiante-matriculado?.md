@@ -5,7 +5,7 @@ description: Se presenta un breve video de explicación de cómo obtener la cons
 date: 2024-02-02T15:00:00-00:00
 #author: axell
 image: '/images/114.png'
-video_embed: https://youtu.be/rIkv-1aYbfE
+video_embed: https://youtu.be/embed/rIkv-1aYbfE
 tags: [noticias]
 commissions: [cocodi]
 featured: true
