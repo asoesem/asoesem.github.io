@@ -7,9 +7,9 @@ date: 2023-12-07T10:00:00-06:00
 image: '/images/108.jpg'
 tags: [noticias,matrícula]
 #commissions: [cofoma]
-featured: true
-comments: true
-share: true
+featured: false
+comments: false
+share: false
 ---
 
 A continuación se presenta el horario y las fechas correspondientes a la matricula para el I cuatrimestre y semestre 2024.
