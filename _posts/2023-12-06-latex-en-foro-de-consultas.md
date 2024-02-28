@@ -163,6 +163,7 @@ Si quieres aprender más, puedes consultar innumerables recursos en Internet, pe
 * [Listado de Comandos de LaTeX para Estudiantes de Matemática][4]
 * [La Introducción no tan Corta de LaTeX][5]
 * [Lista de Comandos Soportados por MathJax][6]
+* [Usar Notación TeX en Moddle][7]
 
 [1]: https://latex.codecogs.com/eqneditor/editor.php?lang=es-es
 [2]: https://www.overleaf.com/project
@@ -170,3 +171,4 @@ Si quieres aprender más, puedes consultar innumerables recursos en Internet, pe
 [4]: https://mirrors.ucr.ac.cr/CTAN/info/undergradmath/undergradmath.pdf
 [5]: https://mirrors.ucr.ac.cr/CTAN/info/lshort/spanish/lshort-letter.pdf
 [6]: https://docs.mathjax.org/en/latest/input/tex/macros/index.html
+[7]: https://docs.moodle.org/403/en/Using_TeX_Notation
