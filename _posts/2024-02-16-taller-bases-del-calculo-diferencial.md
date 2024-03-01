@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Taller: Bases del calculo diferencial
+title: Bases del cálculo diferencial
 description: Se presenta un breve invitación a la videotransmisión de un taller impartido por la COCODI de la ASOESEM UNED
-date: 2024-02-16T15:00:00-00:00
-#author: axell
+date: 2024-02-16T15:00:00-06:00
+author: axell
 image: '/images/115.png'
-video_embed: https://www.youtube.com/embed/1uJhC0QmWIk?si=tTo7ZovTIbN5rnsU
 tags: [noticias]
 commissions: [cocodi]
+video_embed: https://www.youtube.com/embed/1uJhC0QmWIk?si=tTo7ZovTIbN5rnsU
 featured: true
 comments: true
 share: true
