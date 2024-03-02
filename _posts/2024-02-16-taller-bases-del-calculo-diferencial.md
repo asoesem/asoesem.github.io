@@ -5,7 +5,7 @@ description: Se presenta un breve invitación a la videotransmisión de un talle
 date: 2024-02-16T15:00:00-06:00
 author: axell
 image: '/images/115.png'
-tags: [noticias]
+tags: [matemáticas,talleres]
 commissions: [cocodi]
 video_embed: https://www.youtube.com/embed/1uJhC0QmWIk?si=jOoyjrKtyMQNYt30
 featured: true
