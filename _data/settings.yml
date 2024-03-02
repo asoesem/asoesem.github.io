@@ -59,8 +59,8 @@ tags_section:
   number_columns: 3 # Puedes especificar el número de columnas de 1-4 para monitores de alta resolución. De forma predeterminda el tema usa una cuadrícula de tres columnas.
   tags:
     - tag: "noticias"
-    - tag: "reglamentos"
     - tag: "matemáticas"
+    - tag: "reglamentos"
 
 #-------------------------------------------
 # Configuración de la Sección de Autores
