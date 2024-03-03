@@ -1,7 +1,7 @@
 #-------------------------------
 # Configuración del Sitio
 title: Asoesem
-description: Asociación de Estudiantes de Enseñanza de la Matemática
+description: Asociación de Estudiantes de la carrera de la Enseñanza de la Matemática de la UNED
 logo: "/images/logo-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
 logo_dark: "/images/logo-dark.png"
 color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predeterminado, se fija el modo auto, lo que implica que el usuario puede escoger modos light o dark.
@@ -45,8 +45,8 @@ cta_button:
 # Configuración de la Sección de Heroe
 hero:
   enable: true
-  hero_title: Reglamentos, Noticias, Artículos, y Consejos.
-  hero_description: De la Asociación de Estudiantes de Enseñanza de la Matemática de la Universidad Estatal a Distancia.
+  hero_title: ASOESEM UNED
+  hero_description: Consejos, artículos, reglamentos, consultas y todo lo que necesitas saber de la Asociación de Estudiantes de la carrera de la Enseñanza de la Matemática de la UNED
 
 #-------------------------------------------
 # Configuración de la Sección de Etiquetas
@@ -71,17 +71,17 @@ authors_section:
 
 #-------------------------------------------
 # Configuración del Pie de Página
-footer_description: Noticiales, artículos recientes y novedades de la Asociación de Estudiantes de Enseñanza de la Matemática de la UNED.
+footer_description: Noticiales, artículos recientes y novedades de la Asociación de Estudiantes de la carrera de la carrera de la Enseñanza de la Matemática de la UNED, Cedula Juridica 3-002-343235. Todos los derechos reservados.
 
 
 # Social Links
 # social:
 # - {icon: "twitter", link: "https://twitter.com"}
-# - {icon: "facebook", link: "https://facebook.com"}
+# - {icon: "facebook", link: "https://www.facebook.com/asoesem.org"}
 # - {icon: "codepen", link: "https://codepen.io"}
-# - {icon: "pinterest", link: "https://pinterest.com"}
 # - {icon: "github", link: "https://github.com"}
-# - {icon: "youtube", link: "https://youtube.com"}
+# - {icon: "youtube", link: "https://www.youtube.com/@asoesemunedcr"}
+# - {icon: "instagram", link: "https://www.instagram.com/asoesem_uned/"}
 
 # Por ejemplo, para agregar un nuevo enlance al pie de página - {icon: "instagram", link: "https://instagram.com"}
 # Otros íconos se pueden encontrar en https://ionicons.com/v4/
