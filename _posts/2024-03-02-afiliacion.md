@@ -4,7 +4,7 @@ title: Afiliación
 description: Se detalla toda la información relacionada con la afiliación a la ASOESEM UNED
 date: 2024-01-03T10:00:00-00:00
 #author: axell
-image: '/images/115.jpg'
+image: '/images/115.png'
 tags: [noticias]
 # commissions: [cocodi]
 featured: false
