@@ -8,8 +8,8 @@ image: '/images/114.png'
 video_embed: https://www.youtube.com/embed/rIkv-1aYbfE?si=5qKS8jxu4blo28LS
 tags: [noticias]
 commissions: [cocodi]
-featured: true
-comments: true
+featured: false
+comments: false
 share: true
 ---
 ## ¿Qué es la constancia de estudiante matriculado?
