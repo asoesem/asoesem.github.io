@@ -7,7 +7,7 @@ date: 2024-01-03T10:00:00-00:00
 image: '/images/116.png'
 tags: [noticias]
 # commissions: [cocodi]
-featured: false
+featured: true
 comments: true
 share: true
 ---
