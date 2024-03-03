@@ -23,6 +23,9 @@ Para el proceso de afiliación, la persona debe cumplir con los siguientes requi
 
 Al momento de adjuntar la carta de afiliación debidamente llenada, deberá adjuntar la fotocopia del documento de identidad y constancia de estudiante activo o regular. 
 Toda esta documentación la envia al correo de la Asociación asoesem@uned.ac.cr 
+Para descargar la carta de afiliación presione [AQUI][1]
+
+[1]:/documentos/carta-de-afiliacion.pdf
 
 ## ¿Si ya soy estudiante de la carrera, entonces pertenezco a la Asociación de forma automática?
 
