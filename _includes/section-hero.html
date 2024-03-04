@@ -11,6 +11,9 @@
           {{ if site.data.settings.hero.hero_description }}
           <p class="hero__description">{{ site.data.settings.hero.hero_description }}</p>
           {{ end }}
+          {% if site.data.settings.donate.enabled == true %}
+            <p><a href="{% if site.data.settings.donate.button_link %}{{ site.data.settings.donate.button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.donate.button_text }}</a></p>
+          {% endif %}
         </div>
       </div>
     </div>
