@@ -18,6 +18,10 @@
     <p class="widget-footer__desc">{{site.data.settings.footer_description}}</p>
     {% endif %}
 
+    {% if site.data.settings.donate.enabled == true %}
+    <p><a href="{% if site.data.settings.donate.button_link %}{{ site.data.settings.donate.button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.donate.button_text }}</a></p>
+    {% endif %}
+
     {% if site.data.settings.social %}
     <div class="social">
       <ul class="social__list list-reset">
