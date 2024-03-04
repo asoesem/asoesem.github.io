@@ -40,6 +40,11 @@ cta_button:
   cta_button_link: '/contacto/'
   cta_button_text: Contactar
 
+# Botón de donacion
+donate:
+  enabled: true
+  button_link: https://paypal.me/asoesem
+  button_text: Donar
 
 #-------------------------------------------
 # Configuración de la Sección de Heroe
