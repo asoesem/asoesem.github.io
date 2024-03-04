@@ -51,7 +51,7 @@
             {% if site.data.settings.cta_button.enable == true %}
             <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link | prepend: site.baseurl }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
             {% endif %}
-            {% if site.data.settings.donate.enable == true %}
+            {% if site.data.settings.donate.enabled == true %}
             <a href="{% if site.data.settings.donate.button_link %}{{ site.data.settings.donate.button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.donate.button_text }}</a>
             {% endif %}
           </div>
