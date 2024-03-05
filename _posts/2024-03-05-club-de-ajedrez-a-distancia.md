@@ -19,5 +19,5 @@ Para poder ingresar a nuestra comunidad deberas darle click al siguiente enlance
 Será utilizado la plataforma de [Chees.com], el cual es una plataforma mundial de encuentros matemáticos. 
 ## Si yo no sé jugar ¿Puedo participar?
 Dentro de la plataforma existen explicaciones muy sencillas de cómo aprender a jugar ajedrez, por lo que te invitamos a ingresar a [Chess.com] y leer, practicar y aprender todo sobre el ajedrez. 
-## ¿porqué es important el ajedrez?
+## ¿Porqué es important el ajedrez?
 Gracias al ajedrez, las personas pueden estimular su pensamiento crítico, formarse en la solución de problemas, tomar desiciones, ayuda a la concentración, también fortalece la percepción y coadyuva a la memoria visual, entre otros beneficios que se obtienen en el momento de una partida de ajedrez. 
