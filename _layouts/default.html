@@ -29,7 +29,21 @@
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
+
+  {% if site.data.settings.donate.enable == true %}    
+  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+  <script>
+    PayPal.Donation.Button({
+        env:'production',
+        hosted_button_id:"{{site.data.settings.donate.button_id}}",
+        image: {
+        src:'https://www.paypalobjects.com/es_ES/i/btn/btn_donate_LG.gif',
+        alt:'Botón Donar con PayPal',
+        title:'PayPal - La manera mas segura y sencilla de pagar en línea',
+      }
+    }).render('#donate-button');
+  </script>
+  {% endif %}
 </body>
 
 </html>

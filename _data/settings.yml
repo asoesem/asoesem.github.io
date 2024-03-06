@@ -42,8 +42,8 @@ cta_button:
 
 # Botón de donacion
 donate:
-  enabled: true
-  button_link: https://paypal.me/asoesem
+  enable: true
+  button_id: '49DLWPXYRVT78'
   button_text: Donar
 
 #-------------------------------------------
