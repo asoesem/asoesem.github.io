@@ -44,7 +44,7 @@ cta_button:
 donate:
   enable: true
   button_id: '49DLWPXYRVT78'
-  button_text: Donar
+  button_img: 'https://www.paypalobjects.com/es_ES/i/btn/btn_donate_LG.gif'
 
 #-------------------------------------------
 # Configuración de la Sección de Heroe
