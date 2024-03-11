@@ -1,7 +1,7 @@
 #-------------------------------
 # Configuración del Sitio
 title: ASOESEM
-description: Asociación de Estudiantes de la carrera de la Enseñanza de la Matemática de la UNED
+description: Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas de la UNED
 logo: "/images/logo-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
 logo_dark: "/images/logo-dark.png"
 color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predeterminado, se fija el modo auto, lo que implica que el usuario puede escoger modos light o dark.
@@ -77,7 +77,7 @@ authors_section:
 
 #-------------------------------------------
 # Configuración del Pie de Página
-footer_description: Noticiales, artículos recientes y novedades de la Asociación de Estudiantes de la carrera de la carrera de la Enseñanza de la Matemática de la UNED, Cedula Juridica 3-002-343235. Todos los derechos reservados.
+footer_description: Información, noticias, artículos recientes y novedades de la Asociación de Estudiantes de la carrera de la carrera de la Enseñanza de las Matemáticas de la UNED, Cedula Juridica 3-002-343275. Todos los derechos reservados.
 
 
 # Social Links
