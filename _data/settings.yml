@@ -42,7 +42,7 @@ cta_button:
 
 # Botón de donacion
 donate:
-  enable: true
+  enable: false
   button_id: '49DLWPXYRVT78'
   button_img: 'https://www.paypalobjects.com/es_ES/i/btn/btn_donate_LG.gif'
 
