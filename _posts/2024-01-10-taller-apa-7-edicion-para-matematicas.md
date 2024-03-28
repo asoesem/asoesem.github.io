@@ -8,7 +8,7 @@ image: '/images/113.png'
 video_embed: https://www.youtube.com/embed/8cMi_gAW39o?si=nEPW38h1Mu92PlMv
 tags: [noticias]
 commissions: [cocodi]
-featured: true
+featured: false
 comments: true
 share: true
 ---

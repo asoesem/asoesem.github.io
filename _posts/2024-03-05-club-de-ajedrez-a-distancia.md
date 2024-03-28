@@ -7,7 +7,7 @@ author: axell
 image: '/images/118.png'
 tags: [noticias]
 # commissions: [cocodi]
-featured: true
+featured: false
 comments: true
 share: true
 ---
