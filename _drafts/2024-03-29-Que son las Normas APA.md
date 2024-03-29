@@ -22,13 +22,13 @@ A continuación, se realizará un resumen sustancial de cómo emplear este tipo 
 
 Los procesadores de texto (Word, Google Docs o cualquier otro) suelen tener un tamaño y margen de página predeterminado. Sin embargo, APA 7 establece que el tamaño de la página debe ser de *Carta*, es decir 21.59 cm por 27.94 cm y el margen de la página tiene que ser de 2.54 cm en cada lado de la página misma.
 
-![Untitled](%C2%BFQue%CC%81%20son%20las%20Normas%20APA%20405c8144cd664ac5899616c1d90cbab3/Untitled.png)
+image: '/images/119.png'
 
-![Untitled](%C2%BFQue%CC%81%20son%20las%20Normas%20APA%20405c8144cd664ac5899616c1d90cbab3/Untitled%201.png)
+image: '/images/120.png'
 
 Además, cada párrafo debe ser escrito en algunas de las siguientes tipografías ([Véase aquí](https://normas-apa.org/formato/tipo-y-tamano-de-fuente/)), contar con una sangría de primer línea de 1.27 cm, estar alineado a la izquierda y un interlineado doble.
 
-![Untitled](%C2%BFQue%CC%81%20son%20las%20Normas%20APA%20405c8144cd664ac5899616c1d90cbab3/Untitled%202.png)
+image: '/images/121.png'
 
 En ocasiones, los docentes y estudiantes llegan al acuerdo de utilizar la  alineación justificada, la cual facilita la lectura y mejora la estética del texto. Así que, consulte a su docente. 
 
@@ -40,7 +40,7 @@ Los trabajos académicos suelen ser extensos y utilizan una estructura bien defi
 
 *Jerarquía de títulos y subtítulos, de acuerdo con las Normas APA 7*.
 
-![Títulos APA.jpg](%C2%BFQue%CC%81%20son%20las%20Normas%20APA%20405c8144cd664ac5899616c1d90cbab3/Ttulos_APA.jpg)
+image: '/images/122.jpg'
 
 **Nota**: Elaboración propia.
 
@@ -48,7 +48,7 @@ En caso de requerir utilizar más niveles de subtítulos, visite el siguiente en
 
 Además, APA 7 establece que la **enumeración de las páginas** **debe estar en la página *superior derecha*, iniciando desde la portada.
 
-![Untitled](%C2%BFQue%CC%81%20son%20las%20Normas%20APA%20405c8144cd664ac5899616c1d90cbab3/Untitled%203.png)
+image: '/images/123.png'
 
 Se adjunta varios enlaces para conocer cómo elaborar otros elementos, con base en las Normas APA 7:
 
