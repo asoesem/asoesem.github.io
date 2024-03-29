@@ -1,4 +1,16 @@
-# ¿Qué son las Normas APA?
+---
+layout: post
+title: ¿Qué son las Normas APA?
+description: Resumen de las principales disposiones de las Normas APA séptima edición.
+date: 2024-03-29T18:00:00-06:00
+author: sebas
+image: '/images/42.jpg'
+tags: [normas APA, académico]
+commissions: [cofoma]
+featured: true
+comments: true
+share: true
+---
 
 Las Normas APA son una serie de reglas para dar formato a los documentos académicos y, a su vez, respetar los derechos de autor. Estas normas están en su séptima edición (7°) en su versión anglosajona y son actualizadas por la Asociación Estadounidense de Psicología (APA, por su siglas en inglés). En general, las reglas están divididas en dos sentidos: formato y citación.
 
@@ -66,11 +78,11 @@ Si la cita es de **menos de 40 palabras**, entonces la cita se integrará en el 
 
 Una ****cita narrativa** introduce los *apellidos de la(s) persona(s) autora(s)* *(año de publicación)*, los conecta con un verbo conjugado, para luego escribir la cita entre comillas y finalizar con la página entre paréntesis. Por ejemplo:
 
-           En ese sentido, Jiménez-Cortes y Vesga-Bravo (2022) indican que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (p. 3), por lo que los docentes, en colaboración con las autoridades administrativas, deben procurar el fomento de este tipo de pedagogía.
+En ese sentido, Jiménez-Cortes y Vesga-Bravo (2022) indican que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (p. 3), por lo que los docentes, en colaboración con las autoridades administrativas, deben procurar el fomento de este tipo de pedagogía.
 
 De igual manera, una **cita integradora** expone la cita directa entre comillas y luego cierra con la referencia en el siguiente formato: *(Apellidos del Autor y Apellidos de la Autora, año de publicación, página de la obra)*, utilizándola como parte del mismo texto. Por ejemplo:
 
-           Dado que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (Jiménez-Cortes y Vesga-Bravo, 2022, p. 3), los docentes deben ser formados y capacitados desde esta misma pedagogía. 
+Dado que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una    comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (Jiménez-Cortes y              Vesga-Bravo, 2022, p. 3), los docentes deben ser formados y capacitados desde esta misma pedagogía. 
 
 ### Citas de más de 40 palabras
 
