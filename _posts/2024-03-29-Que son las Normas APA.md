@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ¿Qué son las Normas APA?
-description: Resumen de las principales disposiones de las Normas APA séptima edición.
+description: Resumen de las principales disposiones de las Normas APA 7.
 date: 2024-03-29T18:00:00-06:00
 author: sebas
 image: '/images/124.jpg'
@@ -12,7 +12,7 @@ comments: true
 share: true
 ---
 
-Las Normas APA son una serie de reglas para dar formato a los documentos académicos y, a su vez, respetar los derechos de autor. Estas normas están en su séptima edición (7°) en su versión anglosajona y son actualizadas por la Asociación Estadounidense de Psicología (APA, por su siglas en inglés). En general, las reglas están divididas en dos sentidos: formato y citación.
+Las Normas APA son una serie de reglas para dar formato a los documentos académicos y, a su vez, respetar los derechos de autor. Estas normas están en su séptima edición (7°) en la versión anglosajona y son actualizadas por la Asociación Estadounidense de Psicología (APA, por su siglas en inglés). En general, las reglas están divididas en dos sentidos: formato y citación.
 
 Cuando se realiza un trabajo académico que requiera del uso del trabajo de otros autores, como artículo, ensayo, tesina o tesis, se suelen emplear las Normas APA (desde ahora, APA). El uso estricto de APA dependerá del nivel de formalidad del trabajo académico y la exigencia de la persona docente, así que esté atento/a a las indicaciones correspondientes.
 
@@ -63,12 +63,12 @@ Se adjunta varios enlaces para conocer cómo elaborar otros elementos, con base 
 
 Los trabajos académicos deben referenciar los trabajos más recientes y/o fundamentales en la/s disciplina/s de su temática. En ese sentido, APA 7 establece dos tipos de citas:
 
-- Cita parafraseada, también llamada *cita indirecta*.
 - Cita textual, también llamada *cita directa*.
+- Cita parafraseada, también llamada *cita indirecta*.
 
 Nota futura: Si son 3 o más autores, se utilizan los apellidos de la primera persona autora y se utiliza *et al.* .
 
-## Cita textual o directa
+## Cita textual
 
 Cuando se busca utilizar explícitamente las afirmaciones o resultados de una obra, se recomienda utilizar la cita directa o textual.
 
@@ -76,11 +76,11 @@ Cuando se busca utilizar explícitamente las afirmaciones o resultados de una ob
 
 Si la cita es de **menos de 40 palabras**, entonces la cita se integrará en el párrafo actual, lo que se realizar de dos formas: una cita narrativa o una cita integrador
 
-Una ****cita narrativa** introduce los *apellidos de la(s) persona(s) autora(s)* *(año de publicación)*, los conecta con un verbo conjugado, para luego escribir la cita entre comillas y finalizar con la página entre paréntesis. Por ejemplo:
+Una **cita narrativa** introduce los *apellidos de la(s) persona(s) autora(s)* *(año de publicación)*, los conecta con un verbo conjugado, para luego escribir la cita entre comillas y finalizar con la página entre paréntesis. Por **ejemplo**:
 
 En ese sentido, Jiménez-Cortes y Vesga-Bravo (2022) indican que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (p. 3), por lo que los docentes, en colaboración con las autoridades administrativas, deben procurar el fomento de este tipo de pedagogía.
 
-De igual manera, una **cita integradora** expone la cita directa entre comillas y luego cierra con la referencia en el siguiente formato: *(Apellidos del Autor y Apellidos de la Autora, año de publicación, página de la obra)*, utilizándola como parte del mismo texto. Por ejemplo:
+De igual manera, una **cita integradora** expone la cita directa entre comillas y luego cierra con la referencia en el siguiente formato: *(Apellidos del Autor y Apellidos de la Autora, año de publicación, página de la obra)*, utilizándola como parte del mismo texto. Por **ejemplo**:
 
 Dado que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una    comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (Jiménez-Cortes y              Vesga-Bravo, 2022, p. 3), los docentes deben ser formados y capacitados desde esta misma pedagogía. 
 
@@ -88,7 +88,7 @@ Dado que “la pedagogía crítica hace referencia a la creación de conocimient
 
 Si la cita textual es de más de 40 palabras, se separará del párrafo actual con sangría de 1.27 cm a la izquierda y sin comillas.
 
-Una **cita narrativa en bloque** introduce los *apellidos de la(s) persona(s) autora(s)*, conecta con un verbo conjugado y escribir la cita en un párrafo aparte con la página de la cita en paréntesis al final de este. Por ejemplo: 
+Una **cita narrativa en bloque** introduce los *apellidos de la(s) persona(s) autora(s)*, conecta con un verbo conjugado y escribir la cita en un párrafo aparte con la página de la cita en paréntesis al final de este. Por **ejemplo**: 
 
 En sentido, Jiménez-Cortes y Vesga-Bravo (2022) explican que:
 
@@ -104,11 +104,11 @@ En el salón de clase se debe dar la oportunidad para analizar tópicos polític
 
 Cuando se quiere expresar la idea central de uno o varios párrafos de una obra, entonces la cita indirecta o parafraseada puede ser la opción adecuada.
 
-En realidad, la cita parafraseada no tiene ninguna característica particular. Únicamente, se requiere del Apellido Autor (año de publicación), conectar con un verbo conjuntado y realizar una paráfrasis de un fragmento de texto de la obra. Por ejemplo:
+En realidad, la cita parafraseada no tiene ninguna característica particular. Únicamente, se requiere del Apellido Autor (año de publicación), conectar con un verbo conjuntado y realizar una paráfrasis de un fragmento de texto de la obra. Por **ejemplo**:
 
 Así pues, de acuerdo con Martínez y Rodríguez (2018), la pandemia por covid-19 fue una época de caos social, económico y política, en vista de que en la época reciente no se había vivido un fenómeno de esta naturaleza que afectara a la humanidad en su totalidad.
 
-Se recomienda que al realizar una cita parafraseada, se le dedique el párrafo completo para que las personas lectoras tenga claridad de quién escribe. Además, si quiere continuar la paráfrasis en otro renglón, repita la cita para una mayor claridad. Finalmente, se puede indicar la página de donde se está realizando la paráfrasis, para que las personas lectoras interesadas en ese fragmento, puedan encontrarlo con mayor facilidad. Por ejemplo:
+Se recomienda que al realizar una cita parafraseada, se le dedique el párrafo completo para que las personas lectoras tenga claridad de quién escribe. Además, si quiere continuar la paráfrasis en otro renglón, repita la cita para una mayor claridad. Finalmente, se puede indicar la página de donde se está realizando la paráfrasis, para que las personas lectoras interesadas en ese fragmento, puedan encontrarlo con mayor facilidad. Por **ejemplo**:
 
 Volio y Vega (2012, p. 12) afirman que los trabajos pesados, tanto en construcción como en agricultura, son fuentes importantes de empleos en las regiones costeras y rurales del país logrando que múltiples familias pueden sostenerse por encima de la Línea de Pobreza (LP), pero, dado su carácter informal, comprometen la salud física de las personas trabajadoras al no contar seguridad social y jornadas extenuantes bajo condiciones extremas de temperaturas.
 
@@ -134,3 +134,6 @@ En este [Enlace](https://normas-apa.org/referencias/ejemplos/) podrá observar c
 # Bibliografía
 
 Sánchez, C. (s.f.). *Guía Normas APA: 7a edición* [Archivo PDF]. [Enlace](https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf).
+
+# Material de interés
+En 2023, la ASOESEM organizó un **Taller sobre APA 7** con un enfoque en la citación del lenguaje matemático. Presione [Aquí](https://asoesem.org/articulos/taller-apa-7-edicion-para-matematicas) para ver la grabación de dicho Taller.
