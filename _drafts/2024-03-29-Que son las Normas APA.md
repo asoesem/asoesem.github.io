@@ -4,7 +4,7 @@ title: ¿Qué son las Normas APA?
 description: Resumen de las principales disposiones de las Normas APA séptima edición.
 date: 2024-03-29T18:00:00-06:00
 author: sebas
-image: '/images/42.jpg'
+image: '/images/124.jpg'
 tags: [normas APA, académico]
 commissions: [cofoma]
 featured: true
