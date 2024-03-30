@@ -46,7 +46,7 @@ Los trabajos académicos suelen ser extensos y utilizan una estructura bien defi
 
 En caso de requerir utilizar más niveles de subtítulos, visite el siguiente enlace ([Toque aquí](https://normas-apa.org/formato/titulos-y-subtitulos/)). 
 
-Además, APA 7 establece que la **enumeración de las páginas** **debe estar en la página *superior derecha*, iniciando desde la portada.
+Además, APA 7 establece que la **enumeración de las páginas** debe estar en la página *superior derecha*, iniciando desde la portada.
 
 ![Enumeración de las páginas](/images/123.png)
 
@@ -66,7 +66,7 @@ Los trabajos académicos deben referenciar los trabajos más recientes y/o funda
 - Cita textual, también llamada *cita directa*.
 - Cita parafraseada, también llamada *cita indirecta*.
 
-Nota futura: Si son 3 o más autores, se utilizan los apellidos de la primera persona autora y se utiliza *et al.* .
+**Nota futura**: Si son 3 o más autores, se utilizan los apellidos de la primera persona autora y se utiliza *et al*.
 
 ## Cita textual
 
@@ -76,11 +76,15 @@ Cuando se busca utilizar explícitamente las afirmaciones o resultados de una ob
 
 Si la cita es de **menos de 40 palabras**, entonces la cita se integrará en el párrafo actual, lo que se realizar de dos formas: una cita narrativa o una cita integrador
 
-Una **cita narrativa** introduce los *apellidos de la(s) persona(s) autora(s)* *(año de publicación)*, los conecta con un verbo conjugado, para luego escribir la cita entre comillas y finalizar con la página entre paréntesis. Por **ejemplo**:
+Una **cita narrativa** introduce los *apellidos de la(s) persona(s) autora(s)* *(año de publicación)*, los conecta con un verbo conjugado, para luego escribir la cita entre comillas y finalizar con la página entre paréntesis. 
+
+**Ejemplo**:
 
 En ese sentido, Jiménez-Cortes y Vesga-Bravo (2022) indican que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (p. 3), por lo que los docentes, en colaboración con las autoridades administrativas, deben procurar el fomento de este tipo de pedagogía.
 
-De igual manera, una **cita integradora** expone la cita directa entre comillas y luego cierra con la referencia en el siguiente formato: *(Apellidos del Autor y Apellidos de la Autora, año de publicación, página de la obra)*, utilizándola como parte del mismo texto. Por **ejemplo**:
+De igual manera, una **cita integradora** expone la cita directa entre comillas y luego cierra con la referencia en el siguiente formato: *(Apellidos del Autor y Apellidos de la Autora, año de publicación, página de la obra)*, utilizándola como parte del mismo texto.
+
+**Ejemplo**:
 
 Dado que “la pedagogía crítica hace referencia a la creación de conocimiento desde diferentes áreas a partir de reflexiones sobre una    comunidad, de manera que los individuos se cuestionen y responsabilicen de sus acciones ante la sociedad” (Jiménez-Cortes y              Vesga-Bravo, 2022, p. 3), los docentes deben ser formados y capacitados desde esta misma pedagogía. 
 
@@ -88,13 +92,15 @@ Dado que “la pedagogía crítica hace referencia a la creación de conocimient
 
 Si la cita textual es de más de 40 palabras, se separará del párrafo actual con sangría de 1.27 cm a la izquierda y sin comillas.
 
-Una **cita narrativa en bloque** introduce los *apellidos de la(s) persona(s) autora(s)*, conecta con un verbo conjugado y escribir la cita en un párrafo aparte con la página de la cita en paréntesis al final de este. Por **ejemplo**: 
+Una **cita narrativa en bloque** introduce los *apellidos de la(s) persona(s) autora(s)*, conecta con un verbo conjugado y escribir la cita en un párrafo aparte con la página de la cita en paréntesis al final de este. 
+
+**Ejemplo**:
 
 En sentido, Jiménez-Cortes y Vesga-Bravo (2022) explican que:
 
 En el salón de clase se debe dar la oportunidad para analizar tópicos políticos, económicos y sociales dentro de las propias realidades, de modo que los estudiantes puedan usar su aprendizaje matemático, el pensamiento aleatorio y variacional, para comprender las situaciones, darle significado a sus argumentos o posturas y reflexionar sobre sí mismos, lo cual, contribuye al desarrollo de su capacidad crítica e incentiva la construcción de argumentos con responsabilidad social. (p. 5)
 
-También, se puede escribir así:
+**Ejemplo (con otro estilo):**
 
 En ese sentido, se ha explicado que:
 
@@ -104,11 +110,15 @@ En el salón de clase se debe dar la oportunidad para analizar tópicos polític
 
 Cuando se quiere expresar la idea central de uno o varios párrafos de una obra, entonces la cita indirecta o parafraseada puede ser la opción adecuada.
 
-En realidad, la cita parafraseada no tiene ninguna característica particular. Únicamente, se requiere del Apellido Autor (año de publicación), conectar con un verbo conjuntado y realizar una paráfrasis de un fragmento de texto de la obra. Por **ejemplo**:
+En realidad, la cita parafraseada no tiene ninguna característica particular. Únicamente, se requiere del Apellido Autor (año de publicación), conectar con un verbo conjuntado y realizar una paráfrasis de un fragmento de texto de la obra. 
+
+**Ejemplo**:
 
 Así pues, de acuerdo con Martínez y Rodríguez (2018), la pandemia por covid-19 fue una época de caos social, económico y política, en vista de que en la época reciente no se había vivido un fenómeno de esta naturaleza que afectara a la humanidad en su totalidad.
 
-Se recomienda que al realizar una cita parafraseada, se le dedique el párrafo completo para que las personas lectoras tenga claridad de quién escribe. Además, si quiere continuar la paráfrasis en otro renglón, repita la cita para una mayor claridad. Finalmente, se puede indicar la página de donde se está realizando la paráfrasis, para que las personas lectoras interesadas en ese fragmento, puedan encontrarlo con mayor facilidad. Por **ejemplo**:
+Se recomienda que al realizar una cita parafraseada, se le dedique el párrafo completo para que las personas lectoras tenga claridad de quién escribe. Además, si quiere continuar la paráfrasis en otro renglón, repita la cita para una mayor claridad. Finalmente, se puede indicar la página de donde se está realizando la paráfrasis, para que las personas lectoras interesadas en ese fragmento, puedan encontrarlo con mayor facilidad. 
+
+**Ejemplo**:
 
 Volio y Vega (2012, p. 12) afirman que los trabajos pesados, tanto en construcción como en agricultura, son fuentes importantes de empleos en las regiones costeras y rurales del país logrando que múltiples familias pueden sostenerse por encima de la Línea de Pobreza (LP), pero, dado su carácter informal, comprometen la salud física de las personas trabajadoras al no contar seguridad social y jornadas extenuantes bajo condiciones extremas de temperaturas.
 
