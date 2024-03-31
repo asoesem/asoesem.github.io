@@ -36,7 +36,7 @@ En ocasiones, los docentes y estudiantes llegan al acuerdo de utilizar la  aline
 
 Los trabajos académicos suelen ser extensos y utilizan una estructura bien definida que conlleva la utilización de títulos y subtítulos para separar el documento apropiadamente. En ese sentido, APA 7 establece la siguiente jerarquía de títulos:
 
-**Figura 1**
+**Tabla 1**
 
 *Jerarquía de títulos y subtítulos, de acuerdo con las Normas APA 7*.
 
