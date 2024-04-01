@@ -2,7 +2,7 @@
 layout: page
 title: Organización
 permalink: /organizacion/
-image: '/images/36.jpg'
+image: '/images/125.png'
 ---
 
 
