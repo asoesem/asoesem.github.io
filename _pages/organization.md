@@ -34,8 +34,8 @@ image: '/images/36.jpg'
 
 * **Director**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
 * **Subdirector**: [Albert Luis Cedeño Vargas](mailto:albert.cedeno@uned.cr) <`albert.cedeno@uned.cr`>
+* **Asistente**: [Raquel Franciny Castro Retana](mailto:raquelfcastro@uned.cr) <`raquelfcastro@uned.cr`>
 
 ## Organigrama de la organización
 
 ![Configuración del formato de la hoja](/images/125.png)
-* **Asistente**: [Raquel Franciny Castro Retana](mailto:raquelfcastro@uned.cr) <`raquelfcastro@uned.cr`>
