@@ -2,8 +2,9 @@
 layout: page
 title: Organización
 permalink: /organizacion/
-image: '/images/125.png'
+image: '/images/36.jpg'
 ---
+![Configuración del formato de la hoja](/images/125.png)
 
 
 ## [Junta Directiva](mailto:asoesem@uned.ac.cr)
