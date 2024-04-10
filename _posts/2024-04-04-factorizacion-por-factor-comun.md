@@ -38,7 +38,7 @@ $$3xy+5xz+7xh-11xp$$
 
 ¿Qué tienen en común todos los monomios presentados en la expresión anterior?
 
-Como podemos observar, todos los monomios tienen en común la letra $$x$$, por lo que podríamos entonces decir que todas las expresiones son divisibles entre $x$, de la siguiente forma: 
+Como podemos observar, todos los monomios tienen en común la letra $$x$$, por lo que podríamos entonces decir que todas las expresiones son divisibles entre $$x$$, de la siguiente forma: 
 
 $$\dfrac{3xy}{x}=3y, \hspace{1cm} \dfrac{5xz}{x}=5z, \hspace{1cm} \dfrac{7xh}{x}=7h, \hspace{1cm} \dfrac{-11xp}{x}=-11p$$
 
