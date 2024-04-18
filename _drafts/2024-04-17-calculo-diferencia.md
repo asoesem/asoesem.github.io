@@ -5,6 +5,7 @@ description: Una breve expliación del uso del cálculo diferencial en contextos
 date: 2024-04-17T11:00:00-06:00
 author: marcio
 image: '/images/117.png'
+video embed: (https://www.youtube.com/embed/eEYrTX8Dgx8?si=B4HymNEHKrq7C8cU)
 tags: [matemáticas, calculo diferencial, matemática aplicada, educación]
 #commissions: [cofoma]
 #featured: true
@@ -35,3 +36,5 @@ Ingrediente para hacer arroz:
 - Aceite
 - Sal
 - Arroz
+
+<embed><iframe width="560" height="315" src="https://www.youtube.com/embed/eEYrTX8Dgx8?si=B4HymNEHKrq7C8cU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
