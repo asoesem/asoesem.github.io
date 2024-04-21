@@ -134,7 +134,7 @@ En mi caso, mi estrategia consistió en lo siguiente:
 * **Foro de Consultas**: Consulté extensivamente en los foros. Cada vez que me encontraba algo en el libro que no comprendía, escribía una entrada en el foro y compañeros y tutores siempre me ayudaron a encontrar las respuestas. Escribí varias decenas de preguntas en el foro, y participé en discusiones muy interesantes y enriquecedoras con compañeros y profesores. Siempre me ha parecido extraño que los estudiantes no explotamos más este recurso, pero en mi caso personal siempre hago el propio de aclarar mis dudas en los foros. 
 * **Tutorías**: Estuve presente en todas las tutorías y tuve oportunidad de evacuar dudas adicionales y solicitar guía del tutor sobre como prepararme apropiadamente para las evaluaciones comprensivas. No siempre es fácil asistir a las tutorías, y al ser en fines de semana, muchos prefieren verlas de forma asíncrona. Sin embargo, el estar presente en las tutorías, no solo le permite al estudiante realizar consultas en tiempo real, sino que además le permite construir una relación con el tutor y sus compañeros que no se puede desestimar. Esta participación activa puede hacer la experiencia de aprendizaje algo más enriquecedor y, en mi caso, ha sido clave para el éxito. Entonces, cuando el curso tiene un buen tutor, como es el caso de este curso, pienso que vale la pena asistir en vivo siempre que sea posible.
 * **Preevaluación Comprensiva**: Evalué mi desempeño previo a las comprensivas utilizando solucionarios de ediciones anteriores del curso (que se ofrecen más abajo) y los ejercicios de autoevaluación al final de los capítulos. Éstos me sirvieron para determinar si mi nivel de preparación era el óptimo y corregir cualquier vacío de conocimiento o falta de habilidad previo a la realización de las tareas comprensivas.
-* **Redacción de Notas de Estudio**: A medida que estudiaba el material didáctico iba redactando mis propias notas de referencia que utilizaba luego para repasar puntos clave. Acá les dejo [mis notas][38] para que las descarguen, por si de algo les sirven a otros que planean llevar el curso.
+* **Redacción de Notas de Estudio**: A medida que estudiaba el material didáctico iba redactando mis propias notas de referencia que utilizaba luego para repasar puntos clave. Acá les dejo [mis anotaciones][38] para que las descarguen, por si de algo les sirven a otros que planean llevar el curso.
 * **Apoyo Tecnológico**: me apoyé en herramientas tecnológicas como [Wolfram Alpha][40], [HP Prime][44], [Geogebra][42] y [ChatGPT][43] para ayudarme a comprender y dominar el material, comprobar mis respuestas, explorar soluciones alternativas, etc.
 
 ## Vídeos de Soporte Adicional
@@ -251,7 +251,7 @@ Si ya has aprobado Matemática Introductoria (03463) y deseas llevar el curso de
 [30]:https://www.people.vcu.edu/~rhammack/BookOfProof/
 [31]:https://users.metu.edu.tr/serge/courses/111-2011/textbook-math111.pdf
 [32]:https://www.tedsundstrom.com/mathematical-reasoning-writing-and-proof
-[33]:https://www.tec.ac.cr/node/26343
+[33]:[https://www.tec.ac.cr/node/26343](https://libros.tec.ac.cr/introduccion-a-la-matematica-discreta-ll5jy.html)
 [34]:https://orientacionesacademicas.uned.ac.cr/consultas/
 [35]:https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx
 [36]:https://www.geogebra.org/m/kzndx3qa
