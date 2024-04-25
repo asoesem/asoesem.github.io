@@ -9,3 +9,5 @@ image: '/images/106.jpg'
 # instagram: https://www.instagram.com
 ---
 Presidente de la Asociación de Estudiantes de Enseñanza de la Matemática de la UNED.
+
+Estudiante de la carrera de la Enseñanza de la Matemática de la UNED. 
