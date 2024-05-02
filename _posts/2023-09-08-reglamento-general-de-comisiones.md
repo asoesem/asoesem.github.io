@@ -124,4 +124,4 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Articulo 39.** Las reformas parciales o totales de este presente reglamento deberán ser aprobadas por la Asamblea General Extraordinaria de la ASOESEM.
 
-***(Reforma total integral realizada en Asamblea General Extraordinaria #21 el el 27 de abril del año 2024)***
+***(Reforma total integral realizada en Asamblea General Extraordinaria #21 el 27 de abril del año 2024)***
