@@ -145,4 +145,16 @@ En este [Enlace](https://normas-apa.org/referencias/ejemplos/) podrá observar c
 
 Sánchez, C. (s.f.). *Guía Normas APA: 7a edición* [Archivo PDF]. [Enlace](https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf).
  
-**Material de interés**: En 2023, la ASOESEM organizó un **Taller sobre APA 7** con un enfoque en la citación del lenguaje matemático. Presione [Aquí](https://asoesem.org/articulos/taller-apa-7-edicion-para-matematicas) para ver la grabación de dicho Taller.
+##Material de interés
+En este 2024, Onda UNED realizó una **Alfabetización sobre APA 7** donde explica las normas más relevantes en torno a este sistema de citación: 
+
+<iframe width="600" height = "420"
+src="https://www.youtube.com/embed/g4M08HYT9qs?si=zwIOBzJBUifJAjf0">
+</iframe>
+
+En 2023, la ASOESEM organizó un **Taller sobre APA 7** con un enfoque en la citación del lenguaje matemático:
+
+<iframe width="600" height = "420"
+src="https://www.youtube.com/embed/8cMi_gAW39o?si=BLJVnOHjoADHIOio">
+</iframe>
+
