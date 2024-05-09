@@ -151,7 +151,7 @@ Explica las normas más relevantes en torno a este sistema de citación:
 
 <iframe width="600" height = "420"
 src="https://www.youtube.com/embed/g4M08HYT9qs?si=zwIOBzJBUifJAjf0">
-</iframe> \\
+</iframe>
 
 ### Taller sobre APA 7 con enfoque en matemáticas ###
 Explica las normas más relevantes acerca de la citación del trabajos matemáticos:
