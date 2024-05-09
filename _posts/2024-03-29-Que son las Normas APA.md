@@ -145,14 +145,14 @@ En este [Enlace](https://normas-apa.org/referencias/ejemplos/) podrá observar c
 
 Sánchez, C. (s.f.). *Guía Normas APA: 7a edición* [Archivo PDF]. [Enlace](https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf).
 
-### Alfabetización sobre APA 7 ###
+## Alfabetización sobre APA 7 ##
 Explica las normas más relevantes en torno a este sistema de citación: 
 
 <iframe width="600" height = "420"
 src="https://www.youtube.com/embed/g4M08HYT9qs?si=zwIOBzJBUifJAjf0">
 </iframe>
 
-### Taller sobre APA 7 con enfoque en matemáticas ###
+## Taller sobre APA 7 con enfoque en matemáticas ##
 Explica las normas más relevantes acerca de la citación del trabajos matemáticos:
 
 <iframe width="600" height = "420"
