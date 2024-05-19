@@ -20,7 +20,7 @@ image: '/images/36.jpg'
 
 ## [Comisión de Fortalecimiento Matemático](mailto:cofoma.asoesem@gmail.com)
 
-* **Director**: [Jordi Sebastián Morales Araya](mailto:jordi.morales@uned.cr) <`jordi.morales@uned.cr`>
+* **Director**: [Jordy Sebastián Morales Araya](mailto:jordy.morales@uned.cr) <`jordy.morales@uned.cr`>
 * **Subdirector**: [Edwin Dalorzo Marín](mailto:edwin.dalorzo@uned.cr) <`edwin.dalorzo@uned.cr`>
 * **Asistente**: [María del Pilar Salguero Ortíz](mailto:mdsalguero@uned.cr) <`mdsalguero@uned.cr`>
 
