@@ -14,10 +14,12 @@ share: true
 ---
 ## Convocatoria a la Asamblea General Ordinaria de la Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas de la UNED
 
-A todos los estudiantes de la carrera de la enseñanza de la matemática de la UNED, miembros activos de la AOESEM; se les convoca a la Asamblea Ordinaria del año 2024. En esta Asamblea se elegirá el nuevo directorio de la Asociación; además se escucharán informes de cada una de las dependencias y se tomarán acuerdos importantes para toda la comunidad. 
+A todos los estudiantes de la carrera de la enseñanza de la matemática de la UNED, miembros activos de la ASOESEM; se les convoca a la Asamblea Ordinaria del año 2024. En esta Asamblea se elegirá el nuevo directorio de la Asociación; además se escucharán informes de cada una de las dependencias y se tomarán acuerdos importantes para toda la comunidad. 
 
 El requisito para participar es ser afiliado activo a la Asociación, según el estatuto de la ASOESEM. 
 
 ### ¿Cuando será?
 
 La Asamblea General Ordinaria como máximo órgano de la ASOESEM, será celebrada el 20 de junio a las 17:00 hras en primera convocatoria y a las 18:00 hras en segunda convocatoria.
+
+Para mayor información puedes comunicarte con nosotros al correo electrónico [asoesem@uned.ac.cr](maito:asoesem@uned.ac.cr) o bien a nuestro número de Whatsapp +506 62445332
