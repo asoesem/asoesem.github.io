@@ -252,7 +252,7 @@ A continuación se presenta una lista de algunos de los más útiles cursos de m
 * [Generative AI for Educators & Teachers Specialization][63]
 * [Innovative Teaching with ChatGPT][64]
 
-### University of Illinois at Urbana-Champaign - EEUU
+### University of Illinois at Urbana-Campaign - EEUU
 
 * [Learning Technologies Foundations and Applications][65]
 * [Constructivism and Mathematics, Science, and Technology Education][66]
