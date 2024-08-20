@@ -5,10 +5,10 @@ description: Resumen de las principales disposiones de las Normas APA 7.
 date: 2024-03-29T18:00:00-06:00
 author: sebas
 image: '/images/124.jpg'
-tags: [normas APA, académico]
+tags: [apa]
 commissions: [cofoma]
-featured: true
-comments: true
+featured: false
+comments: false
 share: true
 ---
 

@@ -5,10 +5,10 @@ description: Se explica la factorización por medio de factor común.
 date: 2024-04-04T11:00:00-06:00
 author: axell
 image: '/images/117.png'
-tags: [matemáticas, académico, précalculo, álgebra]
+tags: [matemáticas, précalculo, álgebra]
 #commissions: [cofoma]
 featured: true
-comments: true
+comments: false
 share: true
 ---
 # ¿Qué es la factorización?

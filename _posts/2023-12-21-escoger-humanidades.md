@@ -8,7 +8,7 @@ image: '/images/53.jpg'
 video_embed: https://www.youtube.com/embed/Cri1-Wwe2p8?si=tg4_ny-ojwzTK7Pj
 tags: [noticias,matrícula]
 commissions: [cocodi]
-featured: false
+featured: true
 comments: true
 share: true
 ---
