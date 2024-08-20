@@ -23,11 +23,17 @@ Se elegirá el 23 de agosto del 2024
 
 ***Representante ante la Comisión Autoevaluadora de la carrera de la Enseñanza de la Matemática de la UNED***:
 * **[Nirleydi Artavia Jimenez](mailto:nirleydi.artavia@uned.cr) <`nirleydi.artavia@uned.cr`>
-***Representante ante el Consejo de Ciencias Exactas y Naturales de la UNED***:
+  
+***Representantes ante el Consejo de Ciencias Exactas y Naturales de la UNED***:
 * **[Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
+* **[Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
 
 ## Representantes estudiantes ante Asambleas Generales de la FEUNED
 * **Titular I de la ASOESEM ante la FEUNED**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
+* **Titular II de la ASOESEM ante la FEUNED**: [Edwin Dalorzo Marin](mailto:edwin.dalorzo@uned.cr) <`edwin.dalorzo@uned.cr`>
+* **Titular III de la ASOESEM ante la FEUNED**: [Jordy Morales Araya](mailto:jordi.morales@uned.cr) <`jordi.morales@uned.cr`>
+* **Titular IV de la ASOESEM ante la FEUNED**: [Noemy Hernandez Esquivel](mailto:noemy.hernandez@uned.cr) <`noemy.hernandez@uned.cr`>
+* **Suplente I de la ASOESEM ante la FEUNED**: Maria del Pilar Salguero Ortiz
 
 
 ## Organigrama de la organización
