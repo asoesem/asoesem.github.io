@@ -16,7 +16,9 @@ share: true
 📢 Te invitamos a participar en la mesa redonda "Aprendizaje Adaptativo en la Inteligencia Artificial" 
 📅 22 de agosto
 ⏰ 10:00hrs (Centroamérica)
-👉 Registro: https://us02web.zoom.us/.../reg.../WN_lVPLt9i6TX-Y9umx6Nzc-Q
+👉 Registro: [https://us02web.zoom.us/.../reg.../WN_lVPLt9i6TX-Y9umx6Nzc-Q](https://us02web.zoom.us/.../reg.../WN_lVPLt9i6TX-Y9umx6Nzc-Q)
+
+
 Se entregará certificado de participación
 
 ![Configuración del formato de la hoja](/images/127.jpg)
