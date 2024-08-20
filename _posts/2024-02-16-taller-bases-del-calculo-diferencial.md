@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bases del cálculo diferencial
+title: Bases del Cálculo Diferencial
 description: Se presenta un breve invitación a la videotransmisión de un taller impartido por la COCODI de la ASOESEM UNED
 date: 2024-02-16T15:00:00-06:00
 author: axell

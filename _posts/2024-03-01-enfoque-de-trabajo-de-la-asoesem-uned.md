@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Presidente da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024
+title: Enfoque de Trabajo de la Asociación para el I Semestre 2024
 description: Ruta de trabajo de la ASOESEM UNED
 date: 2024-01-03T10:00:00-00:00
 #author: axell
