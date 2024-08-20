@@ -4,7 +4,7 @@ title: Aprendizaje Adaptativo en la Inteligencia Artificial
 description: El Consejo Superior Universitario organiza una videoconferencia sobre el uso de la inteligencia artifical. 
 date: 2024-20-08T15:00:00-00:00
 #author: axell
-image: '/images/127.jpg'
+image: '/images/128.jpg'
 tags: [noticias]
 commissions: [cocodi]
 featured: false
@@ -19,4 +19,4 @@ share: true
 👉 Registro: https://us02web.zoom.us/.../reg.../WN_lVPLt9i6TX-Y9umx6Nzc-Q
 Se entregará certificado de participación
 
-![Configuración del formato de la hoja](/images/126.jpg)
+![Configuración del formato de la hoja](/images/127.jpg)
