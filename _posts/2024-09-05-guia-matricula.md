@@ -5,18 +5,16 @@ description: Principales páginas web e información relacionada a la matrícula
 date: 2024-09-05T18:00:00-06:00
 author: sebas
 image: '/images/130.jpg'
-tags: [Matrícula]
+tags: [matricula]
 commissions: [cocodi]
 featured: false
 comments: false
 share: true
 ---
 
-# Guía (casi) infalible para matricular en la UNED
-
 Sabemos que la Universidad Estatal a Distancia (UNED) tiene sus particulares, algunas curiosas y otras no tanto, para matricular al inicio de cada cuatrimestre, así que este artículo pretende reunir la mayor cantidad de páginas web e información, especialmente para estudiantes de Enseñanza de la Matemática, para lograr una satisfactoria matrícula.
 
-# **Sitios principales de la UNED**
+# Sitios principales de la UNED
 
 ## Sitios de trámites e información general
 
