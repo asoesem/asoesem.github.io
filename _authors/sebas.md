@@ -8,4 +8,4 @@ image: '/images/105.jpg'
 # facebook: https://www.facebook.com
 # instagram: https://www.instagram.com
 ---
-Director de la Comisión de Fortalecimiento Matemático.
+Exdirector de la Comisión de Fortalecimiento Matemático (2023-2024). Representante estudiantil de la ASOESEM ante la FEUNED.
