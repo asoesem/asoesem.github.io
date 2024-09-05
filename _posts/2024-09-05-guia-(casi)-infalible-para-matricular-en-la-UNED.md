@@ -141,11 +141,9 @@ Herramientas Multimediales II: [Enlace](https://chat.whatsapp.com/C8Ousa80n5QH2m
 
 Electiva (3 créditos). Escoger una de las siguientes:
 
-Construcciones Geométricas: [Enlace](https://chat.whatsapp.com/Gjh6Tbw1oMqECRJxsRv69j) 
-
-Geometrías no Euclídeas: [Enlace](https://chat.whatsapp.com/KvLuygQLx2Z1iWxO79sEH0)
-
-Herramientas básicas de investigación: [Enlace](https://chat.whatsapp.com/HHMvDogiUuF4bAXlbMOZVD)
+* Construcciones Geométricas: [Enlace](https://chat.whatsapp.com/Gjh6Tbw1oMqECRJxsRv69j) 
+* Geometrías no Euclídeas: [Enlace](https://chat.whatsapp.com/KvLuygQLx2Z1iWxO79sEH0)
+* Herramientas básicas de investigación: [Enlace](https://chat.whatsapp.com/HHMvDogiUuF4bAXlbMOZVD)
 
 ## Bloque K
 
