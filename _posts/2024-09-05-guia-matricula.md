@@ -46,7 +46,7 @@ Sabemos que la Universidad Estatal a Distancia (UNED) tiene sus particulares, al
 
 # Chats de los Cursos
 
-Los siguientes enlaces permiten ingresar a los chats de los cursos de Enseñanza de Matemática en WhatsApp, los cuales son gestiones por la ASOESEM.
+Los siguientes enlaces permiten ingresar a los chats de los cursos de Enseñanza de Matemática en WhatsApp, los cuales son gestionados por la ASOESEM.
 
 ## BLOQUE 0
 
