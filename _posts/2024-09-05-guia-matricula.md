@@ -4,7 +4,7 @@ title: Guía (casi) infalible para matricular en la UNED
 description: Principales páginas web e información relacionada a la matrícula en la UNED.
 date: 2024-09-05T18:00:00-06:00
 author: sebas
-image: '/images/130.jpg'
+image: '/images/130.png'
 tags: [matricula]
 commissions: [cocodi]
 featured: true
