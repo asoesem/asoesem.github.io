@@ -7,7 +7,7 @@ author: sebas
 image: '/images/130.jpg'
 tags: [matricula]
 commissions: [cocodi]
-featured: false
+featured: true
 comments: false
 share: true
 ---
