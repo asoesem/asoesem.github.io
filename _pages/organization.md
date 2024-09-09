@@ -16,17 +16,17 @@ image: '/images/36.jpg'
 
 ## Fiscalía
 
-Se elegirá el 23 de agosto del 2024 
+* [Stefanny Leiva](mailto:stefanny.leiva@uned.cr) <`stefanny.leiva@uned.cr`>
 
 
 ## Representantes estudiantiles recomendados por la ASOESEM, nombrados por la FEUNED
 
 ***Representante ante la Comisión Autoevaluadora de la carrera de la Enseñanza de la Matemática de la UNED***:
-* **[Nirleydi Artavia Jimenez](mailto:nirleydi.artavia@uned.cr) <`nirleydi.artavia@uned.cr`>
+* [Nirleydi Artavia Jimenez](mailto:nirleydi.artavia@uned.cr) <`nirleydi.artavia@uned.cr`>
   
 ***Representantes ante el Consejo de Ciencias Exactas y Naturales de la UNED***:
-* **[Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
-* **[Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
+* [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
+* [Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
 
 ## Representantes estudiantes ante Asambleas Generales de la FEUNED
 * **Titular I de la ASOESEM ante la FEUNED**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
