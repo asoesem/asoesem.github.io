@@ -3,7 +3,7 @@ layout: post
 title: Taller de APA 7° edición para matemáticas
 description: Se presenta un breve video de un taller impartido por CIDREB de la UNED con la ASOESEM UNED
 date: 2023-01-10T15:00:00-06:00
-#author: axell
+author: asoesem
 image: '/images/113.png'
 video_embed: https://www.youtube.com/embed/8cMi_gAW39o?si=nEPW38h1Mu92PlMv
 tags: [noticias]
