@@ -5,7 +5,7 @@ description: Se les invita a participar en el Seminario de Innovación en la Ens
 date: 2024-09-10T18:00:00-06:00
 author: asoesem
 image: '/images/133.png'
-tags: [seminarios,pedagogia]
+tags: [noticias,seminarios,pedagogia]
 commissions: [cocodi]
 featured: true
 comments: true
