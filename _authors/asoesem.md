@@ -1,7 +1,7 @@
 ---
 username: asoesem
 name: Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas de la UNED
-image: 'asoesem-uned.png'
+image: '132.png'
 # location:
 website: https://asoesem.org
 # twitter: https://twitter.com
