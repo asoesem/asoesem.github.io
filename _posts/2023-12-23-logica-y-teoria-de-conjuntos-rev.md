@@ -12,7 +12,7 @@ comments: true
 share: true
 ---
 
-Recientemente, aprobé el curso de Lógica y Teoría de Conjuntos (03423) y decidí sacar el rato para hacer una breve reseña que tal vez pueda ser útil a otros estudiantes que apenas están considerando llevarlo por primera vez.
+Esta es una reseña sobre el curso Lógica y Teoría de Conjuntos (03423) de la carrera de Enseñanza de la Matemática de la UNED.
 
 ## Descripción General del Curso
 
@@ -20,15 +20,15 @@ El curso se divide en dos módulos, el primero de los cuales cubre temas de lóg
 
 Durante todo el curso se pone gran énfasis en el desarrollo de habilidades fundamentales para la escritura formal de demostraciones matemáticas usando diferentes estrategias: demostración directa, contrarecíproca, por contradicción, por inducción matemática, y por contraejemplo. Muchos de los ejercicios no solo requieren la escogencia de una estrategia de demostración, sino también tener presentes algunas propiedades básicas de los enteros, como la paridad y la divisibilidad, solo para mencionar un par de ejemplos.
 
-A pesar de que muchos de nosotros ya estamos familiarizados con las propiedades básicas de los conjuntos numéricos, como la asociatividad, conmutatividad y distributividad, así como con operaciones fundamentales como la suma, resta, multiplicación y división, el segundo módulo del curso nos desafía a explorar estos conceptos con un nivel de abstracción y formalismo mucho mayor. Aquí, no solo repasamos estas propiedades y operaciones, sino que también aprendemos a demostrarlas matemáticamente, lo cual aporta una comprensión más profunda y rigurosa de los fundamentos matemáticos.
+A pesar de que muchos ya están familiarizados con las propiedades básicas de los conjuntos numéricos, como la asociatividad, conmutatividad y distributividad, así como con operaciones fundamentales como la suma, resta, multiplicación y división, el segundo módulo del curso desafía a explorar estos conceptos con un nivel de abstracción y formalismo mucho mayor. Aquí, no solo se repasan estas propiedades y operaciones, sino que también se aprende a demostrarlas matemáticamente, lo cual aporta una comprensión más profunda y rigurosa de los fundamentos matemáticos.
 
 ## Libro del Curso
 
 La siguiente tabla de contenidos es una muestra de lo que se cubre en el índice de la Unidad Didáctica Modular (UDM) del curso, el libro [Lógica y Teoría de Conjuntos][12] de Allan Gen Palma e Ismael Morales Garay. 
 
-Desafortunadamente el libro no existe en formato digital, pero aquellos que deseen conseguirlo anticipadamente, lo pueden comprar en la [Librería Virtual de la UNED][39]. Si lo compran en línea, la UNED lo enviará a la puerta de sus casas. 
+Desafortunadamente, el libro no existe en formato digital, pero aquellos que deseen conseguirlo anticipadamente, lo pueden comprar en la [Librería Virtual de la UNED][39]. Si lo compran en línea, la UNED lo enviará a la puerta de sus casas. 
 
-* **Modulo 1:** Fundamentos de lógica y conjuntos:
+* **Módulo 1:** Fundamentos de lógica y conjuntos:
     * Proposiciones y leyes de la lógica:
         * Conectivas: Negación, conjunción, disyunción, condicional, bicondicional.
         * Tablas de verdad.
@@ -40,7 +40,7 @@ Desafortunadamente el libro no existe en formato digital, pero aquellos que dese
         * Leyes de DeMorgan.
     * Relaciones binarias:
         * Inversa de una relación binaria.
-        * Propiedades de las relaciones binarias: reflexiva, simétrica, antisimétrica, transtiva.
+        * Propiedades de las relaciones binarias: reflexiva, simétrica, antisimétrica, transitiva.
         * Relaciones de equivalencia.
         * Relaciones de orden.
         * Clases de equivalencia.
@@ -85,10 +85,10 @@ La evaluación consistió en los siguientes instrumentos:
 
 Haz clic en los enlaces proporcionados para ver solucionarios y ejemplos de los instrumentos en cuestión. Los enlaces apuntan a recursos en el OneDrive de la UNED, así que necesitarás ingresar con tu cuenta institucional para tener acceso a estos recursos.
 
-* **Los quizzes** son lo que, usualmente, llamamos "actividad en plataforma", y que son preguntas con selección de respuesta única. Con frencuencia, los quizzes comprueban que se ha leído y comprendido el material de un módulo. El quiz es relativamente sencillo si se ha estudiado el material de un módulo, sin embargo, no se deben tomar a la ligera, porque es fácil equivocarse y perder puntos valiosos.
-* **El taller** por su parte, consistió en dos partes, la primera se enfocó en resolver algunos ejercicios en Geogebra (ninguno de ellos directente relacionados con el material del curso) y una segunda parte que consistía en escribir un Taller de Geogebra para estudiantes de secundaria, basándonos en lo visto hasta el momento en el curso. Les dejo acá, [a manera de ejemplo][36], el que yo desarrollé para este curso. No es instrumento difícil de desarrollar, pero es algo laborioso de implementar.
-* **La tarea** es un instrumento muy similar a una comprensiva, con seis problemas a resolver, solo que se concede una semana de tiempo para entregala. Los problemas presentados pueden ser laboriosos de resolver, pero no son realmente difíciles si se ha estudiado el material bajo evaluación a conciencia.
-* **Las comprensivas** son exámenes cronometrados que usualmente contienen cinco o seis problemas del material correspondiente a una unidad de estudio y que se realizan en un día domingo de 1 PM a 5 PM. Yo creo que todos sabemos que las comprensivas no se deben tomar a la ligera porque algunos de los problemas suelen tener un nivel de dificultad alto. Siempre hay que prepararse a conciencia para las comprensivas o se corre el riesgo de perder valiosos puntos en uno de los instrumentos de mayor puntaje del cuatrimestre. Las comprensivas representan el 60% de la nota del curso.
+* **Actividad en plataforma** es un conjunto de preguntas con selección de respuesta única. Con frecuencia comprueban que se ha leído y comprendido el material de un módulo. El quiz es relativamente sencillo si se ha estudiado el material de un módulo; sin embargo, no se deben tomar a la ligera, porque es fácil equivocarse y perder puntos valiosos.
+* **El taller** por su parte, consistió en dos partes, la primera se enfocó en resolver algunos ejercicios en Geogebra (ninguno de ellos directamente relacionados con el material del curso) y una segunda parte que consistía en escribir un Taller de Geogebra para estudiantes de secundaria, basándonos en lo visto hasta el momento en el curso. Les dejo acá, [a manera de ejemplo][36], el que yo desarrollé para este curso. No es un instrumento difícil de desarrollar, pero es algo laborioso de implementar.
+* **La tarea** es un instrumento muy similar a una comprensiva, con seis problemas a resolver, solo que se concede una semana de tiempo para entregarla. Los problemas presentados pueden ser laboriosos de resolver, pero no son realmente difíciles si se ha estudiado el material bajo evaluación a conciencia.
+* **Las comprensivas** son exámenes cronometrados que usualmente contienen cinco o seis problemas del material correspondiente a una unidad de estudio y que se realizan en un día específico (p. ej. domingo de 1 PM a 5 PM). Se sabe que las comprensivas no se deben tomar a la ligera porque algunos de los problemas suelen tener un nivel de dificultad alto. Siempre hay que prepararse a conciencia para las comprensivas o se corre el riesgo de perder valiosos puntos en uno de los instrumentos de mayor puntaje del cuatrimestre. Las comprensivas representan el 60% de la nota del curso.
 
 
 ## Prerrequisitos y Nivel de Dificultad
@@ -96,46 +96,45 @@ Haz clic en los enlaces proporcionados para ver solucionarios y ejemplos de los 
 De acuerdo con el [plan de estudios][29] de la carrera de Enseñanza de la Matemática, este curso tiene como prerrequisito haber aprobado el curso de Álgebra y Funciones (03421).
 El curso tiene un valor de 3 créditos, entonces se supone que el curso demanda al menos 9 horas de trabajo semanal.
 
-En mi experiencia personal, la cadencia del curso no fue demandante. Y el nivel de dificultad me pareció medio. 
-Lo sentí de una dificultad inferior al del curso Álgebra y Funciones (03421). 
-El curso no exige dominio de conceptos algebraicos avanzados, pero si se requiere utilizar álgebra fundamental y, sobre todo, una buena comprensión de algunas propiedades básicas de los números a fin de desarrollar las demostraciones. El curso sí pone exigencia en el uso de abstracciones matemáticas de un nivel superior al que se ha visto en cursos previos, pues usualmente se requiere demostrar propiedades matemáticas fundamentales en otros cursos se dan por sentado.
+La cadencia del curso no fue demandante. Y el nivel de dificultad parece medio. 
+Se podría decir que es de una dificultad inferior al del curso Álgebra y Funciones (03421). 
+El curso no exige dominio de conceptos algebraicos avanzados, pero sí se requiere utilizar álgebra fundamental y, sobre todo, una buena comprensión de algunas propiedades básicas de los números a fin de desarrollar las demostraciones. El curso sí pone exigencia en el uso de abstracciones matemáticas de un nivel superior al que se ha visto en cursos previos, pues usualmente se requiere demostrar propiedades matemáticas fundamentales que en otros cursos se dan por sentado.
 
 El curso se llevó a un paso relajado y además solo se cubrieron las primeras 250 páginas del libro de clase. 
 Hay suficiente espacio de tiempo entre cada evaluación como para estudiar el material a fondo.
-Los quizzes son relativamente sencillos si se ha estudiado el material según el programa. 
+Las actividades en plataforma son relativamente sencillas si se ha estudiado el material según el programa. 
 Igualmente, tanto el taller como la tarea se pueden resolver fácilmente si se ha ido estudiando el material a conciencia. 
 Aunque las comprensivas son, como siempre, de un mayor nivel de dificultad que otros instrumentos evaluados, la realidad es que me parecieron más fáciles que las comprensivas de otros cursos que he llevado previamente.
 
-Para mi gusto, el curso se sintió como que iba demasiado lento, quizás porque hay demasiado tiempo entre los instrumentos de evaluación aplicados.
+El curso se siente un poco lento a veces, quizás porque hay demasiado tiempo entre los instrumentos de evaluación aplicados.
 Lo cual quiere decir que este curso requiere que el estudiante demuestre un alto nivel de compromiso y organización, de lo contrario es fácil desaprovechar los largos espacios de tiempo y dejar la cobertura del material para el último minuto.
 
 Aunque el material no es de un alto nivel de dificultad, sí se requieren muchas horas de práctica para dominar los temas con maestría.
-En mi opinión, ese es el principal desafío del curso: lograr un dominio sólido del material, lo que implica dedicar muchas horas de práctica. Aunque la UDM (Unidad Técnica Modular) ofrece una buena base, recomendaría buscar recursos adicionales para ejercitar con una mayor variedad de problemas, especialmente si sientes la necesidad de más práctica para reforzar tu comprensión.
+Probablemente, el principal desafío del curso es lograr un dominio sólido del material, lo que implica dedicar muchas horas de práctica. Aunque la UDM (Unidad Didáctica Modular) ofrece una buena base, es recomendable buscar recursos adicionales para ejercitarse con una mayor variedad de problemas, especialmente si se siente la necesidad de más práctica para reforzar su comprensión.
 
 
 ## Desafíos y Dificultades
 
-El libro del curso adolece de una escasez de ejercicios prácticos. Con frecuencia, me vi obligado a recurrir a fuentes externas para una práctica efectiva. 
+El libro del curso adolece de una escasez de ejercicios prácticos que obliga a recurrir a fuentes externas para una práctica efectiva. 
 La Unidad Didáctica Modular (UDM) presenta los conceptos de manera intensiva, pero no facilita el dominio práctico de los mismos. Los ejercicios de autoevaluación, al ser un compendio de varios temas, no permiten enfocarse en áreas específicas para reforzar el aprendizaje.
 
 Además, el tratamiento de los temas en el libro es, usualmente, insuficiente, careciendo de la profundidad y la variedad de ejercicios que se encuentran en otros textos. Consideren por ejemplo la cobertura del tema de demostraciones, o de inducción matemática, que en el libro de clase no es más que unas exiguas páginas. Otros libros dedican capítulos completos a cada tipo de demostración y ofrecen múltiples ejemplos y decenas de ejercicios. Es difícil alcanzar un dominio profundo del material o prepararse para las comprensivas exclusivamente usando la unidad didáctica modular.
 
-El libro del curso se siente, con frecuencia, como una larga letanía que recita un concepto tras otro, sin ofrecer al estudiante una vía para pasar de la simple comprensión de los temas al dominio y maestría de los mismos. Durante páginas y páginas no hay un solo ejercicio, sino solamente algunos ejemplos de cada tema. Al final del capítulo hay un popurrí de ejercicios, pero al estar al final del capítulo, éstos se sienten como desconectados de su contexto original. A menudo, al llegar a los ejercicios de autoevaluación uno se da cuenta de que leer y entender un ejemplo de cómo hacer una demostración no es lo mismo que escribir una. Solventar este vacío fue, para mí, el mayor reto del curso.
+El libro del curso se siente como una larga letanía que recita un concepto tras otro, sin ofrecer al estudiante una vía para pasar de la simple comprensión de los temas al dominio y maestría de los mismos. Durante páginas y páginas no hay un solo ejercicio, sino solamente algunos ejemplos de cada tema. Al final del capítulo hay un popurrí de ejercicios, pero al estar al final del capítulo, éstos se sienten como desconectados de su contexto original. A menudo, al llegar a los ejercicios de autoevaluación, uno se da cuenta de que leer y entender un ejemplo de cómo hacer una demostración no es lo mismo que escribir una. Solventar este vacío es uno de los mayores retos del curso.
 
-Otro aspecto que suele ser retador es prepararse adecuadamente para las comprensivas. Tuve un buen desempeño en la primera y la última, y un desempeño mediocre en la segunda. Mi principal error en la segunda comprensiva fue no haber practicado ejercicios de relaciones binarias del mismo nivel de dificultad a los que se presentaron en la evaluación. Fallé en conectar conceptos de divisibilidad y relaciones binarias en uno de los ejercicios, además de que fallé en utilizar demostraciones por contraejemplo para simplificar mis soluciones. Esta falta de dominio del tema me costó tiempo valioso que repercutió en mi rendimiento en la segunda comprensiva.
+La falta de ejercicios prácticos puede hacer que prepararse adecuadamente para las comprensivas sea otro reto a resolver. Una vez más, tener acceso a libros adicionales puede ayudar en este aspecto.
 
 ## Consejos para el Éxito
 
-Sin duda, todos tenemos estrategias muy diferentes para estudiar, abordar el material didáctico y prepararnos para las evaluaciones. 
-En mi caso, mi estrategia consistió en lo siguiente:
+A continuación algunas estrategias que podrían resultar exitosas:
 
-* **Material didáctico adicional**: No estudié exclusivamente con el libro del curso, sino que además conseguí material didáctico muy superior al libro de clase. Dejo algunas recomendaciones abajo, pero estoy seguro de que otros compañeros encontraron otras fuentes igualmente útiles que pueden mencionar en los comentarios.
-* **Muchísima práctica**: Leer el libro del curso es una cosa, pero dominar el material es otra. Realicé decenas de ejercicios de cada tema, particularmente en el dominio de los diferentes tipos de demostraciones. Intentar hacer los ejercicios de autoevaluación puede ser una buena forma de medir que tan bien preparado va uno para las comprensivas. En mi casi hice decenas de ejercicios de práctica de [The Book of Proof][30] de Richard Hammack. También, procuré repetir por mi cuenta los ejemplos de ejercicios que se hacían en las tutorías, a manera de comprobar si dominaba bien el material.
-* **Foro de Consultas**: Consulté extensivamente en los foros. Cada vez que me encontraba algo en el libro que no comprendía, escribía una entrada en el foro y compañeros y tutores siempre me ayudaron a encontrar las respuestas. Escribí varias decenas de preguntas en el foro, y participé en discusiones muy interesantes y enriquecedoras con compañeros y profesores. Siempre me ha parecido extraño que los estudiantes no explotamos más este recurso, pero en mi caso personal siempre hago el propio de aclarar mis dudas en los foros. 
-* **Tutorías**: Estuve presente en todas las tutorías y tuve oportunidad de evacuar dudas adicionales y solicitar guía del tutor sobre como prepararme apropiadamente para las evaluaciones comprensivas. No siempre es fácil asistir a las tutorías, y al ser en fines de semana, muchos prefieren verlas de forma asíncrona. Sin embargo, el estar presente en las tutorías, no solo le permite al estudiante realizar consultas en tiempo real, sino que además le permite construir una relación con el tutor y sus compañeros que no se puede desestimar. Esta participación activa puede hacer la experiencia de aprendizaje algo más enriquecedor y, en mi caso, ha sido clave para el éxito. Entonces, cuando el curso tiene un buen tutor, como es el caso de este curso, pienso que vale la pena asistir en vivo siempre que sea posible.
-* **Preevaluación Comprensiva**: Evalué mi desempeño previo a las comprensivas utilizando solucionarios de ediciones anteriores del curso (que se ofrecen más abajo) y los ejercicios de autoevaluación al final de los capítulos. Éstos me sirvieron para determinar si mi nivel de preparación era el óptimo y corregir cualquier vacío de conocimiento o falta de habilidad previo a la realización de las tareas comprensivas.
-* **Redacción de Notas de Estudio**: A medida que estudiaba el material didáctico iba redactando mis propias notas de referencia que utilizaba luego para repasar puntos clave. Acá les dejo [mis anotaciones][38] para que las descarguen, por si de algo les sirven a otros que planean llevar el curso.
-* **Apoyo Tecnológico**: me apoyé en herramientas tecnológicas como [Wolfram Alpha][40], [HP Prime][44], [Geogebra][42] y [ChatGPT][43] para ayudarme a comprender y dominar el material, comprobar mis respuestas, explorar soluciones alternativas, etc.
+* **Material didáctico adicional**: No estudiar exclusivamente con el libro del curso, sino que además conseguir material didáctico superior. Hay algunas recomendaciones abajo.
+* **Muchísima práctica**: Leer el libro del curso es una cosa, pero dominar el material es otra. Es bueno realizar muchos de ejercicios de práctica de cada tema, particularmente en el dominio de los diferentes tipos de demostraciones. Intentar hacer los ejercicios de autoevaluación de la UDM puede ser una buena forma de medir que tan bien preparado va uno para las comprensivas. Otro libro con una excelente batería de ejercicios es [The Book of Proof][30] de Richard Hammack. También, procuren repetir por cuenta propia todos los ejemplos de ejercicios que se vean en las tutorías, a manera de comprobar si dominan bien el material.
+* **Foro de Consultas**: Consulten extensivamente en los foros. Cada vez que se encuentren algo en el libro que no comprendan, escriban una entrada en el foro y sus compañeros y tutores les ayudarán a encontrar las respuestas. No esperen a las tutorías para resolver sus dudas, y no se queden con dudas que afectarán su rendimiento luego durante las tareas y comprensivas. 
+* **Tutorías**: Procuren asistir a las tutorías para que tengan la oportunidad de evacuar dudas adicionales y solicitar guía del tutor sobre como prepararse apropiadamente para las evaluaciones comprensivas. No siempre es fácil asistir a las tutorías, y al ser en fines de semana, muchos prefieren verlas de forma asíncrona. Sin embargo, el estar presente en las tutorías, no solo le permite al estudiante realizar consultas en tiempo real, sino que además le permite construir una relación con el tutor y sus compañeros que no se puede desestimar. Esta participación activa puede hacer la experiencia de aprendizaje algo más enriquecedor y, en muchos casos, ha sido clave para el éxito.
+* **Preevaluación Comprensiva**: Evaluar su desempeño previo a las comprensivas utilizando solucionarios de ediciones anteriores del curso (que se ofrecen más abajo) y los ejercicios de autoevaluación al final de los capítulos puede resultar muy útil para determinar si mi nivel de preparación es el óptimo y corregir cualquier vacío de conocimiento o falta de habilidad previo a la realización de las tareas comprensivas.
+* **Redacción de Notas de Estudio**: A medida que estudias el material didáctico, redacta tus propias notas de referencia que utilizarás luego para repasar puntos clave. Acá les dejo [mis anotaciones][38] para que las descarguen, por si de algo les sirven a otros que planean llevar el curso.
+* **Apoyo Tecnológico**: apoyarse en herramientas tecnológicas como [Wolfram Alpha][40], [HP Prime][44], [Geogebra][42] y [ChatGPT][43] puede ayudar mucho a comprender y dominar el material, comprobar respuestas, explorar soluciones alternativas, etc.
 
 ## Vídeos de Soporte Adicional
 
@@ -191,23 +190,22 @@ Para los que desean conseguir un libro adicional en español:
 
  * [Introducción a la Matemática Discreta][33] de Manuel Murillo Tsijli se puede comprar, tanto físico como en formato digital, en línea, en la página de la Editorial del Tecnológico de Costa Rica. El libro cubre el mismo temario que el curso de la UNED, pero ofrece muchísimos más ejemplos y ejercicios. Yo lo compré físico, y la Editorial del TEC lo envió a la puerta de mi casa.
 
-En mi caso, utilicé tres libros clave en mi preparación. Desafortunadamente, estos libros solo están en idioma inglés; sin embargo, con tecnologías como [Google Translate][45] y [ChatGPT][43] es posible traducir las secciones relevantes con facilidad. Por ejemplo, pueden tomar un pantallazo de una página del libro y luego subirla a [ChatGPT][43] y pedirle que se las traduzca al español, lo cual hace magistralmente bien.
-Además, las secciones de ejercicios no requieren de un gran dominio del idioma inglés para entender de qué se tratan.
+Los siguientes libros solo están en idioma inglés:
 
 * [The Book of Proof][30] de Richard Hammack
 * [How to Prove It A Structured Approach][31] de Daniel J. Velleman
 * [Mathematical Reasoning Writing and Proof][32] de Ted Sundstrom
 
-Estos libros me parecieron extraordinariamente buenos. Cada uno de ellos cubre los temas del curso de una forma muchísimo más amplia y con una gran variedad de ejemplos y ejercicios de práctica. Los autores de estos libros son verdaderos maestros del tema y grandes educadores.
+Estos libros son extraordinariamente buenos. Cada uno de ellos cubre los temas del curso de una forma muchísimo más amplia y con una gran variedad de ejemplos y ejercicios de práctica. Los autores de estos libros son verdaderos maestros del tema y grandes educadores.
 
 ## Otras Herrmientas
 
-Además de [Geogebra][42], con el que creo que a estas alturas todos estamos familiarizados, yo utilicé algunas otras herramientas: 
+Además de [Geogebra][42], con el que creo que a estas alturas todos estamos familiarizados, algunas otras herramientas son: 
 
 * [Wolfram Alpha][46]: es un avanzado software capaz de responder a preguntas de naturaleza matemática, usualmente usando lenguaje natural. El enlace los llevará a la sección de lógica y teoría de conjuntos de Wolfram Alpha, la cual ofrece decenas de comandos que pueden resultar super útiles para estudiar el material y para comprobar las respuestas a los ejercicios. Puede hacer diagramas de Venn, solucionar problemas de teoría de conjuntos y lógica proposicional, crear tablas de verdad, etc.
-* [Symbolab][47]: es igualmente una poderosa calculadora matemática que puede realizar operaciones de lógica proposicional, tablas de verdad, y operaciones teoría de conjuntos.
+* [Symbolab][47]: es igualmente una poderosa calculadora matemática que puede realizar operaciones de lógica proposicional, tablas de verdad, y operaciones de teoría de conjuntos.
 * [HP Prime][44]: la poderosa calculadora científica de HP se puede descargar de forma digital, gratuitamente, y la misma tiene soporte para una amplia variedad de operaciones, incluyendo cálculos de álgebra simbólica, lógica proposicional, números complejos, etc.
-* [ChatGPT][45]: el bot es increíblemente efectivo para discutir ejercicios de demostración. Se le puede solicitar que realice demostraciones matemáticas básicas usando diferentes estrategias y usualmente lo hace bien. Se requiere dominio del tema por parte del estudiante porque ChatGPT a menudo ofrece respuestas incorrectas o con errores, sin embargo, suele ser de gran ayuda como herramienta exploratoria, o para obtener explicaciones de cosas que uno no entiende bien. ChatGPT entiende $$\LaTeX$$, entonces es posible expresar las preguntas usando ese formato. Para los que tengan la versión de pago, se puede combinar con el plugin de Wolfram Alpha para obtener respuestas incluso más avanzadas.
+* [ChatGPT][45]: el bot es increíblemente efectivo para discutir ejercicios de demostración. Se le puede solicitar que realice demostraciones matemáticas básicas usando diferentes estrategias y usualmente lo hace bien. Se requiere el dominio del tema por parte del estudiante porque ChatGPT a menudo ofrece respuestas incorrectas o con errores; sin embargo, suele ser de gran ayuda como herramienta exploratoria, o para obtener explicaciones de cosas que uno no entiende bien. ChatGPT entiende $$\LaTeX$$, entonces es posible expresar las preguntas usando ese formato. 
 
 ## Si Deseo LLevar el Curso
 
@@ -217,7 +215,7 @@ Si ya has aprobado Matemática Introductoria (03463) y deseas llevar el curso de
 * [Oferta Anual de Asignatura][35]: para comprobar disponibilidad del curso.
 * [Formulario de Autorización de Matrículas][28]: para solicitar que se te habilite el curso para matrícula.
 
-¿Que hay de ti? ¿Cómo fue tu experiencia llevando el curso? ¿Tienes alguna anécdota o referencia valiosa que te gustaría compartir? Déjanos tus comentarios para enriquecer esta entrada del blog.
+¿Qué hay de ti? ¿Cómo fue tu experiencia llevando el curso? ¿Tienes alguna anécdota o referencia valiosa que te gustaría compartir? Déjanos tus comentarios para enriquecer esta entrada del blog.
 
 [1]:https://youtu.be/GYjTsJmmUa4?si=WrW7bGw1nDBXQwoI
 [2]:https://youtu.be/kuX2iwDstyE?si=d6FjtU1BqZcws9pe
