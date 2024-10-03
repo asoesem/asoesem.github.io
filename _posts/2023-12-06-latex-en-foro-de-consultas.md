@@ -52,8 +52,22 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\sqrt{a}$$               | `\(\sqrt{a}\)`               |
 | $$\sqrt[n]{a}$$            | `\(\sqrt[n]{a}\)`            |
 | $$a_1^2$$                  | `\(a_1^2\)`                  |
+| $$\infty$$                 | `\(\infty\)`                 |
 | $$\int_{i=1}^n$$           | `\(\int_{i=1}^n\)`           |
 | $$\lim_{x\to\infty} f(x)$$ | `\(\lim_{x\to\infty} f(x)\)` |
+
+#### Operadores
+
+| $$a \times b$$             | `\(a \times b\)`             |
+| $$a \cdot b$$              | `\(a \cdot b\)`              |
+| $$a \div b$$               | `\(a \div b\)`               |
+| $$a \neq b$$               | `\(a \neq b\)`               |
+| $$a \approx b$$            | `\(a \approx b\)`            |
+| $$a \lt b$$                | `\(a \lt b\)`                |
+| $$a \leq b$$               | `\(a \leq b\)`               |
+| $$a \gt b$$                | `\(a \gt b\)`                |
+| $$a \geq b$$               | `\(a \geq b\)`               |
+
 
  
 
@@ -64,15 +78,18 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\neg{p}$$                           | `\(\neg{p}\)`                           |
 | $$p \rightarrow q$$                   | `\(p \rightarrow q\)`                   |
 | $$p \leftrightarrow q$$               | `\(p \leftrightarrow q\)`               |
+| $$p \Rightarrow q$$                   | `\(p \Rightarrow q\)`                   |
+| $$p \Leftrightarrow q$$               | `\(p \Leftrightarrow q\)`               |
 | $$P \equiv Q$$                        | `\(P \equiv Q\)`                        |
 | $$\forall{x} \in X$$                  | `\(\forall{x} \in X\)`                  |
 | $$\exists{y} \in Y$$                  | `\(\exists{y} \in Y\)`                  |
 | $$\sum_{i=1}^{\infty} \frac{1}{n^s}$$ | `\(\sum_{i=1}^{\infty} \frac{1}{n^s}\)` |
 | $$\prod_p \frac{1}{1 - p^{-s}}$$      | `\(\prod_p \frac{1}{1 - p^{-s}}\)`      |
+| $$p \Rightarrow q, p, \therefore q$$  | `\(p \Rightarrow q, p, \therefore q\)`  |
 
 #### Conjuntos:
 
-| $$\{x_1,\dots,x_n\}$$              | `\(\{x_1,\dots,x_n\}\)`              |
+| $$\{x_1,\dots,x_n\}$$              | `\(\{x_1,\dots,x_n\}\)`             |
 | $$\{x \mid p(x)\}$$                | `\(\{x \mid p(x)\}\)`                |
 | $$a \mid b$$                       | `\(a \mid b\)`                       |
 | $$a \not\mid b$$                   | `\(a \not\mid b\)`                   |
@@ -83,6 +100,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\emptyset$$                      | `\(\emptyset\)`                      |
 | $$X \subseteq Y$$                  | `\(X \subseteq Y\)`                  |
 | $$X \subset Y$$                    | `\(X \subset Y\)`                    |
+| $$X \not\subseteq Y$$              | `\(X \not\subseteq Y\)`              |
+| $$X \not\subset Y$$                | `\(X \not\subset Y\)`                |
 | $$\mathcal{P}(x)$$                 | `\(\mathcal{P}(x)\)`                 |
 | $$X \cup Y$$                       | `\(X \cup Y\)`                       |
 | $$X \cap Y$$                       | `\(X \cap Y\)`                       |
@@ -97,13 +116,19 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\mathbb{Z}$$                     | `\(\mathbb{Z}\)`                     |
 | $$\mathbb{Q}$$                     | `\(\mathbb{Q}\)`                     |
 | $$\mathbb{R}$$                     | `\(\mathbb{R}\)`                     |
+| $$\mathbb{I}$$                     | `\(\mathbb{I}\)`                     |
+| $$\mathbb{C}$$                     | `\(\mathbb{C}\)`                     |
 
 #### Relaciones:
 
+| $$\aleph$$                              | `\(\aleph\)`                              |
 | $${}_{a}\mathfrak{R}_{b}$$              | `\({}_{a}\mathfrak{R}_{b}\)`              |
 | $$[x]$$                                 | `\([x]\)`                                 |
+| $$\lfloor x \rfloor$$                   | `\(\lfloor x \rfloor\)`                   |
+| $$\lceil x \rceil$$                     | `\(\lceil x \rceil\)`                     |
 | $$\mathfrak{R}^{-1}$$                   | `\(\mathfrak{R}^{-1}\)`                   |
 | $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$ | `\(\mathfrak{R}_1 \circ \mathfrak{R}_2\)` |
+
 
 
 #### Funciones
@@ -120,15 +145,18 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\overleftrightarrow{PQ}$$    | `\(\overleftrightarrow{PQ}\)`    |
 | $$\overrightarrow{PQ}$$        | `\(\overrightarrow{PQ}\)`        |
 | $$\angle{ABC}$$                | `\(\angle{ABC}\)`                |
+| $$\measuredangle{ABC}$$        | `\(\measuredangle{ABC}\)`        |
 | $$m\angle{ABC}=r^{\circ}$$     | `\(m\angle{ABC}=r^{\circ}\)`     |
 | $$\angle{1}\cong\angle{2}$$    | `\(\angle{1}\cong\angle{2}\)`    |
 | $$\triangle{ABC}$$             | `\(\triangle{ABC}\)`             |
+| $$\triangle{ABC} \sim \triangle{DEF}$$ | `\(\triangle{ABC} \sim \triangle{DEF}\)` |
 | $$l \perp m$$                  | `\(l \perp m\)`                  |
 | $$l \parallel m$$              | `\(l \parallel m\)`              |
 | $$l \not\perp m$$              | `\(l \not\perp m\)`              |
 | $$l \not\parallel m$$          | `\(l \not\parallel m\)`          |
 | $$\alpha,\beta,\gamma,\theta$$ | `\(\alpha,\beta,\gamma,\theta\)` |
 | $$\pi$$                        | `\(\pi\)`                        |
+| $$\overrightarrow{a}$$         | `\(\overrightarrow{a}\)`         |
 
 #### Operaciones Multilíneas
 
