@@ -8,4 +8,4 @@ image: '/images/104.jpg'
 # twitter: https://twitter.com
 # instagram: https://www.instagram.com
 ---
-Subdirector de la Comisión de Fortalecimiento Matemático.
+Vicepresidente de la Asociación de Estudiantes de Enseñanza de la Matemática.
