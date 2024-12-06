@@ -4,6 +4,14 @@
 baseurl: "" # the subruta del sitio, p.ej. /blog
 url: "https://asoesem.github.io" # el hostname base & protocolo del sitio, p.ej. http://example.com
 
+
+#-------------------------------
+# Configuracions para SEO
+title: ASOESEM
+description: Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas de la UNED
+logo: "/images/logo-light.png"
+locale: "es_CR"
+
 #-------------------------------
 # Configuración de Construcción
 

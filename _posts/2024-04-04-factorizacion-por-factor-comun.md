@@ -7,22 +7,24 @@ author: axell
 image: '/images/117.png'
 tags: [matemáticas, précalculo, álgebra]
 #commissions: [cofoma]
-featured: true
+featured: false
 comments: false
-share: true
+share: false
 ---
+
 # ¿Qué es la factorización?
 
-La factorización es un procedimiento matemático que permite a representar expresiones algebraicas de otra forma, también la factorización ayuda a la eliminar factores que se repiten en las dichas expresiones y ayudan también a conocer aquellos números o términos que pueden estar involucrados para llegar a la solución final. 
+La factorización es un procedimiento matemático que permite representar expresiones algebraicas de otra forma. También, la factorización ayuda a la eliminar factores que se repiten en dichas expresiones y ayuda, también, a conocer aquellos números o términos que pueden estar involucrados para llegar a la solución final. 
 
-Principalmente, lo que se quiere lograr con la factorización es lograr representar un polinomio como el producto de otros más simples. (Padilla _et al._, 2019, pp. 82)
+Principalmente, lo que se quiere lograr con la factorización es conseguir representar un polinomio como el producto de otros más simples. (Padilla _et al._, 2019, pp. 82)
+
 ## ¿Qué es la factorización por factor común?
 
 La factorización por factor común, es un método que permite obtener o determinar aquellos números y/o variables que son 'comunes' dentro de las expresiones algebraicas.
 
 ### ***Ejemplo 1*** 
 
-Imagínese que se tienen los npumeros 2, 4, 6 y 8. **¿Qué tienen en común estos números?**
+Imagínese que se tienen los números 2, 4, 6 y 8. **¿Qué tienen en común estos números?**
 
 Para el análisis de estos números, podemos ver que todos son números divisibles entre dos de la siguiente forma:
 
@@ -48,11 +50,11 @@ $$3xy+5xz+7xh-11xp=x(3y+5z+7h-11p)$$
 
 Y así es como aplicamos la factorización por factor común. 
 
-&nbsp;<strong>NOTA:&nbsp;</strong>Para poder aplicar la factorizaci&oacute;n por factor com&uacute;n, debemos comprender que el t&eacute;rmino que sea&nbsp;<span style="text-decoration: underline;">com&uacute;n</span> debe estar presente en todos los factores o &eacute;rminos del polinomio.
+**NOTA:** Para poder aplicar la factorización por factor común, debemos comprender que el término que sea <span style="text-decoration: underline;">común</span> debe estar presente en todos los factores o térrminos del polinomio.
 
 ### ***Ejemplo 3***
 
-En muchas ocaciones, vamos a tener polinomios términos con exponentes diferentes a 1, por lo que en ese caso; debemos aplicar las propiedades de las potencias y extraer el <strong>mayor factor común</strong> . Por ejemplo, imaginemos que tenemos la expresión $$zx^3+yx^5$$
+En muchas ocaciones, vamos a tener polinomios con términos con exponentes diferentes a 1, por lo que, en ese caso, debemos aplicar las propiedades de las potencias y extraer el *mayor factor común*. Por ejemplo, imaginemos que tenemos la expresión $$zx^3+yx^5$$
 
 Se sabe que el término $$zx^3=x\cdot x \cdot x \cdot z \hspace{0.5cm}$$ y que $$\hspace{0.5cm}yx^5=x \cdot x \cdot x \cdot x \cdot x \cdot x \cdot y, \hspace{0.5cm}$$ entonces si queremos encontrar <span style="text-decoration: underline;"><strong>los términos que se encuentran en común en ambos monomios</strong></span>, entonces podemos decir que es $$x^3=x \cdot x \cdot x, \hspace{0.5cm}$$ por lo que la factorización correspondiente será:
 

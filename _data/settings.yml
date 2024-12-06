@@ -5,7 +5,7 @@ description: Asociación de Estudiantes de la carrera de la Enseñanza de las Ma
 logo: "/images/logo-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
 logo_dark: "/images/logo-dark.png"
 color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predeterminado, se fija el modo auto, lo que implica que el usuario puede escoger modos light o dark.
-
+locale: "es_CR"
 
 #-------------------------------
 # Navigation Settings
