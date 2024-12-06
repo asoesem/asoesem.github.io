@@ -7,9 +7,9 @@ date: 2024-01-03T00:00:00-06:00
 image: '/images/111.png'
 tags: [noticias]
 commissions: [cocodi]
-featured: true
-comments: false
-share: true
+#featured: true
+#comments: false
+#share: true
 ---
 Desde el año 1998 [CIENTEC](https://cientec.or.cr/) ha estado organizando diferentes actividades para la población costarricense, y en este 2024 se ha predispuesto la organización del [Festival Internacional de Matemáticas](https://cientec.or.cr/programas/educadores-divulgadores/fimat-concites-2024) (FIMAT) y XXVI del CONCITES, Congreso Nacional de Ciencia, Tecnología y Sociedad. (CONCITES) 2024, el cual se estará llevando a cabo de forma presencial en la Universidad Latina de Costa Rica, sede Montes de Oca, San José, Costa Rica.
 

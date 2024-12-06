@@ -7,9 +7,9 @@ author: axell
 image: '/images/112.png'
 tags: [Pedagogía,Matemática]
 #commissions: [cocodi]
-featured: true
-comments: true
-share: true
+#featured: true
+#comments: true
+#share: true
 ---
 ## Ecuaciones diofánticas
 

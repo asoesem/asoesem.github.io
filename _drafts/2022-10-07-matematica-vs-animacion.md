@@ -5,9 +5,9 @@ description: Class aptent taciti sociosqu ad litora torquent per conubia nostra,
 date: 2022-10-07 15:01:35 +0300
 author: edalorzo
 image: '/images/48.jpg'
-video_embed: https://www.youtube.com/embed/B1J6Ou4q8vE?si=ypIvTDhs0Aqo0E0k
-tags: [ciencia]
-featured: true
+#video_embed: https://www.youtube.com/embed/B1J6Ou4q8vE?si=ypIvTDhs0Aqo0E0k
+#tags: [ciencia]
+#featured: true
 ---
 Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.
 
