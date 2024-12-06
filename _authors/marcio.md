@@ -8,5 +8,4 @@ name: Marcio Gomez
 # facebook: https://www.facebook.com
 # instagram: https://www.instagram.com
 ---
-Tesorero de la Asociación
-Afiliado activo de la ASOESEM
+Estudiante de la Carrera de Enseñanza de la Matemática
