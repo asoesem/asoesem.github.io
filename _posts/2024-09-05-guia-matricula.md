@@ -124,6 +124,11 @@ Los siguientes enlaces permiten ingresar a los chats de los cursos de Enseñanza
 * Análisis Real: [Enlace](https://chat.whatsapp.com/H5koTfhfwaZ6PFuejjji0a)
 * Investigación en Educación Matemática I: [Enlace](https://chat.whatsapp.com/JbKbDfybvmJ9G7l5jH1N6s)
 
+## Bloque M
+
+* Uno
+* Dos
+  
 ---
 
 Si tiene alguna duda, puede comunicarse a los contactos de la ASOESEM: 6244 5332 o [asoesem@uned.ac.cr](mailto:asoesem@uned.ac.cr)
