@@ -5,8 +5,8 @@ description: Glosario de páginas necesarias para matricular en la UNED.
 date: 2024-09-05T18:00:00-06:00
 author: sebas
 image: '/images/130.png'
-tags: [matricula]
-commissions: [cocodi]
+tags: [matrícula, noticias]
+commissions: [cofoma]
 featured: true
 comments: false
 share: true
