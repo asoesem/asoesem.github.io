@@ -58,7 +58,7 @@ $$
 $$
 </p>
 
-(5) Por lo que de esta manera, una solución particular es que $$x=-1320$$ y $$y=4279$$, en donde la solución general es de la forma $$x=-1320-989n$$ y $$=4279+3206m$$, con $$n \in \mathbb{Z}$$
+(5) Por lo que de esta manera, una solución particular es que $$x=-1320$$ y $$y=4279$$, en donde la solución general es de la forma $$x=-1320-989n$$ y $$y=4279+3206m$$, con $$n \in \mathbb{Z}$$
 
 [Regresar al índice][0]
 
@@ -100,7 +100,7 @@ $$
 $$
 </p>
 
-(5) Por lo que de esta manera, una solución particular es que $$x=-36$$ y $$y=87$$, en donde la solución general es de la forma $$x=-36-41n$$ y $$=87+99m$$, con $$n \in \mathbb{Z}$$
+(5) Por lo que de esta manera, una solución particular es que $$x=-36$$ y $$y=87$$, en donde la solución general es de la forma $$x=-36-41n$$ y $$y=87+99m$$, con $$n \in \mathbb{Z}$$
 
 [Regresar al índice][0]
 
