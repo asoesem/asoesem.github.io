@@ -14,8 +14,8 @@ share: true
 # índice
 
 + [Ejercicios sobre ecuaciones diofanticas usando fracciones contínuas][1]
-  - [Ejercicio 1][11]
-  - [Ejercicio 2][12]
+  - [Ejercicio 1.][11]
+  - [Ejercicio 2.][12]
 + [Bibliografia y referencias][100]
 
 ***
