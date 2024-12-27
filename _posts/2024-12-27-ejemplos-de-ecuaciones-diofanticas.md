@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Ejemplos de ecuaciones diofanticas
+title: Ejemplos de ecuaciones diofánticas
 description: Algunos ejercicios de ecuaciones diofanticas.
 date: 2023-12-27 11:00:00
 author: axell
-image: '/images/45.jpg'
+image: '/images/135.jpg'
 tags: [teoria de los numeros, matematica]
 commissions: [cofoma,cocodi]
-#featured: false
-comments: false
-share: false
+featured: true
+comments: true
+share: true
 ---
 ## Ejercios sobre ecuaciones diofanticas
 ### Ejercicio 1. 
