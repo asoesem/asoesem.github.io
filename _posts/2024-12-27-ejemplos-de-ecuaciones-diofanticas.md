@@ -5,13 +5,21 @@ description: Algunos ejercicios de ecuaciones diofanticas.
 date: 2023-12-27 11:00:00
 author: axell
 image: '/images/135.jpg'
-tags: [teoria de los numeros, matematica]
+tags: [teoria de los numeros, matemáticas]
 commissions: [cofoma,cocodi]
 featured: true
 comments: true
 share: true
 ---
-## Ejercios sobre ecuaciones diofanticas
+# índice
+
++ [Ejercicios sobre ecuaciones diofanticas usando fracciones contínuas][1]
+  - [Ejercicio 1][11]
+  - [Ejercicio 2][12]
++ [Bibliografia y referencias][100]
+
+## Ejercicios sobre ecuaciones diofanticas usando fracciones contínuas
+
 ### Ejercicio 1. 
 Resuelva la ecuacion diofántica $$3206x + 989y = 11$$, utilizando el método de las fracciones continuas.
 
@@ -50,9 +58,9 @@ $$
 
 (5) Por lo que de esta manera, una solución particular es que $$x=-1320$$ y $$y=4279$$, en donde la solución general es de la forma $$x=-1320-989n$$ y $$=4279+3206m$$, con $$n \in \mathbb{Z}$$
 
+[Regresar al índice][0]
 
-
-
+$$\hspace{1cm}$$
 
 ### Ejercicio 2. 
 Utilice el método de fracciones continuas para resolver la ecuación $$99x+41y=3$$
@@ -92,6 +100,16 @@ $$
 
 (5) Por lo que de esta manera, una solución particular es que $$x=-36$$ y $$y=87$$, en donde la solución general es de la forma $$x=-36-41n$$ y $$=87+99m$$, con $$n \in \mathbb{Z}$$
 
+[Regresar al índice][0]
+
+$$\hspace{1cm}$$
+
 ## Bibliografia y referencias
 
 Ruiz. H. V. (2024). Cuaderno de trabajo tutoria virtual 2. Capítulos 3 y 4. Divisibilidad y Fracciones Continuas. *Universidad Estatal a Distancia. Cátedra de Matemáticas Superiores*. Obtenido de: aprendeu.uned.ac.cr
+
+[0]:#índice
+[1]:##ejercios-sobre-ecuaciones-diofanticas-usando-fracciones-contínuas
+[11]:###ejercicio-1.
+[12]:###ejercicio-2.
+[100]:##bibliografia-y-referencias
