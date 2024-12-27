@@ -2,7 +2,7 @@
 layout: post
 title: Ejemplos de ecuaciones diofánticas
 description: Algunos ejercicios de ecuaciones diofanticas.
-date: 2023-12-27 11:00:00
+date: 2024-12-27 11:00:00
 author: axell
 image: '/images/135.jpg'
 tags: [teoria de los números, matemáticas]
