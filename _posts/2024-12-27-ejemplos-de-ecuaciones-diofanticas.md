@@ -13,16 +13,16 @@ share: true
 ---
 # índice
 
-+ [Ejercicios sobre ecuaciones diofanticas usando fracciones contínuas][1]
-  - [Ejercicio 1.][11]
-  - [Ejercicio 2.][12]
++ [Ejercicios sobre ecuaciones diofaánticas usando fracciones contínuas][1]
+  - [Ejercicio 1][11]
+  - [Ejercicio 2][12]
 + [Bibliografia y referencias][100]
 
 ***
 
-## Ejercicios sobre ecuaciones diofanticas usando fracciones contínuas
+## Ejercicios sobre ecuaciones diofánticas usando fracciones contínuas
 
-### Ejercicio 1. 
+### Ejercicio 1 
 Resuelva la ecuacion diofántica $$3206x + 989y = 11$$, utilizando el método de las fracciones continuas.
 
 ***Solucion***
@@ -64,7 +64,7 @@ $$
 
 ***
 
-### Ejercicio 2. 
+### Ejercicio 2
 Utilice el método de fracciones continuas para resolver la ecuación $$99x+41y=3$$
 
 ***Solución***
@@ -110,8 +110,11 @@ $$
 
 Ruiz. H. V. (2024). Cuaderno de trabajo tutoria virtual 2. Capítulos 3 y 4. Divisibilidad y Fracciones Continuas. *Universidad Estatal a Distancia. Cátedra de Matemáticas Superiores*. Obtenido de: aprende.uned.ac.cr
 
+[Regresar al índice][0]
+
+
 [0]:#índice
 [1]:##ejercios-sobre-ecuaciones-diofanticas-usando-fracciones-contínuas
-[11]:###ejercicio-1.
-[12]:###ejercicio-2.
+[11]:###ejercicio-1
+[12]:###ejercicio-2
 [100]:##bibliografia-y-referencias
