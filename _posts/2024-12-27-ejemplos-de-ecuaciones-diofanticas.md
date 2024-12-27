@@ -24,7 +24,7 @@ $$
 $$
 </p>
 
-Entonces tenemos como resultado que $$\dfrac{3206}{989}=\[3;4,7,4,8\]$$; sin embargo, en este resultado podemos eliminar la fracción $$\dfrac{1}{8}$$ en donde entonces nos quedaria la fracción:
+Entonces tenemos como resultado que $$\dfrac{3206}{989}=[3;4,7,4,8]$$; sin embargo, en este resultado podemos eliminar la fracción $$\dfrac{1}{8}$$ en donde entonces nos quedaria la fracción:
 
 <p align="center">
 $$ 
