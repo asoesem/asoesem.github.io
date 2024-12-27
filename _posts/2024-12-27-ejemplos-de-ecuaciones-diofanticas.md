@@ -76,7 +76,7 @@ $$
 $$
 </p>
 
-(2) Entonces tenemos como resultado que $$\dfrac{3206}{989}=[2;2,2,2,1]$$; sin embargo, en este resultado podemos eliminar la fracción $$\dfrac{1}{3}$$ en donde entonces nos quedaria la fracción:
+(2) Entonces tenemos como resultado que $$\dfrac{99}{41}=[2;2,2,2,1]$$; sin embargo, en este resultado podemos eliminar la fracción $$\dfrac{1}{3}$$ en donde entonces nos quedaria la fracción:
 
 <p align="center">
 $$ 
