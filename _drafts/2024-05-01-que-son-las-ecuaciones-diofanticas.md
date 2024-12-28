@@ -23,4 +23,4 @@ Para la resolución de las ecuaciones diofánticas con dos incógnicas, debemos 
 
 |Teorema 2|
 | :---: |
-| Si el mcd(a.b)=1 y ademas $$(x_{0}, \hspace{2cm} y_{0})$$ es una solución de las ecuación diofántica $$ax+by=c$$ entonces $$(x,y)$$ es la solución de $$ax+by=c$$ si y solo si es de la forma $$x=x_{0}-bn, \hspace{0,5cm} y=y_{0}+ an$$, con $$n \in \mathbb{Z}$$ |
+| Si el $$mcd(a.b)=1$$ y además $$(x_{0},y_{0})$$ es una solución de las ecuación diofántica $$ax+by=c$$ entonces $$(x,y)$$ es la solución de $$ax+by=c$$ si y solo si es de la forma $$x=x_{0}-bn, \hspace{0,5cm} y=y_{0}+ an$$, con $$n \in \mathbb{Z}$$ |
