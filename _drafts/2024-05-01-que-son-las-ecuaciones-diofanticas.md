@@ -5,11 +5,11 @@ description: Detallaremos una breve explicación de la resolución de ecuaciones
 date: 2024-07-10T00:00:00-06:00
 author: axell
 image: '/images/112.png'
-tags: [Pedagogía,Matemática]
-#commissions: [cocodi]
-#featured: true
-#comments: true
-#share: true
+tags: [Pedagogía,Matemática,Teoria de los números]
+#commissions: [cocodi,cofoma]
+featured: true
+comments: true
+share: true
 ---
 ## Ecuaciones diofánticas
 
@@ -23,4 +23,4 @@ Para la resolución de las ecuaciones diofánticas con dos incógnicas, debemos 
 
 |Teorema 2|
 | :---: |
-| Si el mcd(a.b)=1 y ademas $$(x_{0}, \hspace{2cm} y_{0})$$ es una solución de las ecuación diofántica $$ax+by=c$$ entonces $$(x,y)$$ es la solución de $$ax+by=c$$ si y solo si es de la forma $$x=x_{0}-bn$$, \hspace{2cm} $$y=y_{0}+an$$, \hspace{2cm} con $$n \in \mathbb{Z}$$ |
+| Si el mcd(a.b)=1 y ademas $$(x_{0}, \hspace{2cm} y_{0})$$ es una solución de las ecuación diofántica $$ax+by=c$$ entonces $$(x,y)$$ es la solución de $$ax+by=c$$ si y solo si es de la forma $$x=x_{0}-bn, \hspace{0,5cm} y=y_{0}+ an$$, con $$n \in \mathbb{Z}$$ |
