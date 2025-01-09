@@ -18,31 +18,22 @@ Sabemos que la Universidad Estatal a Distancia (UNED) tiene sus particulares, al
 
 ## Sitios de trámites e información general
 
-[**Entorno Estudiantil**](https://entornoestudiantil.uned.ac.cr/): Espacio por defecto para realizar gestiones administrativas-académicas.
+El [**Entorno Estudiantil**](https://entornoestudiantil.uned.ac.cr/) es la plataforma básica para realizar gestiones administrativas-académicas dentro de la UNED. Suponiendo que ya estás empadronado a alguna carrera de la Universidad, debes dirigirte a [**MatriWeb**](https://matriweb.uned.ac.cr/) donde realizarás la matrícula de los cursos para el siguiente periodo académico.
 
-[**MatriWeb**](https://matriweb.uned.ac.cr/): Sitio destinado para **realizar la matrícula**.
+**¿Cuándo debo hacer la matrícula?** Eso dependerá del tipo de carrera que estudiés, para ello la UNED posee un [**Anuncio de Matrícula**](https://uned.cr/anuncio-matricula) para el próximo periodo académico, pero si querés saber cuando serán los periodos de matrícula del año presente, debés consultar [**Admisión y Matrícula**](https://uned.cr/vida-estudiantil/servicios/dependencias/oficina-de-registro-y-administracion-estudiantil/admision-y-matricula).
 
-[**Admisión y Matrícula**](https://uned.cr/vida-estudiantil/servicios/dependencias/oficina-de-registro-y-administracion-estudiantil/admision-y-matricula): Página web donde puede ver información general y las **fechas oficiales de matrícula** para **todo el año.**
+**¿Qué puedo matricular?** El plan de estudios de tu carrera es la guía principal, para ello lo convieniente es consultar las [**Orientaciones Académicas**](https://orientacionesacademicas.uned.ac.cr/consultas/), mediante el código o el nombre, para que sepás los detalles específicos de cada materia, incluso el [**Programa de Humanidades**](https://uned.cr/index.php/ecsh/programa-de-humanidades) tiene su propia web para observar las asignaturas ofrecidas por módulo y grado académico, y otra información relevante. Mientras que conocer la [**oferta anual de asignaturas**](https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx) es un buen medio para planificar tu año lectivo. 
 
-[**Periodo de matrícula**](https://uned.cr/anuncio-matricula): Página web donde la Universidad desglosa el **periodo de matrícula por días y niveles**.
+**¿Cuánto debo pagar por las materias?** Eso dependerá del tipo de materia y carrera que cursés, para esto podés ver los [**Aranceles**](https://uned.cr/ejecutiva/df/tesoreria/aranceles), donde incluso podés averiguar las reducciones hecha por las becas institucionales. De paso, consultar el [**Reglamento General de Becas**](https://www.uned.ac.cr/docencia/images/Reglamentobecas_pregradogradoUNED_23052024.pdf) puede ser una buena decisión para aprovechar las oportunidades y evitar contratiempos.
 
-[**Aranceles**](https://uned.cr/ejecutiva/df/tesoreria/aranceles): Sitio donde se puede consultar los **aranceles** por cuatrimestre, semestre y de posgrado, para cada una de las modalidades de asignaturas.
-
-[**Calendario de Reposición**](https://uned.cr/calendario-pruebas-digitales-de-reposicion): Página web donde puede conocer las **fechas oficiales** para todas las asignaturas que posean **Prueba de Reposición**.
-
-**Reglamento General de Becas**: Documento que regula el funcionamiento del sistema de becas en la Universidad. [**Vigente**](https://www.uned.ac.cr/docencia/images/cidreb/reglamento/estudiantil/Becas_a_estudiantes_20_jul_2017.pdf) y [**nuevo**](https://www.uned.ac.cr/docencia/images/Reglamentobecas_pregradogradoUNED_23052024.pdf) que rige a partir del I-2025.
+Por último, si tus materias poseen Pruebas Ordinarias, significa que podés realizar las Pruebas de Reposición y, por ende, es buena idea consultar el [**Calendario de Reposición**](https://uned.cr/calendario-pruebas-digitales-de-reposicion) para una eventual aplicación.
 
 ## Información de la carrera y asignaturas
 
-[**Página principal de Enseñanza de la Matemática**](https://uned.ac.cr/ecen/ensenanza-de-la-matematica): Espacio donde está el **plan de estudios actualizado**, las materias requisito para las Salidas Laterales, el formulario de Autorizaciones de Matrículas, los **contactos de las Cátedras** y otra información relevante.
+Más especificamente, los estudiantes de nuestra carrera debería ojear con regularidad la [**página principal de Enseñanza de la Matemática**](https://uned.ac.cr/ecen/ensenanza-de-la-matematica), pues allí pueden conocer el *plan de estudios actualizado*, las materias requisito para las Salidas Laterales, el formulario de Autorizaciones de Matrículas, los **contactos de las Cátedras** y otra información relevante.
 
-[**Formulario de autorizaciones de matrícula**](https://uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula): Necesario de completar cuando se quiere **matricular un curso con requisito**. Posee una fecha límite para evitar inconvenientes.
+Respecto a la matrícula, conviene completar el [**Formulario de autorizaciones de matrícula**](https://uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula), ya que es necesario de completar cuando se quiere **matricular un curso con requisito**. Posee una fecha límite para evitar inconvenientes.
 
-[**Programa de Humanidades**](https://uned.cr/index.php/ecsh/programa-de-humanidades): Página web donde podrá observar las **asignaturas de humanidades** ofrecidas por módulo y grado académico, y otra información relevante.
-
-[**Orientaciones Académicas**](https://orientacionesacademicas.uned.ac.cr/consultas/): Sitio donde están las **orientaciones académicas** de los cursos de los últimos dos años lectivos y del siguiente ciclo.
-
-[**Oferta Anual de Asignaturas**](https://produccion.uned.ac.cr/sigoa/consultaweb3.aspx): Página web para observar la **proyección de oferta de asignaturas** para el año lectivo actual.
 
 # Chats de los Cursos
 
