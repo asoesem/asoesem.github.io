@@ -6,6 +6,6 @@ image: '/images/105.jpg'
 # website:
 # twitter: https://twitter.com
 # facebook: https://www.facebook.com
-# instagram: https://www.instagram.com
+# instagram: https://www.instagram.com/jsebas01_
 ---
-Exdirector de la Comisión de Fortalecimiento Matemático (2023-2024). Representante estudiantil de la ASOESEM ante la FEUNED.
+Miembro de la Comisión de Fortalecimiento Matemático (2024-2026). Representante estudiantil de la ASOESEM ante la FEUNED (2024-2026).
