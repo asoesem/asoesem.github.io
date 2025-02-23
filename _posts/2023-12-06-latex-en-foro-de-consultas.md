@@ -186,7 +186,6 @@ Que se produce de la siguiente expresión:
 \frac{\cancelto{1}{2}}{\cancelto{1}{5}} \cdot \frac{\cancelto{3}{15}}{\cancelto{3}{6}} = \frac{3}{3} = 1
 ```
 
-
 #### Colores
 
 Para utilizar colores simplemente importa la macro de colores al inicio de tu entrada en el blog:
@@ -198,12 +197,12 @@ Para utilizar colores simplemente importa la macro de colores al inicio de tu en
 Esto nos permite agregar colores a nuestras expresiones matemáticas como por ejemplo:
 
 ```tex
-\[\frac{\color{blue}x^2-1}{\color{red}{(x+1)}\color{brown}{(x-2)}}\]
+\[\frac{\color{blue}{x^2-1}}{\color{red}{(x+1)}\color{brown}{(x-2)}}\]
 ```
 
 Que produce la salida:
 
-$$\frac{\color{blue}x^2-1}{\color{red}{(x+1)}\color{brown}{(x-2)}}$$
+$$\frac{\color{blue}{x^2-1}}{\color{red}{(x+1)}\color{brown}{(x-2)}}$$
 
 #### Cajas
 
