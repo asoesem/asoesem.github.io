@@ -5,10 +5,9 @@ description: Algunos ejercicios de ecuaciones diofanticas.
 date: 2024-12-27 11:00:00
 author: axell
 image: '/images/135.jpg'
-tags: [teoria de los números, matemáticas]
-commissions: [cofoma,cocodi]
+tags: [teoría números, matemáticas]
 featured: true
-comments: true
+comments: false
 share: true
 ---
 # índice

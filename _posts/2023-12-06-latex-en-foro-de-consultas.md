@@ -158,6 +158,74 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\pi$$                        | `\(\pi\)`                        |
 | $$\overrightarrow{a}$$         | `\(\overrightarrow{a}\)`         |
 
+#### Cancelación de Expresiones
+
+En algunos casos puede resultar util representar expresiones que se cancelan entre sí. Para lograr esto se debe incluir al inicio de tu entrada la siguiente macro:
+
+```tex
+\(\require{cancel}\)
+```
+
+Esto nos permite hacer cosas como la siguiente:
+
+$$\frac{x^2-1}{(x+2)(x-1)} = \frac{\cancel{(x-1)}(x+1)}{(x+2)\cancel{(x-1)}}$$
+
+Que se logra usando el comando `\cancel`, como se muestra en este ejemplo:
+
+```tex
+\frac{x^2-1}{(x+2)(x-1)} = \frac{\cancel{(x-1)}(x+1)}{(x+2)\cancel{(x-1)}}
+```
+
+A veces se puede utilizar para indicar la simplificación de fracciones usando el comando `\cancelto{}{}`:
+
+$$\frac{\cancelto{1}{2}}{\cancelto{1}{5}} \cdot \frac{\cancelto{3}{15}}{\cancelto{3}{6}} = \frac{3}{3} = 1$$
+
+Que se produce de la siguiente expresión:
+
+```tex
+\frac{\cancelto{1}{2}}{\cancelto{1}{5}} \cdot \frac{\cancelto{3}{15}}{\cancelto{3}{6}} = \frac{3}{3} = 1
+```
+
+
+#### Colores
+
+Para utilizar colores simplemente importa la macro de colores al inicio de tu entrada en el blog:
+
+```tex
+\(\require{color}\)
+```
+
+Esto nos permite agregar colores a nuestras expresiones matemáticas como por ejemplo:
+
+```tex
+\[\frac{\color{blue}x^2-1}{\color{red}{(x+1)}\color{brown}{(x-2)}}\]
+```
+
+Que produce la salida:
+
+$$\frac{\color{blue}x^2-1}{\color{red}{(x+1)}\color{brown}{(x-2)}}$$
+
+#### Cajas
+
+Puede resultar conveniente encerrar expresiones en una caja para resaltar algún resultado. Eso se logra importando, al inicio de tu entrada de blog, la siguiente macro:
+
+```tex
+\(\require{bbox}\)
+```
+
+Entonces podrás crear una caja de tu color favorito alrededor de una expresión matemática haciendo algo como:
+
+
+```tex
+\[\bbox[10px, border: 2px solid red]{\frac{r}{R} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}}\]
+```
+
+Que produce la salida:
+
+$$\bbox[10px, border: 2px solid red]{\frac{r}{R} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}}$$
+
+Que crear una caja con 10 pixeles en sus márgenes, con una línea sólida de dos pixeles de color rojo. Para colores puedes usar nombres de colores básicos en inglés.
+
 #### Operaciones Multilíneas
 
 En ciertas ocasiones puede ser útil desarrollar una ecuación que ocupa múltiples lineas, como el ejemplo siguiente:

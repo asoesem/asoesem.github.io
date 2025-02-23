@@ -6,7 +6,6 @@ date: 2024-08-29T15:00:00-06:00
 #author: axell
 image: '/images/129.png'
 tags: [noticias]
-commissions: [cocodi, cofoma]
 featured: false
 comments: false
 share: true
