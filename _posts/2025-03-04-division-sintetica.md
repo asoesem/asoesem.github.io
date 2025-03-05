@@ -12,7 +12,7 @@ comments: false
 share: false
 ---
 
-La división sintética es un método eficiente para dividir polinomios entre binomios de la forma $$(x-r)$$ . Esta técnica nos permite encontrar factores de un polinomio y simplificar su factorización, todo con cálculos rápidos y organizados. En este artículo, exploraremos los fundamentos de la división sintética, los teoremas en los que se basa y ejemplos detallados para su aplicación.
+La [división sintética][3] (también conocida como regla de Ruffini) es un método eficiente para dividir polinomios entre binomios de la forma $$(x-r)$$ . Esta técnica nos permite encontrar factores de un polinomio y simplificar su factorización, todo con cálculos rápidos y organizados. En este artículo, exploraremos los fundamentos de la división sintética, los teoremas en los que se basa y ejemplos detallados para su aplicación.
 
 ## Fundamentos de la División Sintética
 
@@ -24,7 +24,7 @@ Para comprender mejor la división sintética es preciso entender algunos teorem
 
 #### Teorema del Residuo
 
-El Teorema del Residuo establece que si dividimos un polinomio $$P(x)$$ por $$x-r$$, el residuo de la división es simplemente $$P(x)$$. 
+El [teorema del residuo o del resto][1] establece que si dividimos un polinomio $$P(x)$$ por $$x-r$$, el residuo de la división es simplemente $$P(r)$$.
 
 Veamos un ejemplo: sea $$P(x)=2x^3-3x^2-2x+3$$.
 
@@ -88,7 +88,7 @@ Obviamente, la pregunta que nos haríamos ahora es, ¿cómo puedo descubrir cual
 
 #### Teorema de las Raíces Racionales
 
-Este teorema nos ayuda a encontrar posibles valores de $$r$$ para los que $$P(x)=0$$. Indica que si $$P(x)$$ tiene coeficientes enteros, entonces cualquier raíz racional $$r=\frac{p}{q}$$ debe cumplir que:
+El [teorema del factor o de las raíces racionales][2] nos ayuda a encontrar posibles valores de $$r$$ para los que $$P(x)=0$$. Indica que si $$P(x)$$ tiene coeficientes enteros, entonces cualquier raíz racional $$r=\frac{p}{q}$$ debe cumplir que:
 
 * $$p$$ es un divisor del término independiente.
 * $$q$$ es un divisor del coeficiente principal.
@@ -165,3 +165,13 @@ Entonces, la otra factorización del polinomio $$P(x) = 2x^3-3x^2-2x+3$$ sería:
 $$(x+1)(2x^2-5x+3)$$
 
 Espero que esta guía les sea de gran utilidad para aplicar la división sintética en la factorización de polinomios de grado mayor o igual a 2.
+
+## Referencias Adicionales
+
+* [Teorema del Resto][1]
+* [Teorema del Factor][2]
+* [Regla de Ruffini][3]
+
+[1]: https://es.wikipedia.org/wiki/Teorema_del_resto
+[2]: https://es.wikipedia.org/wiki/Teorema_del_factor
+[3]: https://es.wikipedia.org/wiki/Regla_de_Ruffini
