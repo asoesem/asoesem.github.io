@@ -102,9 +102,9 @@ Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En
 * Los divisores del término independiente son: $$p \in \{\pm 1, \pm 3\}$$.
 * Los divisores del coeficiente principal son $$q \in \{\pm 1, \pm 2\}$$.
 
-Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjuntos serán ceros del polinomio.
+Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
 
-En nuestro ejemplo, únicamente $$x=-1$$ y $$x=1$$ son ceros del polinomio.
+En nuestro ejemplo, únicamente $$x=-1$$ y $$x=1$$ son ceros de $$P(x)$$.
 
 $$
 \begin{aligned}
@@ -115,7 +115,7 @@ $$
 
 Bueno, pero entonces, ¿para qué necesitamos la divisón sintética?
 
-La cosa es que saber en donde el polinomio se hace cero solo nos dice que uno de sus factores es $$(x-r)$$, pero no nos dice cuál es el otro factor. Para eso tendríamos que realizar una división. La división sintética es un método para realizar esa división de una forma mucho más sucinta que la división larga que realizamos en los ejemplos anteriores.
+La cosa es que saber donde el polinomio se hace cero solo nos dice uno de sus factores: el dividendo $$(x-r)$$. Pero, no nos dice cuál es el otro factor: el cociente de la división. Para eso tendríamos que realizar una división larga como las que hicimos previamente. No obstante, la división sintética es un método para realizar esa división de una forma mucho más sucinta que la división de los ejemplos anteriores.
 
 ### División Sintética
 
