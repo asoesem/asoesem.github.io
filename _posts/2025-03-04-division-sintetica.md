@@ -26,15 +26,15 @@ Para comprender mejor la división sintética es preciso entender algunos teorem
 
 #### Teorema del Residuo
 
-El [teorema del residuo o del resto][1] establece que si dividimos un polinomio $$P(x)$$ por $$x-r$$, el residuo de la división es simplemente $$P(r)$$.
+El [teorema del residuo o del resto][1] establece que si dividimos un polinomio $$P(x)$$ por $$(x-r)$$, el residuo de la división es simplemente $$P(r)$$.
 
 Veamos un ejemplo: sea $$P(x)=2x^3-3x^2-2x+3$$.
 
-Entonces si hacemos:
+Supongamos que calculamos $$P(2)$$:
 
 $$P(2) = 2(2)^3-3(2)^2-2(2)+3 = 2(8)-3(4)-2(2)+3 = 16-12-4+3 = 3$$
 
-Por lo tanto, por el teorema del residuo, si dividimos $$(2x^3-3x^2-2x+3) \div (x-2)$$ obtendremos como residuo $$3$$.
+Entonces, por el teorema del residuo, si dividimos $$(2x^3-3x^2-2x+3) \div (x-2)$$ obtendremos como residuo $$3$$. Tal como se muestra a continuación:
 
 
 $$\begin{array}{rrrr|c}
@@ -56,15 +56,15 @@ Donde $$Q(x)$$ es el cociente y $$R$$ es el residuo.
 
 Siguiendo nuestro ejemplo:
 
-$$P(x) = (x-2)(2x^2+x)+3 = 2x^3-3x^2-2x+3$$
+$$P(x) = (x-2)(2x^2+x)+3$$
 
 Este teorema tiene una implicación interesante. Si $$P(r)=0$$ entonces $$r$$ es un cero del polinomio y $$(x-r)$$ es uno de sus factores.
 
-Por ejemplo:
+Por ejemplo, al calcular $$P(1)$$ descubrimos que es un cero del polinomio:
 
 $$P(1) = 2(1)^3-3(1)^2-2(1)+3 = 2(1)-3(1)-2(1)+3 = 2-3-2+3 = 0$$
 
-Haciendo la división correspondiente, obtenemos:
+Para verificar esta observación poder hacer la correspondiente división larga como se muestra a continuación:
 
 $$\begin{array}{rrrr|c}
 \cancel{2x^3} & -3x^2 & -2x & +3 & x-1\\
@@ -86,7 +86,7 @@ $$P(x)= (x-1)(2x^2-x-3)$$
 
 Que es una factorización ideal para el polinomio $$P(x)$$.
 
-Obviamente, la pregunta que nos haríamos ahora es, ¿cómo puedo descubrir cuales son los ceros del polinomio? Para responder a esa pregunta estudiaremos un segundo teorema.
+Obviamente, la pregunta que nos haríamos ahora es, ¿cómo podemos descubrir cuales son los ceros del polinomio? Para responder a esa pregunta estudiaremos un segundo teorema.
 
 #### Teorema de las Raíces Racionales
 
@@ -102,7 +102,7 @@ Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En
 * Los divisores del término independiente son: $$p \in \{\pm 1, \pm 3\}$$.
 * Los divisores del coeficiente principal son $$q \in \{\pm 1, \pm 2\}$$.
 
-Por teorema de las raíces racionales, $$r=\frac{p}{q}$$ por lo que $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{1}{3}\}$$. Es decir, uno de estos valores será un cero del polinomio.
+Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjuntos serán ceros del polinomio.
 
 En nuestro ejemplo, únicamente $$x=-1$$ y $$x=1$$ son ceros del polinomio.
 
