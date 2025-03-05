@@ -2,7 +2,7 @@
 layout: post
 title: Factorización por División Sintética
 description: Guía de como factorizar expresiones algebraicas usando división sintética.
-date: 2024-03-04T10:00:00-06:00
+date: 2025-03-04T10:00:00-06:00
 author: edalorzo
 image: '/images/56.png'
 tags: [precálculo,álgebra,factorización]
