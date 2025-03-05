@@ -127,7 +127,7 @@ Para dividir un polinomio $$P(x)$$ entre $$(x-r)$$ usando división sintética, 
   - Colocamos el valor de $$r$$ en la parte derecha de la tabla.
 * **Aplicamos la división sintética**
   - Bajamos el primer coeficiente.
-  - Multiplicamos ese valor por $r$ y sumamos el resultado con el siguiente coeficiente.
+  - Multiplicamos ese valor por $$r$$ y sumamos el resultado con el siguiente coeficiente.
   - Repetimos hasta llegar al final.
 * **Interpretación del resultado:**
   - Los valores obtenidos son los coeficientes del cociente, y el último valor, su residuo.
