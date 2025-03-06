@@ -5,7 +5,7 @@ description: Algunos ejercicios de ecuaciones diofanticas.
 date: 2024-12-27 11:00:00
 author: axell
 image: '/images/135.jpg'
-tags: [teoría números, matemáticas]
+tags: [teoría números]
 featured: true
 comments: false
 share: true

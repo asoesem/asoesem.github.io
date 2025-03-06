@@ -8,8 +8,8 @@ image: '/images/118.png'
 tags: [noticias]
 # commissions: [cocodi]
 featured: false
-comments: true
-share: true
+comments: false
+share: false
 ---
 
 ## ¿Ya te uniste a nuestro club de ajedrez?

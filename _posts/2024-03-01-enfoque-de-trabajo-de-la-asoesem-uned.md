@@ -8,8 +8,8 @@ image: '/images/110.jpg'
 tags: [noticias]
 commissions: [cocodi]
 featured: false
-comments: true
-share: true
+comments: false
+share: false
 ---
 ## Presidente da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024
 Durante el pasado mes de diciembre, el presidente de la ASOESEM UNED presentó en la Junta Directiva la nueva modalidad de trabajo de la Asociación para este I Semestre 2024; lo cual fue aprobada y de forma inmediata se dio aviso a todo el personal de la ASOESEM. 

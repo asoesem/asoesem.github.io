@@ -5,12 +5,12 @@ description: Se presenta un breve invitación a la videotransmisión de un talle
 date: 2024-02-16T15:00:00-06:00
 author: axell
 image: '/images/115.png'
-tags: [matemáticas,talleres]
+tags: [cálculo,talleres]
 commissions: [cocodi]
 video_embed: https://www.youtube.com/embed/1uJhC0QmWIk?si=jOoyjrKtyMQNYt30
 featured: true
-comments: true
-share: true
+comments: false
+share: false
 ---
 
 Le invitamos a seguir nuestra transmisión en nuestro canal de Youtube en donde se estará impartiendo un taller virtual sobre las bases del cálculo diferencial. 

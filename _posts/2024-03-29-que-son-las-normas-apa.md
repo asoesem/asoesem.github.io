@@ -9,7 +9,7 @@ tags: [apa]
 commissions: [cofoma]
 featured: false
 comments: false
-share: true
+share: false
 ---
 
 Las Normas APA son una serie de reglas para dar formato a los documentos académicos y, a su vez, respetar los derechos de autor. Estas normas están en su séptima edición (7°) en la versión anglosajona y son actualizadas por la Asociación Estadounidense de Psicología (APA, por su siglas en inglés). En general, las reglas están divididas en dos sentidos: formato y citación.

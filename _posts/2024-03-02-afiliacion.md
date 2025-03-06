@@ -8,8 +8,8 @@ image: '/images/116.png'
 tags: [noticias]
 # commissions: [cocodi]
 featured: false
-comments: true
-share: true
+comments: false
+share: false
 ---
 ## ¿Qué es la afiliación?
 

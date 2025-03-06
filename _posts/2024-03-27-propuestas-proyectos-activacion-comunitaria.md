@@ -8,7 +8,7 @@ image: '/images/55.png'
 tags: [proyectos]
 commissions: [cofoma]
 featured: false
-comments: true
+comments: false
 share: false
 ---
 
