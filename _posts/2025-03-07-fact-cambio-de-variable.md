@@ -203,11 +203,11 @@ $$
 $$
 
 
-### Ejemplo 5: Factorización de un Polinomio con Exponentes Dobles
+### Ejemplo 5: Solución de Ecuaciones Exponenciales
 
 Determine el conjunto solución de:
 
-$$2^x + 4x= 72$$
+$$2^x + 4^x= 72$$
 
 
 #### Paso 1: Identificar patrón exponencial:
