@@ -1,0 +1,251 @@
+---
+layout: post
+title: Factorización por Cambio de Variable
+description: Guía de como factorizar expresiones algebraicas usando cambio de variable.
+date: 2025-03-07T20:00:00-06:00
+author: edalorzo
+image: '/images/57.png'
+tags: [precálculo,álgebra,factorización]
+commissions: [cofoma]
+featured: true
+comments: false
+share: false
+---
+
+La factorización por cambio de variable es una técnica utilizada en algebra para transformar expresiones complicadas en otras más simples, facilitando su factorización. Este método es especialmente útil cuando un polinomio tiene una estructura que sugiere la presencia de un patrón cuadrático, cúbico u otras formas reconocibles.
+
+## Método
+
+El cambio de variable consiste en sustituir una expresión algebraica compleja por una nueva variable auxiliar, factorizar la expresión simplificada y luego revertir el cambio para obtener la factorización del polinomio original.
+
+En general, si tenemos una expresión de la forma:
+
+$$P(x) = f(g(x))$$
+
+Podemos definir una nueva variable, por ejemplo $$u=g(x)$$, de manera que el polinomio tome una forma más sencilla $$P(u)$$, facilitando la factorización. Una vez factorizado, revertimos el cambio sustituyendo  por su expresión original.
+
+## Cuándo se Usa
+
+Este método es útil cuando el polinomio presenta:
+
+* **Exponentes dobles o repetidos**, como en $$x^4, x^6, x^8$$, que pueden reducirse a una forma cuadrática.
+* **Estructuras cuadráticas en funciones compuestas**, como $$(x+1)^2, \sin^2 x, e^2x$$.
+* **Patrones reconocibles**, donde los términos pueden reagruparse para formar expresiones más simples.
+* **Resolución de ecuaciones**, por ejemplo ecuaciones exponenciales.
+
+## Ejemplos Concretos
+
+### Ejemplo 1: Factorización de un Polinomio con Exponentes Dobles
+
+Factorizar:
+
+$$P(x)=x^4-5 x^2+4$$
+
+Comenzamos por notar que este polinio también se puede expresar como:
+
+$$P(x)=(x^2)^2-5 x^2+4$$
+
+#### Paso 1: Definimos un cambio de variable:
+
+Nótese que si decimos que: 
+
+$$\begin{aligned}
+f(x)=x^2-5x+4\\
+g(x)=x^2\\
+\end{aligned}$$  
+
+Entonces podemos definir nuestro polinomio como:
+
+$$\begin{aligned}
+P(x)&=f(g(x)) \\
+    &=f(x^2) \\
+    &=(x^2)^2-5x^2+4\\
+    &=x^4-5x^2+4
+\end{aligned}$$
+
+Entonces, podemos usar esta idea para redefinir, de forma más sencilla, nuestro polinomio en términos de una variable que represente a $$g(x)$$.
+
+Sea $$u=x^2$$, entonces $$u^2=(x^2)^2 = x^4$$
+
+En consecuencia, podemos reescribir el polinomio original en términos de $$u$$:
+
+$$P(u)=u^2-5u+4$$
+
+#### Paso 2: Factorizamos la expresión cuadrática:
+
+$$(u-4)(u-1)$$
+
+#### Paso 3: Revertimos el cambio de variable
+
+$$\left(x^2-4\right)\left(x^2-1\right)$$
+
+#### Paso 4: Factorizamos completamente usando diferencia de cuadrados:
+
+$$(x-2)(x+2)(x-1)(x+1)$$
+
+### Ejemplo 2: Factorización de una Expresión con un Binomio Elevado
+
+Factorizar:
+
+$$
+(x+1)^2-5(x+1)+6
+$$
+
+
+#### Paso 1: Definimos el cambio de variable:
+
+$$
+u=x+1
+$$
+
+Reescribimos la expresión:
+
+$$
+u^2-5 u+6
+$$
+
+#### Paso 2: Factorizamos:
+
+$$
+(u-3)(u-2)
+$$
+
+#### Paso 3: Sustituimos de nuevo $$u=x+1$$:
+
+$$\begin{aligned}
+(u-3)(u-2) \\
+(x+1-3)(x+1-2) \\
+(x-2)(x-1)
+\end{aligned}$$
+
+
+### Ejemplo 3: Factorización en Expresiones Trigonométricas
+
+Factorizar:
+
+$$
+\sin ^4 x-2 \sin ^2 x+1
+$$
+
+#### Paso 1: Definimos el cambio de variable:
+
+$$
+u=\sin ^2 x
+$$
+
+Reescribimos la expresión:
+
+$$
+u^2-2 u+1
+$$
+
+#### Paso 2: Factorizamos:
+
+$$
+(u-1)(u-1)=(u-1)^2
+$$
+
+#### Paso 3: Revertimos el cambio:
+
+$$
+\left(\sin ^2 x-1\right)^2
+$$
+
+#### Paso 4: Usamos diferencia de cuadrados:
+
+$$
+(\sin x-1)^2(\sin x+1)^2
+$$
+
+#### Resultado Final:
+
+$$
+(\sin x-1)(\sin x+1)(\sin x-1)(\sin x+1)
+$$
+
+
+### Ejemplo 4: Factorización de Expresiones Radicales
+
+Factorizar:
+
+$$
+\frac{\sqrt{x+9}-3}{x}
+$$
+
+#### Paso 1: Definimos el cambio de variable:
+
+$$
+\begin{aligned}
+u=\sqrt{x+9}\\
+u^2=x+9\\
+x=u^2-9
+\end{aligned}
+$$
+
+Reescribimos la expresión:
+
+$$
+\frac{u-3}{u^2-9}
+$$
+
+#### Paso 2: Factorizamos:
+
+$$
+\begin{aligned}
+\frac{\cancel{(u-3)}}{(u+3)\cancel{(u-3)}} = \frac{1}{u+3}
+\end{aligned}
+$$
+
+#### Paso 3: Revertimos el cambio:
+
+$$
+\frac{1}{\sqrt{x+9}+3}
+$$
+
+
+### Ejemplo 5: Factorización de un Polinomio con Exponentes Dobles
+
+Determine el conjunto solución de:
+
+$$2^x + 4x= 72$$
+
+
+#### Paso 1: Identificar patrón exponencial:
+
+$$\begin{aligned}
+2^x + 4^x = 72\\
+2^x + (2^2)^x = 72\\
+(2^x)^2 + 2^x -72 =0\\
+\end{aligned}$$
+
+#### Paso 2: Definimos el cambio de variable:
+
+Sea $$u=2^x$$:
+
+$$u^2 + u - 72 =0 $$
+
+#### Paso 3: Factorizamos:
+
+$$(u-8)(u+9)=0$$
+
+Es decir $$u=8$$ o $$u=-9$$.
+
+#### Paso 3: Revertimos el cambio:
+
+$$\begin{aligned}
+u=8\\
+2^x = 8\\
+2^x = 2^3\\
+x = 3\\
+\end{aligned}$$
+
+Luego, como no existe $$2^x = -9$$, el conjunto solución es $$S=\{3\}$$.
+
+## Conclusión
+
+El método de factorización por cambio de variable es una técnica poderosa para simplificar y resolver polinomios y expresiones algebraicas. Se basa en reconocer estructuras cuadráticas u otras formas factorizables y aplicar una sustitución que haga más sencillo el proceso de factorización.
+
+Este método es ampliamente utilizado en algebra básica y avanzada, especialmente en ecuaciones polinómicas, trigonometría y cálculo. Su aplicación permite resolver problemas complejos de manera ordenada y eficiente.
+
+
+
