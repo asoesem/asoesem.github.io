@@ -3,7 +3,7 @@ layout: post
 title: Afiliación
 description: Se detalla toda la información relacionada con la afiliación a la ASOESEM UNED
 date: 2024-01-03T10:00:00-00:00
-#author: axell
+author: axell
 image: '/images/116.png'
 tags: [noticias]
 # commissions: [cocodi]
@@ -11,6 +11,7 @@ featured: false
 comments: false
 share: false
 ---
+
 ## ¿Qué es la afiliación?
 
 La afiliación es una acción voluntaria que realiza cada persona, en donde toma la desición de formar parte de esta organización. 
