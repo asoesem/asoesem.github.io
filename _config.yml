@@ -2,7 +2,7 @@
 # Configuraciones Generales del Sitio
 
 baseurl: "" # the subruta del sitio, p.ej. /blog
-url: "https://asoesem.github.io" # el hostname base & protocolo del sitio, p.ej. http://example.com
+url: "https://asoesem.org" # el hostname base & protocolo del sitio, p.ej. http://example.com
 
 
 #-------------------------------
