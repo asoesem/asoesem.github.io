@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name Configura Ruby
+      - name: Configura Ruby
         uses: https://github.com/ruby/setup-ruby/releases/tag/v1.224.0
         with:
           # ruby-version: '3.1' # no se necesita con un archivo .ruby-version
