@@ -35,7 +35,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Subir artifacto
+      - name: Subir artefacto
         uses: actions/upload-pages-artifact@v3
 
   # Trabajo de despliegue del sitio
