@@ -79,6 +79,7 @@ $$=8x^{3}y^{5}z^{4}(x^{3}z^{3}+2y^{2})  \hspace{1.5 cm}$$ Aplicando la ley distr
 * [Cambio de Variable]({% post_url 2025-03-07-fact-cambio-de-variable %}).
 * [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
 * [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
+* [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 
 ## Bibliografía Consultada
 
