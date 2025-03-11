@@ -90,7 +90,7 @@ Obviamente, la pregunta que nos haríamos ahora es, ¿cómo podemos descubrir cu
 
 #### Teorema de las Raíces Racionales
 
-El [teorema del factor o de las raíces racionales][2] nos ayuda a encontrar posibles valores de $$r$$ para los que $$P(x)=0$$. Indica que si $$P(x)$$ tiene coeficientes enteros, entonces cualquier raíz racional $$r=\frac{p}{q}$$ debe cumplir que:
+El [teorema del factor o de las raíces racionales][2] nos ayuda a encontrar posibles valores de $$r$$ para los que $$P(r)=0$$. Indica que si el polinomio tiene coeficientes enteros, entonces cualquier raíz racional $$r=\frac{p}{q}$$ debe cumplir que:
 
 * $$p$$ es un divisor del término independiente.
 * $$q$$ es un divisor del coeficiente principal.
