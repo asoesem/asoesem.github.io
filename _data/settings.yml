@@ -63,10 +63,10 @@ tags_section:
   number_posts: 3 # Para controlar cuantos artículos mostrar bajo cada sección de etiqueta. Fije el valor a un número. Tres es el valor predeterminado.
   number_columns: 3 # Puedes especificar el número de columnas de 1-4 para monitores de alta resolución. De forma predeterminda el tema usa una cuadrícula de tres columnas.
   tags:
-    - tag: "noticias"
     - tag: "precálculo"
     - tag: "cursos"
     - tag: "reglamentos"
+    - tag: "noticias"
 
 #-------------------------------------------
 # Configuración de la Sección de Autores
