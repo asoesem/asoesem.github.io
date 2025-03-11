@@ -20,7 +20,7 @@ Para entender el método de completado de cuadrados es fundamental recordar la f
 
 $$a^2 \pm 2ab + b^2 = (a \pm b)^2$$
 
-El completado de cuadrados busca factorizar una expresión para reflejar este patrón y de esa manera poder factorizarla como un binomio al cuadrado. 
+El completado de cuadrados busca reescribir una expresión algebraica para reflejar este patrón y de esa manera poder factorizarla como un binomio al cuadrado. 
 
 Se pueden dar diferentes escenarios:
 
@@ -36,7 +36,7 @@ a^2 + b^2 \\
 =(a + b)^2 - 2ab
 \end{aligned}$$
 
-En muchos ejercicios, un vez que llegamos a este punto, suele se posible factorizar la expresión resultante como una diferencia de cubos. Por ejemplo
+En muchos ejercicios, un vez que llegamos a este punto, suele se posible factorizar la expresión resultante como una diferencia de cuadrados. Por ejemplo
 
 $$\begin{aligned}
 (a + b)^2 - 2ab \\
@@ -56,7 +56,7 @@ $$(x^2)^2 + (2)^2$$
 
 ##### Paso 2: Calcular el segundo término del trinomio:
 
-Recordemos que el segundo término es $$2ab$$, es decir, dos veces el primer término por el segundo. Luego, en nuestro ejemplo, el primer término sería $$x^2$$ y el segundo es $$2$$, entonces: 
+Recordemos que el segundo término es $$2ab$$, es decir, dos veces la raíz del primer término por la raíz del segundo. Luego, en nuestro ejemplo, la raíz del primer término es $$x^2$$ y la del segundo es $$2$$, entonces: 
 
 $$(2)(x^2)(2) = 4x^2$$
 
@@ -68,20 +68,19 @@ Al sumar y restar el nuevo término, la expresión algebraica se mantiene igual,
 $$\begin{aligned}
 (x^2)^2 + (2)^2 + 4x^2 - 4x^2 \\
 =x^4 + 4 + 4x^2 - 4x^2        \\
+=x^4 + 4x^2 + 4 - 4x^2    \\
 \end{aligned}$$
 
 ##### Paso 4: Factorizar usando suma de binomio al cuadrado:
 
 $$\begin{aligned}
-x^4 + 4 + 4x^2 - 4x^2     \\
-=x^4 + 4x^2 + 4 - 4x^2    \\
 =(x^4 + 4x^2 + 4) - 4x^2   \\
 =(x^2 + 2)^2 - 4x^2       \\
 \end{aligned}$$
 
 ##### Paso 5: Completar la factorización
 
-En este caso la expresión se puede factorizar aun más mediante la diferencia de cuadrados:
+En este caso, la expresión se puede factorizar aun más mediante la diferencia de cuadrados:
 
 $$\begin{aligned}
 (x^2 + 2)^2 - 4x^2       \\
@@ -91,13 +90,13 @@ $$\begin{aligned}
 
 ### Caso 2: Trinomio con dos cuadrados perfectos
 
-Este es un caso en donde tenemos un trinomio en donde el primer y tercer término son cuadrados, pero el tercero es incompatible con la fórmula notable del binomio al cuadrado.
+Este es un caso en donde tenemos un trinomio en el que el primer y tercer términos son cuadrados, pero el segundo es incompatible con la fórmula notable del binomio al cuadrado.
 
 Por ejemplo:
 
 $$a^2 + ab + b^2$$
 
-En este caso, la estrategia consiste en considerar que podemos calcular el segundo término y sumarlo y restarlo del trinomio al mismo tiempo:
+En este caso, la estrategia consiste en considerar que podemos calcular un nuevo segundo término que sumamos y restamos del trinomio al mismo tiempo:
 
 $$\begin{aligned}
 a^2 + ab + b^2 \\
@@ -129,13 +128,13 @@ $$(x^4)^2 + x^4y^4 + (y^4)^2$$
 
 ##### Paso 2: Calcular el segundo término del trinomio:
 
-Recordemos que el segundo término es dos veces el primer término por el segundo: 
+Recordemos que el segundo término es dos veces la raíz del primer término ($$x^4$$) por la raíz del tercero ($$y^4$$): 
 
 $$2(x^4)(y^4)$$
 
 ##### Paso 3: Sumar y restar el nuevo término:
 
-Al sumar y restar el término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión algebraica resultante.
+Al sumar y restar el nuevo término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión resultante.
 
 $$\begin{aligned}
 (x^4)^2 + x^4y^4 + (y^4)^2 + 2x^4y^4 - 2x^4y^4\\
@@ -166,7 +165,7 @@ $$\begin{aligned}
 
 Este caso aplica para expresiones de la forma $$(ax)^{2n} + bx^{n} + c$$. Es decir, casos en donde solo el primer término es un cuadrado.
 
-En la expresión $$(ax)^{2n} + bx^{n} + c$$ podemos asumir que $$(ax)^n$$ es el primer término de un binomio y podemos derivar su segundo término a partir de $$bx^{n}$$, porque sabemos que $$bx^{n}$$ es el doble producto del primer término del binomio por el segundo. A fin de encontrar el segundo término del binomio debemos dividir $$bx^{n}$$ entre dos veces el primer término:
+En la expresión $$(ax)^{2n} + bx^{n} + c$$ podemos ver que $$(ax)^n$$ es el primer término de un binomio y se puede derivar su segundo término a partir de $$bx^{n}$$, porque sabemos que, dado un binomio al cuadrado, $$bx^{n}$$ es el doble producto de su primer término por el segundo. A fin de encontrar el segundo término del binomio debemos dividir $$bx^{n}$$ entre dos veces el primer término:
 
 $$\frac{bx^n}{2a^nx^n} = \frac{b}{2a^n}$$
 
@@ -203,13 +202,13 @@ $$(2x)^2 + 4x - 15$$
 
 ##### Paso 2: Calcular el segundo término del binomio a partir del segundo del trinomio:
 
-Recordemos que el segundo término del trinomio es dos veces el primer término del binomio por el segundo término del binomio: 
+Recordemos que el segundo término del trinomio es dos veces la raíz del primer término del trinomio por el segundo término del trinomio: 
 
 $$\frac{b}{2a^n} = \frac{4}{2\cdot2} = 1$$
 
 ##### Paso 3: Sumar y restar el nuevo término:
 
-Al sumar y restar el nuevo término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión algebraica resultante.
+Al sumar y restar el nuevo término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión resultante.
 
 $$\begin{aligned}
 (2x)^2 + 4x + 1 - 1 - 15\\
@@ -236,7 +235,7 @@ $$\begin{aligned}
 
 ## Conclusión
 
-El método de completado de cuadrados es una herramienta poderosa para factorizar polinomios de diversas estructuras. Se puede aplicar en tres situaciones clave:
+El método de completado de cuadrados es una herramienta poderosa para factorizar polinomios de diversas estructuras. Se puede aplicar cuando otros métodos más sencillos han fallado, particulamente en tres situaciones clave:
 
 * Cuando se tiene un binomio con dos cuadrados perfectos.
 * Cuando se tiene un trinomio con dos cuadrados perfectos.
