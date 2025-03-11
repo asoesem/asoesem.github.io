@@ -174,6 +174,14 @@ Espero que esta guía les sea de gran utilidad para aplicar la división sintét
 * [Teorema del Factor][2]
 * [Regla de Ruffini][3]
 
+## Otros Métodos de Factorización:
+
+* [Cambio de Variable]({% post_url 2025-03-07-fact-cambio-de-variable %}).
+* [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
+* [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
+
+
+
 [1]: https://es.wikipedia.org/wiki/Teorema_del_resto
 [2]: https://es.wikipedia.org/wiki/Teorema_del_factor
 [3]: https://es.wikipedia.org/wiki/Regla_de_Ruffini

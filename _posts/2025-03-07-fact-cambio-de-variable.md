@@ -247,5 +247,9 @@ El método de factorización por cambio de variable es una técnica poderosa par
 
 Este método es ampliamente utilizado en algebra básica y avanzada, especialmente en ecuaciones polinómicas, trigonometría y cálculo. Su aplicación permite resolver problemas complejos de manera ordenada y eficiente.
 
+## Otros Métodos de Factorización:
 
+* [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
+* [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
+* [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 

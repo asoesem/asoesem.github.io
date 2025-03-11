@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Factorización por factor común
+title: Factorización por Factor Común
 description: Se explica la factorización por medio de factor común.
 date: 2024-04-04T11:00:00-06:00
 author: axell
@@ -73,6 +73,12 @@ $$8x^{6}y^{5}z^{7}+16x^{3}y^{7}z^{4}$$
 $$=8 x^{3}x^{3}y^{5}z^{4}z^{3}+8 \cdot 2x^{3}y^{5}y^{2}z^{4} \hspace {1.5cm}$$ aplicando las leyes de potencia.
 
 $$=8x^{3}y^{5}z^{4}(x^{3}z^{3}+2y^{2})  \hspace{1.5 cm}$$ Aplicando la ley distributiva y obteniendo el mayor factor común entre los términos. 
+
+## Otros Métodos de Factorización:
+
+* [Cambio de Variable]({% post_url 2025-03-07-fact-cambio-de-variable %}).
+* [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
+* [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
 
 ## Referencias bibliográficas
 
