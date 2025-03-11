@@ -14,7 +14,7 @@ share: false
 
 El método de factorización por completado de cuadrados es una técnica algebraica que permite reescribir ciertos polinomios en productos de binomios cuadrados perfectos. Se basa en reconocer estructuras cuadráticas y transformarlas en expresiones factorizables. En este artículo, exploraremos algunos casos distintos donde se aplica este método, junto con ejemplos detallados.
 
-## Cuadrado de un Binomio
+## Cuadrado de un binomio
 
 Para entender el método de completado de cuadrados es fundamental recordar la fórmula notable del cuadrado de un binomio:
 
@@ -208,7 +208,7 @@ Podemos ver que el primer término es un cuadrado:
 
 $$(2x)^2 + 4x - 15$$
 
-##### Paso 2: Calcular un nuevo tercer del troinomio a partir del segundo:
+##### Paso 2: Calcular un nuevo tercer término del trinomio a partir del segundo:
 
 El nuevo tercer término será:
 

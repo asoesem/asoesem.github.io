@@ -26,7 +26,7 @@ $$x^2-7x-18$$
 
 Debemos buscar dos valores que multiplicados nos den -18 y sumados nos den -7.
 
-<img src="{{site.baseurl}}/images/fact-inspect-1.png" alt="por-inspeccion-1" style="display:block;margin:auto;width:17%"/>
+<img src="{{site.baseurl}}/images/fact-inspect-1.png" alt="por-inspeccion-1" style="display:block;margin:auto;width:25%"/>
 
 Luego, la expresión factorizada sería:
 
@@ -62,7 +62,7 @@ $$(3x+1)(2x-3)$$
 
 Este trinomio también se puede factorizar utilizando la ténica de pareo cruzado mostrado previamente, aunque encontrar los términos es un poquito más difícil.
 
-<img src="{{site.baseurl}}/images/fact-inspect-2.png" alt="por-inspeccion-2" style="display:block;margin:auto;width:17%"/>
+<img src="{{site.baseurl}}/images/fact-inspect-2.png" alt="por-inspeccion-2" style="display:block;margin:auto;width:25%"/>
 
 ### Alternativa usando cambio de variable
 

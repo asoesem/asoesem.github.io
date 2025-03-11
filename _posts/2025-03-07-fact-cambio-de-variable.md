@@ -24,7 +24,7 @@ $$P(x) = f(g(x))$$
 
 Podemos definir una nueva variable, por ejemplo $$u=g(x)$$, de manera que el polinomio tome una forma más sencilla $$P(u)$$, facilitando la factorización. Una vez factorizado, revertimos el cambio sustituyendo  por su expresión original.
 
-## Cuándo se Usa
+## Cuándo se usa
 
 Este método es útil cuando el polinomio presenta:
 
@@ -35,7 +35,7 @@ Este método es útil cuando el polinomio presenta:
 
 ## Ejemplos Concretos
 
-### Ejemplo 1: Factorización de un Polinomio con Exponentes Dobles
+### Ejemplo 1: Factorización de un polinomio con exponentes dobles
 
 Factorizar:
 
@@ -43,15 +43,16 @@ $$P(x)=x^4-5 x^2+4$$
 
 Comenzamos por notar que este polinio también se puede expresar como:
 
-$$P(x)=(x^2)^2-5 x^2+4$$
+$$P(x)=(x^2)^2-5 (x^2)+4$$
+
+Identificar que, en este caso, $$x^2$$ es un patrón repetitivo es clave para utilizar la ténica de factorización por cambio de variable.
 
 #### Paso 1: Definimos un cambio de variable:
 
 Nótese que si decimos que: 
 
 $$\begin{aligned}
-f(x)=x^2-5x+4\\
-g(x)=x^2\\
+f(x)=x^2-5x+4 \qquad\qquad \text{y} \qquad\qquad g(x)=x^2
 \end{aligned}$$  
 
 Entonces podemos definir nuestro polinomio como:
@@ -59,7 +60,7 @@ Entonces podemos definir nuestro polinomio como:
 $$\begin{aligned}
 P(x)&=f(g(x)) \\
     &=f(x^2) \\
-    &=(x^2)^2-5x^2+4\\
+    &=(x^2)^2-5(x^2)+4\\
     &=x^4-5x^2+4
 \end{aligned}$$
 
@@ -71,19 +72,33 @@ En consecuencia, podemos reescribir el polinomio original en términos de $$u$$:
 
 $$P(u)=u^2-5u+4$$
 
+Observemos que si reemplzamos $$u$$ por su valor obtenemos el polinomio original:
+
+$$P(x^2) = x^4-5x^2+4$$
+
+Esa es la clave del cambio de variable, ahora $$u$$ abstrae y oculta una parte de la complejidad del polinomio original haciéndolo más accesible y sencillo para factorizar por otros métodos.
+
 #### Paso 2: Factorizamos la expresión cuadrática:
 
-$$(u-4)(u-1)$$
+$$\begin{aligned}
+u^2-5u+4\\
+=(u-4)(u-1)
+\end{aligned}$$
 
 #### Paso 3: Revertimos el cambio de variable
 
-$$\left(x^2-4\right)\left(x^2-1\right)$$
+Reemplazamo $$u$$ por su valor original $$x^2$$
+
+$$\begin{aligned}
+(u-4)(u-1)\\
+=\left(x^2-4\right)\left(x^2-1\right)
+\end{aligned}$$
 
 #### Paso 4: Factorizamos completamente usando diferencia de cuadrados:
 
 $$(x-2)(x+2)(x-1)(x+1)$$
 
-### Ejemplo 2: Factorización de una Expresión con un Binomio Elevado
+### Ejemplo 2: Factorización de una expresión con un binomio elevado
 
 Factorizar:
 
@@ -93,6 +108,8 @@ $$
 
 
 #### Paso 1: Definimos el cambio de variable:
+
+De nuevo, la clave está en identificar el patrón repetitivo:
 
 $$
 u=x+1
@@ -119,7 +136,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
-### Ejemplo 3: Factorización en Expresiones Trigonométricas
+### Ejemplo 3: Factorización de expresiones trigonométricas
 
 Factorizar:
 
@@ -164,7 +181,7 @@ $$
 $$
 
 
-### Ejemplo 4: Factorización de Expresiones Radicales
+### Ejemplo 4: Factorización de expresiones radicales
 
 Factorizar:
 
@@ -203,7 +220,7 @@ $$
 $$
 
 
-### Ejemplo 5: Solución de Ecuaciones Exponenciales
+### Ejemplo 5: Solución de ecuaciones exponenciales
 
 Determine el conjunto solución de:
 
