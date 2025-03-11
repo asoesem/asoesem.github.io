@@ -82,4 +82,4 @@ $$=8x^{3}y^{5}z^{4}(x^{3}z^{3}+2y^{2})  \hspace{1.5 cm}$$ Aplicando la ley distr
 
 ## Bibliografía Consultada
 
-{% bibliography --file factoring%}
+{% bibliography --file factoring --cited %}
