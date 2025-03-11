@@ -45,7 +45,7 @@ Comenzamos por notar que este polinio también se puede expresar como:
 
 $$P(x)=(x^2)^2-5 (x^2)+4$$
 
-Identificar que, en este caso, $$x^2$$ es un patrón repetitivo es clave para utilizar la ténica de factorización por cambio de variable.
+En este caso, identificar que $$x^2$$ es un patrón repetitivo es clave para utilizar la ténica de factorización por cambio de variable.
 
 #### Paso 1: Definimos un cambio de variable:
 
