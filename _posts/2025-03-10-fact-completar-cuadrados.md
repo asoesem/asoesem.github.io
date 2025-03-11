@@ -255,5 +255,6 @@ Con la práctica, el completado de cuadrados se vuelve una herramienta útil no 
 
 * [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
 * [Cambio de Variable]({% post_url 2025-03-07-fact-cambio-de-variable %}).
+* [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 

@@ -178,7 +178,11 @@ Espero que esta guía les sea de gran utilidad para aplicar la división sintét
 
 * [Cambio de Variable]({% post_url 2025-03-07-fact-cambio-de-variable %}).
 * [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
+* [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
+
+
+
 
 
 

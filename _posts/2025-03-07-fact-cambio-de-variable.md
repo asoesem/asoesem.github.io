@@ -251,5 +251,6 @@ Este método es ampliamente utilizado en algebra básica y avanzada, especialmen
 
 * [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
 * [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
+* [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 
