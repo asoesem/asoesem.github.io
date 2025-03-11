@@ -16,7 +16,7 @@ share: false
 
 La factorización es un procedimiento matemático que permite representar expresiones algebraicas de otra forma. También, la factorización ayuda a la eliminar factores que se repiten en dichas expresiones y ayuda, también, a conocer aquellos números o términos que pueden estar involucrados para llegar a la solución final. 
 
-Principalmente, lo que se quiere lograr con la factorización es conseguir representar un polinomio como el producto de otros más simples. (Padilla _et al._, 2019, pp. 82)
+Principalmente, lo que se quiere lograr con la factorización es conseguir representar un polinomio como el producto de otros más simple {% cite precalc2019 --file factoring %}. 
 
 ## ¿Qué es la factorización por factor común?
 
