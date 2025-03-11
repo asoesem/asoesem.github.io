@@ -169,7 +169,11 @@ En la expresión $$(ax)^{2n} + bx^{n} + c$$ podemos ver que $$(ax)^n$$ es el pri
 
 $$\frac{bx^n}{2a^nx^n} = \frac{b}{2a^n}$$
 
-Es decir, nuestro binomio sería:
+Luego, el tercer término del trinomio tendría que ser: 
+
+$$\left(\frac{b}{2a^n}\right)^2 = \frac{b^2}{4a^{2n}}$$
+
+El cuadrado del binomio y su respectivo trinomio serían de la siguiente forma:
 
 $$\begin{aligned}
 \left[(ax)^n+\frac{b}{2a^n}\right]^2 = (ax)^{2n} + (\cancel{2})(\cancel{a^n}x^n)\left(\frac{b}{\cancel{2}\cancel{a^n}}\right) + \frac{b^2}{4a^{2n}} \\
@@ -200,11 +204,11 @@ Podemos ver que el primer término es un cuadrado:
 
 $$(2x)^2 + 4x - 15$$
 
-##### Paso 2: Calcular el segundo término del binomio a partir del segundo del trinomio:
+##### Paso 2: Calcular un nuevo tercer del troinomio a partir del segundo:
 
-Recordemos que el segundo término del trinomio es dos veces la raíz del primer término del trinomio por el segundo término del trinomio: 
+El nuevo tercer término será:
 
-$$\frac{b}{2a^n} = \frac{4}{2\cdot2} = 1$$
+$$\frac{b^2}{4a^{2n}} = \frac{4^2}{4 \cdot 2^2} = \frac{16}{16} = 1$$
 
 ##### Paso 3: Sumar y restar el nuevo término:
 
