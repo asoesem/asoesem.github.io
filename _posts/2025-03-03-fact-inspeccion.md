@@ -97,6 +97,9 @@ Con suficiente práctica, el reconocimiento de factores se vuelve intuitivo y pe
 * [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 
+## Bibliografía Consultada
+
+{% bibliography --file factoring%}
 
 
 [1]: https://es.wikipedia.org/wiki/Teorema_del_resto

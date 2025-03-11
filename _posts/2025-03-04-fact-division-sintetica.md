@@ -181,7 +181,9 @@ Espero que esta guía les sea de gran utilidad para aplicar la división sintét
 * [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 
+## Bibliografía Consultada
 
+{% bibliography --file factoring%}
 
 
 

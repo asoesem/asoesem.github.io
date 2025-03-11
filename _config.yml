@@ -20,6 +20,7 @@ permalink: /:title
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-scholar
 
 paginate: 10
 paginate_path: "/blog/page/:num"
@@ -74,3 +75,14 @@ defaults:
 sass:
   sass_dir: _sass
   style: compressed
+
+scholar:
+  style: apa
+  locale: es
+  source: _bibliography
+  bibliography: references.bib
+  # bibliography_template: bibtex.html
+  replace_strings: true
+  details_dir: bibliography
+  details_layout: bibentry
+  query: "@*"

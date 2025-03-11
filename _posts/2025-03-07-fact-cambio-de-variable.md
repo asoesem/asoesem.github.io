@@ -271,3 +271,6 @@ Este método es ampliamente utilizado en algebra básica y avanzada, especialmen
 * [Por Inspección]({% post_url 2025-03-03-fact-inspeccion %}).
 * [Factor Común]({% post_url 2024-04-04-factorizacion-por-factor-comun %}).
 
+## Bibliografía Consultada
+
+{% bibliography --file factoring%}

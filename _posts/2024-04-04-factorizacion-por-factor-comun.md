@@ -80,6 +80,6 @@ $$=8x^{3}y^{5}z^{4}(x^{3}z^{3}+2y^{2})  \hspace{1.5 cm}$$ Aplicando la ley distr
 * [Completar Cuadrados]({% post_url 2025-03-10-fact-completar-cuadrados %}).
 * [División Sintética]({% post_url 2025-03-04-fact-division-sintetica %}).
 
-## Referencias bibliográficas
+## Bibliografía Consultada
 
-Padilla Mora, E. R., Quesada Fernández, C. y Araya Román, D. (2019). _Precálculo versión preliminar_. EUNED.
+{% bibliography --file factoring%}
