@@ -28,14 +28,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name Configura Ruby
+        uses: https://github.com/ruby/setup-ruby/releases/tag/v1.224.0
+        with:
+          # ruby-version: '3.1' # no se necesita con un archivo .ruby-version
+          bundler-cache: true # mantiene las gemas instaladas en una cache automáticamente
+          cache-version: 0    # incrementar este número si hace falta refrescar gemas en la cache
       - name: Configura Pages
         uses: actions/configure-pages@v5
       - name: Construye con Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        # Salida al directorio './_site' de forma predeterminada
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
       - name: Subir artefacto
+        # Automaticamente sube un artefacto de el directorio './_site' de forma predeterminada
         uses: actions/upload-pages-artifact@v3
 
   # Trabajo de despliegue del sitio
