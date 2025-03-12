@@ -24,3 +24,10 @@
   width: 1px;
   word-wrap: normal !important;
 }
+
+// Fixes mjx latex rendering issues
+@supports (-webkit-marquee-repetition:infinite) and (object-fit:fill) {
+  mjx-container mjx-c::before {
+    will-change: opacity;
+  }
+}
