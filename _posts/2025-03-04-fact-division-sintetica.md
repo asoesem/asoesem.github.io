@@ -104,7 +104,7 @@ Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En
 
 Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{3}{2}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
 
-En nuestro ejemplo, x=-1$$, $$x=1$$ y $$x=\frac{3}{2}$$ son ceros de $$P(x)$$.
+En nuestro ejemplo, se puede comprobar  que $$x=-1$$, $$x=1$$ y $$x=\frac{3}{2}$$ son ceros de $$P(x)$$.
 
 $$
 \begin{aligned}
