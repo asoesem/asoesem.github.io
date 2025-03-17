@@ -97,19 +97,20 @@ El [teorema del factor o de las raíces racionales][2] nos ayuda a encontrar pos
 
 Recordemos que un polinomio es de la forma $$a_{n}x^{n} + a_{n-1}x^{n-1} + \ldots + a_{1}x + a_{0}$$.
 
-Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En nuestro ejemplo, el término independiente es $$3$$ y el coeficiente principal es $$2$$.
+Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En nuestro ejemplo de $$P(x)=2x^3-3x^2-2x+3$$, el término independiente es $$3$$ y el coeficiente principal es $$2$$.
 
 * Los divisores del término independiente son: $$p \in \{\pm 1, \pm 3\}$$.
 * Los divisores del coeficiente principal son $$q \in \{\pm 1, \pm 2\}$$.
 
-Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
+Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{3}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
 
-En nuestro ejemplo, únicamente $$x=-1$$ y $$x=1$$ son ceros de $$P(x)$$.
+En nuestro ejemplo, x=-1$$, $$x=1$$ y $$x=\frac{3}{2}$$ son ceros de $$P(x)$$.
 
 $$
 \begin{aligned}
 P(1) = 2(1)^3-3(1)^2-2(1)+3 =  0\\
-P(-1) = 2(-1)^3-3(-1)^2-2(-1)+3 = 0
+P(-1) = 2(-1)^3-3(-1)^2-2(-1)+3 = 0\\
+P\left(\frac{3}{2}\right) = 2\left(\frac{3}{2}\right)^3-3\left(\frac{3}{2}\right)^2-2\left(\frac{3}{2}\right)+3 = 0
 \end{aligned}
 $$
 
@@ -162,9 +163,26 @@ $$\begin{array}{rrrr|c}
 \end{array}
 $$
 
-Entonces, la otra factorización del polinomio $$P(x) = 2x^3-3x^2-2x+3$$ sería:
+Entonces, otra factorización del polinomio $$P(x) = 2x^3-3x^2-2x+3$$ sería:
 
 $$(x+1)(2x^2-5x+3)$$
+
+Finalmente, sabemos que el polinomio $$P(x)$$ tiene otro cero en $$\left(x-\frac{3}{2}\right)$$:
+
+$$\begin{array}{rrrr|c}
+2 & -3 & -2 & 3 & \frac{3}{2}\\
+\hline
+\downarrow & 3 & 0 & -3 &\\
+\hline     
+2 & 0 & -2 & 0 & \\
+\downarrow & \downarrow & \downarrow & \\
+2x^2 & -0x & -2 &
+\end{array}
+$$
+
+Entonces, la otra factorización del polinomio $$P(x) = 2x^3-3x^2-2x+3$$ sería:
+
+$$\left(x-\frac{3}{2}\right)(2x^2-2)$$
 
 Espero que esta guía les sea de gran utilidad para aplicar la división sintética en la factorización de polinomios de grado mayor o igual a 2.
 
