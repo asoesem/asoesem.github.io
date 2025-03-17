@@ -114,9 +114,11 @@ P\left(\frac{3}{2}\right) = 2\left(\frac{3}{2}\right)^3-3\left(\frac{3}{2}\right
 \end{aligned}
 $$
 
+Es decir $$(x-1)$$, $$(x+1)$$ y $$\left(x-\frac{3}{2}\right)$$ son factores de $$P(x)$$.
+
 Bueno, pero entonces, ¿para qué necesitamos la divisón sintética?
 
-La cosa es que saber donde el polinomio se hace cero solo nos dice uno de sus factores: el dividendo $$(x-r)$$. Pero, no nos dice cuál es el otro factor: el cociente de la división. Para eso tendríamos que realizar una división larga como las que hicimos previamente. No obstante, la división sintética es un método para realizar esa división de una forma mucho más sucinta que la división de los ejemplos anteriores.
+La cosa es que saber donde el polinomio se hace cero solo nos dice uno de sus factores: el dividendo $$(x-r)$$. Pero, no nos dice cuál es el otro factor: el cociente de la división. Para eso tendríamos que realizar una división larga como las que hicimos previamente. No obstante, la división sintética es un método para realizar esa división de una forma mucho más sucinta que la división larga de los ejemplos anteriores.
 
 ### División Sintética
 
