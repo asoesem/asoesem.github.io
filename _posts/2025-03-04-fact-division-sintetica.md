@@ -102,7 +102,7 @@ Se llama término idependiente a $$a_{0}$$ y coeficiente principal $$a_{n}$$. En
 * Los divisores del término independiente son: $$p \in \{\pm 1, \pm 3\}$$.
 * Los divisores del coeficiente principal son $$q \in \{\pm 1, \pm 2\}$$.
 
-Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{3}{2}, \pm \frac{1}{3}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
+Por teorema de las raíces racionales, $$r=\frac{p}{q}$$, entonces $$r \in \{\pm 1, \pm 3, \pm \frac{1}{2}, \pm \frac{3}{2}\}$$. Es decir, uno o más de los elementos de este conjunto serán ceros del polinomio $$P(x)$$.
 
 En nuestro ejemplo, x=-1$$, $$x=1$$ y $$x=\frac{3}{2}$$ son ceros de $$P(x)$$.
 
