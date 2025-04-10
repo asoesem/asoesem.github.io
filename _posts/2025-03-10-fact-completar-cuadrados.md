@@ -26,11 +26,11 @@ Se pueden dar diferentes escenarios:
 
 * Cuando se tiene un [binomio con dos cuadrados perfectos](#caso-1-binomio-con-dos-cuadrados-perfectos).
 * Cuando se tiene un [trinomio con dos cuadrados perfectos](#caso-2-trinomio-con-dos-cuadrados-perfectos).
-* Cuando se tien un [trinomio con solo su primer término al cuadrado](#caso-3-trinomio-con-solo-su-primer-término-al-cuadrado).
+* Cuando se tiene un [trinomio con solo su primer término al cuadrado](#caso-3-trinomio-con-solo-su-primer-término-al-cuadrado).
 
 ### Caso 1: Binomio con dos cuadrados perfectos
 
-Este caso es, probablemente, el más sencillo porque lo que nos hace falta es el segundo término del trinomio de un binomio al cuadrado. Todo lo que hay que hacer es sumar y restar ese término a la vez. Es decir, si tenemos:
+Este caso es, probablemente, el más sencillo, porque lo que nos hace falta es el segundo término del trinomio de un binomio al cuadrado. Todo lo que hay que hacer es sumar y restar ese término a la vez. Es decir, si tenemos:
 
 $$\begin{aligned}
 a^2 + b^2 \\
