@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Reglas de divisibilidad usando módulos
-description: Se presenta un breve video de explicación de cómo obtener la constancia de estudiante matriculado en la UNED
+title: Reglas de divisibilidad usando congruencias
+description: Se presentan los criterios de divisibilidad del 1 al 19 usando congruencias
 date: 2025-04-16T15:00:00-00:00
 author: axell
 image: '/images/136.jpg'
