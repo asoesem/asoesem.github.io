@@ -17,7 +17,7 @@ La divisibilidad de un número entero $$n$$ por otro número entero $$d$$ puede 
 
 $$n \equiv 0 \pmod{d} $$
 
-Esto significa que $$d|n$$ , es decir entonces que $$n$$ es divisible por $$d$$
+Esto significa que $$ d|n $$ , es decir; entonces que $$ n $$ es divisible por $$ d $$
 
 ## Criterios de divisibilidad usando congruencias del 1 al 19
 
