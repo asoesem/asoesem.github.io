@@ -246,7 +246,7 @@ Si ya has aprobado Matemática Introductoria (03463) y deseas llevar el curso de
 [27]:https://unedcr-my.sharepoint.com/:v:/g/personal/jordy_morales_uned_cr/EaSzSvGFWIVFlq4Oq_rga9kBAMPklG_tRavDAunvZGKGsg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OjnF0Q
 [28]:https://www.uned.ac.cr/index.php/ecen/noticias/autorizaciones-de-matricula
 [29]:https://www.uned.ac.cr/ecen/ensenanza-de-la-matematica
-[30]:https://www.people.vcu.edu/~rhammack/BookOfProof/
+[30]:https://richardhammack.github.io/BookOfProof/
 [31]:https://users.metu.edu.tr/serge/courses/111-2011/textbook-math111.pdf
 [32]:https://www.tedsundstrom.com/mathematical-reasoning-writing-and-proof
 [33]:[https://www.tec.ac.cr/node/26343](https://libros.tec.ac.cr/introduccion-a-la-matematica-discreta-ll5jy.html)
