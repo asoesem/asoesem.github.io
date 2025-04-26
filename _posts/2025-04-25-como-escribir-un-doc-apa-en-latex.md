@@ -1218,6 +1218,7 @@ Cuando estés listo(a) para iniciar un nuevo proyecto APA usando LaTeX puedes in
 
 ## Lectura Adicional
 
+* [Descargar esta guía][5]
 * [Plantilla de Proyecto APA][0]
 * [La Introducción No Tan Corta de LaTeX][1]
 * [Lista de Fuentes Soportadas por Overlead][2]
@@ -1229,3 +1230,4 @@ Cuando estés listo(a) para iniciar un nuevo proyecto APA usando LaTeX puedes in
 [2]: https://www.overleaf.com/learn/latex/Questions/Which_OTF_or_TTF_fonts_are_supported_via_fontspec%3F
 [3]: https://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
 [4]: https://bibtex.eu/es/
+[5]: {{site.baseurl}}/documentos/taller-latex-apa-7.pdf
