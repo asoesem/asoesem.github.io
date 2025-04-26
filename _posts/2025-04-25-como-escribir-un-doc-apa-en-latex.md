@@ -10,13 +10,14 @@ commissions: [cofoma]
 featured: true
 comments: false
 share: false
+toc: true
 ---
 
 Como parte de las herramientas para facilitar su vida académica, te traemos esta guía sobre cómo utilizar LaTeX para formatear tus trabajos según las normas APA 7. Si bien la idea es complementar el taller que tendremos próximamente, este post les servirá como referencia rápida cuando necesiten escribir sus documentos.
 
 LaTeX es una herramienta poderosa para la escritura académica, especialmente cuando se trata de formatear documentos complejos y manejar referencias. Afortunadamente, existe una clase específica que nos facilita aplicar el formato APA 7.
 
-## La Clase de Documento APA 7
+## Clase de Documento APA 7
 
 Cuando se crea un documento en LaTeX, lo primero que se especifica es la clase de documento que se desea utilizar: un artículo, un reporte, un libro, son clases comunes de los documentos LaTeX.
 
@@ -26,6 +27,8 @@ Cuando se trata de un documento en formato APA existe una clase de documento esp
 ```tex
 \documentclass{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ## Información de Portada
 
@@ -53,6 +56,8 @@ Donde:
 
 El comando `\spanishdate{año}{mes}{día}` nos permite ingresar una fecha especificando su año, mes y día y esta se reflejará en idioma español en el documento.
 
+[Regresar al índice](#toc)
+
 ## Configuración de la Página
 
 Es común que se deseen configurar algunas opciones de formato adicionales para el documento que incluyen cosas como el tamaño de la fuente, el tamaño del papel, el idioma y el tipo de documento APA. Todos estos detalles usualmente se especifican como *opciones* de la clase, que son parámetros, separados por comas, que se le pasan a la clase usando corchetes cuadrados:
@@ -67,6 +72,8 @@ El siguiente ejemplo define un documento APA tipo reporte estudiantil (`stu`), u
 ```tex
 \documentclass[stu, 12pt, a4paper, biblatex]{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ## Configurar Idioma Español
 
@@ -84,6 +91,8 @@ El paquete `inputenc` le dice a LaTeX cómo leer tu archivo de código, mientras
 Dependiendo del compilador que estemos usando, puede que importar `inputenc` no sea necesario. Por ejemplo, el compilador de XeLaTex no lo necesitas. Entonces, siempre es bueno prestar atención a los mensajes del compilador y determinar si este paquete hace falta o no.
 
 Por otro lado, el paquete `babel` es un sistema de internacionalización para LaTeX. Al especificar la opción `spanish`, le indicas a LaTeX que el idioma principal de tu documento es el español. Esto activa una serie de configuraciones específicas para el idioma, que incluye, entre otras cosas, traducciones y soporte para la división silábica. La opción adicional `es-tabla` instruye al traductor a usar la palabra "Tabla" en vez de la palabra "Cuadro" en las traducciones de tus tablas, de conformidad con las especificaciones de APA 7.
+
+[Regresar al índice](#toc)
 
 ## Otros Metadatos
 
@@ -104,6 +113,8 @@ Algunos de los otros elementos adicionales que se pueden definir son:
 * `\journal{nombre-revista}`: nombre de la revista en donde se publica el artículo.
 * `\volume{volumen-revista}`: volumen, número, páginas en donde se publica el artículo dentro de la revista.
 * `\ccopy{derechos-de-autor}`: aviso de derechos de autor.
+
+[Regresar al índice](#toc)
 
 ## Mi Primer Documento LaTeX con APA 7
 
@@ -135,6 +146,8 @@ Aquí comienza mi redacción.
 
 \end{document}
 ```
+
+[Regresar al índice](#toc)
 
 ## Estilos de Documento
 
@@ -190,6 +203,8 @@ Agrega la opción `tt` como se muestra a continuación:
 \documentclass[man, 12pt, a4paper, tt, biblatex]{apa7}    
 ```
 
+[Regresar al índice](#toc)
+
 ## Tamaño del Papel
 
 La especificación actual de la clase de documento `apa7` soporta dos tamaños de papel: 
@@ -202,7 +217,7 @@ La especificación actual de la clase de documento `apa7` soporta dos tamaños d
 * Tamaño carta (`leterpaper`):
 	+ Es un tamaño de papel estándar en América del Norte (principalmente Estados Unidos y Canadá).
 	+ Sus dimensiones son 215.9 mm de ancho por 279.4 mm de largo.
-    
+
 ### Tamaño A4
 
 Simplemente, incluye la opción `a4paper` en tu declaración de la clase de documento.
@@ -218,6 +233,8 @@ Simplemente, incluye la opción `letterpaper` en tu declaración de la clase de 
 ```tex
 \documentclass[stu, 12pt, letterpaper, biblatex]{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ## Encabezados
 
@@ -243,6 +260,8 @@ Este es el encabezado principal de una sección importante de tu documento. Se c
     La presente investigación...
 ```
 
+[Regresar al índice](#toc)
+
 ### Encabezado Nivel 2
 
 Este encabezado se utiliza para los subtemas dentro de una sección principal. Se crea con el comando `\subsection{Título del subtema}``.
@@ -260,6 +279,8 @@ Este encabezado se utiliza para los subtemas dentro de una sección principal. S
     La geometría de Riemann es...
 ```
 
+[Regresar al índice](#toc)
+
 ### Encabezado Nivel 3
 
 Este nivel de encabezado se emplea para subsecciones dentro de un subtema. Se crea con el comando `\subsubsection{Sub-subsección Específica}``.
@@ -276,6 +297,8 @@ Este nivel de encabezado se emplea para subsecciones dentro de un subtema. Se cr
 	    La geometría hiperbólica se utiliza principalmente para...
     
 ```
+
+[Regresar al índice](#toc)
 
 ### Encabezado Nivel 4
 
@@ -298,6 +321,8 @@ Este encabezado se utiliza para dividir aún más las subsecciones. Se crea con 
 			Figuras como János Bolyai y Nikolai Lobachesky...
 ```
 
+[Regresar al índice](#toc)
+
 ### Encabezado Nivel 5
 
 Este es el nivel de encabezado más bajo que generalmente se utiliza en documentos APA. Se crea con el comando `\subparagraph{Título subpárrafo.}`. También lleva un punto al final según los requerimientos de APA 7.
@@ -315,6 +340,8 @@ Este es el nivel de encabezado más bajo que generalmente se utiliza en document
 	            \subparagraph{El quinto postulado.}
 	            Muchos intentaron demostrar que era un teorema...
 ```
+
+[Regresar al índice](#toc)
 
 ## Enumeraciones y Viñetas
 
@@ -342,6 +369,8 @@ Entre los matemáticos que estudiaron a fondo el quinto postulado están
 a) Gauss, b) Lobachesky y c) Bolyai.
 ```
 
+[Regresar al índice](#toc)
+
 ### Enumeración
 
 Luego, está la *enumeración con números arábigos*:
@@ -366,6 +395,8 @@ Entre los matemáticos que estudiaron a fondo el quinto postulado están:
 3. Bolyai
 ```
 
+[Regresar al índice](#toc)
+
 ### Viñetas
 
 Finalmente, tenemos la *enumeración con viñetas*:
@@ -389,11 +420,15 @@ o Lobachesky
 o Bolyai
 ```
 
+[Regresar al índice](#toc)
+
 ## Tablas
 
 Aunque LaTeX ya tiene soporte para tablas, la clase de documento `apa7` también incorpora de forma predeterminada el paquete `booktabs`, que mejora la calidad de las tablas, proporcionando comandos adicionales y optimización tras bambalinas. La clase de documento `apa7` además incluye algunos comandos adicionales para definir notas al pie de la tabla.
 
 No es intención de esta sección explicar en detalle como construir tablas en \LaTeX. Para tal propósito consultar [La Introducción No Tan Corta de LaTeX][1] en su sección sobre tablas.
+
+[Regresar al índice](#toc)
 
 ### Soporte de booktabs
 
@@ -405,6 +440,7 @@ El paquete `booktabs` ofrece las siguientes opciones:
 * `cmidrule`: barra que se extiende un número de columnas.
 * `bottomrule`: barra de la parte inferior de la tabla.
 
+[Regresar al índice](#toc)
 
 ### Soporte de Notas al Pie de Tabla
 
@@ -415,6 +451,7 @@ Además, el documento tipo `apa7` soporta los siguientes comandos:
 * `\tabfnm{a}`: Coloque una marca de nota al pie en superíndice dentro de una celda de tabla.
 * `\tabfnt{a}{⟨texto-de-la-nota⟩}`: Dentro de las notas al pie de la tabla, especifique el texto de la nota al pie para `\tabfnm{a}``.
 
+[Regresar al índice](#toc)
 
 ### Ejemplo de Tabla
 
@@ -456,6 +493,8 @@ La tabla \ref{tab:TablaPrincipal} contiene datos de ejemplo.
 \end{table}    
 ```
 
+[Regresar al índice](#toc)
+
 ### Ubicación de la Tabla
 
 En el modo estudiante (`stu`) y en el modo manuscrito (`man`) las tablas y figuras se colocan hasta después de la lista de referencias. Si se desea que las tablas y figuras se integren dentro del cuerpo del texto en vez de posponerlas hasta después de la lista de referencias, se debe agregar la opción `floatsintext` en las opciones de la clase `apa7`.
@@ -463,6 +502,8 @@ En el modo estudiante (`stu`) y en el modo manuscrito (`man`) las tablas y figur
 ```tex
 \documentclass[stu, 12pt, a4paper, floatsintext, biblatex]{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ### Referenciar una Tabla
 
@@ -488,6 +529,8 @@ Por ejemplo:
     los datos revelan que...
 ```
 
+[Regresar al índice](#toc)
+
 ### Errores de Traducción
 
 Tal parece que el paquete `apa7` tiene un error de traducción de la palabra inglesa "Note", que debería traducirse, por babel, como "Nota" al español. Su traducción fue omitida en la implementación original del paquete, y por esa razón siempre sale en inglés. Mientras los autores del paquete solucionan este problema, una solución sencilla consiste en agregar su traducción de forma manual al inicio del documento, justo antes de `begin{document}`.
@@ -497,6 +540,8 @@ Tal parece que el paquete `apa7` tiene un error de traducción de la palabra ing
 \renewcommand{\notelabel}{Nota}
 \begin{document}
 ```
+
+[Regresar al índice](#toc)
 
 ## Figuras
 
@@ -519,6 +564,8 @@ El siguiente ejemplo muestra como agregar una figura basada en una imagen y se a
 \end{figure}
 ```
 
+[Regresar al índice](#toc)
+
 ### Ubicación de las Figuras
 
 Recuerda que, al igual que con las tablas, en el modo estudiante (`stu`) y el modo manuscrito (`man`) las figuras se colocan, de forma predeterminada, hasta después de la lista de referencias. Si deseas que las figuras aparezcan en el cuerpo del texto en donde se agregan debes incluir la opción `floatsintext` en la declaración de opciones tu clase `apa7`.
@@ -528,6 +575,8 @@ Por ejemplo:
 ```tex
 \documentclass[stu, 12pt, a4paper, floatsintext, biblatex]{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ### Referenciar una Figura
 
@@ -553,6 +602,8 @@ Por ejemplo:
     los datos revelan que...
 ```
 
+[Regresar al índice](#toc)
+
 ## Ecuaciones
 
 La especificación de APA 7 contiene algunas restricciones en la presentación de ecuaciones.
@@ -562,6 +613,8 @@ Aseguráte de agregar soporte para expresiones matemática a tu documento antes 
 ```tex
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 ```
+
+[Regresar al índice](#toc)
 
 ### Ecuaciones en Línea
 
@@ -636,6 +689,8 @@ $$
 
 Este documento no pretende ser una guía de como escribir ecuaciones, para más información consulte la guía del paquete `amsmath`.
 
+[Regresar al índice](#toc)
+
 ### Referenciar una Ecuación
 
 Dicha ecuación se puede referenciar usando el comando `\eqref{eq:nombre-ecuación}`.
@@ -652,6 +707,8 @@ Que luciría de la siguiente manera:
 Al aplicar la ecuación (1) obtenemos lo siguiente:
 ```
 
+[Regresar al índice](#toc)
+
 ## Saltos de Página y Columna
 
 En el punto en donde deseas crear un salto de página, simplemente incluye el comando:
@@ -665,6 +722,8 @@ Si estás trabajando en formato de doble columna, puedes hacer un salto de colum
 ```tex
 \columnbreak
 ```
+
+[Regresar al índice](#toc)
 
 ## Fuentes
 
@@ -680,6 +739,8 @@ Para controlar el tamaño de la fuente, lo más sencillo es especificar su tama�
 
 La implementación actual soporta tres tamaños de fuente: `10pt`,  `11pt` o  `12pt`.
 
+[Regresar al índice](#toc)
+
 ### Fuente Latin Modern Roman y Helvética
 
 De manera predeterminada, el paquete `apa7` usa una fuente llamada "Latin Modern Roman" que tiene una tipografía bastante agradable y elegante. Sin embargo, algunos trabajos universitarios requieren el uso de algún tipo de fuente específica, siendo "Arial" la peor de todas las recomendaciones, pues es una fuente tipográficamente poco elegante e informal y que, además, no luce bien en el trabajo final. 
@@ -689,6 +750,8 @@ Es posible cambiar la fuente "Latin Modern Roman" a "Helvética" por medio de in
 ```tex
 \documentclass[stu, 12pt, helv, a4paper, biblatex]{apa7}
 ```
+
+[Regresar al índice](#toc)
 
 ### Otras Fuentes Preconfiguradas
 
@@ -702,6 +765,8 @@ Puedes probar incluyendo uno de los siguientes paquetes:
 * `palatino`: Palatino
 * `utopia`: Utopia
 
+[Regresar al índice](#toc)
+
 ### Otras Fuentes Personalizadas
 
 Para utilizar otras fuentes específicas, debes cambiar tu compilador de LaTeX para usar ya sea `XeLatex` o `LuaLatex` como copiladores. En Overleaf puedes cambiar esa configuración en la opción de menú en la esquina superior izquierda de tu editor.
@@ -714,6 +779,8 @@ Una vez configurado el compilador apropiado, podrás incluir la siguiente config
 ```
 
 Puedes probar otras fuentes como: `Times New Roman` o `Verdana`. Si estás usando Overleaf consulta la [lista de fuentes soportadas][2].
+
+[Regresar al índice](#toc)
 
 ## Configurar Espaciado
 
@@ -737,6 +804,8 @@ Utilizando el símbolo de porcentaje, puedes activar o desactivar el tipo de int
 * `\singlespacing`: interlineado sencillo.
 * `\onehalfspacing`: interlineado de uno y medio.
 * `\doublespacing`: interlineado doble.
+
+[Regresar al índice](#toc)
 
 ### Espaciado entre Párrafos
 
@@ -781,6 +850,8 @@ Unidades relativas (dependientes del tamaño de la fuente actual):
 * `em`: El ancho de la letra "M" en la fuente actual. Esta unidad es muy útil porque se escala con el tamaño de la fuente.
 * `ex`: La altura de la letra "x" en la fuente actual. También se escala con el tamaño de la fuente.
 
+[Regresar al índice](#toc)
+
 ## Apéndices
 
 Comenzar la sección de apéndices es tan sencillo como introducir el comando `\appendix`, seguido de cada sección del apéndice utilizando los comandos de encabezados antes mencionados.
@@ -799,6 +870,8 @@ Puede resultar conveniente referenciar un apéndice en particular. Para este pro
 \appendix
 \label{app:xyz} \section{Título del apéndice}
 ```
+
+[Regresar al índice](#toc)
 
 ## Múltiples autores
 
@@ -869,6 +942,8 @@ En este caso, los autores son Isaac Newton, Gottfried W. Leibniz y Albert Einste
 ```
 {% endraw %}
 
+[Regresar al índice](#toc)
+
 ## Biblatex
 
 Como se podría esperar, el paquete `apa7` tiene soporte predeterminado para citas y referencias bibliográficas en formato APA 7. En LaTeX existen diferentes paquetes que implementan soporte para referencias bibliográficas en diferentes formatos y la clase `apa7` soporta varios de ellos, pero el que recomiendan, por su compatibilidad, es el paquete `biblatex`.
@@ -886,6 +961,8 @@ Alternativamente, se puede incluir el paquete directamente:
 ```
 
 En este documento se introducen algunas nociones esenciales de cómo usar `biblatex`, pero si quieres aprenderlo en profundidad, puedes consultar la [documentación de biblatex][3]. 
+
+[Regresar al índice](#toc)
 
 ### Fuentes Bibliográficas
 
@@ -922,6 +999,8 @@ Debes declarar este archivo `fuentes.bib` en el preámbulo de tu documento APA, 
 ```
 
 Una vez agregado tu archivo de fuentes bibliográficas a tu documento APA, podrás referenciar a cualquiera de las fuentes que agregues al archivo utilizando el identificador de la entrada que le asignes. Idealmente, cada identificador que escojas debería ser un mnemónico que te permita recordar fácilmente la fuente cuando estés escribiendo tu documento APA y necesites referenciarla.
+
+[Regresar al índice](#toc)
 
 ## Citando con Biblatex
 
@@ -979,6 +1058,8 @@ cálculo diferencial es indispensable para resolver problemas complejos de
 optimización en diversas aplicaciones.    
 ```
 
+[Regresar al índice](#toc)
+
 ### Cita Textual Corta
 
 Recuerda que una cita textual corta es una reproducción *exacta*, palabra por palabra, de un fragmento de texto de la fuente original. No cambias ninguna palabra ni el orden de las frases. La cita debe contener menos de 40 palabras. APA exige que este tipo de cita especifique el origen de la información proporcionando un número de página o mecanismo para localizar el origen de la cita dentro de la fuente.
@@ -1022,6 +1103,8 @@ Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuenete}
 poderoso para entender la continuidad y la convergencia en espacios 
 no euclidianos" (p. 45).
 ```
+
+[Regresar al índice](#toc)
 
 ### Cita Textual Larga
 
@@ -1110,6 +1193,8 @@ abstractas, indicando lo siguiente:
 \end{displayquote}
 ```
 
+[Regresar al índice](#toc)
+
 ## Referencias Citadas
 
 Incluir las referencias citadas es tan simple como invocar el comando `\printbibliography` al final del documento:
@@ -1121,6 +1206,8 @@ Incluir las referencias citadas es tan simple como invocar el comando `\printbib
 ```
 
 Toda referencia citada mediante `\textcite` o `\parencite` será incluida en el listado de referencias y se formatearán en el estilo de APA 7.
+
+[Regresar al índice](#toc)
 
 ## Lectura Adicional
 
