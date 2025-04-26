@@ -6,15 +6,20 @@ date: 2023-09-08 10:00:00
 author: axell
 image: '/images/51.jpg'
 tags: [reglamentos]
+toc: true
 ---
 
 ### Artículo primero: De la creación de la Comisión de Asociados
 
 La Asociación de Estudiantes de la Carrera de la Enseñanza de la Matemática de la UNED (En adelante ASOESEM), de conformidad con lo estipulado en el artículo vigésimo primero; en el inciso h) del [Estatuto de la ASOESEM][1], con el propósito de lograr una mayor participación activa de los asociados dentro de las diferentes acciones del movimiento estudiantil a nivel nacional o internacional, según los derechos y obligaciones de sus miembros; así como de cumplir con los fines que indica el [Estatuto de la ASOESEM][1] a través de la Asamblea General Extraordinaria, podrá acordar la conformación de “las comisiones que considere necesarias”, de acuerdo a la normativa y éste reglamento.
 
+[Regresar al índice](#toc)
+
 ### Artículo segundo: Naturaleza
 
 La Comisión de Asociados de la ASOESEM será una instancia asociativa de carácter reflexivo y consultivo. Sus recomendaciones serán vistas en Asamblea General de la ASOESEM y sus resoluciones deberán ser ratificadas por el máximo órgano de la ASOESEM. 
+
+[Regresar al índice](#toc)
 
 ### Artículo tercero: Conformación
 
@@ -26,6 +31,8 @@ de la ASOESEM.
 * Un representante por cada una de las comisiones nombradas por la ASOESEM, si es que existen.
 * Un representante estudiantil según el [Estatuto de la ASOESEM][1]. 
 
+[Regresar al índice](#toc)
+
 ### Artículo cuarto: Requisitos para pertenecer al Consejo de Asociados
 
 Para pertenecer a la comisión de asociados de la ASOESEM podrá hacerlo por medio de los siguientes mecanismos: 
@@ -36,12 +43,16 @@ ASOESEM.
 * Ser afiliado a la ASOESEM según lo estipulado en el estatuto de la ASOESEM.
 * Ser recomendado o ratificado por la Asamblea General de la ASOESEM.
 
+[Regresar al índice](#toc)
+
 ### Artículo Quinto: Organización
 
 La organización deberá realizarse de la siguiente forma: 
 
 * La Comisión tendrá una mesa coordinadora compuesta por tres miembros, que serán electos por el mismo consejo, por el plazo de un año.
 * La Comisión podrá reunirse todas las veces que lo considere necesario.
+
+[Regresar al índice](#toc)
 
 ### Artículo sexto: Funciones
 
@@ -56,6 +67,8 @@ general.
 * Supervisar las labores de los representantes estudiantiles recomendados por la ASOESEM y que fueron nombrados por la UNED, FEUNED o la asamblea general de la ASOESEM.
 * Cualquier otra función que la asamblea general le confiera.
 
+[Regresar al índice](#toc)
+
 ### Artículo Séptimo: Pérdida de la condición de miembro de la Comisión.
 
 Las siguientes son causales para perder la condición de miembro
@@ -65,8 +78,12 @@ ante la Comisión de Asociados de la ASOESEM:
 * Dejar de ser miembro de la junta directiva o la fiscalía de la ASOESEM.
 * Por incumplimiento de sus funciones o del estatuto de la ASOESEM, previa una investigación.
 
+[Regresar al índice](#toc)
+
 ### Artículo Octavo: De las faltas y sanciones
 
 Las faltas o sanciones de los miembros de la comisión de asociados de la ASOESEM serán las establecidos en el [Estatuto de la ASOESEM][1]. 
+
+[Regresar al índice](#toc)
 
 [1]:/artículos/estatuto-oficial-asoesem

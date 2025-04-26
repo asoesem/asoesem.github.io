@@ -6,27 +6,8 @@ date: 2023-09-08 12:00:00
 author: axell
 image: '/images/38.jpg'
 tags: [reglamentos]
+toc: true
 ---
-
-# Índice
-
-+ [Título I: Disposiciones Generales, Fines y Principios][1]
-  - [Capítulo I: Disposiciones Generales][11]
-  - [Capítulo II: Fines y Objetivos][12]
-+ [Título II: Miembros de la ASOESEM, Deberes, Derechos y Sanciones][2]
-  - [Capítulo I: Miembros de la ASOESEM][21]
-  - [Capítulo II: Deberes y Derechos de los Miembros de la ASOESEM][22]
-  - [Capítulo III: De las Sanciones a los Miembros de la ASOESEM][23]
-+ [Título III: Organismos e Instancias de la ASOESEM][3]
-  - [Capítulo I: Organismos de la ASOESEM][31]
-  - [Capítulo II: Asamblea General][32]
-  - [Capítulo III: La Junta Directiva][33]
-  - [Capítulo IV: La Fiscalía de la ASOESEM][34]
-  - [Capítulo V: El Directorio de Representantes Estudiantiles Nombrado por la FEUNED y la Asamblea General de la ASOESEM][35]
-  - [Capítulo VI: Comisiones][36]
-+ [Título IV: Disolución y Reformas del Estatuto][4]
-
-*** 
 
 # Título I: Disposiciones Generales, Fines y Principios
 
@@ -38,7 +19,7 @@ y por su naturaleza, será de duración indefinida.
 * **Artículo tercero**. La Asociación de Estudiantes de la Carrera de la Enseñanza de la Matemática (De aquí en adelante “ASOESEM”) de la UNED es autónoma en su administración y organización.
 * **Artículo cuarto**. El domicilio exacto de la Asociación será el Centro Universitario de la Universidad Estatal a Distancia de San José, avenida seis, calle diecinueve, cantón central, distrito cuarto, de la provincia de San José. Las Asambleas Generales y las sesiones de Junta Directiva podrán realizarse en otros sitios del país, a discreción de ésta última.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
 
 ## Capítulo II: Fines y Objetivos
 
@@ -55,9 +36,9 @@ y por su naturaleza, será de duración indefinida.
 * **Artículo sexto**. Para conseguir sus fines, la Asociación celebrará las siguientes actividades: a) eventos, cursos, seminarios, paneles y otras actividades que propicien el mejoramiento del asociado. b) Podrá la Asociación adquirir toda clase de bienes, siempre dentro de las limitaciones establecidas en el artículo cuarenta y tres del Código Civil, celebrar contratos de toda índole y realizar toda especie de operaciones lícitas encaminadas a la consecución de sus fines.
 * **Artículo séptimo**. La asociación contará con los siguientes recursos: a) Las cuotas de ingreso y mensuales de los asociados, que serán fijadas por la Junta Directiva. b) Donaciones. c) Subvenciones, partidas específicas del Estado y legados.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
 
-*** 
+---
 
 # Título II: Miembros de la ASOESEM, Deberes, Derechos y Sanciones 
 
@@ -71,7 +52,9 @@ y por su naturaleza, será de duración indefinida.
 
 * **Artículo décimo**. Los asociados dejarán de pertenecer a la Asociación por las siguientes causas: I) fallecimiento; II) por renuncia voluntaria dirigida a la Junta Directiva; III) por no estar matriculado con alguna asignatura del programa de la carrera y empadronado en la carrera de Enseñanza de la Matemática de la Universidad Estatal a Distancia; IV) por expulsión acordada por las dos terceras partes de los presentes en la Asamblea General Extraordinaria, y por cualquiera de los motivos que aquí se indican: a) no pago de una cuota mensual, sin causa justificada; b) conducta inmoral que atente contra el buen nombre de la asociación; c) cuando un asociado actúe en nombre de la Asociación sin estar facultado para ello; d) uso indebido de los activos físicos y económicos de la Asociación. En los casos de expulsión de un asociado se procederá de la siguiente forma: la Junta Directiva comunicará por escrito al afectado los motivos de la cesación de su membresía, a efecto de que el asociado en el momento en que reciba la comunicación pueda en el término de ocho días hábiles, preparar su defensa; cumplido este plazo la Junta Directiva convocará a la Asamblea General Extraordinaria, para que trate el caso, el asociado deberá estar presente y apelar ante dicha Asamblea y esgrimir su defensa y será la Asamblea General Extraordinaria, quien acordará o no la expulsión.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo II: Deberes y Derechos de los Miembros de la ASOESEM
 
@@ -79,16 +62,18 @@ y por su naturaleza, será de duración indefinida.
 promocionales que la ASOESEM les pueda conferir.
 * **Artículo décimo segundo**. Son deberes de los asociados: a) Cumplir con la Ley de Asociaciones y sus reformas, el Estatuto y los reglamentos de Asociación, así como los acuerdos que emanen de sus órganos. b) Asistir a las reuniones a las que fueran convocados c) Justificar las ausencias de las reuniones convocadas a las que no pueda asistir, y para el caso de las Asambleas; deberán justificar dos ausencias consecutivas; d) Cooperar en la conservación de los bienes y el buen desarrollo de las actividades de la Asociación. e) Apoyar las gestiones que realiza la Asociación para el cumplimiento de sus fines. f) Pagar puntualmente sus cuotas.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo III: De las Sanciones a los Miembros de la ASOESEM
 
 * **Artículo décimo tercero**: Los miembros de la ASOESEM que incumpla con cualquiera de sus obligaciones o cometa falta en perjuicio de la ASOESEM, podrá ser objeto de alguna de las siguientes sanciones por parte de la Asamblea General, posterior a la investigación y recomendaciones de la fiscalía, y en caso de no haber fiscal se nombrará alguna comisión dentro de la Asamblea General: a) Amonestación verbal o en su defecto por escrito. b) Suspensión de sus derechos como miembro de la ASOESEM por un tiempo definido por la Asamblea General. c)Destitución del cargo en algún puesto de la Junta Directiva o nombramiento alguna de las comisiones que la ASOESEM le hubiere conferido. d) Expulsión definitiva de la ASOESEM.
 * **Artículo décimo cuarto**: Para aplicar lo estipulado en el artículo décimo tercero, en el inciso c) y d) se requiere del voto de las dos terceras partes de la Asamblea General.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
 
-*** 
+---
 
 # Título III: Organismos e Instancias de la ASOESEM
 
@@ -98,8 +83,9 @@ promocionales que la ASOESEM les pueda conferir.
 la Asamblea General.
 * **Artículo décimo sexto**. Ningún afiliado puede pertenecer a ningún organismo de la ASOESEM, cuando incumpla los requisitos de matrícula de la UNED.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
 
+---
 
 ## Capítulo II: Asamblea General
 
@@ -110,7 +96,9 @@ Ordinaria y la Extraordinaria.
 * **Artículo vigésimo**. Son atribuciones de la Asamblea General Ordinaria: a) Elegir cada dos años a la Junta Directiva y el fiscal, pudiendo ser reelectos una vez; b) Conocer, aprobar, rechazar o modificar los informes de labores que le rindan los otros órganos; c) Aceptar donaciones y legados; d) Aprobar el presupuesto y el Plan de trabajo del año correspondiente y e) Autorizar la disposición de bienes por parte del presidente. f) Elegir a los representantes ante la Asamblea General de la Federación de Estudiantes de la UNED. 
 * **Artículo vigésimo primero**. Son atribuciones de la Asamblea General Extraordinaria: a) Llenar las vacantes ocurridas por ausencias definitivas o renuncia en la Junta Directiva o en la Fiscalía; b) Reformar los Estatutos y los reglamentos de la Asociación; c) Acordar o no la expulsión de sus asociados. d) Acordar la disolución de la Asociación; y, e) cualquier otro asunto de interés de la Junta Directiva y de los asociados, f) Destitución de algún afiliado, g) f) Elegir a los representantes ante la Asamblea General de la Federación de Estudiantes de la UNED, cuando fuere necesario, h)conformar las comisiones que fueren necesarias.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo III: La Junta Directiva
 
@@ -124,13 +112,17 @@ vacante por el resto del período.
 * **Artículo vigésimo octavo**. Son atribuciones del tesorero: a) Cobrar las cuotas que se fijen a los miembros. b) Rendir regularmente a la Junta Directiva, lista detallada de los asociados morosos y los pagos hechos. c) Vigilar porque las cuentas de la Asociación se cubran puntualmente. d) Cuidar de los fondos de la Asociación, en uno de los Bancos del Sistema Bancario Nacional, a nombre de la Asociación; los retiros se harán con la firma del presidente y el tesorero y en caso de que el presidente no pueda realizar la gestión o ausencia temporal del presidente, firmará el vicepresidente; e) Deberá rendir un informe anual a la Asamblea y llevará al día y ordenados los libros contables ordenados por ley; f) Deberá estar cubierto por una Póliza de Fidelidad, a favor de la Asociación, por un monto que fijará la Junta Directiva, como garantía de la custodia de los fondos de la Asociación; g) Realizar la confección del Plan Operativo del año correspondiente, h) Realizar la ejecución y liquidación de compras, i) El tesorero a más tardar dos semanas después de haber cesado en sus funciones, deberá entregar los documentos, libros y comprobantes de la Asociación a su sucesor; h) El incumplimiento de esta disposición; traerá consigo la expulsión del asociado. 
 * **Artículo vigésimo noveno**. Corresponde al vocal a) divulgar las actividades que la asociación emprenda, o bien, aquellas que sean solicitadas por otras organizaciones; b) Ayudar en las tareas que le encomiende la Junta Directiva, además podrá sustituir a las tareas u obligaciones de algún miembro de la Junta Directiva, a excepción del presidente. En caso de ausencia al mismo tiempo del presidente y del vicepresidente, el Vocal podrá sustituir al vicepresidente, presidiendo las sesiones de asamblea y las reuniones de la junta directiva, y firmará las actas junto con el secretario.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo IV: La Fiscalía de la ASOESEM
 
 * **Artículo trigésimo**. De la Fiscalía: Habrá un tercer órgano denominado Fiscalía, que estaría integrado por un fiscal, mayor de edad, nombrado por la Asamblea General Ordinaria, celebrada en la segunda quincena del mes de junio, por un período de dos años; tomará posesión de su cargo el día primero de mes de julio del año que corresponda, finalizará el treinta de junio, dos años después y que tendrá las siguientes atribuciones: a) Supervisar todas las operaciones y movimientos económicos de la Asociación; b) Velar por el fiel cumplimiento de la Ley y del Estatuto, así como los reglamentos y acuerdos que emita la Asociación; c) Rendir un informe anual a la Asamblea; d) Escuchar quejas de los asociados y realizar la investigación pertinente; e) Solicitar la convocatoria a Asamblea General Extraordinaria, cuando lo considere necesario; f) Participar con voz, pero sin voto en las sesiones de Junta Directiva, donde se traten asuntos que tengan injerencia con su gestión, g) Recomendar a la Junta Directiva o la Asamblea General Extraordinaria la expulsión de algún asociado, según las causas que indica el artículo décimo tercero.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo V: El Directorio de Representantes Estudiantiles Nombrado por la FEUNED y la Asamblea General de la ASOESEM.
 
@@ -143,7 +135,9 @@ según la fecha de su nombramiento.
 * **Artículo trigésimo sexto**. Debido a la naturaleza del puesto político estudiantil, los representantes estudiantiles de la ASOESEM deberán estar en constante comunicación con los diferentes órganos de esta asociación, la FEUNED, las instancias administrativas de la UNED, los máximos poderes de la república, y cualesquiera otras instancias; para tratar temas de interés que sean de la ASOESEM. Asímismo, la Asamblea General Ordinaria puede otorgarle el derecho de ser representante estudiantil en cualquier otra instancia, en donde se permita y sea de interés para la asociación.
 * **Artículo trigésimo séptimo**. Cualquier representante estudiantil podrá solicitar a la Junta Directiva una reunión cuando fuese necesario, respetando las políticas y reglamentos del puesto de representación.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
+
+---
 
 ## Capítulo VI: Comisiones
 
@@ -153,9 +147,9 @@ realizarlas.
 * **Artículo cuadragésimo primero**. La Asamblea General Extraordinaria o la Junta Directiva definirán las funciones de la comisión a formar y las personas que lo integran.
 * **Artículo cuadragésimo segundo**. Las comisiones se regirán por el reglamento de comisiones de la ASOESEM y deberá presentar un informe anual en la Asamblea General Ordinaria.
 
-[Regresar al índice][0]
+[Regresar al índice](#toc)
 
-*** 
+---
 
 # Título IV: Disolución y Reformas del Estatuto
 
@@ -164,21 +158,4 @@ realizarlas.
 
 (Reforma integral realizada en Asamblea General Extraordinaria celebrada el 29 de julio del 2023)
 
-[Regresar al índice][0]
-
-[0]:#índice
-[1]:#título-i-disposiciones-generales-fines-y-principios
-[11]:#capítulo-i-disposiciones-generales
-[12]:#capítulo-ii-fines-y-objetivos
-[2]:#título-ii-miembros-de-la-asoesem-deberes-derechos-y-sanciones
-[21]:#capítulo-i-miembros-de-la-asoesem
-[22]:#capítulo-ii-deberes-y-derechos-de-los-miembros-de-la-asoesem
-[23]:#capítulo-iii-de-las-sanciones-a-los-miembros-de-la-asoesem
-[3]:#título-iii-organismos-e-instancias-de-la-asoesem
-[31]:#capítulo-i-organismos-de-la-asoesem
-[32]:#capítulo-ii-asamblea-general
-[33]:#capítulo-iii-la-junta-directiva
-[34]:#capítulo-iv-la-fiscalía-de-la-asoesem
-[35]:#capítulo-v-el-directorio-de-representantes-estudiantiles-nombrado-por-la-feuned-y-la-asamblea-general-de-la-asoesem
-[36]:#capítulo-vi-comisiones
-[4]:#título-iv-disolución-y-reformas-del-estatuto
+[Regresar al índice](#toc)

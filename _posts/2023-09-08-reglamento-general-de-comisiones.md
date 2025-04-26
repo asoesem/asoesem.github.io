@@ -29,6 +29,8 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Articulo 7.** Las comisiones una vez finalizadas sus funciones, tendrán quince (15) días naturales para entregar todos los documentos y archivos a la Junta Directiva de la ASOESEM.
 
+[Regresar al índice](#toc)
+
 ### Capítulo II. SOBRE LAS PERSONAS INTEGRANTES
 
 **Artículo 8.** La conformación de las comisiones solo será de estudiantes activos en la carrera de enseñanza de la matemática de la UNED, y estos deberán ser afiliados activos de la ASOESEM, y ninguno podrá ser funcionario de la UNED.
@@ -40,6 +42,8 @@ junto con la Junta Directiva de la ASOESEM.
 **Artículo 11.** Cada comisión deberá garantizar un espacio de respeto y armonía entre sus integrantes. De haber algún incumplimiento o falta de respeto queda a discreción de cada comisión si la persona o personas deberán abandonar el espacio.
 
 **Artículo 12.** Por falta mayor, la ASOESEM puede revocar al miembro que incumple, junto con una garantía del debido proceso disciplinario estipulado en el estatuto de la ASOESEM, y los reglamentos y/o normativas aplicables en la UNED.
+
+[Regresar al índice](#toc)
 
 ### Capítulo III. SOBRE LA ORGANIZACIÓN DE LAS COMISIONES
 
@@ -65,6 +69,8 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Artículo 18.** Asimismo, cada Comisión podrá elegir otros puestos que considere necesarios.
 
+[Regresar al índice](#toc)
+
 ### Capítulo IV. SOBRE EL PROCESO DE ELECCIÓN
 
 **Artículo 19.** La organización y funcionamiento de las Comisiones deberá seguir las siguientes disposiciones:
@@ -75,6 +81,8 @@ junto con la Junta Directiva de la ASOESEM.
 **Artículo 20.** La elección de la persona Directora, Subdirectora y Asistente se realizará de manera democrática mediante votación de las personas integrantes de la comisión respectiva dentro de la primera reunión ordinaria interna.
 
 **Artículo 21.** La elección para cada uno de los puestos de cada Comisión se realizará por votación de la mitad más uno de los integrantes presentes en la primera reunión ordinaria interna.
+
+[Regresar al índice](#toc)
 
 ### Capítulo V. SOBRE EL TRABAJO COLABORATIVO ENTRE LA JUNTA DIRECTIVA Y LAS COMISIONES
 
@@ -92,6 +100,8 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Artículo 28.** Las reuniones oficiales se realizarán en las fechas establecidas por la ASOESEM, por los medios que estos mismos indiquen y queda a discreción de cada Comisión realizar reuniones extraoficiales.
 
+[Regresar al índice](#toc)
+
 ### Capítulo VI. SOBRE LOS PROCESOS DE VOTACIÓN
 
 **Artículo 29.** Para los procesos que requieran votación de la Junta Directiva de la ASOESEM en conjunto con la Comisión se tomará como acuerdo en firme el voto de la mitad más una de las personas presentes, exceptuando a la Fiscalia de la Asociación, que no posee voto. 
@@ -99,6 +109,8 @@ junto con la Junta Directiva de la ASOESEM.
 **Artículo 30.** Dentro de cada comisión, para la aprobación de las decisiones se requerirá la mitad más uno de votos a favor con las personas presentes en la reunión.
 
 **Artículo 31.** Para garantizar el artículo anterior, el voto de la persona Directora de Comisión contará como doble en casos de empate.
+
+[Regresar al índice](#toc)
 
 ### Capítulo VII. SOBRE EL PROCESO DE SALIDA Y PARTICIPACIÓN DE LA COMISIÓN
 
@@ -108,6 +120,8 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Artículo 34.** Cualquier integrante de la Comisión que se ausente sin justificación previa o de carácter urgente a tres reuniones oficiales seguidas no será considerado su voto en las próximas tres (3) reuniones.
 
+[Regresar al índice](#toc)
+
 ### Capítulo VIII. PROHIBICIONES
 
 **Artículo 35.** La persona directora de la comisión no podrá ser una persona perteneciente a la Junta Directiva de la ASOESEM.
@@ -116,7 +130,10 @@ junto con la Junta Directiva de la ASOESEM.
 
 **Artículo 37.** la persona Directora no podrá ostentar este mismo cargo en dos o más comisiones diferentes.
 
-## Título II
+[Regresar al índice](#toc)
+
+## TÍTULO II
+
 ### CAPITULO I. Alcances, disolución y reformas de este reglamento
 
 **Articulo 38.** El presente reglamento no aplicará para las comisiones especiales. Dichas comisiones deberán expedir su propio reglamento. 
@@ -124,3 +141,5 @@ junto con la Junta Directiva de la ASOESEM.
 **Articulo 39.** Las reformas parciales o totales de este presente reglamento deberán ser aprobadas por la Asamblea General Extraordinaria de la ASOESEM.
 
 ***(Reforma total integral realizada en Asamblea General Extraordinaria #21 el 27 de abril del año 2024)***
+
+[Regresar al índice](#toc)
