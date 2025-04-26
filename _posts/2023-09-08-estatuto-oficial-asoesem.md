@@ -6,10 +6,6 @@ date: 2023-09-08 12:00:00
 author: axell
 image: '/images/38.jpg'
 tags: [reglamentos]
-#commissions: [cofoma,cocodi]
-#featured: false
-comments: false
-share: false
 ---
 
 # Índice

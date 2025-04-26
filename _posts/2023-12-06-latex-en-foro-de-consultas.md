@@ -7,9 +7,8 @@ author: edalorzo
 image: '/images/42.jpg'
 tags: [latex]
 commissions: [cofoma]
+toc: true
 featured: true
-comments: true
-share: true
 ---
 
 Para aquellos que estamos llevando alguna materia de matemática y, especialmente, para los que somos estudiantes de carreras de ciencias en exactas, puede ser fundamental realizar consultas en los foros del entorno virtual utilizando lenguaje matemático.
@@ -28,6 +27,8 @@ Por ejemplo `\(c = \sqrt{a^2 + b^2}\)` produce la salida $$c = \sqrt{a^2 + b^2}$
 
 Algunos podrían estar familiarizados con herramientas de $$\LaTeX$$ que permiten escribir este tipo de expresiones entre dos signos de dólar, `$ $`, sin embargo, esta técnica *no funciona* en el entorno virtual. Por lo tanto, en los foros del entorno virtual se debe usar la técnica de los paréntesis redondos descrita arriba.
 
+[Regresar la índice](#toc)
+
 ### Modo Display
 
 Por otro lado, si la expresión que queremos escribir debe ocupar su propio párrafo separado, podemos colocar nuestro código $$\LaTeX$$ entre un par de paréntesis cuadrados, ambos precedidos de una barra inclinada: `\[ \]`.
@@ -44,6 +45,12 @@ Sabiendo esto, escribir expresiones matemáticas en el entorno virtual se puede 
 
 A continuación les dejo unos ejemplos de como escribir algunos de los comandos de $$\LaTeX$$ más útiles que he ido aprendiendo al llevar diferentes cursos de matemática de la UNED y que les pueden servir para realizar consultas en los foros de consultas cuando estén llevando algún curso de naturaleza matemática.
 
+[Regresar la índice](#toc)
+
+### Comandos de LaTeX
+
+A continuación se detallan algunos de los comandos de LaTeX más útiles con un breve ejemplo de cómo usarlo en el foro de consultas.
+
 #### Fundamentos
 
 | $$a^{n}$$                  | `\(a^{n}\)`                  |
@@ -55,6 +62,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\infty$$                 | `\(\infty\)`                 |
 | $$\int_{i=1}^n$$           | `\(\int_{i=1}^n\)`           |
 | $$\lim_{x\to\infty} f(x)$$ | `\(\lim_{x\to\infty} f(x)\)` |
+
+[Regresar la índice](#toc)
 
 #### Operadores
 
@@ -68,8 +77,7 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$a \gt b$$                | `\(a \gt b\)`                |
 | $$a \geq b$$               | `\(a \geq b\)`               |
 
-
- 
+[Regresar la índice](#toc)
 
 #### Lógica
 
@@ -86,6 +94,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\sum_{i=1}^{\infty} \frac{1}{n^s}$$ | `\(\sum_{i=1}^{\infty} \frac{1}{n^s}\)` |
 | $$\prod_p \frac{1}{1 - p^{-s}}$$      | `\(\prod_p \frac{1}{1 - p^{-s}}\)`      |
 | $$p \Rightarrow q, p, \therefore q$$  | `\(p \Rightarrow q, p, \therefore q\)`  |
+
+[Regresar la índice](#toc)
 
 #### Conjuntos:
 
@@ -119,6 +129,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\mathbb{I}$$                     | `\(\mathbb{I}\)`                     |
 | $$\mathbb{C}$$                     | `\(\mathbb{C}\)`                     |
 
+[Regresar la índice](#toc)
+
 #### Relaciones:
 
 | $$\aleph$$                              | `\(\aleph\)`                              |
@@ -129,7 +141,7 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\mathfrak{R}^{-1}$$                   | `\(\mathfrak{R}^{-1}\)`                   |
 | $$\mathfrak{R}_1 \circ \mathfrak{R}_2$$ | `\(\mathfrak{R}_1 \circ \mathfrak{R}_2\)` |
 
-
+[Regresar la índice](#toc)
 
 #### Funciones
 
@@ -137,6 +149,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$f:X \to Y$$ | `\(f:X \to Y\)` |
 | $$f \circ g$$ | `\(f \circ g\)` |
 | $$f^{-1}$$    | `\(f^{-1}\)`    |
+
+[Regresar la índice](#toc)
 
 #### Geometría
 
@@ -157,6 +171,8 @@ A continuación les dejo unos ejemplos de como escribir algunos de los comandos 
 | $$\alpha,\beta,\gamma,\theta$$ | `\(\alpha,\beta,\gamma,\theta\)` |
 | $$\pi$$                        | `\(\pi\)`                        |
 | $$\overrightarrow{a}$$         | `\(\overrightarrow{a}\)`         |
+
+[Regresar la índice](#toc)
 
 #### Cancelación de Expresiones
 
@@ -186,6 +202,8 @@ Que se produce de la siguiente expresión:
 \frac{\cancelto{1}{2}}{\cancelto{1}{5}} \cdot \frac{\cancelto{3}{15}}{\cancelto{3}{6}} = \frac{3}{3} = 1
 ```
 
+[Regresar la índice](#toc)
+
 #### Colores
 
 Para utilizar colores simplemente importa la macro de colores al inicio de tu entrada en el blog:
@@ -203,6 +221,8 @@ Esto nos permite agregar colores a nuestras expresiones matemáticas como por ej
 Que produce la salida:
 
 $$\frac{\color{blue}{x^2-1}}{\color{red}{(x+1)}\color{brown}{(x-2)}}$$
+
+[Regresar la índice](#toc)
 
 #### Cajas
 
@@ -225,6 +245,8 @@ $$\bbox[10px, border: 2px solid red]{\frac{r}{R} = \frac{1}{\sqrt{2}} = \frac{\s
 
 Que crear una caja con 10 pixeles en sus márgenes, con una línea sólida de dos pixeles de color rojo. Para colores puedes usar nombres de colores básicos en inglés.
 
+[Regresar la índice](#toc)
+
 #### Operaciones Multilíneas
 
 En ciertas ocasiones puede ser útil desarrollar una ecuación que ocupa múltiples lineas, como el ejemplo siguiente:
@@ -233,23 +255,34 @@ $$\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{
 
 Para conseguir este efecto, debemos escribir el código $$\LaTeX$$ entre dos expresiones de alineamiento como se muestra a continuación:
 
-`\[\begin{aligned} \end{aligned}\]`
+```tex
+\[\begin{aligned} \end{aligned}\]
+``
 
 Para producir una nueva línea se utiliza el operador `\\`, y para indicar que las expresiones se deben alinear en algún punto se utiliza el operador `&` para marcar el punto de alineamiento. Por ejemplo, la expresión de arriba se escribe como:
 
-`\[\begin{aligned}\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\27^{\circ}\cos{43^{\circ}} &= a\end{aligned}\]`
+```tex
+\[\begin{aligned}
+\cos{43^{\circ}} &= \dfrac{a}{27^{\circ}} \\
+27^{\circ}\cos{43^{\circ}} &= a
+\end{aligned}\]
+```
 
-Donde se puede ver que el punto de alineamiento es el punto antes del signo de igual y por eso ambas expresiones están alineadas en ese signo: `&=`. También se puede ver que hay un retorno de carro (o una nueva línea) justo donde comienza `\\27^{\circ}`. 
+Donde se puede ver que el punto de alineamiento es el punto antes del signo de igual y por eso ambas expresiones están alineadas en ese signo: `&=`. También se puede ver que hay un retorno de carro (o una nueva línea) justo despues de `\\`. 
 
 Con algo de paciencia y cuidado es posible escribir expresiones multilíneas complejas como la siguiente:
 
 $$\begin{aligned} 1 + S(n) &= S(1 + n) \;& \text{[Def. 1, (b)]} \\ &= S(n + 1) \;& \text{[Hipótesis inductiva]} \\ &= (n + 1) + 1 \;& \text{[Def. 1, (a)]} \\ &= S(n) + 1 \;& \text{[Def. 1, (a)]}\end{aligned}$$
+
+[Regresar la índice](#toc)
 
 ### Otras Herramientas Útiles
 
 A menudo, al escribir código $$\LaTeX$$ en el foro, uno no está muy seguro de si lo ha hecho bien hasta que se publica la entrada en el foro. Con frecuencia, uno descubre que se equivocó en algún comando, y ya en este punto no queda más remedio que editar la entrada en el foro para corregir el problema. Una forma de evitar este tipo de errores es por medio de escribir el código $$\LaTeX$$ en alguna otra herramienta. Una que me gusta por su sencillez es [CodeCogs][1]. Se Puede escribir el código $$\LaTeX$$ ahí y luego nada más se pasa al foro entre los paréntesis descritos en esta publicación.
 
 Otra alternativa es utilizar algún otro editor popular como [Overleaf][2] o [TexStudio][3] para escribir las entradas del foro en el editor y luego pasarlas al foro una vez que uno está satisfecho. Ambos editores soportan los mismos paréntesis de $$\LaTeX$$ que el foro de consultas y la plataforma virtual.
+
+[Regresar la índice](#toc)
 
 ### Lectura Adicional
 
@@ -259,6 +292,8 @@ Si quieres aprender más, puedes consultar innumerables recursos en Internet, pe
 * [La Introducción no tan Corta de LaTeX][5]
 * [Lista de Comandos Soportados por MathJax][6]
 * [Usar Notación TeX en Moddle][7]
+
+[Regresar la índice](#toc)
 
 [1]: https://latex.codecogs.com/eqneditor/editor.php?lang=es-es
 [2]: https://www.overleaf.com/project

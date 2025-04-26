@@ -6,10 +6,6 @@ date: 2024-01-03T10:00:00-00:00
 author: axell
 image: '/images/116.png'
 tags: [noticias]
-# commissions: [cocodi]
-featured: false
-comments: false
-share: false
 ---
 
 ## ¿Qué es la afiliación?

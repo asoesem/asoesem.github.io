@@ -6,13 +6,8 @@ date: 2023-12-23 21:17:00
 author: axell
 image: '/images/109.jpg'
 tags: [reglamentos]
-#commissions: [cofoma,cocodi]
-#featured: false
-comments: false
-share: true
+toc: true
 ---
-## **ASOCIACIÓN DE ESTUDIANTES DE LA CARRERA DE LA ENSEÑANZA DE LA MATEMÁTICA DE LA UNED**
-## **REGLAMENTO DE JUNTA DIRECTIVA**
 
 ### **CAPITULO I. DISPOSICIONES GENERALES**
 

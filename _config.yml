@@ -41,9 +41,7 @@ collections:
   authors:
     output: true
     permalink: /autores/:name
-  # docs:
-  #   output: true
-  #   permalink: /documentos/:slug
+
 
 #-------------------------------
 # Rutas de Páginas
@@ -67,11 +65,6 @@ defaults:
       type: "authors"
     values:
       layout: "author"
-  - scope:
-      path: ""
-      type: "docs"
-    values:
-      layout: "page"
 
 sass:
   sass_dir: _sass

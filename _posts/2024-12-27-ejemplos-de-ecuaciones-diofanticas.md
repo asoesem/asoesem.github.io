@@ -6,18 +6,7 @@ date: 2024-12-27 11:00:00
 author: axell
 image: '/images/135.jpg'
 tags: [teoría números]
-featured: true
-comments: false
-share: true
 ---
-# Índice
-
-+ [Ejercicios sobre ecuaciones diofaánticas usando fracciones contínuas][1]
-  - [Ejercicio 1][11]
-  - [Ejercicio 2][12]
-+ [Bibliografia y referencias][100]
-
-***
 
 ## Ejercicios sobre ecuaciones diofánticas usando fracciones contínuas
 

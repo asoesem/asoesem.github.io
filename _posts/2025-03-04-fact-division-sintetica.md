@@ -8,8 +8,7 @@ image: '/images/56.png'
 tags: [precálculo,álgebra,factorización]
 commissions: [cofoma]
 featured: true
-comments: false
-share: false
+toc: true
 ---
 
 La [división sintética][3] (también conocida como regla de Ruffini) es un método eficiente para dividir polinomios entre binomios de la forma $$(x-r)$$ . Esta técnica nos permite encontrar factores de un polinomio y simplificar su factorización, todo con cálculos rápidos y organizados. Entre sus ventajas están que nos permite realizar cálculos sin escribir variables, utiliza pocos cálculos y ocupa mucho menos espacio en el papel que la división larga. Además, las restas en la división larga se convierten en sumas cambiando los signos desde el principio, algo que la división sinténtica simplifica y ayuda a evitar errores de signo.

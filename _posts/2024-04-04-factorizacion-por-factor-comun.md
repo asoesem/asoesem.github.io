@@ -6,10 +6,7 @@ date: 2024-04-04T11:00:00-06:00
 author: axell
 image: '/images/117.png'
 tags: [precálculo, álgebra, factorización]
-#commissions: [cofoma]
-featured: false
-comments: false
-share: false
+commissions: [cofoma]
 ---
 
 # ¿Qué es la factorización?

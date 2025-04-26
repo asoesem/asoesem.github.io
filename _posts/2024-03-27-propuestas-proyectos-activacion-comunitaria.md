@@ -7,9 +7,7 @@ author: edalorzo
 image: '/images/55.png'
 tags: [proyectos]
 commissions: [cofoma]
-featured: false
-comments: false
-share: false
+toc: true
 ---
 
 La siguiente es una lista de potenciales proyectos de activación comunitaria para la Asociación de Estudiantes de la carrera de Enseñanza de la Matemática de la UNED (ASOESEM). Es decir, es una lista de ideas de proyectos que buscan una participación activa de los miembros de la asociación en actividades interesantes, divertidas y de naturaleza comunitaria.

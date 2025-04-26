@@ -8,8 +8,6 @@ image: '/images/130.png'
 tags: [matrícula, noticias]
 commissions: [cofoma]
 featured: true
-comments: false
-share: true
 ---
 
 Sabemos que la Universidad Estatal a Distancia (UNED) tiene sus particulares, algunas curiosas y otras no tanto, para matricular al inicio de cada cuatrimestre, así que este artículo pretende reunir la mayor cantidad de páginas web e información, especialmente para estudiantes de Enseñanza de la Matemática, para lograr una satisfactoria matrícula.

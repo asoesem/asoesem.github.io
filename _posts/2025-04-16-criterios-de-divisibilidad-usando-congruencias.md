@@ -6,10 +6,7 @@ date: 2025-04-16T15:00:00-00:00
 author: axell
 image: '/images/136.jpg'
 tags: [teoría números]
-#commissions: [cofoma]
 featured: true
-comments: false
-share: false
 ---
 
 ## Definición

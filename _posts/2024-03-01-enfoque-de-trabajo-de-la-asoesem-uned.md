@@ -7,9 +7,6 @@ author: axell
 image: '/images/110.jpg'
 tags: [noticias]
 commissions: [cocodi]
-featured: false
-comments: false
-share: false
 ---
 
 ## Presidencia da a conocer el enfoque de trabajo de la ASOESEM UNED para el I Semestre 2024

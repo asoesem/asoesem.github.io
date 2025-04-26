@@ -6,10 +6,6 @@ date: 2023-09-08 10:00:00
 author: axell
 image: '/images/51.jpg'
 tags: [reglamentos]
-#commissions: [cofoma,cocodi]
-#featured: false
-comments: false
-share: false
 ---
 
 ### Artículo primero: De la creación de la Comisión de Asociados

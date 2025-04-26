@@ -8,8 +8,6 @@ image: '/images/61.png'
 tags: [apa,latex]
 commissions: [cofoma]
 featured: true
-comments: false
-share: false
 toc: true
 ---
 

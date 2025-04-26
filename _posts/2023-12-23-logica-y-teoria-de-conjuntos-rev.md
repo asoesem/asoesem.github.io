@@ -8,8 +8,7 @@ image: '/images/49.jpg'
 tags: [cursos]
 commissions: [cofoma]
 featured: true
-comments: true
-share: true
+toc: true
 ---
 
 Esta es una reseña sobre el curso Lógica y Teoría de Conjuntos (03423) de la carrera de Enseñanza de la Matemática de la UNED.

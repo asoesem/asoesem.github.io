@@ -6,15 +6,14 @@ date: 2023-09-08 11:00:00
 author: axell
 image: '/images/45.jpg'
 tags: [reglamentos]
+toc: true
 commissions: [cofoma,cocodi]
-#featured: false
-comments: false
-share: false
 ---
 
-# REGLAMENTO DE COMISIONES DE LA ASOCIACIÓN DE ESTUDIANTES DE LA CARRERA DE LA  ENSEÑANZA DE LAS MATEMÁTICAS DE LA UNED
 ## TÍTULO I
+
 ### Capítulo I. DISPOSICIONES GENERALES
+
 **Artículo 1.** Las Comisiones estarán adscritas a la Junta Directiva de la Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas  (En adelante ASOESEM) de la UNED. Son órganos no autónomos, encargadas de  fomentar la participación y generación de nuevos liderazgos en la comunidad  estudiantil mediante espacios de acción con finalidades específicas. Estas  podrán ser permanentes o temporales.
 
 **Artículo 2.** El accionar de las Comisiones puede ser dentro de la Universidad de Estatal a Distancia de Costa Rica, y fuera de ella con previa votación 

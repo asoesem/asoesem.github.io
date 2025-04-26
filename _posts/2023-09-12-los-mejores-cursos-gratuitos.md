@@ -8,9 +8,8 @@ image: '/images/39.jpg'
 tags: [matemáticas,pedagogía]
 commissions: [cofoma]
 featured: true
-comments: false
-share: true
 ---
+
 A continuación se presenta una lista de algunos de los más útiles cursos de matemática y pedagogía gratuitos, impartidos por algunas de las mejores universidades del mundo latinoamericano, en las plataformas  Coursera y Edx.
 
 ## Cursos en Español

@@ -9,8 +9,6 @@ video_embed: https://www.youtube.com/embed/Cri1-Wwe2p8?si=tg4_ny-ojwzTK7Pj
 tags: [noticias,matrícula]
 commissions: [cocodi]
 featured: true
-comments: true
-share: true
 ---
 
 Todos los estudiantes de la carrera de Enseñanza de la Matemática de la UNED debemos llevar un conjunto materias del [Programa de Humanidades][1].
