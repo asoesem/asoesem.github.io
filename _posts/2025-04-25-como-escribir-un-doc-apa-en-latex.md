@@ -1049,7 +1049,7 @@ optimización en diversas aplicaciones.
 
 **Ejemplo de cita narrativa con biblatex:**
 
-Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuenete}`. 
+Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuente}`. 
 
 Por ejemplo, en tu documento, escribirías lo siguiente:
 
@@ -1097,7 +1097,7 @@ no euclidianos" (p. 45).
 
 **Ejemplo de cita narrativa usando biblatex:** 
 
-Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuenete}` y colocaremos manualmente el número de página al final de la cita. 
+Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuente}` y colocaremos manualmente el número de página al final de la cita. 
 
 ```tex
 \textcite{GARCIA} señala que ``la topología proporciona un marco abstracto 
