@@ -108,7 +108,7 @@ Algunos de los otros elementos adicionales que se pueden definir son:
 
 * `\keywords{lista-de-palabras-clave}`: lista separada por comas de palabras clave del documento.
 * `\abstract{resumen}`: resumen del contenido del documento.
-* `\shorttile{título-corto}`: título abreviado del documento para los encabezados de página.
+* `\shorttitle{título-corto}`: título abreviado del documento para los encabezados de página.
 * `\leftheader{apellidos-autor}`: Apellidos del autor para mostrar en los encabezados de páginas pares en modo revista (`jou`).
 * `\journal{nombre-revista}`: nombre de la revista en donde se publica el artículo.
 * `\volume{volumen-revista}`: volumen, número, páginas en donde se publica el artículo dentro de la revista.
@@ -302,7 +302,7 @@ Este nivel de encabezado se emplea para subsecciones dentro de un subtema. Se cr
 
 ### Encabezado Nivel 4
 
-Este encabezado se utiliza para dividir aún más las subsecciones. Se crea con el comando `\paragraph{Título párrafo.}`. Nota el punto al final del título, requerido por la especificación de APA para este nivel.
+Este encabezado se utiliza para dividir aún más las subsecciones. Se crea con el comando `\paragraph{Título párrafo.}`. La clase APA le agregará un punto al final al título, automáticaente, según los requerimientos de APA 7.
 
 ```tex
 \section{Geometrías No Eclidianas}
@@ -325,7 +325,7 @@ Este encabezado se utiliza para dividir aún más las subsecciones. Se crea con 
 
 ### Encabezado Nivel 5
 
-Este es el nivel de encabezado más bajo que generalmente se utiliza en documentos APA. Se crea con el comando `\subparagraph{Título subpárrafo.}`. También lleva un punto al final según los requerimientos de APA 7.
+Este es el nivel de encabezado más bajo que generalmente se utiliza en documentos APA. Se crea con el comando `\subparagraph{Título subpárrafo}`. La clase APA le agregará un punto al final al título, automáticaente, según los requerimientos de APA 7.
 
 ```tex
 \section{Geometrías No Eclidianas}
@@ -868,8 +868,11 @@ Puede resultar conveniente referenciar un apéndice en particular. Para este pro
     Para ello, se recomienda consultar el Apéndice \ref{app:xyz}.
 
 \appendix
-\label{app:xyz} \section{Título del apéndice}
+\section{Título del apéndice}
+\label{app:xyz}
 ```
+
+Esta misma ténica se puede utilizar para referenciar otro tipo de secciones del documento.
 
 [Regresar al índice](#toc)
 
@@ -1099,9 +1102,9 @@ no euclidianos" (p. 45).
 Para lograr este efecto con `biblatex`, se usa el comando `\textcite{id-fuenete}` y colocaremos manualmente el número de página al final de la cita. 
 
 ```tex
-\textcite{GARCIA} señala que "la topología proporciona un marco abstracto 
+\textcite{GARCIA} señala que ``la topología proporciona un marco abstracto 
 poderoso para entender la continuidad y la convergencia en espacios 
-no euclidianos" (p. 45).
+no euclidianos'' (p. 45).
 ```
 
 [Regresar al índice](#toc)
@@ -1209,13 +1212,19 @@ Toda referencia citada mediante `\textcite` o `\parencite` será incluida en el 
 
 [Regresar al índice](#toc)
 
+## Plantilla de Proyecto
+
+Cuando estés listo(a) para iniciar un nuevo proyecto APA usando LaTeX puedes iniciar copiando nuestra [plantilla de documento][0] que contiene ejemplos de todo lo que se menciona en esta guía.
+
 ## Lectura Adicional
 
+* [Plantilla de Proyecto APA][0]
 * [La Introducción No Tan Corta de LaTeX][1]
 * [Lista de Fuentes Soportadas por Overlead][2]
 * [Documentación de BibLaTeX][3]
 * [Guía de Usuario de BibTeX][4]
 
+[0]: https://www.overleaf.com/project/680c4d23e37f1054545afa6f
 [1]: https://mirrors.ucr.ac.cr/CTAN/info/lshort/spanish/lshort-letter.pdf
 [2]: https://www.overleaf.com/learn/latex/Questions/Which_OTF_or_TTF_fonts_are_supported_via_fontspec%3F
 [3]: https://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
