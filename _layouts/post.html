@@ -63,10 +63,12 @@ layout: default
 
         {% endif %}
 
+        {% if page.toc %}
         <div id="table-of-contents">
           <h2 id=toc>Índice de Contenidos</h2>
           {% toc %}
         </div>
+        {% endif %}
 
         <div class="post__content">
           {{ content }}
