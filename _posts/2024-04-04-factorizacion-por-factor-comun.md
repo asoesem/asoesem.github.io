@@ -7,6 +7,7 @@ author: axell
 image: '/images/117.png'
 tags: [precálculo, álgebra, factorización]
 commissions: [cofoma]
+featured: true
 ---
 
 # ¿Qué es la factorización?
