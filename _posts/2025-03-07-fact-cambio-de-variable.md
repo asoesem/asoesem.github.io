@@ -8,8 +8,6 @@ image: '/images/57.png'
 tags: [precálculo,álgebra,factorización]
 commissions: [cofoma]
 featured: true
-comments: false
-share: false
 ---
 
 La factorización por cambio de variable es una técnica utilizada en algebra para transformar expresiones complicadas en otras más simples, facilitando su factorización. Este método es especialmente útil cuando un polinomio tiene una estructura que sugiere la presencia de un patrón cuadrático, cúbico u otras formas reconocibles.

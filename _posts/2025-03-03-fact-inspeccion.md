@@ -8,8 +8,6 @@ image: '/images/59.png'
 tags: [precálculo,álgebra,factorización]
 commissions: [cofoma]
 featured: true
-comments: false
-share: false
 ---
 
 La factorización por inspección es un método intuitivo y directo para descomponer polinomios en factores sin necesidad de procedimientos algebraicos complejos. Se basa en la observación de la estructura del polinomio y en la identificación rápida de sus factores.

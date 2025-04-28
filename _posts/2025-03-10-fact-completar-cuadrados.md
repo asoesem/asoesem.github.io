@@ -8,8 +8,6 @@ image: '/images/58.png'
 tags: [precálculo,álgebra,factorización]
 commissions: [cofoma]
 featured: true
-comments: false
-share: false
 ---
 
 El método de factorización por completado de cuadrados es una técnica algebraica que permite reescribir ciertos polinomios en productos de binomios cuadrados perfectos. Se basa en reconocer estructuras cuadráticas y transformarlas en expresiones factorizables. En este artículo, exploraremos algunos casos distintos donde se aplica este método, junto con ejemplos detallados.
