@@ -22,6 +22,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-scholar
   - jekyll-toc
+  - jekyll-mermaid
 
 paginate: 10
 paginate_path: "/blog/page/:num"
@@ -70,6 +71,9 @@ sass:
   sass_dir: _sass
   style: compressed
 
+#-------------------------------
+# Configuración BibTex / APA
+
 scholar:
   style: apa
   locale: es
@@ -80,3 +84,9 @@ scholar:
   details_dir: bibliography
   details_layout: bibentry
   query: "@*"
+
+#------------------------------------
+# Configuración Diagramas de Mermaid
+
+mermaid:
+  src: https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js

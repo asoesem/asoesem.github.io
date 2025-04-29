@@ -52,6 +52,7 @@ GEM
       safe_yaml (~> 1.0)
       terminal-table (>= 1.8, < 4.0)
       webrick (~> 1.7)
+    jekyll-mermaid (1.0.0)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (3.0.0)
       sass-embedded (~> 1.54)
@@ -120,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   jekyll
+  jekyll-mermaid
   jekyll-paginate
   jekyll-scholar
   jekyll-sitemap

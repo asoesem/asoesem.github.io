@@ -5,3 +5,4 @@ gem "jekyll-paginate"
 gem "jekyll-sitemap"
 gem "jekyll-scholar"
 gem 'jekyll-toc'
+gem 'jekyll-mermaid'
