@@ -1,5 +1,6 @@
 #-------------------------------
 # Configuración del Sitio
+
 title: ASOESEM
 description: Asociación de Estudiantes de la carrera de la Enseñanza de las Matemáticas de la UNED
 logo: "/images/logo-light.png" # Puedes agregar tu logo. Por ejemplo "/images/logo.svg".
@@ -8,7 +9,8 @@ color_scheme: auto # Puedes escoger tres modos auto, light, y dark. Predetermina
 locale: "es_CR"
 
 #-------------------------------
-# Navigation Settings
+# Configuración de navegación
+
 menu_settings:
   menu_items:
     - title: "Inicio"
