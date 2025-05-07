@@ -83,12 +83,12 @@ footer_description: Información, noticias, artículos recientes y novedades de 
 
 
 # Social Links
-# social:
+social:
 # - {icon: "twitter", link: "https://twitter.com"}
-# - {icon: "facebook", link: "https://www.facebook.com/asoesem.org"}
+- {icon: "facebook", link: "https://www.facebook.com/asoesem.org"}
 # - {icon: "codepen", link: "https://codepen.io"}
-# - {icon: "github", link: "https://github.com"}
-# - {icon: "youtube", link: "https://www.youtube.com/@asoesemunedcr"}
+- {icon: "github", link: "https://github.com/asoesem/asoesem.github.io"}
+- {icon: "youtube", link: "https://www.youtube.com/@asoesemunedcr"}
 # - {icon: "instagram", link: "https://www.instagram.com/asoesem_uned/"}
 
 # Por ejemplo, para agregar un nuevo enlance al pie de página - {icon: "instagram", link: "https://instagram.com"}
