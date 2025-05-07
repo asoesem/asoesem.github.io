@@ -226,7 +226,19 @@ $$\frac{\color{blue}{x^2-1}}{\color{red}{(x+1)}\color{brown}{(x-2)}}$$
 
 #### Cajas
 
-Puede resultar conveniente encerrar expresiones en una caja para resaltar algún resultado. Eso se logra importando, al inicio de tu entrada de blog, la siguiente macro:
+Puede resultar conveniente encerrar expresiones en una caja para resaltar algún resultado. Quizás la manera más sencilla de lograr este objetivo es mediante el comando `\boxed{}`, soportado por el paquete amsmath.
+
+```tex
+\boxed{\cos^2 \theta + \sin^2 \theta = 1}
+```
+
+Que produce una salida como la siguiente:
+
+$$
+\boxed{\cos^2 \theta + \sin^2 \theta = 1}
+$$
+
+No obstante, si se desea un poco más de control sobre rel resultado, esto se puede lograr logra importando, al inicio de tu entrada de blog, la siguiente macro:
 
 ```tex
 \(\require{bbox}\)
@@ -257,7 +269,7 @@ Para conseguir este efecto, debemos escribir el código $$\LaTeX$$ entre dos exp
 
 ```tex
 \[\begin{aligned} \end{aligned}\]
-``
+```
 
 Para producir una nueva línea se utiliza el operador `\\`, y para indicar que las expresiones se deben alinear en algún punto se utiliza el operador `&` para marcar el punto de alineamiento. Por ejemplo, la expresión de arriba se escribe como:
 
