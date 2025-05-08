@@ -100,7 +100,7 @@ $$
 
 ## Identidades de Suma y Diferencia de Ángulos
 
-Las siguientes dos entidades trigonométricas se utilizan cuando tenemos un ángulo que se presenta como la suma o resta de otros dos. De momento dejaremos estas entidades sin demostración, y abordaremos su origen en una artículo separado. 
+Las siguientes dos entidades trigonométricas se utilizan cuando tenemos un ángulo que se presenta como la suma o resta de otros dos. De momento dejaremos estas entidades sin demostración, pues hemos abordado su demostración en artículos separados cuyos enlaces aprecen al final de este artículo. 
 
 $$
 \begin{align}
@@ -117,6 +117,7 @@ $$
 \begin{align}
 \begin{split}
 \tan(\vartheta \pm \varphi) = \frac{\sin(\vartheta \pm \varphi)}{\cos(\vartheta \pm \varphi)} = \frac{\sin \vartheta \cos \varphi \pm \cos \vartheta \sin \varphi}{\cos \vartheta \cos \varphi \mp \sin \vartheta \sin \varphi} \\[15pt]
+\text{Dividir numerador y denominador por } \cos \vartheta \cos \varphi \\[10pt]
 =\frac{\dfrac{\sin \vartheta \cos \varphi \pm \cos \vartheta \sin \varphi}{\cos \vartheta \cos \varphi}}{\dfrac{\cos \vartheta \cos \varphi \mp \sin \vartheta \sin \varphi}{\cos \vartheta \cos \varphi}} = \frac{\dfrac{\sin \vartheta \cancel{\cos \varphi}}{\cos \vartheta \cancel{\cos \varphi}} \pm \dfrac{\cancel{\cos \vartheta} \sin \varphi}{\cancel{\cos \vartheta} \cos \varphi}}{\dfrac{\cancel{\cos \vartheta \cos \varphi}}{\cancel{\cos \vartheta \cos \varphi}} \mp \dfrac{\sin \vartheta \sin \varphi}{\cos \vartheta \cos \varphi}} = \frac{\dfrac{\sin \vartheta}{\cos \vartheta} \pm \dfrac{\sin \varphi}{\cos \varphi}}{1 \mp \dfrac{\sin \vartheta}{\cos \vartheta} \dfrac{\sin \varphi}{\cos \varphi}} \\[15pt]
 =\boxed{\frac{\tan \vartheta \pm \tan \varphi}{1 \mp \tan \vartheta \tan \varphi}}
 \end{split}
@@ -387,4 +388,8 @@ $$
 |                                   | $$\tan\dfrac{\vartheta}{2} = \dfrac{1-\cos\vartheta}{\sin\vartheta} \quad = \dfrac{\sin \vartheta}{1-\cos \vartheta}$$                                                            |
 
 [Regresar al índice](#toc)
+
+## Lecturas Relacionadas
+
+* [Identidades Trigonométricas - Parte II]({% post_url 2025-05-05-identidades-trigonometricas-parte-2 %})
 
