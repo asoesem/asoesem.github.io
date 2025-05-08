@@ -8,7 +8,7 @@ image: '/images/63.png'
 tags: [precálculo,trigonometría]
 commissions: [cofoma]
 featured: true
-#toc: true
+toc: true
 ---
 
 En la enseñanza tradicional, las identidades trigonométricas suelen presentarse a los estudiantes como fórmulas a memorizar, sin detenerse en el razonamiento geométrico o histórico que las sustenta. Sin embargo, estas relaciones no surgieron de manera arbitraria, más bien tienen un origen común en la interpretación de la circunferencia unitaria y en las demostraciones clásicas basadas en triángulos inscritos. Explorar el génesis de cada identidad no solo clarifica su sentido, sino que convierte el aprendizaje en un proceso lógico de derivación. De este modo, como estudiantes, y también como docentes, podremos generar identidades nuevas a partir de unas pocas relaciones elementales, reduciendo la dependencia de la memorización y fomentando una comprensión más profunda y flexible de su origen y su aplicación.
