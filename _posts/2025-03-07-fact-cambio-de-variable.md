@@ -166,18 +166,17 @@ $$
 \left(\sin ^2 x-1\right)^2
 $$
 
-#### Paso 4: Usamos diferencia de cuadrados:
+#### Paso 4: Distribuimos la potencial
 
 $$
-(\sin x-1)(\sin x+1)
+(\sin x-1)^2(\sin x+1)^2
 $$
 
 #### Resultado Final:
 
 $$
-(\sin x-1)(\sin x+1)(\sin x-1)(\sin x+1)
+(\sin x-1)^2(\sin x+1)^2
 $$
-
 
 ### Ejemplo 4: Factorización de expresiones radicales
 
