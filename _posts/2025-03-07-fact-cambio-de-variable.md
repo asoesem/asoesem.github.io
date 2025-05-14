@@ -166,7 +166,13 @@ $$
 \left(\sin ^2 x-1\right)^2
 $$
 
-#### Paso 4: Distribuimos la potencial
+#### Paso 4: Factorizamos por diferencia de cuadrados:
+
+$$
+\left[(\sin x-1)(\sin x+1)\right]^2
+$$
+
+#### Paso 5: Distribuimos la potencia:
 
 $$
 (\sin x-1)^2(\sin x+1)^2
