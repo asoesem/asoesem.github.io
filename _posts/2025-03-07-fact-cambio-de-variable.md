@@ -169,7 +169,7 @@ $$
 #### Paso 4: Usamos diferencia de cuadrados:
 
 $$
-(\sin x-1)^2(\sin x+1)^2
+(\sin x-1)(\sin x+1)
 $$
 
 #### Resultado Final:
