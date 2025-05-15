@@ -1,0 +1,161 @@
+:root {
+    --theorem-bg: #e6f7ff;
+    --theorem-border: #91d5ff;
+    --theorem-text: #0050b3;
+
+    --postulate-bg: #fffbe6;
+    --postulate-border: #ffe58f;
+    --postulate-text: #ad8b00;
+
+    --corollary-bg: #f6ffed;
+    --corollary-border: #b7eb8f;
+    --corollary-text: #389e0d;
+
+    --lemma-bg: #fff0f6;
+    --lemma-border: #ffadd2;
+    --lemma-text: #c41d7f;
+
+    --axiom-bg: #f0f5ff;
+    --axiom-border: #adc6ff;
+    --axiom-text: #1d39c4;
+
+    --definition-bg: #e6fffb;
+    --definition-border: #87e8de;
+    --definition-text: #006d75;
+
+    --proof-bg: #f9f0ff;
+    --proof-border: #d3adf7;
+    --proof-text: #531dab;
+    --proof-qed-color: #531dab;
+
+    --math-block-padding: 15px;
+    --math-block-margin: 20px 0;
+    --math-block-border-radius: 8px;
+    --math-block-border-width: 2px;
+    --math-block-font-family: 'Georgia', serif; /* Or any preferred serif font */
+}
+
+body {
+    counter-reset: theorem-counter postulate-counter corollary-counter lemma-counter axiom-counter definition-counter;
+}
+
+.math-block {
+    padding: var(--math-block-padding);
+    margin: var(--math-block-margin);
+    border-radius: var(--math-block-border-radius);
+    border-style: solid;
+    border-width: var(--math-block-border-width);
+    font-family: var(--math-block-font-family);
+    position: relative; /* For QED symbol positioning in proofs */
+}
+
+.math-block-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.math-block-body {
+    line-height: 1.6;
+}
+
+/* Theorem */
+.theorem {
+    background-color: var(--theorem-bg);
+    border-color: var(--theorem-border);
+    color: var(--theorem-text);
+}
+.theorem .math-block-title::before {
+    content: "Theorem " counter(theorem-counter) ". ";
+    counter-increment: theorem-counter;
+    font-weight: bold;
+}
+
+/* Postulate */
+.postulate {
+    background-color: var(--postulate-bg);
+    border-color: var(--postulate-border);
+    color: var(--postulate-text);
+}
+.postulate .math-block-title::before {
+    content: "Postulate " counter(postulate-counter) ". ";
+    counter-increment: postulate-counter;
+    font-weight: bold;
+}
+
+/* Corollary */
+.corollary {
+    background-color: var(--corollary-bg);
+    border-color: var(--corollary-border);
+    color: var(--corollary-text);
+}
+.corollary .math-block-title::before {
+    content: "Corollary " counter(corollary-counter) ". ";
+    counter-increment: corollary-counter;
+    font-weight: bold;
+}
+
+/* Lemma */
+.lemma {
+    background-color: var(--lemma-bg);
+    border-color: var(--lemma-border);
+    color: var(--lemma-text);
+}
+.lemma .math-block-title::before {
+    content: "Lemma " counter(lemma-counter) ". ";
+    counter-increment: lemma-counter;
+    font-weight: bold;
+}
+
+/* Axiom */
+.axiom {
+    background-color: var(--axiom-bg);
+    border-color: var(--axiom-border);
+    color: var(--axiom-text);
+}
+.axiom .math-block-title::before {
+    content: "Axiom " counter(axiom-counter) ". ";
+    counter-increment: axiom-counter;
+    font-weight: bold;
+}
+
+/* Definition */
+.definition {
+    background-color: var(--definition-bg);
+    border-color: var(--definition-border);
+    color: var(--definition-text);
+}
+.definition .math-block-title::before {
+    content: "Definition " counter(definition-counter) ". ";
+    counter-increment: definition-counter;
+    font-weight: bold;
+}
+
+/* Proof */
+.proof {
+    background-color: var(--proof-bg);
+    border-color: var(--proof-border);
+    color: var(--proof-text);
+    padding-bottom: 30px; /* Space for QED symbol */
+}
+.proof .math-block-title { /* Proofs usually don't have numbers or explicit titles like "Proof X" */
+    font-style: italic;
+}
+.proof .math-block-title::before {
+    content: "Proof. "; /* Or just "Proof: " */
+    font-weight: bold;
+    font-style: italic;
+}
+.proof .math-block-body::after {
+    content: "□"; /* QED symbol */
+    font-weight: bold;
+    color: var(--proof-qed-color);
+    position: absolute;
+    right: var(--math-block-padding);
+    bottom: calc(var(--math-block-padding) - 5px); /* Adjust as needed */
+    font-size: 1.2em;
+}
+/* If a proof has a specific subject, e.g. "Proof of Theorem 1" */
+.proof.has-subject .math-block-title::before {
+    content: ""; /* Remove default "Proof. " */
+}
