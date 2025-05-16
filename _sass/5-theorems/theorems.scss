@@ -66,7 +66,7 @@ body {
     color: var(--theorem-text);
 }
 .theorem .math-block-title::before {
-    content: "Theorem " counter(theorem-counter) ". ";
+    content: "Teorema " counter(theorem-counter) ". ";
     counter-increment: theorem-counter;
     font-weight: bold;
 }
@@ -78,7 +78,7 @@ body {
     color: var(--postulate-text);
 }
 .postulate .math-block-title::before {
-    content: "Postulate " counter(postulate-counter) ". ";
+    content: "Postulado " counter(postulate-counter) ". ";
     counter-increment: postulate-counter;
     font-weight: bold;
 }
@@ -90,7 +90,7 @@ body {
     color: var(--corollary-text);
 }
 .corollary .math-block-title::before {
-    content: "Corollary " counter(corollary-counter) ". ";
+    content: "Corolario " counter(corollary-counter) ". ";
     counter-increment: corollary-counter;
     font-weight: bold;
 }
@@ -102,7 +102,7 @@ body {
     color: var(--lemma-text);
 }
 .lemma .math-block-title::before {
-    content: "Lemma " counter(lemma-counter) ". ";
+    content: "Lema " counter(lemma-counter) ". ";
     counter-increment: lemma-counter;
     font-weight: bold;
 }
@@ -114,7 +114,7 @@ body {
     color: var(--axiom-text);
 }
 .axiom .math-block-title::before {
-    content: "Axiom " counter(axiom-counter) ". ";
+    content: "Axioma " counter(axiom-counter) ". ";
     counter-increment: axiom-counter;
     font-weight: bold;
 }
@@ -126,7 +126,7 @@ body {
     color: var(--definition-text);
 }
 .definition .math-block-title::before {
-    content: "Definition " counter(definition-counter) ". ";
+    content: "Definición " counter(definition-counter) ". ";
     counter-increment: definition-counter;
     font-weight: bold;
 }
