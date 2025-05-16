@@ -1,16 +1,4 @@
 # ...existing code...
-module Jekyll
-  # Stores display names for block types, matching your SCSS.
-  BLOCK_TYPE_NAMES = {
-    'theorem'    => 'Teorema',
-    'postulate'  => 'Postulado',
-    'corollary'  => 'Corolario',
-    'lemma'      => 'Lema',
-    'axiom'      => 'Axioma',
-    'definition' => 'Definición',
-    'proof'      => 'Prueba' # Spanish for Proof
-  }.freeze
-
   class MathBlockTag < Liquid::Block
     def initialize(tag_name, markup, tokens)
       super
@@ -27,19 +15,12 @@ module Jekyll
       page = context.environments.first['page'] # Get the current page/post object
       converter = site.find_converter_instance(Jekyll::Converters::Markdown)
 
-      # Initialize page-specific counters and site-wide reference data store
-      # Counters are now stored per page to ensure per-article numbering
       page['math_block_counters'] ||= Hash.new(0)
-      # References remain site-wide for cross-page linking if needed, but labels should be unique.
       site.config['math_block_references'] ||= {}
 
-      # Increment counter for this block type for the current page
       current_number = (page['math_block_counters'][@block_type] += 1)
       display_block_name = BLOCK_TYPE_NAMES[@block_type] || @block_type.capitalize
 
-      # Store reference data if a label is provided
-      # Ensure labels are unique across the site if you intend to use math_ref across different articles
-      # or ensure your linking strategy accounts for this.
       if @label_param && !@label_param.strip.empty?
         clean_label = @label_param.strip
         if site.config['math_block_references'].key?(clean_label)
@@ -48,10 +29,10 @@ module Jekyll
         site.config['math_block_references'][clean_label] = {
           'type_key'    => @block_type,
           'name'        => display_block_name,
-          'number'      => current_number, # This number is specific to its page context
+          'number'      => current_number,
           'title_param' => @title_param ? @title_param.strip : nil,
           'id'          => clean_label,
-          'page_path'   => page['path'] # Store page path for context, useful for debugging or advanced linking
+          'page_path'   => page['path']
         }
       end
 
@@ -63,14 +44,21 @@ module Jekyll
 
       if @block_type == "proof"
         if !escaped_user_title.empty?
+          # User-provided title for a proof is usually the full subject.
           block_title_str = escaped_user_title
         else
-          block_title_str = "#{display_block_name}."
+          # Default proof title.
+          block_title_str = "#{display_block_name}." # e.g., "Prueba."
         end
       else
-        block_title_str = "#{display_block_name} #{current_number}."
+        # For theorem, definition, axiom, etc.
+        base_name_and_number = "#{display_block_name} #{current_number}"
         if !escaped_user_title.empty?
-          block_title_str += " #{escaped_user_title}"
+          # Has a user-provided title, use a colon.
+          block_title_str = "#{base_name_and_number}: #{escaped_user_title}" # e.g., "Teorema 1: Título Opcional"
+        else
+          # No user-provided title, use a period.
+          block_title_str = "#{base_name_and_number}." # e.g., "Teorema 1."
         end
       end
 
@@ -98,7 +86,10 @@ module Jekyll
     end
   end
 
-  # ... MathRefTag class remains the same ...
+# ... MathRefTag class and registration code remain the same ...
+# ... (rest of your _plugins/math_block_tags.rb file) ...
+# filepath: /Users/edalorzo/Sandbox/asoesem.github.io/_plugins/math_block_tags.rb
+# ...existing code...
   class MathRefTag < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       super
@@ -118,15 +109,9 @@ module Jekyll
       if references && references.key?(@label_arg)
         ref_data = references[@label_arg]
         
-        # Link text: "Teorema 1", "Definición 2", etc.
-        # The number here is the number within its original page.
         link_text = "#{ref_data['name']} #{ref_data['number']}"
         href_id = CGI.escapeHTML(ref_data['id']) 
 
-        # If you want to link across pages, you'd need to construct the full URL
-        # For now, this assumes same-page linking.
-        # page_url = site.baseurl ? site.baseurl + ref_data['page_path'] : ref_data['page_path']
-        # "<a href=\"#{page_url}##{href_id}\">#{CGI.escapeHTML(link_text)}</a>"
         "<a href=\"##{href_id}\">#{CGI.escapeHTML(link_text)}</a>"
       else
         Jekyll.logger.warn "Math Reference Warning:", "Label '#{@label_arg}' not found for math_ref tag."
