@@ -1,5 +1,4 @@
-require 'cgi' # For HTML escaping
-
+# ...existing code...
 module Jekyll
   # Stores display names for block types, matching your SCSS.
   BLOCK_TYPE_NAMES = {
@@ -25,43 +24,48 @@ module Jekyll
 
     def render(context)
       site = context.registers[:site]
+      page = context.environments.first['page'] # Get the current page/post object
       converter = site.find_converter_instance(Jekyll::Converters::Markdown)
 
-      # Initialize counters and reference data store if they don't exist on the site object
-      site.config['math_block_counters'] ||= Hash.new(0)
+      # Initialize page-specific counters and site-wide reference data store
+      # Counters are now stored per page to ensure per-article numbering
+      page['math_block_counters'] ||= Hash.new(0)
+      # References remain site-wide for cross-page linking if needed, but labels should be unique.
       site.config['math_block_references'] ||= {}
 
-      # Increment counter for this block type and get current number
-      current_number = (site.config['math_block_counters'][@block_type] += 1)
+      # Increment counter for this block type for the current page
+      current_number = (page['math_block_counters'][@block_type] += 1)
       display_block_name = BLOCK_TYPE_NAMES[@block_type] || @block_type.capitalize
 
       # Store reference data if a label is provided
+      # Ensure labels are unique across the site if you intend to use math_ref across different articles
+      # or ensure your linking strategy accounts for this.
       if @label_param && !@label_param.strip.empty?
         clean_label = @label_param.strip
+        if site.config['math_block_references'].key?(clean_label)
+          Jekyll.logger.warn "Math Label Warning:", "Label '#{clean_label}' is already in use. Labels should be unique across the site for math_ref to work reliably."
+        end
         site.config['math_block_references'][clean_label] = {
-          'type_key'    => @block_type, # e.g., 'theorem'
-          'name'        => display_block_name, # e.g., 'Teorema'
-          'number'      => current_number,
-          'title_param' => @title_param ? @title_param.strip : nil, # The user-provided title string
-          'id'          => clean_label # The label used for the HTML id
+          'type_key'    => @block_type,
+          'name'        => display_block_name,
+          'number'      => current_number, # This number is specific to its page context
+          'title_param' => @title_param ? @title_param.strip : nil,
+          'id'          => clean_label,
+          'page_path'   => page['path'] # Store page path for context, useful for debugging or advanced linking
         }
       end
 
-      raw_block_content = super(context) # Renders content between {% tag %} and {% endtag %}
+      raw_block_content = super(context)
       processed_content = converter.convert(raw_block_content.strip).strip
 
-      # Construct the title string (e.g., "Teorema 1. Título Opcional")
       block_title_str = ""
       escaped_user_title = @title_param ? CGI.escapeHTML(@title_param.strip) : ""
 
       if @block_type == "proof"
         if !escaped_user_title.empty?
-          # If user provides a title for a proof, it's typically the subject.
-          # Your SCSS for .proof.has-subject .math-block-title::before had content: "";
-          # This implies the title attribute itself is the full intended title.
-          block_title_str = escaped_user_title # e.g., User writes title="Prueba del Teorema de Pitágoras"
+          block_title_str = escaped_user_title
         else
-          block_title_str = "#{display_block_name}." # "Prueba."
+          block_title_str = "#{display_block_name}."
         end
       else
         block_title_str = "#{display_block_name} #{current_number}."
@@ -78,7 +82,6 @@ module Jekyll
       end
       
       css_class = "math-block #{@block_type}"
-      # Add 'has-subject' if a proof has a specific title provided by the user
       if @block_type == "proof" && @title_param && !@title_param.strip.empty?
          css_class += " has-subject"
       end
@@ -95,6 +98,7 @@ module Jekyll
     end
   end
 
+  # ... MathRefTag class remains the same ...
   class MathRefTag < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       super
@@ -115,23 +119,25 @@ module Jekyll
         ref_data = references[@label_arg]
         
         # Link text: "Teorema 1", "Definición 2", etc.
+        # The number here is the number within its original page.
         link_text = "#{ref_data['name']} #{ref_data['number']}"
-        href_id = CGI.escapeHTML(ref_data['id']) # id is the clean label
+        href_id = CGI.escapeHTML(ref_data['id']) 
 
+        # If you want to link across pages, you'd need to construct the full URL
+        # For now, this assumes same-page linking.
+        # page_url = site.baseurl ? site.baseurl + ref_data['page_path'] : ref_data['page_path']
+        # "<a href=\"#{page_url}##{href_id}\">#{CGI.escapeHTML(link_text)}</a>"
         "<a href=\"##{href_id}\">#{CGI.escapeHTML(link_text)}</a>"
       else
         Jekyll.logger.warn "Math Reference Warning:", "Label '#{@label_arg}' not found for math_ref tag."
-        # Return a user-friendly message in Spanish
         "[Referencia a '#{CGI.escapeHTML(@label_arg)}' no encontrada]"
       end
     end
   end
 
-  # Register each specific math block type
   BLOCK_TYPE_NAMES.keys.each do |block_type|
     Liquid::Template.register_tag(block_type, MathBlockTag)
   end
 
-  # Register the MathRefTag
   Liquid::Template.register_tag('math_ref', MathRefTag)
 end
