@@ -1,4 +1,19 @@
-# ...existing code...
+require 'cgi' # For HTML escaping
+require 'jekyll' # Ensure Jekyll is loaded
+
+# This plugin defines custom Liquid tags for Jekyll to create and reference math blocks.
+module Jekyll
+  # Stores display names for block types, matching your SCSS.
+  BLOCK_TYPE_NAMES = {
+    'theorem'    => 'Teorema',
+    'postulate'  => 'Postulado',
+    'corollary'  => 'Corolario',
+    'lemma'      => 'Lema',
+    'axiom'      => 'Axioma',
+    'definition' => 'Definición',
+    'proof'      => 'Prueba' # Spanish for Proof
+  }.freeze
+
   class MathBlockTag < Liquid::Block
     def initialize(tag_name, markup, tokens)
       super
@@ -86,10 +101,7 @@
     end
   end
 
-# ... MathRefTag class and registration code remain the same ...
-# ... (rest of your _plugins/math_block_tags.rb file) ...
-# filepath: /Users/edalorzo/Sandbox/asoesem.github.io/_plugins/math_block_tags.rb
-# ...existing code...
+  # This tag is used to create a link to a math block by its label.
   class MathRefTag < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       super
