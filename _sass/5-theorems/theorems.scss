@@ -1,161 +1,234 @@
 :root {
-    --theorem-bg: #e6f7ff;
-    --theorem-border: #91d5ff;
-    --theorem-text: #0050b3;
-
-    --postulate-bg: #fffbe6;
-    --postulate-border: #ffe58f;
-    --postulate-text: #ad8b00;
-
-    --corollary-bg: #f6ffed;
-    --corollary-border: #b7eb8f;
-    --corollary-text: #389e0d;
-
-    --lemma-bg: #fff0f6;
-    --lemma-border: #ffadd2;
-    --lemma-text: #c41d7f;
-
-    --axiom-bg: #f0f5ff;
-    --axiom-border: #adc6ff;
-    --axiom-text: #1d39c4;
-
-    --definition-bg: #e6fffb;
-    --definition-border: #87e8de;
-    --definition-text: #006d75;
-
-    --proof-bg: #f9f0ff;
-    --proof-border: #d3adf7;
-    --proof-text: #531dab;
-    --proof-qed-color: #531dab;
-
-    --math-block-padding: 15px;
+    // General layout vars (from your existing setup)
     --math-block-margin: 20px 0;
     --math-block-border-radius: 8px;
     --math-block-border-width: 2px;
-    --math-block-font-family: 'Georgia', serif; /* Or any preferred serif font */
+    --math-block-font-family: 'Georgia', serif;
+
+    // Padding for the new title and body structure
+    --math-title-padding: 8px 12px;
+    --math-body-padding: 12px;
+
+    // Store original color palette for reference or direct use
+    --original-theorem-bg: #e6f7ff;
+    --original-theorem-border: #91d5ff;
+    --original-theorem-text: #0050b3;
+
+    --original-postulate-bg: #fffbe6;
+    --original-postulate-border: #ffe58f;
+    --original-postulate-text: #ad8b00;
+
+    --original-corollary-bg: #f6ffed;
+    --original-corollary-border: #b7eb8f;
+    --original-corollary-text: #389e0d;
+
+    --original-lemma-bg: #fff0f6;
+    --original-lemma-border: #ffadd2;
+    --original-lemma-text: #c41d7f;
+
+    --original-axiom-bg: #f0f5ff;
+    --original-axiom-border: #adc6ff;
+    --original-axiom-text: #1d39c4;
+
+    --original-definition-bg: #e6fffb;
+    --original-definition-border: #87e8de;
+    --original-definition-text: #006d75;
+
+    --original-proof-bg: #f9f0ff;
+    --original-proof-border: #d3adf7;
+    --original-proof-text: #531dab;
+    --original-proof-qed-color: #531dab; // Keep for QED symbol
+
+    // New color variable structure
+    // Title text color will be the same as the body background color,
+    // and body text color will be the same as the title background color.
+    // This creates a two-tone effect per block type.
+
+    // Theorem
+    --theorem-title-bg: var(--original-theorem-text);
+    --theorem-title-text: var(--original-theorem-bg);
+    --theorem-body-bg: var(--original-theorem-bg);
+    --theorem-body-text: var(--original-theorem-text);
+    --theorem-outer-border: var(--original-theorem-border);
+
+    // Postulate
+    --postulate-title-bg: var(--original-postulate-text);
+    --postulate-title-text: var(--original-postulate-bg);
+    --postulate-body-bg: var(--original-postulate-bg);
+    --postulate-body-text: var(--original-postulate-text);
+    --postulate-outer-border: var(--original-postulate-border);
+
+    // Corollary
+    --corollary-title-bg: var(--original-corollary-text);
+    --corollary-title-text: var(--original-corollary-bg);
+    --corollary-body-bg: var(--original-corollary-bg);
+    --corollary-body-text: var(--original-corollary-text);
+    --corollary-outer-border: var(--original-corollary-border);
+
+    // Lemma
+    --lemma-title-bg: var(--original-lemma-text);
+    --lemma-title-text: var(--original-lemma-bg);
+    --lemma-body-bg: var(--original-lemma-bg);
+    --lemma-body-text: var(--original-lemma-text);
+    --lemma-outer-border: var(--original-lemma-border);
+
+    // Axiom
+    --axiom-title-bg: var(--original-axiom-text);
+    --axiom-title-text: var(--original-axiom-bg);
+    --axiom-body-bg: var(--original-axiom-bg);
+    --axiom-body-text: var(--original-axiom-text);
+    --axiom-outer-border: var(--original-axiom-border);
+
+    // Definition
+    --definition-title-bg: var(--original-definition-text);
+    --definition-title-text: var(--original-definition-bg);
+    --definition-body-bg: var(--original-definition-bg);
+    --definition-body-text: var(--original-definition-text);
+    --definition-outer-border: var(--original-definition-border);
+
+    // Proof
+    --proof-title-bg: var(--original-proof-text);
+    --proof-title-text: var(--original-proof-bg);
+    --proof-body-bg: var(--original-proof-bg);
+    --proof-body-text: var(--original-proof-text);
+    --proof-outer-border: var(--original-proof-border);
+    --proof-qed-color: var(--original-proof-qed-color); // QED color remains distinct
 }
 
-body {
-    counter-reset: theorem-counter postulate-counter corollary-counter lemma-counter axiom-counter definition-counter;
-}
-
+/* General Math Block Styling */
 .math-block {
-    padding: var(--math-block-padding);
     margin: var(--math-block-margin);
     border-radius: var(--math-block-border-radius);
     border-style: solid;
     border-width: var(--math-block-border-width);
     font-family: var(--math-block-font-family);
     position: relative; /* For QED symbol positioning in proofs */
+    overflow: hidden; /* Ensures border-radius clips children backgrounds correctly */
+    // Note: No padding here, as title and body will have their own.
 }
 
 .math-block-title {
+    padding: var(--math-title-padding);
     font-weight: bold;
-    margin-bottom: 10px;
     display: block;
+    // border-bottom: 1px solid; /* Optional: if you want a line between title and body */
+    // border-bottom-color: inherit; /* Will inherit border-color from .math-block */
+}
+
+.proof .math-block-title { /* Keep proof title italic if desired */
+    font-style: italic;
 }
 
 .math-block-body {
+    padding: var(--math-body-padding);
     line-height: 1.6;
 }
 
-/* Theorem */
-.theorem {
-    background-color: var(--theorem-bg);
-    border-color: var(--theorem-border);
-    color: var(--theorem-text);
-}
-.theorem .math-block-title::before {
-    content: "Teorema " counter(theorem-counter) ". ";
-    counter-increment: theorem-counter;
-    font-weight: bold;
-}
-
-/* Postulate */
-.postulate {
-    background-color: var(--postulate-bg);
-    border-color: var(--postulate-border);
-    color: var(--postulate-text);
-}
-.postulate .math-block-title::before {
-    content: "Postulado " counter(postulate-counter) ". ";
-    counter-increment: postulate-counter;
-    font-weight: bold;
-}
-
-/* Corollary */
-.corollary {
-    background-color: var(--corollary-bg);
-    border-color: var(--corollary-border);
-    color: var(--corollary-text);
-}
-.corollary .math-block-title::before {
-    content: "Corolario " counter(corollary-counter) ". ";
-    counter-increment: corollary-counter;
-    font-weight: bold;
-}
-
-/* Lemma */
-.lemma {
-    background-color: var(--lemma-bg);
-    border-color: var(--lemma-border);
-    color: var(--lemma-text);
-}
-.lemma .math-block-title::before {
-    content: "Lema " counter(lemma-counter) ". ";
-    counter-increment: lemma-counter;
-    font-weight: bold;
-}
-
-/* Axiom */
-.axiom {
-    background-color: var(--axiom-bg);
-    border-color: var(--axiom-border);
-    color: var(--axiom-text);
-}
-.axiom .math-block-title::before {
-    content: "Axioma " counter(axiom-counter) ". ";
-    counter-increment: axiom-counter;
-    font-weight: bold;
-}
-
-/* Definition */
-.definition {
-    background-color: var(--definition-bg);
-    border-color: var(--definition-border);
-    color: var(--definition-text);
-}
-.definition .math-block-title::before {
-    content: "Definición " counter(definition-counter) ". ";
-    counter-increment: definition-counter;
-    font-weight: bold;
-}
-
-/* Proof */
-.proof {
-    background-color: var(--proof-bg);
-    border-color: var(--proof-border);
-    color: var(--proof-text);
-    padding-bottom: 30px; /* Space for QED symbol */
-}
-.proof .math-block-title { /* Proofs usually don't have numbers or explicit titles like "Proof X" */
-    font-style: italic;
-}
-.proof .math-block-title::before {
-    content: "Proof. "; /* Or just "Proof: " */
-    font-weight: bold;
-    font-style: italic;
-}
+/* QED symbol for proofs */
 .proof .math-block-body::after {
     content: "□"; /* QED symbol */
     font-weight: bold;
-    color: var(--proof-qed-color);
+    color: var(--proof-qed-color); /* Uses specific QED color var */
     position: absolute;
-    right: var(--math-block-padding);
-    bottom: calc(var(--math-block-padding) - 5px); /* Adjust as needed */
+    right: var(--math-body-padding);
+    bottom: var(--math-body-padding);
     font-size: 1.2em;
 }
-/* If a proof has a specific subject, e.g. "Proof of Theorem 1" */
-.proof.has-subject .math-block-title::before {
-    content: ""; /* Remove default "Proof. " */
+
+/* Adjust proof body padding to make space for QED symbol */
+.proof .math-block-body {
+    padding-bottom: calc(var(--math-body-padding) + 1.5em); /* Extra space for QED */
+}
+
+/* Apply specific colors per type */
+.theorem {
+    border-color: var(--theorem-outer-border);
+    .math-block-title {
+        background-color: var(--theorem-title-bg);
+        color: var(--theorem-title-text);
+        // border-bottom-color: var(--theorem-outer-border); /* If using border-bottom on title */
+    }
+    .math-block-body {
+        background-color: var(--theorem-body-bg);
+        color: var(--theorem-body-text);
+    }
+}
+
+.postulate {
+    border-color: var(--postulate-outer-border);
+    .math-block-title {
+        background-color: var(--postulate-title-bg);
+        color: var(--postulate-title-text);
+        // border-bottom-color: var(--postulate-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--postulate-body-bg);
+        color: var(--postulate-body-text);
+    }
+}
+
+.corollary {
+    border-color: var(--corollary-outer-border);
+    .math-block-title {
+        background-color: var(--corollary-title-bg);
+        color: var(--corollary-title-text);
+        // border-bottom-color: var(--corollary-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--corollary-body-bg);
+        color: var(--corollary-body-text);
+    }
+}
+
+.lemma {
+    border-color: var(--lemma-outer-border);
+    .math-block-title {
+        background-color: var(--lemma-title-bg);
+        color: var(--lemma-title-text);
+        // border-bottom-color: var(--lemma-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--lemma-body-bg);
+        color: var(--lemma-body-text);
+    }
+}
+
+.axiom {
+    border-color: var(--axiom-outer-border);
+    .math-block-title {
+        background-color: var(--axiom-title-bg);
+        color: var(--axiom-title-text);
+        // border-bottom-color: var(--axiom-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--axiom-body-bg);
+        color: var(--axiom-body-text);
+    }
+}
+
+.definition {
+    border-color: var(--definition-outer-border);
+    .math-block-title {
+        background-color: var(--definition-title-bg);
+        color: var(--definition-title-text);
+        // border-bottom-color: var(--definition-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--definition-body-bg);
+        color: var(--definition-body-text);
+    }
+}
+
+.proof {
+    border-color: var(--proof-outer-border);
+    .math-block-title {
+        background-color: var(--proof-title-bg);
+        color: var(--proof-title-text);
+        // border-bottom-color: var(--proof-outer-border);
+    }
+    .math-block-body {
+        background-color: var(--proof-body-bg);
+        color: var(--proof-body-text);
+        /* padding-bottom is already adjusted above for QED */
+    }
 }
