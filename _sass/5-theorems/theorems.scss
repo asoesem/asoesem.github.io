@@ -9,6 +9,9 @@
     --math-title-padding: 8px 12px;
     --math-body-padding: 12px;
 
+    // Define a standard black color for body text
+    --math-body-text-color-default: #000000; // Or a dark gray like #333333 if preferred
+
     // Store original color palette for reference or direct use
     --original-theorem-bg: #e6f7ff;
     --original-theorem-border: #91d5ff;
@@ -40,95 +43,93 @@
     --original-proof-qed-color: #531dab; // Keep for QED symbol
 
     // New color variable structure
-    // Title text color will be the same as the body background color,
-    // and body text color will be the same as the title background color.
-    // This creates a two-tone effect per block type.
+    // Title text color will be the same as the body background color.
+    // Body text color is now always black (or a dark default).
 
     // Theorem
     --theorem-title-bg: var(--original-theorem-text);
     --theorem-title-text: var(--original-theorem-bg);
     --theorem-body-bg: var(--original-theorem-bg);
-    --theorem-body-text: var(--original-theorem-text);
+    // --theorem-body-text: var(--original-theorem-text); // No longer used for body text color
     --theorem-outer-border: var(--original-theorem-border);
 
     // Postulate
     --postulate-title-bg: var(--original-postulate-text);
     --postulate-title-text: var(--original-postulate-bg);
     --postulate-body-bg: var(--original-postulate-bg);
-    --postulate-body-text: var(--original-postulate-text);
+    // --postulate-body-text: var(--original-postulate-text); // No longer used
     --postulate-outer-border: var(--original-postulate-border);
 
     // Corollary
     --corollary-title-bg: var(--original-corollary-text);
     --corollary-title-text: var(--original-corollary-bg);
     --corollary-body-bg: var(--original-corollary-bg);
-    --corollary-body-text: var(--original-corollary-text);
+    // --corollary-body-text: var(--original-corollary-text); // No longer used
     --corollary-outer-border: var(--original-corollary-border);
 
     // Lemma
     --lemma-title-bg: var(--original-lemma-text);
     --lemma-title-text: var(--original-lemma-bg);
     --lemma-body-bg: var(--original-lemma-bg);
-    --lemma-body-text: var(--original-lemma-text);
+    // --lemma-body-text: var(--original-lemma-text); // No longer used
     --lemma-outer-border: var(--original-lemma-border);
 
     // Axiom
     --axiom-title-bg: var(--original-axiom-text);
     --axiom-title-text: var(--original-axiom-bg);
     --axiom-body-bg: var(--original-axiom-bg);
-    --axiom-body-text: var(--original-axiom-text);
+    // --axiom-body-text: var(--original-axiom-text); // No longer used
     --axiom-outer-border: var(--original-axiom-border);
 
     // Definition
     --definition-title-bg: var(--original-definition-text);
     --definition-title-text: var(--original-definition-bg);
     --definition-body-bg: var(--original-definition-bg);
-    --definition-body-text: var(--original-definition-text);
+    // --definition-body-text: var(--original-definition-text); // No longer used
     --definition-outer-border: var(--original-definition-border);
 
     // Proof
     --proof-title-bg: var(--original-proof-text);
     --proof-title-text: var(--original-proof-bg);
     --proof-body-bg: var(--original-proof-bg);
-    --proof-body-text: var(--original-proof-text);
+    // --proof-body-text: var(--original-proof-text); // No longer used
     --proof-outer-border: var(--original-proof-border);
-    --proof-qed-color: var(--original-proof-qed-color); // QED color remains distinct
+    --proof-qed-color: var(--original-proof-qed-color);
 }
 
 /* General Math Block Styling */
 .math-block {
     margin: var(--math-block-margin);
     border-radius: var(--math-block-border-radius);
-    border-style: solid;
-    border-width: var(--math-block-border-width);
+    border-style: solid; /* This is the outer border */
+    border-width: var(--math-block-border-width); /* This is the outer border */
     font-family: var(--math-block-font-family);
-    position: relative; /* For QED symbol positioning in proofs */
-    overflow: hidden; /* Ensures border-radius clips children backgrounds correctly */
-    // Note: No padding here, as title and body will have their own.
+    position: relative;
+    overflow: hidden;
 }
 
 .math-block-title {
     padding: var(--math-title-padding);
     font-weight: bold;
     display: block;
-    // border-bottom: 1px solid; /* Optional: if you want a line between title and body */
-    // border-bottom-color: inherit; /* Will inherit border-color from .math-block */
 }
 
-.proof .math-block-title { /* Keep proof title italic if desired */
+.proof .math-block-title {
     font-style: italic;
 }
 
 .math-block-body {
     padding: var(--math-body-padding);
     line-height: 1.6;
+    color: var(--math-body-text-color-default); /* Body text is now always this color */
+    /* The .math-block-body itself does not have a border */
 }
 
 /* QED symbol for proofs */
 .proof .math-block-body::after {
-    content: "□"; /* QED symbol */
+    content: "□";
     font-weight: bold;
-    color: var(--proof-qed-color); /* Uses specific QED color var */
+    color: var(--proof-qed-color);
     position: absolute;
     right: var(--math-body-padding);
     bottom: var(--math-body-padding);
@@ -137,20 +138,23 @@
 
 /* Adjust proof body padding to make space for QED symbol */
 .proof .math-block-body {
-    padding-bottom: calc(var(--math-body-padding) + 1.5em); /* Extra space for QED */
+    padding-bottom: calc(var(--math-body-padding) + 1.5em);
 }
 
 /* Apply specific colors per type */
+/* The outer border is set on .math-block directly. */
+/* Title and Body backgrounds and Title text color are set here. */
+/* Body text color is now globally set to --math-body-text-color-default. */
+
 .theorem {
     border-color: var(--theorem-outer-border);
     .math-block-title {
         background-color: var(--theorem-title-bg);
         color: var(--theorem-title-text);
-        // border-bottom-color: var(--theorem-outer-border); /* If using border-bottom on title */
     }
     .math-block-body {
         background-color: var(--theorem-body-bg);
-        color: var(--theorem-body-text);
+        /* color: var(--theorem-body-text); // This line is removed */
     }
 }
 
@@ -159,11 +163,9 @@
     .math-block-title {
         background-color: var(--postulate-title-bg);
         color: var(--postulate-title-text);
-        // border-bottom-color: var(--postulate-outer-border);
     }
     .math-block-body {
         background-color: var(--postulate-body-bg);
-        color: var(--postulate-body-text);
     }
 }
 
@@ -172,11 +174,9 @@
     .math-block-title {
         background-color: var(--corollary-title-bg);
         color: var(--corollary-title-text);
-        // border-bottom-color: var(--corollary-outer-border);
     }
     .math-block-body {
         background-color: var(--corollary-body-bg);
-        color: var(--corollary-body-text);
     }
 }
 
@@ -185,11 +185,9 @@
     .math-block-title {
         background-color: var(--lemma-title-bg);
         color: var(--lemma-title-text);
-        // border-bottom-color: var(--lemma-outer-border);
     }
     .math-block-body {
         background-color: var(--lemma-body-bg);
-        color: var(--lemma-body-text);
     }
 }
 
@@ -198,11 +196,9 @@
     .math-block-title {
         background-color: var(--axiom-title-bg);
         color: var(--axiom-title-text);
-        // border-bottom-color: var(--axiom-outer-border);
     }
     .math-block-body {
         background-color: var(--axiom-body-bg);
-        color: var(--axiom-body-text);
     }
 }
 
@@ -211,11 +207,9 @@
     .math-block-title {
         background-color: var(--definition-title-bg);
         color: var(--definition-title-text);
-        // border-bottom-color: var(--definition-outer-border);
     }
     .math-block-body {
         background-color: var(--definition-body-bg);
-        color: var(--definition-body-text);
     }
 }
 
@@ -224,11 +218,9 @@
     .math-block-title {
         background-color: var(--proof-title-bg);
         color: var(--proof-title-text);
-        // border-bottom-color: var(--proof-outer-border);
     }
     .math-block-body {
         background-color: var(--proof-body-bg);
-        color: var(--proof-body-text);
-        /* padding-bottom is already adjusted above for QED */
+        /* QED symbol color is handled by --proof-qed-color */
     }
 }
