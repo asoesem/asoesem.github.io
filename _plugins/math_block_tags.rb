@@ -11,7 +11,7 @@ module Jekyll
     'lemma'      => 'Lema',
     'axiom'      => 'Axioma',
     'definition' => 'Definición',
-    'proof'      => 'Prueba' # Spanish for Proof
+    'proof'      => 'Demostración'
   }.freeze
 
   class MathBlockTag < Liquid::Block
@@ -63,7 +63,7 @@ module Jekyll
           block_title_str = escaped_user_title
         else
           # Default proof title.
-          block_title_str = "#{display_block_name}." # e.g., "Prueba."
+          block_title_str = "#{display_block_name}" # e.g., "Prueba."
         end
       else
         # For theorem, definition, axiom, etc.
@@ -73,7 +73,7 @@ module Jekyll
           block_title_str = "#{base_name_and_number}: #{escaped_user_title}" # e.g., "Teorema 1: Título Opcional"
         else
           # No user-provided title, use a period.
-          block_title_str = "#{base_name_and_number}." # e.g., "Teorema 1."
+          block_title_str = "#{base_name_and_number}" # e.g., "Teorema 1."
         end
       end
 

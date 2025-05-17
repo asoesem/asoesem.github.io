@@ -15,7 +15,7 @@
     // Store original color palette for reference or direct use
     --original-theorem-bg: #e6f7ff;
     --original-theorem-border: #91d5ff;
-    --original-theorem-text: #0050b3;
+    --original-theorem-text: #0050b3;    
 
     --original-postulate-bg: #fffbe6;
     --original-postulate-border: #ffe58f;
@@ -37,10 +37,11 @@
     --original-definition-border: #87e8de;
     --original-definition-text: #006d75;
 
-    --original-proof-bg: #f9f0ff;
-    --original-proof-border: #d3adf7;
-    --original-proof-text: #531dab;
-    --original-proof-qed-color: #531dab; // Keep for QED symbol
+    --original-proof-bg: #e8f5e9;         // Very Light Yellow
+    --original-proof-border: #81c784;     // Medium Amber
+    --original-proof-text: #2e7d32;       // Dark Amber/Orange
+    --original-proof-qed-color: #2e7d32;  // QED to match new proof text color
+
 
     // New color variable structure
     // Title text color will be the same as the body background color.
@@ -101,7 +102,7 @@
 .math-block {
     margin: var(--math-block-margin);
     border-radius: var(--math-block-border-radius);
-    border-style: solid; /* This is the outer border */
+    // border-style: solid; /* This is the outer border */
     border-width: var(--math-block-border-width); /* This is the outer border */
     font-family: var(--math-block-font-family);
     position: relative;
