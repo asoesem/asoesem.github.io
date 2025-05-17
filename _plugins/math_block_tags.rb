@@ -1,7 +1,7 @@
-require 'cgi' # For HTML escaping
-require 'jekyll' # Ensure Jekyll is loaded
+require 'cgi'
+require 'jekyll'
 
-# This plugin defines custom Liquid tags for Jekyll to create and reference math blocks.
+# Este plugin define etiquetas personalizadas para crear referenciar bloques matemáticos.
 module Jekyll
   # Stores display names for block types, matching your SCSS.
   BLOCK_TYPE_NAMES = {
@@ -102,7 +102,7 @@ module Jekyll
   end
 
   # This tag is used to create a link to a math block by its label.
-  class MathRefTag < Liquid::Tag
+  class MathBlockRefTag < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       super
       @label_arg = markup.strip # This is the 'label-id' from {% math_ref label-id %}
@@ -136,5 +136,5 @@ module Jekyll
     Liquid::Template.register_tag(block_type, MathBlockTag)
   end
 
-  Liquid::Template.register_tag('math_ref', MathRefTag)
+  Liquid::Template.register_tag('block_ref', MathBlockRefTag)
 end

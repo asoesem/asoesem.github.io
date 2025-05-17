@@ -11,46 +11,6 @@ featured: true
 toc: true
 ---
 
-{% theorem title="Teorema de Pitágoras" label="th-pitagoras" %}
-$$a^2 + b^2 = c^2$$
-{% endtheorem %}
-
-{% postulate title="Mi postulado" label="ps-postulate" %}
-Contenido aca.
-{% endpostulate %}
-
-{% definition label="df-def1" %}
-Contenido aca.
-{% enddefinition %}
-
-{% proof label="proof-1" %}
-Demostracion
-{% endproof %}
-
-Podemos ver que {% math_ref th-pitagoras %} nos permite...
-
-<!-- <div class="math-block theorem">
-	<span class="math-block-title">Teorema de Pitagoras</span>
-	<div class="math-block-body">
-		Contenido aqui.
-	</div>
-</div>
-
-
-<div class="math-block postulate">
-	<span class="math-block-title">Postulado 1</span>
-	<div class="math-block-body">
-		Contenido aqui.
-	</div>
-</div>
-
-<div class="math-block definition">
-	<span class="math-block-title">Definición</span>
-	<div class="math-block-body">
-		Contenido aqui.
-	</div>
-</div> -->
-
 En la enseñanza tradicional, las identidades trigonométricas suelen presentarse a los estudiantes como fórmulas a memorizar, sin detenerse en el razonamiento geométrico o histórico que las sustenta. Sin embargo, estas relaciones no surgieron de manera arbitraria: las identidades pitagóricas, de ángulo doble y de ángulo medio tienen un origen común en la interpretación de la circunferencia unitaria y en las demostraciones clásicas basadas en triángulos inscritos. Explorar el génesis de cada identidad —desde la ecuación fundamental $$sin^2 \vartheta + \cos^2 \vartheta =1$$, hasta las fórmulas para $$\sin 2\vartheta$$ y $$\cos 2\vartheta$$, y la deducción de las fórmulas de ángulo medio— no solo clarifica su sentido, sino que convierte el aprendizaje en un proceso lógico de derivación. De este modo, como estudiantes, y también como docentes, podremos generar identidades nuevas a partir de unas pocas relaciones elementales, reduciendo la dependencia de la memorización y fomentando una comprensión más profunda y flexible de su origen y su aplicación.
 
 ## Círculo Unitario
