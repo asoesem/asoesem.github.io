@@ -1,0 +1,298 @@
+:root {
+    // General layout vars (from your existing setup)
+    --math-block-margin: 20px 0;
+    --math-block-border-radius: 8px;
+    --math-block-border-width: 2px;
+    --math-block-font-family: 'Georgia', serif;
+
+    // Padding for the new title and body structure
+    --math-title-padding: 8px 12px;
+    --math-body-padding: 12px;
+
+    // Define a standard black color for body text (Light theme default)
+    --math-body-text-color-default: #000000;
+
+    // Store original color palette for LIGHT THEME
+    --original-theorem-bg: #e6f7ff;
+    --original-theorem-border: #91d5ff;
+    --original-theorem-text: #0050b3;
+
+    --original-postulate-bg: #fffbe6;
+    --original-postulate-border: #ffe58f;
+    --original-postulate-text: #ad8b00;
+
+    --original-corollary-bg: #f6ffed;
+    --original-corollary-border: #b7eb8f;
+    --original-corollary-text: #389e0d;
+
+    --original-lemma-bg: #fff0f6;
+    --original-lemma-border: #ffadd2;
+    --original-lemma-text: #c41d7f;
+
+    --original-axiom-bg: #f0f5ff;
+    --original-axiom-border: #adc6ff;
+    --original-axiom-text: #1d39c4;
+
+    --original-definition-bg: #e6fffb;
+    --original-definition-border: #87e8de;
+    --original-definition-text: #006d75;
+
+    --original-proof-bg: #e8f5e9;
+    --original-proof-border: #81c784;
+    --original-proof-text: #2e7d32;
+    --original-proof-qed-color: #2e7d32;
+
+    // Store original color palette for DARK THEME (Desaturated Pastels)
+    --math-body-text-color-default-dark: #cccccc; // Light gray for dark mode body text
+
+    // Theorem - Blueish
+    --original-theorem-bg-dark: #3E5263;     // Dark Slate Blue (used for body bg & title text in dark mode)
+    --original-theorem-text-dark: #A8B8C5;   // Light Grayish Blue (used for title bg in dark mode)
+    --original-theorem-border-dark: #587083; // Medium Slate Blue (for borders)
+
+    // Postulate - Yellowish/Brownish
+    --original-postulate-bg-dark: #5A523E;   // Dark Khaki/Olive
+    --original-postulate-text-dark: #C2BBA7; // Light Khaki/Beige
+    --original-postulate-border-dark: #786F57;// Medium Khaki/Olive
+
+    // Corollary - Greenish
+    --original-corollary-bg-dark: #3E5A4C;   // Dark Desaturated Green
+    --original-corollary-text-dark: #A7C2B3; // Light Desaturated Green
+    --original-corollary-border-dark: #577867;// Medium Desaturated Green
+
+    // Lemma - Pinkish/Mauve
+    --original-lemma-bg-dark: #634A5F;       // Dark Mauve
+    --original-lemma-text-dark: #C5AEC0;     // Light Mauve
+    --original-lemma-border-dark: #83687E;   // Medium Mauve
+
+    // Axiom - Purplish-Blue
+    --original-axiom-bg-dark: #4A4A6A;       // Dark Slate Purple
+    --original-axiom-text-dark: #AEAFC9;     // Light Slate Purple
+    --original-axiom-border-dark: #68688B;   // Medium Slate Purple
+
+    // Definition - Teal/Cyanish
+    --original-definition-bg-dark: #3E5A5A;  // Dark Teal
+    --original-definition-text-dark: #A7C2C2;// Light Teal
+    --original-definition-border-dark: #577878; // Medium Teal
+
+    // Proof - Greenish-Gray/Neutral
+    --original-proof-bg-dark: #4F5A4E;       // Dark Desaturated Olive/Gray
+    --original-proof-text-dark: #B8C2B7;     // Light Desaturated Olive/Gray
+    --original-proof-border-dark: #6A7869;   // Medium Desaturated Olive/Gray
+    --original-proof-qed-color-dark: var(--original-proof-text-dark); // QED symbol matches text-dark color
+
+
+    // New color variable structure (Defaults to LIGHT THEME)
+    // Light Theme: Title BG uses 'text' color, Title Text uses 'bg' color.
+    // Theorem
+    --theorem-title-bg: var(--original-theorem-text);
+    --theorem-title-text: var(--original-theorem-bg);
+    --theorem-body-bg: var(--original-theorem-bg);
+    --theorem-outer-border: var(--original-theorem-border);
+
+    // Postulate
+    --postulate-title-bg: var(--original-postulate-text);
+    --postulate-title-text: var(--original-postulate-bg);
+    --postulate-body-bg: var(--original-postulate-bg);
+    --postulate-outer-border: var(--original-postulate-border);
+
+    // Corollary
+    --corollary-title-bg: var(--original-corollary-text);
+    --corollary-title-text: var(--original-corollary-bg);
+    --corollary-body-bg: var(--original-corollary-bg);
+    --corollary-outer-border: var(--original-corollary-border);
+
+    // Lemma
+    --lemma-title-bg: var(--original-lemma-text);
+    --lemma-title-text: var(--original-lemma-bg);
+    --lemma-body-bg: var(--original-lemma-bg);
+    --lemma-outer-border: var(--original-lemma-border);
+
+    // Axiom
+    --axiom-title-bg: var(--original-axiom-text);
+    --axiom-title-text: var(--original-axiom-bg);
+    --axiom-body-bg: var(--original-axiom-bg);
+    --axiom-outer-border: var(--original-axiom-border);
+
+    // Definition
+    --definition-title-bg: var(--original-definition-text);
+    --definition-title-text: var(--original-definition-bg);
+    --definition-body-bg: var(--original-definition-bg);
+    --definition-outer-border: var(--original-definition-border);
+
+    // Proof
+    --proof-title-bg: var(--original-proof-text);
+    --proof-title-text: var(--original-proof-bg);
+    --proof-body-bg: var(--original-proof-bg);
+    --proof-outer-border: var(--original-proof-border);
+    --proof-qed-color: var(--original-proof-qed-color);
+}
+
+/* DARK THEME Overrides */
+:root[dark] {
+    --math-body-text-color-default: var(--math-body-text-color-default-dark);
+
+    // Theorem
+    --theorem-title-bg: var(--original-theorem-text-dark); // Light pastel for title BG
+    --theorem-title-text: var(--original-theorem-bg-dark);   // Dark pastel for title text
+    --theorem-body-bg: var(--original-theorem-bg-dark);      // Dark pastel for body BG
+    --theorem-outer-border: var(--original-theorem-border-dark);
+
+    // Postulate
+    --postulate-title-bg: var(--original-postulate-text-dark);
+    --postulate-title-text: var(--original-postulate-bg-dark);
+    --postulate-body-bg: var(--original-postulate-bg-dark);
+    --postulate-outer-border: var(--original-postulate-border-dark);
+
+    // Corollary
+    --corollary-title-bg: var(--original-corollary-text-dark);
+    --corollary-title-text: var(--original-corollary-bg-dark);
+    --corollary-body-bg: var(--original-corollary-bg-dark);
+    --corollary-outer-border: var(--original-corollary-border-dark);
+
+    // Lemma
+    --lemma-title-bg: var(--original-lemma-text-dark);
+    --lemma-title-text: var(--original-lemma-bg-dark);
+    --lemma-body-bg: var(--original-lemma-bg-dark);
+    --lemma-outer-border: var(--original-lemma-border-dark);
+
+    // Axiom
+    --axiom-title-bg: var(--original-axiom-text-dark);
+    --axiom-title-text: var(--original-axiom-bg-dark);
+    --axiom-body-bg: var(--original-axiom-bg-dark);
+    --axiom-outer-border: var(--original-axiom-border-dark);
+
+    // Definition
+    --definition-title-bg: var(--original-definition-text-dark);
+    --definition-title-text: var(--original-definition-bg-dark);
+    --definition-body-bg: var(--original-definition-bg-dark);
+    --definition-outer-border: var(--original-definition-border-dark);
+
+    // Proof
+    --proof-title-bg: var(--original-proof-text-dark);
+    --proof-title-text: var(--original-proof-bg-dark);
+    --proof-body-bg: var(--original-proof-bg-dark);
+    --proof-outer-border: var(--original-proof-border-dark);
+    --proof-qed-color: var(--original-proof-qed-color-dark);
+}
+
+/* General Math Block Styling */
+.math-block {
+    margin: var(--math-block-margin);
+    border-radius: var(--math-block-border-radius);
+    border-width: var(--math-block-border-width);
+    font-family: var(--math-block-font-family);
+    position: relative;
+    overflow: hidden;
+    //border-style: solid;
+}
+
+.math-block-title {
+    padding: var(--math-title-padding);
+    font-weight: bold;
+    display: block;
+}
+
+.proof .math-block-title {
+    font-style: italic;
+}
+
+.math-block-body {
+    padding: var(--math-body-padding);
+    line-height: 1.6;
+    color: var(--math-body-text-color-default);
+}
+
+/* QED symbol for proofs */
+.proof .math-block-body::after {
+    content: "□";
+    font-weight: bold;
+    color: var(--proof-qed-color);
+    position: absolute;
+    right: var(--math-body-padding);
+    bottom: var(--math-body-padding);
+    font-size: 1.2em;
+}
+
+/* Adjust proof body padding to make space for QED symbol */
+.proof .math-block-body {
+    padding-bottom: calc(var(--math-body-padding) + 1.5em);
+}
+
+/* Apply specific colors per type */
+.theorem {
+    border-color: var(--theorem-outer-border);
+    .math-block-title {
+        background-color: var(--theorem-title-bg);
+        color: var(--theorem-title-text);
+    }
+    .math-block-body {
+        background-color: var(--theorem-body-bg);
+    }
+}
+
+.postulate {
+    border-color: var(--postulate-outer-border);
+    .math-block-title {
+        background-color: var(--postulate-title-bg);
+        color: var(--postulate-title-text);
+    }
+    .math-block-body {
+        background-color: var(--postulate-body-bg);
+    }
+}
+
+.corollary {
+    border-color: var(--corollary-outer-border);
+    .math-block-title {
+        background-color: var(--corollary-title-bg);
+        color: var(--corollary-title-text);
+    }
+    .math-block-body {
+        background-color: var(--corollary-body-bg);
+    }
+}
+
+.lemma {
+    border-color: var(--lemma-outer-border);
+    .math-block-title {
+        background-color: var(--lemma-title-bg);
+        color: var(--lemma-title-text);
+    }
+    .math-block-body {
+        background-color: var(--lemma-body-bg);
+    }
+}
+
+.axiom {
+    border-color: var(--axiom-outer-border);
+    .math-block-title {
+        background-color: var(--axiom-title-bg);
+        color: var(--axiom-title-text);
+    }
+    .math-block-body {
+        background-color: var(--axiom-body-bg);
+    }
+}
+
+.definition {
+    border-color: var(--definition-outer-border);
+    .math-block-title {
+        background-color: var(--definition-title-bg);
+        color: var(--definition-title-text);
+    }
+    .math-block-body {
+        background-color: var(--definition-body-bg);
+    }
+}
+
+.proof {
+    border-color: var(--proof-outer-border);
+    .math-block-title {
+        background-color: var(--proof-title-bg);
+        color: var(--proof-title-text);
+    }
+    .math-block-body {
+        background-color: var(--proof-body-bg);
+    }
+}
