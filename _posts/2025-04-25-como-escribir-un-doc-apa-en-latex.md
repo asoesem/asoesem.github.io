@@ -1019,6 +1019,110 @@ Debes declarar este archivo `fuentes.bib` en el preámbulo de tu documento APA, 
 
 Una vez agregado tu archivo de fuentes bibliográficas a tu documento APA, podrás referenciar a cualquiera de las fuentes que agregues al archivo utilizando el identificador de la entrada que le asignes. Idealmente, cada identificador que escojas debería ser un mnemónico que te permita recordar fácilmente la fuente cuando estés escribiendo tu documento APA y necesites referenciarla.
 
+### Tipos de Entradas en Bibtex
+
+A continuación se detallan algunos tipos de entradas de Bibtex a manera de refernecia para beneficio de los lectores de este artículo.
+
+#### Artículo de Revista
+
+Se utiliza para referenciar artículos publicados en revistas académicas o científicas.
+
+* Campos obligatorios: `author`, `title`, `journal`, `year`.
+* Campos opcionales comunes: `volume`, `number`, `pages`, `month`, `doi`, `url`.
+
+```bitex
+@article{GARCIA2023,
+  author = {García, Ana y Pérez, Juan},
+  title = {Un estudio sobre la inteligencia artificial en la educación},
+  journal = {Revista de Innovación Educativa},
+  year = {2023},
+  volume = {15},
+  number = {2},
+  pages = {45-60},
+  month = {junio},
+  doi = {10.1234/rie.2023.v15i2.45}
+}
+```
+
+#### Libro Completo
+
+Para referenciar un libro completo, ya sea una monografía, un manual o una obra editada.
+
+* Campos obligatorios: `author` o `editor`, `title`, `publisher`, `year`.
+* Campos opcionales comunes: `volume`, `series`, `address`, `edition`, `month`, `url`.
+
+```bitex
+@book{RODRIGUES2022,
+  author = {Rodríguez, Carlos},
+  title = {Fundamentos de Programación con Python},
+  publisher = {Editorial Tecnológica},
+  year = {2022},
+  address = {Madrid},
+  edition = {2da}
+}
+```
+
+#### Capítulo de Libro Editado
+
+Se usa para referenciar un capítulo específico dentro de un libro que tiene diferentes autores para distintos capítulos, y un editor general para el libro.
+
+* Campos obligatorios: `author`, `title`, `booktitle`, `publisher`, `year`.
+* Campos opcionales comunes: editor, `pages`, `address`, `series`, `type`, `month`, `url`.
+
+```bitex
+@incollection{MARTINEZ2021,
+  author = {Martínez, Laura},
+  title = {Algoritmos de aprendizaje automático para procesamiento de lenguaje natural},
+  booktitle = {Avances en Inteligencia Artificial},
+  editor = {Sánchez, Fernando y Gómez, Patricia},
+  publisher = {Ediciones Académicas},
+  year = {2021},
+  pages = {112-130},
+  address = {Barcelona}
+}
+```
+
+#### Informe Técnico
+
+Se utiliza para referenciar informes técnicos, informes de investigación, informes de agencias gubernamentales o documentos de trabajo que a menudo no están publicados en revistas o libros con ISBN, pero que son importantes para la investigación.
+
+* Campos obligatorios: `author`, `title`, `institution`, `year`.
+* Campos opcionales comunes: `type` (por ejemplo, "Informe Técnico"), `number` (el número del informe), `address`, `month`, `note`, `url`.
+
+
+```bitex
+@report{CGR,
+  title        = {Los servicios educativos del MEP ante un punto de inflexión: Habilitando la transformación de cara al futuro},
+  author       = {CGR},
+  year         = {2024},
+  month        = {8},
+  day          = {1},
+  number       = {DFOE-CAP-OS-00001-2024},
+  institution  = {Contraloría General de la República},
+  address 	   = {San José, Costa Rica},
+  url          = {https://www.cgr.go.cr},
+}
+```
+
+#### Casos Misceláneos
+
+Es un tipo de entrada "comodín" para cualquier documento que no encaja bien en las categorías anteriores. Puede ser un sitio web, un video, un informe técnico no publicado, una presentación, etc.
+
+* Campos obligatorios: Ninguno (pero se recomienda `author`, `title`, `year`, `howpublished` o `url`).
+* Campos opcionales comunes: `author`, `title`, `howpublished`, `year`, `month`, `note`, `url`.
+
+```bitex
+@misc{VERITASIUM,
+  author 		= {Veritasium en Español},
+  title 		= {Los Universos Paralelos Ocultos Vienen de Hace Muchos Años...},
+  howpublished 	= {Video de YouTube},
+  year 			= {2023},
+  month 		= {Noviembre},
+  day 			= {5},
+  url 			= {https://youtu.be/_a8qrAXeObw?si=iatVTKCP5mbOOS3w}
+}
+```
+
 [Regresar al índice](#toc)
 
 ## Citando con Biblatex
