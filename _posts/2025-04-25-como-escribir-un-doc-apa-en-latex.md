@@ -1097,6 +1097,7 @@ Se utiliza para referenciar informes técnicos, informes de investigación, info
   year         = {2024},
   month        = {8},
   day          = {1},
+  type 		   = {Informe Técnico},
   number       = {DFOE-CAP-OS-00001-2024},
   institution  = {Contraloría General de la República},
   address 	   = {San José, Costa Rica},
