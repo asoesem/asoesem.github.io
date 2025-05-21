@@ -653,7 +653,11 @@ Que puede definir usando el entorno `equation`:
 Que luciría de la siguiente manera:
 
 
-$$a^2 = b^2 + c^2 - 2bc \cos \alpha \qquad (1)$$
+$$
+\begin{equation}
+    a^2 = b^2 + c^2 - 2bc \cos \alpha
+\end{equation}
+$$
 
 #### Múltiples Ecuaciones Centradas
 
@@ -670,8 +674,8 @@ Que luciría de la siguiente manera:
 
 $$
 \begin{gather}
-    a^2 + b^2 = c^2 \qquad (2) \\
-    x^2 + y^2 = 1   \qquad (3)
+    a^2 + b^2 = c^2 \\
+    x^2 + y^2 = 1
 \end{gather}
 $$
 
@@ -699,7 +703,7 @@ $$
         a^2 + 2bc \cos \alpha = b^2 + c^2 \\
         2bc \cos \alpha = b^2 + c^2 - a^2 \\
         \cos \alpha = \frac{b^2 + c^2 - a^2}{2bc}
-    \end{split} \qquad (4)
+    \end{split}
 \end{equation}
 $$
 
@@ -720,7 +724,7 @@ Al aplicar la ecuación \eqref{eq:LeyCosenos} obtenemos lo siguiente:
 Que luciría de la siguiente manera:
 
 ```text
-Al aplicar la ecuación (1) obtenemos lo siguiente:
+Al aplicar la ecuación (3) obtenemos lo siguiente:
 ```
 
 [Regresar al índice](#toc)
