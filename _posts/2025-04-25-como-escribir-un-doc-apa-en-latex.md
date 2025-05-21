@@ -724,7 +724,7 @@ Al aplicar la ecuación \eqref{eq:LeyCosenos} obtenemos lo siguiente:
 Que luciría de la siguiente manera:
 
 ```text
-Al aplicar la ecuación (3) obtenemos lo siguiente:
+Al aplicar la ecuación (4) obtenemos lo siguiente:
 ```
 
 [Regresar al índice](#toc)
