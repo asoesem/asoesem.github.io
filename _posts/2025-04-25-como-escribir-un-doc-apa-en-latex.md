@@ -38,7 +38,7 @@ Claramente, no basta solo con definir la clase de documento, sino que además ha
 \authorsaffiliations{Universidad Estatal a Distancia}
 \course{Fundamentos Filosóficos de la Educación Matemática (03425)}
 \professor{Profesor Pitágoras Azofeifa}
-\duedate{\spanishdate{2025}{5}{23}}
+\duedate{20 mayo, 2025}
 ```
 
 Donde:
