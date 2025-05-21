@@ -34,7 +34,9 @@ Claramente, no basta solo con definir la clase de documento, sino que además ha
 
 ```tex
 \title{Orígenes de las Geometrías No Euclidiana}
+\shorttitle{Geometrías No Euclidianas}
 \authorsnames{Euclides Matamoros}
+\leftheader{Matamoros}
 \authorsaffiliations{Universidad Estatal a Distancia}
 \course{Fundamentos Filosóficos de la Educación Matemática (03425)}
 \professor{Profesor Pitágoras Azofeifa}
@@ -50,9 +52,10 @@ Donde:
 * `course`: nombre del curso.
 * `professor`: nombre del profesor.
 * `duedate`: fecha de entrega.
+* `shorttitle`: título corto del documento para encabezados de página.
+* `leftheader`: encabezado para páginas impares con el appellido del autor.
 
-
-El comando `\spanishdate{año}{mes}{día}` nos permite ingresar una fecha especificando su año, mes y día y esta se reflejará en idioma español en el documento.
+Algunos metadatos como `shorttitle` y `leftheader` solo se utilizan en algunos modos de documento, por ejemplo, en modo manuscrito o modo revista (ver modos de documento más adelante).
 
 [Regresar al índice](#toc)
 
@@ -68,8 +71,18 @@ El siguiente ejemplo define un documento APA tipo reporte estudiantil (`stu`), u
 
 
 ```tex
-\documentclass[stu, 12pt, a4paper, biblatex]{apa7}
+\documentclass[stu, 12pt, a4paper, donotrepeattitle, floatsintext, hidelinks, biblatex]{apa7}
 ```
+
+Algunas de las opciones más comunes a definir aquí son:
+
+* Modo del documento: `stu`, `doc`, `man`, `jou`.
+* Tamaño de la fuente: `10pt`, `11pt`, `12pt`.
+* Tamaño de la hoja: `paperletter`, `a4paper`.
+* Paquete de manejo de referencias y citas: `biblatex`
+* Si no deseas repetir título del documento en introducción: `donotrepeattitle`.
+* Si deseas que figuras y tablas aparezcan en donde se definen y no al final del documento: `floatsintext`.
+* Si deseas eliminar los cuadros (o bordes) que suelen rodear los enlaces y referencias cruzadas en los que se puede hacer clic: `hidelinks`.
 
 [Regresar al índice](#toc)
 
@@ -83,12 +96,17 @@ Es recomendable incluir un par de paquetes adicionales al inicio del documento L
 \usepackage[spanish,es-tabla]{babel}
 ```
 
-
 El paquete `inputenc` le dice a LaTeX cómo leer tu archivo de código, mientras que `fontenc` le dice cómo mostrar los caracteres correctamente utilizando las fuentes seleccionadas. Ambas son importantes y complementarias para escribir correctamente en español, especialmente para que LaTeX pueda entender los caracteres especiales del idioma español, como por ejemplo las vocales acentuadas (á, é, í, ó, ú, ü) y la letra ñ. 
 
 Dependiendo del compilador que estemos usando, puede que importar `inputenc` no sea necesario. Por ejemplo, el compilador de XeLaTex no lo necesitas. Entonces, siempre es bueno prestar atención a los mensajes del compilador y determinar si este paquete hace falta o no.
 
 Por otro lado, el paquete `babel` es un sistema de internacionalización para LaTeX. Al especificar la opción `spanish`, le indicas a LaTeX que el idioma principal de tu documento es el español. Esto activa una serie de configuraciones específicas para el idioma, que incluye, entre otras cosas, traducciones y soporte para la división silábica. La opción adicional `es-tabla` instruye al traductor a usar la palabra "Tabla" en vez de la palabra "Cuadro" en las traducciones de tus tablas, de conformidad con las especificaciones de APA 7.
+
+Tras incluir el paquete `spanish` puedes utilizar el comando comando `\spanishdate{año}{mes}{día}` el cual nos permite ingresar una fecha especificando su año, mes y día y esta se reflejará en idioma español en el documento. Esto puede resultar útil para definir la fecha de entrega del documento en los metadatos.
+
+ ```tex
+ \duedate{\spanishdate{2025}{5}{20}}
+ ```
 
 [Regresar al índice](#toc)
 
@@ -119,7 +137,7 @@ Algunos de los otros elementos adicionales que se pueden definir son:
 Un documento base, con portada y listo para empezar a redactar podría lucir de la siguiente manera:
 
 ```tex
-\documentclass[stu, 12pt, a4paper, biblatex]{apa7}
+\documentclass[stu, 12pt, a4paper, hidelinks, biblatex]{apa7}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -147,9 +165,9 @@ Aquí comienza mi redacción.
 
 [Regresar al índice](#toc)
 
-## Estilos de Documento
+## Modos de Documento
 
-La clase de documento `apa7` soporta varios estilos de documento. 
+La clase de documento `apa7` soporta varios modos de documento. 
 
 ### Modo Estudiante
 
@@ -982,8 +1000,8 @@ Para aprender cómo crear fuentes bibliográficas te recomendamos leer la [Guía
 @book{STEWART,
   author   = {Stewart, James},
   title    = {Cálculo de una Variable, Trascendentes Tempranas},
-  year      = 2018,
-  edition   = 8,
+  year      = {2018},
+  edition   = {8},
   publisher = {Cengage Learning Editores},
   address   = {México D.F.}
 }    
