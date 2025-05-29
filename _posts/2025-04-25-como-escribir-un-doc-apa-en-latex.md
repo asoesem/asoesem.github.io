@@ -995,19 +995,19 @@ Para aprender cómo crear fuentes bibliográficas te recomendamos leer la [Guía
 
 ```bibtex
 @book{KENNY,
-  title={Breve historia de la filosofía occidental},
-  author={Kenny, Anthony},
-  year={2005},
-  publisher={Paidós}
+  title = {Breve historia de la filosofía occidental},
+  author = {Kenny, Anthony},
+  year = {2005},
+  publisher = {Paidós}
 }
 
 @book{STEWART,
-  author   = {Stewart, James},
-  title    = {Cálculo de una Variable, Trascendentes Tempranas},
-  year      = {2018},
-  edition   = {8},
+  author = {Stewart, James},
+  title = {Cálculo de una Variable, Trascendentes Tempranas},
+  year = {2018},
+  edition = {8},
   publisher = {Cengage Learning Editores},
-  address   = {México D.F.}
+  address = {México D.F.}
 }    
 ```
 
@@ -1034,7 +1034,7 @@ Se utiliza para referenciar artículos publicados en revistas académicas o cien
 * Campos obligatorios: `author`, `title`, `journal`, `year`.
 * Campos opcionales comunes: `volume`, `number`, `pages`, `month`, `doi`, `url`.
 
-```bitex
+```bibtex
 @article{GARCIA2023,
   author = {García, Ana y Pérez, Juan},
   title = {Un estudio sobre la inteligencia artificial en la educación},
@@ -1055,7 +1055,7 @@ Para referenciar un libro completo, ya sea una monografía, un manual o una obra
 * Campos obligatorios: `author` o `editor`, `title`, `publisher`, `year`.
 * Campos opcionales comunes: `volume`, `series`, `address`, `edition`, `month`, `url`.
 
-```bitex
+```bibtex
 @book{RODRIGUES2022,
   author = {Rodríguez, Carlos},
   title = {Fundamentos de Programación con Python},
@@ -1073,7 +1073,7 @@ Se usa para referenciar un capítulo específico dentro de un libro que tiene di
 * Campos obligatorios: `author`, `title`, `booktitle`, `publisher`, `year`.
 * Campos opcionales comunes: editor, `pages`, `address`, `series`, `type`, `month`, `url`.
 
-```bitex
+```bibtex
 @incollection{MARTINEZ2021,
   author = {Martínez, Laura},
   title = {Algoritmos de aprendizaje automático para procesamiento de lenguaje natural},
@@ -1094,18 +1094,18 @@ Se utiliza para referenciar informes técnicos, informes de investigación, info
 * Campos opcionales comunes: `type` (por ejemplo, "Informe Técnico"), `number` (el número del informe), `address`, `month`, `note`, `url`.
 
 
-```bitex
+```bibtex
 @report{CGR,
-  title        = {Los servicios educativos del MEP ante un punto de inflexión: Habilitando la transformación de cara al futuro},
-  author       = {CGR},
-  year         = {2024},
-  month        = {8},
-  day          = {1},
-  type 		   = {Informe Técnico},
-  number       = {DFOE-CAP-OS-00001-2024},
-  institution  = {Contraloría General de la República},
-  address 	   = {San José, Costa Rica},
-  url          = {https://www.cgr.go.cr},
+  title = {Los servicios educativos del MEP ante un punto de inflexión: Habilitando la transformación de cara al futuro},
+  author = {CGR},
+  year = {2024},
+  month = {8},
+  day = {1},
+  type = {Informe Técnico},
+  number = {DFOE-CAP-OS-00001-2024},
+  institution = {Contraloría General de la República},
+  address = {San José, Costa Rica},
+  url = {https://www.cgr.go.cr},
 }
 ```
 
@@ -1116,15 +1116,15 @@ Es un tipo de entrada "comodín" para cualquier documento que no encaja bien en 
 * Campos obligatorios: Ninguno (pero se recomienda `author`, `title`, `year`, `howpublished` o `url`).
 * Campos opcionales comunes: `author`, `title`, `howpublished`, `year`, `month`, `note`, `url`.
 
-```bitex
+```bibtex
 @misc{VERITASIUM,
-  author 		= {Veritasium en Español},
-  title 		= {Los Universos Paralelos Ocultos Vienen de Hace Muchos Años...},
-  howpublished 	= {Video de YouTube},
-  year 			= {2023},
-  month 		= {Noviembre},
-  day 			= {5},
-  url 			= {https://youtu.be/_a8qrAXeObw?si=iatVTKCP5mbOOS3w}
+  author = {Veritasium en Español},
+  title = {Los Universos Paralelos Ocultos Vienen de Hace Muchos Años...},
+  howpublished = {Video de YouTube},
+  year = {2023},
+  month = {Noviembre},
+  day = {5},
+  url = {https://youtu.be/_a8qrAXeObw?si=iatVTKCP5mbOOS3w}
 }
 ```
 
