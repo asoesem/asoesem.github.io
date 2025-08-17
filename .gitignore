@@ -5,3 +5,9 @@ _site
 .DS_Store
 vendor/
 .bundle/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
