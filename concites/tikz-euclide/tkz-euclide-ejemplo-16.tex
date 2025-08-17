@@ -1,0 +1,38 @@
+---
+id: tkz-euclide-ejemplo-16
+title: Perpendicular
+description: "Construye por un punto una recta perpendicular a un segmento dado."
+keywords: [perpendicular, recta, segmento]
+tags: [tkzDefLine,tkzDrawLine,tkzGetPoint,perpendicular]
+sort: 16
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define puntos A,B,C
+        \tkzDefPoints{
+            0/0/A,
+            4/0/B,
+            1/1/C%
+        }
+    
+        % Dibuja segmento AB
+        \tkzDrawSegment(A,B)
+    
+        % Define la recta Cc perpendicular a AB
+        \tkzDefLine[perpendicular=through C,K=0.5](A,B)
+            \tkzGetPoint{c} % punto de perpendicularidad
+    
+        % Dibuja la recta Cc co flechas en los extremos
+        \tkzDrawLine[Latex-Latex,add=1 and 0.1](C,c)
+    
+        % Dibuja los puntos A,B,C
+        \tkzDrawPoints(A,B,C)
+    
+        % Etiqueta los puntos A,B,C
+        \tkzLabelPoints[below](A,B) % por debajo.
+        \tkzLabelPoints[right](C)   % a la derecha.
+    \end{tikzpicture}
+\end{document}

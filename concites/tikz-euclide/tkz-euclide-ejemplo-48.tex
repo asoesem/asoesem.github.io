@@ -1,0 +1,46 @@
+---
+id: tkz-euclide-ejemplo-48
+title: "Construcciones Geométricas con Compás"
+description: "Construye la mediatriz de un segmento con construcciones auxiliares y marca el punto medio."
+keywords: [mediatriz, compas, construccion, punto-medio]
+tags: [tkzInterCC, tkzInterLL,tkzCompass]
+sort: 48
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos A y B como extremos de un segmento.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(3,0){B}
+    
+        % Intersección de dos circunferencias (de centros A y B) para construir
+        % la mediatriz de AB; obtiene los puntos C y D.
+        \tkzInterCC(A,B)(B,A)
+            \tkzGetPoints{C}{D}
+    
+        % Intersección de la recta AB con la recta CD (mediatriz) para hallar M (punto medio).
+        \tkzInterLL(A,B)(C,D)
+            \tkzGetPoint{M}
+    
+        % Dibuja AB y la mediatriz CD.
+        \tkzDrawSegment(A,B)
+        \tkzDrawSegment(C,D)
+    
+        % Marca la igualdad de segmentos AM y MB.
+        \tkzMarkSegment[mark=s|](A,M)
+        \tkzMarkSegment[mark=s|](M,B)
+    
+        % Muestra arcos de compás usados en la construcción desde A y B.
+        \tkzCompass(A,C)
+        \tkzCompass(B,C)
+        \tkzCompass(A,D)
+        \tkzCompass(B,D)
+    
+        % Dibuja y etiqueta los puntos relevantes.
+        \tkzDrawPoints(A,B,C,D,M)
+        \tkzLabelPoints(A,B,D)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

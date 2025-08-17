@@ -1,0 +1,38 @@
+---
+id: tkz-euclide-ejemplo-40
+title: "Círculo por Tres Puntos"
+description: "Dibuja la circunferencia circunscrita a un triángulo y muestra su centro y radio."
+keywords: [circunferencia, circulo, circunscrita, centro, radio, triangulo]
+tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
+sort: 40
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define tres puntos no colineales A, B y C.
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B,
+            2/3/C%
+        }
+    
+        % Define el círculo circunscrito al triángulo ABC y obtiene su centro O.
+        \tkzDefCircle[circum](A,B,C)
+            \tkzGetFirstPoint{O}
+    
+        % Dibuja los puntos A, B, C y el centro O.
+        \tkzDrawPoints(A,B,C,O)
+    
+        % Dibuja el círculo circunscrito (radio OA) y muestra el radio OA punteado.
+        \tkzDrawCircle(O,A)
+        \tkzDrawSegment[dashed,gray](O,A)
+        \tkzLabelSegment[above](O,A){$r$}
+    
+        % Etiquetas de puntos.
+        \tkzLabelPoints[left](A)
+        \tkzLabelPoints[right](B)
+        \tkzLabelPoints[above](O,C)
+    \end{tikzpicture}
+\end{document}

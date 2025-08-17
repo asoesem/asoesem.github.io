@@ -1,0 +1,33 @@
+---
+id: tkz-euclide-ejemplo-13
+title: Rayos
+description: "Dibuja los rayos que definen un ángulo desde un vértice común."
+keywords: [rayos, angulo, vertice]
+tags: [tkzDrawLines]
+sort: 13
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el conjunto de puntos A,B,C
+        \tkzDefPoints{
+            2/1/A,
+            3/4/B,
+            5/0/C%
+        }
+    
+        % Dibuja los puntos A,B,C
+        \tkzDrawPoints(A,B,C)
+    
+        % Etiqueta los puntos A,B,C
+        \tkzLabelPoints[left](A,B) % a la izquierda
+        \tkzLabelPoints[below](C)  % abajo
+    
+        % Define las rectas/rayos AB y AC, con flechas en el extremo final
+        % Las flechas se ubican a 0.5cm del extremo
+        \tkzDrawLines[-Latex,add=0 and .5](A,B A,C)
+    \end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,32 @@
+---
+id: tkz-euclide-ejemplo-35
+title: "Polígono Regular"
+description: "Genera y dibuja un polígono regular (hexágono) dado su centro y un punto inicial."
+keywords: [poligono-regular, hexagono, centro, vertices]
+tags: [tkzDefRegPolygon, tkzDrawPolygon]
+sort: 35
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el centro O y un punto P1 sobre el círculo circunscrito.
+        \tkzDefPoints{0/0/O,0/3/P1}
+    
+        % Construye un hexágono regular con centro O, comenzando en P1.
+        \tkzDefRegPolygon[center,sides=6](O,P1)
+        \tkzDrawPolygon(P1,P...,P6)
+    
+        % Etiqueta los vértices del polígono regular alrededor.
+        \tkzLabelPoints[above](P1)
+        \tkzLabelPoints[above left](P2)
+        \tkzLabelPoints[above right](P6)
+        \tkzLabelPoints[below left](P3)
+        \tkzLabelPoints[below](P4)
+        \tkzLabelPoints[below right](P5)
+    
+        % Dibuja los puntos del polígono.
+        \tkzDrawPoints(P1,P...,P6)
+    \end{tikzpicture}
+\end{document}

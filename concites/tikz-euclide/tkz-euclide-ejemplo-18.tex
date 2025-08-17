@@ -1,0 +1,36 @@
+---
+id: tkz-euclide-ejemplo-18
+title: Intersección de dos rectas
+description: "Calcula y marca el punto de intersección de dos rectas."
+keywords: [interseccion, rectas, punto]
+tags: [tkzDrawLines,tkzInterLL,tkzGetPoint]
+sort: 18
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos A,B,C,D.
+        \tkzDefPoint(2,1){A}
+        \tkzDefPoint(6,5){B}
+        \tkzDefPoint(3,6){C}
+        \tkzDefPoint(5,2){D}
+    
+        % Dibuja recta AB, CD.
+        \tkzDrawLines(A,B C,D)
+    
+        % Encuentra el punto de intersección I de AB y CD.
+        \tkzInterLL(A,B)(C,D)
+            \tkzGetPoint{I} % punto de intersección.
+    
+        % Dibuja puntos A,B,C,D en azul.
+        \tkzDrawPoints[color=blue](A,B,C,D)
+        % Dibuja punto I en rojo.
+        \tkzDrawPoint[color=red](I)
+    
+        % Etiqueta puntos A,B,C,D,I.
+        \tkzLabelPoints(A,B)          % por debajo (predeterminado).
+        \tkzLabelPoints[left](C,D,I)  % por la izquierda.
+    \end{tikzpicture}
+\end{document}

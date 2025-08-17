@@ -1,0 +1,31 @@
+---
+id: tkz-euclide-ejemplo-50
+title: "Escala y Rotación"
+description: "Usa ámbitos de transformación (rotación y traslado) para definir puntos y dibujar un triángulo."
+keywords: [rotacion, traslacion, triangulo, transformaciones]
+tags: [scope, rotate]
+sort: 50
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Aplica una rotación global de 30° a lo que se defina dentro del alcance.
+        \begin{scope}[rotate=30]
+            % Define el punto A.
+            \tkzDefPoint(2,3){A}
+            % Dentro de un alcance trasladado al punto A, define B y C en coordenadas polares.
+            \begin{scope}[shift=(A)]
+                \tkzDefPoint(90:5){B}
+                \tkzDefPoint(30:5){C}
+            \end{scope}
+        \end{scope}
+    
+        % Dibuja el triángulo ABC y etiqueta sus vértices.
+        \tkzDrawPolygon(A,B,C)
+        \tkzLabelPoints[above](B,C)
+        \tkzLabelPoints[below](A)
+        \tkzDrawPoints(A,B,C)
+    \end{tikzpicture}
+\end{document}

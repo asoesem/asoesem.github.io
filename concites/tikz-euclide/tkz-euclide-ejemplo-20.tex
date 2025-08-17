@@ -1,0 +1,36 @@
+---
+id: tkz-euclide-ejemplo-20
+title: "Marcar Ángulos 1"
+description: "Marca con arcos iguales dos ángulos del triángulo para indicar igualdad."
+keywords: [angulos, igualdad, marcado, triangulo]
+tags: [tkzMarkAngle]
+sort: 20
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define tres puntos A, B y C que formarán un triángulo.
+        \tkzDefPoints{
+            1/1/A,
+            5/1/B,
+            3/4/C}
+    
+        % Dibuja los puntos del triángulo.
+        \tkzDrawPoints(A,B,C)
+    
+        % Dibuja los lados del triángulo ABC.
+        \tkzDrawSegments(A,B B,C C,A)
+    
+        % Marca con doble trazo dos ángulos iguales: ∠BAC y ∠CBA
+        % (esto sugiere que el triángulo es isósceles si se quisiera).
+        \tkzMarkAngle[mark=||](B,A,C)
+        \tkzMarkAngle[mark=||](C,B,A)
+    
+        % Etiqueta los puntos A, B y C en posiciones convenientes.
+        \tkzLabelPoints[left](A)
+        \tkzLabelPoints[right](B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+---
+id: tkz-euclide-ejemplo-07
+title: Segmentos
+description: "Dibuja un segmento entre dos puntos y etiqueta el tramo."
+keywords: [segmento, longitud, etiqueta]
+tags: [tkzDrawSegment,tkzLabelSegment]
+sort: 7
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el sistema de coordenadas ortogonales.
+        \tkzInit[xmin=0,xmax=6,ymin=0,ymax=6]
+    
+        % Define los puntos A y B.
+        \tkzDefPoint(2,1){A}
+        \tkzDefPoint(4,3){B}
+    
+        % Dibuja los puntos A y B.
+        \tkzDrawPoints(A,B)
+    
+        % Etiqueta los puntos A y B, arriba la izquierda.
+        \tkzLabelPoints[above left](A,B)
+    
+        % Dibuja el segmento AB
+        \tkzDrawSegment(A,B)
+    
+        % Etiquera el segmento AB como m, arriba a la izquierda
+        \tkzLabelSegment[above left](A,B){$m$}
+    \end{tikzpicture}
+\end{document}

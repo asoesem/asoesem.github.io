@@ -1,0 +1,51 @@
+---
+id: tkz-euclide-ejemplo-29
+title: "Incentro"
+description: "Calcula el incentro y traza las tres bisectrices, marcando pares de ángulos iguales."
+keywords: [incentro, bisectrices, angulos-iguales]
+tags: [tkzDefTriangle, tkzDefTriangleCenter,tkzDefLine,tkzGetPoint,bisector]
+sort: 29
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define la base AB.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(5,0){B}
+
+        % Construye el triángulo con dos ángulos iguales (65° y 65°).
+        \tkzDefTriangle[two angles = 65 and 65](A,B)
+            \tkzGetPoint{C}
+
+        % Calcula el incentro O (intersección de las bisectrices).
+        \tkzDefTriangleCenter[in](A,B,C)
+            \tkzGetPoint{O}
+
+        % Define las tres bisectrices desde A, B y C.
+        \tkzDefLine[bisector](C,A,B)
+            \tkzGetPoint{a}
+        \tkzDefLine[bisector](C,B,A)
+            \tkzGetPoint{b}
+        \tkzDefLine[bisector](A,C,B)
+            \tkzGetPoint{c}
+
+        % Dibuja las bisectrices como segmentos punteados con flecha.
+        \tkzDrawSegment[dashed,add=0 and 0.1,-Stealth](A,a)
+        \tkzDrawSegment[dashed,add=0 and 0.1,-Stealth](B,b)
+        \tkzDrawSegment[dashed,add=0 and 0.1,-Stealth](C,c)
+
+        % Marca ángulos iguales a cada lado de las bisectrices.
+        \tkzMarkAngles[mark=|,red](B,A,O O,A,C)
+        \tkzMarkAngles[mark=|,red](C,B,O O,B,A)
+        \tkzMarkAngles[mark=||,blue](A,C,O O,C,B)
+
+        % Dibuja y etiqueta puntos y triángulo.
+        \tkzDrawPoints[red](O)
+        \tkzDrawPoints(A,B,C)
+        \tkzDrawPolygon(A,B,C)
+        \tkzLabelPoints(A,B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

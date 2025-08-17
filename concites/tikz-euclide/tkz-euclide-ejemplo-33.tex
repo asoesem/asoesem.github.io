@@ -1,0 +1,26 @@
+---
+id: tkz-euclide-ejemplo-33
+title: "Rectángulos"
+description: "Construye un rectángulo dados dos vértices opuestos y dibuja el polígono resultante."
+keywords: [rectangulo, vertices-opuestos, poligono]
+tags: [tkzDefRectangle, tkzDrawPolygon, tkzGetPoints]
+sort: 33
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define dos vértices opuestos A y C de un rectángulo.
+        \tkzDefPoints{0/0/A,5/2/C}
+    
+        % Construye el rectángulo ABCD a partir de A y C.
+        \tkzDefRectangle(A,C)
+            \tkzGetPoints{B}{D}
+    
+        % Dibuja el polígono ABCD y etiqueta vértices.
+        \tkzDrawPolygon(A,...,D)
+        \tkzLabelPoints[below](A,B)
+        \tkzLabelPoints[above](C,D)
+    \end{tikzpicture}
+\end{document}

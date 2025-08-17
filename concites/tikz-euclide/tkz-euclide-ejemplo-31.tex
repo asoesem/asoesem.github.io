@@ -1,0 +1,39 @@
+---
+id: tkz-euclide-ejemplo-31
+title: "Polígonos II"
+description: "Combina un polígono y una polilínea, añadiendo trazos punteados para completar conexiones."
+keywords: [poligono, polilinea, trazos-punteados, conexiones]
+tags: [tkzDrawPolygon, tkzDrawPolySeg]
+sort: 31
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define dos conjuntos de puntos para polígonos y polilíneas.
+        \tkzDefPoints{
+            0/0/A1,
+            3/0/B1,
+            3/3/C1,
+            0/3/D2,
+            1/1/A2,
+            4/1/B2,
+            4/4/C2,
+            1/4/D2%
+        }
+    
+        % Dibuja el polígono A1B1C1D1 (cerrado) y la polilínea B2–C2–D2 (abierta).
+        \tkzDrawPolygon(A1,B1,C1,D1)
+        \tkzDrawPolySeg(B2,C2,D2)
+    
+        % Completa la polilínea A2–B2–D2 con trazo punteado y conecta A1 con A2.
+        \tkzDrawPolySeg[dashed](D2,A2,B2)
+        \tkzDrawSegment[dashed](A1,A2)
+    
+        % Conexiones entre vértices correspondientes de ambos conjuntos.
+        \tkzDrawSegment(B1,B2)
+        \tkzDrawSegment(C1,C2)
+        \tkzDrawSegment(D1,D2)
+    \end{tikzpicture}
+\end{document}

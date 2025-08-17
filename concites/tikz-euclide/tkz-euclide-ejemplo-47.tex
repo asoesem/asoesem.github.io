@@ -1,0 +1,24 @@
+---
+id: tkz-euclide-ejemplo-47
+title: "Elipses"
+description: "Dibuja una elipse centrada y rotada dados sus semiejes."
+keywords: [elipse, centro, semiejes, rotacion]
+tags: [tkzDrawEllipse]
+sort: 47
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el centro C de la elipse.
+        \tkzDefPoint(0,4){C}
+    
+        % Dibuja una elipse centrada en C con semiejes 4 y 2, rotada 45°.
+        \tkzDrawEllipse[blue](C,4,2,45)
+    
+        % Dibuja y etiqueta el centro.
+        \tkzDrawPoints(C)
+        \tkzLabelPoints(C)
+    \end{tikzpicture}
+\end{document}

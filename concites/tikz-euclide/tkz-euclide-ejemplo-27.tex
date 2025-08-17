@@ -1,0 +1,54 @@
+---
+id: tkz-euclide-ejemplo-27
+title: "Ortocentro"
+description: "Calcula el ortocentro y traza las tres altitudes de un triángulo."
+keywords: [ortocentro, altitudes, triángulo]
+tags: [tkzDefTriangle,tkzDefLine,tkzDrawPolygon,tkzGetPoint]
+sort: 27
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define la base AB del triángulo.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(5,0){B}
+    
+        % Construye un triángulo isósceles fijando dos ángulos iguales (65° y 65°).
+        \tkzDefTriangle[two angles = 65 and 65](A,B)
+            \tkzGetPoint{C}
+    
+        % Encuentra el ortocentro O del triángulo ABC.
+        \tkzDefTriangleCenter[ortho](A,B,C)
+            \tkzGetPoint{O}
+    
+        % Traza las rectas de altitud desde cada vértice (A, B, C)
+        % hacia el lado opuesto, obteniendo puntos a, b y c en dichas rectas.
+        \tkzDefLine[altitude](C,A,B)
+            \tkzGetPoint{a}
+        \tkzDefLine[altitude](A,B,C)
+            \tkzGetPoint{b}
+        \tkzDefLine[altitude](B,C,A)
+            \tkzGetPoint{c}
+    
+        % Dibuja las altitudes como segmentos punteados.
+        \tkzDrawSegment[dashed](A,a)
+        \tkzDrawSegment[dashed](B,b)
+        \tkzDrawSegment[dashed](C,c)
+    
+        % Marca los ángulos rectos donde cada altitud es perpendicular al lado.
+        \tkzMarkRightAngle(A,a,B)
+        \tkzMarkRightAngle(B,b,A)
+        \tkzMarkRightAngle(C,c,B)
+    
+        % Dibuja el ortocentro y el triángulo.
+        \tkzDrawPoints[red](O)
+        \tkzDrawPoints(A,B,C)
+        \tkzDrawPolygon(A,B,C)
+    
+        % Etiqueta los puntos principales.
+        \tkzLabelPoints(A,B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,37 @@
+---
+id: tkz-euclide-ejemplo-17
+title: Paralelas
+description: "Construye por un punto una recta paralela a una recta dada."
+keywords: [paralela, recta, construccion]
+tags: [tkzDrawLine,tkzGetPoint,parallel]
+sort: 17
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define puntos A,B,C
+        \tkzDefPoints{
+            0/0/A,
+            4/0/B,
+            1/1/C%
+        }
+        % Dibuja recta AB.
+        \tkzDrawLine[Latex-Latex](A,B)
+    
+        % Define recta paralela a AB en C.
+        \tkzDefLine[parallel=through C, K=0.7](A,B)
+            \tkzGetPoint{c} % obtiene otro punto en la recta paralela.
+    
+        % Dibuja la recta paralela con flechas a ambos lados.
+        \tkzDrawLine[Latex-Latex,add=1 and 0.1](C,c)
+    
+        % Dibuja los puntos A,B,C.
+        \tkzDrawPoints(A,B,C)
+    
+        % Etiqueta los puntos A,B,C.
+        \tkzLabelPoints[below](A,B) % por abajo.
+        \tkzLabelPoints[above](C)   % por arriba.
+    \end{tikzpicture}
+\end{document}
