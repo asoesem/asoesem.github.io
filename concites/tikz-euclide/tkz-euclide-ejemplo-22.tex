@@ -1,0 +1,32 @@
+---
+id: tkz-euclide-ejemplo-22
+title: "Ángulo Recto"
+description: "Marca el ángulo recto en un triángulo y dibuja sus lados."
+keywords: [angulo-recto, triángulo, perpendicular]
+tags: [tkzMarkRightAngle]
+sort: 22
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos A, B y C de un triángulo rectángulo.
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B,
+            0/4/C}
+    
+        % Dibuja los lados del triángulo ABC.
+        \tkzDrawSegments(A,B B,C C,A)
+    
+        % Marca el ángulo recto en A entre los segmentos AB y AC.
+        \tkzMarkRightAngle(B,A,C)
+    
+        % Dibuja y etiqueta los puntos del triángulo.
+        \tkzDrawPoints(A,B,C)
+        \tkzLabelPoints[below left](A)
+        \tkzLabelPoints[below right](B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

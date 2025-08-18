@@ -1,0 +1,43 @@
+---
+id: tkz-euclide-ejemplo-14
+title: Bisector
+description: "Construye y muestra la bisectriz de un ángulo y su construcción auxiliar."
+keywords: [bisectriz, angulo, construccion]
+tags: [tkzDefLine,tkzShowLine,bisector]
+sort: 14
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define conjunto de puntos A,B,C.
+        \tkzDefPoints{
+            2/1/A,
+            3/4/B,
+            5/0/C%
+        }
+    
+        % Dibuja los puntos A,B,C.
+        \tkzDrawPoints(A,B,C)
+    
+        % Dibuja rectas AB, AC
+        % Las rectas se exntienden 0.5cm del extremo final.
+        \tkzDrawLines[add=0 and .5](A,B A,C)
+    
+        % Define la bisectriz Aa del anglulo ∠BAC.
+        \tkzDefLine[bisector,normed](B,A,C)
+            \tkzGetPoint{a} % Punto en la bisectriz.
+    
+        % Dibuja la bisectriz Aa, en línea punteada,
+        % con flechas en el extremo final, que se extiende 4cm.
+        \tkzDrawLine[-Latex,dashed,add=0 and 4](A,a)
+    
+        % Muestra la construcción geométrica de la bisectriz en rojo.
+        \tkzShowLine[bisector,gap=4,size=2,color=red](B,A,C)
+    
+        % Etiqueta los puntos A,B,C.
+        \tkzLabelPoints[left](A,B) % a la izquierda.
+        \tkzLabelPoints[below](C)  % por debajo.
+    \end{tikzpicture}
+\end{document}

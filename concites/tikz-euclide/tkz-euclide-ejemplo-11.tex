@@ -1,0 +1,30 @@
+---
+id: tkz-euclide-ejemplo-11
+title: Recta
+description: "Dibuja una recta determinada por dos puntos con flechas a ambos extremos y la etiqueta."
+keywords: [recta, linea, flechas, etiqueta]
+tags: [tkzDrawLine,tkzLabelLine]
+sort: 11
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos individuales A,B.
+        \tkzDefPoint(1,1){A}
+        \tkzDefPoint(3,4){B}
+    
+        % Dibuja los puntos A,B.
+        \tkzDrawPoints(A,B)
+        % Etiqueta los puntos A,B.
+        \tkzLabelPoints[above left](A,B) % abajo a la izquierda.
+    
+        % Dibuja la línea AB con flechas a ambos lados.
+        \tkzDrawLine[Latex-Latex](A,B)
+    
+        % Etiqueta la línea AB como l
+        \tkzLabelLine[above left](A,B){$\ell$} % arriba a la izquierda.
+    \end{tikzpicture}
+\end{document}
+

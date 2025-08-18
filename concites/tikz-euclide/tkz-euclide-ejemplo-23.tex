@@ -1,0 +1,32 @@
+---
+id: tkz-euclide-ejemplo-23
+title: "Triángulo Equilátero"
+description: "Construye y dibuja un triángulo equilátero a partir de un segmento base."
+keywords: [triangulo, equilatero, construccion, congruencia]
+tags: [tkzDefTriangle, tkzDrawPolygons,tkzGetPoint]
+sort: 23
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define dos puntos A y B sobre una base horizontal.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(4,0){B}
+    
+        % Construye el triángulo equilátero ABC a partir del segmento AB.
+        \tkzDefTriangle[equilateral](A,B)
+            \tkzGetPoint{C}
+    
+        % Dibuja el triángulo ABC.
+        \tkzDrawPolygons(A,B,C)
+    
+        % Marca los tres lados con la misma señal para indicar igualdad de longitudes.
+        \tkzMarkSegments[mark=s|](A,B B,C C,A)
+    
+        % Etiqueta A y B abajo, y C arriba.
+        \tkzLabelPoints[below](A,B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

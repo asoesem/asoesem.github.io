@@ -1,0 +1,31 @@
+---
+id: tkz-euclide-ejemplo-37
+title: "Círculo por Dos Puntos"
+description: "Dibuja una circunferencia dados su centro y un punto sobre ella; muestra el radio."
+keywords: [circunferencia, circulo, centro, radio]
+tags: [tkzDrawCircle]
+sort: 37
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el centro A y un punto B sobre la circunferencia.
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B%
+        }
+        % Dibuja los puntos y el círculo de centro A y radio AB.
+        \tkzDrawPoints(A,B)
+        \tkzDrawCircle(A,B)
+    
+        % Muestra el radio AB como segmento punteado y lo etiqueta con r.
+        \tkzDrawSegment[dashed,gray](A,B)
+        \tkzLabelSegment[above](A,B){$r$}
+    
+        % Etiquetas de los puntos.
+        \tkzLabelPoints[below](A)
+        \tkzLabelPoints[right](B)
+    \end{tikzpicture}
+\end{document}

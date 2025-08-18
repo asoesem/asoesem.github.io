@@ -1,0 +1,34 @@
+---
+id: tkz-euclide-ejemplo-25
+title: "Triángulo en Dos Ángulos"
+description: "Construye un triángulo fijando dos ángulos en la base y los etiqueta."
+keywords: [triangulo, dos-angulos, etiquetar]
+tags: [tkzDefTriangle, tkzDrawPolygon,tkzLabelAngle,tkzGetPoint]
+sort: 25
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define la base AB.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(5,0){B}
+    
+        % Construye un triángulo ABC fijando dos ángulos en A y B: 50° y 70°.
+        \tkzDefTriangle[two angles = 50 and 70](A,B)
+            \tkzGetPoint{C}
+    
+        % Dibuja el triángulo ABC.
+        \tkzDrawPolygon(A,B,C)
+    
+        % Etiqueta los ángulos en A y B con su medida.
+        \tkzLabelAngle[pos=1.4,font=\scriptsize](B,A,C){$50^\circ$}
+        \tkzLabelAngle[pos=0.8,font=\scriptsize](C,B,A){$70^\circ$}
+    
+        % Dibuja y etiqueta los puntos.
+        \tkzDrawPoints(A,B,C)
+        \tkzLabelPoints(A,B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

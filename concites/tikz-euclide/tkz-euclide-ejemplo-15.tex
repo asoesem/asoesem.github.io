@@ -1,0 +1,40 @@
+---
+id: tkz-euclide-ejemplo-15
+title: Altitud
+description: "Traza la altitud de un triángulo desde un vértice al lado opuesto."
+keywords: [altitud, triangulo, perpendicular]
+tags: [tkzDrawSegments,tkzDefLine,tkzGetPoint,altitude]
+sort: 15
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos A,B
+        \tkzDefPoint(1,1){A}
+        \tkzDefPoint(5,1){B}
+    
+        % Define el punto C relativo a A
+        % C está a 4cm de A a 60 grados
+        \tkzDefShiftPoint[A](60:4){C}
+    
+        % Define la altitud Cc del triángulo △ACB
+        \tkzDefLine[altitude](A,C,B)
+            \tkzGetPoint{c} % punto de altitud
+    
+        % Dibuja los puntos A,B,C,c
+        \tkzDrawPoints(A,B,C,c)
+    
+        % Dibuja segmentos AB, BC, CA
+        \tkzDrawSegments(A,B B,C C,A)
+    
+        % Dibuja el segmento punteado Cc
+        \tkzDrawSegment[dashed](C,c)
+    
+        % Etiqueta los puntos A,B,C
+        \tkzLabelPoints[above left](A)  % arriba a la izquierda.
+        \tkzLabelPoints[above right](B) % arriba a la derecha.
+        \tkzLabelPoints[right](C)       % a la derecha.
+    \end{tikzpicture}
+\end{document}

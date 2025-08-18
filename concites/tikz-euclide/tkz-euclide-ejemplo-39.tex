@@ -1,0 +1,35 @@
+---
+id: tkz-euclide-ejemplo-39
+title: "Círculo según Diámetro"
+description: "Construye una circunferencia a partir de su diámetro y señala el centro y el radio."
+keywords: [circunferencia, circulo, diametro, centro, radio]
+tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
+sort: 39
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define dos puntos A y B en el eje x.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(6,0){B}
+    
+        % Construye el círculo cuyo diámetro es AB y obtiene el centro O.
+        \tkzDefCircle[diameter](A,B)
+            \tkzGetFirstPoint{O}
+    
+        % Dibuja el círculo de centro O y radio OB.
+        \tkzDrawCircle(O,B)
+    
+        % Muestra el diámetro AB como segmento punteado y el radio OB etiquetado.
+        \tkzDrawSegment[dashed,gray](A,B)
+        \tkzLabelSegment[above](O,B){$r$}
+    
+        % Dibuja y etiqueta los puntos A, B y O.
+        \tkzDrawPoints(A,B,O)
+        \tkzLabelPoints[left](A)
+        \tkzLabelPoints[right](B)
+        \tkzLabelPoints[below](O)
+    \end{tikzpicture}
+\end{document}

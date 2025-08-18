@@ -1,0 +1,19 @@
+---
+id: tkz-euclide-ejemplo-01
+title: Plano Cartesiano
+description: "Inicializa y dibuja los ejes de un sistema de coordenadas cartesianas."
+keywords: [coordenadas, cartesianas, ejes, plano]
+tags: [tkzInit,tkzDrawXY]
+sort: 1
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define el sistema de coordenadas ortogonales.
+        \tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+        % Dibuja los ejes x, y
+        \tkzDrawXY
+    \end{tikzpicture}
+\end{document}

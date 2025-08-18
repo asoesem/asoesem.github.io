@@ -1,0 +1,36 @@
+---
+id: tkz-euclide-ejemplo-21
+title: "Marcar Ángulos II"
+description: "Muestra distintos estilos de arcos para marcar los tres ángulos de un triángulo."
+keywords: [angulos, marcado, estilos, triangulo]
+tags: [tkzMarkAngle]
+sort: 21
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los vértices A, B y C del triángulo.
+        \tkzDefPoints{
+            1/1/A,
+            5/1/B,
+            3/4/C%
+        }
+    
+        % Dibuja los vértices y los lados del triángulo.
+        \tkzDrawPoints(A,B,C)
+        \tkzDrawSegments(A,B B,C C,A)
+    
+        % Marca arcos de ángulo con diferentes estilos (arc=l, arc=ll)
+        % para visualizar ∠BAC, ∠CBA y ∠ACB respectivamente.
+        \tkzMarkAngle[arc=ll](B,A,C)
+        \tkzMarkAngle[arc=ll](C,B,A)
+        \tkzMarkAngle[arc=l](A,C,B)
+    
+        % Etiqueta los vértices del triángulo.
+        \tkzLabelPoints[left](A)
+        \tkzLabelPoints[right](B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+---
+id: tkz-euclide-ejemplo-45
+title: "Semicírculo"
+description: "Dibuja dos semicírculos de un mismo diámetro en sentidos opuestos."
+keywords: [semicirculo, semicircunferencia, diametro, centro]
+tags: [tkzDrawSemiCircle]
+sort: 45
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los extremos A y B de un segmento y su punto medio O.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(6,0){B}
+        \tkzDefMidPoint(A,B)
+        \tkzGetPoint{O}
+    
+        % Dibuja dos semicírculos con centro en O: uno hacia B (azul) y otro hacia A (rojo).
+        \tkzDrawSemiCircle[blue](O,B)
+        \tkzDrawSemiCircle[red](O,A)
+    
+        % Dibuja y etiqueta los puntos.
+        \tkzDrawPoints(O,A,B)
+        \tkzLabelPoints[below right](O,A,B)
+    \end{tikzpicture}
+\end{document}

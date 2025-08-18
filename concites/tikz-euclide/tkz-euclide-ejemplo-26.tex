@@ -1,0 +1,31 @@
+---
+id: tkz-euclide-ejemplo-26
+title: "Triángulo Escolar (30°-60°-90°)"
+description: "Construye el triángulo 30°–60°–90° y marca sus ángulos característicos."
+keywords: [triangulo, 30-60-90, escolar, angulos]
+tags: [tkzDefTriangle, tkzMarkRightAngles,tkzLabelAngle,tkzDrawPolygon,tkzGetPoint]
+sort: 26
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define la base AB.
+        \tkzDefPoints{0/0/A,4/0/B}
+    
+        % Construye un triángulo "school" (30°-60°-90°) sobre AB.
+        \tkzDefTriangle[school](A,B)
+            \tkzGetPoint{C}
+    
+        % Marca el ángulo recto, y etiqueta los otros dos ángulos.
+        \tkzMarkRightAngles(C,B,A)
+        \tkzLabelAngle[pos=1.2](B,A,C){$30^\circ$}
+        \tkzLabelAngle[pos=0.8](A,C,B){$60^\circ$}
+    
+        % Dibuja el triángulo y etiqueta los puntos.
+        \tkzDrawPolygon(A,B,C)
+        \tkzLabelPoints(A,B)
+        \tkzLabelPoints[above](C)
+    \end{tikzpicture}
+\end{document}

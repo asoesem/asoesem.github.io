@@ -1,0 +1,33 @@
+---
+id: tkz-euclide-ejemplo-09
+title: Dimensiona el tamaño de un segmento.
+description: "Añade una cota (dimensión) a un segmento del triángulo."
+keywords: [dimension, cota, segmento, triángulo]
+tags: [tkzDrawSegments,tkzDrawSegment,tkzLabelSegment]
+sort: 9
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define conjunto de puntos A,B,C.
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B,
+            0/4/C%
+        }
+    
+        % Dibuja los segmentos AB, BC, CA
+        \tkzDrawSegments(A,B B,C C,A)
+    
+        % Etiqueta el segmento AB como a
+        \tkzLabelSegment(A,B){$a$}
+        % Etiqueta el segmento AC como b
+        \tkzLabelSegment[left](A,C){$b$} % a la izquierda
+    
+        % Dibuja el segmento CB con una línea dimensional
+        % etiquetando la dimensión como raíz cuadrada de 5.
+        \tkzDrawSegment[dim={$\sqrt{5}$,9pt,}](C,B)
+    \end{tikzpicture}
+\end{document}

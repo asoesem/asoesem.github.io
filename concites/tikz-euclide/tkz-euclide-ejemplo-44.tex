@@ -1,0 +1,34 @@
+---
+id: tkz-euclide-ejemplo-44
+title: "Intersección Círculo-Cículo"
+description: "Determina los puntos de intersección de dos circunferencias."
+keywords: [interseccion, circunferencias, circulo, puntos]
+tags: [tkzDrawCircle, tkzInterCC,tkzGetPoints]
+sort: 44
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define dos puntos A y B que servirán como centros/radios cruzados.
+        \tkzDefPoints{
+            0  /0  /A,
+            3  /0  /B%
+        }
+    
+        % Dibuja dos circunferencias: una con centro A pasando por B (roja)
+        % y otra con centro B pasando por A (azul).
+        \tkzDrawCircle[red](A,B)
+        \tkzDrawCircle[blue](B,A)
+    
+        % Calcula los puntos de intersección C y D de ambas circunferencias.
+        \tkzInterCC(A,B)(B,A)
+            \tkzGetPoints{C}{D}
+    
+        % Dibuja y etiqueta los puntos de intersección.
+        \tkzDrawPoints(C,D)
+        \tkzLabelPoints[above,font=\scriptsize](C)
+        \tkzLabelPoints[below,font=\scriptsize](D)
+    \end{tikzpicture}
+\end{document}

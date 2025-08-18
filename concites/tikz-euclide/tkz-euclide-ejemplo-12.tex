@@ -1,0 +1,36 @@
+---
+id: tkz-euclide-ejemplo-12
+title: Mediadriz
+description: "Construye y dibuja la mediatriz de un segmento dado."
+keywords: [mediatriz, segmento, perpendicular, punto-medio]
+tags: [tkzDefLine,tkzGetPoints,tkzDrawLine,mediator]
+sort: 12
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los puntos A y B.
+        \tkzDefPoint(1,1){A}
+        \tkzDefPoint(3,4){B}
+    
+        % Dibuja el segmento AB.
+        \tkzDrawSegment(A,B)
+    
+        % Define una línea PQ que es mediatriz de AB.
+        \tkzDefLine[mediator](A,B)
+            \tkzGetPoints{P}{Q}
+    
+        % Dibuja la mediatriz PQ con flechas a ambos lados.
+        \tkzDrawLine[Latex-Latex](P,Q)
+    
+        % Dinuja los puntos A,B,P,Q.
+        \tkzDrawPoints(A,B,P,Q)
+    
+        % Etiqueta los puntos A,B.
+        \tkzLabelPoints[above left](A,B) % arriba a la izquierda.
+        % Etiqueta los puntos P,Q
+        \tkzLabelPoints[above right](P,Q) % arriba a la derecha.
+    \end{tikzpicture}
+\end{document}

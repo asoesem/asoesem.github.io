@@ -1,0 +1,41 @@
+---
+id: tkz-euclide-ejemplo-41
+title: "Tangente a un Punto del Círculo"
+description: "Traza la tangente a una circunferencia por un punto y marca su perpendicularidad con el radio."
+keywords: [tangente, circulo, circunferencia, perpendicular, radio]
+tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
+sort: 41
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}
+        % Define los extremos A y B de un diámetro.
+        \tkzDefPoints{
+            0/0/A,
+            6/0/B%
+        }
+    
+        % Construye el círculo de diámetro AB y recupera su centro O.
+        \tkzDefCircle[diameter](A,B)
+            \tkzGetFirstPoint{O}
+    
+        % Calcula la recta tangente al círculo en el punto B.
+        \tkzDefLine[tangent at=B](O)
+            \tkzGetPoint{C}
+    
+        % Dibuja la tangente por B y el radio OB, y marca el ángulo recto B.
+        \tkzDrawLine[Stealth-Stealth,add = 3 and 2](B,C)
+        \tkzDrawSegment(O,B)
+    
+        % Marca el ángulo recto
+        \tkzMarkRightAngle[fill=teal!30](O,B,C)
+    
+        % Dibuja el círculo y etiqueta los puntos.
+        \tkzDrawPoints(O,B)
+        \tkzDrawCircle(O,B)
+        \tkzLabelPoints[below](O)
+        \tkzLabelPoints[right](B)
+    \end{tikzpicture}
+\end{document}
