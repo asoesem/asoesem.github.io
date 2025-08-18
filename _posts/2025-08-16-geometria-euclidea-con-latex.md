@@ -19,7 +19,7 @@ Abajo encontrarás una base de datos que contiene alrededor de 50 diferentes eje
 diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 
 
-Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, polígono, mediatriz, bisectriz, circunferencia, etc.) 
+Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, etc.) 
 y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres ver todos los ejemplos uno por uno puedes escribir ejemplo1, ejemplo2, etc.
 
 <div class="tkz-search">

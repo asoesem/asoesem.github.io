@@ -93,7 +93,7 @@
       "ejemplo5"
     ],
     "description": "Define varios puntos de una sola vez y los dibuja con sus etiquetas.",
-    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el sistema de coordenadas ortogonales.\n        \\tkzInit[xmin=0,xmax=6,ymin=0,ymax=6]\n        % Dibuja los ejes del plano cartesiano.\n        \\tkzDrawXY\n        % Dibuja una cuadrícula en el área definida.\n        \\tkzGrid\n    \n        % Define un conjunto de puntos.\n        \\tkzDefPoints{\n            1/1/A,\n            5/1/B,\n            3/4/C%\n        }\n    \n        % Dibuja los puntos definidos como A,B,C.\n        \\tkzDrawPoints(A,B,C)\n        % Etiqueta los puntos A,C arriba a la izquierda.\n        \\tkzLabelPoints[above left](A,C)\n        % Etiqueta los puntos A,C arriba a la derecha.\n        \\tkzLabelPoints[above right](B)\n    \\end{tikzpicture}\n\\end{document}",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el sistema de coordenadas ortogonales.\n        \\tkzInit[xmin=0,xmax=6,ymin=0,ymax=6]\n        % Dibuja los ejes del plano cartesiano.\n        \\tkzDrawXY\n        % Dibuja una cuadrícula en el área definida.\n        \\tkzGrid\n    \n        % Define un conjunto de puntos.\n        \\tkzDefPoints{\n            1/1/A,\n            5/1/B,\n            3/4/C%\n        }\n    \n        % Dibuja los puntos definidos como A,B,C.\n        \\tkzDrawPoints(A,B,C)\n        % Etiqueta los puntos A,C arriba a la izquierda.\n        \\tkzLabelPoints[above left](A,C)\n        % Etiqueta el punto B arriba a la derecha.\n        \\tkzLabelPoints[above right](B)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-05.png",
     "sort": 5
   },
@@ -143,7 +143,8 @@
       "segmentos",
       "congruencia",
       "marcas",
-      "triángulo"
+      "triángulo",
+      "isosceles"
     ],
     "tags": [
       "tkzDrawSegments",
@@ -374,7 +375,8 @@
       "angulos",
       "igualdad",
       "marcado",
-      "triangulo"
+      "triangulo",
+      "isosceles"
     ],
     "tags": [
       "tkzMarkAngle",
@@ -392,7 +394,8 @@
       "angulos",
       "marcado",
       "estilos",
-      "triangulo"
+      "triangulo",
+      "isosceles"
     ],
     "tags": [
       "tkzMarkAngle",
@@ -426,6 +429,7 @@
     "keywords": [
       "triangulo",
       "equilatero",
+      "isosceles",
       "construccion",
       "congruencia"
     ],
@@ -445,8 +449,9 @@
     "title": "Triángulo Isósceles Recto",
     "keywords": [
       "triangulo",
-      "isosceles-recto",
-      "angulo-recto"
+      "isosceles",
+      "recto",
+      "angulo"
     ],
     "tags": [
       "tkzDefTriangle",
@@ -465,8 +470,8 @@
     "title": "Triángulo en Dos Ángulos",
     "keywords": [
       "triangulo",
-      "dos-angulos",
-      "etiquetar"
+      "escaleno",
+      "angulo"
     ],
     "tags": [
       "tkzDefTriangle",
@@ -487,6 +492,8 @@
       "triangulo",
       "30-60-90",
       "escolar",
+      "escaleno",
+      "recto",
       "angulos"
     ],
     "tags": [
@@ -508,7 +515,8 @@
     "keywords": [
       "ortocentro",
       "altitudes",
-      "triángulo"
+      "triángulo",
+      "isosceles"
     ],
     "tags": [
       "tkzDefTriangle",
@@ -529,7 +537,8 @@
       "baricentro",
       "medianas",
       "triángulo",
-      "puntos-medios"
+      "puntos-medios",
+      "isosceles"
     ],
     "tags": [
       "tkzDefTriangle",
@@ -551,7 +560,7 @@
     "keywords": [
       "incentro",
       "bisectrices",
-      "angulos-iguales"
+      "isosceles"
     ],
     "tags": [
       "tkzDefTriangle",
