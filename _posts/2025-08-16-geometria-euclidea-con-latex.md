@@ -11,15 +11,15 @@ featured: true
 toc: false
 ---
 
-En esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría en LaTeX utilizando el paquete `tkz-euclide`. 
+En esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría euclídea en LaTeX utilizando el paquete `tkz-euclide`. 
 Los ejemplos aquí desarrollados son parte de una [presentación sobre geometría euclídea][1] para la edición del 2025 del 
 Congreso Nacional de Ciencia, Tecnología y Sociedad ([CONCITES][0]). 
 
-Se adjunta con este artículo una base de datos contiene de alrededor de 50 diferentes ejemplos de diferentes tipos de 
-diagramas de geometría euclídea básicos creados utilizando `tkz-euclide`.
+Abajo encontrarás una base de datos que contiene alrededor de 50 diferentes ejemplos básicos de diferentes tipos de 
+diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 
 
-Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, polígono, mediatriz, bisectriz, circunferencia, etc.) 
+Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, polígono, mediatriz, bisectriz, circunferencia, etc.) 
 y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres ver todos los ejemplos uno por uno puedes escribir ejemplo1, ejemplo2, etc.
 
 <div class="tkz-search">
