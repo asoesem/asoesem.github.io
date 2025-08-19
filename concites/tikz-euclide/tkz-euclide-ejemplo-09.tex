@@ -2,8 +2,8 @@
 id: tkz-euclide-ejemplo-09
 title: Dimensiona el tamaño de un segmento.
 description: "Añade una cota (dimensión) a un segmento del triángulo."
-keywords: [dimension, cota, segmento, triángulo]
-tags: [tkzDrawSegments,tkzDrawSegment,tkzLabelSegment]
+keywords: [dimension, cota, segmento, triángulo, angulo, recto, escaleno]
+tags: [tkzDrawSegments,tkzDrawSegment,tkzLabelSegment,tkzMarkRightAngle]
 sort: 9
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -29,5 +29,8 @@ sort: 9
         % Dibuja el segmento CB con una línea dimensional
         % etiquetando la dimensión como raíz cuadrada de 5.
         \tkzDrawSegment[dim={$\sqrt{5}$,9pt,}](C,B)
+
+        % Marca el ángulo recto ∠BAC
+        \tkzMarkRightAngle(B,A,C)
     \end{tikzpicture}
 \end{document}

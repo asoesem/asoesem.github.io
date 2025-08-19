@@ -164,16 +164,20 @@
       "dimension",
       "cota",
       "segmento",
-      "triángulo"
+      "triángulo",
+      "angulo",
+      "recto",
+      "escaleno"
     ],
     "tags": [
       "tkzDrawSegments",
       "tkzDrawSegment",
       "tkzLabelSegment",
+      "tkzMarkRightAngle",
       "ejemplo9"
     ],
     "description": "Añade una cota (dimensión) a un segmento del triángulo.",
-    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define conjunto de puntos A,B,C.\n        \\tkzDefPoints{\n            0/0/A,\n            3/0/B,\n            0/4/C%\n        }\n    \n        % Dibuja los segmentos AB, BC, CA\n        \\tkzDrawSegments(A,B B,C C,A)\n    \n        % Etiqueta el segmento AB como a\n        \\tkzLabelSegment(A,B){$a$}\n        % Etiqueta el segmento AC como b\n        \\tkzLabelSegment[left](A,C){$b$} % a la izquierda\n    \n        % Dibuja el segmento CB con una línea dimensional\n        % etiquetando la dimensión como raíz cuadrada de 5.\n        \\tkzDrawSegment[dim={$\\sqrt{5}$,9pt,}](C,B)\n    \\end{tikzpicture}\n\\end{document}",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define conjunto de puntos A,B,C.\n        \\tkzDefPoints{\n            0/0/A,\n            3/0/B,\n            0/4/C%\n        }\n    \n        % Dibuja los segmentos AB, BC, CA\n        \\tkzDrawSegments(A,B B,C C,A)\n    \n        % Etiqueta el segmento AB como a\n        \\tkzLabelSegment(A,B){$a$}\n        % Etiqueta el segmento AC como b\n        \\tkzLabelSegment[left](A,C){$b$} % a la izquierda\n    \n        % Dibuja el segmento CB con una línea dimensional\n        % etiquetando la dimensión como raíz cuadrada de 5.\n        \\tkzDrawSegment[dim={$\\sqrt{5}$,9pt,}](C,B)\n\n        % Marca el ángulo recto ∠BAC\n        \\tkzMarkRightAngle(B,A,C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-09.png",
     "sort": 9
   },
@@ -286,7 +290,7 @@
       "ejemplo15"
     ],
     "description": "Traza la altitud de un triángulo desde un vértice al lado opuesto.",
-    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define los puntos A,B\n        \\tkzDefPoint(1,1){A}\n        \\tkzDefPoint(5,1){B}\n    \n        % Define el punto C relativo a A\n        % C está a 4cm de A a 60 grados\n        \\tkzDefShiftPoint[A](60:4){C}\n    \n        % Define la altitud Cc del triángulo △ACB\n        \\tkzDefLine[altitude](A,C,B)\n            \\tkzGetPoint{c} % punto de altitud\n    \n        % Dibuja los puntos A,B,C,c\n        \\tkzDrawPoints(A,B,C,c)\n    \n        % Dibuja segmentos AB, BC, CA\n        \\tkzDrawSegments(A,B B,C C,A)\n    \n        % Dibuja el segmento punteado Cc\n        \\tkzDrawSegment[dashed](C,c)\n    \n        % Etiqueta los puntos A,B,C\n        \\tkzLabelPoints[above left](A)  % arriba a la izquierda.\n        \\tkzLabelPoints[above right](B) % arriba a la derecha.\n        \\tkzLabelPoints[right](C)       % a la derecha.\n    \\end{tikzpicture}\n\\end{document}",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define los puntos A,B\n        \\tkzDefPoint(1,1){A}\n        \\tkzDefPoint(5,1){B}\n    \n        % Define el punto C relativo a A\n        % C está a 4cm de A a 60 grados\n        \\tkzDefShiftPoint[A](60:4){C}\n    \n        % Define la altitud CP del triángulo △ACB\n        \\tkzDefLine[altitude](A,C,B)\n            \\tkzGetPoint{P} % punto de altitud\n    \n        % Dibuja los puntos A,B,C,P\n        \\tkzDrawPoints(A,B,C,P)\n    \n        % Dibuja segmentos AB, BC, CA\n        \\tkzDrawSegments(A,B B,C C,A)\n    \n        % Dibuja el segmento punteado Cc\n        \\tkzDrawSegment[dashed](C,P)\n    \n        % Etiqueta los puntos A,B,C,P en posiciones convenientes\n        \\tkzLabelPoints[left](A)  % izquierda.\n        \\tkzLabelPoints[right](B) % derecha.\n        \\tkzLabelPoints[above](C) % encima.\n        \\tkzLabelPoints[below](P) % debajo.\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-15.png",
     "sort": 15
   },
@@ -461,7 +465,7 @@
       "ejemplo24"
     ],
     "description": "Construye un triángulo isósceles rectángulo sobre una base y marca el ángulo recto.",
-    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define la base AB.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(4,0){B}\n    \n        % Construye un triángulo isósceles rectángulo en C usando AB como base.\n        \\tkzDefTriangle[isosceles right](A,B)\n            \\tkzGetPoint{C}\n    \n        % Dibuja el triángulo.\n        \\tkzDrawPolygons(A,B,C)\n    \n        % Marca el ángulo recto en C.\n        \\tkzMarkRightAngles(A,C,B)\n    \n        % Dibuja y etiqueta los puntos.\n        \\tkzDrawPoints(A,B,C)\n        \\tkzLabelPoints(A,B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define la base AB.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(4,0){B}\n    \n        % Construye un triángulo isósceles rectángulo en C usando AB como base.\n        \\tkzDefTriangle[isosceles right](A,B)\n            \\tkzGetPoint{C}\n    \n        % Dibuja el triángulo.\n        \\tkzDrawPolygons(A,B,C)\n    \n        % Marca el ángulo recto en C.\n        \\tkzMarkRightAngles(A,C,B)\n\n        % Marca los ángulos en A y en B como congruentes\n        \\tkzMarkAngle[mark=||,size=0.5](B,A,C)\n        \\tkzMarkAngle[mark=||,size=0.5](C,B,A)\n    \n        % Dibuja y etiqueta los puntos.\n        \\tkzDrawPoints(A,B,C)\n        \\tkzLabelPoints(A,B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-24.png",
     "sort": 24
   },

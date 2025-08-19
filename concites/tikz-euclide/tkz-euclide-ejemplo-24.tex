@@ -24,6 +24,10 @@ sort: 24
     
         % Marca el ángulo recto en C.
         \tkzMarkRightAngles(A,C,B)
+
+        % Marca los ángulos en A y en B como congruentes
+        \tkzMarkAngle[mark=||,size=0.5](B,A,C)
+        \tkzMarkAngle[mark=||,size=0.5](C,B,A)
     
         % Dibuja y etiqueta los puntos.
         \tkzDrawPoints(A,B,C)

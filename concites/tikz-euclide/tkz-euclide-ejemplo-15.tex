@@ -19,22 +19,23 @@ sort: 15
         % C está a 4cm de A a 60 grados
         \tkzDefShiftPoint[A](60:4){C}
     
-        % Define la altitud Cc del triángulo △ACB
+        % Define la altitud CP del triángulo △ACB
         \tkzDefLine[altitude](A,C,B)
-            \tkzGetPoint{c} % punto de altitud
+            \tkzGetPoint{P} % punto de altitud
     
-        % Dibuja los puntos A,B,C,c
-        \tkzDrawPoints(A,B,C,c)
+        % Dibuja los puntos A,B,C,P
+        \tkzDrawPoints(A,B,C,P)
     
         % Dibuja segmentos AB, BC, CA
         \tkzDrawSegments(A,B B,C C,A)
     
         % Dibuja el segmento punteado Cc
-        \tkzDrawSegment[dashed](C,c)
+        \tkzDrawSegment[dashed](C,P)
     
-        % Etiqueta los puntos A,B,C
-        \tkzLabelPoints[above left](A)  % arriba a la izquierda.
-        \tkzLabelPoints[above right](B) % arriba a la derecha.
-        \tkzLabelPoints[right](C)       % a la derecha.
+        % Etiqueta los puntos A,B,C,P en posiciones convenientes
+        \tkzLabelPoints[left](A)  % izquierda.
+        \tkzLabelPoints[right](B) % derecha.
+        \tkzLabelPoints[above](C) % encima.
+        \tkzLabelPoints[below](P) % debajo.
     \end{tikzpicture}
 \end{document}
