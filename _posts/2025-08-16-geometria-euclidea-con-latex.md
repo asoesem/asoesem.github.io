@@ -66,6 +66,8 @@ y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres v
 ## Documentos Adicionales
 
 * [Geometría Euclidiana con LaTex: Creando Diagramas Profesionales con tkz-euclide][1] 
+* [Lista de Comandos de tkz-euclide][2]
 
 [0]: https://www.cientec.or.cr/programas/educadores-divulgadores/concites-m-2025
-[1]: {{site.baseurl}}/documentos/concites-2025-taller-geometria-latex.pdf
+[1]: {{site.baseurl}}/documentos/concites/taller-geometria-latex-2025.pdf
+[2]: {{site.baseurl}}/documentos/concites/poster-comandos-tkz-euclide.pdf
