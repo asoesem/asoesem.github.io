@@ -11,7 +11,7 @@ featured: true
 toc: false
 ---
 
-En esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría euclídea en LaTeX utilizando el paquete `tkz-euclide`. 
+Esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría euclídea en LaTeX utilizando el paquete `tkz-euclide`. 
 Los ejemplos aquí desarrollados son parte de una [presentación sobre geometría euclídea][1] para la edición del 2025 del 
 Congreso Nacional de Ciencia, Tecnología y Sociedad ([CONCITES][0]). 
 
