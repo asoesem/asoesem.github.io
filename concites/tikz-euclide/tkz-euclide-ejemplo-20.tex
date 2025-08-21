@@ -7,6 +7,7 @@ tags: [tkzMarkAngle]
 sort: 20
 ---
 \documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
 \begin{document}
@@ -15,7 +16,8 @@ sort: 20
         \tkzDefPoints{
             1/1/A,
             5/1/B,
-            3/4/C}
+            3/4/C%
+        }
     
         % Dibuja los puntos del triángulo.
         \tkzDrawPoints(A,B,C)

@@ -7,6 +7,7 @@ tags: [tkzDefPoint,tkzDefShiftPoint,tkzLabelPoints]
 sort: 6
 ---
 \documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
 \begin{document}
@@ -17,22 +18,20 @@ sort: 6
         \tkzDrawXY
         % Dibuja una cuadrícula en el área definida.
         \tkzGrid
-    
+
         % Define los puntos A y B.
         \tkzDefPoint(1,1){A}
         \tkzDefPoint(5,1){B}
-    
+
         % Define el punto C a 4cm de A, a 60 grados.
         \tkzDefShiftPoint[A](60:4){C}
-    
+
         % Dibuja los puntos A,B,C
         \tkzDrawPoints(A,B,C)
-    
-        % Etiqueta el punto A arriba a la izquierda.
-        \tkzLabelPoints[above left](A)
-        % Etiqueta el punto B arriba a la derecha.
-        \tkzLabelPoints[above right](B)
-        % Etiqueta el punto C a la derecha.
-        \tkzLabelPoints[right](C)
+
+        % Etiqueta los puntos A,B,C
+        \tkzLabelPoints[above left](A)   % a la izquierda.
+        \tkzLabelPoints[above right](B)  % arriba a la derecha.
+        \tkzLabelPoints[right](C)        % a la derecha.
     \end{tikzpicture}
 \end{document}

@@ -7,6 +7,7 @@ tags: [tkzDefTriangle, tkzDrawPolygon,tkzLabelAngle,tkzGetPoint]
 sort: 25
 ---
 \documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
 \begin{document}
@@ -23,8 +24,8 @@ sort: 25
         \tkzDrawPolygon(A,B,C)
     
         % Etiqueta los ángulos en A y B con su medida.
-        \tkzLabelAngle[pos=1.4,font=\scriptsize](B,A,C){$50^\circ$}
-        \tkzLabelAngle[pos=0.8,font=\scriptsize](C,B,A){$70^\circ$}
+        \tkzLabelAngle[pos=0.8,font=\scriptsize](B,A,C){$50^\circ$}
+        \tkzLabelAngle[pos=0.6,font=\scriptsize](C,B,A){$70^\circ$}
     
         % Dibuja y etiqueta los puntos.
         \tkzDrawPoints(A,B,C)

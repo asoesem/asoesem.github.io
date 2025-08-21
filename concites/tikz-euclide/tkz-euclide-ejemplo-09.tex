@@ -7,6 +7,7 @@ tags: [tkzDrawSegments,tkzDrawSegment,tkzLabelSegment,tkzMarkRightAngle]
 sort: 9
 ---
 \documentclass[tikz,border=2mm]{standalone}
+\usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
 \begin{document}
@@ -28,7 +29,7 @@ sort: 9
     
         % Dibuja el segmento CB con una línea dimensional
         % etiquetando la dimensión como raíz cuadrada de 5.
-        \tkzDrawSegment[dim={$\sqrt{5}$,9pt,}](C,B)
+        \tkzDrawSegment[dim={$\sqrt{5}$,9pt,above}](C,B)
 
         % Marca el ángulo recto ∠BAC
         \tkzMarkRightAngle(B,A,C)
