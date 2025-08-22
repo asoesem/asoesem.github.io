@@ -1,0 +1,591 @@
+---
+layout: default
+title: Comandos LaTeX Matemáticos
+permalink: /latex/
+---
+
+<!-- begin latex commands -->
+<section class="section latex-commands">
+  <div class="latex-commands__inner">
+    <div class="container">
+
+      <div class="latex-commands__head">
+        <h1 class="latex-commands__title">{{ page.title }}</h1>
+        <p class="latex-commands__description">Comandos LaTeX organizados por categorías matemáticas. Haz clic en cualquier comando para copiarlo al portapapeles.</p>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="category-filters">
+        <button class="category-btn active" data-category="all">Todas</button>
+        <button class="category-btn" data-category="operators">Operadores</button>
+        <button class="category-btn" data-category="greek">Letras Griegas</button>
+        <button class="category-btn" data-category="symbols">Símbolos</button>
+        <button class="category-btn" data-category="formulas">Fórmulas</button>
+        <button class="category-btn" data-category="logic">Lógica</button>
+        <button class="category-btn" data-category="sets">Teoría de Conjuntos</button>
+        <button class="category-btn" data-category="relations">Relaciones</button>
+        <button class="category-btn" data-category="functions">Funciones</button>
+        <button class="category-btn" data-category="algebra">Álgebra</button>
+        <button class="category-btn" data-category="calculus">Cálculo</button>
+        <button class="category-btn" data-category="geometry">Geometría</button>
+        <button class="category-btn" data-category="angles">Ángulos</button>
+        <button class="category-btn" data-category="trigonometry">Trigonometría</button>
+        <button class="category-btn" data-category="probability">Probabilidad y Estadística</button>
+        <button class="category-btn" data-category="linear-algebra">Álgebra Lineal</button>
+        <button class="category-btn" data-category="physics">Física</button>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-container">
+        <input type="text" id="latex-search" class="search-input" placeholder="Buscar comandos LaTeX...">
+        <button id="clear-search" class="clear-search-btn">Limpiar</button>
+      </div>
+
+      <!-- Commands Grid -->
+      <div class="commands-grid" id="commands-grid">
+        <!-- Commands will be populated by JavaScript -->
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- end latex commands -->
+
+<style>
+.latex-commands {
+  padding: 60px 0;
+}
+
+.latex-commands__head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.latex-commands__title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.latex-commands__description {
+  font-size: 1.1rem;
+  color: var(--text-alt-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.category-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  padding: 12px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.clear-search-btn {
+  padding: 12px 20px;
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  background: var(--secondary-color-dark);
+}
+
+.commands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.command-card {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.command-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: var(--primary-color);
+}
+
+.command-name {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.command-preview {
+  margin-bottom: 15px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.command-code {
+  background: var(--bg-alt-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  word-break: break-all;
+}
+
+.command-card.hidden {
+  display: none;
+}
+
+.copy-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--success-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .commands-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+// LaTeX Commands Data
+const latexCommands = {
+  operators: [
+    { name: "Suma", preview: "\\[a + b\\]", code: "a + b", category: "operators" },
+    { name: "Resta", preview: "\\[a - b\\]", code: "a - b", category: "operators" },
+    { name: "Multiplicación", preview: "\\[a \\times b\\]", code: "a \\times b", category: "operators" },
+    { name: "División", preview: "\\[\\frac{a}{b}\\]", code: "\\frac{a}{b}", category: "operators" },
+    { name: "Potencia", preview: "\\[a^n\\]", code: "a^n", category: "operators" },
+    { name: "Raíz Cuadrada", preview: "\\[\\sqrt{a}\\]", code: "\\sqrt{a}", category: "operators" },
+    { name: "Raíz n-ésima", preview: "\\[\\sqrt[n]{a}\\]", code: "\\sqrt[n]{a}", category: "operators" },
+    { name: "Módulo", preview: "\\[a \\bmod b\\]", code: "a \\bmod b", category: "operators" },
+    { name: "Factorial", preview: "\\[n!\\]", code: "n!", category: "operators" },
+    { name: "Binomio", preview: "\\[\\binom{n}{k}\\]", code: "\\binom{n}{k}", category: "operators" }
+  ],
+  greek: [
+    { name: "Alpha", preview: "\\[\\alpha\\]", code: "\\alpha", category: "greek" },
+    { name: "Beta", preview: "\\[\\beta\\]", code: "\\beta", category: "greek" },
+    { name: "Gamma", preview: "\\[\\gamma\\]", code: "\\gamma", category: "greek" },
+    { name: "Delta", preview: "\\[\\delta\\]", code: "\\delta", category: "greek" },
+    { name: "Epsilon", preview: "\\[\\epsilon\\]", code: "\\epsilon", category: "greek" },
+    { name: "Zeta", preview: "\\[\\zeta\\]", code: "\\zeta", category: "greek" },
+    { name: "Eta", preview: "\\[\\eta\\]", code: "\\eta", category: "greek" },
+    { name: "Theta", preview: "\\[\\theta\\]", code: "\\theta", category: "greek" },
+    { name: "Iota", preview: "\\[\\iota\\]", code: "\\iota", category: "greek" },
+    { name: "Kappa", preview: "\\[\\kappa\\]", code: "\\kappa", category: "greek" },
+    { name: "Lambda", preview: "\\[\\lambda\\]", code: "\\lambda", category: "greek" },
+    { name: "Mu", preview: "\\[\\mu\\]", code: "\\mu", category: "greek" },
+    { name: "Nu", preview: "\\[\\nu\\]", code: "\\nu", category: "greek" },
+    { name: "Xi", preview: "\\[\\xi\\]", code: "\\xi", category: "greek" },
+    { name: "Pi", preview: "\\[\\pi\\]", code: "\\pi", category: "greek" },
+    { name: "Rho", preview: "\\[\\rho\\]", code: "\\rho", category: "greek" },
+    { name: "Sigma", preview: "\\[\\sigma\\]", code: "\\sigma", category: "greek" },
+    { name: "Tau", preview: "\\[\\tau\\]", code: "\\tau", category: "greek" },
+    { name: "Upsilon", preview: "\\[\\upsilon\\]", code: "\\upsilon", category: "greek" },
+    { name: "Phi", preview: "\\[\\phi\\]", code: "\\phi", category: "greek" },
+    { name: "Chi", preview: "\\[\\chi\\]", code: "\\chi", category: "greek" },
+    { name: "Psi", preview: "\\[\\psi\\]", code: "\\psi", category: "greek" },
+    { name: "Omega", preview: "\\[\\omega\\]", code: "\\omega", category: "greek" }
+  ],
+  symbols: [
+    { name: "Infinito", preview: "\\[\\infty\\]", code: "\\infty", category: "symbols" },
+    { name: "Pertenece a", preview: "\\[\\in\\]", code: "\\in", category: "symbols" },
+    { name: "No pertenece a", preview: "\\[\\notin\\]", code: "\\notin", category: "symbols" },
+    { name: "Subconjunto", preview: "\\[\\subset\\]", code: "\\subset", category: "symbols" },
+    { name: "Subconjunto propio", preview: "\\[\\subsetneq\\]", code: "\\subsetneq", category: "symbols" },
+    { name: "Superconjunto", preview: "\\[\\supset\\]", code: "\\supset", category: "symbols" },
+    { name: "Unión", preview: "\\[\\cup\\]", code: "\\cup", category: "symbols" },
+    { name: "Intersección", preview: "\\[\\cap\\]", code: "\\cap", category: "symbols" },
+    { name: "Conjunto vacío", preview: "\\[\\emptyset\\]", code: "\\emptyset", category: "symbols" },
+    { name: "Conjunto universal", preview: "\\[\\mathbb{U}\\]", code: "\\mathbb{U}", category: "symbols" },
+    { name: "Conjunto de números naturales", preview: "\\[\\mathbb{N}\\]", code: "\\mathbb{N}", category: "symbols" },
+    { name: "Conjunto de números enteros", preview: "\\[\\mathbb{Z}\\]", code: "\\mathbb{Z}", category: "symbols" },
+    { name: "Conjunto de números racionales", preview: "\\[\\mathbb{Q}\\]", code: "\\mathbb{Q}", category: "symbols" },
+    { name: "Conjunto de números reales", preview: "\\[\\mathbb{R}\\]", code: "\\mathbb{R}", category: "symbols" },
+    { name: "Conjunto de números complejos", preview: "\\[\\mathbb{C}\\]", code: "\\mathbb{C}", category: "symbols" }
+  ],
+  formulas: [
+    { name: "Fórmula Cuadrática", preview: "\\[x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\]", code: "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}", category: "formulas" },
+    { name: "Teorema de Pitágoras", preview: "\\[a^2 + b^2 = c^2\\]", code: "a^2 + b^2 = c^2", category: "formulas" },
+    { name: "Fórmula del Área del Círculo", preview: "\\[A = \\pi r^2\\]", code: "A = \\pi r^2", category: "formulas" },
+    { name: "Fórmula del Perímetro del Círculo", preview: "\\[C = 2\\pi r\\]", code: "C = 2\\pi r", category: "formulas" },
+    { name: "Fórmula del Volumen de la Esfera", preview: "\\[V = \\frac{4}{3}\\pi r^3\\]", code: "V = \\frac{4}{3}\\pi r^3", category: "formulas" },
+    { name: "Fórmula del Área de la Esfera", preview: "\\[A = 4\\pi r^2\\]", code: "A = 4\\pi r^2", category: "formulas" },
+    { name: "Fórmula del Volumen del Cilindro", preview: "\\[V = \\pi r^2 h\\]", code: "V = \\pi r^2 h", category: "formulas" },
+    { name: "Fórmula del Área del Cilindro", preview: "\\[A = 2\\pi r^2 + 2\\pi r h\\]", code: "A = 2\\pi r^2 + 2\\pi r h", category: "formulas" }
+  ],
+  logic: [
+    { name: "Para todo", preview: "\\[\\forall\\]", code: "\\forall", category: "logic" },
+    { name: "Existe", preview: "\\[\\exists\\]", code: "\\exists", category: "logic" },
+    { name: "No existe", preview: "\\[\\nexists\\]", code: "\\nexists", category: "logic" },
+    { name: "Existe único", preview: "\\[\\exists!\\]", code: "\\exists!", category: "logic" },
+    { name: "Implica", preview: "\\[\\implies\\]", code: "\\implies", category: "logic" },
+    { name: "Si y solo si", preview: "\\[\\iff\\]", code: "\\iff", category: "logic" },
+    { name: "Y lógico", preview: "\\[\\land\\]", code: "\\land", category: "logic" },
+    { name: "O lógico", preview: "\\[\\lor\\]", code: "\\lor", category: "logic" },
+    { name: "No lógico", preview: "\\[\\neg\\]", code: "\\neg", category: "logic" },
+    { name: "Por lo tanto", preview: "\\[\\therefore\\]", code: "\\therefore", category: "logic" },
+    { name: "Porque", preview: "\\[\\because\\]", code: "\\because", category: "logic" }
+  ],
+  sets: [
+    { name: "Pertenece a", preview: "\\[\\in\\]", code: "\\in", category: "sets" },
+    { name: "No pertenece a", preview: "\\[\\notin\\]", code: "\\notin", category: "sets" },
+    { name: "Subconjunto", preview: "\\[\\subset\\]", code: "\\subset", category: "sets" },
+    { name: "Subconjunto propio", preview: "\\[\\subsetneq\\]", code: "\\subsetneq", category: "sets" },
+    { name: "Superconjunto", preview: "\\[\\supset\\]", code: "\\supset", category: "sets" },
+    { name: "Superconjunto propio", preview: "\\[\\supsetneq\\]", code: "\\supsetneq", category: "sets" },
+    { name: "Unión", preview: "\\[\\cup\\]", code: "\\cup", category: "sets" },
+    { name: "Intersección", preview: "\\[\\cap\\]", code: "\\cap", category: "sets" },
+    { name: "Diferencia", preview: "\\[\\setminus\\]", code: "\\setminus", category: "sets" },
+    { name: "Complemento", preview: "\\[A'\\]", code: "A'", category: "sets" },
+    { name: "Producto cartesiano", preview: "\\[A \\times B\\]", code: "A \\times B", category: "sets" },
+    { name: "Conjunto potencia", preview: "\\[\\mathcal{P}(A)\\]", code: "\\mathcal{P}(A)", category: "sets" }
+  ],
+  relations: [
+    { name: "Igual a", preview: "\\[=\\]", code: "=", category: "relations" },
+    { name: "No igual a", preview: "\\[\\neq\\]", code: "\\neq", category: "relations" },
+    { name: "Aproximadamente igual a", preview: "\\[\\approx\\]", code: "\\approx", category: "relations" },
+    { name: "Menor que", preview: "\\[<\\]", code: "<", category: "relations" },
+    { name: "Mayor que", preview: "\\[>\\]", code: ">", category: "relations" },
+    { name: "Menor o igual que", preview: "\\[\\leq\\]", code: "\\leq", category: "relations" },
+    { name: "Mayor o igual que", preview: "\\[\\geq\\]", code: "\\geq", category: "relations" },
+    { name: "Mucho menor que", preview: "\\[\\ll\\]", code: "\\ll", category: "relations" },
+    { name: "Mucho mayor que", preview: "\\[\\gg\\]", code: "\\gg", category: "relations" },
+    { name: "Proporcional a", preview: "\\[\\propto\\]", code: "\\propto", category: "relations" },
+    { name: "Congruente a", preview: "\\[\\equiv\\]", code: "\\equiv", category: "relations" }
+  ],
+  functions: [
+    { name: "Función", preview: "\\[f(x)\\]", code: "f(x)", category: "functions" },
+    { name: "Composición de funciones", preview: "\\[f \\circ g\\]", code: "f \\circ g", category: "functions" },
+    { name: "Función inversa", preview: "\\[f^{-1}\\]", code: "f^{-1}", category: "functions" },
+    { name: "Límite", preview: "\\[\\lim_{x \\to a}\\]", code: "\\lim_{x \\to a}", category: "functions" },
+    { name: "Derivada", preview: "\\[\\frac{d}{dx}\\]", code: "\\frac{d}{dx}", category: "functions" },
+    { name: "Derivada segunda", preview: "\\[\\frac{d^2}{dx^2}\\]", code: "\\frac{d^2}{dx^2}", category: "functions" },
+    { name: "Derivada parcial", preview: "\\[\\frac{\\partial}{\\partial x}\\]", code: "\\frac{\\partial}{\\partial x}", category: "functions" },
+    { name: "Integral indefinida", preview: "\\[\\int f(x) dx\\]", code: "\\int f(x) dx", category: "functions" },
+    { name: "Integral definida", preview: "\\[\\int_a^b f(x) dx\\]", code: "\\int_a^b f(x) dx", category: "functions" },
+    { name: "Sumatoria", preview: "\\[\\sum_{i=1}^n\\]", code: "\\sum_{i=1}^n", category: "functions" },
+    { name: "Productoria", preview: "\\[\\prod_{i=1}^n\\]", code: "\\prod_{i=1}^n", category: "functions" }
+  ],
+  algebra: [
+    { name: "Ecuación lineal", preview: "\\[ax + b = 0\\]", code: "ax + b = 0", category: "algebra" },
+    { name: "Ecuación cuadrática", preview: "\\[ax^2 + bx + c = 0\\]", code: "ax^2 + bx + c = 0", category: "algebra" },
+    { name: "Ecuación cúbica", preview: "\\[ax^3 + bx^2 + cx + d = 0\\]", code: "ax^3 + bx^2 + cx + d = 0", category: "algebra" },
+    { name: "Sistema de ecuaciones", preview: "\\[\\begin{cases} x + y = 1 \\\\ x - y = 0 \\end{cases}\\]", code: "\\begin{cases} x + y = 1 \\\\ x - y = 0 \\end{cases}", category: "algebra" },
+    { name: "Matriz 2x2", preview: "\\[\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\]", code: "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}", category: "algebra" },
+    { name: "Determinante", preview: "\\[\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}\\]", code: "\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}", category: "algebra" },
+    { name: "Vectores", preview: "\\[\\vec{v} = \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}\\]", code: "\\vec{v} = \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}", category: "algebra" },
+    { name: "Producto punto", preview: "\\[\\vec{a} \\cdot \\vec{b}\\]", code: "\\vec{a} \\cdot \\vec{b}", category: "algebra" },
+    { name: "Producto cruz", preview: "\\[\\vec{a} \\times \\vec{b}\\]", code: "\\vec{a} \\times \\vec{b}", category: "algebra" }
+  ],
+  calculus: [
+    { name: "Límite", preview: "\\[\\lim_{x \\to \\infty}\\]", code: "\\lim_{x \\to \\infty}", category: "calculus" },
+    { name: "Límite lateral derecho", preview: "\\[\\lim_{x \\to a^+}\\]", code: "\\lim_{x \\to a^+}", category: "calculus" },
+    { name: "Límite lateral izquierdo", preview: "\\[\\lim_{x \\to a^-}\\]", code: "\\lim_{x \\to a^-}", category: "calculus" },
+    { name: "Derivada", preview: "\\[\\frac{d}{dx}f(x)\\]", code: "\\frac{d}{dx}f(x)", category: "calculus" },
+    { name: "Derivada segunda", preview: "\\[\\frac{d^2}{dx^2}f(x)\\]", code: "\\frac{d^2}{dx^2}f(x)", category: "calculus" },
+    { name: "Derivada n-ésima", preview: "\\[\\frac{d^n}{dx^n}f(x)\\]", code: "\\frac{d^n}{dx^n}f(x)", category: "calculus" },
+    { name: "Derivada parcial", preview: "\\[\\frac{\\partial}{\\partial x}f(x,y)\\]", code: "\\frac{\\partial}{\\partial x}f(x,y)", category: "calculus" },
+    { name: "Integral indefinida", preview: "\\[\\int f(x) dx\\]", code: "\\int f(x) dx", category: "calculus" },
+    { name: "Integral definida", preview: "\\[\\int_a^b f(x) dx\\]", code: "\\int_a^b f(x) dx", category: "calculus" },
+    { name: "Integral doble", preview: "\\[\\iint_D f(x,y) dx dy\\]", code: "\\iint_D f(x,y) dx dy", category: "calculus" },
+    { name: "Integral triple", preview: "\\[\\iiint_V f(x,y,z) dx dy dz\\]", code: "\\iiint_V f(x,y,z) dx dy dz", category: "calculus" },
+    { name: "Serie de Taylor", preview: "\\[\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n\\]", code: "\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n", category: "calculus" }
+  ],
+  geometry: [
+    { name: "Punto", preview: "\\[P(x,y)\\]", code: "P(x,y)", category: "geometry" },
+    { name: "Recta", preview: "\\[y = mx + b\\]", code: "y = mx + b", category: "geometry" },
+    { name: "Circunferencia", preview: "\\[(x-h)^2 + (y-k)^2 = r^2\\]", code: "(x-h)^2 + (y-k)^2 = r^2", category: "geometry" },
+    { name: "Elipse", preview: "\\[\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\]", code: "\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1", category: "geometry" },
+    { name: "Hipérbola", preview: "\\[\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\]", code: "\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1", category: "geometry" },
+    { name: "Parábola", preview: "\\[y = ax^2 + bx + c\\]", code: "y = ax^2 + bx + c", category: "geometry" },
+    { name: "Distancia entre puntos", preview: "\\[d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\]", code: "d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}", category: "geometry" },
+    { name: "Pendiente", preview: "\\[m = \\frac{y_2-y_1}{x_2-x_1}\\]", code: "m = \\frac{y_2-y_1}{x_2-x_1}", category: "geometry" }
+  ],
+  angles: [
+    { name: "Ángulo", preview: "\\[\\angle ABC\\]", code: "\\angle ABC", category: "angles" },
+    { name: "Ángulo recto", preview: "\\[90°\\]", code: "90°", category: "angles" },
+    { name: "Ángulo agudo", preview: "\\[0° < \\theta < 90°\\]", code: "0° < \\theta < 90°", category: "angles" },
+    { name: "Ángulo obtuso", preview: "\\[90° < \\theta < 180°\\]", code: "90° < \\theta < 180°", category: "angles" },
+    { name: "Ángulo llano", preview: "\\[180°\\]", code: "180°", category: "angles" },
+    { name: "Ángulo completo", preview: "\\[360°\\]", code: "360°", category: "angles" },
+    { name: "Ángulos complementarios", preview: "\\[\\alpha + \\beta = 90°\\]", code: "\\alpha + \\beta = 90°", category: "angles" },
+    { name: "Ángulos suplementarios", preview: "\\[\\alpha + \\beta = 180°\\]", code: "\\alpha + \\beta = 180°", category: "angles" }
+  ],
+  trigonometry: [
+    { name: "Seno", preview: "\\[\\sin \\theta\\]", code: "\\sin \\theta", category: "trigonometry" },
+    { name: "Coseno", preview: "\\[\\cos \\theta\\]", code: "\\cos \\theta", category: "trigonometry" },
+    { name: "Tangente", preview: "\\[\\tan \\theta\\]", code: "\\tan \\theta", category: "trigonometry" },
+    { name: "Cosecante", preview: "\\[\\csc \\theta\\]", code: "\\csc \\theta", category: "trigonometry" },
+    { name: "Secante", preview: "\\[\\sec \\theta\\]", code: "\\sec \\theta", category: "trigonometry" },
+    { name: "Cotangente", preview: "\\[\\cot \\theta\\]", code: "\\cot \\theta", category: "trigonometry" },
+    { name: "Arcoseno", preview: "\\[\\arcsin x\\]", code: "\\arcsin x", category: "trigonometry" },
+    { name: "Arcocoseno", preview: "\\[\\arccos x\\]", code: "\\arccos x", category: "trigonometry" },
+    { name: "Arcotangente", preview: "\\[\\arctan x\\]", code: "\\arctan x", category: "trigonometry" },
+    { name: "Identidad fundamental", preview: "\\[\\sin^2 \\theta + \\cos^2 \\theta = 1\\]", code: "\\sin^2 \\theta + \\cos^2 \\theta = 1", category: "trigonometry" },
+    { name: "Fórmula de adición del seno", preview: "\\[\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b\\]", code: "\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b", category: "trigonometry" }
+  ],
+  probability: [
+    { name: "Probabilidad", preview: "\\[P(A)\\]", code: "P(A)", category: "probability" },
+    { name: "Probabilidad condicional", preview: "\\[P(A|B)\\]", code: "P(A|B)", category: "probability" },
+    { name: "Probabilidad de unión", preview: "\\[P(A \\cup B)\\]", code: "P(A \\cup B)", category: "probability" },
+    { name: "Probabilidad de intersección", preview: "\\[P(A \\cap B)\\]", code: "P(A \\cap B)", category: "probability" },
+    { name: "Esperanza matemática", preview: "\\[E[X]\\]", code: "E[X]", category: "probability" },
+    { name: "Varianza", preview: "\\[\\text{Var}(X)\\]", code: "\\text{Var}(X)", category: "probability" },
+    { name: "Desviación estándar", preview: "\\[\\sigma\\]", code: "\\sigma", category: "probability" },
+    { name: "Distribución normal", preview: "\\[N(\\mu, \\sigma^2)\\]", code: "N(\\mu, \\sigma^2)", category: "probability" },
+    { name: "Coeficiente de correlación", preview: "\\[\\rho\\]", code: "\\rho", category: "probability" },
+    { name: "Combinaciones", preview: "\\[C(n,r) = \\binom{n}{r}\\]", code: "C(n,r) = \\binom{n}{r}", category: "probability" },
+    { name: "Permutaciones", preview: "\\[P(n,r) = \\frac{n!}{(n-r)!}\\]", code: "P(n,r) = \\frac{n!}{(n-r)!}", category: "probability" }
+  ],
+  "linear-algebra": [
+    { name: "Matriz", preview: "\\[A = \\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix}\\]", code: "A = \\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix}", category: "linear-algebra" },
+    { name: "Determinante", preview: "\\[\\det(A) = \\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}\\]", code: "\\det(A) = \\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}", category: "linear-algebra" },
+    { name: "Matriz identidad", preview: "\\[I = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}\\]", code: "I = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}", category: "linear-algebra" },
+    { name: "Matriz transpuesta", preview: "\\[A^T\\]", code: "A^T", category: "linear-algebra" },
+    { name: "Matriz inversa", preview: "\\[A^{-1}\\]", code: "A^{-1}", category: "linear-algebra" },
+    { name: "Traza", preview: "\\[\\text{tr}(A)\\]", code: "\\text{tr}(A)", category: "linear-algebra" },
+    { name: "Rango", preview: "\\[\\text{rank}(A)\\]", code: "\\text{rank}(A)", category: "linear-algebra" },
+    { name: "Valor propio", preview: "\\[\\lambda\\]", code: "\\lambda", category: "linear-algebra" },
+    { name: "Vector propio", preview: "\\[\\vec{v}\\]", code: "\\vec{v}", category: "linear-algebra" },
+    { name: "Producto escalar", preview: "\\[\\vec{a} \\cdot \\vec{b}\\]", code: "\\vec{a} \\cdot \\vec{b}", category: "linear-algebra" },
+    { name: "Producto vectorial", preview: "\\[\\vec{a} \\times \\vec{b}\\]", code: "\\vec{a} \\times \\vec{b}", category: "linear-algebra" }
+  ],
+  physics: [
+    { name: "Velocidad", preview: "\\[v = \\frac{dx}{dt}\\]", code: "v = \\frac{dx}{dt}", category: "physics" },
+    { name: "Aceleración", preview: "\\[a = \\frac{dv}{dt}\\]", code: "a = \\frac{dv}{dt}", category: "physics" },
+    { name: "Fuerza", preview: "\\[F = ma\\]", code: "F = ma", category: "physics" },
+    { name: "Energía cinética", preview: "\\[K = \\frac{1}{2}mv^2\\]", code: "K = \\frac{1}{2}mv^2", category: "physics" },
+    { name: "Energía potencial gravitacional", preview: "\\[U = mgh\\]", code: "U = mgh", category: "physics" },
+    { name: "Ley de gravitación universal", preview: "\\[F = G\\frac{m_1m_2}{r^2}\\]", code: "F = G\\frac{m_1m_2}{r^2}", category: "physics" },
+    { name: "Ley de Hooke", preview: "\\[F = -kx\\]", code: "F = -kx", category: "physics" },
+    { name: "Presión", preview: "\\[P = \\frac{F}{A}\\]", code: "P = \\frac{F}{A}", category: "physics" },
+    { name: "Densidad", preview: "\\[\\rho = \\frac{m}{V}\\]", code: "\\rho = \\frac{m}{V}", category: "physics" },
+    { name: "Trabajo", preview: "\\[W = F \\cdot d\\]", code: "W = F \\cdot d", category: "physics" },
+    { name: "Potencia", preview: "\\[P = \\frac{W}{t}\\]", code: "P = \\frac{W}{t}", category: "physics" }
+  ]
+};
+
+// Flatten all commands into a single array
+const allCommands = Object.values(latexCommands).flat();
+
+// Current filter state
+let currentCategory = 'all';
+let currentSearch = '';
+
+// DOM elements
+const commandsGrid = document.getElementById('commands-grid');
+const categoryButtons = document.querySelectorAll('.category-btn');
+const searchInput = document.getElementById('latex-search');
+const clearSearchBtn = document.getElementById('clear-search');
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+  renderCommands();
+  setupEventListeners();
+});
+
+function setupEventListeners() {
+  // Category filter buttons
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const category = this.dataset.category;
+      setActiveCategory(category);
+      filterCommands();
+    });
+  });
+
+  // Search input
+  searchInput.addEventListener('input', function() {
+    currentSearch = this.value.toLowerCase();
+    filterCommands();
+  });
+
+  // Clear search button
+  clearSearchBtn.addEventListener('click', function() {
+    searchInput.value = '';
+    currentSearch = '';
+    filterCommands();
+  });
+}
+
+function setActiveCategory(category) {
+  currentCategory = category;
+  
+  // Update active button
+  categoryButtons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.category === category) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+function filterCommands() {
+  const filteredCommands = allCommands.filter(command => {
+    const matchesCategory = currentCategory === 'all' || command.category === currentCategory;
+    const matchesSearch = currentSearch === '' || 
+                         command.name.toLowerCase().includes(currentSearch) ||
+                         command.code.toLowerCase().includes(currentSearch);
+    
+    return matchesCategory && matchesSearch;
+  });
+
+  renderCommands(filteredCommands);
+  
+  // Re-render MathJax after filtering with a small delay to ensure DOM is updated
+  setTimeout(() => {
+    if (window.MathJax) {
+      MathJax.typesetPromise().catch((err) => console.log('MathJax error:', err));
+    }
+  }, 10);
+}
+
+function renderCommands(commands = allCommands) {
+  commandsGrid.innerHTML = '';
+  
+  commands.forEach(command => {
+    const commandCard = createCommandCard(command);
+    commandsGrid.appendChild(commandCard);
+  });
+}
+
+function createCommandCard(command) {
+  const card = document.createElement('div');
+  card.className = 'command-card';
+  card.dataset.category = command.category;
+  
+  card.innerHTML = `
+    <div class="command-name">${command.name}</div>
+    <div class="command-preview">${command.preview}</div>
+    <div class="command-code">${command.code}</div>
+  `;
+  
+  // Add click event to copy LaTeX code
+  card.addEventListener('click', function() {
+    copyToClipboard(command.code);
+    showCopyFeedback();
+  });
+  
+  return card;
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+  } else {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+}
+
+function showCopyFeedback() {
+  const feedback = document.createElement('div');
+  feedback.className = 'copy-feedback';
+  feedback.textContent = '¡Comando copiado al portapapeles!';
+  
+  document.body.appendChild(feedback);
+  
+  setTimeout(() => {
+    feedback.remove();
+  }, 2000);
+}
+
+// Trigger MathJax rendering after content is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+});
+</script>
