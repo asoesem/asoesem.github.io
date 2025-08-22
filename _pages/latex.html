@@ -102,7 +102,7 @@ permalink: /latex/
   border-radius: 60px;
   border: 2px solid var(--primary-color);
   outline: none;
-  color: var(--primary-color);
+  color: #000;
   background: transparent;
   transition: all .2s ease;
   will-change: transform;
@@ -111,7 +111,7 @@ permalink: /latex/
 
 .category-btn:hover,
 .category-btn.active {
-  color: var(--button-color);
+  color: #000;
   background: var(--button-background-color);
   border-color: var(--button-background-color);
 }
@@ -157,7 +157,7 @@ permalink: /latex/
   margin: 0 auto;
 }
 
-/* Command Cards */
+/* Command Cards - Base size for short commands */
 .command-card {
   position: relative;
   background: var(--background-color);
@@ -169,7 +169,22 @@ permalink: /latex/
   transition: all .2s ease;
   will-change: transform;
   overflow: hidden;
+  grid-column: span 1;
 }
+
+/* Medium size for commands with moderate length */
+.command-card--medium {
+  grid-column: span 1;
+  min-height: 200px;
+}
+
+/* Large size for long formulas and complex commands */
+.command-card--large {
+  grid-column: span 2;
+  min-height: 220px;
+}
+
+
 
 .command-card:hover {
   transform: translateY(-3px);
@@ -199,7 +214,7 @@ permalink: /latex/
 .command-code {
   padding: 12px 16px;
   font-family: 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.4;
   color: var(--text-color);
   background: var(--syntax-highlighting-background);
@@ -276,6 +291,11 @@ permalink: /latex/
   
   .command-card {
     padding: 20px;
+  }
+  
+  /* On mobile, all cards span full width */
+  .command-card--large {
+    grid-column: span 1;
   }
 }
 
@@ -600,7 +620,7 @@ function filterCommands() {
   
   // Re-render MathJax after filtering with a small delay to ensure DOM is updated
   setTimeout(() => {
-    if (window.MathJax) {
+    if (window.MathJax) {        
       MathJax.typesetPromise().catch((err) => console.log('MathJax error:', err));
     }
   }, 10);
@@ -617,7 +637,23 @@ function renderCommands(commands = allCommands) {
 
 function createCommandCard(command) {
   const card = document.createElement('div');
-  card.className = 'command-card';
+  
+  // Determine card size based on LaTeX code length
+  const codeLength = command.code.length;
+  let cardClass = 'command-card';
+
+  if (command.name.includes("Límite")) {
+    console.log("Límite: " + command.name.length);
+    console.log("Límite: " + command.code);
+  }
+  
+  if (codeLength > 15) {
+    cardClass += ' command-card--large';
+  } else if (codeLength > 10) {
+    cardClass += ' command-card--medium';
+  }
+  
+  card.className = cardClass;
   card.dataset.category = command.category;
   
   card.innerHTML = `
@@ -663,7 +699,7 @@ function showCopyFeedback() {
 
 // Trigger MathJax rendering after content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  if (window.MathJax) {
+  if (window.MathJax && MathJax.typesetPromise) {    
     MathJax.typesetPromise();
   }
 });
