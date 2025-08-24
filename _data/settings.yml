@@ -23,6 +23,16 @@ menu_settings:
       url: "/destacados/"
     # - title: "Autores"
     #   url: "/autores/"
+    - title: "LaTeX"
+      submenu:
+      - url: "/comandos-latex/"
+        title: "Matemáticas"
+      - url: "/articulos/latex-en-foro-de-consultas/"
+        title: "Foros"
+      - url: "/articulos/como-escribir-un-doc-apa-en-latex/"
+        title: "APA 7"
+      - url: "/articulos/geometria-euclidea-con-latex/"
+        title: "Geometría"  
     - title: "Comisiones"
       submenu:
       - url: "/cofoma/"

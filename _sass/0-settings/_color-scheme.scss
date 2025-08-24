@@ -34,6 +34,9 @@
   --tr-color: var(--light-gray);
 
   --syntax-highlighting-background: var(--light-gray);
+  
+  --card-background: #add8e6;
+  --card-preview-bg: #e0f7fa;
 }
 
 :root[dark] {
@@ -67,4 +70,7 @@
   --tr-color: var(--dark);
 
   --syntax-highlighting-background: var(--dark);
+  
+  --card-background: #2a2b2d;
+  --card-preview-bg: #3a3b3d;
 }
