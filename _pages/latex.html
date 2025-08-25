@@ -70,7 +70,7 @@ permalink: /comandos-latex/
   const grid = document.getElementById('latex-grid');
   const searchInput = document.getElementById('latex-search-input');
   const buttons = document.querySelectorAll('.category-button');
-  const cards = Array.from(document.querySelectorAll('.latex-card'));
+  let cards = Array.from(document.querySelectorAll('.latex-card'));
 
   // Inicializar Notyf (global singleton en window para reuso)
   const notyf = window.notyf || new Notyf({
@@ -82,6 +82,32 @@ permalink: /comandos-latex/
 
   let activeCat = 'all';
 
+  // Deduplicate cards by name: merge categories and keep the first instance
+  (function dedupeCards(){
+    const map = new Map(); // key: normalized name (data-name), value: element
+    for (const card of cards) {
+      const key = (card.dataset.name || '').trim().toLowerCase();
+      const cat = (card.dataset.category || '').trim();
+      if (!map.has(key)) {
+        // First time we see this name
+        card.dataset.category = cat ? cat : '';
+        map.set(key, card);
+      } else {
+        // Duplicate by name: merge categories into the first card, remove this one
+        const first = map.get(key);
+        const existing = (first.dataset.category || '').split(',').filter(Boolean);
+        const incoming = (cat || '').split(',').filter(Boolean);
+        // Merge unique categories
+        const merged = Array.from(new Set([...existing, ...incoming]));
+        first.dataset.category = merged.join(',');
+        // Remove duplicate node from DOM
+        card.remove();
+      }
+    }
+    // Refresh cards NodeList to reflect removals
+    cards = Array.from(document.querySelectorAll('.latex-card'));
+  })();
+
   function normalize(s){
     return (s || '').toString().toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
@@ -92,9 +118,10 @@ permalink: /comandos-latex/
     cards.forEach(card => {
       const name = normalize(card.dataset.name);
       const code = normalize(card.dataset.code);
-      const cat  = card.dataset.category;
+      const cat  = card.dataset.category || '';
+      const cats = cat ? cat.split(',') : [];
       const matchesText = !term || name.includes(term) || code.includes(term);
-      const matchesCat  = (activeCat === 'all') || (cat === activeCat);
+      const matchesCat  = (activeCat === 'all') || cats.includes(activeCat);
       card.hidden = !(matchesText && matchesCat);
     });
   }
