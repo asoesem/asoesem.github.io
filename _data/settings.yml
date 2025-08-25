@@ -25,7 +25,7 @@ menu_settings:
     #   url: "/autores/"
     - title: "LaTeX"
       submenu:
-      - url: "/comandos-latex/"
+      - url: "/comandos-latex"
         title: "Matemáticas"
       - url: "/articulos/latex-en-foro-de-consultas"
         title: "Foros"
