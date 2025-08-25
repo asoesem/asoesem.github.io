@@ -47,6 +47,7 @@ permalink: /comandos-latex/
                    data-name="{{ item.name | downcase }}"
                    data-code="{{ item.code | xml_escape }}"
                    data-category="{{ cat }}"
+                   data-preview="{{ item.preview | prepend: item.category | strip | downcase | remove: '\[' | remove: '\]' | xml_escape }}"
                    title="Clic para copiar el código">
             <header class="card-title">{{ item.name }}</header>
             <div class="card-preview">
@@ -82,26 +83,16 @@ permalink: /comandos-latex/
 
   let activeCat = 'all';
 
-  // Deduplicate cards by name: merge categories and keep the first instance
+  // Deduplicate cards by preview value computed in Liquid: keep the first instance only (ignore categories)
   (function dedupeCards(){
-    const map = new Map(); // key: normalized name (data-name), value: element
+    const seen = new Set(); // keys of data-preview already encountered
     for (const card of cards) {
       const key = (card.dataset.preview || '').trim().toLowerCase();
-      const cat = (card.dataset.category || '').trim();
-      if (!map.has(key)) {
-        // First time we see this name
-        card.dataset.category = cat ? cat : '';
-        map.set(key, card);
-      } else {
-        // Duplicate by name: merge categories into the first card, remove this one
-        const first = map.get(key);
-        const existing = (first.dataset.category || '').split(',').filter(Boolean);
-        const incoming = (cat || '').split(',').filter(Boolean);
-        // Merge unique categories
-        const merged = Array.from(new Set([...existing, ...incoming]));
-        first.dataset.category = merged.join(',');
-        // Remove duplicate node from DOM
+      if (seen.has(key)) {
+        // Duplicate by preview: remove this card; do not merge or modify categories
         card.remove();
+      } else {
+        seen.add(key);
       }
     }
     // Refresh cards NodeList to reflect removals
