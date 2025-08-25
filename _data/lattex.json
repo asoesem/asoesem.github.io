@@ -1,0 +1,1268 @@
+{
+  "Operadores": [
+    {
+      "name": "Suma",
+      "preview": "\\[a + b\\]",
+      "code": "a + b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Resta",
+      "preview": "\\[a - b\\]",
+      "code": "a - b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Multiplicación",
+      "preview": "\\[a \\times b\\]",
+      "code": "a \\times b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Producto",
+      "preview": "\\[a \\cdot b\\]",
+      "code": "a \\cdot b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "División",
+      "preview": "\\[\\frac{a}{b}\\]",
+      "code": "\\frac{a}{b}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Sum-Resta",
+      "preview": "\\[a \\pm b\\]",
+      "code": "a \\pm b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Resta-Suma",
+      "preview": "\\[a \\mp b\\]",
+      "code": "a \\mp b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Igual a",
+      "preview": "\\[=\\]",
+      "code": "=",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No igual a",
+      "preview": "\\[\\neq\\]",
+      "code": "\\neq",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Menor que",
+      "preview": "\\[<\\]",
+      "code": "<",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Mayor que",
+      "preview": "\\[>\\]",
+      "code": ">",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Menor o igual que",
+      "preview": "\\[\\leq\\]",
+      "code": "\\leq",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Mayor o igual que",
+      "preview": "\\[\\geq\\]",
+      "code": "\\geq",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Mucho menor que",
+      "preview": "\\[\\ll\\]",
+      "code": "\\ll",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Mucho mayor que",
+      "preview": "\\[\\gg\\]",
+      "code": "\\gg",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Equivalente a",
+      "preview": "\\[\\equiv\\]",
+      "code": "\\equiv",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Proporcional a",
+      "preview": "\\[\\propto\\]",
+      "code": "\\propto",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Aproximadamente igual a",
+      "preview": "\\[\\approx\\]",
+      "code": "\\approx",
+      "category": "operators",
+      "size": 2
+    },
+    {
+      "name": "Potencia",
+      "preview": "\\[a^n\\]",
+      "code": "a^n",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Raíz Cuadrada",
+      "preview": "\\[\\sqrt{a}\\]",
+      "code": "\\sqrt{a}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Raíz n-ésima",
+      "preview": "\\[\\sqrt[n]{a}\\]",
+      "code": "\\sqrt[n]{a}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Módulo",
+      "preview": "\\[a \\bmod b\\]",
+      "code": "a \\bmod b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Divide",
+      "preview": "\\[a \\mid b\\]",
+      "code": "a \\mid b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No divide",
+      "preview": "\\[a \\nmid b\\]",
+      "code": "a \\nmid b",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Logaritmo",
+      "preview": "\\[\\log_{b}{a}\\]",
+      "code": "\\log_{b}{a}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Logaritmo natural",
+      "preview": "\\[\\ln{a}\\]",
+      "code": "\\ln{a}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Parte entera",
+      "preview": "\\[[x]\\]",
+      "code": "[x]",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Factorial",
+      "preview": "\\[n!\\]",
+      "code": "n!",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Binomio",
+      "preview": "\\[\\binom{n}{k}\\]",
+      "code": "\\binom{n}{k}",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Piso",
+      "preview": "\\[\\lfloor x \\rfloor\\]",
+      "code": "\\lfloor x \\rfloor",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Techo",
+      "preview": "\\[\\lceil x \\rceil\\]",
+      "code": "\\lceil x \\rceil",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Congruente",
+      "preview": "\\[\\cong\\]",
+      "code": "\\cong",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No congruente",
+      "preview": "\\[\\ncong\\]",
+      "code": "\\ncong",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Semejante",
+      "preview": "\\[\\sim\\]",
+      "code": "\\sim",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No semejante",
+      "preview": "\\[\\nsim\\]",
+      "code": "\\nsim",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Perpendicular",
+      "preview": "\\[\\perp\\]",
+      "code": "\\perp",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No perpendicular",
+      "preview": "\\[\\not \\perp\\]",
+      "code": "\\not \\perp",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "Paralelo",
+      "preview": "\\[\\parallel\\]",
+      "code": "\\parallel",
+      "category": "operators",
+      "size": 1
+    },
+    {
+      "name": "No paralelo",
+      "preview": "\\[\\not \\parallel\\]",
+      "code": "\\not \\parallel",
+      "category": "operators",
+      "size": 1
+    }
+  ],
+  "Relaciones": [
+    {
+      "name": "Igual a",
+      "preview": "\\[=\\]",
+      "code": "=",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No igual a",
+      "preview": "\\[\\neq\\]",
+      "code": "\\neq",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Menor que",
+      "preview": "\\[<\\]",
+      "code": "<",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Mayor que",
+      "preview": "\\[>\\]",
+      "code": ">",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Menor o igual que",
+      "preview": "\\[\\leq\\]",
+      "code": "\\leq",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Mayor o igual que",
+      "preview": "\\[\\geq\\]",
+      "code": "\\geq",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Mucho menor que",
+      "preview": "\\[\\ll\\]",
+      "code": "\\ll",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Mucho mayor que",
+      "preview": "\\[\\gg\\]",
+      "code": "\\gg",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Proporcional a",
+      "preview": "\\[\\propto\\]",
+      "code": "\\propto",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Equivalente a",
+      "preview": "\\[\\equiv\\]",
+      "code": "\\equiv",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Aproximadamente igual a",
+      "preview": "\\[\\approx\\]",
+      "code": "\\approx",
+      "category": "relations",
+      "size": 2
+    },
+    {
+      "name": "Predecesor",
+      "preview": "\\[\\prec\\]",
+      "code": "\\prec",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Sucesor",
+      "preview": "\\[\\succ\\]",
+      "code": "\\succ",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Módulo",
+      "preview": "\\[a \\bmod b\\]",
+      "code": "a \\bmod b",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Divide",
+      "preview": "\\[a \\mid b\\]",
+      "code": "a \\mid b",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No divide",
+      "preview": "\\[a \\nmid b\\]",
+      "code": "a \\nmid b",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Congruente",
+      "preview": "\\[\\cong\\]",
+      "code": "\\cong",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No congruente",
+      "preview": "\\[\\ncong\\]",
+      "code": "\\ncong",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Semejante",
+      "preview": "\\[\\sim\\]",
+      "code": "\\sim",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No semejante",
+      "preview": "\\[\\nsim\\]",
+      "code": "\\nsim",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Perpendicular",
+      "preview": "\\[\\perp\\]",
+      "code": "\\perp",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No perpendicular",
+      "preview": "\\[\\not \\perp\\]",
+      "code": "\\not \\perp",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "Paralelo",
+      "preview": "\\[\\parallel\\]",
+      "code": "\\parallel",
+      "category": "relations",
+      "size": 1
+    },
+    {
+      "name": "No paralelo",
+      "preview": "\\[\\not \\parallel\\]",
+      "code": "\\not \\parallel",
+      "category": "relations",
+      "size": 1
+    }
+  ],
+  "Griego": [
+    {
+      "name": "Alfa",
+      "preview": "\\[\\alpha\\]",
+      "code": "\\alpha",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Beta",
+      "preview": "\\[\\beta\\]",
+      "code": "\\beta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Gamma",
+      "preview": "\\[\\gamma\\]",
+      "code": "\\gamma",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Gamma Mayúsc.",
+      "preview": "\\[\\Gamma\\]",
+      "code": "\\Gamma",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Delta",
+      "preview": "\\[\\delta\\]",
+      "code": "\\delta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Delta Mayúsc.",
+      "preview": "\\[\\Delta\\]",
+      "code": "\\Delta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Épsilon",
+      "preview": "\\[\\epsilon\\]",
+      "code": "\\epsilon",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Épsilon",
+      "preview": "\\[\\varepsilon\\]",
+      "code": "\\varepsilon",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Zeta",
+      "preview": "\\[\\zeta\\]",
+      "code": "\\zeta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Eta",
+      "preview": "\\[\\eta\\]",
+      "code": "\\eta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Theta",
+      "preview": "\\[\\theta\\]",
+      "code": "\\theta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Theta",
+      "preview": "\\[\\vartheta\\]",
+      "code": "\\vartheta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Theta Mayúsc.",
+      "preview": "\\[\\Theta\\]",
+      "code": "\\Theta",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Iota",
+      "preview": "\\[\\iota\\]",
+      "code": "\\iota",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Kappa",
+      "preview": "\\[\\kappa\\]",
+      "code": "\\kappa",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Lambda",
+      "preview": "\\[\\lambda\\]",
+      "code": "\\lambda",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Lambda Mayúsc.",
+      "preview": "\\[\\Lambda\\]",
+      "code": "\\Lambda",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Mi",
+      "preview": "\\[\\mu\\]",
+      "code": "\\mu",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Ni",
+      "preview": "\\[\\nu\\]",
+      "code": "\\nu",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Xi",
+      "preview": "\\[\\xi\\]",
+      "code": "\\xi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Xi",
+      "preview": "\\[\\Xi\\]",
+      "code": "\\Xi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Ómicron",
+      "preview": "\\[\\omicron\\]",
+      "code": "\\omicron",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Pi",
+      "preview": "\\[\\pi\\]",
+      "code": "\\pi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Pi",
+      "preview": "\\[\\varpi\\]",
+      "code": "\\varpi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Pi Mayúsc.",
+      "preview": "\\[\\Pi\\]",
+      "code": "\\Pi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Rho",
+      "preview": "\\[\\rho\\]",
+      "code": "\\rho",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Rho",
+      "preview": "\\[\\varrho\\]",
+      "code": "\\varrho",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Sigma",
+      "preview": "\\[\\sigma\\]",
+      "code": "\\sigma",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Sigma",
+      "preview": "\\[\\varsigma\\]",
+      "code": "\\varsigma",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Sigma Mayúsc.",
+      "preview": "\\[\\Sigma\\]",
+      "code": "\\Sigma",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Tau",
+      "preview": "\\[\\tau\\]",
+      "code": "\\tau",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Ípsilon",
+      "preview": "\\[\\upsilon\\]",
+      "code": "\\upsilon",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Ípsilon Mayúsc.",
+      "preview": "\\[\\Upsilon\\]",
+      "code": "\\Upsilon",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Phi",
+      "preview": "\\[\\phi\\]",
+      "code": "\\phi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Phi",
+      "preview": "\\[\\varphi\\]",
+      "code": "\\varphi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Phi",
+      "preview": "\\[\\Phi\\]",
+      "code": "\\Phi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Chi",
+      "preview": "\\[\\chi\\]",
+      "code": "\\chi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Psi",
+      "preview": "\\[\\psi\\]",
+      "code": "\\psi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Psi",
+      "preview": "\\[\\Psi\\]",
+      "code": "\\Psi",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Omega",
+      "preview": "\\[\\omega\\]",
+      "code": "\\omega",
+      "category": "greek",
+      "size": 1
+    },
+    {
+      "name": "Omega Mayúsc.",
+      "preview": "\\[\\Omega\\]",
+      "code": "\\Omega",
+      "category": "greek",
+      "size": 1
+    }
+  ],
+  "Conjuntos Numéricos": [
+    {
+      "name": "Naturales",
+      "preview": "\\[\\mathbb{N}\\]",
+      "code": "\\mathbb{N}",
+      "category": "number-sets",
+      "size": 1
+    },
+    {
+      "name": "Enteros",
+      "preview": "\\[\\mathbb{Z}\\]",
+      "code": "\\mathbb{Z}",
+      "category": "number-sets",
+      "size": 1
+    },
+    {
+      "name": "Racionales",
+      "preview": "\\[\\mathbb{Q}\\]",
+      "code": "\\mathbb{Q}",
+      "category": "number-sets",
+      "size": 1
+    },
+    {
+      "name": "Reales",
+      "preview": "\\[\\mathbb{R}\\]",
+      "code": "\\mathbb{R}",
+      "category": "number-sets",
+      "size": 1
+    },
+    {
+      "name": "Complejos",
+      "preview": "\\[\\mathbb{C}\\]",
+      "code": "\\mathbb{C}",
+      "category": "number-sets",
+      "size": 1
+    }
+  ],
+  "Lógica": [
+    {
+      "name": "Para todo",
+      "preview": "\\[\\forall\\]",
+      "code": "\\forall",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Existe",
+      "preview": "\\[\\exists\\]",
+      "code": "\\exists",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "No existe",
+      "preview": "\\[\\nexists\\]",
+      "code": "\\nexists",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Existe único",
+      "preview": "\\[\\exists!\\]",
+      "code": "\\exists!",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Implica",
+      "preview": "\\[\\implies\\]",
+      "code": "\\implies",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Si y solo si",
+      "preview": "\\[\\iff\\]",
+      "code": "\\iff",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Y lógico",
+      "preview": "\\[\\land\\]",
+      "code": "\\land",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "O lógico",
+      "preview": "\\[\\lor\\]",
+      "code": "\\lor",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "No lógico",
+      "preview": "\\[\\neg\\]",
+      "code": "\\neg",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Por lo tanto",
+      "preview": "\\[\\therefore\\]",
+      "code": "\\therefore",
+      "category": "logic",
+      "size": 1
+    },
+    {
+      "name": "Porque",
+      "preview": "\\[\\because\\]",
+      "code": "\\because",
+      "category": "logic",
+      "size": 1
+    }
+  ],
+  "Teoría de Conjuntos": [
+    {
+      "name": "Pertenece a",
+      "preview": "\\[\\in\\]",
+      "code": "\\in",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "No pertenece a",
+      "preview": "\\[\\notin\\]",
+      "code": "\\notin",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Subconjunto",
+      "preview": "\\[\\subset\\]",
+      "code": "\\subset",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Subconjunto propio",
+      "preview": "\\[\\subsetneq\\]",
+      "code": "\\subsetneq",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Subconjunto no propio",
+      "preview": "\\[\\subseteq\\]",
+      "code": "\\subseteq",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Superconjunto",
+      "preview": "\\[\\supset\\]",
+      "code": "\\supset",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Superconjunto propio",
+      "preview": "\\[\\supsetneq\\]",
+      "code": "\\supsetneq",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Unión",
+      "preview": "\\[\\cup\\]",
+      "code": "\\cup",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Intersección",
+      "preview": "\\[\\cap\\]",
+      "code": "\\cap",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Diferencia",
+      "preview": "\\[\\setminus\\]",
+      "code": "\\setminus",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Complemento",
+      "preview": "\\[A'\\]",
+      "code": "A'",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Producto cartesiano",
+      "preview": "\\[A \\times B\\]",
+      "code": "A \\times B",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Conjunto potencia",
+      "preview": "\\[\\mathcal{P}(A)\\]",
+      "code": "\\mathcal{P}(A)",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Suma",
+      "preview": "\\[\\sum_{i=1}^n a_i\\]",
+      "code": "\\sum_{i=1}^n a_i",
+      "category": "sets",
+      "size": 1
+    },
+    {
+      "name": "Producto",
+      "preview": "\\[\\prod_{i=1}^n a_i\\]",
+      "code": "\\prod_{i=1}^n a_i",
+      "category": "sets",
+      "size": 1
+    }
+  ],
+  "Funciones": [
+    {
+      "name": "Función",
+      "preview": "\\[f(x)\\]",
+      "code": "f(x)",
+      "category": "functions",
+      "size": 1
+    },
+    {
+      "name": "Dominio",
+      "preview": "\\[f:X \\to Y\\]",
+      "code": "f:X \\to Y",
+      "category": "functions",
+      "size": 1
+    },
+    {
+      "name": "Mapea a",
+      "preview": "\\[y \\mapsto y\\]",
+      "code": "y \\mapsto y",
+      "category": "functions",
+      "size": 1
+    },
+    {
+      "name": "Composición",
+      "preview": "\\[f \\circ g\\]",
+      "code": "f \\circ g",
+      "category": "functions",
+      "size": 1
+    },
+    {
+      "name": "Función inversa",
+      "preview": "\\[f^{-1}\\]",
+      "code": "f^{-1}",
+      "category": "functions",
+      "size": 1
+    },
+    {
+      "name": "Función a trozos",
+      "preview": "\\[|x|= \\begin{cases} x & \\mbox{if } x \\ge 0 \\\\ -x & \\mbox{if } x < 0\\end{cases}\\]",
+      "code": "|x|= \\begin{cases}\n\t\t\tx & \\mbox{if } x \\ge 0 \\\\\n\t\t  -x & \\mbox{if } x < 0\n\\end{cases}",
+      "category": "functions",
+      "size": 3
+    }
+  ],
+  "Cálculo": [
+    {
+      "name": "Límite",
+      "preview": "\\[\\lim_{x \\to a}\\]",
+      "code": "\\lim_{x \\to a}",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Límite lateral derecho",
+      "preview": "\\[\\lim_{x \\to a^+}\\]",
+      "code": "\\lim_{x \\to a^+}",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Límite lateral izquierdo",
+      "preview": "\\[\\lim_{x \\to a^-}\\]",
+      "code": "\\lim_{x \\to a^-}",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Límite Infinito",
+      "preview": "\\[\\lim_{x \\to \\infty}\\]",
+      "code": "\\lim_{x \\to \\infty}",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Derivada",
+      "preview": "\\[\\frac{d}{dx}f(x)\\]",
+      "code": "\\frac{d}{dx}f(x)",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Derivada parcial",
+      "preview": "\\[\\frac{\\partial}{\\partial x}f(x,y)\\]",
+      "code": "\\frac{\\partial}{\\partial x}f(x,y)",
+      "category": "calculus",
+      "size": 2
+    },
+    {
+      "name": "Integral indefinida",
+      "preview": "\\[\\int f(x) dx\\]",
+      "code": "\\int f(x) dx",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Integral definida",
+      "preview": "\\[\\int_a^b f(x) dx\\]",
+      "code": "\\int_a^b f(x) dx",
+      "category": "calculus",
+      "size": 1
+    },
+    {
+      "name": "Integral doble",
+      "preview": "\\[\\iint_D f(x,y) dx dy\\]",
+      "code": "\\iint_D f(x,y) dx dy",
+      "category": "calculus",
+      "size": 2
+    },
+    {
+      "name": "Integral triple",
+      "preview": "\\[\\iiint_V f(x,y,z) dx dy dz\\]",
+      "code": "\\iiint_V f(x,y,z) dx dy dz",
+      "category": "calculus",
+      "size": 2
+    },
+    {
+      "name": "Serie de Taylor",
+      "preview": "\\[\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n\\]",
+      "code": "\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n",
+      "category": "calculus",
+      "size": 4
+    }
+  ],
+  "Geometría": [
+    {
+      "name": "Congruente",
+      "preview": "\\[\\cong\\]",
+      "code": "\\cong",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "No congruente",
+      "preview": "\\[\\ncong\\]",
+      "code": "\\ncong",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Semejante",
+      "preview": "\\[\\sim\\]",
+      "code": "\\sim",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "No semejante",
+      "preview": "\\[\\nsim\\]",
+      "code": "\\nsim",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Perpendicular",
+      "preview": "\\[\\perp\\]",
+      "code": "\\perp",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "No perpendicular",
+      "preview": "\\[\\not \\perp\\]",
+      "code": "\\not \\perp",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Paralelo",
+      "preview": "\\[\\parallel\\]",
+      "code": "\\parallel",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "No paralelo",
+      "preview": "\\[\\not \\parallel\\]",
+      "code": "\\not \\parallel",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Punto",
+      "preview": "\\[P(x,y)\\]",
+      "code": "P(x,y)",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Segmento",
+      "preview": "\\[\\overline{PQ}\\]",
+      "code": "\\overline{PQ}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Recta",
+      "preview": "\\[\\overleftrightarrow{PQ}\\]",
+      "code": "\\overleftrightarrow{PQ}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Rayo",
+      "preview": "\\[\\overrightarrow{PQ}\\]",
+      "code": "\\overrightarrow{PQ}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Vector",
+      "preview": "\\[\\overrightarrow{a}\\]",
+      "code": "\\overrightarrow{a}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Ángulo",
+      "preview": "\\[\\angle{ABC}\\]",
+      "code": "\\angle{ABC}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Medida Ángulo",
+      "preview": "\\[\\measuredangle{ABC}\\]",
+      "code": "\\measuredangle{ABC}",
+      "category": "geometry",
+      "size": 1
+    },
+    {
+      "name": "Triángulo",
+      "preview": "\\[\\triangle{ABC}\\]",
+      "code": "\\triangle{ABC}",
+      "category": "geometry",
+      "size": 1
+    }
+  ],
+  "Trigonometría": [
+    {
+      "name": "Seno",
+      "preview": "\\[\\sin \\theta\\]",
+      "code": "\\sin \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Coseno",
+      "preview": "\\[\\cos \\theta\\]",
+      "code": "\\cos \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Tangente",
+      "preview": "\\[\\tan \\theta\\]",
+      "code": "\\tan \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Cosecante",
+      "preview": "\\[\\csc \\theta\\]",
+      "code": "\\csc \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Secante",
+      "preview": "\\[\\sec \\theta\\]",
+      "code": "\\sec \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Cotangente",
+      "preview": "\\[\\cot \\theta\\]",
+      "code": "\\cot \\theta",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Arcoseno",
+      "preview": "\\[\\arcsin x\\]",
+      "code": "\\arcsin x",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Arcocoseno",
+      "preview": "\\[\\arccos x\\]",
+      "code": "\\arccos x",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Arcotangente",
+      "preview": "\\[\\arctan x\\]",
+      "code": "\\arctan x",
+      "category": "trigonometry",
+      "size": 1
+    },
+    {
+      "name": "Ángulo 45°",
+      "preview": "\\[45^{\\circ}\\]",
+      "code": "45^{\\circ}",
+      "category": "trigonometry",
+      "size": 1
+    }
+  ]
+}
