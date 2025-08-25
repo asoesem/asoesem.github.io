@@ -973,8 +973,8 @@
     },
     {
       "name": "Mapea a",
-      "preview": "\\[y \\mapsto y\\]",
-      "code": "y \\mapsto y",
+      "preview": "\\[x \\mapsto y\\]",
+      "code": "x \\mapsto y",
       "category": "functions",
       "size": 1
     },
@@ -1155,7 +1155,7 @@
       "preview": "\\[\\overleftrightarrow{PQ}\\]",
       "code": "\\overleftrightarrow{PQ}",
       "category": "geometry",
-      "size": 1
+      "size": 2
     },
     {
       "name": "Rayo",
