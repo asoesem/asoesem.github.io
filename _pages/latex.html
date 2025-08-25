@@ -86,7 +86,7 @@ permalink: /comandos-latex/
   (function dedupeCards(){
     const map = new Map(); // key: normalized name (data-name), value: element
     for (const card of cards) {
-      const key = (card.dataset.name || '').trim().toLowerCase();
+      const key = (card.dataset.preview || '').trim().toLowerCase();
       const cat = (card.dataset.category || '').trim();
       if (!map.has(key)) {
         // First time we see this name
