@@ -104,6 +104,11 @@ permalink: /comandos-latex/
       .normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
   }
 
+  // Versión con guiones bajos: letras/números y '_' como separador
+  function normalizeUnderscore(s){
+    return normalize(s).replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+  }
+
   function applyFilters(){
     const term = normalize(searchInput.value);
     cards.forEach(card => {
@@ -127,6 +132,47 @@ permalink: /comandos-latex/
       applyFilters();
     });
   });
+
+  // Inicialización basada en parámetros de consulta
+  (function initFromQuery(){
+    try {
+      const params = new URLSearchParams(window.location.search || '');
+      if (!params || Array.from(params.keys()).length === 0) {
+        applyFilters();
+        return;
+      }
+
+      // Mapa: clave normalizada_con_guiones_bajos -> botón
+      const map = new Map();
+      buttons.forEach(btn => {
+        const key = normalizeUnderscore(btn.dataset.cat || btn.textContent || '');
+        if (key) map.set(key, btn);
+      });
+
+      let targetBtn = null;
+
+      // 1) Si el nombre del parámetro coincide con una clave normalizada
+      for (const [rawKey, rawVal] of params.entries()) {
+        const k = normalizeUnderscore(rawKey);
+        if (map.has(k)) { targetBtn = map.get(k); break; }
+
+        // 2) Compatibilidad: cat/category/categoria=valor
+        if (k === 'cat' || k === 'category' || k === 'categoria' || k === 'categoría') {
+          const v = normalizeUnderscore(rawVal);
+          if (map.has(v)) { targetBtn = map.get(v); break; }
+        }
+      }
+
+      if (targetBtn) {
+        targetBtn.click();
+      } else {
+        applyFilters();
+      }
+    } catch(e) {
+      // Ante cualquier error, aplicar filtros por defecto
+      applyFilters();
+    }
+  })();
 
   // Búsqueda en vivo
   searchInput.addEventListener('input', applyFilters);
