@@ -105,7 +105,7 @@
     {"name": "Factorial", "preview": "\\[n!\\]", "code": "n!", "category": "functions", "size": 1},
     {"name": "Binomio", "preview": "\\[\\binom{n}{k}\\]", "code": "\\binom{n}{k}", "category": "functions", "size": 1},
     {"name": "Valor absoluto", "preview": "\\[\\lvert a \\rvert\\]", "code": "\\lvert a\\rvert", "category": "functions", "size": 1},
-    {"name": "Función a trozos", "preview": "\\[|x|= \\begin{cases} x & \\mbox{if } x \\ge 0 \\\\ -x & \\mbox{if } x < 0\\end{cases}\\]", "code": "|x|= \\begin{cases}\n\t\t\tx & \\mbox{if } x \\ge 0 \\\\\n\t\t  -x & \\mbox{if } x < 0\n\\end{cases}", "category": "functions", "size": 3}
+    {"name": "Función a trozos", "preview": "\\[|x|= \\begin{cases} x & \\mbox{si } x \\ge 0 \\\\ -x & \\mbox{si } x < 0\\end{cases}\\]", "code": "|x|= \\begin{cases}\n\t\t\tx & \\mbox{si } x \\ge 0 \\\\\n\t\t  -x & \\mbox{si } x < 0\n\\end{cases}", "category": "functions", "size": 3}
   ],
   "Cálculo": [
     {"name": "Límite", "preview": "\\[\\lim_{x \\to a}\\]", "code": "\\lim_{x \\to a}", "category": "calculus", "size": 1},
