@@ -5,7 +5,7 @@ description: Se analiza de donde se derivan algunas de las identidades trigonom�
 date: 2025-05-05T16:00:00-06:00
 author: edalorzo
 image: '/images/62.png'
-tags: [precálculo,trigonometría]
+tags: [trigonometría]
 commissions: [cofoma]
 featured: true
 toc: true

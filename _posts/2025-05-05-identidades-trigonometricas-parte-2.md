@@ -5,7 +5,7 @@ description: Se analiza de donde se derivan las identidades trigometricas de sum
 date: 2025-05-05T16:00:00-06:00
 author: edalorzo
 image: '/images/63.png'
-tags: [precálculo,trigonometría]
+tags: [trigonometría]
 commissions: [cofoma]
 featured: true
 toc: true
