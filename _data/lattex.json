@@ -112,9 +112,7 @@
     {"name": "Complemento", "preview": "\\[A'\\]", "code": "A'", "category": "sets", "size": 1},
     {"name": "Producto cartesiano", "preview": "\\[A \\times B\\]", "code": "A \\times B", "category": "sets", "size": 1},
     {"name": "Conjunto potencia", "preview": "\\[\\mathcal{P}(A)\\]", "code": "\\mathcal{P}(A)", "category": "sets", "size": 1},
-    {"name": "Cardinalidad", "preview": "\\[|A|\\]", "code": "|A|", "category": "sets", "size": 1},
-    {"name": "Suma", "preview": "\\[\\sum_{i=1}^n a_i\\]", "code": "\\sum_{i=1}^n a_i", "category": "sets", "size": 1},
-    {"name": "Producto", "preview": "\\[\\prod_{i=1}^n a_i\\]", "code": "\\prod_{i=1}^n a_i", "category": "sets", "size": 1}
+    {"name": "Cardinalidad", "preview": "\\[|A|\\]", "code": "|A|", "category": "sets", "size": 1}
   ],
   "Funciones": [
     {"name": "Función", "preview": "\\[f(x)\\]", "code": "f(x)", "category": "functions", "size": 1},
@@ -143,8 +141,10 @@
     {"name": "Derivada parcial", "preview": "\\[\\frac{\\partial}{\\partial x}f(x,y)\\]", "code": "\\frac{\\partial}{\\partial x}f(x,y)", "category": "calculus", "size": 2},
     {"name": "Integral indefinida", "preview": "\\[\\int f(x) dx\\]", "code": "\\int f(x) dx", "category": "calculus", "size": 1},
     {"name": "Integral definida", "preview": "\\[\\int_a^b f(x) dx\\]", "code": "\\int_a^b f(x) dx", "category": "calculus", "size": 1},
+    {"name": "Suma", "preview": "\\[\\sum_{i=1}^n a_i\\]", "code": "\\sum_{i=1}^n a_i", "category": "sets", "size": 1},
     {"name": "Integral doble", "preview": "\\[\\iint_D f(x,y) dx dy\\]", "code": "\\iint_D f(x,y) dx dy", "category": "calculus", "size": 2},
     {"name": "Integral triple", "preview": "\\[\\iiint_V f(x,y,z) dx dy dz\\]", "code": "\\iiint_V f(x,y,z) dx dy dz", "category": "calculus", "size": 2},
+    {"name": "Producto", "preview": "\\[\\prod_{i=1}^n a_i\\]", "code": "\\prod_{i=1}^n a_i", "category": "sets", "size": 1},
     {"name": "Serie de Taylor", "preview": "\\[\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n\\]", "code": "\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n", "category": "calculus", "size": 4}
   ],
   "Geometría": [
