@@ -167,6 +167,50 @@
     {"name": "Bmatrix", "preview": "\\[\\begin{Bmatrix}  a & b \\\\  c & d \\end{Bmatrix}\\]", "code": "\\begin{Bmatrix}\n  a & b \\\\\n c & d \n\\end{Bmatrix}", "category": "matrices", "size": 1},
     {"name": "Vmatrix", "preview": "\\[\\begin{Vmatrix}  a & b \\\\  c & d \\end{Vmatrix}\\]", "code": "\\begin{Vmatrix}\n  a & b \\\\\n c & d \n\\end{Vmatrix}", "category": "matrices", "size": 1}
   ],
+  "Ecuaciones": [
+    {
+      "name": "Ecuación sencilla",
+      "preview": "\\[\\begin{equation} a = b + c \\end{equation}\\]",
+      "code": "\\begin{equation}\n  a = b + c\n\\end{equation}",
+      "category": "equations",
+      "size": 1
+    },
+    {
+      "name": "Ecuación sin numerar",
+      "preview": "\\[\\begin{equation*} a = b + c \\end{equation*}\\]",
+      "code": "\\begin{equation*}\n  a = b + c\n\\end{equation*}",
+      "category": "equations",
+      "size": 1
+    },
+    {
+      "name": "Ecuaciones múltiples",
+      "preview": "\\[\\begin{gather} a = b + c \\\\ x = y + z \\end{gather}\\]",
+      "code": "\\begin{gather}\n  a = b + c \\\\\n  x = y + z\n\\end{gather}",
+      "category": "equations",
+      "size": 1
+    },
+    {
+      "name": "Ecuaciones múltiples sin numerar",
+      "preview": "\\[\\begin{gather*} a = b + c \\\\ x = y + z \\end{gather*}\\]",
+      "code": "\\begin{gather*}\n  a = b + c \\\\\n  x = y + z\n\\end{gather*}",
+      "category": "equations",
+      "size": 2
+    },
+    {
+      "name": "Ecuación partida",
+      "preview": "\\[\\begin{split} a &= b + c \\\\ &= d + e \\end{split}\\]",
+      "code": "\\begin{split}\n  a &= b + c \\\\\n  &= d + e\n\\end{split}",
+      "category": "equations",
+      "size": 1
+    },
+    {
+      "name": "Ecuaciones alineadas",
+      "preview": "\\[\\begin{aligned} a &= b + c \\\\ x &= y + z \\end{aligned}\\]",
+      "code": "\\begin{aligned}\n  a &= b + c \\\\\n  x &= y + z\n\\end{aligned}",
+      "category": "equations",
+      "size": 1
+    }
+  ],
   "Griego": [
     {"name": "Alfa", "preview": "\\[\\alpha\\]", "code": "\\alpha", "category": "greek", "size": 1},
     {"name": "Beta", "preview": "\\[\\beta\\]", "code": "\\beta", "category": "greek", "size": 1},
