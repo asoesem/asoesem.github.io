@@ -85,7 +85,9 @@
     {"name": "Complemento", "preview": "\\[A'\\]", "code": "A'", "category": "sets", "size": 1},
     {"name": "Producto cartesiano", "preview": "\\[A \\times B\\]", "code": "A \\times B", "category": "sets", "size": 1},
     {"name": "Conjunto potencia", "preview": "\\[\\mathcal{P}(A)\\]", "code": "\\mathcal{P}(A)", "category": "sets", "size": 1},
-    {"name": "Cardinalidad", "preview": "\\[|A|\\]", "code": "|A|", "category": "sets", "size": 1}
+    {"name": "Cardinalidad", "preview": "\\[|A|\\]", "code": "|A|", "category": "sets", "size": 1},
+    {"name": "Por notación", "preview": "\\[P = \\{2,3,5,7,11,13,17,23,...\\}\\]", "code": "P = \\{2,3,5,7,11,13,17,23,...\\}", "category": "sets", "size": 2},
+    {"name": "Por extensión", "preview": "\\[\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}\\]", "code": "\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}", "category": "sets", "size": 2}
   ],
   "Funciones": [
     {"name": "Función", "preview": "\\[f(x)\\]", "code": "f(x)", "category": "functions", "size": 1},
@@ -137,7 +139,8 @@
     {"name": "Rayo", "preview": "\\[\\overrightarrow{\\rm PQ}\\]", "code": "\\overrightarrow{\\rm PQ}", "category": "geometry", "size": 2},
     {"name": "Vector", "preview": "\\[\\overrightarrow{\\rm a}\\]", "code": "\\overrightarrow{\\rm a}", "category": "geometry", "size": 1},
     {"name": "Ángulo", "preview": "\\[\\angle{\\rm ABC}\\]", "code": "\\angle{\\rm ABC}", "category": "geometry", "size": 1},
-    {"name": "Medida Ángulo", "preview": "\\[\\measuredangle{\\rm ABC}\\]", "code": "\\measuredangle{\\rm ABC}", "category": "geometry", "size": 2},
+    {"name": "Medida ángulo", "preview": "\\[\\measuredangle{\\rm ABC}\\]", "code": "\\measuredangle{\\rm ABC}", "category": "geometry", "size": 2},
+    {"name": "Ángulo esférico", "preview": "\\[\\sphericalangle{\\rm ABC}\\]", "code": "\\sphericalangle{\\rm ABC}", "category": "geometry", "size": 2},
     {"name": "Triángulo", "preview": "\\[\\triangle{\\rm ABC}\\]", "code": "\\triangle{\\rm ABC}", "category": "geometry", "size": 1},
     {"name": "Cuadrado", "preview": "\\[\\square{\\rm ABCD}\\]", "code": "\\square{\\rm ABCD}", "category": "geometry", "size": 1}
   ],
@@ -156,6 +159,13 @@
     {"name": "Tangente hiperbólico", "preview": "\\[\\tanh \\theta\\]", "code": "\\tanh \\theta", "category": "trigonometry", "size": 1},
     {"name": "Cotangente hiperbólico", "preview": "\\[\\coth \\theta\\]", "code": "\\coth \\theta", "category": "trigonometry", "size": 1},
     {"name": "Ángulo 45°", "preview": "\\[45^{\\circ}\\]", "code": "45^{\\circ}", "category": "trigonometry", "size": 1}
+  ],
+  "Matrices": [
+    {"name": "vmatrix", "preview": "\\[\\begin{vmatrix}  a & b \\\\  c & d \\end{vmatrix}\\]", "code": "\\begin{vmatrix}\n  a & b \\\\\n c & d \n\\end{vmatrix}", "category": "matrices", "size": 1},
+    {"name": "pmatrix", "preview": "\\[\\begin{pmatrix}  a & b \\\\  c & d \\end{pmatrix}\\]", "code": "\\begin{pmatrix}\n  a & b \\\\\n c & d \n\\end{pmatrix}", "category": "matrices", "size": 1},
+    {"name": "bmatrix", "preview": "\\[\\begin{bmatrix}  a & b \\\\  c & d \\end{bmatrix}\\]", "code": "\\begin{bmatrix}\n  a & b \\\\\n c & d \n\\end{bmatrix}", "category": "matrices", "size": 1},
+    {"name": "Bmatrix", "preview": "\\[\\begin{Bmatrix}  a & b \\\\  c & d \\end{Bmatrix}\\]", "code": "\\begin{Bmatrix}\n  a & b \\\\\n c & d \n\\end{Bmatrix}", "category": "matrices", "size": 1},
+    {"name": "Vmatrix", "preview": "\\[\\begin{Vmatrix}  a & b \\\\  c & d \\end{Vmatrix}\\]", "code": "\\begin{Vmatrix}\n  a & b \\\\\n c & d \n\\end{Vmatrix}", "category": "matrices", "size": 1}
   ],
   "Griego": [
     {"name": "Alfa", "preview": "\\[\\alpha\\]", "code": "\\alpha", "category": "greek", "size": 1},
@@ -202,10 +212,28 @@
   ],
   "Símbolos": [
     {"name": "Infinito", "preview": "\\[\\infty\\]", "code": "\\infty", "category": "symbols", "size": 1},
+    {"name": "Parcial", "preview": "\\[\\partial\\]", "code": "\\partial", "category": "symbols", "size": 1},
+    {"name": "Estrella", "preview": "\\[\\star\\]", "code": "\\star", "category": "symbols", "size": 1},
+    {"name": "Asterisco", "preview": "\\[\\ast\\]", "code": "\\ast", "category": "symbols", "size": 1},
+    {"name": "Oplus", "preview": "\\[\\oplus\\]", "code": "\\oplus", "category": "symbols", "size": 1},
+    {"name": "Circ", "preview": "\\[\\circ\\]", "code": "\\circ", "category": "symbols", "size": 1},
+    {"name": "Viñeta", "preview": "\\[\\bullet\\]", "code": "\\bullet", "category": "symbols", "size": 1},
     {"name": "Parte entera", "preview": "\\[\\Re\\]", "code": "\\Re", "category": "symbols", "size": 1},
     {"name": "Parte imaginaria", "preview": "\\[\\Im\\]", "code": "\\Im", "category": "symbols", "size": 1},
     {"name": "i", "preview": "\\[\\imath\\]", "code": "\\imath", "category": "symbols", "size": 1},
     {"name": "j", "preview": "\\[\\jmath\\]", "code": "\\jmath", "category": "symbols", "size": 1},
     {"name": "l", "preview": "\\[\\ell\\]", "code": "\\ell", "category": "symbols", "size": 1}
+  ],
+  "Flechas": [
+    {"name": "Izquierda", "preview": "\\[\\leftarrow, \\longleftarrow, \\Leftarrow, \\Longleftarrow\\]", "code": "\\leftarrow, \\longleftarrow, \\Leftarrow, \\Longleftarrow", "category": "arrows", "size": 1},
+    {"name": "Derecha", "preview": "\\[\\rightarrow, \\longrightarrow, \\Rightarrow, \\Longrightarrow\\]", "code": "\\rightarrow, \\longrightarrow, \\Rightarrow, \\Longrightarrow", "category": "arrows", "size": 1},
+    {"name": "Izquierda/Derecha", "preview": "\\[\\leftrightarrow, \\longleftrightarrow, \\Leftrightarrow, \\Longleftrightarrow\\]", "code": "\\leftrightarrow, \\longleftrightarrow, \\Leftrightarrow, \\Longleftrightarrow", "category": "arrows", "size": 1},
+    {"name": "Arriba", "preview": "\\[\\uparrow, \\Uparrow\\]", "code": "\\uparrow, \\Uparrow", "category": "arrows", "size": 1},
+    {"name": "Abajo", "preview": "\\[\\downarrow, \\Downarrow\\]", "code": "\\downarrow, \\Downarrow", "category": "arrows", "size": 1},
+    {"name": "Arriba/Abajo", "preview": "\\[\\updownarrow, \\Updownarrow\\]", "code": "\\updownarrow, \\Updownarrow", "category": "arrows", "size": 1},
+    {"name": "Mapea a", "preview": "\\[\\mapsto, \\longmapsto\\]", "code": "\\mapsto, \\longmapsto", "category": "arrows", "size": 1},
+    {"name": "Ordinal/Intercardinal", "preview": "\\[\\nearrow, \\searrow, \\swarrow, \\nwarrow\\]", "code": "\\nearrow, \\searrow, \\swarrow, \\nwarrow", "category": "arrows", "size": 1},
+    {"name": "Gancho", "preview": "\\[\\hookleftarrow, \\hookrightarrow\\]", "code": "\\hookleftarrow, \\hookrightarrow", "category": "arrows", "size": 1},
+    {"name": "Arpón", "preview": "\\[\\leftharpoonup, \\rightharpoonup, \\leftharpoondown, \\rightharpoondown\\]", "code": "\\leftharpoonup, \\rightharpoonup, \\leftharpoondown, \\rightharpoondown", "category": "arrows", "size": 1}
   ]
 }

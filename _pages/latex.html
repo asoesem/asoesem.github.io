@@ -47,7 +47,7 @@ permalink: /comandos-latex/
                    data-name="{{ item.name | downcase }}"
                    data-code="{{ item.code | xml_escape }}"
                    data-category="{{ cat }}"
-                   data-preview="{{ item.preview | prepend: item.category | strip | downcase | remove: '\[' | remove: '\]' | xml_escape }}"
+                   data-preview="{{ item.preview | prepend: item.category | strip_newlines | strip |  remove: ' ' |  remove: '\[' | remove: '\]' | xml_escape }}"
                    title="Clic para copiar el código">
             <header class="card-title">{{ item.name }}</header>
             <div class="card-preview">
@@ -87,7 +87,7 @@ permalink: /comandos-latex/
   (function dedupeCards(){
     const seen = new Set(); // keys of data-preview already encountered
     for (const card of cards) {
-      const key = (card.dataset.preview || '').trim().toLowerCase();
+      const key = (card.dataset.preview || '').trim();
       if (seen.has(key)) {
         // Duplicate by preview: remove this card; do not merge or modify categories
         card.remove();
