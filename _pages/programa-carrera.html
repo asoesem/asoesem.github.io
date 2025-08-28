@@ -206,21 +206,52 @@ permalink: /programa-carrera/
     $('#creditsPassed').textContent = creditsPassed;
     $('#coursesPassed').textContent = Array.from(passed).filter(c=>catalog.has(c)).length;
 
-    // Suggestions for next year
+    // Suggestions for next year (grouped by period)
     const elig = computeEligible(plan, catalog);
+    const periods = nextPeriods();
 
-    const suggestionCards = elig.map(({course, labels})=>{
-      const when = (labels||[]).slice(0,3).join(', ');
-      const whenText = when? `Oferta próxima: ${when}`: 'Sin oferta próxima registrada';
+    // Build combined period list and sort strictly chronologically across quarters and semesters
+    const quarterStart = q => (q===1?1:(q===2?5:9)); // T1→Jan, T2→May, T3→Sep
+    const semesterStart = s => (s===1?1:7);          // S1→Jan, S2→Jul
+    const periodOrder = [
+      ...periods.quarters.map(p=>({ ...p, kind:'quarter', startMonth: quarterStart(p.value)})),
+      ...periods.semesters.map(p=>({ ...p, kind:'semester', startMonth: semesterStart(p.value)})),
+    ].sort((a,b)=> a.year!==b.year ? a.year-b.year : a.startMonth-b.startMonth);
+
+    // Map label -> list of courses offered in that label
+    const byLabel = new Map();
+    for (const item of elig){
+      const {course, labels=[]} = item;
+      labels.forEach(lbl=>{
+        if (!byLabel.has(lbl)) byLabel.set(lbl, []);
+        byLabel.get(lbl).push(course);
+      });
+    }
+
+    // Helper to render a course card (without repeating offer line)
+    const renderCard = (course) => {
       return `<div class="box" style="padding:10px;">
         <div><strong>${course.code}</strong> — ${course.name}</div>
         <div class="muted" style="font-size:0.9em;">${course.credits} créditos · Bloque ${course.blockId}${course.type==='elec'?' · Electiva':''}</div>
-        <div class="muted" style="font-size:0.9em; margin-top:6px;">${whenText}</div>
       </div>`;
+    };
+
+    // Compose grouped HTML
+    const sections = [];
+    periodOrder.forEach(p => {
+      const list = byLabel.get(p.label) || [];
+      if (list.length===0) return;
+      // Header per period
+      const header = p.kind==='quarter' ? `${p.label}` : `${p.label}`; // labels are already like Tn YYYY or Sn YYYY
+      const cards = list.map(renderCard).join('');
+      sections.push(`<div class="period-group"><h3 style="margin:12px 0 6px;">${header}</h3>${cards}</div>`);
     });
 
-    $('#eligibleNow').textContent = elig.length;
-    $('#suggestions').innerHTML = suggestionCards.join('') || '<div class="box" style="padding:10px;">No hay cursos habilitados aún. Marque cursos aprobados para ver sugerencias.</div>';
+    // eligibleNow counts unique courses (not duplicated across periods)
+    const uniqueCodes = new Set(elig.map(e=>e.course.code));
+    $('#eligibleNow').textContent = uniqueCodes.size;
+
+    $('#suggestions').innerHTML = sections.join('') || '<div class="box" style="padding:10px;">No hay cursos habilitados aún. Marque cursos aprobados para ver sugerencias.</div>';
 
     // Wire after render
     document.querySelectorAll('[data-code]').forEach(el=>{
