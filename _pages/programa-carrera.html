@@ -46,11 +46,31 @@ permalink: /programa-carrera/
   const DATA = {{ site.data.programs | jsonify }};
   // State
   let currentPlanIdx = 0;
-  let passed = new Set(JSON.parse(localStorage.getItem('prog_passed')||'[]'));
+  // Plan-scoped passed set; key derived from plan identity
+  function planKey(index){
+    const p = DATA.programs[index] || {};
+    const name = p.name || 'plan';
+    const degree = p.degree || '';
+    const base = name + '__' + degree;
+    return 'prog_passed__' + base;
+  }
+  function loadPassed(index){
+    const key = planKey(index);
+    // Backward-compat: migrate from old global key if present and no per-plan state yet
+    const existing = localStorage.getItem(key);
+    if (!existing){
+      const legacy = localStorage.getItem('prog_passed');
+      if (legacy){
+        try { localStorage.setItem(key, legacy); } catch(e){}
+      }
+    }
+    try { return new Set(JSON.parse(localStorage.getItem(key)||'[]')); } catch(e){ return new Set(); }
+  }
+  let passed = loadPassed(0);
 
   // Helpers
   const $ = sel => document.querySelector(sel);
-  function saveState(){ localStorage.setItem('prog_passed', JSON.stringify([...passed])); }
+  function saveState(){ localStorage.setItem(planKey(currentPlanIdx), JSON.stringify([...passed])); }
 
   function buildCatalog(plan){
     const blocks = plan.blocks;
@@ -388,14 +408,15 @@ permalink: /programa-carrera/
   }
 
   // Select change handlers
-  $('#planSelect').addEventListener('change', (e)=>{ currentPlanIdx = +e.target.value; render(); });
+  $('#planSelect').addEventListener('change', (e)=>{ currentPlanIdx = +e.target.value; passed = loadPassed(currentPlanIdx); render(); });
   // Degree filter narrows plan list
   $('#degreeFilter').addEventListener('change', (e)=>{
     const deg = e.target.value;
     const plans = DATA.programs.map((p,i)=>({i, p})).filter(x=>x.p.degree===deg);
     const planSel = $('#planSelect');
     planSel.innerHTML = plans.map(x=>`<option value="${x.i}">${x.p.name} — ${x.p.degree}</option>`).join('');
-    currentPlanIdx = plans[0]?.i ?? 0;
+    currentPlanIdx = (plans[0] && plans[0].i) != null ? plans[0].i : 0;
+    passed = loadPassed(currentPlanIdx);
     render();
   });
 
@@ -406,12 +427,12 @@ permalink: /programa-carrera/
     if (reset){
       reset.addEventListener('click', ()=>{
         passed = new Set();
-        localStorage.removeItem('prog_passed');
+        try { localStorage.removeItem(planKey(currentPlanIdx)); } catch(e){}
         render();
       });
     }
     // Default degree to first plan degree
-    const firstDegree = DATA.programs[0]?.degree;
+    const firstDegree = (DATA.programs[0] && DATA.programs[0].degree) || '';
     const degreeSel = $('#degreeFilter');
     const degrees = [...new Set(DATA.programs.map(p=>p.degree))];
     degreeSel.innerHTML = degrees.map(d=>`<option ${d===firstDegree?'selected':''} value="${d}">${d}</option>`).join('');
@@ -419,6 +440,8 @@ permalink: /programa-carrera/
     const planSel = $('#planSelect');
     planSel.innerHTML = DATA.programs.map((p,i)=>`<option ${i===0?'selected':''} value="${i}">${p.name} — ${p.degree}</option>`).join('');
 
+    // Load initial plan state
+    passed = loadPassed(0);
     render();
   })();
 })();
