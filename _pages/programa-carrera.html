@@ -43,7 +43,7 @@ permalink: /programa-carrera/
 
 <script>
 (function(){
-  const DATA = {{ site.data.programs | jsonify }}
+  const DATA = {{ site.data.programs | jsonify }};
   // State
   let currentPlanIdx = 0;
   let passed = new Set(JSON.parse(localStorage.getItem('prog_passed')||'[]'));
@@ -122,12 +122,30 @@ permalink: /programa-carrera/
   }
 
   function computeEligible(plan, catalog){
+    const periods = nextPeriods();
+    const nextQuarterVals = new Set(periods.quarters.map(p=>p.value));
+    const nextSemesterVals = new Set(periods.semesters.map(p=>p.value));
     const elig = [];
     catalog.forEach(course=>{
       if (passed.has(course.code)) return;
       if (!prerequisitesMet(course, catalog)) return;
       const avail = availabilityFor(course.code);
-      elig.push({course, avail});
+      // Determine if there is an upcoming offer within the next year window
+      const hasQuarterMode = (avail.quarters && avail.quarters.length>0);
+      const hasSemesterMode = (avail.semesters && avail.semesters.length>0);
+      // Courses are either quarter-based or semester-based, never both; if none, skip
+      if (!hasQuarterMode && !hasSemesterMode) return;
+      let allowedLabels = [];
+      if (hasQuarterMode){
+        const qHits = avail.quarters.filter(q=>nextQuarterVals.has(q));
+        if (qHits.length===0) return; // no offering in next 4 quarters
+        allowedLabels = periods.quarters.filter(p=>qHits.includes(p.value)).map(p=>p.label);
+      } else if (hasSemesterMode){
+        const sHits = avail.semesters.filter(s=>nextSemesterVals.has(s));
+        if (sHits.length===0) return; // no offering in next 2 semesters
+        allowedLabels = periods.semesters.filter(p=>sHits.includes(p.value)).map(p=>p.label);
+      }
+      elig.push({course, avail, labels: allowedLabels});
     });
     return elig;
   }
@@ -190,12 +208,9 @@ permalink: /programa-carrera/
 
     // Suggestions for next year
     const elig = computeEligible(plan, catalog);
-    const periods = nextPeriods();
 
-    const suggestionCards = elig.map(({course, avail})=>{
-      const qHits = periods.quarters.filter(p=>avail.quarters.includes(p.value)).map(p=>p.label);
-      const sHits = periods.semesters.filter(p=>avail.semesters.includes(p.value)).map(p=>p.label);
-      const when = [...qHits, ...sHits].slice(0,3).join(', ');
+    const suggestionCards = elig.map(({course, labels})=>{
+      const when = (labels||[]).slice(0,3).join(', ');
       const whenText = when? `Oferta próxima: ${when}`: 'Sin oferta próxima registrada';
       return `<div class="box" style="padding:10px;">
         <div><strong>${course.code}</strong> — ${course.name}</div>
