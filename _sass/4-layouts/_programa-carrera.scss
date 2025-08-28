@@ -1,0 +1,37 @@
+.programa-carrera {
+  .toolbar {
+    background: var(--background-alt-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 10px;
+  }
+  .stat {
+    background: var(--card-preview-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+  .course {
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .course:hover { transform: translateY(-1px); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .badge {
+    border-radius: 14px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: #fff;
+  }
+  .badge.aprobado { background:#2e7d32 }
+  .badge.habilitado { background:#1565c0 }
+  .badge.bloqueado { background:#777 }
+  .period-group h3{
+    background: var(--background-alt-color);
+    border: 1px solid var(--border-color);
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+}
