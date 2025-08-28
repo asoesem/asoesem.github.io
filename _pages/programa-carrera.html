@@ -1,0 +1,290 @@
+---
+layout: default
+title: Programa de la Carrera de Enseñanza de la Matemática de la UNED
+permalink: /programa-carrera/
+---
+
+<div class="container page__content">
+  <h1>Programa de la Carrera</h1>
+  <p>
+    Explore el plan de estudios, marque cursos aprobados y descubra qué podría matricular
+    en los próximos periodos según los prerrequisitos y la oferta (trimestres/semestres).
+  </p>
+
+  <div class="box" style="padding:16px; margin-bottom:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+    <label for="planSelect"><strong>Plan</strong>:</label>
+    <select id="planSelect"></select>
+    <label for="degreeFilter" style="margin-left:12px;"><strong>Grado</strong>:</label>
+    <select id="degreeFilter"></select>
+    <button id="resetBtn" class="btn" type="button" style="margin-left:auto; background:#e53935; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">Volver a empezar</button>
+  </div>
+
+  <div id="summary" class="box" style="padding:12px; margin-bottom:16px;">
+    <span id="creditsPassed">0</span> créditos aprobados ·
+    <span id="coursesPassed">0</span> cursos aprobados ·
+    <span id="eligibleNow">0</span> cursos habilitados ahora
+  </div>
+
+  <details class="box" style="padding:12px; margin-bottom:16px;">
+    <summary><strong>Cómo usar esta página</strong></summary>
+    <ul>
+      <li>Haga clic en un curso para marcarlo como aprobado. Si el curso es prerrequisito de otros, estos se habilitarán cuando corresponda.</li>
+      <li>Algunos hitos requieren haber aprobado bloques completos; se marcan automáticamente cuando todos sus cursos requeridos están aprobados.</li>
+      <li>Use el panel "Sugerencias de matrícula" para ver qué podría llevar en los próximos trimestres o semestres.</li>
+    </ul>
+  </details>
+
+  <h2>Bloques</h2>
+  <div id="blocks" class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;"></div>
+
+  <h2 style="margin-top:28px;">Sugerencias de matrícula (próximo año)</h2>
+  <div id="suggestions" class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;"></div>
+</div>
+
+<script>
+(function(){
+  const DATA = {{ site.data.programs | jsonify }}
+  // State
+  let currentPlanIdx = 0;
+  let passed = new Set(JSON.parse(localStorage.getItem('prog_passed')||'[]'));
+
+  // Helpers
+  const $ = sel => document.querySelector(sel);
+  function saveState(){ localStorage.setItem('prog_passed', JSON.stringify([...passed])); }
+
+  function buildCatalog(plan){
+    const blocks = plan.blocks;
+    const catalog = new Map(); // code -> course {code,name,credits,prereqCodes,prereqBlocks,blockId,type}
+    const blockMap = new Map(blocks.map(b=>[b.id,b]));
+
+    function addCourse(c, blockId, type='req'){
+      const pre = c.prerequisites||[];
+      const prereqCodes = pre.filter(x=>!/^[A-Z]$/.test(x));
+      const prereqBlocks = pre.filter(x=>/^[A-Z]$/.test(x));
+      catalog.set(c.code, { ...c, prereqCodes, prereqBlocks, blockId, type });
+    }
+
+    blocks.forEach(b=>{
+      (b.courses||[]).forEach(c=>addCourse(c,b.id,'req'));
+      (b.electives||[]).forEach(group=>{
+        (group.courses||[]).forEach(c=>addCourse(c,b.id,'elec'));
+      });
+    });
+
+    return {catalog, blockMap};
+  }
+
+  function blockSatisfied(blockId, catalog){
+    // A block is satisfied if all its required courses in that block are passed
+    for (const course of catalog.values()){
+      if (course.blockId===blockId && course.type==='req'){
+        if (!passed.has(course.code)) return false;
+      }
+    }
+    return true;
+  }
+
+  function prerequisitesMet(course, catalog){
+    // course prereq blocks
+    for (const b of course.prereqBlocks){ if (!blockSatisfied(b, catalog)) return false; }
+    // course prereq courses
+    for (const c of course.prereqCodes){ if (!passed.has(c)) return false; }
+    return true;
+  }
+
+  function availabilityFor(code){
+    const a = (DATA.availability||{})[code]||{};
+    const quarters = a.quarters||[];
+    const semesters = a.semesters||[];
+    return {quarters, semesters};
+  }
+
+  function nextPeriods(){
+    // Produce next 4 quarters (1 year) and next 2 semesters (1 year) windows
+    const now = new Date();
+    const year = now.getFullYear();
+    // We do not know current quarter; we approximate by month.
+    const m = now.getMonth()+1;
+    let q;
+    if (m<=4) q=1; else if (m<=8) q=2; else q=3;
+    const quarters=[]; let y=year; let cq=q;
+    for(let i=0;i<4;i++){
+      quarters.push({label:`T${cq} ${y}`, value:cq, year:y});
+      cq++; if (cq>3){ cq=1; y++; }
+    }
+    // semesters: 2 per year
+    let s = (m<=6)?1:2; y=year; const semesters=[]; let cs=s;
+    for(let i=0;i<2;i++){
+      semesters.push({label:`S${cs} ${y}`, value:cs, year:y});
+      cs++; if (cs>2){ cs=1; y++; }
+    }
+    return {quarters, semesters};
+  }
+
+  function computeEligible(plan, catalog){
+    const elig = [];
+    catalog.forEach(course=>{
+      if (passed.has(course.code)) return;
+      if (!prerequisitesMet(course, catalog)) return;
+      const avail = availabilityFor(course.code);
+      elig.push({course, avail});
+    });
+    return elig;
+  }
+
+  function render(){
+    const degreeSel = $('#degreeFilter');
+    const planSel = $('#planSelect');
+
+    // Fill selects only once
+    if (!planSel.dataset.ready){
+      // Degrees list from programs
+      const degrees = [...new Set(DATA.programs.map(p=>p.degree))];
+      degreeSel.innerHTML = degrees.map(d=>`<option value="${d}">${d}</option>`).join('');
+      // Options per all programs
+      planSel.innerHTML = DATA.programs.map((p,i)=>`<option value="${i}">${p.name} — ${p.degree}</option>`).join('');
+      planSel.dataset.ready = '1';
+    }
+
+    const plan = DATA.programs[currentPlanIdx];
+    // Render blocks and courses
+    const {catalog, blockMap} = buildCatalog(plan);
+
+    const blocksDiv = $('#blocks');
+    blocksDiv.innerHTML = '';
+    plan.blocks.forEach(block=>{
+      const req = (block.courses||[]).map(c=>renderCourse(catalog.get(c.code), catalog)).join('');
+      const ele = (block.electives||[]).map(group=>{
+        const groupCourses = group.courses||[];
+        const passedInGroup = groupCourses.filter(c=>passed.has(c.code));
+        const passedCredits = passedInGroup.reduce((acc,c)=>acc + (catalog.get(c.code)?.credits||c.credits||0), 0);
+        let itemsHtml = '';
+        if (passedCredits >= (group.credits||0)){
+          // Hide all other electives; show only the ones already approved in this group
+          itemsHtml = passedInGroup.map(c=>renderCourse(catalog.get(c.code), catalog)).join('');
+          if (!itemsHtml) {
+            // Edge: if somehow credits>=required but no course listed (shouldn't happen), fall back to none
+            itemsHtml = '<div class="muted" style="font-size:0.9em;">Electivas satisfechas</div>';
+          }
+        } else {
+          // Still need credits: show all options
+          itemsHtml = groupCourses.map(c=>renderCourse(catalog.get(c.code), catalog)).join('');
+        }
+        const info = `Electivas: ${group.name} · Tomar ${group.credits} créditos` + (passedCredits>0?` · Aprobadas: ${passedCredits}`:'');
+        return `<div class="group" style="margin-top:8px;">
+          <div class="muted" style="font-size:0.9em;">${info}</div>
+          ${itemsHtml}
+        </div>`;
+      }).join('');
+      blocksDiv.innerHTML += `<div class="box" style="padding:12px;">
+        <h3 style="margin:0 0 8px 0;">${block.name} <span class="muted" style="font-size:0.85em;">(${block.id})</span></h3>
+        ${req}
+        ${ele}
+      </div>`;
+    });
+
+    // Summary
+    const creditsPassed = Array.from(passed).reduce((acc, code)=> acc + (catalog.get(code)?.credits||0), 0);
+    $('#creditsPassed').textContent = creditsPassed;
+    $('#coursesPassed').textContent = Array.from(passed).filter(c=>catalog.has(c)).length;
+
+    // Suggestions for next year
+    const elig = computeEligible(plan, catalog);
+    const periods = nextPeriods();
+
+    const suggestionCards = elig.map(({course, avail})=>{
+      const qHits = periods.quarters.filter(p=>avail.quarters.includes(p.value)).map(p=>p.label);
+      const sHits = periods.semesters.filter(p=>avail.semesters.includes(p.value)).map(p=>p.label);
+      const when = [...qHits, ...sHits].slice(0,3).join(', ');
+      const whenText = when? `Oferta próxima: ${when}`: 'Sin oferta próxima registrada';
+      return `<div class="box" style="padding:10px;">
+        <div><strong>${course.code}</strong> — ${course.name}</div>
+        <div class="muted" style="font-size:0.9em;">${course.credits} créditos · Bloque ${course.blockId}${course.type==='elec'?' · Electiva':''}</div>
+        <div class="muted" style="font-size:0.9em; margin-top:6px;">${whenText}</div>
+      </div>`;
+    });
+
+    $('#eligibleNow').textContent = elig.length;
+    $('#suggestions').innerHTML = suggestionCards.join('') || '<div class="box" style="padding:10px;">No hay cursos habilitados aún. Marque cursos aprobados para ver sugerencias.</div>';
+
+    // Wire after render
+    document.querySelectorAll('[data-code]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const code = el.dataset.code;
+        if (passed.has(code)) passed.delete(code); else passed.add(code);
+        saveState();
+        render();
+      });
+    });
+  }
+
+  function renderCourse(course, catalog){
+    const done = passed.has(course.code);
+    const prereqOk = prerequisitesMet(course, catalog);
+    const avail = availabilityFor(course.code);
+    const badge = done? '✓ Aprobado' : (prereqOk? 'Habilitado' : 'Bloqueado');
+    const badgeColor = done? '#2e7d32' : (prereqOk? '#1565c0' : '#777');
+    const avText = avail.quarters.length? `T${avail.quarters.join(', T')}`: (avail.semesters.length?`S${avail.semesters.join(', S')}`:'—');
+    const style = `border:1px solid var(--border-color, #ddd); padding:8px; border-radius:8px; margin:6px 0; cursor:pointer;`;
+    return `<div class="course" data-code="${course.code}" title="click para alternar aprobado" style="${style}">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+        <div><strong>${course.code}</strong> — ${course.name}</div>
+        <span style="font-size:12px; color:white; background:${badgeColor}; padding:2px 8px; border-radius:12px;">${badge}</span>
+      </div>
+      <div class="muted" style="font-size:0.9em; margin-top:4px; display:flex; gap:8px; flex-wrap:wrap;">
+        <span>${course.credits} cr</span>
+        <span>Bloque ${course.blockId}${course.type==='elec'?' · Electiva':''}</span>
+        <span>Oferta: ${avText}</span>
+        ${renderPrereqLine(course)}
+      </div>
+    </div>`
+  }
+
+  function renderPrereqLine(course){
+    const has = (course.prereqBlocks.length||course.prereqCodes.length);
+    if (!has) return '<span>Sin prerrequisitos</span>';
+    const blocks = course.prereqBlocks.map(b=>`Bloque ${b}`).join(', ');
+    const codes = course.prereqCodes.join(', ');
+    const parts = [];
+    if (blocks) parts.push(blocks);
+    if (codes) parts.push('Cursos: '+codes);
+    return `<span>Requiere: ${parts.join(' · ')}</span>`;
+  }
+
+  // Select change handlers
+  $('#planSelect').addEventListener('change', (e)=>{ currentPlanIdx = +e.target.value; render(); });
+  // Degree filter narrows plan list
+  $('#degreeFilter').addEventListener('change', (e)=>{
+    const deg = e.target.value;
+    const plans = DATA.programs.map((p,i)=>({i, p})).filter(x=>x.p.degree===deg);
+    const planSel = $('#planSelect');
+    planSel.innerHTML = plans.map(x=>`<option value="${x.i}">${x.p.name} — ${x.p.degree}</option>`).join('');
+    currentPlanIdx = plans[0]?.i ?? 0;
+    render();
+  });
+
+  // Initial population
+  (function init(){
+    // Reset button
+    const reset = document.getElementById('resetBtn');
+    if (reset){
+      reset.addEventListener('click', ()=>{
+        passed = new Set();
+        localStorage.removeItem('prog_passed');
+        render();
+      });
+    }
+    // Default degree to first plan degree
+    const firstDegree = DATA.programs[0]?.degree;
+    const degreeSel = $('#degreeFilter');
+    const degrees = [...new Set(DATA.programs.map(p=>p.degree))];
+    degreeSel.innerHTML = degrees.map(d=>`<option ${d===firstDegree?'selected':''} value="${d}">${d}</option>`).join('');
+
+    const planSel = $('#planSelect');
+    planSel.innerHTML = DATA.programs.map((p,i)=>`<option ${i===0?'selected':''} value="${i}">${p.name} — ${p.degree}</option>`).join('');
+
+    render();
+  })();
+})();
+</script>
+
