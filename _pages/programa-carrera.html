@@ -50,19 +50,37 @@ permalink: /programa-carrera/
   // Plan-scoped passed set; key derived from plan identity
   function planKey(index){
     const p = DATA.programs[index] || {};
+    const pid = p.id || null;
+    if (pid) {
+      return 'prog_passed__id__' + pid;
+    }
+    // Fallback (very old plans without id): keep old scheme name__degree
     const name = p.name || 'plan';
     const degree = p.degree || '';
     const base = name + '__' + degree;
     return 'prog_passed__' + base;
   }
+  function oldNameKey(index){
+    const p = DATA.programs[index] || {};
+    const name = p.name || 'plan';
+    const degree = p.degree || '';
+    return 'prog_passed__' + (name + '__' + degree);
+  }
   function loadPassed(index){
     const key = planKey(index);
-    // Backward-compat: migrate from old global key if present and no per-plan state yet
     const existing = localStorage.getItem(key);
     if (!existing){
-      const legacy = localStorage.getItem('prog_passed');
-      if (legacy){
-        try { localStorage.setItem(key, legacy); } catch(e){}
+      // Backward-compat 1: migrate from old per-plan name+degree key
+      const oldKey = oldNameKey(index);
+      const oldVal = localStorage.getItem(oldKey);
+      if (oldVal){
+        try { localStorage.setItem(key, oldVal); } catch(e){}
+      } else {
+        // Backward-compat 2: migrate from very old global key
+        const legacy = localStorage.getItem('prog_passed');
+        if (legacy){
+          try { localStorage.setItem(key, legacy); } catch(e){}
+        }
       }
     }
     try { return new Set(JSON.parse(localStorage.getItem(key)||'[]')); } catch(e){ return new Set(); }
