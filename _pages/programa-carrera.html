@@ -415,6 +415,8 @@ permalink: /programa-carrera/
     const plans = DATA.programs.map((p,i)=>({i, p})).filter(x=>x.p.degree===deg);
     const planSel = $('#planSelect');
     planSel.innerHTML = plans.map(x=>`<option value="${x.i}">${x.p.name} — ${x.p.degree}</option>`).join('');
+    // Ensure the plan select is considered initialized
+    planSel.dataset.ready = '1';
     currentPlanIdx = (plans[0] && plans[0].i) != null ? plans[0].i : 0;
     passed = loadPassed(currentPlanIdx);
     render();
@@ -438,10 +440,16 @@ permalink: /programa-carrera/
     degreeSel.innerHTML = degrees.map(d=>`<option ${d===firstDegree?'selected':''} value="${d}">${d}</option>`).join('');
 
     const planSel = $('#planSelect');
-    planSel.innerHTML = DATA.programs.map((p,i)=>`<option ${i===0?'selected':''} value="${i}">${p.name} — ${p.degree}</option>`).join('');
+    // Build initial plan list filtered by the initially selected degree
+    const initialPlans = DATA.programs.map((p,i)=>({i,p})).filter(x=>x.p.degree===firstDegree);
+    planSel.innerHTML = initialPlans.map((x,idx)=>`<option ${idx===0?'selected':''} value="${x.i}">${x.p.name} — ${x.p.degree}</option>`).join('');
+    // Prevent render() from overwriting with all programs
+    planSel.dataset.ready = '1';
+    // Set current plan to the first plan of the selected degree (or 0 as fallback)
+    currentPlanIdx = (initialPlans[0] && initialPlans[0].i) != null ? initialPlans[0].i : 0;
 
-    // Load initial plan state
-    passed = loadPassed(0);
+    // Load initial plan state for the selected plan
+    passed = loadPassed(currentPlanIdx);
     render();
   })();
 })();
