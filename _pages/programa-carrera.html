@@ -146,13 +146,13 @@ permalink: /programa-carrera/
     if (m<=4) q=1; else if (m<=8) q=2; else q=3;
     const quarters=[]; let y=year; let cq=q;
     for(let i=0;i<4;i++){
-      quarters.push({label:`T${cq} ${y}`, value:cq, year:y});
+      quarters.push({label:`${cq}C ${y}`, value:cq, year:y});
       cq++; if (cq>3){ cq=1; y++; }
     }
     // semesters: 2 per year
     let s = (m<=6)?1:2; y=year; const semesters=[]; let cs=s;
     for(let i=0;i<2;i++){
-      semesters.push({label:`S${cs} ${y}`, value:cs, year:y});
+      semesters.push({label:`${cs}S ${y}`, value:cs, year:y});
       cs++; if (cs>2){ cs=1; y++; }
     }
     return {quarters, semesters};
@@ -380,7 +380,7 @@ permalink: /programa-carrera/
     const badgeIcon = done? '<i class="icon ion-md-checkmark-circle" aria-hidden="true"></i>' : (prereqOk? '<i class="icon ion-md-unlock" aria-hidden="true"></i>' : '<i class="icon ion-md-lock" aria-hidden="true"></i>');
     const badge = (done? 'Aprobado' : (prereqOk? 'Habilitado' : 'Bloqueado'));
     const badgeClass = done? 'badge aprobado' : (prereqOk? 'badge habilitado' : 'badge bloqueado');
-    const avText = avail.quarters.length? `T${avail.quarters.join(', T')}`: (avail.semesters.length?`S${avail.semesters.join(', S')}`:'—');
+    const avText = avail.quarters.length? `${avail.quarters.map(n=>n+"C").join(', ')}`: (avail.semesters.length?`${avail.semesters.map(n=>n+"S").join(', ')}`:'—');
     const style = `border:1px solid var(--border-color, #ddd); padding:8px; border-radius:8px; margin:6px 0; cursor:pointer;`;
     return `<div class="course" data-code="${course.code}" title="click para alternar aprobado" style="${style}">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
