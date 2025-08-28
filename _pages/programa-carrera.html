@@ -22,7 +22,8 @@ permalink: /programa-carrera/
   <div id="summary" class="box summary" style="padding:12px; margin-bottom:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
     <span><i class="icon ion-md-ribbon" aria-hidden="true"></i> <span id="creditsPassed">0</span> créditos aprobados</span> ·
     <span><i class="icon ion-md-book" aria-hidden="true"></i> <span id="coursesPassed">0</span> cursos aprobados</span> ·
-    <span><i class="icon ion-md-checkmark-circle" aria-hidden="true"></i> <span id="eligibleNow">0</span> cursos habilitados ahora</span>
+    <span><i class="icon ion-md-checkmark-circle" aria-hidden="true"></i> <span id="eligibleNow">0</span> cursos habilitados ahora</span> ·
+    <span><i class="icon ion-md-stats" aria-hidden="true"></i> <span id="progressPct">0%</span> del programa completado</span>
   </div>
 
   <details class="box" style="padding:12px; margin-bottom:16px;">
@@ -195,6 +196,52 @@ permalink: /programa-carrera/
     return elig;
   }
 
+  function totalProgramCredits(plan){
+    // Sum required courses credits + for each elective group add its required credits only.
+    let total = 0;
+    (plan.blocks||[]).forEach(block=>{
+      (block.courses||[]).forEach(c=>{ total += (c.credits||0); });
+      (block.electives||[]).forEach(group=>{ total += (group.credits||0); });
+    });
+    return total;
+  }
+
+  function effectivePassedCredits(plan, catalog, elecGroupByCourse){
+    // Required courses: sum normally. Electives: cap by each group's required credits.
+    let requiredSum = 0;
+    let electiveByGroup = new Map(); // key by block+group name index
+    // Build groups index for quick lookup per course code
+    const groupInfoByCode = new Map();
+    (plan.blocks||[]).forEach(block=>{
+      (block.electives||[]).forEach(group=>{
+        (group.courses||[]).forEach(gc=>{ groupInfoByCode.set(gc.code, {req:(group.credits||0), key:`${block.id}::${group.name}`}); });
+      });
+    });
+    // Initialize group accumulators
+    (plan.blocks||[]).forEach(block=>{
+      (block.electives||[]).forEach(group=>{ electiveByGroup.set(`${block.id}::${group.name}`, {req:(group.credits||0), sum:0}); });
+    });
+
+    passed.forEach(code=>{
+      const course = catalog.get(code);
+      if (!course) return;
+      if (course.type==='elec'){
+        const gi = groupInfoByCode.get(code);
+        if (!gi) return;
+        const g = electiveByGroup.get(gi.key);
+        if (!g) return;
+        if (g.sum < g.req){
+          g.sum = Math.min(g.req, g.sum + (course.credits||0));
+        }
+      } else {
+        requiredSum += (course.credits||0);
+      }
+    });
+
+    let electiveSum = 0; electiveByGroup.forEach(g=> electiveSum += Math.min(g.sum, g.req));
+    return requiredSum + electiveSum;
+  }
+
   function render(){
     const degreeSel = $('#degreeFilter');
     const planSel = $('#planSelect');
@@ -247,9 +294,12 @@ permalink: /programa-carrera/
     });
 
     // Summary
-    const creditsPassed = Array.from(passed).reduce((acc, code)=> acc + (catalog.get(code)?.credits||0), 0);
+    const creditsPassed = effectivePassedCredits(plan, catalog, elecGroupByCourse);
     $('#creditsPassed').textContent = creditsPassed;
     $('#coursesPassed').textContent = Array.from(passed).filter(c=>catalog.has(c)).length;
+    const totalCredits = totalProgramCredits(plan);
+    const pct = totalCredits>0 ? Math.round((creditsPassed/totalCredits)*100) : 0;
+    const pctEl = document.getElementById('progressPct'); if (pctEl) pctEl.textContent = pct + '%';
 
     // Suggestions for next year (grouped by period)
     const elig = computeEligible(plan, catalog, elecGroupByCourse);
