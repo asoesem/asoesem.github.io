@@ -4,14 +4,14 @@ title: Programa de la Carrera de Enseñanza de la Matemática de la UNED
 permalink: /programa-carrera/
 ---
 
-<div class="container page__content">
+<div class="container page__content programa-carrera">
   <h1><i class="icon ion-ios-school" aria-hidden="true"></i> Programa de la Carrera</h1>
   <p>
     Explore el plan de estudios, marque cursos aprobados y descubra qué podría matricular
     en los próximos periodos según los prerrequisitos y la oferta (trimestres/semestres).
   </p>
 
-  <div class="box" style="padding:16px; margin-bottom:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+  <div class="box toolbar" style="padding:16px; margin-bottom:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
     <label for="planSelect"><strong>Plan</strong>:</label>
     <select id="planSelect"></select>
     <label for="degreeFilter" style="margin-left:12px;"><strong>Grado</strong>:</label>
@@ -19,7 +19,7 @@ permalink: /programa-carrera/
     <button id="resetBtn" class="btn" type="button" style="margin-left:auto; background:#e53935; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;"><i class="icon ion-md-refresh" aria-hidden="true"></i> Volver a empezar</button>
   </div>
 
-  <div id="summary" class="box" style="padding:12px; margin-bottom:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+  <div id="summary" class="box summary" style="padding:12px; margin-bottom:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
     <span><i class="icon ion-md-ribbon" aria-hidden="true"></i> <span id="creditsPassed">0</span> créditos aprobados</span> ·
     <span><i class="icon ion-md-book" aria-hidden="true"></i> <span id="coursesPassed">0</span> cursos aprobados</span> ·
     <span><i class="icon ion-md-checkmark-circle" aria-hidden="true"></i> <span id="eligibleNow">0</span> cursos habilitados ahora</span>
@@ -379,13 +379,13 @@ permalink: /programa-carrera/
     const avail = availabilityFor(course.code);
     const badgeIcon = done? '<i class="icon ion-md-checkmark-circle" aria-hidden="true"></i>' : (prereqOk? '<i class="icon ion-md-unlock" aria-hidden="true"></i>' : '<i class="icon ion-md-lock" aria-hidden="true"></i>');
     const badge = (done? 'Aprobado' : (prereqOk? 'Habilitado' : 'Bloqueado'));
-    const badgeColor = done? '#2e7d32' : (prereqOk? '#1565c0' : '#777');
+    const badgeClass = done? 'badge aprobado' : (prereqOk? 'badge habilitado' : 'badge bloqueado');
     const avText = avail.quarters.length? `T${avail.quarters.join(', T')}`: (avail.semesters.length?`S${avail.semesters.join(', S')}`:'—');
     const style = `border:1px solid var(--border-color, #ddd); padding:8px; border-radius:8px; margin:6px 0; cursor:pointer;`;
     return `<div class="course" data-code="${course.code}" title="click para alternar aprobado" style="${style}">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
         <div><strong>${course.code}</strong> — ${course.name}</div>
-        <span style="font-size:12px; color:white; background:${badgeColor}; padding:2px 8px; border-radius:12px; display:flex; align-items:center; gap:6px;">${badgeIcon} ${badge}</span>
+        <span class=\"${badgeClass}\" style=\"display:flex; align-items:center; gap:6px;\">${badgeIcon} ${badge}</span>
       </div>
       <div class="muted" style="font-size:0.9em; margin-top:4px; display:flex; gap:8px; flex-wrap:wrap;">
         <span>${course.credits} cr</span>
