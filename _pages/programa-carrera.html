@@ -56,6 +56,7 @@ permalink: /programa-carrera/
     const blocks = plan.blocks;
     const catalog = new Map(); // code -> course {code,name,credits,prereqCodes,prereqBlocks,blockId,type}
     const blockMap = new Map(blocks.map(b=>[b.id,b]));
+    const elecGroupByCourse = new Map(); // code -> {blockId, requiredCredits, codes}
 
     function addCourse(c, blockId, type='req'){
       const pre = c.prerequisites||[];
@@ -67,11 +68,16 @@ permalink: /programa-carrera/
     blocks.forEach(b=>{
       (b.courses||[]).forEach(c=>addCourse(c,b.id,'req'));
       (b.electives||[]).forEach(group=>{
-        (group.courses||[]).forEach(c=>addCourse(c,b.id,'elec'));
+        const codes = (group.courses||[]).map(gc=>gc.code);
+        const requiredCredits = group.credits||0;
+        (group.courses||[]).forEach(c=>{
+          addCourse(c,b.id,'elec');
+          elecGroupByCourse.set(c.code, {blockId: b.id, requiredCredits, codes});
+        });
       });
     });
 
-    return {catalog, blockMap};
+    return {catalog, blockMap, elecGroupByCourse};
   }
 
   function blockSatisfied(blockId, catalog){
@@ -121,7 +127,7 @@ permalink: /programa-carrera/
     return {quarters, semesters};
   }
 
-  function computeEligible(plan, catalog){
+  function computeEligible(plan, catalog, elecGroupByCourse){
     const periods = nextPeriods();
     const nextQuarterVals = new Set(periods.quarters.map(p=>p.value));
     const nextSemesterVals = new Set(periods.semesters.map(p=>p.value));
@@ -129,6 +135,14 @@ permalink: /programa-carrera/
     catalog.forEach(course=>{
       if (passed.has(course.code)) return;
       if (!prerequisitesMet(course, catalog)) return;
+      // Skip electives whose group is already satisfied
+      if (course.type==='elec'){
+        const g = elecGroupByCourse.get(course.code);
+        if (g){
+          const passedCreditsInGroup = (g.codes||[]).reduce((acc, code)=> acc + (passed.has(code) ? (catalog.get(code)?.credits||0) : 0), 0);
+          if (passedCreditsInGroup >= (g.requiredCredits||0)) return;
+        }
+      }
       const avail = availabilityFor(course.code);
       // Determine if there is an upcoming offer within the next year window
       const hasQuarterMode = (avail.quarters && avail.quarters.length>0);
@@ -166,7 +180,7 @@ permalink: /programa-carrera/
 
     const plan = DATA.programs[currentPlanIdx];
     // Render blocks and courses
-    const {catalog, blockMap} = buildCatalog(plan);
+    const {catalog, blockMap, elecGroupByCourse} = buildCatalog(plan);
 
     const blocksDiv = $('#blocks');
     blocksDiv.innerHTML = '';
@@ -207,7 +221,7 @@ permalink: /programa-carrera/
     $('#coursesPassed').textContent = Array.from(passed).filter(c=>catalog.has(c)).length;
 
     // Suggestions for next year (grouped by period)
-    const elig = computeEligible(plan, catalog);
+    const elig = computeEligible(plan, catalog, elecGroupByCourse);
     const periods = nextPeriods();
 
     // Build combined period list and sort strictly chronologically across quarters and semesters
@@ -257,7 +271,34 @@ permalink: /programa-carrera/
     document.querySelectorAll('[data-code]').forEach(el=>{
       el.addEventListener('click', ()=>{
         const code = el.dataset.code;
-        if (passed.has(code)) passed.delete(code); else passed.add(code);
+        if (passed.has(code)) {
+          // Unapprove only this course
+          passed.delete(code);
+        } else {
+          // Approve this course and all of its prerequisites (recursively)
+          const toAdd = new Set([code]);
+          const visited = new Set();
+          function addPrereqsOf(course){
+            if (!course || visited.has(course.code)) return;
+            visited.add(course.code);
+            // Direct course prerequisites
+            (course.prereqCodes||[]).forEach(pc=>{
+              toAdd.add(pc);
+              addPrereqsOf(catalog.get(pc));
+            });
+            // Block prerequisites: include all required courses in that block
+            (course.prereqBlocks||[]).forEach(b=>{
+              catalog.forEach(c=>{
+                if (c.blockId===b && c.type==='req'){
+                  toAdd.add(c.code);
+                  addPrereqsOf(catalog.get(c.code));
+                }
+              });
+            });
+          }
+          addPrereqsOf(catalog.get(code));
+          toAdd.forEach(c=>passed.add(c));
+        }
         saveState();
         render();
       });
