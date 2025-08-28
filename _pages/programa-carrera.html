@@ -5,7 +5,7 @@ permalink: /programa-carrera/
 ---
 
 <div class="container page__content">
-  <h1>Programa de la Carrera</h1>
+  <h1><i class="icon ion-ios-school" aria-hidden="true"></i> Programa de la Carrera</h1>
   <p>
     Explore el plan de estudios, marque cursos aprobados y descubra qué podría matricular
     en los próximos periodos según los prerrequisitos y la oferta (trimestres/semestres).
@@ -16,13 +16,13 @@ permalink: /programa-carrera/
     <select id="planSelect"></select>
     <label for="degreeFilter" style="margin-left:12px;"><strong>Grado</strong>:</label>
     <select id="degreeFilter"></select>
-    <button id="resetBtn" class="btn" type="button" style="margin-left:auto; background:#e53935; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">Volver a empezar</button>
+    <button id="resetBtn" class="btn" type="button" style="margin-left:auto; background:#e53935; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;"><i class="icon ion-md-refresh" aria-hidden="true"></i> Volver a empezar</button>
   </div>
 
-  <div id="summary" class="box" style="padding:12px; margin-bottom:16px;">
-    <span id="creditsPassed">0</span> créditos aprobados ·
-    <span id="coursesPassed">0</span> cursos aprobados ·
-    <span id="eligibleNow">0</span> cursos habilitados ahora
+  <div id="summary" class="box" style="padding:12px; margin-bottom:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+    <span><i class="icon ion-md-ribbon" aria-hidden="true"></i> <span id="creditsPassed">0</span> créditos aprobados</span> ·
+    <span><i class="icon ion-md-book" aria-hidden="true"></i> <span id="coursesPassed">0</span> cursos aprobados</span> ·
+    <span><i class="icon ion-md-checkmark-circle" aria-hidden="true"></i> <span id="eligibleNow">0</span> cursos habilitados ahora</span>
   </div>
 
   <details class="box" style="padding:12px; margin-bottom:16px;">
@@ -34,10 +34,10 @@ permalink: /programa-carrera/
     </ul>
   </details>
 
-  <h2>Bloques</h2>
+  <h2><i class="icon ion-md-cube" aria-hidden="true"></i> Bloques</h2>
   <div id="blocks" class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;"></div>
 
-  <h2 style="margin-top:28px;">Sugerencias de matrícula (próximo año)</h2>
+  <h2 style="margin-top:28px;"><i class="icon ion-md-calendar" aria-hidden="true"></i> Sugerencias de matrícula</h2>
   <div id="suggestions" class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;"></div>
 </div>
 
@@ -57,12 +57,23 @@ permalink: /programa-carrera/
     const catalog = new Map(); // code -> course {code,name,credits,prereqCodes,prereqBlocks,blockId,type}
     const blockMap = new Map(blocks.map(b=>[b.id,b]));
     const elecGroupByCourse = new Map(); // code -> {blockId, requiredCredits, codes}
+    const dependentsByCourse = new Map(); // prereqCode -> Set(of course codes that depend on it)
+    const dependentsByBlock = new Map();  // blockId -> Set(of course codes that require this block)
 
     function addCourse(c, blockId, type='req'){
       const pre = c.prerequisites||[];
       const prereqCodes = pre.filter(x=>!/^[A-Z]$/.test(x));
       const prereqBlocks = pre.filter(x=>/^[A-Z]$/.test(x));
       catalog.set(c.code, { ...c, prereqCodes, prereqBlocks, blockId, type });
+      // fill reverse deps as we know the course and its prereqs
+      prereqCodes.forEach(pc=>{
+        if (!dependentsByCourse.has(pc)) dependentsByCourse.set(pc, new Set());
+        dependentsByCourse.get(pc).add(c.code);
+      });
+      prereqBlocks.forEach(bid=>{
+        if (!dependentsByBlock.has(bid)) dependentsByBlock.set(bid, new Set());
+        dependentsByBlock.get(bid).add(c.code);
+      });
     }
 
     blocks.forEach(b=>{
@@ -77,7 +88,7 @@ permalink: /programa-carrera/
       });
     });
 
-    return {catalog, blockMap, elecGroupByCourse};
+    return {catalog, blockMap, elecGroupByCourse, dependentsByCourse, dependentsByBlock};
   }
 
   function blockSatisfied(blockId, catalog){
@@ -180,7 +191,7 @@ permalink: /programa-carrera/
 
     const plan = DATA.programs[currentPlanIdx];
     // Render blocks and courses
-    const {catalog, blockMap, elecGroupByCourse} = buildCatalog(plan);
+    const {catalog, blockMap, elecGroupByCourse, dependentsByCourse, dependentsByBlock} = buildCatalog(plan);
 
     const blocksDiv = $('#blocks');
     blocksDiv.innerHTML = '';
@@ -202,7 +213,7 @@ permalink: /programa-carrera/
           // Still need credits: show all options
           itemsHtml = groupCourses.map(c=>renderCourse(catalog.get(c.code), catalog)).join('');
         }
-        const info = `Electivas: ${group.name} · Tomar ${group.credits} créditos` + (passedCredits>0?` · Aprobadas: ${passedCredits}`:'');
+        const info = `<i class=\"icon ion-md-options\" aria-hidden=\"true\"></i> Electivas: ${group.name} · Tomar ${group.credits} créditos` + (passedCredits>0?` · <i class=\"icon ion-md-done-all\" aria-hidden=\"true\"></i> Aprobadas: ${passedCredits}`:'');
         return `<div class="group" style="margin-top:8px;">
           <div class="muted" style="font-size:0.9em;">${info}</div>
           ${itemsHtml}
@@ -256,7 +267,7 @@ permalink: /programa-carrera/
       const list = byLabel.get(p.label) || [];
       if (list.length===0) return;
       // Header per period
-      const header = p.kind==='quarter' ? `${p.label}` : `${p.label}`; // labels are already like Tn YYYY or Sn YYYY
+      const header = p.kind==='quarter' ? `<i class=\"icon ion-md-time\" aria-hidden=\"true\"></i> ${p.label}` : `<i class=\"icon ion-md-time\" aria-hidden=\"true\"></i> ${p.label}`; // labels are already like Tn YYYY or Sn YYYY
       const cards = list.map(renderCard).join('');
       sections.push(`<div class="period-group"><h3 style="margin:12px 0 6px;">${header}</h3>${cards}</div>`);
     });
@@ -272,8 +283,45 @@ permalink: /programa-carrera/
       el.addEventListener('click', ()=>{
         const code = el.dataset.code;
         if (passed.has(code)) {
-          // Unapprove only this course
-          passed.delete(code);
+          // Unapprove this course and any dependents that become invalid
+          function cascadeUnapprove(rootCode){
+            const queue = [rootCode];
+            const seen = new Set();
+            while (queue.length){
+              const cur = queue.shift();
+              if (seen.has(cur)) continue;
+              seen.add(cur);
+              // remove current
+              passed.delete(cur);
+              // For every course that lists cur as a direct prerequisite, check validity
+              const directDeps = Array.from((dependentsByCourse.get(cur)||new Set()));
+              directDeps.forEach(depCode=>{
+                const depCourse = catalog.get(depCode);
+                if (!depCourse) return;
+                if (passed.has(depCode) && !prerequisitesMet(depCourse, catalog)){
+                  queue.push(depCode);
+                }
+              });
+              // For every block that could have become unsatisfied because cur belonged to it
+              // find blocks where cur is a required course
+              const courseObj = catalog.get(cur);
+              if (courseObj){
+                const bId = courseObj.blockId;
+                // If unmarking cur makes its block unsatisfied, unmark all courses depending on that block
+                if (!blockSatisfied(bId, catalog)){
+                  const blockDeps = Array.from((dependentsByBlock.get(bId)||new Set()));
+                  blockDeps.forEach(depCode=>{
+                    const depCourse = catalog.get(depCode);
+                    if (!depCourse) return;
+                    if (passed.has(depCode) && !prerequisitesMet(depCourse, catalog)){
+                      queue.push(depCode);
+                    }
+                  });
+                }
+              }
+            }
+          }
+          cascadeUnapprove(code);
         } else {
           // Approve this course and all of its prerequisites (recursively)
           const toAdd = new Set([code]);
@@ -309,14 +357,15 @@ permalink: /programa-carrera/
     const done = passed.has(course.code);
     const prereqOk = prerequisitesMet(course, catalog);
     const avail = availabilityFor(course.code);
-    const badge = done? '✓ Aprobado' : (prereqOk? 'Habilitado' : 'Bloqueado');
+    const badgeIcon = done? '<i class="icon ion-md-checkmark-circle" aria-hidden="true"></i>' : (prereqOk? '<i class="icon ion-md-unlock" aria-hidden="true"></i>' : '<i class="icon ion-md-lock" aria-hidden="true"></i>');
+    const badge = (done? 'Aprobado' : (prereqOk? 'Habilitado' : 'Bloqueado'));
     const badgeColor = done? '#2e7d32' : (prereqOk? '#1565c0' : '#777');
     const avText = avail.quarters.length? `T${avail.quarters.join(', T')}`: (avail.semesters.length?`S${avail.semesters.join(', S')}`:'—');
     const style = `border:1px solid var(--border-color, #ddd); padding:8px; border-radius:8px; margin:6px 0; cursor:pointer;`;
     return `<div class="course" data-code="${course.code}" title="click para alternar aprobado" style="${style}">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
         <div><strong>${course.code}</strong> — ${course.name}</div>
-        <span style="font-size:12px; color:white; background:${badgeColor}; padding:2px 8px; border-radius:12px;">${badge}</span>
+        <span style="font-size:12px; color:white; background:${badgeColor}; padding:2px 8px; border-radius:12px; display:flex; align-items:center; gap:6px;">${badgeIcon} ${badge}</span>
       </div>
       <div class="muted" style="font-size:0.9em; margin-top:4px; display:flex; gap:8px; flex-wrap:wrap;">
         <span>${course.credits} cr</span>
@@ -329,13 +378,13 @@ permalink: /programa-carrera/
 
   function renderPrereqLine(course){
     const has = (course.prereqBlocks.length||course.prereqCodes.length);
-    if (!has) return '<span>Sin prerrequisitos</span>';
+    if (!has) return '<span><i class="icon ion-md-done-all" aria-hidden="true"></i> Sin prerrequisitos</span>';
     const blocks = course.prereqBlocks.map(b=>`Bloque ${b}`).join(', ');
     const codes = course.prereqCodes.join(', ');
     const parts = [];
     if (blocks) parts.push(blocks);
     if (codes) parts.push('Cursos: '+codes);
-    return `<span>Requiere: ${parts.join(' · ')}</span>`;
+    return `<span><i class="icon ion-md-git-branch" aria-hidden="true"></i> Requiere: ${parts.join(' · ')}</span>`;
   }
 
   // Select change handlers
