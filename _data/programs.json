@@ -54,10 +54,56 @@
     "05439": {"quarters": [1, 2, 3]},
     "05440": {"quarters": [1, 2, 3]},
     "05441": {"quarters": [1, 2, 3]},
-    "05442": {"quarters": [1, 2, 3]}
+    "05442": {"quarters": [1, 2, 3]},
+    "03454": {"semesters": [1]},
+    "03455": {"semesters": [1]},
+    "03457": {"semesters": [2]},
+    "03458": {"semesters": [2]},
+    "03459": {"semesters": [2]},
+    "03460": {"semesters": [1]},
+    "03461": {"semesters": [1, 2]}
+  },
+  "credentials": {
+    "MT1": {
+      "credits": 47,
+      "allOf": ["03463","00709","03421","03057","00767","02223","03423","03424","03425","03420","03427","03428","03429"],
+      "anyOf": [
+        {"requires": 3, "of": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]}
+      ]
+    },
+    "MT2": {
+      "credits": 64,
+      "allOf": ["03430","03431","03432","03433"],
+      "anyOf": [
+        {"requires": 1, "of": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]}
+      ],
+      "dependsOn": "MT1"
+    },
+    "MT3": {
+      "credits": 110,
+      "allOf": ["03434","03435","03436","03437","03438","03439","03440","03441","03422","03442","03448","03443","03446"],
+      "anyOf": [],
+      "dependsOn": "MT2"
+    },
+    "MT4": {
+      "credits": 144,
+      "allOf": ["03444","03445","03447","03449","03452","03453"],
+      "anyOf": [
+        {"requires": 3, "of": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]},
+        {"requires": 1, "of": ["03450","03451","03219"]}
+      ],
+      "dependsOn": "MT3"
+    },
+    "MT5": {
+      "credits": 30,
+      "allOf": ["03454","03455","03456","03457","03458","03459","03460","03461","03462"],
+      "anyOf": [],
+      "dependsOn": "MT4"
+    }
   },
   "programs": [
     {
+      "id": "B1",
       "name": "Transición 2025-2027",
       "degree": "Bachillerato",
       "blocks": [
@@ -65,7 +111,8 @@
           "id": "O",
           "name": "Bloque O",
           "courses": [
-            {"code": "03463", "name": "Matemática Introductoria", "credits": 3, "prerequisites": []}
+            {"code": "03463", "name": "Matemática Introductoria", "credits": 3, "prerequisites": []},
+            {"code": "05442", "name": "Procesos y Estrategias para el Aprendizaje a Distancia", "credits": 3, "prerequisites": []}
           ],
           "electives": [
             {
@@ -93,14 +140,7 @@
                 {"code": "00061", "name": "Lenguaje y Realidad Social", "credits": 3, "prerequisites": []},
                 {"code": "05413", "name": "Novela Hispanoamericana del Siglo XX", "credits": 3, "prerequisites": []}
               ]
-            },
-            {
-              "name": "Autorregulación y Aprendizaje",
-              "credits": 3,
-              "courses": [
-                {"code": "05442", "name": "Procesos y Estrategias para el Aprendizaje a Distancia", "credits": 3, "prerequisites": []}
-              ]
-            }
+            }            
           ]
         },
         {
@@ -242,6 +282,7 @@
       ]
     },
     {
+      "id": "B2",
       "name": "Plan Nuevo 2025",
       "degree": "Bachillerato",
       "blocks": [
@@ -423,8 +464,46 @@
           ]
         }
       ]
+    },
+    {
+      "id": "L1",
+      "name": "Plan 2025-2027",
+      "degree": "Licenciatura",
+      "blocks": [
+        {
+          "id": "L",
+          "name": "Bloque L",
+          "courses": [
+            {"code": "03454", "name": "Investigación en Educación Matemática II", "credits": 4, "prerequisites": []},
+            {"code": "03455", "name": "Diseño y Evaluación Curricular", "credits": 4, "prerequisites": []},
+            {"code": "03456", "name": "Probabilidad y Estadística II", "credits": 4, "prerequisites": []}
+          ]
+        },
+        {
+          "id": "M",
+          "name": "Bloque M",
+          "courses": [
+            {"code": "03457", "name": "Tendencias Didácticas en la Educación Matemática II", "credits": 4, "prerequisites": []},
+            {"code": "03458", "name": "Topología", "credits": 4, "prerequisites": []},
+            {"code": "03459", "name": "Producción de Materiales Didácticos", "credits": 4, "prerequisites": ["03455"]}
+          ]
+        },
+        {
+          "id": "N",
+          "name": "Bloque N",
+          "courses": [
+            {"code": "03460", "name": "Variable Compleja", "credits": 4, "prerequisites": []},
+            {"code": "03461", "name": "Taller de Investigación en Educación Matemática", "credits": 2, "prerequisites": ["L","M"]}
+          ]
+        },
+        {
+          "id": "O",
+          "name": "Bloque O y P",
+          "courses": [
+            {"code": "03462", "name": "Trabajo Final de Graduación en Enseñanza de la Matemática", "credits": 0, "prerequisites": ["03460","03461"]}
+          ]
+        }
+      ]
     }
   ]
-
-
 }
