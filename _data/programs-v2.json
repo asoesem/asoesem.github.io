@@ -14,7 +14,7 @@
       "code": "00060",
       "name": "Literatura Costarricense e Identidad Nacional",
       "credits": 3,
-      "categories": ["Humanidades", "Literatura"],
+      "categories": ["Humanidades", "Lengua y Literatura"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 3]
@@ -24,7 +24,7 @@
       "code": "00061",
       "name": "Lenguaje y Realidad Social",
       "credits": 3,
-      "categories": ["Humanidades", "Literatura"],
+      "categories": ["Humanidades", "Lengua y Literatura"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -44,7 +44,7 @@
       "code": "00076",
       "name": "Globalización y Ambiente",
       "credits": 3,
-      "categories": ["Ciencias Sociales", "Ambiente"],
+      "categories": ["Humanides", "Investigación Social y Ambiente"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -54,7 +54,7 @@
       "code": "00709",
       "name": "Comunicación Oral y Escrita",
       "credits": 3,
-      "categories": ["Comunicación", "Educación General"],
+      "categories": ["Comunicación", "Educación"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -94,7 +94,7 @@
       "code": "03219",
       "name": "Herramientas básicas de investigación",
       "credits": 3,
-      "categories": ["Investigación", "Metodología"],
+      "categories": ["Investigación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [3]
@@ -144,7 +144,7 @@
       "code": "03424",
       "name": "Psicopedagogía en la Enseñanza de la Matemática",
       "credits": 3,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 3]
@@ -154,7 +154,7 @@
       "code": "03425",
       "name": "Fundamentos Filosóficos para la Educación Matemática",
       "credits": 3,
-      "categories": ["Filosofía", "Educación Matemática"],
+      "categories": ["Filosofía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 3]
@@ -164,7 +164,7 @@
       "code": "03426",
       "name": "Currículo para la Enseñanza de la Matemática",
       "credits": 3,
-      "categories": ["Pedagogía", "Currículo"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2]
@@ -194,7 +194,7 @@
       "code": "03429",
       "name": "Recursos Didácticos para la Enseñanza de la Matemática",
       "credits": 3,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2]
@@ -204,7 +204,7 @@
       "code": "03430",
       "name": "Tendencias Didácticas en la Educación Matemática I",
       "credits": 3,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [2]
@@ -234,7 +234,7 @@
       "code": "03433",
       "name": "Didáctica de la Geometría, las Relaciones y el Álgebra",
       "credits": 3,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Intermedio",
       "availability": {
         "quarters": [2]
@@ -304,7 +304,7 @@
       "code": "03441",
       "name": "Didáctica de los Números, Incertidumbre y Datos",
       "credits": 3,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Avanzado",
       "availability": {
         "quarters": [1]
@@ -344,7 +344,7 @@
       "code": "03445",
       "name": "Métodos Numéricos",
       "credits": 4,
-      "categories": ["Matemáticas", "Computación"],
+      "categories": ["Matemáticas"],
       "level": "Avanzado",
       "availability": {
         "quarters": [3]
@@ -354,7 +354,7 @@
       "code": "03446",
       "name": "Práctica Docente para la Enseñanza de la Matemática",
       "credits": 6,
-      "categories": ["Pedagogía", "Práctica Profesional"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [1, 2]
@@ -424,7 +424,7 @@
       "code": "03453",
       "name": "Investigación en Educación Matemática I",
       "credits": 4,
-      "categories": ["Investigación", "Educación Matemática"],
+      "categories": ["Investigación", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [1, 2]
@@ -434,7 +434,7 @@
       "code": "03454",
       "name": "Investigación en Educación Matemática II",
       "credits": 4,
-      "categories": ["Investigación", "Educación Matemática"],
+      "categories": ["Investigación", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [1]
@@ -444,7 +444,7 @@
       "code": "03455",
       "name": "Diseño y Evaluación Curricular",
       "credits": 4,
-      "categories": ["Pedagogía", "Currículo"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [1]
@@ -464,7 +464,7 @@
       "code": "03457",
       "name": "Tendencias Didácticas en la Educación Matemática II",
       "credits": 4,
-      "categories": ["Pedagogía", "Educación Matemática"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [2]
@@ -484,7 +484,7 @@
       "code": "03459",
       "name": "Producción de Materiales Didácticos",
       "credits": 4,
-      "categories": ["Pedagogía", "Materiales"],
+      "categories": ["Pedagogía", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [2]
@@ -504,7 +504,7 @@
       "code": "03461",
       "name": "Taller de Investigación en Educación Matemática",
       "credits": 2,
-      "categories": ["Investigación", "Educación Matemática"],
+      "categories": ["Investigación", "Educación"],
       "level": "Avanzado",
       "availability": {
         "semesters": [1, 2]
@@ -524,7 +524,7 @@
       "code": "03463",
       "name": "Matemática Introductoria",
       "credits": 3,
-      "categories": ["Matemáticas", "Fundamentos"],
+      "categories": ["Matemáticas"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -534,7 +534,7 @@
       "code": "03475",
       "name": "Física I (Teoría)",
       "credits": 3,
-      "categories": ["Física", "Ciencias", "Matemáticas"],
+      "categories": ["Matemáticas"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -544,7 +544,7 @@
       "code": "05413",
       "name": "Novela Hispanoamericana del Siglo XX",
       "credits": 3,
-      "categories": ["Humanidades", "Literatura"],
+      "categories": ["Humanidades", "Lengua y Literatura"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2]
@@ -554,7 +554,7 @@
       "code": "05414",
       "name": "Perspectivas Sociológicas de la Realidad Costarricense",
       "credits": 3,
-      "categories": ["Ciencias Sociales", "Sociología"],
+      "categories": ["Humanidades", "Investigación Social y Ambiente"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -574,7 +574,7 @@
       "code": "05435",
       "name": "Introducción a la metodología de la investigación",
       "credits": 3,
-      "categories": ["Investigación", "Metodología"],
+      "categories": ["Humanidades","Investigación Social y Ambiente"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -584,7 +584,7 @@
       "code": "05436",
       "name": "Género y derechos humanos",
       "credits": 3,
-      "categories": ["Ciencias Sociales", "Derechos Humanos"],
+      "categories": ["Humanidades", "Estudios Culturales"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2]
@@ -594,7 +594,7 @@
       "code": "05437",
       "name": "Género y multiculturalismo en el arte contemporáneo",
       "credits": 3,
-      "categories": ["Ciencias Sociales", "Artes"],
+      "categories": ["Humanidades", "Estudios Culturales"],
       "level": "Intermedio",
       "availability": {
         "quarters": [2, 3]
@@ -604,7 +604,7 @@
       "code": "05438",
       "name": "Arte y realidad latinoamericana",
       "credits": 3,
-      "categories": ["Humanidades", "Artes"],
+      "categories": ["Humanidades", "Estudios Culturales"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -614,7 +614,7 @@
       "code": "05439",
       "name": "Arte y cultura popular costarricense",
       "credits": 3,
-      "categories": ["Humanidades", "Artes"],
+      "categories": ["Humanidades", "Estudios Culturales"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -624,7 +624,7 @@
       "code": "05440",
       "name": "Perspectivas Filosóficas de la Ciencia",
       "credits": 3,
-      "categories": ["Filosofía", "Ciencias"],
+      "categories": ["Humanidades","Filosofía", "Ciencias"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -634,7 +634,7 @@
       "code": "05441",
       "name": "Ética y Política",
       "credits": 3,
-      "categories": ["Filosofía", "Ética"],
+      "categories": ["Humanidades","Filosofía", "Ética"],
       "level": "Intermedio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -644,7 +644,7 @@
       "code": "05442",
       "name": "Procesos y Estrategias para el Aprendizaje a Distancia",
       "credits": 3,
-      "categories": ["Educación", "Educación a Distancia"],
+      "categories": ["Humanidades", "Autorregulación y Aprendizaje"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -653,14 +653,13 @@
   },
   "credentials": {
     "MT1": {
-      "name": "Credencial MT1",
+      "name": "MT1",
       "credits": 47,
       "requirements": {
         "allOf": ["03463","00709","03421","03057","00767","02223","03423","03424","03425","03420","03427","03428","03429"],
         "anyOf": [
           {
             "creditsRequired": 9,
-            "description": "3 cursos de las siguientes categorías",
             "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]
           }
         ]
@@ -668,14 +667,13 @@
       "dependsOn": null
     },
     "MT2": {
-      "name": "Credencial MT2", 
+      "name": "MT2", 
       "credits": 64,
       "requirements": {
         "allOf": ["03430","03431","03432","03433"],
         "anyOf": [
           {
             "creditsRequired": 3,
-            "description": "1 curso de las siguientes categorías",
             "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]
           }
         ]
@@ -683,7 +681,7 @@
       "dependsOn": "MT1"
     },
     "MT3": {
-      "name": "Credencial MT3",
+      "name": "MT3",
       "credits": 110, 
       "requirements": {
         "allOf": ["03434","03435","03436","03437","03475","03439","03440","03441","03422","03442","03448","03443","03446"],
@@ -692,7 +690,7 @@
       "dependsOn": "MT2"
     },
     "MT4": {
-      "name": "Credencial MT4",
+      "name": "MT4",
       "credits": 144,
       "requirements": {
         "allOf": ["03444","03445","03447","03449","03452","03453"],
@@ -712,7 +710,7 @@
       "dependsOn": "MT3"
     },
     "MT5": {
-      "name": "Credencial MT5",
+      "name": "MT5",
       "credits": 30,
       "requirements": {
         "allOf": ["03454","03455","03456","03457","03458","03459","03460","03461","03462"],
