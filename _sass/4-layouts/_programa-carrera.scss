@@ -34,4 +34,13 @@
     padding: 6px 10px;
     border-radius: 8px;
   }
+
+  .suggestions, .references {
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+  }
+
 }
