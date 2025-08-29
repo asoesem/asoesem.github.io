@@ -1,0 +1,1551 @@
+{
+  "courseCatalog": {
+    "00023": {
+      "code": "00023",
+      "name": "Historia de la Cultura",
+      "credits": 3,
+      "categories": ["Humanidades", "Historia"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "00060": {
+      "code": "00060",
+      "name": "Literatura Costarricense e Identidad Nacional",
+      "credits": 3,
+      "categories": ["Humanidades", "Literatura"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "00061": {
+      "code": "00061",
+      "name": "Lenguaje y Realidad Social",
+      "credits": 3,
+      "categories": ["Humanidades", "Literatura"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "00069": {
+      "code": "00069",
+      "name": "Historia de Costa Rica",
+      "credits": 3,
+      "categories": ["Humanidades", "Historia"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "00076": {
+      "code": "00076",
+      "name": "Globalización y Ambiente",
+      "credits": 3,
+      "categories": ["Ciencias Sociales", "Ambiente"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "00709": {
+      "code": "00709",
+      "name": "Comunicación Oral y Escrita",
+      "credits": 3,
+      "categories": ["Comunicación", "Educación General"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "00767": {
+      "code": "00767",
+      "name": "Introducción a la Pedagogía",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "02223": {
+      "code": "02223",
+      "name": "Inglés Instrumental para Educadores I",
+      "credits": 3,
+      "categories": ["Idiomas", "Educación"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "03057": {
+      "code": "03057",
+      "name": "Elementos Básicos de Psicología del Adolescente",
+      "credits": 3,
+      "categories": ["Psicología", "Educación"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "03219": {
+      "code": "03219",
+      "name": "Herramientas básicas de investigación",
+      "credits": 3,
+      "categories": ["Investigación", "Metodología"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03420": {
+      "code": "03420",
+      "name": "Geometría Euclídea I",
+      "credits": 4,
+      "categories": ["Matemáticas", "Geometría"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "03421": {
+      "code": "03421",
+      "name": "Álgebra y Funciones",
+      "credits": 3,
+      "categories": ["Matemáticas", "Álgebra"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "03422": {
+      "code": "03422",
+      "name": "Geometría Euclídea II",
+      "credits": 4,
+      "categories": ["Matemáticas", "Geometría"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03423": {
+      "code": "03423",
+      "name": "Lógica y Teoría de Conjuntos",
+      "credits": 3,
+      "categories": ["Matemáticas", "Lógica"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03424": {
+      "code": "03424",
+      "name": "Psicopedagogía en la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03425": {
+      "code": "03425",
+      "name": "Fundamentos Filosóficos para la Educación Matemática",
+      "credits": 3,
+      "categories": ["Filosofía", "Educación Matemática"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03426": {
+      "code": "03426",
+      "name": "Currículo para la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Currículo"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "03427": {
+      "code": "03427",
+      "name": "Cálculo Diferencial",
+      "credits": 4,
+      "categories": ["Matemáticas", "Cálculo"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1]
+      }
+    },
+    "03428": {
+      "code": "03428",
+      "name": "Herramientas Multimediales I",
+      "credits": 3,
+      "categories": ["Tecnología", "Educación"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "03429": {
+      "code": "03429",
+      "name": "Recursos Didácticos para la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "03430": {
+      "code": "03430",
+      "name": "Tendencias Didácticas en la Educación Matemática I",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2]
+      }
+    },
+    "03431": {
+      "code": "03431",
+      "name": "Cálculo Integral",
+      "credits": 4,
+      "categories": ["Matemáticas", "Cálculo"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2]
+      }
+    },
+    "03432": {
+      "code": "03432",
+      "name": "Álgebra Lineal",
+      "credits": 4,
+      "categories": ["Matemáticas", "Álgebra"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2]
+      }
+    },
+    "03433": {
+      "code": "03433",
+      "name": "Didáctica de la Geometría, las Relaciones y el Álgebra",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2]
+      }
+    },
+    "03434": {
+      "code": "03434",
+      "name": "Probabilidad y Estadística I",
+      "credits": 4,
+      "categories": ["Matemáticas", "Estadística"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03435": {
+      "code": "03435",
+      "name": "Geometría Analítica",
+      "credits": 4,
+      "categories": ["Matemáticas", "Geometría"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03436": {
+      "code": "03436",
+      "name": "Legislación Educativa",
+      "credits": 3,
+      "categories": ["Derecho", "Educación"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "03437": {
+      "code": "03437",
+      "name": "Planeamiento Didáctico para la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Planificación"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "03439": {
+      "code": "03439",
+      "name": "Ecuaciones Diferenciales",
+      "credits": 4,
+      "categories": ["Matemáticas", "Cálculo"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1]
+      }
+    },
+    "03440": {
+      "code": "03440",
+      "name": "Evaluación de los Aprendizajes para la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Evaluación"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03441": {
+      "code": "03441",
+      "name": "Didáctica de los Números, Incertidumbre y Datos",
+      "credits": 3,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1]
+      }
+    },
+    "03442": {
+      "code": "03442",
+      "name": "Introducción a la Teoría de los Números",
+      "credits": 3,
+      "categories": ["Matemáticas", "Teoría de Números"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "03443": {
+      "code": "03443",
+      "name": "Metodología de la Enseñanza de la Matemática",
+      "credits": 3,
+      "categories": ["Pedagogía", "Metodología"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03444": {
+      "code": "03444",
+      "name": "Historia y Filosofía de la Matemática",
+      "credits": 3,
+      "categories": ["Matemáticas", "Filosofía", "Historia"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03445": {
+      "code": "03445",
+      "name": "Métodos Numéricos",
+      "credits": 4,
+      "categories": ["Matemáticas", "Computación"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [3]
+      }
+    },
+    "03446": {
+      "code": "03446",
+      "name": "Práctica Docente para la Enseñanza de la Matemática",
+      "credits": 6,
+      "categories": ["Pedagogía", "Práctica Profesional"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1, 2]
+      }
+    },
+    "03447": {
+      "code": "03447",
+      "name": "Cálculo Superior",
+      "credits": 4,
+      "categories": ["Matemáticas", "Cálculo"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03448": {
+      "code": "03448",
+      "name": "Herramientas Multimediales II",
+      "credits": 3,
+      "categories": ["Tecnología", "Educación"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1]
+      }
+    },
+    "03449": {
+      "code": "03449",
+      "name": "Álgebra Moderna",
+      "credits": 5,
+      "categories": ["Matemáticas", "Álgebra"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "03450": {
+      "code": "03450",
+      "name": "Construcciones Geométricas",
+      "credits": 3,
+      "categories": ["Matemáticas", "Geometría"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1]
+      }
+    },
+    "03451": {
+      "code": "03451",
+      "name": "Geometrías no Euclídeas",
+      "credits": 3,
+      "categories": ["Matemáticas", "Geometría"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [2]
+      }
+    },
+    "03452": {
+      "code": "03452",
+      "name": "Análisis Real",
+      "credits": 5,
+      "categories": ["Matemáticas", "Análisis"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 3]
+      }
+    },
+    "03453": {
+      "code": "03453",
+      "name": "Investigación en Educación Matemática I",
+      "credits": 4,
+      "categories": ["Investigación", "Educación Matemática"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1, 2]
+      }
+    },
+    "03454": {
+      "code": "03454",
+      "name": "Investigación en Educación Matemática II",
+      "credits": 4,
+      "categories": ["Investigación", "Educación Matemática"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1]
+      }
+    },
+    "03455": {
+      "code": "03455",
+      "name": "Diseño y Evaluación Curricular",
+      "credits": 4,
+      "categories": ["Pedagogía", "Currículo"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1]
+      }
+    },
+    "03456": {
+      "code": "03456",
+      "name": "Probabilidad y Estadística II",
+      "credits": 4,
+      "categories": ["Matemáticas", "Estadística"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "03457": {
+      "code": "03457",
+      "name": "Tendencias Didácticas en la Educación Matemática II",
+      "credits": 4,
+      "categories": ["Pedagogía", "Educación Matemática"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [2]
+      }
+    },
+    "03458": {
+      "code": "03458",
+      "name": "Topología",
+      "credits": 4,
+      "categories": ["Matemáticas", "Topología"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [2]
+      }
+    },
+    "03459": {
+      "code": "03459",
+      "name": "Producción de Materiales Didácticos",
+      "credits": 4,
+      "categories": ["Pedagogía", "Materiales"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [2]
+      }
+    },
+    "03460": {
+      "code": "03460",
+      "name": "Variable Compleja",
+      "credits": 4,
+      "categories": ["Matemáticas", "Análisis"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1]
+      }
+    },
+    "03461": {
+      "code": "03461",
+      "name": "Taller de Investigación en Educación Matemática",
+      "credits": 2,
+      "categories": ["Investigación", "Educación Matemática"],
+      "level": "Avanzado",
+      "availability": {
+        "semesters": [1, 2]
+      }
+    },
+    "03462": {
+      "code": "03462",
+      "name": "Trabajo Final de Graduación en Enseñanza de la Matemática",
+      "credits": 0,
+      "categories": ["Investigación", "Tesis"],
+      "level": "Avanzado",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "03463": {
+      "code": "03463",
+      "name": "Matemática Introductoria",
+      "credits": 3,
+      "categories": ["Matemáticas", "Fundamentos"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "03475": {
+      "code": "03475",
+      "name": "Física I (Teoría)",
+      "credits": 3,
+      "categories": ["Física", "Ciencias", "Matemáticas"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05413": {
+      "code": "05413",
+      "name": "Novela Hispanoamericana del Siglo XX",
+      "credits": 3,
+      "categories": ["Humanidades", "Literatura"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "05414": {
+      "code": "05414",
+      "name": "Perspectivas Sociológicas de la Realidad Costarricense",
+      "credits": 3,
+      "categories": ["Ciencias Sociales", "Sociología"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05427": {
+      "code": "05427",
+      "name": "Historia Latinoamericana en Perspectiva Centroamericana",
+      "credits": 3,
+      "categories": ["Humanidades", "Historia"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "05435": {
+      "code": "05435",
+      "name": "Introducción a la metodología de la investigación",
+      "credits": 3,
+      "categories": ["Investigación", "Metodología"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05436": {
+      "code": "05436",
+      "name": "Género y derechos humanos",
+      "credits": 3,
+      "categories": ["Ciencias Sociales", "Derechos Humanos"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2]
+      }
+    },
+    "05437": {
+      "code": "05437",
+      "name": "Género y multiculturalismo en el arte contemporáneo",
+      "credits": 3,
+      "categories": ["Ciencias Sociales", "Artes"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [2, 3]
+      }
+    },
+    "05438": {
+      "code": "05438",
+      "name": "Arte y realidad latinoamericana",
+      "credits": 3,
+      "categories": ["Humanidades", "Artes"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05439": {
+      "code": "05439",
+      "name": "Arte y cultura popular costarricense",
+      "credits": 3,
+      "categories": ["Humanidades", "Artes"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05440": {
+      "code": "05440",
+      "name": "Perspectivas Filosóficas de la Ciencia",
+      "credits": 3,
+      "categories": ["Filosofía", "Ciencias"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05441": {
+      "code": "05441",
+      "name": "Ética y Política",
+      "credits": 3,
+      "categories": ["Filosofía", "Ética"],
+      "level": "Intermedio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    },
+    "05442": {
+      "code": "05442",
+      "name": "Procesos y Estrategias para el Aprendizaje a Distancia",
+      "credits": 3,
+      "categories": ["Educación", "Educación a Distancia"],
+      "level": "Introductorio",
+      "availability": {
+        "quarters": [1, 2, 3]
+      }
+    }
+  },
+  "programs": [
+    {
+      "id": "B1",
+      "name": "Transición 2025-2027",
+      "degree": "Bachillerato",
+      "blocks": [
+        {
+          "id": "O",
+          "name": "Bloque O",
+          "courses": [
+            {
+              "courseCode": "03463",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "05442",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Filosofía y Pensamiento",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Filosofía"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["05441", "05440"]
+                }
+              ]
+            },
+            {
+              "name": "Historia",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Historia"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00069", "00023", "05427"]
+                }
+              ]
+            },
+            {
+              "name": "Lengua y Literatura",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Literatura"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00060", "00061", "05413"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A",
+          "name": "Bloque A",
+          "courses": [
+            {
+              "courseCode": "03420",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03463"]
+              }
+            },
+            {
+              "courseCode": "03421",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03463"]
+              }
+            },
+            {
+              "courseCode": "00767",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03057",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "name": "Bloque B",
+          "courses": [
+            {
+              "courseCode": "03422",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03420"]
+              }
+            },
+            {
+              "courseCode": "03423",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03421"]
+              }
+            },
+            {
+              "courseCode": "03424",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03425",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "name": "Bloque C",
+          "courses": [
+            {
+              "courseCode": "03426",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03427",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03423"]
+              }
+            },
+            {
+              "courseCode": "03428",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03423"]
+              }
+            },
+            {
+              "courseCode": "03429",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "name": "Bloque D",
+          "courses": [
+            {
+              "courseCode": "03430",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03431",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03427"]
+              }
+            },
+            {
+              "courseCode": "03432",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03427"]
+              }
+            },
+            {
+              "courseCode": "03433",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03422", "03423"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "E",
+          "name": "Bloque E",
+          "courses": [
+            {
+              "courseCode": "03434",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03435",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03436",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03437",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03426"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "F",
+          "name": "Bloque F",
+          "courses": [
+            {
+              "courseCode": "03475",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03439",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03440",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03437"]
+              }
+            },
+            {
+              "courseCode": "03441",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03434"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "G",
+          "name": "Bloque G",
+          "courses": [
+            {
+              "courseCode": "00709",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03442",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03443",
+              "prerequisites": {
+                "type": "blocks",
+                "blocks": ["A", "B", "C", "D", "E", "F"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "H",
+          "name": "Bloque H",
+          "courses": [
+            {
+              "courseCode": "03444",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03445",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03439"]
+              }
+            },
+            {
+              "courseCode": "03446",
+              "prerequisites": {
+                "type": "blocks",
+                "blocks": ["A", "B", "C", "D", "E", "F", "G"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "I",
+          "name": "Bloque I",
+          "courses": [
+            {
+              "courseCode": "03447",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03432", "03435"]
+              }
+            },
+            {
+              "courseCode": "03448",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03437"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Estudios Culturales",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Ciencias Sociales"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["05437", "05436", "05438", "05439"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "J",
+          "name": "Bloque J",
+          "courses": [
+            {
+              "courseCode": "03449",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03447"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Electivas Matemáticas",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Matemáticas", "Investigación"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["03451", "03450", "03219"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K",
+          "name": "Bloque K",
+          "courses": [
+            {
+              "courseCode": "03452",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03447"]
+              }
+            },
+            {
+              "courseCode": "03453",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03446"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Investigación Social y Ambiente",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Ciencias Sociales", "Ambiente", "Investigación"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00076", "05435", "05414"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "Plan Nuevo 2025",
+      "degree": "Bachillerato",
+      "blocks": [
+        {
+          "id": "O",
+          "name": "Bloque O",
+          "courses": [
+            {
+              "courseCode": "03463",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Filosofía y Pensamiento",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Filosofía"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["05441", "05440"]
+                }
+              ]
+            },
+            {
+              "name": "Historia",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Historia"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00069", "00023", "05427"]
+                }
+              ]
+            },
+            {
+              "name": "Lengua y Literatura",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Literatura"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00060", "00061", "05413"]
+                }
+              ]
+            },
+            {
+              "name": "Autorregulación y Aprendizaje",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Educación a Distancia"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["05442"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A",
+          "name": "Bloque A",
+          "courses": [
+            {
+              "courseCode": "00709",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03421",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03463"]
+              }
+            },
+            {
+              "courseCode": "00767",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03057",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "name": "Bloque B",
+          "courses": [
+            {
+              "courseCode": "02223",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03423",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03421"]
+              }
+            },
+            {
+              "courseCode": "03424",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03425",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "name": "Bloque C",
+          "courses": [
+            {
+              "courseCode": "03420",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03423"]
+              }
+            },
+            {
+              "courseCode": "03427",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03423"]
+              }
+            },
+            {
+              "courseCode": "03428",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03423"]
+              }
+            },
+            {
+              "courseCode": "03429",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "name": "Bloque D",
+          "courses": [
+            {
+              "courseCode": "03430",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03431",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03427"]
+              }
+            },
+            {
+              "courseCode": "03432",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03427"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "E",
+          "name": "Bloque E",
+          "courses": [
+            {
+              "courseCode": "03434",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03435",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03436",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03433",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03420", "03423", "03430"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "F",
+          "name": "Bloque F",
+          "courses": [
+            {
+              "courseCode": "03475",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03439",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03437",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03433"]
+              }
+            },
+            {
+              "courseCode": "03441",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03433", "03434"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "G",
+          "name": "Bloque G",
+          "courses": [
+            {
+              "courseCode": "03422",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03420"]
+              }
+            },
+            {
+              "courseCode": "03442",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03448",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03437"]
+              }
+            },
+            {
+              "courseCode": "03440",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03437"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "H",
+          "name": "Bloque H",
+          "courses": [
+            {
+              "courseCode": "03444",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03431"]
+              }
+            },
+            {
+              "courseCode": "03445",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03439"]
+              }
+            },
+            {
+              "courseCode": "03443",
+              "prerequisites": {
+                "type": "blocks",
+                "blocks": ["A", "B", "C", "D", "E", "F", "G"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "I",
+          "name": "Bloque I",
+          "courses": [
+            {
+              "courseCode": "03447",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03432", "03435"]
+              }
+            },
+            {
+              "courseCode": "03446",
+              "prerequisites": {
+                "type": "blocks",
+                "blocks": ["A", "B", "C", "D", "E", "F", "G", "H"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Estudios Culturales",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Ciencias Sociales"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["05437", "05436", "05438", "05439"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "J",
+          "name": "Bloque J",
+          "courses": [
+            {
+              "courseCode": "03449",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03447"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Electivas Matemáticas",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Matemáticas", "Investigación"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["03451", "03450", "03219"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K",
+          "name": "Bloque K",
+          "courses": [
+            {
+              "courseCode": "03452",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03447"]
+              }
+            },
+            {
+              "courseCode": "03453",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03446"]
+              }
+            }
+          ],
+          "electives": [
+            {
+              "name": "Investigación Social y Ambiente",
+              "creditsRequired": 3,
+              "categoryRequirements": [
+                {
+                  "categories": ["Ciencias Sociales", "Ambiente", "Investigación"],
+                  "creditsRequired": 3,
+                  "availableCourses": ["00076", "05435", "05414"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "name": "Plan 2025-2027",
+      "degree": "Licenciatura",
+      "blocks": [
+        {
+          "id": "L",
+          "name": "Bloque L",
+          "courses": [
+            {
+              "courseCode": "03454",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03455",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03456",
+              "prerequisites": {
+                "type": "none"
+              }
+            }
+          ]
+        },
+        {
+          "id": "M",
+          "name": "Bloque M",
+          "courses": [
+            {
+              "courseCode": "03457",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03458",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03459",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03455"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "N",
+          "name": "Bloque N",
+          "courses": [
+            {
+              "courseCode": "03460",
+              "prerequisites": {
+                "type": "none"
+              }
+            },
+            {
+              "courseCode": "03461",
+              "prerequisites": {
+                "type": "blocks",
+                "blocks": ["L", "M"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "O",
+          "name": "Bloque O y P",
+          "courses": [
+            {
+              "courseCode": "03462",
+              "prerequisites": {
+                "type": "courses",
+                "courses": ["03460", "03461"]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
