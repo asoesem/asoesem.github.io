@@ -655,68 +655,117 @@
     "MT1": {
       "name": "MT1",
       "credits": 47,
-      "requirements": {
-        "allOf": ["03463","00709","03421","03057","00767","02223","03423","03424","03425","03420","03427","03428","03429"],
-        "anyOf": [
+      "rules": {
+        "type": "and",
+        "conditions": [
           {
-            "creditsRequired": 9,
-            "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]
+            "type": "courses",
+            "operator": "all",
+            "courses": ["03463","00709","03421","03057","00767","02223","03423","03424","03425","03420","03427","03428","03429"]
+          },
+          {
+            "type": "categories",
+            "operator": "credits",
+            "categories": ["Humanidades"],
+            "creditsRequired": 9
           }
         ]
-      },
-      "dependsOn": null
+      }
     },
     "MT2": {
       "name": "MT2", 
       "credits": 64,
-      "requirements": {
-        "allOf": ["03430","03431","03432","03433"],
-        "anyOf": [
+      "rules": {
+        "type": "and",
+        "conditions": [
           {
-            "creditsRequired": 3,
-            "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]
+            "type": "credentials",
+            "operator": "all",
+            "credentials": ["MT1"]
+          },
+          {
+            "type": "courses",
+            "operator": "all",
+            "courses": ["03430","03431","03432","03433"]
+          },
+          {
+            "type": "categories",
+            "operator": "credits",
+            "categories": ["Humanidades"],
+            "creditsRequired": 3
           }
         ]
-      },
-      "dependsOn": "MT1"
+      }
     },
     "MT3": {
       "name": "MT3",
-      "credits": 110, 
-      "requirements": {
-        "allOf": ["03434","03435","03436","03437","03475","03439","03440","03441","03422","03442","03448","03443","03446"],
-        "anyOf": []
-      },
-      "dependsOn": "MT2"
+      "credits": 110,
+      "rules": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "credentials",
+            "operator": "all",
+            "credentials": ["MT2"]
+          },
+          {
+            "type": "courses",
+            "operator": "all",
+            "courses": ["03434","03435","03436","03437","03475","03439","03440","03441","03422","03442","03448","03443","03446"]
+          }
+        ]
+      }
     },
     "MT4": {
       "name": "MT4",
       "credits": 144,
-      "requirements": {
-        "allOf": ["03444","03445","03447","03449","03452","03453"],
-        "anyOf": [
+      "rules": {
+        "type": "and",
+        "conditions": [
           {
+            "type": "credentials",
+            "operator": "all",
+            "credentials": ["MT3"]
+          },
+          {
+            "type": "courses",
+            "operator": "all",
+            "courses": ["03444","03445","03447","03449","03452","03453"]
+          },
+          {
+            "type": "categories",
+            "operator": "credits",
+            "categories": ["Humanidades"],
             "creditsRequired": 9,
-            "description": "3 cursos de las siguientes categorías",
             "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"]
           },
           {
+            "type": "courses",
+            "operator": "credits",
             "creditsRequired": 3,
-            "description": "1 curso de electivas matemáticas",
             "availableCourses": ["03450","03451","03219"]
           }
         ]
-      },
-      "dependsOn": "MT3"
+      }
     },
     "MT5": {
       "name": "MT5",
       "credits": 30,
-      "requirements": {
-        "allOf": ["03454","03455","03456","03457","03458","03459","03460","03461","03462"],
-        "anyOf": []
-      },
-      "dependsOn": "MT4"
+      "rules": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "credentials",
+            "operator": "all", 
+            "credentials": ["MT4"]
+          },
+          {
+            "type": "courses",
+            "operator": "all",
+            "courses": ["03454","03455","03456","03457","03458","03459","03460","03461","03462"]
+          }
+        ]
+      }
     }
   },
   "programs": [
