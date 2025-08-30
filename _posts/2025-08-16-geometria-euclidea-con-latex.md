@@ -15,11 +15,11 @@ Esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría
 Los ejemplos aquí desarrollados son parte de una [presentación sobre geometría euclídea][1] para la edición del 2025 del 
 Congreso Nacional de Ciencia, Tecnología y Sociedad ([CONCITES][0]). 
 
-Abajo encontrarás una base de datos que contiene alrededor de 50 diferentes ejemplos básicos de diferentes tipos de 
+Abajo encontrarás una base de datos que contiene alrededor de 51 diferentes ejemplos básicos de diferentes tipos de 
 diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 
 
-Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, etc.) 
+Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, baricentro, etc.) 
 y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres ver todos los ejemplos uno por uno puedes escribir ejemplo1, ejemplo2, etc.
 
 <div class="tkz-search">

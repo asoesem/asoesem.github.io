@@ -1,8 +1,8 @@
 ---
 id: tkz-euclide-ejemplo-41
-title: "Tangente a un Punto del Círculo"
-description: "Traza la tangente a una circunferencia por un punto y marca su perpendicularidad con el radio."
-keywords: [tangente, circulo, circunferencia, perpendicular, radio]
+title: "Círculo por Tres Puntos"
+description: "Dibuja la circunferencia circunscrita a un triángulo y muestra su centro y radio."
+keywords: [circunferencia, circulo, circunscrita, centro, radio, triangulo]
 tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
 sort: 41
 ---
@@ -12,31 +12,28 @@ sort: 41
 
 \begin{document}
     \begin{tikzpicture}
-        % Define los extremos A y B de un diámetro.
+        % Define tres puntos no colineales A, B y C.
         \tkzDefPoints{
             0/0/A,
-            6/0/B%
+            3/0/B,
+            2/3/C%
         }
     
-        % Construye el círculo de diámetro AB y recupera su centro O.
-        \tkzDefCircle[diameter](A,B)
+        % Define el círculo circunscrito al triángulo ABC y obtiene su centro O.
+        \tkzDefCircle[circum](A,B,C)
             \tkzGetFirstPoint{O}
     
-        % Calcula la recta tangente al círculo en el punto B.
-        \tkzDefLine[tangent at=B](O)
-            \tkzGetPoint{C}
+        % Dibuja los puntos A, B, C y el centro O.
+        \tkzDrawPoints(A,B,C,O)
     
-        % Dibuja la tangente por B y el radio OB, y marca el ángulo recto B.
-        \tkzDrawLine[Stealth-Stealth,add = 3 and 2](B,C)
-        \tkzDrawSegment(O,B)
+        % Dibuja el círculo circunscrito (radio OA) y muestra el radio OA punteado.
+        \tkzDrawCircle(O,A)
+        \tkzDrawSegment[dashed,gray](O,A)
+        \tkzLabelSegment[above](O,A){$r$}
     
-        % Marca el ángulo recto
-        \tkzMarkRightAngle[fill=teal!30](O,B,C)
-    
-        % Dibuja el círculo y etiqueta los puntos.
-        \tkzDrawPoints(O,B)
-        \tkzDrawCircle(O,B)
-        \tkzLabelPoints[below](O)
+        % Etiquetas de puntos.
+        \tkzLabelPoints[left](A)
         \tkzLabelPoints[right](B)
+        \tkzLabelPoints[above](O,C)
     \end{tikzpicture}
 \end{document}

@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-45
-title: "Semicírculo"
-description: "Dibuja dos semicírculos de un mismo diámetro en sentidos opuestos."
-keywords: [semicirculo, semicircunferencia, diametro, centro]
-tags: [tkzDrawSemiCircle]
+title: "Intersección Círculo-Cículo"
+description: "Determina los puntos de intersección de dos circunferencias."
+keywords: [interseccion, circunferencias, circulo, puntos]
+tags: [tkzDrawCircle, tkzInterCC,tkzGetPoints]
 sort: 45
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,18 +12,24 @@ sort: 45
 
 \begin{document}
     \begin{tikzpicture}
-        % Define los extremos A y B de un segmento y su punto medio O.
-        \tkzDefPoint(0,0){A}
-        \tkzDefPoint(6,0){B}
-        \tkzDefMidPoint(A,B)
-        \tkzGetPoint{O}
+        % Define dos puntos A y B que servirán como centros/radios cruzados.
+        \tkzDefPoints{
+            0  /0  /A,
+            3  /0  /B%
+        }
     
-        % Dibuja dos semicírculos con centro en O: uno hacia B (azul) y otro hacia A (rojo).
-        \tkzDrawSemiCircle[blue](O,B)
-        \tkzDrawSemiCircle[red](O,A)
+        % Dibuja dos circunferencias: una con centro A pasando por B (roja)
+        % y otra con centro B pasando por A (azul).
+        \tkzDrawCircle[red](A,B)
+        \tkzDrawCircle[blue](B,A)
     
-        % Dibuja y etiqueta los puntos.
-        \tkzDrawPoints(O,A,B)
-        \tkzLabelPoints[below right](O,A,B)
+        % Calcula los puntos de intersección C y D de ambas circunferencias.
+        \tkzInterCC(A,B)(B,A)
+            \tkzGetPoints{C}{D}
+    
+        % Dibuja y etiqueta los puntos de intersección.
+        \tkzDrawPoints(C,D)
+        \tkzLabelPoints[above,font=\scriptsize](C)
+        \tkzLabelPoints[below,font=\scriptsize](D)
     \end{tikzpicture}
 \end{document}

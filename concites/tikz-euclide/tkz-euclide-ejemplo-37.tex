@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-37
-title: "Círculo por Dos Puntos"
-description: "Dibuja una circunferencia dados su centro y un punto sobre ella; muestra el radio."
-keywords: [circunferencia, circulo, centro, radio]
-tags: [tkzDrawCircle]
+title: "Sectores Poligonales"
+description: "Dibuja y colorea varios sectores circulares consecutivos de un mismo radio."
+keywords: [sectores, circulares, radio, relleno, colores]
+tags: [tkzDrawSector, tkzFillSector]
 sort: 37
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,21 +12,20 @@ sort: 37
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro A y un punto B sobre la circunferencia.
-        \tkzDefPoints{
-            0/0/A,
-            3/0/B%
-        }
-        % Dibuja los puntos y el círculo de centro A y radio AB.
-        \tkzDrawPoints(A,B)
-        \tkzDrawCircle(A,B)
+        % Define el centro O del círculo y un punto auxiliar A (opcional).
+        \tkzDefPoint(0,0){O}
+        \tkzDefPoint[shift={(0,0)}](30:2){A}
     
-        % Muestra el radio AB como segmento punteado y lo etiqueta con r.
-        \tkzDrawSegment[dashed,gray](A,B)
-        \tkzLabelSegment[above](A,B){$r$}
+        % Dibuja cuatro sectores circulares (cuadrantes) de radio 2.
+        \tkzDrawSector[R](O,2)(30,90)
+        \tkzDrawSector[R](O,2)(90,180)
+        \tkzDrawSector[R](O,2)(180,270)
+        \tkzDrawSector[R](O,2)(270,360)
     
-        % Etiquetas de los puntos.
-        \tkzLabelPoints[below](A)
-        \tkzLabelPoints[right](B)
+        % Rellena cada sector con un color distinto.
+        \tkzFillSector[R,fill=red!20](O,2)(30,90)
+        \tkzFillSector[R,fill=green!20](O,2)(90,180)
+        \tkzFillSector[R,fill=yellow!20](O,2)(180,270)
+        \tkzFillSector[R,fill=blue!20](O,2)(270,360)
     \end{tikzpicture}
 \end{document}

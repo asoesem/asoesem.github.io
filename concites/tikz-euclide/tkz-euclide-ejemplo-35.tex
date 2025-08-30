@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-35
-title: "Polígono Regular"
-description: "Genera y dibuja un polígono regular (hexágono) dado su centro y un punto inicial."
-keywords: [poligono-regular, hexagono, centro, vertices]
-tags: [tkzDefRegPolygon, tkzDrawPolygon]
+title: "Paralelogramo"
+description: "Construye un paralelogramo a partir de tres vértices y dibuja la figura completa."
+keywords: [paralelogramo, construccion, poligono]
+tags: [tkzDefParallelogram, tkzDrawPolygon, tkzGetPoint]
 sort: 35
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,22 +12,19 @@ sort: 35
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro O y un punto P1 sobre el círculo circunscrito.
-        \tkzDefPoints{0/0/O,0/3/P1}
+        % Define tres vértices A, B y C para determinar un paralelogramo.
+        \tkzDefPoints{0/0/A,3/0/B,4/2/C}
     
-        % Construye un hexágono regular con centro O, comenzando en P1.
-        \tkzDefRegPolygon[center,sides=6](O,P1)
-        \tkzDrawPolygon(P1,P...,P6)
+        % Construye el paralelogramo ABCD y obtiene D.
+        \tkzDefParallelogram(A,B,C)
+        \tkzGetPoint{D}
     
-        % Etiqueta los vértices del polígono regular alrededor.
-        \tkzLabelPoints[above](P1)
-        \tkzLabelPoints[above left](P2)
-        \tkzLabelPoints[above right](P6)
-        \tkzLabelPoints[below left](P3)
-        \tkzLabelPoints[below](P4)
-        \tkzLabelPoints[below right](P5)
+        % Dibuja el polígono ABCD y sus puntos.
+        \tkzDrawPolygon(A,...,D)
+        \tkzDrawPoints(A,...,D)
     
-        % Dibuja los puntos del polígono.
-        \tkzDrawPoints(P1,P...,P6)
+        % Etiqueta los vértices.
+        \tkzLabelPoints(A,B)
+        \tkzLabelPoints[above right](C,D)
     \end{tikzpicture}
 \end{document}

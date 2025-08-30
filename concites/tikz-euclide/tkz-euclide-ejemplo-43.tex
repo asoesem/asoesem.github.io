@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-43
-title: "Intersección Recta-Círculo"
-description: "Calcula la intersección de una recta con una circunferencia y dibuja la cuerda entre puntos de corte."
-keywords: [interseccion, recta, circunferencia, circulo, cuerda]
-tags: [tkzDrawCircle, tkzInterLC,tkzGetPoints]
+title: "Punto en Circunferencia"
+description: "Localiza un punto sobre la circunferencia a un ángulo dado y dibuja los radios correspondientes."
+keywords: [circunferencia, circulo, punto, angulo, radios]
+tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
 sort: 43
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,25 +12,29 @@ sort: 43
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro O de un círculo, un punto R para su radio,
-        % y dos puntos A y B que determinan una recta.
+        % Define un diámetro AB y su círculo asociado (centro O).
         \tkzDefPoints{
-            0  /0  /O,
-            3  /0  /R,
-            0  /1  /A,
-            1  /0  /B%
+            0/0/A,
+            6/0/B%
         }
     
-        % Dibuja el círculo con centro O y punto sobre la circunferencia R.
-        \tkzDrawCircle(O,R)
+        % Construye el círculo de diámetro AB y obtiene el centro O.
+        \tkzDefCircle[diameter](A,B)
+            \tkzGetFirstPoint{O}
     
-        % Calcula los puntos de intersección C y D entre la recta AB y el círculo.
-        \tkzInterLC(A,B)(O,R)
-            \tkzGetPoints{C}{D}
+        % Toma un punto C sobre el círculo a 45° desde el punto B.
+        \tkzDefPointOnCircle[through=center O angle 45 point B]
+        \tkzGetPoint{C}
+        \tkzDrawCircle(O,B)
     
-        % Dibuja y etiqueta los puntos; traza la cuerda CD.
-        \tkzDrawPoints(A,B,C,D)
-        \tkzLabelPoints[above right,font=\scriptsize](A,B,C,D)
-        \tkzDrawLine[Latex-Latex](C,D)
+        % Dibuja los radios OB y OC con flechas para indicar dirección.
+        \tkzDrawSegments[add=0 and 0.5,-Latex](O,C)
+        \tkzDrawSegments[add=0 and 0.5,-Latex](O,B)
+    
+        % Dibuja y etiqueta los puntos.
+        \tkzDrawPoints(O,B,C)
+        \tkzLabelPoints[below](O)
+        \tkzLabelPoints[below right](B)
+        \tkzLabelPoints[above](C)
     \end{tikzpicture}
 \end{document}

@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-46
-title: "Arcos"
-description: "Dibuja un arco definido por una rotación alrededor de un centro y muestra los radios."
-keywords: [arco, rotacion, centro, radios]
-tags: [tkzDefPointBy, tkzDrawArc]
+title: "Semicírculo"
+description: "Dibuja dos semicírculos de un mismo diámetro en sentidos opuestos."
+keywords: [semicirculo, semicircunferencia, diametro, centro]
+tags: [tkzDrawSemiCircle]
 sort: 46
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,23 +12,18 @@ sort: 46
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro de rotación O y un punto A.
-        \tkzDefPoint(0,0){O}
-        \tkzDefPoint(2,-1){A}
+        % Define los extremos A y B de un segmento y su punto medio O.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(6,0){B}
+        \tkzDefMidPoint(A,B)
+        \tkzGetPoint{O}
     
-        % Obtiene el punto B rotando A 90° alrededor de O.
-        \tkzDefPointBy[rotation= center O angle 90](A)
-            \tkzGetPoint{B}
-    
-        % Dibuja el arco desde A hasta B con centro en O.
-        \tkzDrawArc[<->](O,A)(B)
-    
-        % Dibuja los radios OA y OB como guías.
-        \tkzDrawLines[add = 0 and .5](O,A O,B)
+        % Dibuja dos semicírculos con centro en O: uno hacia B (azul) y otro hacia A (rojo).
+        \tkzDrawSemiCircle[blue](O,B)
+        \tkzDrawSemiCircle[red](O,A)
     
         % Dibuja y etiqueta los puntos.
         \tkzDrawPoints(O,A,B)
-        \tkzLabelPoints[below](O,A)
-        \tkzLabelPoints[left](B)
+        \tkzLabelPoints[below right](O,A,B)
     \end{tikzpicture}
 \end{document}

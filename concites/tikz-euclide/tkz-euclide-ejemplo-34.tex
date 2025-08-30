@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-34
-title: "Paralelogramo"
-description: "Construye un paralelogramo a partir de tres vértices y dibuja la figura completa."
-keywords: [paralelogramo, construccion, poligono]
-tags: [tkzDefParallelogram, tkzDrawPolygon, tkzGetPoint]
+title: "Rectángulos"
+description: "Construye un rectángulo dados dos vértices opuestos y dibuja el polígono resultante."
+keywords: [rectangulo, vertices-opuestos, poligono]
+tags: [tkzDefRectangle, tkzDrawPolygon, tkzGetPoints]
 sort: 34
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,19 +12,16 @@ sort: 34
 
 \begin{document}
     \begin{tikzpicture}
-        % Define tres vértices A, B y C para determinar un paralelogramo.
-        \tkzDefPoints{0/0/A,3/0/B,4/2/C}
+        % Define dos vértices opuestos A y C de un rectángulo.
+        \tkzDefPoints{0/0/A,5/2/C}
     
-        % Construye el paralelogramo ABCD y obtiene D.
-        \tkzDefParallelogram(A,B,C)
-        \tkzGetPoint{D}
+        % Construye el rectángulo ABCD a partir de A y C.
+        \tkzDefRectangle(A,C)
+            \tkzGetPoints{B}{D}
     
-        % Dibuja el polígono ABCD y sus puntos.
+        % Dibuja el polígono ABCD y etiqueta vértices.
         \tkzDrawPolygon(A,...,D)
-        \tkzDrawPoints(A,...,D)
-    
-        % Etiqueta los vértices.
-        \tkzLabelPoints(A,B)
-        \tkzLabelPoints[above right](C,D)
+        \tkzLabelPoints[below](A,B)
+        \tkzLabelPoints[above](C,D)
     \end{tikzpicture}
 \end{document}

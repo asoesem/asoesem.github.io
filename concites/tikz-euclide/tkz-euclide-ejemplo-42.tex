@@ -1,8 +1,8 @@
 ---
 id: tkz-euclide-ejemplo-42
-title: "Punto en Circunferencia"
-description: "Localiza un punto sobre la circunferencia a un ángulo dado y dibuja los radios correspondientes."
-keywords: [circunferencia, circulo, punto, angulo, radios]
+title: "Tangente a un Punto del Círculo"
+description: "Traza la tangente a una circunferencia por un punto y marca su perpendicularidad con el radio."
+keywords: [tangente, circulo, circunferencia, perpendicular, radio]
 tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
 sort: 42
 ---
@@ -12,29 +12,31 @@ sort: 42
 
 \begin{document}
     \begin{tikzpicture}
-        % Define un diámetro AB y su círculo asociado (centro O).
+        % Define los extremos A y B de un diámetro.
         \tkzDefPoints{
             0/0/A,
             6/0/B%
         }
     
-        % Construye el círculo de diámetro AB y obtiene el centro O.
+        % Construye el círculo de diámetro AB y recupera su centro O.
         \tkzDefCircle[diameter](A,B)
             \tkzGetFirstPoint{O}
     
-        % Toma un punto C sobre el círculo a 45° desde el punto B.
-        \tkzDefPointOnCircle[through=center O angle 45 point B]
-        \tkzGetPoint{C}
+        % Calcula la recta tangente al círculo en el punto B.
+        \tkzDefLine[tangent at=B](O)
+            \tkzGetPoint{C}
+    
+        % Dibuja la tangente por B y el radio OB, y marca el ángulo recto B.
+        \tkzDrawLine[Stealth-Stealth,add = 3 and 2](B,C)
+        \tkzDrawSegment(O,B)
+    
+        % Marca el ángulo recto
+        \tkzMarkRightAngle[fill=teal!30](O,B,C)
+    
+        % Dibuja el círculo y etiqueta los puntos.
+        \tkzDrawPoints(O,B)
         \tkzDrawCircle(O,B)
-    
-        % Dibuja los radios OB y OC con flechas para indicar dirección.
-        \tkzDrawSegments[add=0 and 0.5,-Latex](O,C)
-        \tkzDrawSegments[add=0 and 0.5,-Latex](O,B)
-    
-        % Dibuja y etiqueta los puntos.
-        \tkzDrawPoints(O,B,C)
         \tkzLabelPoints[below](O)
-        \tkzLabelPoints[below right](B)
-        \tkzLabelPoints[above](C)
+        \tkzLabelPoints[right](B)
     \end{tikzpicture}
 \end{document}
