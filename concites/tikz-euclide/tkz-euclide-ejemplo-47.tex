@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-47
-title: "Elipses"
-description: "Dibuja una elipse centrada y rotada dados sus semiejes."
-keywords: [elipse, centro, semiejes, rotacion]
-tags: [tkzDrawEllipse]
+title: "Arcos"
+description: "Dibuja un arco definido por una rotación alrededor de un centro y muestra los radios."
+keywords: [arco, rotacion, centro, radios]
+tags: [tkzDefPointBy, tkzDrawArc]
 sort: 47
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,14 +12,23 @@ sort: 47
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro C de la elipse.
-        \tkzDefPoint(0,4){C}
+        % Define el centro de rotación O y un punto A.
+        \tkzDefPoint(0,0){O}
+        \tkzDefPoint(2,-1){A}
     
-        % Dibuja una elipse centrada en C con semiejes 4 y 2, rotada 45°.
-        \tkzDrawEllipse[blue](C,4,2,45)
+        % Obtiene el punto B rotando A 90° alrededor de O.
+        \tkzDefPointBy[rotation= center O angle 90](A)
+            \tkzGetPoint{B}
     
-        % Dibuja y etiqueta el centro.
-        \tkzDrawPoints(C)
-        \tkzLabelPoints(C)
+        % Dibuja el arco desde A hasta B con centro en O.
+        \tkzDrawArc[<->](O,A)(B)
+    
+        % Dibuja los radios OA y OB como guías.
+        \tkzDrawLines[add = 0 and .5](O,A O,B)
+    
+        % Dibuja y etiqueta los puntos.
+        \tkzDrawPoints(O,A,B)
+        \tkzLabelPoints[below](O,A)
+        \tkzLabelPoints[left](B)
     \end{tikzpicture}
 \end{document}

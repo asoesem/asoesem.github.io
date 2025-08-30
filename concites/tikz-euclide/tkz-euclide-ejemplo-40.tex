@@ -1,8 +1,8 @@
 ---
 id: tkz-euclide-ejemplo-40
-title: "Círculo por Tres Puntos"
-description: "Dibuja la circunferencia circunscrita a un triángulo y muestra su centro y radio."
-keywords: [circunferencia, circulo, circunscrita, centro, radio, triangulo]
+title: "Círculo según Diámetro"
+description: "Construye una circunferencia a partir de su diámetro y señala el centro y el radio."
+keywords: [circunferencia, circulo, diametro, centro, radio]
 tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
 sort: 40
 ---
@@ -12,28 +12,25 @@ sort: 40
 
 \begin{document}
     \begin{tikzpicture}
-        % Define tres puntos no colineales A, B y C.
-        \tkzDefPoints{
-            0/0/A,
-            3/0/B,
-            2/3/C%
-        }
+        % Define dos puntos A y B en el eje x.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(6,0){B}
     
-        % Define el círculo circunscrito al triángulo ABC y obtiene su centro O.
-        \tkzDefCircle[circum](A,B,C)
+        % Construye el círculo cuyo diámetro es AB y obtiene el centro O.
+        \tkzDefCircle[diameter](A,B)
             \tkzGetFirstPoint{O}
     
-        % Dibuja los puntos A, B, C y el centro O.
-        \tkzDrawPoints(A,B,C,O)
+        % Dibuja el círculo de centro O y radio OB.
+        \tkzDrawCircle(O,B)
     
-        % Dibuja el círculo circunscrito (radio OA) y muestra el radio OA punteado.
-        \tkzDrawCircle(O,A)
-        \tkzDrawSegment[dashed,gray](O,A)
-        \tkzLabelSegment[above](O,A){$r$}
+        % Muestra el diámetro AB como segmento punteado y el radio OB etiquetado.
+        \tkzDrawSegment[dashed,gray](A,B)
+        \tkzLabelSegment[above](O,B){$r$}
     
-        % Etiquetas de puntos.
+        % Dibuja y etiqueta los puntos A, B y O.
+        \tkzDrawPoints(A,B,O)
         \tkzLabelPoints[left](A)
         \tkzLabelPoints[right](B)
-        \tkzLabelPoints[above](O,C)
+        \tkzLabelPoints[below](O)
     \end{tikzpicture}
 \end{document}

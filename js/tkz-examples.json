@@ -536,7 +536,7 @@
   },
   {
     "id": "tkz-euclide-ejemplo-28",
-    "title": "Circuncentro",
+    "title": "Baricentro",
     "keywords": [
       "baricentro",
       "medianas",
@@ -553,7 +553,7 @@
       "median",
       "ejemplo28"
     ],
-    "description": "Calcula el baricentro y traza las tres medianas de un triángulo, marcando puntos medios y congruencias.",
+    "description": "Calcula el circuncentro y traza las tres medianas de un triángulo, marcando puntos medios y congruencias.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define la base AB del triángulo.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(5,0){B}\n    \n        % Construye un triángulo con ángulos en A y B de 65°.\n        \\tkzDefTriangle[two angles = 65 and 65](A,B)\n            \\tkzGetPoint{C}\n    \n        % Encuentra el baricentro (centro de las medianas) O.\n        \\tkzDefTriangleCenter[median](A,B,C)\n            \\tkzGetPoint{O}\n    \n        % Calcula los puntos medios de los lados y obtén a, b y c.\n        \\tkzDefMidPoint(B,C)\n            \\tkzGetPoint{a}\n        \\tkzDefMidPoint(A,C)\n            \\tkzGetPoint{b}\n        \\tkzDefMidPoint(A,B)\n            \\tkzGetPoint{c}\n    \n        % Dibuja las medianas como segmentos punteados.\n        \\tkzDrawSegment[dashed](A,a)\n        \\tkzDrawSegment[dashed](B,b)\n        \\tkzDrawSegment[dashed](C,c)\n    \n        % Dibuja y etiqueta puntos medios.\n        \\tkzDrawPoints[blue](a,b,c)\n        \\tkzLabelPoint[right](a){$M_1$}\n        \\tkzLabelPoint[left](b){$M_2$}\n        \\tkzLabelPoint[below](c){$M_3$}\n    \n        % Marca la igualdad de segmentos en cada lado.\n        \\tkzMarkSegments[mark=||](C,a a,B)\n        \\tkzMarkSegments[mark=||](C,b b,A)\n        \\tkzMarkSegments[mark=|](A,c c,B)\n    \n        % Dibuja el baricentro, el triángulo y etiqueta vértices.\n        \\tkzDrawPoints[red](O)\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)\n        \\tkzLabelPoints(A,B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-28.png",
     "sort": 28
@@ -581,6 +581,29 @@
   },
   {
     "id": "tkz-euclide-ejemplo-30",
+    "title": "Circuncentro",
+    "keywords": [
+      "circuncentro",
+      "mediatriz",
+      "recto",
+      "isosceles"
+    ],
+    "tags": [
+      "tkzDefTriangle",
+      "tkzDefTriangleCenter",
+      "tkzDefLine",
+      "tkzGetPoint",
+      "tkzMarkRightAngle",
+      "mediator",
+      "ejemplo30"
+    ],
+    "description": "Calcula el circuncentro y traza las tres mediatrices, marcando ángulos rectos y segmentos congruentes.",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}[scale=0.5]\n        % Define la base AB.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(5,0){B}\n\n        % Construye el triángulo con dos ángulos iguales (65° y 65°).    \n        \\tkzDefTriangle[two angles = 65 and 65](A,B)\n            \\tkzGetPoint{C}\n\n        % Calcula el incentro O (intersección de las mediatrices).\n        \\tkzDefTriangleCenter[circum](A,B,C)\n            \\tkzGetPoint{O}\n\n        % Calcula los puntos medios de cada lado\n        \\tkzDefMidPoint(A,B) \\tkzGetPoint{M1}\n        \\tkzDefMidPoint(B,C) \\tkzGetPoint{M2}\n        \\tkzDefMidPoint(A,C) \\tkzGetPoint{M3}    \n        \n        % Dibuja segmento del punto medio al circuncentro\n        \\tkzDrawSegment[dashed](O,M1)\n        \\tkzDrawSegment[dashed](O,M2)\n        \\tkzDrawSegment[dashed](O,M3)\n\n        % Marca los ángulos rectos\n        \\tkzMarkRightAngle(A,M1,O)\n        \\tkzMarkRightAngle(B,M2,O)\n        \\tkzMarkRightAngle(C,M3,O)\n\n        % Marca segmentos congruentes\n        \\tkzMarkSegments[mark=|](A,M1 M1,B)\n        \\tkzMarkSegments[mark=||](A,M3 M3,C C,M2 M2,B)    \n        \n        % Dibuja el circucentro en rojo                \n        \\tkzDrawPoints[red](O)\n\n        % Dibuja y etiqueta el resto de los puntos\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)    \n        \\tkzLabelPoints(A,B)    \n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-30.png",
+    "sort": 30
+  },
+  {
+    "id": "tkz-euclide-ejemplo-31",
     "title": "Polígonos I",
     "keywords": [
       "poligonos",
@@ -590,15 +613,15 @@
     ],
     "tags": [
       "tkzDrawPolygon",
-      "ejemplo30"
+      "ejemplo31"
     ],
     "description": "Dibuja dos polígonos y une vértices correspondientes con segmentos guía.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define dos cuadriláteros A1B1C1D1 y A2B2C2D2.\n        \\tkzDefPoints{\n            0/0/A1,\n            3/0/B1,\n            3/3/C1,\n            0/3/D1,\n            1/1/A2,\n            4/1/B2,\n            4/4/C2,\n            1/4/D2%\n        }\n    \n        % Dibuja ambos polígonos.\n        \\tkzDrawPolygon(A1,B1,C1,D1)\n        \\tkzDrawPolygon(A2,B2,C2,D2)\n    \n        % Conecta vértices correspondientes entre ambos polígonos.\n        \\tkzDrawSegment(A1,A2)\n        \\tkzDrawSegment(B1,B2)\n        \\tkzDrawSegment(C1,C2)\n        \\tkzDrawSegment(D1,D2)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-30.png",
-    "sort": 30
+    "image": "/images/cientec/tkz-euclide/ejemplo-31.png",
+    "sort": 31
   },
   {
-    "id": "tkz-euclide-ejemplo-31",
+    "id": "tkz-euclide-ejemplo-32",
     "title": "Polígonos II",
     "keywords": [
       "poligono",
@@ -609,15 +632,15 @@
     "tags": [
       "tkzDrawPolygon",
       "tkzDrawPolySeg",
-      "ejemplo31"
+      "ejemplo32"
     ],
     "description": "Combina un polígono y una polilínea, añadiendo trazos punteados para completar conexiones.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define dos conjuntos de puntos para polígonos y polilíneas.\n        \\tkzDefPoints{\n            0/0/A1,\n            3/0/B1,\n            3/3/C1,\n            0/3/D1,\n            1/1/A2,\n            4/1/B2,\n            4/4/C2,\n            1/4/D2%\n        }\n    \n        % Dibuja el polígono A1B1C1D1 (cerrado) y la polilínea B2–C2–D2 (abierta).\n        \\tkzDrawPolygon(A1,B1,C1,D1)\n        \\tkzDrawPolySeg(B2,C2,D2)\n    \n        % Completa la polilínea A2–B2–D2 con trazo punteado y conecta A1 con A2.\n        \\tkzDrawPolySeg[dashed](D2,A2,B2)\n        \\tkzDrawSegment[dashed](A1,A2)\n    \n        % Conexiones entre vértices correspondientes de ambos conjuntos.\n        \\tkzDrawSegment(B1,B2)\n        \\tkzDrawSegment(C1,C2)\n        \\tkzDrawSegment(D1,D2)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-31.png",
-    "sort": 31
+    "image": "/images/cientec/tkz-euclide/ejemplo-32.png",
+    "sort": 32
   },
   {
-    "id": "tkz-euclide-ejemplo-32",
+    "id": "tkz-euclide-ejemplo-33",
     "title": "Cuadrado",
     "keywords": [
       "cuadrado",
@@ -628,15 +651,15 @@
       "tkzDefSquare",
       "tkzDrawPolygon",
       "tkzGetPoints",
-      "ejemplo32"
+      "ejemplo33"
     ],
     "description": "Construye y dibuja un cuadrado a partir de un segmento base y etiqueta sus vértices.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define un segmento AB que servirá de base para el cuadrado.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(3,0){B}\n    \n        % Construye el cuadrado ABCD a partir de AB.\n        \\tkzDefSquare(A,B)\n            \\tkzGetPoints{C}{D}\n    \n        % Dibuja el polígono y los puntos del cuadrado.\n        \\tkzDrawPolygon(A,B,C,D)\n        \\tkzDrawPoints(A,B,C,D)\n    \n        % Etiqueta los vértices: A y B abajo; C y D arriba.\n        \\tkzLabelPoints[below](A,B)\n        \\tkzLabelPoints[above](C,D)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-32.png",
-    "sort": 32
+    "image": "/images/cientec/tkz-euclide/ejemplo-33.png",
+    "sort": 33
   },
   {
-    "id": "tkz-euclide-ejemplo-33",
+    "id": "tkz-euclide-ejemplo-34",
     "title": "Rectángulos",
     "keywords": [
       "rectangulo",
@@ -647,15 +670,15 @@
       "tkzDefRectangle",
       "tkzDrawPolygon",
       "tkzGetPoints",
-      "ejemplo33"
+      "ejemplo34"
     ],
     "description": "Construye un rectángulo dados dos vértices opuestos y dibuja el polígono resultante.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define dos vértices opuestos A y C de un rectángulo.\n        \\tkzDefPoints{0/0/A,5/2/C}\n    \n        % Construye el rectángulo ABCD a partir de A y C.\n        \\tkzDefRectangle(A,C)\n            \\tkzGetPoints{B}{D}\n    \n        % Dibuja el polígono ABCD y etiqueta vértices.\n        \\tkzDrawPolygon(A,...,D)\n        \\tkzLabelPoints[below](A,B)\n        \\tkzLabelPoints[above](C,D)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-33.png",
-    "sort": 33
+    "image": "/images/cientec/tkz-euclide/ejemplo-34.png",
+    "sort": 34
   },
   {
-    "id": "tkz-euclide-ejemplo-34",
+    "id": "tkz-euclide-ejemplo-35",
     "title": "Paralelogramo",
     "keywords": [
       "paralelogramo",
@@ -666,15 +689,15 @@
       "tkzDefParallelogram",
       "tkzDrawPolygon",
       "tkzGetPoint",
-      "ejemplo34"
+      "ejemplo35"
     ],
     "description": "Construye un paralelogramo a partir de tres vértices y dibuja la figura completa.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define tres vértices A, B y C para determinar un paralelogramo.\n        \\tkzDefPoints{0/0/A,3/0/B,4/2/C}\n    \n        % Construye el paralelogramo ABCD y obtiene D.\n        \\tkzDefParallelogram(A,B,C)\n        \\tkzGetPoint{D}\n    \n        % Dibuja el polígono ABCD y sus puntos.\n        \\tkzDrawPolygon(A,...,D)\n        \\tkzDrawPoints(A,...,D)\n    \n        % Etiqueta los vértices.\n        \\tkzLabelPoints(A,B)\n        \\tkzLabelPoints[above right](C,D)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-34.png",
-    "sort": 34
+    "image": "/images/cientec/tkz-euclide/ejemplo-35.png",
+    "sort": 35
   },
   {
-    "id": "tkz-euclide-ejemplo-35",
+    "id": "tkz-euclide-ejemplo-36",
     "title": "Polígono Regular",
     "keywords": [
       "poligono-regular",
@@ -685,15 +708,15 @@
     "tags": [
       "tkzDefRegPolygon",
       "tkzDrawPolygon",
-      "ejemplo35"
+      "ejemplo36"
     ],
     "description": "Genera y dibuja un polígono regular (hexágono) dado su centro y un punto inicial.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro O y un punto P1 sobre el círculo circunscrito.\n        \\tkzDefPoints{0/0/O,0/3/P1}\n    \n        % Construye un hexágono regular con centro O, comenzando en P1.\n        \\tkzDefRegPolygon[center,sides=6](O,P1)\n        \\tkzDrawPolygon(P1,P...,P6)\n    \n        % Etiqueta los vértices del polígono regular alrededor.\n        \\tkzLabelPoints[above](P1)\n        \\tkzLabelPoints[above left](P2)\n        \\tkzLabelPoints[above right](P6)\n        \\tkzLabelPoints[below left](P3)\n        \\tkzLabelPoints[below](P4)\n        \\tkzLabelPoints[below right](P5)\n    \n        % Dibuja los puntos del polígono.\n        \\tkzDrawPoints(P1,P...,P6)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-35.png",
-    "sort": 35
+    "image": "/images/cientec/tkz-euclide/ejemplo-36.png",
+    "sort": 36
   },
   {
-    "id": "tkz-euclide-ejemplo-36",
+    "id": "tkz-euclide-ejemplo-37",
     "title": "Sectores Poligonales",
     "keywords": [
       "sectores",
@@ -705,15 +728,15 @@
     "tags": [
       "tkzDrawSector",
       "tkzFillSector",
-      "ejemplo36"
+      "ejemplo37"
     ],
     "description": "Dibuja y colorea varios sectores circulares consecutivos de un mismo radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro O del círculo y un punto auxiliar A (opcional).\n        \\tkzDefPoint(0,0){O}\n        \\tkzDefPoint[shift={(0,0)}](30:2){A}\n    \n        % Dibuja cuatro sectores circulares (cuadrantes) de radio 2.\n        \\tkzDrawSector[R](O,2)(30,90)\n        \\tkzDrawSector[R](O,2)(90,180)\n        \\tkzDrawSector[R](O,2)(180,270)\n        \\tkzDrawSector[R](O,2)(270,360)\n    \n        % Rellena cada sector con un color distinto.\n        \\tkzFillSector[R,fill=red!20](O,2)(30,90)\n        \\tkzFillSector[R,fill=green!20](O,2)(90,180)\n        \\tkzFillSector[R,fill=yellow!20](O,2)(180,270)\n        \\tkzFillSector[R,fill=blue!20](O,2)(270,360)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-36.png",
-    "sort": 36
+    "image": "/images/cientec/tkz-euclide/ejemplo-37.png",
+    "sort": 37
   },
   {
-    "id": "tkz-euclide-ejemplo-37",
+    "id": "tkz-euclide-ejemplo-38",
     "title": "Círculo por Dos Puntos",
     "keywords": [
       "circunferencia",
@@ -723,15 +746,15 @@
     ],
     "tags": [
       "tkzDrawCircle",
-      "ejemplo37"
+      "ejemplo38"
     ],
     "description": "Dibuja una circunferencia dados su centro y un punto sobre ella; muestra el radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro A y un punto B sobre la circunferencia.\n        \\tkzDefPoints{\n            0/0/A,\n            3/0/B%\n        }\n        % Dibuja los puntos y el círculo de centro A y radio AB.\n        \\tkzDrawPoints(A,B)\n        \\tkzDrawCircle(A,B)\n    \n        % Muestra el radio AB como segmento punteado y lo etiqueta con r.\n        \\tkzDrawSegment[dashed,gray](A,B)\n        \\tkzLabelSegment[above](A,B){$r$}\n    \n        % Etiquetas de los puntos.\n        \\tkzLabelPoints[below](A)\n        \\tkzLabelPoints[right](B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-37.png",
-    "sort": 37
+    "image": "/images/cientec/tkz-euclide/ejemplo-38.png",
+    "sort": 38
   },
   {
-    "id": "tkz-euclide-ejemplo-38",
+    "id": "tkz-euclide-ejemplo-39",
     "title": "Círculo de Radio r",
     "keywords": [
       "circunferencia",
@@ -743,15 +766,15 @@
       "tkzDefCircle",
       "tkzDrawCircle",
       "tkzGetSecondPoint",
-      "ejemplo38"
+      "ejemplo39"
     ],
     "description": "Construye una circunferencia de radio r y recupera un punto sobre la circunferencia; muestra el radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro A y el radio r del círculo.\n        \\tkzDefPoint(0,0){A}\n        \\def \\r{3}\n    \n        % Construye el círculo de centro A y radio r, y recupera un punto B sobre él.\n        \\tkzDefCircle[R](A,\\r)\n            \\tkzGetSecondPoint{B}\n    \n        % Dibuja el círculo, los puntos y el radio AB como segmento punteado.\n        \\tkzDrawPoints(A,B)\n        \\tkzDrawCircle(A,B)\n        \\tkzDrawSegment[dashed,gray](A,B)\n        \\tkzLabelSegment[above](A,B){$r$}\n    \n        % Etiquetas de puntos.\n        \\tkzLabelPoints[below](A)\n        \\tkzLabelPoints[right](B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-38.png",
-    "sort": 38
+    "image": "/images/cientec/tkz-euclide/ejemplo-39.png",
+    "sort": 39
   },
   {
-    "id": "tkz-euclide-ejemplo-39",
+    "id": "tkz-euclide-ejemplo-40",
     "title": "Círculo según Diámetro",
     "keywords": [
       "circunferencia",
@@ -764,15 +787,15 @@
       "tkzDefCircle",
       "tkzDrawCircle",
       "tkzGetFirstPoint",
-      "ejemplo39"
+      "ejemplo40"
     ],
     "description": "Construye una circunferencia a partir de su diámetro y señala el centro y el radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define dos puntos A y B en el eje x.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(6,0){B}\n    \n        % Construye el círculo cuyo diámetro es AB y obtiene el centro O.\n        \\tkzDefCircle[diameter](A,B)\n            \\tkzGetFirstPoint{O}\n    \n        % Dibuja el círculo de centro O y radio OB.\n        \\tkzDrawCircle(O,B)\n    \n        % Muestra el diámetro AB como segmento punteado y el radio OB etiquetado.\n        \\tkzDrawSegment[dashed,gray](A,B)\n        \\tkzLabelSegment[above](O,B){$r$}\n    \n        % Dibuja y etiqueta los puntos A, B y O.\n        \\tkzDrawPoints(A,B,O)\n        \\tkzLabelPoints[left](A)\n        \\tkzLabelPoints[right](B)\n        \\tkzLabelPoints[below](O)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-39.png",
-    "sort": 39
+    "image": "/images/cientec/tkz-euclide/ejemplo-40.png",
+    "sort": 40
   },
   {
-    "id": "tkz-euclide-ejemplo-40",
+    "id": "tkz-euclide-ejemplo-41",
     "title": "Círculo por Tres Puntos",
     "keywords": [
       "circunferencia",
@@ -786,15 +809,15 @@
       "tkzDefCircle",
       "tkzDrawCircle",
       "tkzGetFirstPoint",
-      "ejemplo40"
+      "ejemplo41"
     ],
     "description": "Dibuja la circunferencia circunscrita a un triángulo y muestra su centro y radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define tres puntos no colineales A, B y C.\n        \\tkzDefPoints{\n            0/0/A,\n            3/0/B,\n            2/3/C%\n        }\n    \n        % Define el círculo circunscrito al triángulo ABC y obtiene su centro O.\n        \\tkzDefCircle[circum](A,B,C)\n            \\tkzGetFirstPoint{O}\n    \n        % Dibuja los puntos A, B, C y el centro O.\n        \\tkzDrawPoints(A,B,C,O)\n    \n        % Dibuja el círculo circunscrito (radio OA) y muestra el radio OA punteado.\n        \\tkzDrawCircle(O,A)\n        \\tkzDrawSegment[dashed,gray](O,A)\n        \\tkzLabelSegment[above](O,A){$r$}\n    \n        % Etiquetas de puntos.\n        \\tkzLabelPoints[left](A)\n        \\tkzLabelPoints[right](B)\n        \\tkzLabelPoints[above](O,C)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-40.png",
-    "sort": 40
+    "image": "/images/cientec/tkz-euclide/ejemplo-41.png",
+    "sort": 41
   },
   {
-    "id": "tkz-euclide-ejemplo-41",
+    "id": "tkz-euclide-ejemplo-42",
     "title": "Tangente a un Punto del Círculo",
     "keywords": [
       "tangente",
@@ -807,15 +830,15 @@
       "tkzDefCircle",
       "tkzDrawCircle",
       "tkzGetFirstPoint",
-      "ejemplo41"
+      "ejemplo42"
     ],
     "description": "Traza la tangente a una circunferencia por un punto y marca su perpendicularidad con el radio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define los extremos A y B de un diámetro.\n        \\tkzDefPoints{\n            0/0/A,\n            6/0/B%\n        }\n    \n        % Construye el círculo de diámetro AB y recupera su centro O.\n        \\tkzDefCircle[diameter](A,B)\n            \\tkzGetFirstPoint{O}\n    \n        % Calcula la recta tangente al círculo en el punto B.\n        \\tkzDefLine[tangent at=B](O)\n            \\tkzGetPoint{C}\n    \n        % Dibuja la tangente por B y el radio OB, y marca el ángulo recto B.\n        \\tkzDrawLine[Stealth-Stealth,add = 3 and 2](B,C)\n        \\tkzDrawSegment(O,B)\n    \n        % Marca el ángulo recto\n        \\tkzMarkRightAngle[fill=teal!30](O,B,C)\n    \n        % Dibuja el círculo y etiqueta los puntos.\n        \\tkzDrawPoints(O,B)\n        \\tkzDrawCircle(O,B)\n        \\tkzLabelPoints[below](O)\n        \\tkzLabelPoints[right](B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-41.png",
-    "sort": 41
+    "image": "/images/cientec/tkz-euclide/ejemplo-42.png",
+    "sort": 42
   },
   {
-    "id": "tkz-euclide-ejemplo-42",
+    "id": "tkz-euclide-ejemplo-43",
     "title": "Punto en Circunferencia",
     "keywords": [
       "circunferencia",
@@ -828,15 +851,15 @@
       "tkzDefCircle",
       "tkzDrawCircle",
       "tkzGetFirstPoint",
-      "ejemplo42"
+      "ejemplo43"
     ],
     "description": "Localiza un punto sobre la circunferencia a un ángulo dado y dibuja los radios correspondientes.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define un diámetro AB y su círculo asociado (centro O).\n        \\tkzDefPoints{\n            0/0/A,\n            6/0/B%\n        }\n    \n        % Construye el círculo de diámetro AB y obtiene el centro O.\n        \\tkzDefCircle[diameter](A,B)\n            \\tkzGetFirstPoint{O}\n    \n        % Toma un punto C sobre el círculo a 45° desde el punto B.\n        \\tkzDefPointOnCircle[through=center O angle 45 point B]\n        \\tkzGetPoint{C}\n        \\tkzDrawCircle(O,B)\n    \n        % Dibuja los radios OB y OC con flechas para indicar dirección.\n        \\tkzDrawSegments[add=0 and 0.5,-Latex](O,C)\n        \\tkzDrawSegments[add=0 and 0.5,-Latex](O,B)\n    \n        % Dibuja y etiqueta los puntos.\n        \\tkzDrawPoints(O,B,C)\n        \\tkzLabelPoints[below](O)\n        \\tkzLabelPoints[below right](B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-42.png",
-    "sort": 42
+    "image": "/images/cientec/tkz-euclide/ejemplo-43.png",
+    "sort": 43
   },
   {
-    "id": "tkz-euclide-ejemplo-43",
+    "id": "tkz-euclide-ejemplo-44",
     "title": "Intersección Recta-Círculo",
     "keywords": [
       "interseccion",
@@ -849,15 +872,15 @@
       "tkzDrawCircle",
       "tkzInterLC",
       "tkzGetPoints",
-      "ejemplo43"
+      "ejemplo44"
     ],
     "description": "Calcula la intersección de una recta con una circunferencia y dibuja la cuerda entre puntos de corte.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro O de un círculo, un punto R para su radio,\n        % y dos puntos A y B que determinan una recta.\n        \\tkzDefPoints{\n            0  /0  /O,\n            3  /0  /R,\n            0  /1  /A,\n            1  /0  /B%\n        }\n    \n        % Dibuja el círculo con centro O y punto sobre la circunferencia R.\n        \\tkzDrawCircle(O,R)\n    \n        % Calcula los puntos de intersección C y D entre la recta AB y el círculo.\n        \\tkzInterLC(A,B)(O,R)\n            \\tkzGetPoints{C}{D}\n    \n        % Dibuja y etiqueta los puntos; traza la cuerda CD.\n        \\tkzDrawPoints(A,B,C,D)\n        \\tkzLabelPoints[above right,font=\\scriptsize](A,B,C,D)\n        \\tkzDrawLine[Latex-Latex](C,D)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-43.png",
-    "sort": 43
+    "image": "/images/cientec/tkz-euclide/ejemplo-44.png",
+    "sort": 44
   },
   {
-    "id": "tkz-euclide-ejemplo-44",
+    "id": "tkz-euclide-ejemplo-45",
     "title": "Intersección Círculo-Cículo",
     "keywords": [
       "interseccion",
@@ -869,15 +892,15 @@
       "tkzDrawCircle",
       "tkzInterCC",
       "tkzGetPoints",
-      "ejemplo44"
+      "ejemplo45"
     ],
     "description": "Determina los puntos de intersección de dos circunferencias.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define dos puntos A y B que servirán como centros/radios cruzados.\n        \\tkzDefPoints{\n            0  /0  /A,\n            3  /0  /B%\n        }\n    \n        % Dibuja dos circunferencias: una con centro A pasando por B (roja)\n        % y otra con centro B pasando por A (azul).\n        \\tkzDrawCircle[red](A,B)\n        \\tkzDrawCircle[blue](B,A)\n    \n        % Calcula los puntos de intersección C y D de ambas circunferencias.\n        \\tkzInterCC(A,B)(B,A)\n            \\tkzGetPoints{C}{D}\n    \n        % Dibuja y etiqueta los puntos de intersección.\n        \\tkzDrawPoints(C,D)\n        \\tkzLabelPoints[above,font=\\scriptsize](C)\n        \\tkzLabelPoints[below,font=\\scriptsize](D)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-44.png",
-    "sort": 44
+    "image": "/images/cientec/tkz-euclide/ejemplo-45.png",
+    "sort": 45
   },
   {
-    "id": "tkz-euclide-ejemplo-45",
+    "id": "tkz-euclide-ejemplo-46",
     "title": "Semicírculo",
     "keywords": [
       "semicirculo",
@@ -887,15 +910,15 @@
     ],
     "tags": [
       "tkzDrawSemiCircle",
-      "ejemplo45"
+      "ejemplo46"
     ],
     "description": "Dibuja dos semicírculos de un mismo diámetro en sentidos opuestos.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define los extremos A y B de un segmento y su punto medio O.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(6,0){B}\n        \\tkzDefMidPoint(A,B)\n        \\tkzGetPoint{O}\n    \n        % Dibuja dos semicírculos con centro en O: uno hacia B (azul) y otro hacia A (rojo).\n        \\tkzDrawSemiCircle[blue](O,B)\n        \\tkzDrawSemiCircle[red](O,A)\n    \n        % Dibuja y etiqueta los puntos.\n        \\tkzDrawPoints(O,A,B)\n        \\tkzLabelPoints[below right](O,A,B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-45.png",
-    "sort": 45
+    "image": "/images/cientec/tkz-euclide/ejemplo-46.png",
+    "sort": 46
   },
   {
-    "id": "tkz-euclide-ejemplo-46",
+    "id": "tkz-euclide-ejemplo-47",
     "title": "Arcos",
     "keywords": [
       "arco",
@@ -906,15 +929,15 @@
     "tags": [
       "tkzDefPointBy",
       "tkzDrawArc",
-      "ejemplo46"
+      "ejemplo47"
     ],
     "description": "Dibuja un arco definido por una rotación alrededor de un centro y muestra los radios.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro de rotación O y un punto A.\n        \\tkzDefPoint(0,0){O}\n        \\tkzDefPoint(2,-1){A}\n    \n        % Obtiene el punto B rotando A 90° alrededor de O.\n        \\tkzDefPointBy[rotation= center O angle 90](A)\n            \\tkzGetPoint{B}\n    \n        % Dibuja el arco desde A hasta B con centro en O.\n        \\tkzDrawArc[<->](O,A)(B)\n    \n        % Dibuja los radios OA y OB como guías.\n        \\tkzDrawLines[add = 0 and .5](O,A O,B)\n    \n        % Dibuja y etiqueta los puntos.\n        \\tkzDrawPoints(O,A,B)\n        \\tkzLabelPoints[below](O,A)\n        \\tkzLabelPoints[left](B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-46.png",
-    "sort": 46
+    "image": "/images/cientec/tkz-euclide/ejemplo-47.png",
+    "sort": 47
   },
   {
-    "id": "tkz-euclide-ejemplo-47",
+    "id": "tkz-euclide-ejemplo-48",
     "title": "Elipses",
     "keywords": [
       "elipse",
@@ -924,15 +947,15 @@
     ],
     "tags": [
       "tkzDrawEllipse",
-      "ejemplo47"
+      "ejemplo48"
     ],
     "description": "Dibuja una elipse centrada y rotada dados sus semiejes.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el centro C de la elipse.\n        \\tkzDefPoint(0,4){C}\n    \n        % Dibuja una elipse centrada en C con semiejes 4 y 2, rotada 45°.\n        \\tkzDrawEllipse[blue](C,4,2,45)\n    \n        % Dibuja y etiqueta el centro.\n        \\tkzDrawPoints(C)\n        \\tkzLabelPoints(C)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-47.png",
-    "sort": 47
+    "image": "/images/cientec/tkz-euclide/ejemplo-48.png",
+    "sort": 48
   },
   {
-    "id": "tkz-euclide-ejemplo-48",
+    "id": "tkz-euclide-ejemplo-49",
     "title": "Construcciones Geométricas con Compás",
     "keywords": [
       "mediatriz",
@@ -944,15 +967,15 @@
       "tkzInterCC",
       "tkzInterLL",
       "tkzCompass",
-      "ejemplo48"
+      "ejemplo49"
     ],
     "description": "Construye la mediatriz de un segmento con construcciones auxiliares y marca el punto medio.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define los puntos A y B como extremos de un segmento.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(3,0){B}\n    \n        % Intersección de dos circunferencias (de centros A y B) para construir\n        % la mediatriz de AB; obtiene los puntos C y D.\n        \\tkzInterCC(A,B)(B,A)\n            \\tkzGetPoints{C}{D}\n    \n        % Intersección de la recta AB con la recta CD (mediatriz) para hallar M (punto medio).\n        \\tkzInterLL(A,B)(C,D)\n            \\tkzGetPoint{M}\n    \n        % Dibuja AB y la mediatriz CD.\n        \\tkzDrawSegment(A,B)\n        \\tkzDrawSegment(C,D)\n    \n        % Marca la igualdad de segmentos AM y MB.\n        \\tkzMarkSegment[mark=s|](A,M)\n        \\tkzMarkSegment[mark=s|](M,B)\n    \n        % Muestra arcos de compás usados en la construcción desde A y B.\n        \\tkzCompass(A,C)\n        \\tkzCompass(B,C)\n        \\tkzCompass(A,D)\n        \\tkzCompass(B,D)\n    \n        % Dibuja y etiqueta los puntos relevantes.\n        \\tkzDrawPoints(A,B,C,D,M)\n        \\tkzLabelPoints(A,B,D)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-48.png",
-    "sort": 48
+    "image": "/images/cientec/tkz-euclide/ejemplo-49.png",
+    "sort": 49
   },
   {
-    "id": "tkz-euclide-ejemplo-49",
+    "id": "tkz-euclide-ejemplo-50",
     "title": "Transportador",
     "keywords": [
       "transportador",
@@ -962,15 +985,15 @@
     ],
     "tags": [
       "tkzProtractor",
-      "ejemplo49"
+      "ejemplo50"
     ],
     "description": "Coloca un transportador en un vértice y dibuja los rayos que determinan el ángulo.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define el vértice A y el origen O (opcional para referencia).\n        \\tkzDefPoint(2,0){A}\n        \\tkzDefPoint(0,0){O}\n    \n        % Define los puntos B y C a partir de A, usando dirección/longitud polar.\n        \\tkzDefShiftPoint[A](31:4){B}\n        \\tkzDefShiftPoint[A](158:4){C}\n    \n        % Dibuja los puntos y los rayos AB y AC (formando un ángulo en A).\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawSegments(A,B A,C)\n    \n        % Coloca un transportador de ángulos en A orientado por AB.\n        \\tkzProtractor[scale=0.9](A,B)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-49.png",
-    "sort": 49
+    "image": "/images/cientec/tkz-euclide/ejemplo-50.png",
+    "sort": 50
   },
   {
-    "id": "tkz-euclide-ejemplo-50",
+    "id": "tkz-euclide-ejemplo-51",
     "title": "Escala y Rotación",
     "keywords": [
       "rotacion",
@@ -981,11 +1004,11 @@
     "tags": [
       "scope",
       "rotate",
-      "ejemplo50"
+      "ejemplo51"
     ],
     "description": "Usa ámbitos de transformación (rotación y traslado) para definir puntos y dibujar un triángulo.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Aplica una rotación global de 30° a lo que se defina dentro del alcance.\n        \\begin{scope}[rotate=30]\n            % Define el punto A.\n            \\tkzDefPoint(2,3){A}\n            % Dentro de un alcance trasladado al punto A, define B y C en coordenadas polares.\n            \\begin{scope}[shift=(A)]\n                \\tkzDefPoint(90:5){B}\n                \\tkzDefPoint(30:5){C}\n            \\end{scope}\n        \\end{scope}\n    \n        % Dibuja el triángulo ABC y etiqueta sus vértices.\n        \\tkzDrawPolygon(A,B,C)\n        \\tkzLabelPoints[above](B,C)\n        \\tkzLabelPoints[below](A)\n        \\tkzDrawPoints(A,B,C)\n    \\end{tikzpicture}\n\\end{document}",
-    "image": "/images/cientec/tkz-euclide/ejemplo-50.png",
-    "sort": 50
+    "image": "/images/cientec/tkz-euclide/ejemplo-51.png",
+    "sort": 51
   }
 ]

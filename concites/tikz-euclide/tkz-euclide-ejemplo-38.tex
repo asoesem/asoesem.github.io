@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-38
-title: "Círculo de Radio r"
-description: "Construye una circunferencia de radio r y recupera un punto sobre la circunferencia; muestra el radio."
-keywords: [circunferencia, circulo, radio, punto-sobre-circunferencia]
-tags: [tkzDefCircle, tkzDrawCircle,tkzGetSecondPoint]
+title: "Círculo por Dos Puntos"
+description: "Dibuja una circunferencia dados su centro y un punto sobre ella; muestra el radio."
+keywords: [circunferencia, circulo, centro, radio]
+tags: [tkzDrawCircle]
 sort: 38
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,21 +12,20 @@ sort: 38
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro A y el radio r del círculo.
-        \tkzDefPoint(0,0){A}
-        \def \r{3}
-    
-        % Construye el círculo de centro A y radio r, y recupera un punto B sobre él.
-        \tkzDefCircle[R](A,\r)
-            \tkzGetSecondPoint{B}
-    
-        % Dibuja el círculo, los puntos y el radio AB como segmento punteado.
+        % Define el centro A y un punto B sobre la circunferencia.
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B%
+        }
+        % Dibuja los puntos y el círculo de centro A y radio AB.
         \tkzDrawPoints(A,B)
         \tkzDrawCircle(A,B)
+    
+        % Muestra el radio AB como segmento punteado y lo etiqueta con r.
         \tkzDrawSegment[dashed,gray](A,B)
         \tkzLabelSegment[above](A,B){$r$}
     
-        % Etiquetas de puntos.
+        % Etiquetas de los puntos.
         \tkzLabelPoints[below](A)
         \tkzLabelPoints[right](B)
     \end{tikzpicture}

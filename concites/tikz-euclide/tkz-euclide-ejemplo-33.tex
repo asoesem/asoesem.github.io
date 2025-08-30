@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-33
-title: "Rectángulos"
-description: "Construye un rectángulo dados dos vértices opuestos y dibuja el polígono resultante."
-keywords: [rectangulo, vertices-opuestos, poligono]
-tags: [tkzDefRectangle, tkzDrawPolygon, tkzGetPoints]
+title: "Cuadrado"
+description: "Construye y dibuja un cuadrado a partir de un segmento base y etiqueta sus vértices."
+keywords: [cuadrado, construccion, vertices]
+tags: [tkzDefSquare, tkzDrawPolygon,tkzGetPoints]
 sort: 33
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,15 +12,19 @@ sort: 33
 
 \begin{document}
     \begin{tikzpicture}
-        % Define dos vértices opuestos A y C de un rectángulo.
-        \tkzDefPoints{0/0/A,5/2/C}
+        % Define un segmento AB que servirá de base para el cuadrado.
+        \tkzDefPoint(0,0){A}
+        \tkzDefPoint(3,0){B}
     
-        % Construye el rectángulo ABCD a partir de A y C.
-        \tkzDefRectangle(A,C)
-            \tkzGetPoints{B}{D}
+        % Construye el cuadrado ABCD a partir de AB.
+        \tkzDefSquare(A,B)
+            \tkzGetPoints{C}{D}
     
-        % Dibuja el polígono ABCD y etiqueta vértices.
-        \tkzDrawPolygon(A,...,D)
+        % Dibuja el polígono y los puntos del cuadrado.
+        \tkzDrawPolygon(A,B,C,D)
+        \tkzDrawPoints(A,B,C,D)
+    
+        % Etiqueta los vértices: A y B abajo; C y D arriba.
         \tkzLabelPoints[below](A,B)
         \tkzLabelPoints[above](C,D)
     \end{tikzpicture}

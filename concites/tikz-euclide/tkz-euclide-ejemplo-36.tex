@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-36
-title: "Sectores Poligonales"
-description: "Dibuja y colorea varios sectores circulares consecutivos de un mismo radio."
-keywords: [sectores, circulares, radio, relleno, colores]
-tags: [tkzDrawSector, tkzFillSector]
+title: "Polígono Regular"
+description: "Genera y dibuja un polígono regular (hexágono) dado su centro y un punto inicial."
+keywords: [poligono-regular, hexagono, centro, vertices]
+tags: [tkzDefRegPolygon, tkzDrawPolygon]
 sort: 36
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,20 +12,22 @@ sort: 36
 
 \begin{document}
     \begin{tikzpicture}
-        % Define el centro O del círculo y un punto auxiliar A (opcional).
-        \tkzDefPoint(0,0){O}
-        \tkzDefPoint[shift={(0,0)}](30:2){A}
+        % Define el centro O y un punto P1 sobre el círculo circunscrito.
+        \tkzDefPoints{0/0/O,0/3/P1}
     
-        % Dibuja cuatro sectores circulares (cuadrantes) de radio 2.
-        \tkzDrawSector[R](O,2)(30,90)
-        \tkzDrawSector[R](O,2)(90,180)
-        \tkzDrawSector[R](O,2)(180,270)
-        \tkzDrawSector[R](O,2)(270,360)
+        % Construye un hexágono regular con centro O, comenzando en P1.
+        \tkzDefRegPolygon[center,sides=6](O,P1)
+        \tkzDrawPolygon(P1,P...,P6)
     
-        % Rellena cada sector con un color distinto.
-        \tkzFillSector[R,fill=red!20](O,2)(30,90)
-        \tkzFillSector[R,fill=green!20](O,2)(90,180)
-        \tkzFillSector[R,fill=yellow!20](O,2)(180,270)
-        \tkzFillSector[R,fill=blue!20](O,2)(270,360)
+        % Etiqueta los vértices del polígono regular alrededor.
+        \tkzLabelPoints[above](P1)
+        \tkzLabelPoints[above left](P2)
+        \tkzLabelPoints[above right](P6)
+        \tkzLabelPoints[below left](P3)
+        \tkzLabelPoints[below](P4)
+        \tkzLabelPoints[below right](P5)
+    
+        % Dibuja los puntos del polígono.
+        \tkzDrawPoints(P1,P...,P6)
     \end{tikzpicture}
 \end{document}

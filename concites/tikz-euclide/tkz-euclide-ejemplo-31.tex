@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-31
-title: "Polígonos II"
-description: "Combina un polígono y una polilínea, añadiendo trazos punteados para completar conexiones."
-keywords: [poligono, polilinea, trazos-punteados, conexiones]
-tags: [tkzDrawPolygon, tkzDrawPolySeg]
+title: "Polígonos I"
+description: "Dibuja dos polígonos y une vértices correspondientes con segmentos guía."
+keywords: [poligonos, correspondencia, segmentos, guia]
+tags: [tkzDrawPolygon]
 sort: 31
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,7 +12,7 @@ sort: 31
 
 \begin{document}
     \begin{tikzpicture}
-        % Define dos conjuntos de puntos para polígonos y polilíneas.
+        % Define dos cuadriláteros A1B1C1D1 y A2B2C2D2.
         \tkzDefPoints{
             0/0/A1,
             3/0/B1,
@@ -24,15 +24,12 @@ sort: 31
             1/4/D2%
         }
     
-        % Dibuja el polígono A1B1C1D1 (cerrado) y la polilínea B2–C2–D2 (abierta).
+        % Dibuja ambos polígonos.
         \tkzDrawPolygon(A1,B1,C1,D1)
-        \tkzDrawPolySeg(B2,C2,D2)
+        \tkzDrawPolygon(A2,B2,C2,D2)
     
-        % Completa la polilínea A2–B2–D2 con trazo punteado y conecta A1 con A2.
-        \tkzDrawPolySeg[dashed](D2,A2,B2)
-        \tkzDrawSegment[dashed](A1,A2)
-    
-        % Conexiones entre vértices correspondientes de ambos conjuntos.
+        % Conecta vértices correspondientes entre ambos polígonos.
+        \tkzDrawSegment(A1,A2)
         \tkzDrawSegment(B1,B2)
         \tkzDrawSegment(C1,C2)
         \tkzDrawSegment(D1,D2)

@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-39
-title: "Círculo según Diámetro"
-description: "Construye una circunferencia a partir de su diámetro y señala el centro y el radio."
-keywords: [circunferencia, circulo, diametro, centro, radio]
-tags: [tkzDefCircle, tkzDrawCircle,tkzGetFirstPoint]
+title: "Círculo de Radio r"
+description: "Construye una circunferencia de radio r y recupera un punto sobre la circunferencia; muestra el radio."
+keywords: [circunferencia, circulo, radio, punto-sobre-circunferencia]
+tags: [tkzDefCircle, tkzDrawCircle,tkzGetSecondPoint]
 sort: 39
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,25 +12,22 @@ sort: 39
 
 \begin{document}
     \begin{tikzpicture}
-        % Define dos puntos A y B en el eje x.
+        % Define el centro A y el radio r del círculo.
         \tkzDefPoint(0,0){A}
-        \tkzDefPoint(6,0){B}
+        \def \r{3}
     
-        % Construye el círculo cuyo diámetro es AB y obtiene el centro O.
-        \tkzDefCircle[diameter](A,B)
-            \tkzGetFirstPoint{O}
+        % Construye el círculo de centro A y radio r, y recupera un punto B sobre él.
+        \tkzDefCircle[R](A,\r)
+            \tkzGetSecondPoint{B}
     
-        % Dibuja el círculo de centro O y radio OB.
-        \tkzDrawCircle(O,B)
-    
-        % Muestra el diámetro AB como segmento punteado y el radio OB etiquetado.
+        % Dibuja el círculo, los puntos y el radio AB como segmento punteado.
+        \tkzDrawPoints(A,B)
+        \tkzDrawCircle(A,B)
         \tkzDrawSegment[dashed,gray](A,B)
-        \tkzLabelSegment[above](O,B){$r$}
+        \tkzLabelSegment[above](A,B){$r$}
     
-        % Dibuja y etiqueta los puntos A, B y O.
-        \tkzDrawPoints(A,B,O)
-        \tkzLabelPoints[left](A)
+        % Etiquetas de puntos.
+        \tkzLabelPoints[below](A)
         \tkzLabelPoints[right](B)
-        \tkzLabelPoints[below](O)
     \end{tikzpicture}
 \end{document}

@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-50
-title: "Escala y Rotación"
-description: "Usa ámbitos de transformación (rotación y traslado) para definir puntos y dibujar un triángulo."
-keywords: [rotacion, traslacion, triangulo, transformaciones]
-tags: [scope, rotate]
+title: "Transportador"
+description: "Coloca un transportador en un vértice y dibuja los rayos que determinan el ángulo."
+keywords: [transportador, angulo, rayos, medicion]
+tags: [tkzProtractor]
 sort: 50
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,21 +12,19 @@ sort: 50
 
 \begin{document}
     \begin{tikzpicture}
-        % Aplica una rotación global de 30° a lo que se defina dentro del alcance.
-        \begin{scope}[rotate=30]
-            % Define el punto A.
-            \tkzDefPoint(2,3){A}
-            % Dentro de un alcance trasladado al punto A, define B y C en coordenadas polares.
-            \begin{scope}[shift=(A)]
-                \tkzDefPoint(90:5){B}
-                \tkzDefPoint(30:5){C}
-            \end{scope}
-        \end{scope}
+        % Define el vértice A y el origen O (opcional para referencia).
+        \tkzDefPoint(2,0){A}
+        \tkzDefPoint(0,0){O}
     
-        % Dibuja el triángulo ABC y etiqueta sus vértices.
-        \tkzDrawPolygon(A,B,C)
-        \tkzLabelPoints[above](B,C)
-        \tkzLabelPoints[below](A)
+        % Define los puntos B y C a partir de A, usando dirección/longitud polar.
+        \tkzDefShiftPoint[A](31:4){B}
+        \tkzDefShiftPoint[A](158:4){C}
+    
+        % Dibuja los puntos y los rayos AB y AC (formando un ángulo en A).
         \tkzDrawPoints(A,B,C)
+        \tkzDrawSegments(A,B A,C)
+    
+        % Coloca un transportador de ángulos en A orientado por AB.
+        \tkzProtractor[scale=0.9](A,B)
     \end{tikzpicture}
 \end{document}

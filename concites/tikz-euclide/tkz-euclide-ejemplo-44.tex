@@ -1,9 +1,9 @@
 ---
 id: tkz-euclide-ejemplo-44
-title: "Intersección Círculo-Cículo"
-description: "Determina los puntos de intersección de dos circunferencias."
-keywords: [interseccion, circunferencias, circulo, puntos]
-tags: [tkzDrawCircle, tkzInterCC,tkzGetPoints]
+title: "Intersección Recta-Círculo"
+description: "Calcula la intersección de una recta con una circunferencia y dibuja la cuerda entre puntos de corte."
+keywords: [interseccion, recta, circunferencia, circulo, cuerda]
+tags: [tkzDrawCircle, tkzInterLC,tkzGetPoints]
 sort: 44
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -12,24 +12,25 @@ sort: 44
 
 \begin{document}
     \begin{tikzpicture}
-        % Define dos puntos A y B que servirán como centros/radios cruzados.
+        % Define el centro O de un círculo, un punto R para su radio,
+        % y dos puntos A y B que determinan una recta.
         \tkzDefPoints{
-            0  /0  /A,
-            3  /0  /B%
+            0  /0  /O,
+            3  /0  /R,
+            0  /1  /A,
+            1  /0  /B%
         }
     
-        % Dibuja dos circunferencias: una con centro A pasando por B (roja)
-        % y otra con centro B pasando por A (azul).
-        \tkzDrawCircle[red](A,B)
-        \tkzDrawCircle[blue](B,A)
+        % Dibuja el círculo con centro O y punto sobre la circunferencia R.
+        \tkzDrawCircle(O,R)
     
-        % Calcula los puntos de intersección C y D de ambas circunferencias.
-        \tkzInterCC(A,B)(B,A)
+        % Calcula los puntos de intersección C y D entre la recta AB y el círculo.
+        \tkzInterLC(A,B)(O,R)
             \tkzGetPoints{C}{D}
     
-        % Dibuja y etiqueta los puntos de intersección.
-        \tkzDrawPoints(C,D)
-        \tkzLabelPoints[above,font=\scriptsize](C)
-        \tkzLabelPoints[below,font=\scriptsize](D)
+        % Dibuja y etiqueta los puntos; traza la cuerda CD.
+        \tkzDrawPoints(A,B,C,D)
+        \tkzLabelPoints[above right,font=\scriptsize](A,B,C,D)
+        \tkzDrawLine[Latex-Latex](C,D)
     \end{tikzpicture}
 \end{document}
