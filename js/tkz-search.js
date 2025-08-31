@@ -171,13 +171,13 @@ class TkzSearch {
         <h3 style="margin: 0 0 0.25rem 0; font-size: 1.05rem;">${item.title}</h3>
         <p style="margin: 0.25rem 0 0.5rem 0; color: #555; flex: 1;">${item.description || ''}</p>
         ${imageHTML}
-        <button 
-          class="pure-button pure-button-primary" 
-          style="margin-top: 1rem; width: 100%;"
+        <a 
+          href="javascript:void(0)" 
+          style="margin-top: 1rem; color: #4f46e5; text-decoration: none; font-weight: 500; text-align: center; display: block;"
           onclick="tkzSearchInstance.openPopup('${item.id}')"
         >
           Ver código LaTeX
-        </button>
+        </a>
       </div>
     `;
   }
@@ -234,7 +234,7 @@ class TkzSearch {
               onclick="tkzSearchInstance.copyToClipboard('${item.id}')"
               style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;"
             >
-              <i class="icon ion-md-copy"></i> Copiar código
+              <i class="icon ion-md-copy"></i> Copiar
             </button>
           </div>
           <pre id="latex-code-${item.id}" style="background: #f8f8f8; padding: 1rem; border-radius: 8px; overflow: auto; max-height: 400px;"><code class="language-latex">${escapedLatex}</code></pre>
