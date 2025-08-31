@@ -161,8 +161,8 @@ class TkzSearch {
 
   renderExampleHTML(item) {
     const imageHTML = item.image ? `
-      <div style="margin-top: 0.75rem;">
-        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: none;" />
+      <div style="margin-top: 0.75rem; text-align: center;">
+        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: none; margin: 0 auto;" />
       </div>
     ` : '';
 
