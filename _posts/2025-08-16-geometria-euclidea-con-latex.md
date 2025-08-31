@@ -19,8 +19,8 @@ Abajo encontrarás una base de datos que contiene alrededor de 51 diferentes eje
 diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 
 
-Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, baricentro, etc.) 
-y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres ver todos los ejemplos uno por uno puedes escribir ejemplo1, ejemplo2, etc.
+Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, baricentro, etc.), o comandos de la librería 
+y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres ver todos los ejemplos uno por uno puedes escribir `ejemplo1`, `ejemplo2`, `...`, `ejemplo51`.
 
 <div class="tkz-search">
   <label for="tkz-query" class="tkz-label">Palabras clave</label>
@@ -65,9 +65,15 @@ y se mostrarán ejemplos relevantes con el código LaTeX resaltado. Si quieres v
 
 ## Documentos Adicionales
 
-* [Geometría Euclidiana con LaTex: Creando Diagramas Profesionales con tkz-euclide][1] 
+* [Descargar Ejercicios del Taller][3]
+* [Geometría Euclidiana con LaTex][1] 
 * [Lista de Comandos de tkz-euclide][2]
+* [Documentación Oficial de tkz-base][4]
+* [Documentación Oficial de tkz-euclide][5]
 
 [0]: https://www.cientec.or.cr/programas/educadores-divulgadores/concites-m-2025
 [1]: {{site.baseurl}}/documentos/concites/taller-geometria-latex-2025.pdf
 [2]: {{site.baseurl}}/documentos/concites/poster-comandos-tkz-euclide.pdf
+[3]: https://www.overleaf.com/read/ngrfywcvcqcq#070c09
+[4]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-base/doc/tkz-base.pdf
+[5]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-euclide/doc/tkz-euclide.pdf
