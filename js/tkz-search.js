@@ -8,8 +8,28 @@ class TkzSearch {
     this.error = null;
     this.debounceTimer = null;
     
+    this.setupPrismTheme();
     this.loadExamples();
     this.render();
+  }
+
+  setupPrismTheme() {
+    // Check if dark mode is active
+    const isDarkMode = document.documentElement.hasAttribute('dark');
+    
+    // Remove existing Prism theme
+    const existingTheme = document.querySelector('link[href*="prism"]');
+    if (existingTheme) {
+      existingTheme.remove();
+    }
+    
+    // Add appropriate theme
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = isDarkMode 
+      ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
+      : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css';
+    document.head.appendChild(link);
   }
 
   async loadExamples() {
@@ -194,8 +214,8 @@ class TkzSearch {
       .replace(/>/g, '&gt;');
 
     const imageHTML = item.image ? `
-      <div style="margin: 1rem 0; text-align: center;">
-        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: 1px solid var(--border-color); border-radius: 8px; margin: 0 auto;" />
+      <div style="margin: 1rem 0; text-align: center; background-color: white;">
+        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: none; margin: 0 auto;" />
         <p style="font-size: 0.85rem; color: var(--text-alt-color); margin-top: 0.25rem;">${item.caption || 'Vista previa del diagrama'}</p>
       </div>
     ` : '';
@@ -239,7 +259,7 @@ class TkzSearch {
               <i class="icon ion-md-copy"></i> Copiar
             </button>
           </div>
-          <pre id="latex-code-${item.id}" style="background: var(--syntax-highlighting-background); padding: 1rem; border-radius: 8px; overflow: auto; max-height: 400px;"><code class="language-latex">${escapedLatex}</code></pre>
+          <pre id="latex-code-${item.id}" style="border-radius: 8px; overflow: auto; max-height: 400px;"><code class="language-latex">${escapedLatex}</code></pre>
         </div>
         
         ${tagsHTML}
@@ -257,6 +277,7 @@ class TkzSearch {
     });
 
     setTimeout(() => {
+      this.setupPrismTheme(); // Ensure correct theme is loaded
       if (window.Prism && Prism.highlightAll) Prism.highlightAll();
     }, 0);
   }

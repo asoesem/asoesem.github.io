@@ -3,9 +3,9 @@
     "id": "tkz-euclide-ejemplo-01",
     "title": "Plano Cartesiano",
     "keywords": [
-      "coordenadas",
-      "cartesianas",
-      "ejes",
+      "coordenada",
+      "cartesiano",
+      "eje",
       "plano"
     ],
     "tags": [
@@ -24,9 +24,8 @@
     "keywords": [
       "recta",
       "numerica",
-      "eje-x",
-      "marcas",
-      "etiquetas"
+      "eje",
+      "coordenadas"
     ],
     "tags": [
       "tkzInit",
@@ -45,8 +44,8 @@
     "keywords": [
       "cuadricula",
       "plano",
-      "coordenadas",
-      "ejes"
+      "coordenada",
+      "eje"
     ],
     "tags": [
       "tkzInit",
@@ -63,8 +62,8 @@
     "id": "tkz-euclide-ejemplo-04",
     "title": "Puntos",
     "keywords": [
-      "puntos",
-      "etiquetas",
+      "punto",
+      "etiqueta",
       "plano"
     ],
     "tags": [
@@ -82,9 +81,8 @@
     "id": "tkz-euclide-ejemplo-05",
     "title": "Múltiples Puntos",
     "keywords": [
-      "puntos",
-      "multiples",
-      "etiquetas"
+      "punto",
+      "etiqueta"
     ],
     "tags": [
       "tkzDefPoints",
@@ -101,11 +99,9 @@
     "id": "tkz-euclide-ejemplo-06",
     "title": "Punto Relativo",
     "keywords": [
-      "puntos",
-      "desplazamiento",
-      "coordenadas-polares",
-      "direccion",
-      "distancia"
+      "punto",
+      "coordenada",
+      "polar"
     ],
     "tags": [
       "tkzDefPoint",
@@ -122,9 +118,7 @@
     "id": "tkz-euclide-ejemplo-07",
     "title": "Segmentos",
     "keywords": [
-      "segmento",
-      "longitud",
-      "etiqueta"
+      "segmento"
     ],
     "tags": [
       "tkzDrawSegment",
@@ -140,10 +134,10 @@
     "id": "tkz-euclide-ejemplo-08",
     "title": "Múltiples Segmentos",
     "keywords": [
-      "segmentos",
+      "segmento",
       "congruencia",
-      "marcas",
-      "triángulo",
+      "marca",
+      "triangulo",
       "isosceles"
     ],
     "tags": [
@@ -162,9 +156,8 @@
     "title": "Dimensiona el tamaño de un segmento.",
     "keywords": [
       "dimension",
-      "cota",
       "segmento",
-      "triángulo",
+      "triangulo",
       "angulo",
       "recto",
       "escaleno"
@@ -185,9 +178,10 @@
     "id": "tkz-euclide-ejemplo-10",
     "title": "Punto Medio",
     "keywords": [
-      "punto-medio",
-      "segmentos",
-      "congruencia"
+      "medio",
+      "segmento",
+      "congruencia",
+      "marca"
     ],
     "tags": [
       "tkzDefMidPoint",
@@ -204,7 +198,7 @@
     "keywords": [
       "recta",
       "linea",
-      "flechas",
+      "flecha",
       "etiqueta"
     ],
     "tags": [
@@ -224,7 +218,7 @@
       "mediatriz",
       "segmento",
       "perpendicular",
-      "punto-medio"
+      "medio"
     ],
     "tags": [
       "tkzDefLine",
@@ -279,6 +273,7 @@
     "title": "Altitud",
     "keywords": [
       "altitud",
+      "altitude",
       "triangulo",
       "perpendicular"
     ],
@@ -286,7 +281,6 @@
       "tkzDrawSegments",
       "tkzDefLine",
       "tkzGetPoint",
-      "altitude",
       "ejemplo15"
     ],
     "description": "Traza la altitud de un triángulo desde un vértice al lado opuesto.",
@@ -300,13 +294,13 @@
     "keywords": [
       "perpendicular",
       "recta",
-      "segmento"
+      "segmento",
+      "flecha"
     ],
     "tags": [
       "tkzDefLine",
       "tkzDrawLine",
       "tkzGetPoint",
-      "perpendicular",
       "ejemplo16"
     ],
     "description": "Construye por un punto una recta perpendicular a un segmento dado.",
@@ -319,13 +313,13 @@
     "title": "Paralelas",
     "keywords": [
       "paralela",
+      "parallel",
       "recta",
       "construccion"
     ],
     "tags": [
       "tkzDrawLine",
       "tkzGetPoint",
-      "parallel",
       "ejemplo17"
     ],
     "description": "Construye por un punto una recta paralela a una recta dada.",
@@ -338,8 +332,7 @@
     "title": "Intersección de dos rectas",
     "keywords": [
       "interseccion",
-      "rectas",
-      "punto"
+      "recta"
     ],
     "tags": [
       "tkzDrawLines",
@@ -356,10 +349,8 @@
     "id": "tkz-euclide-ejemplo-19",
     "title": "Ángulos",
     "keywords": [
-      "angulos",
-      "medida",
-      "marcado",
-      "relleno"
+      "angulo",
+      "rayo"
     ],
     "tags": [
       "tkzFillAngle",
@@ -376,9 +367,8 @@
     "id": "tkz-euclide-ejemplo-20",
     "title": "Marcar Ángulos 1",
     "keywords": [
-      "angulos",
-      "igualdad",
-      "marcado",
+      "angulo",
+      "congruencia",
       "triangulo",
       "isosceles"
     ],
@@ -386,7 +376,7 @@
       "tkzMarkAngle",
       "ejemplo20"
     ],
-    "description": "Marca con arcos iguales dos ángulos del triángulo para indicar igualdad.",
+    "description": "Marca con arcos iguales dos ángulos del triángulo para indicar congruencia.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define tres puntos A, B y C que formarán un triángulo.\n        \\tkzDefPoints{\n            1/1/A,\n            5/1/B,\n            3/4/C%\n        }\n    \n        % Dibuja los puntos del triángulo.\n        \\tkzDrawPoints(A,B,C)\n    \n        % Dibuja los lados del triángulo ABC.\n        \\tkzDrawSegments(A,B B,C C,A)\n    \n        % Marca con doble trazo dos ángulos iguales: ∠BAC y ∠CBA\n        % (esto sugiere que el triángulo es isósceles si se quisiera).\n        \\tkzMarkAngle[mark=||](B,A,C)\n        \\tkzMarkAngle[mark=||](C,B,A)\n    \n        % Etiqueta los puntos A, B y C en posiciones convenientes.\n        \\tkzLabelPoints[left](A)\n        \\tkzLabelPoints[right](B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-20.png",
     "sort": 20
@@ -395,9 +385,8 @@
     "id": "tkz-euclide-ejemplo-21",
     "title": "Marcar Ángulos II",
     "keywords": [
-      "angulos",
-      "marcado",
-      "estilos",
+      "angulo",
+      "marca",
       "triangulo",
       "isosceles"
     ],
@@ -414,7 +403,8 @@
     "id": "tkz-euclide-ejemplo-22",
     "title": "Ángulo Recto",
     "keywords": [
-      "angulo-recto",
+      "angulo",
+      "recto",
       "triángulo",
       "perpendicular"
     ],
@@ -498,7 +488,7 @@
       "escolar",
       "escaleno",
       "recto",
-      "angulos"
+      "angulo"
     ],
     "tags": [
       "tkzDefTriangle",
@@ -539,9 +529,10 @@
     "title": "Baricentro",
     "keywords": [
       "baricentro",
-      "medianas",
+      "mediana",
+      "median",
       "triángulo",
-      "puntos-medios",
+      "medio",
       "isosceles"
     ],
     "tags": [
@@ -550,10 +541,9 @@
       "tkzDefMidPoint",
       "tkzDrawPolygon",
       "tkzGetPoint",
-      "median",
       "ejemplo28"
     ],
-    "description": "Calcula el circuncentro y traza las tres medianas de un triángulo, marcando puntos medios y congruencias.",
+    "description": "Calcula el baricentro y traza las tres medianas de un triángulo, marcando puntos medios y congruencias.",
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Define la base AB del triángulo.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(5,0){B}\n    \n        % Construye un triángulo con ángulos en A y B de 65°.\n        \\tkzDefTriangle[two angles = 65 and 65](A,B)\n            \\tkzGetPoint{C}\n    \n        % Encuentra el baricentro (centro de las medianas) O.\n        \\tkzDefTriangleCenter[median](A,B,C)\n            \\tkzGetPoint{O}\n    \n        % Calcula los puntos medios de los lados y obtén a, b y c.\n        \\tkzDefMidPoint(B,C)\n            \\tkzGetPoint{a}\n        \\tkzDefMidPoint(A,C)\n            \\tkzGetPoint{b}\n        \\tkzDefMidPoint(A,B)\n            \\tkzGetPoint{c}\n    \n        % Dibuja las medianas como segmentos punteados.\n        \\tkzDrawSegment[dashed](A,a)\n        \\tkzDrawSegment[dashed](B,b)\n        \\tkzDrawSegment[dashed](C,c)\n    \n        % Dibuja y etiqueta puntos medios.\n        \\tkzDrawPoints[blue](a,b,c)\n        \\tkzLabelPoint[right](a){$M_1$}\n        \\tkzLabelPoint[left](b){$M_2$}\n        \\tkzLabelPoint[below](c){$M_3$}\n    \n        % Marca la igualdad de segmentos en cada lado.\n        \\tkzMarkSegments[mark=||](C,a a,B)\n        \\tkzMarkSegments[mark=||](C,b b,A)\n        \\tkzMarkSegments[mark=|](A,c c,B)\n    \n        % Dibuja el baricentro, el triángulo y etiqueta vértices.\n        \\tkzDrawPoints[red](O)\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)\n        \\tkzLabelPoints(A,B)\n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-28.png",
     "sort": 28
@@ -563,7 +553,8 @@
     "title": "Incentro",
     "keywords": [
       "incentro",
-      "bisectrices",
+      "bisectriz",
+      "bisector",
       "isosceles"
     ],
     "tags": [
@@ -571,7 +562,6 @@
       "tkzDefTriangleCenter",
       "tkzDefLine",
       "tkzGetPoint",
-      "bisector",
       "ejemplo29"
     ],
     "description": "Calcula el incentro y traza las tres bisectrices, marcando pares de ángulos iguales.",
@@ -585,6 +575,7 @@
     "keywords": [
       "circuncentro",
       "mediatriz",
+      "mediator",
       "recto",
       "isosceles"
     ],
@@ -594,11 +585,10 @@
       "tkzDefLine",
       "tkzGetPoint",
       "tkzMarkRightAngle",
-      "mediator",
       "ejemplo30"
     ],
     "description": "Calcula el circuncentro y traza las tres mediatrices, marcando ángulos rectos y segmentos congruentes.",
-    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}[scale=0.5]\n        % Define la base AB.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(5,0){B}\n\n        % Construye el triángulo con dos ángulos iguales (65° y 65°).    \n        \\tkzDefTriangle[two angles = 65 and 65](A,B)\n            \\tkzGetPoint{C}\n\n        % Calcula el incentro O (intersección de las mediatrices).\n        \\tkzDefTriangleCenter[circum](A,B,C)\n            \\tkzGetPoint{O}\n\n        % Calcula los puntos medios de cada lado\n        \\tkzDefMidPoint(A,B) \\tkzGetPoint{M1}\n        \\tkzDefMidPoint(B,C) \\tkzGetPoint{M2}\n        \\tkzDefMidPoint(A,C) \\tkzGetPoint{M3}    \n        \n        % Dibuja segmento del punto medio al circuncentro\n        \\tkzDrawSegment[dashed](O,M1)\n        \\tkzDrawSegment[dashed](O,M2)\n        \\tkzDrawSegment[dashed](O,M3)\n\n        % Marca los ángulos rectos\n        \\tkzMarkRightAngle(A,M1,O)\n        \\tkzMarkRightAngle(B,M2,O)\n        \\tkzMarkRightAngle(C,M3,O)\n\n        % Marca segmentos congruentes\n        \\tkzMarkSegments[mark=|](A,M1 M1,B)\n        \\tkzMarkSegments[mark=||](A,M3 M3,C C,M2 M2,B)    \n        \n        % Dibuja el circucentro en rojo                \n        \\tkzDrawPoints[red](O)\n\n        % Dibuja y etiqueta el resto de los puntos\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)    \n        \\tkzLabelPoints(A,B)    \n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}[scale=0.5]\n        % Define la base AB.\n        \\tkzDefPoint(0,0){A}\n        \\tkzDefPoint(5,0){B}\n\n        % Construye el triángulo con dos ángulos iguales (65° y 65°).    \n        \\tkzDefTriangle[two angles = 65 and 65](A,B)\n            \\tkzGetPoint{C}\n\n        % Calcula el circuncentro O (intersección de las mediatrices).\n        \\tkzDefTriangleCenter[circum](A,B,C)\n            \\tkzGetPoint{O}\n\n        % Calcula los puntos medios de cada lado\n        \\tkzDefMidPoint(A,B) \\tkzGetPoint{M1}\n        \\tkzDefMidPoint(B,C) \\tkzGetPoint{M2}\n        \\tkzDefMidPoint(A,C) \\tkzGetPoint{M3}    \n        \n        % Dibuja segmento del punto medio al circuncentro\n        \\tkzDrawSegment[dashed](O,M1)\n        \\tkzDrawSegment[dashed](O,M2)\n        \\tkzDrawSegment[dashed](O,M3)\n\n        % Marca los ángulos rectos\n        \\tkzMarkRightAngle(A,M1,O)\n        \\tkzMarkRightAngle(B,M2,O)\n        \\tkzMarkRightAngle(C,M3,O)\n\n        % Marca segmentos congruentes\n        \\tkzMarkSegments[mark=|](A,M1 M1,B)\n        \\tkzMarkSegments[mark=||](A,M3 M3,C C,M2 M2,B)    \n        \n        % Dibuja el circucentro en rojo                \n        \\tkzDrawPoints[red](O)\n\n        % Dibuja y etiqueta el resto de los puntos\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)    \n        \\tkzLabelPoints(A,B)    \n        \\tkzLabelPoints[above](C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-30.png",
     "sort": 30
   },
@@ -606,10 +596,8 @@
     "id": "tkz-euclide-ejemplo-31",
     "title": "Polígonos I",
     "keywords": [
-      "poligonos",
-      "correspondencia",
-      "segmentos",
-      "guia"
+      "poligono",
+      "segmento"
     ],
     "tags": [
       "tkzDrawPolygon",
@@ -626,8 +614,8 @@
     "keywords": [
       "poligono",
       "polilinea",
-      "trazos-punteados",
-      "conexiones"
+      "linea",
+      "punteada"
     ],
     "tags": [
       "tkzDrawPolygon",
@@ -645,7 +633,7 @@
     "keywords": [
       "cuadrado",
       "construccion",
-      "vertices"
+      "vertice"
     ],
     "tags": [
       "tkzDefSquare",
@@ -663,7 +651,8 @@
     "title": "Rectángulos",
     "keywords": [
       "rectangulo",
-      "vertices-opuestos",
+      "vertice",
+      "opuesto",
       "poligono"
     ],
     "tags": [
@@ -700,10 +689,11 @@
     "id": "tkz-euclide-ejemplo-36",
     "title": "Polígono Regular",
     "keywords": [
-      "poligono-regular",
+      "poligono",
+      "regular",
       "hexagono",
       "centro",
-      "vertices"
+      "vertice"
     ],
     "tags": [
       "tkzDefRegPolygon",
@@ -719,11 +709,10 @@
     "id": "tkz-euclide-ejemplo-37",
     "title": "Sectores Poligonales",
     "keywords": [
-      "sectores",
-      "circulares",
+      "sector",
+      "circular",
       "radio",
-      "relleno",
-      "colores"
+      "color"
     ],
     "tags": [
       "tkzDrawSector",
@@ -759,8 +748,7 @@
     "keywords": [
       "circunferencia",
       "circulo",
-      "radio",
-      "punto-sobre-circunferencia"
+      "radio"
     ],
     "tags": [
       "tkzDefCircle",
@@ -845,7 +833,7 @@
       "circulo",
       "punto",
       "angulo",
-      "radios"
+      "radio"
     ],
     "tags": [
       "tkzDefCircle",
@@ -884,9 +872,9 @@
     "title": "Intersección Círculo-Cículo",
     "keywords": [
       "interseccion",
-      "circunferencias",
+      "circunferencia",
       "circulo",
-      "puntos"
+      "punto"
     ],
     "tags": [
       "tkzDrawCircle",
@@ -961,7 +949,7 @@
       "mediatriz",
       "compas",
       "construccion",
-      "punto-medio"
+      "medio"
     ],
     "tags": [
       "tkzInterCC",
@@ -980,8 +968,7 @@
     "keywords": [
       "transportador",
       "angulo",
-      "rayos",
-      "medicion"
+      "rayo"
     ],
     "tags": [
       "tkzProtractor",
@@ -999,7 +986,7 @@
       "rotacion",
       "traslacion",
       "triangulo",
-      "transformaciones"
+      "transformacion"
     ],
     "tags": [
       "scope",

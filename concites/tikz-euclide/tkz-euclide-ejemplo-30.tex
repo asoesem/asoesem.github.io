@@ -2,8 +2,8 @@
 id: tkz-euclide-ejemplo-30
 title: "Circuncentro"
 description: "Calcula el circuncentro y traza las tres mediatrices, marcando ángulos rectos y segmentos congruentes."
-keywords: [circuncentro, mediatriz, recto, isosceles]
-tags: [tkzDefTriangle, tkzDefTriangleCenter,tkzDefLine,tkzGetPoint,tkzMarkRightAngle,mediator]
+keywords: [circuncentro, mediatriz, mediator, recto, isosceles]
+tags: [tkzDefTriangle, tkzDefTriangleCenter,tkzDefLine,tkzGetPoint,tkzMarkRightAngle]
 sort: 30
 ---
 \documentclass[tikz,border=2mm]{standalone}
@@ -20,7 +20,7 @@ sort: 30
         \tkzDefTriangle[two angles = 65 and 65](A,B)
             \tkzGetPoint{C}
 
-        % Calcula el incentro O (intersección de las mediatrices).
+        % Calcula el circuncentro O (intersección de las mediatrices).
         \tkzDefTriangleCenter[circum](A,B,C)
             \tkzGetPoint{O}
 
