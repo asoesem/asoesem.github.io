@@ -87,7 +87,7 @@ class TkzSearch {
   render() {
     if (this.loading) {
       this.container.innerHTML = `
-        <div style="color: #31708f; background-color: #d9edf7; border: 1px solid #bce8f1; padding: 1rem; text-align: center; border-radius: 4px;">
+        <div style="color: var(--text-alt-color); background-color: var(--background-alt-color); border: 1px solid var(--border-color); padding: 1rem; text-align: center; border-radius: 4px;">
           Cargando ejemplos...
         </div>
       `;
@@ -96,7 +96,7 @@ class TkzSearch {
 
     if (this.error) {
       this.container.innerHTML = `
-        <div style="color: #a94442; background-color: #f2dede; border: 1px solid #ebccd1; border-radius: 4px; padding: 1rem; text-align: center;">
+        <div style="color: var(--text-color); background-color: var(--background-alt-color); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem; text-align: center;">
           ${this.error}
         </div>
       `;
@@ -106,14 +106,14 @@ class TkzSearch {
     const searchInput = `
       <div style="margin: 1.5rem 0;">
         <div style="margin-bottom: 1rem;">
-          <label for="tkz-query" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Palabras clave</label>
+          <label for="tkz-query" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-color);">Palabras clave</label>
           <input 
             id="tkz-query"
             type="search" 
             placeholder="p. ej., triángulo, mediatriz, circunferencia"
             autocomplete="off"
             value="${this.query}"
-            style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #dddddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;"
+            style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; box-sizing: border-box; background: var(--background-color); color: var(--text-color);"
           />
         </div>
         <div id="tkz-results"></div>
@@ -137,7 +137,7 @@ class TkzSearch {
 
     if (this.query && this.filteredExamples.length === 0) {
       resultsContainer.innerHTML = `
-        <div style="color: #666; padding: 1rem; text-align: center;">
+        <div style="color: var(--text-alt-color); padding: 1rem; text-align: center;">
           No se encontraron ejemplos. Intente con otras palabras clave.
         </div>
       `;
@@ -167,14 +167,16 @@ class TkzSearch {
     ` : '';
 
     return `
-      <div style="border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; height: 100%;">
-        <h3 style="margin: 0 0 0.25rem 0; font-size: 1.05rem;">${item.title}</h3>
-        <p style="margin: 0.25rem 0 0.5rem 0; color: #555; flex: 1;">${item.description || ''}</p>
+      <div style="border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; height: 100%; background: var(--background-color);">
+        <h3 style="margin: 0 0 0.25rem 0; font-size: 1.05rem; color: var(--heading-font-color);">${item.title}</h3>
+        <p style="margin: 0.25rem 0 0.5rem 0; color: var(--text-alt-color); flex: 1;">${item.description || ''}</p>
         ${imageHTML}
         <a 
           href="javascript:void(0)" 
-          style="margin-top: 1rem; color: #4f46e5; text-decoration: none; font-weight: 500; text-align: center; display: block;"
+          style="margin-top: 1rem; color: var(--link-color); text-decoration: underline; font-weight: 500; text-align: center; display: block; cursor: pointer;"
           onclick="tkzSearchInstance.openPopup('${item.id}')"
+          onmouseover="this.style.color='var(--link-color-hover)'"
+          onmouseout="this.style.color='var(--link-color)'"
         >
           Ver código LaTeX
         </a>
@@ -192,9 +194,9 @@ class TkzSearch {
       .replace(/>/g, '&gt;');
 
     const imageHTML = item.image ? `
-      <div style="margin: 1rem 0;">
-        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: 1px solid #e5e7eb; border-radius: 8px;" />
-        <p style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;">${item.caption || 'Vista previa del diagrama'}</p>
+      <div style="margin: 1rem 0; text-align: center;">
+        <img src="${item.image}" alt="${item.image_alt || item.title}" loading="lazy" style="max-width: 100%; height: auto; display: block; border: 1px solid var(--border-color); border-radius: 8px; margin: 0 auto;" />
+        <p style="font-size: 0.85rem; color: var(--text-alt-color); margin-top: 0.25rem;">${item.caption || 'Vista previa del diagrama'}</p>
       </div>
     ` : '';
 
@@ -214,30 +216,30 @@ class TkzSearch {
     `;
 
     popup.innerHTML = `
-      <div style="background: white; border-radius: 10px; max-width: 90vw; max-height: 90vh; 
-           overflow-y: auto; padding: 2rem; position: relative;">
+      <div style="background: var(--background-color); border-radius: 10px; max-width: 90vw; max-height: 90vh; 
+           overflow-y: auto; padding: 2rem; position: relative; border: 1px solid var(--border-color);">
         <button 
           onclick="document.getElementById('tkz-popup').remove()" 
-          style="position: absolute; top: 1rem; right: 1rem; border: none; 
-                 background: #f0f0f0; border-radius: 50%; width: 30px; height: 30px; 
-                 cursor: pointer; font-size: 1.2rem;"
+          style="position: absolute; top: 1rem; right: 1rem; border: 1px solid var(--border-color); 
+                 background: var(--background-alt-color); border-radius: 50%; width: 30px; height: 30px; 
+                 cursor: pointer; font-size: 1.2rem; color: var(--text-color);"
         >×</button>
         
-        <h2 style="margin: 0 0 1rem 0;">${item.title}</h2>
-        <p style="color: #555; margin-bottom: 1rem;">${item.description || ''}</p>
+        <h2 style="margin: 0 0 1rem 0; color: var(--heading-font-color);">${item.title}</h2>
+        <p style="color: var(--text-alt-color); margin-bottom: 1rem;">${item.description || ''}</p>
         
         <div style="margin-bottom: 1rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <h3 style="margin: 0;">Código LaTeX:</h3>
+            <h3 style="margin: 0; color: var(--heading-font-color);">Código LaTeX:</h3>
             <button 
               class="pure-button" 
               onclick="tkzSearchInstance.copyToClipboard('${item.id}')"
-              style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;"
+              style="background: var(--button-background-color); color: var(--button-color); border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;"
             >
               <i class="icon ion-md-copy"></i> Copiar
             </button>
           </div>
-          <pre id="latex-code-${item.id}" style="background: #f8f8f8; padding: 1rem; border-radius: 8px; overflow: auto; max-height: 400px;"><code class="language-latex">${escapedLatex}</code></pre>
+          <pre id="latex-code-${item.id}" style="background: var(--syntax-highlighting-background); padding: 1rem; border-radius: 8px; overflow: auto; max-height: 400px;"><code class="language-latex">${escapedLatex}</code></pre>
         </div>
         
         ${tagsHTML}
