@@ -61,8 +61,8 @@
     {"name": "Implica", "preview": "\\[\\implies\\]", "code": "\\implies", "category": "logic", "size": 1},
     {"name": "Si y solo si", "preview": "\\[\\iff\\]", "code": "\\iff", "category": "logic", "size": 1},
     {"name": "Solo si", "preview": "\\[\\Longleftarrow\\]", "code": "\\Longleftarrow", "category": "logic", "size": 1},
-    {"name": "Y lógico", "preview": "\\[\\land\\]", "code": "\\land", "category": "logic", "size": 1},
-    {"name": "O lógico", "preview": "\\[\\lor\\]", "code": "\\lor", "category": "logic", "size": 1},
+    {"name": "Y lógico", "preview": "\\[\\land\\]", "code": "\\land, \\wedge", "category": "logic", "size": 1},
+    {"name": "O lógico", "preview": "\\[\\lor\\]", "code": "\\lor, \\vee", "category": "logic", "size": 1},
     {"name": "No lógico", "preview": "\\[\\neg\\]", "code": "\\neg", "category": "logic", "size": 1},
     {"name": "Por lo tanto", "preview": "\\[\\therefore\\]", "code": "\\therefore", "category": "logic", "size": 1},
     {"name": "Porque", "preview": "\\[\\because\\]", "code": "\\because", "category": "logic", "size": 1}
