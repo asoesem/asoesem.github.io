@@ -1,0 +1,841 @@
+---
+layout: default
+title: Planificador de la Carrera de Enseñanza de la Matemática de la UNED
+permalink: /planificador/
+---
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chosen Palette: Slate & Amber -->
+<!-- Application Structure Plan: Se diseñó una aplicación de página única con una estructura de navegación por pestañas para separar las funcionalidades clave: "Mi Avance" (el panel de control principal con selección de cursos y progreso de credenciales), "Malla Curricular" (una vista visual e interactiva del plan de estudios) y "Cursos Disponibles" (una herramienta proactiva que muestra qué matricular a continuación). Esta estructura orientada a tareas permite al usuario responder rápidamente a sus preguntas más comunes ("¿cómo voy?", "¿cuál es el plan completo?", "¿qué sigue?") de una manera intuitiva y sin salir de la página, centralizando la información que antes estaba dispersa. -->
+<!-- Visualization & Content Choices: 
+    - Progreso General: Goal: Informar. Viz: Gráfico de dona (Chart.js) para mostrar créditos aprobados vs. pendientes, y tarjetas de estadísticas. Interaction: Actualización en tiempo real al marcar cursos. Justification: Ofrece un resumen visual inmediato del avance.
+    - Malla Curricular: Goal: Organizar/Explorar. Viz: Diagrama de bloques con tarjetas de cursos (HTML/CSS con Tailwind Grid). Interaction: Clic en cursos para ver detalles en un modal, con codificación por colores (aprobado, disponible, bloqueado). Justification: Mucho más intuitivo que las listas para entender dependencias y planificar a futuro.
+    - Credenciales: Goal: Informar. Viz: Listas con barras de progreso (HTML/CSS). Interaction: Clic para ver desglose de requisitos. Justification: Automatiza el seguimiento manual, un punto de dolor clave.
+    - Cursos Disponibles: Goal: Decidir. Viz: Lista filtrable de tarjetas de cursos. Interaction: Filtros por periodo académico. Justification: Resuelve la pregunta más crítica del estudiante de manera directa y eficiente.
+    - Library/Method: Vanilla JS para toda la lógica, Tailwind para el diseño, Chart.js para el gráfico de progreso. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+    :root {
+        --color-primary: #1e293b; 
+        --color-secondary: #475569;
+        --color-accent: #f59e0b; 
+        --color-background: #f1f5f9;
+        --color-surface: #ffffff;
+        --color-text-primary: #0f172a;
+        --color-text-secondary: #475569;
+        --status-approved: #22c55e;
+        --status-available: #3b82f6;
+        --status-locked: #64748b;
+    }
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text-primary);
+        font-family: 'Inter', sans-serif;
+    }
+    .tab-active {
+        border-color: var(--color-accent);
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+    .course-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .modal-backdrop {
+        transition: opacity 0.3s ease;
+    }
+    .modal-content {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .progress-bar-fill {
+        transition: width 0.5s ease-in-out;
+    }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div id="app" class="container mx-auto p-4 md:p-8">
+    
+    <header class="mb-8 text-center">
+        <h1 class="text-4xl font-bold text-slate-800">Asistente Académico</h1>
+        <p class="text-slate-600 mt-2">Enseñanza de la Matemática - UNED</p>
+    </header>
+
+    <main id="main-content" class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        
+        <div id="setup-section" class="mb-8">
+            <label for="plan-select" class="block text-lg font-semibold text-slate-700 mb-2">1. Seleccione su Plan de Estudios:</label>
+            <select id="plan-select" class="w-full max-w-md p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition">
+            </select>
+        </div>
+
+        <div id="app-body" class="hidden">
+            <div class="border-b border-slate-200 mb-6">
+                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                    <button data-tab="avance" class="tab-btn tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Mi Avance</button>
+                    <button data-tab="malla" class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">Malla Curricular</button>
+                    <button data-tab="disponibles" class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">Cursos Disponibles</button>
+                </nav>
+            </div>
+
+            <div id="tab-content">
+                <div id="avance-tab" class="tab-pane">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Panel de Avance</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                        <div class="lg:col-span-1 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-700 mb-4">Progreso de Créditos</h3>
+                            <div class="chart-container w-full max-w-xs mx-auto h-64">
+                                <canvas id="credits-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <h3 class="text-lg font-semibold text-slate-700 mb-4">Estadísticas Clave</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div id="approved-courses-count" class="text-3xl font-bold text-green-600">0</div>
+                                    <div class="text-sm text-slate-600">Cursos Aprobados</div>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div id="approved-credits-count" class="text-3xl font-bold text-green-600">0</div>
+                                    <div class="text-sm text-slate-600">Créditos Ganados</div>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div id="total-credits" class="text-3xl font-bold text-slate-800">0</div>
+                                    <div class="text-sm text-slate-600">Créditos del Plan</div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="text-lg font-semibold text-slate-700 mb-4">Progreso de Credenciales</h3>
+                                <div id="credentials-progress" class="space-y-4"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-8 mb-4">2. Marque los cursos que ha aprobado:</h3>
+                    <div id="courses-checklist" class="space-y-6"></div>
+                </div>
+                
+                <div id="malla-tab" class="tab-pane hidden">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Malla Curricular Interactiva</h2>
+                        <p class="text-slate-600 mb-6">Haga clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex items-center"><span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>Aprobado</div>
+                        <div class="flex items-center"><span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>Disponible</div>
+                        <div class="flex items-center"><span class="w-4 h-4 bg-slate-500 rounded-full mr-2"></span>Bloqueado</div>
+                    </div>
+                    <div id="curriculum-map" class="space-y-8"></div>
+                </div>
+
+                <div id="disponibles-tab" class="tab-pane hidden">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Asistente de Matrícula</h2>
+                    <p class="text-slate-600 mb-6">Estos son los cursos que puede matricular según su avance. Filtre por periodo para planificar.</p>
+                    <div class="mb-6">
+                        <label for="period-filter" class="font-semibold text-slate-700">Filtrar por periodo de oferta:</label>
+                        <div id="period-filter" class="flex flex-wrap gap-2 mt-2">
+                            <button data-period="all" class="period-btn bg-amber-500 text-white px-4 py-2 rounded-full text-sm">Todos</button>
+                            <button data-period="q1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">I Cuatrimestre</button>
+                            <button data-period="q2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">II Cuatrimestre</button>
+                            <button data-period="q3" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">III Cuatrimestre</button>
+                            <button data-period="s1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">I Semestre</button>
+                            <button data-period="s2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">II Semestre</button>
+                        </div>
+                    </div>
+                    <div id="available-courses-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="course-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
+        <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 id="modal-course-name" class="text-2xl font-bold text-slate-800"></h3>
+                    <p id="modal-course-code" class="text-sm text-slate-500"></p>
+                </div>
+                <button id="modal-close-btn" class="text-slate-400 hover:text-slate-600">&times;</button>
+            </div>
+            <div class="mt-6 border-t pt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="text-sm text-slate-500">Créditos</div>
+                    <div id="modal-course-credits" class="text-xl font-semibold"></div>
+                </div>
+                <div>
+                    <div class="text-sm text-slate-500">Nivel</div>
+                    <div id="modal-course-level" class="text-xl font-semibold"></div>
+                </div>
+                    <div>
+                    <div class="text-sm text-slate-500">Categorías</div>
+                    <div id="modal-course-categories" class="text-sm font-semibold"></div>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <h4 class="font-semibold text-slate-700 mb-3">Disponibilidad</h4>
+                <p id="modal-course-availability" class="text-slate-600"></p>
+            </div>
+
+            <div class="mt-6">
+                <h4 class="font-semibold text-slate-700 mb-3">Prerrequisitos (necesita aprobar):</h4>
+                <ul id="modal-course-prerequisites" class="list-disc list-inside space-y-1 text-slate-600"></ul>
+            </div>
+
+            <div class="mt-6">
+                <h4 class="font-semibold text-slate-700 mb-3">Desbloquea los siguientes cursos:</h4>
+                <ul id="modal-course-unlocks" class="list-disc list-inside space-y-1 text-slate-600"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="credential-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
+            <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start">
+                <h3 id="modal-credential-name" class="text-2xl font-bold text-slate-800"></h3>
+                <button id="credential-modal-close-btn" class="text-slate-400 hover:text-slate-600">&times;</button>
+            </div>
+            <div class="mt-6 border-t pt-6">
+                <h4 class="font-semibold text-slate-700 mb-3">Requisitos:</h4>
+                <div id="modal-credential-rules" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const DB = {
+        "courseCatalog": {
+            "00023": { "code": "00023", "name": "Historia de la Cultura", "credits": 3, "categories": ["Humanidades", "Historia"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "00060": { "code": "00060", "name": "Literatura Costarricense e Identidad Nacional", "credits": 3, "categories": ["Humanidades", "Lengua y Literatura"], "level": "Introductorio", "availability": { "quarters": [1, 3] } },
+            "00061": { "code": "00061", "name": "Lenguaje y Realidad Social", "credits": 3, "categories": ["Humanidades", "Lengua y Literatura"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "00069": { "code": "00069", "name": "Historia de Costa Rica", "credits": 3, "categories": ["Humanidades", "Historia"], "level": "Introductorio", "availability": { "quarters": [1, 2] } },
+            "00076": { "code": "00076", "name": "Globalización y Ambiente", "credits": 3, "categories": ["Humanides", "Investigación Social y Ambiente"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "00709": { "code": "00709", "name": "Comunicación Oral y Escrita", "credits": 3, "categories": ["Comunicación", "Educación"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "00767": { "code": "00767", "name": "Introducción a la Pedagogía", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "02223": { "code": "02223", "name": "Inglés Instrumental para Educadores I", "credits": 3, "categories": ["Idiomas", "Educación"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "03057": { "code": "03057", "name": "Elementos Básicos de Psicología del Adolescente", "credits": 3, "categories": ["Psicología", "Educación"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "03219": { "code": "03219", "name": "Herramientas básicas de investigación", "credits": 3, "categories": ["Investigación"], "level": "Intermedio", "availability": { "quarters": [3] } },
+            "03420": { "code": "03420", "name": "Geometría Euclídea I", "credits": 4, "categories": ["Matemáticas", "Geometría"], "level": "Introductorio", "availability": { "quarters": [1, 2] } },
+            "03421": { "code": "03421", "name": "Álgebra y Funciones", "credits": 3, "categories": ["Matemáticas", "Álgebra"], "level": "Introductorio", "availability": { "quarters": [2, 3] } },
+            "03422": { "code": "03422", "name": "Geometría Euclídea II", "credits": 4, "categories": ["Matemáticas", "Geometría"], "level": "Intermedio", "availability": { "quarters": [3] } },
+            "03423": { "code": "03423", "name": "Lógica y Teoría de Conjuntos", "credits": 3, "categories": ["Matemáticas", "Lógica"], "level": "Introductorio", "availability": { "quarters": [1, 3] } },
+            "03424": { "code": "03424", "name": "Psicopedagogía en la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Intermedio", "availability": { "quarters": [1, 3] } },
+            "03425": { "code": "03425", "name": "Fundamentos Filosóficos para la Educación Matemática", "credits": 3, "categories": ["Filosofía", "Educación"], "level": "Intermedio", "availability": { "quarters": [1, 3] } },
+            "03426": { "code": "03426", "name": "Currículo para la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Intermedio", "availability": { "quarters": [1, 2] } },
+            "03427": { "code": "03427", "name": "Cálculo Diferencial", "credits": 4, "categories": ["Matemáticas", "Cálculo"], "level": "Intermedio", "availability": { "quarters": [1] } },
+            "03428": { "code": "03428", "name": "Herramientas Multimediales I", "credits": 3, "categories": ["Tecnología", "Educación"], "level": "Intermedio", "availability": { "quarters": [1, 2] } },
+            "03429": { "code": "03429", "name": "Recursos Didácticos para la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Intermedio", "availability": { "quarters": [1, 2] } },
+            "03430": { "code": "03430", "name": "Tendencias Didácticas en la Educación Matemática I", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Intermedio", "availability": { "quarters": [2] } },
+            "03431": { "code": "03431", "name": "Cálculo Integral", "credits": 4, "categories": ["Matemáticas", "Cálculo"], "level": "Intermedio", "availability": { "quarters": [2] } },
+            "03432": { "code": "03432", "name": "Álgebra Lineal", "credits": 4, "categories": ["Matemáticas", "Álgebra"], "level": "Intermedio", "availability": { "quarters": [2] } },
+            "03433": { "code": "03433", "name": "Didáctica de la Geometría, las Relaciones y el Álgebra", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Intermedio", "availability": { "quarters": [2] } },
+            "03434": { "code": "03434", "name": "Probabilidad y Estadística I", "credits": 4, "categories": ["Matemáticas", "Estadística"], "level": "Intermedio", "availability": { "quarters": [3] } },
+            "03435": { "code": "03435", "name": "Geometría Analítica", "credits": 4, "categories": ["Matemáticas", "Geometría"], "level": "Intermedio", "availability": { "quarters": [3] } },
+            "03436": { "code": "03436", "name": "Legislación Educativa", "credits": 3, "categories": ["Derecho", "Educación"], "level": "Intermedio", "availability": { "quarters": [2, 3] } },
+            "03437": { "code": "03437", "name": "Planeamiento Didáctico para la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Planificación"], "level": "Intermedio", "availability": { "quarters": [2, 3] } },
+            "03439": { "code": "03439", "name": "Ecuaciones Diferenciales", "credits": 4, "categories": ["Matemáticas", "Cálculo"], "level": "Avanzado", "availability": { "quarters": [1] } },
+            "03440": { "code": "03440", "name": "Evaluación de los Aprendizajes para la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Evaluación"], "level": "Avanzado", "availability": { "quarters": [1, 3] } },
+            "03441": { "code": "03441", "name": "Didáctica de los Números, Incertidumbre y Datos", "credits": 3, "categories": ["Pedagogía", "Educación"], "level": "Avanzado", "availability": { "quarters": [1] } },
+            "03442": { "code": "03442", "name": "Introducción a la Teoría de los Números", "credits": 3, "categories": ["Matemáticas", "Teoría de Números"], "level": "Avanzado", "availability": { "quarters": [1, 2] } },
+            "03443": { "code": "03443", "name": "Metodología de la Enseñanza de la Matemática", "credits": 3, "categories": ["Pedagogía", "Metodología"], "level": "Avanzado", "availability": { "quarters": [1, 3] } },
+            "03444": { "code": "03444", "name": "Historia y Filosofía de la Matemática", "credits": 3, "categories": ["Matemáticas", "Filosofía", "Historia"], "level": "Avanzado", "availability": { "quarters": [3] } },
+            "03445": { "code": "03445", "name": "Métodos Numéricos", "credits": 4, "categories": ["Matemáticas"], "level": "Avanzado", "availability": { "quarters": [3] } },
+            "03446": { "code": "03446", "name": "Práctica Docente para la Enseñanza de la Matemática", "credits": 6, "categories": ["Pedagogía", "Educación"], "level": "Avanzado", "availability": { "semesters": [1, 2] } },
+            "03447": { "code": "03447", "name": "Cálculo Superior", "credits": 4, "categories": ["Matemáticas", "Cálculo"], "level": "Avanzado", "availability": { "quarters": [1, 3] } },
+            "03448": { "code": "03448", "name": "Herramientas Multimediales II", "credits": 3, "categories": ["Tecnología", "Educación"], "level": "Avanzado", "availability": { "quarters": [1] } },
+            "03449": { "code": "03449", "name": "Álgebra Moderna", "credits": 5, "categories": ["Matemáticas", "Álgebra"], "level": "Avanzado", "availability": { "quarters": [2, 3] } },
+            "03450": { "code": "03450", "name": "Construcciones Geométricas", "credits": 3, "categories": ["Matemáticas", "Geometría"], "level": "Avanzado", "availability": { "quarters": [1] } },
+            "03451": { "code": "03451", "name": "Geometrías no Euclídeas", "credits": 3, "categories": ["Matemáticas", "Geometría"], "level": "Avanzado", "availability": { "quarters": [2] } },
+            "03452": { "code": "03452", "name": "Análisis Real", "credits": 5, "categories": ["Matemáticas", "Análisis"], "level": "Avanzado", "availability": { "quarters": [1, 3] } },
+            "03453": { "code": "03453", "name": "Investigación en Educación Matemática I", "credits": 4, "categories": ["Investigación", "Educación"], "level": "Avanzado", "availability": { "semesters": [1, 2] } },
+            "03454": { "code": "03454", "name": "Investigación en Educación Matemática II", "credits": 4, "categories": ["Investigación", "Educación"], "level": "Avanzado", "availability": { "semesters": [1] } },
+            "03455": { "code": "03455", "name": "Diseño y Evaluación Curricular", "credits": 4, "categories": ["Pedagogía", "Educación"], "level": "Avanzado", "availability": { "semesters": [1] } },
+            "03456": { "code": "03456", "name": "Probabilidad y Estadística II", "credits": 4, "categories": ["Matemáticas", "Estadística"], "level": "Avanzado", "availability": { "quarters": [1, 2, 3] } },
+            "03457": { "code": "03457", "name": "Tendencias Didácticas en la Educación Matemática II", "credits": 4, "categories": ["Pedagogía", "Educación"], "level": "Avanzado", "availability": { "semesters": [2] } },
+            "03458": { "code": "03458", "name": "Topología", "credits": 4, "categories": ["Matemáticas", "Topología"], "level": "Avanzado", "availability": { "semesters": [2] } },
+            "03459": { "code": "03459", "name": "Producción de Materiales Didácticos", "credits": 4, "categories": ["Pedagogía", "Educación"], "level": "Avanzado", "availability": { "semesters": [2] } },
+            "03460": { "code": "03460", "name": "Variable Compleja", "credits": 4, "categories": ["Matemáticas", "Análisis"], "level": "Avanzado", "availability": { "semesters": [1] } },
+            "03461": { "code": "03461", "name": "Taller de Investigación en Educación Matemática", "credits": 2, "categories": ["Investigación", "Educación"], "level": "Avanzado", "availability": { "semesters": [1, 2] } },
+            "03462": { "code": "03462", "name": "Trabajo Final de Graduación en Enseñanza de la Matemática", "credits": 0, "categories": ["Investigación", "Tesis"], "level": "Avanzado", "availability": { "quarters": [1, 2, 3] } },
+            "03463": { "code": "03463", "name": "Matemática Introductoria", "credits": 3, "categories": ["Matemáticas"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } },
+            "03475": { "code": "03475", "name": "Física I (Teoría)", "credits": 3, "categories": ["Matemáticas"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05413": { "code": "05413", "name": "Novela Hispanoamericana del Siglo XX", "credits": 3, "categories": ["Humanidades", "Lengua y Literatura"], "level": "Intermedio", "availability": { "quarters": [1, 2] } },
+            "05414": { "code": "05414", "name": "Perspectivas Sociológicas de la Realidad Costarricense", "credits": 3, "categories": ["Humanidades", "Investigación Social y Ambiente"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05427": { "code": "05427", "name": "Historia Latinoamericana en Perspectiva Centroamericana", "credits": 3, "categories": ["Humanidades", "Historia"], "level": "Intermedio", "availability": { "quarters": [2, 3] } },
+            "05435": { "code": "05435", "name": "Introducción a la metodología de la investigación", "credits": 3, "categories": ["Humanidades", "Investigación Social y Ambiente"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05436": { "code": "05436", "name": "Género y derechos humanos", "credits": 3, "categories": ["Humanidades", "Estudios Culturales"], "level": "Intermedio", "availability": { "quarters": [1, 2] } },
+            "05437": { "code": "05437", "name": "Género y multiculturalismo en el arte contemporáneo", "credits": 3, "categories": ["Humanidades", "Estudios Culturales"], "level": "Intermedio", "availability": { "quarters": [2, 3] } },
+            "05438": { "code": "05438", "name": "Arte y realidad latinoamericana", "credits": 3, "categories": ["Humanidades", "Estudios Culturales"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05439": { "code": "05439", "name": "Arte y cultura popular costarricense", "credits": 3, "categories": ["Humanidades", "Estudios Culturales"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05440": { "code": "05440", "name": "Perspectivas Filosóficas de la Ciencia", "credits": 3, "categories": ["Humanidades", "Filosofía", "Ciencias"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05441": { "code": "05441", "name": "Ética y Política", "credits": 3, "categories": ["Humanidades", "Filosofía", "Ética"], "level": "Intermedio", "availability": { "quarters": [1, 2, 3] } },
+            "05442": { "code": "05442", "name": "Procesos y Estrategias para el Aprendizaje a Distancia", "credits": 3, "categories": ["Humanidades", "Autorregulación y Aprendizaje"], "level": "Introductorio", "availability": { "quarters": [1, 2, 3] } }
+        },
+        "credentials": {
+            "MT1": { "name": "MT1", "credits": 47, "rules": { "type": "and", "conditions": [{ "type": "courses", "operator": "all", "courses": ["03463", "00709", "03421", "03057", "00767", "02223", "03423", "03424", "03425", "03420", "03427", "03428", "03429"] }, { "type": "categories", "operator": "credits", "categories": ["Humanidades"], "creditsRequired": 9 }] } },
+            "MT2": { "name": "MT2", "credits": 64, "rules": { "type": "and", "conditions": [{ "type": "credentials", "operator": "all", "credentials": ["MT1"] }, { "type": "courses", "operator": "all", "courses": ["03430", "03431", "03432", "03433"] }, { "type": "categories", "operator": "credits", "categories": ["Humanidades"], "creditsRequired": 3 }] } },
+            "MT3": { "name": "MT3", "credits": 110, "rules": { "type": "and", "conditions": [{ "type": "credentials", "operator": "all", "credentials": ["MT2"] }, { "type": "courses", "operator": "all", "courses": ["03434", "03435", "03436", "03437", "03475", "03439", "03440", "03441", "03422", "03442", "03448", "03443", "03446"] }] } },
+            "MT4": { "name": "MT4", "credits": 144, "rules": { "type": "and", "conditions": [{ "type": "credentials", "operator": "all", "credentials": ["MT3"] }, { "type": "courses", "operator": "all", "courses": ["03444", "03445", "03447", "03449", "03452", "03453"] }, { "type": "categories", "operator": "credits", "categories": ["Humanidades"], "creditsRequired": 9, "availableCourses": ["05441", "05440", "00069", "00023", "05427", "00060", "00061", "05413", "05437", "05436", "05438", "05439", "00076", "05435", "05414"] }, { "type": "courses", "operator": "credits", "creditsRequired": 3, "availableCourses": ["03450", "03451", "03219"] }] } },
+            "MT5": { "name": "MT5", "credits": 30, "rules": { "type": "and", "conditions": [{ "type": "credentials", "operator": "all", "credentials": ["MT4"] }, { "type": "courses", "operator": "all", "courses": ["03454", "03455", "03456", "03457", "03458", "03459", "03460", "03461", "03462"] }] } }
+        },
+        "programs": [{ "id": "B1", "name": "Transición 2025-2027", "degree": "Bachillerato", "blocks": [{ "id": "O", "name": "Bloque O", "courses": [{ "courseCode": "03463", "prerequisites": { "type": "none" } }, { "courseCode": "05442", "prerequisites": { "type": "none" } }], "electives": [{ "name": "Filosofía y Pensamiento", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Filosofía"], "creditsRequired": 3, "availableCourses": ["05441", "05440"] }] }, { "name": "Historia", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Historia"], "creditsRequired": 3, "availableCourses": ["00069", "00023", "05427"] }] }, { "name": "Lengua y Literatura", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Literatura"], "creditsRequired": 3, "availableCourses": ["00060", "00061", "05413"] }] }] }, { "id": "A", "name": "Bloque A", "courses": [{ "courseCode": "03420", "prerequisites": { "type": "courses", "courses": ["03463"] } }, { "courseCode": "03421", "prerequisites": { "type": "courses", "courses": ["03463"] } }, { "courseCode": "00767", "prerequisites": { "type": "none" } }, { "courseCode": "03057", "prerequisites": { "type": "none" } }] }, { "id": "B", "name": "Bloque B", "courses": [{ "courseCode": "03422", "prerequisites": { "type": "courses", "courses": ["03420"] } }, { "courseCode": "03423", "prerequisites": { "type": "courses", "courses": ["03421"] } }, { "courseCode": "03424", "prerequisites": { "type": "none" } }, { "courseCode": "03425", "prerequisites": { "type": "none" } }] }, { "id": "C", "name": "Bloque C", "courses": [{ "courseCode": "03426", "prerequisites": { "type": "none" } }, { "courseCode": "03427", "prerequisites": { "type": "courses", "courses": ["03423"] } }, { "courseCode": "03428", "prerequisites": { "type": "courses", "courses": ["03423"] } }, { "courseCode": "03429", "prerequisites": { "type": "none" } }] }, { "id": "D", "name": "Bloque D", "courses": [{ "courseCode": "03430", "prerequisites": { "type": "none" } }, { "courseCode": "03431", "prerequisites": { "type": "courses", "courses": ["03427"] } }, { "courseCode": "03432", "prerequisites": { "type": "courses", "courses": ["03427"] } }, { "courseCode": "03433", "prerequisites": { "type": "courses", "courses": ["03422", "03423"] } }] }, { "id": "E", "name": "Bloque E", "courses": [{ "courseCode": "03434", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03435", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03436", "prerequisites": { "type": "none" } }, { "courseCode": "03437", "prerequisites": { "type": "courses", "courses": ["03426"] } }] }, { "id": "F", "name": "Bloque F", "courses": [{ "courseCode": "03475", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03439", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03440", "prerequisites": { "type": "courses", "courses": ["03437"] } }, { "courseCode": "03441", "prerequisites": { "type": "courses", "courses": ["03434"] } }] }, { "id": "G", "name": "Bloque G", "courses": [{ "courseCode": "00709", "prerequisites": { "type": "none" } }, { "courseCode": "03442", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03443", "prerequisites": { "type": "blocks", "blocks": ["A", "B", "C", "D", "E", "F"] } }] }, { "id": "H", "name": "Bloque H", "courses": [{ "courseCode": "03444", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03445", "prerequisites": { "type": "courses", "courses": ["03439"] } }, { "courseCode": "03446", "prerequisites": { "type": "blocks", "blocks": ["A", "B", "C", "D", "E", "F", "G"] } }] }, { "id": "I", "name": "Bloque I", "courses": [{ "courseCode": "03447", "prerequisites": { "type": "courses", "courses": ["03432", "03435"] } }, { "courseCode": "03448", "prerequisites": { "type": "courses", "courses": ["03437"] } }], "electives": [{ "name": "Estudios Culturales", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Ciencias Sociales"], "creditsRequired": 3, "availableCourses": ["05437", "05436", "05438", "05439"] }] }] }, { "id": "J", "name": "Bloque J", "courses": [{ "courseCode": "03449", "prerequisites": { "type": "courses", "courses": ["03447"] } }], "electives": [{ "name": "Electivas Matemáticas", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Matemáticas", "Investigación"], "creditsRequired": 3, "availableCourses": ["03451", "03450", "03219"] }] }] }, { "id": "K", "name": "Bloque K", "courses": [{ "courseCode": "03452", "prerequisites": { "type": "courses", "courses": ["03447"] } }, { "courseCode": "03453", "prerequisites": { "type": "courses", "courses": ["03446"] } }], "electives": [{ "name": "Investigación Social y Ambiente", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Ciencias Sociales", "Ambiente", "Investigación"], "creditsRequired": 3, "availableCourses": ["00076", "05435", "05414"] }] }] }] }, { "id": "B2", "name": "Plan Nuevo 2025", "degree": "Bachillerato", "blocks": [{ "id": "O", "name": "Bloque O", "courses": [{ "courseCode": "03463", "prerequisites": { "type": "none" } }], "electives": [{ "name": "Filosofía y Pensamiento", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Filosofía"], "creditsRequired": 3, "availableCourses": ["05441", "05440"] }] }, { "name": "Historia", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Historia"], "creditsRequired": 3, "availableCourses": ["00069", "00023", "05427"] }] }, { "name": "Lengua y Literatura", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Literatura"], "creditsRequired": 3, "availableCourses": ["00060", "00061", "05413"] }] }, { "name": "Autorregulación y Aprendizaje", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Educación a Distancia"], "creditsRequired": 3, "availableCourses": ["05442"] }] }] }, { "id": "A", "name": "Bloque A", "courses": [{ "courseCode": "00709", "prerequisites": { "type": "none" } }, { "courseCode": "03421", "prerequisites": { "type": "courses", "courses": ["03463"] } }, { "courseCode": "00767", "prerequisites": { "type": "none" } }, { "courseCode": "03057", "prerequisites": { "type": "none" } }] }, { "id": "B", "name": "Bloque B", "courses": [{ "courseCode": "02223", "prerequisites": { "type": "none" } }, { "courseCode": "03423", "prerequisites": { "type": "courses", "courses": ["03421"] } }, { "courseCode": "03424", "prerequisites": { "type": "none" } }, { "courseCode": "03425", "prerequisites": { "type": "none" } }] }, { "id": "C", "name": "Bloque C", "courses": [{ "courseCode": "03420", "prerequisites": { "type": "courses", "courses": ["03423"] } }, { "courseCode": "03427", "prerequisites": { "type": "courses", "courses": ["03423"] } }, { "courseCode": "03428", "prerequisites": { "type": "courses", "courses": ["03423"] } }, { "courseCode": "03429", "prerequisites": { "type": "none" } }] }, { "id": "D", "name": "Bloque D", "courses": [{ "courseCode": "03430", "prerequisites": { "type": "none" } }, { "courseCode": "03431", "prerequisites": { "type": "courses", "courses": ["03427"] } }, { "courseCode": "03432", "prerequisites": { "type": "courses", "courses": ["03427"] } }] }, { "id": "E", "name": "Bloque E", "courses": [{ "courseCode": "03434", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03435", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03436", "prerequisites": { "type": "none" } }, { "courseCode": "03433", "prerequisites": { "type": "courses", "courses": ["03420", "03423", "03430"] } }] }, { "id": "F", "name": "Bloque F", "courses": [{ "courseCode": "03475", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03439", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03437", "prerequisites": { "type": "courses", "courses": ["03433"] } }, { "courseCode": "03441", "prerequisites": { "type": "courses", "courses": ["03433", "03434"] } }] }, { "id": "G", "name": "Bloque G", "courses": [{ "courseCode": "03422", "prerequisites": { "type": "courses", "courses": ["03420"] } }, { "courseCode": "03442", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03448", "prerequisites": { "type": "courses", "courses": ["03437"] } }, { "courseCode": "03440", "prerequisites": { "type": "courses", "courses": ["03437"] } }] }, { "id": "H", "name": "Bloque H", "courses": [{ "courseCode": "03444", "prerequisites": { "type": "courses", "courses": ["03431"] } }, { "courseCode": "03445", "prerequisites": { "type": "courses", "courses": ["03439"] } }, { "courseCode": "03443", "prerequisites": { "type": "blocks", "blocks": ["A", "B", "C", "D", "E", "F", "G"] } }] }, { "id": "I", "name": "Bloque I", "courses": [{ "courseCode": "03447", "prerequisites": { "type": "courses", "courses": ["03432", "03435"] } }, { "courseCode": "03446", "prerequisites": { "type": "blocks", "blocks": ["A", "B", "C", "D", "E", "F", "G", "H"] } }], "electives": [{ "name": "Estudios Culturales", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Ciencias Sociales"], "creditsRequired": 3, "availableCourses": ["05437", "05436", "05438", "05439"] }] }] }, { "id": "J", "name": "Bloque J", "courses": [{ "courseCode": "03449", "prerequisites": { "type": "courses", "courses": ["03447"] } }], "electives": [{ "name": "Electivas Matemáticas", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Matemáticas", "Investigación"], "creditsRequired": 3, "availableCourses": ["03451", "03450", "03219"] }] }] }, { "id": "K", "name": "Bloque K", "courses": [{ "courseCode": "03452", "prerequisites": { "type": "courses", "courses": ["03447"] } }, { "courseCode": "03453", "prerequisites": { "type": "courses", "courses": ["03446"] } }], "electives": [{ "name": "Investigación Social y Ambiente", "creditsRequired": 3, "categoryRequirements": [{ "categories": ["Ciencias Sociales", "Ambiente", "Investigación"], "creditsRequired": 3, "availableCourses": ["00076", "05435", "05414"] }] }] }] }, { "id": "L1", "name": "Plan 2025-2027", "degree": "Licenciatura", "blocks": [{ "id": "L", "name": "Bloque L", "courses": [{ "courseCode": "03454", "prerequisites": { "type": "none" } }, { "courseCode": "03455", "prerequisites": { "type": "none" } }, { "courseCode": "03456", "prerequisites": { "type": "none" } }] }, { "id": "M", "name": "Bloque M", "courses": [{ "courseCode": "03457", "prerequisites": { "type": "none" } }, { "courseCode": "03458", "prerequisites": { "type": "none" } }, { "courseCode": "03459", "prerequisites": { "type": "courses", "courses": ["03455"] } }] }, { "id": "N", "name": "Bloque N", "courses": [{ "courseCode": "03460", "prerequisites": { "type": "none" } }, { "courseCode": "03461", "prerequisites": { "type": "blocks", "blocks": ["L", "M"] } }] }, { "id": "O", "name": "Bloque O y P", "courses": [{ "courseCode": "03462", "prerequisites": { "type": "courses", "courses": ["03460", "03461"] } }] }] }]
+    };
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const state = {
+            selectedPlanId: null,
+            approvedCourses: new Set(),
+            activeTab: 'avance',
+            periodFilter: 'all',
+        };
+
+        const ui = {
+            planSelect: document.getElementById('plan-select'),
+            appBody: document.getElementById('app-body'),
+            tabs: document.querySelectorAll('.tab-btn'),
+            tabPanes: document.querySelectorAll('.tab-pane'),
+            coursesChecklist: document.getElementById('courses-checklist'),
+            curriculumMap: document.getElementById('curriculum-map'),
+            availableCoursesList: document.getElementById('available-courses-list'),
+            periodFilterBtns: document.querySelectorAll('.period-btn'),
+            
+            stats: {
+                approvedCourses: document.getElementById('approved-courses-count'),
+                approvedCredits: document.getElementById('approved-credits-count'),
+                totalCredits: document.getElementById('total-credits'),
+            },
+            credentialsProgress: document.getElementById('credentials-progress'),
+            
+            courseModal: {
+                el: document.getElementById('course-modal'),
+                name: document.getElementById('modal-course-name'),
+                code: document.getElementById('modal-course-code'),
+                credits: document.getElementById('modal-course-credits'),
+                level: document.getElementById('modal-course-level'),
+                categories: document.getElementById('modal-course-categories'),
+                availability: document.getElementById('modal-course-availability'),
+                prerequisites: document.getElementById('modal-course-prerequisites'),
+                unlocks: document.getElementById('modal-course-unlocks'),
+                closeBtn: document.getElementById('modal-close-btn'),
+            },
+            
+            credentialModal: {
+                el: document.getElementById('credential-modal'),
+                name: document.getElementById('modal-credential-name'),
+                rules: document.getElementById('modal-credential-rules'),
+                closeBtn: document.getElementById('credential-modal-close-btn'),
+            }
+        };
+
+        let creditsChart = null;
+
+        function getCourse(code) {
+            return DB.courseCatalog[code];
+        }
+
+        function getPlan(planId) {
+            return DB.programs.find(p => p.id === planId);
+        }
+        
+        function getAllCoursesInPlan(planId) {
+            const plan = getPlan(planId);
+            if (!plan) return [];
+            const courses = new Map();
+            plan.blocks.forEach(block => {
+                block.courses.forEach(c => {
+                    if (!courses.has(c.courseCode)) {
+                        courses.set(c.courseCode, getCourse(c.courseCode));
+                    }
+                });
+                if (block.electives) {
+                    block.electives.forEach(elective => {
+                        elective.categoryRequirements.forEach(req => {
+                            req.availableCourses.forEach(code => {
+                                    if (!courses.has(code)) {
+                                    courses.set(code, getCourse(code));
+                                    }
+                            });
+                        });
+                    });
+                }
+            });
+            return Array.from(courses.values());
+        }
+
+        function saveState() {
+            const stateToSave = {
+                selectedPlanId: state.selectedPlanId,
+                approvedCourses: Array.from(state.approvedCourses)
+            };
+            localStorage.setItem('academicPlannerState', JSON.stringify(stateToSave));
+        }
+
+        function loadState() {
+            const savedState = localStorage.getItem('academicPlannerState');
+            if (savedState) {
+                const parsedState = JSON.parse(savedState);
+                state.selectedPlanId = parsedState.selectedPlanId;
+                state.approvedCourses = new Set(parsedState.approvedCourses);
+            }
+        }
+        
+        function checkPrerequisites(courseCode, planId) {
+            const plan = getPlan(planId);
+            let prerequisites = null;
+            
+            for (const block of plan.blocks) {
+                const courseInfo = block.courses.find(c => c.courseCode === courseCode);
+                if (courseInfo) {
+                    prerequisites = courseInfo.prerequisites;
+                    break;
+                }
+            }
+
+            if (!prerequisites || prerequisites.type === 'none') {
+                return { met: true, details: [{ text: "Ninguno", met: true }] };
+            }
+
+            if (prerequisites.type === 'courses') {
+                const details = prerequisites.courses.map(reqCode => {
+                    const met = state.approvedCourses.has(reqCode);
+                    return { text: `${getCourse(reqCode).name} (${reqCode})`, met };
+                });
+                return { met: details.every(d => d.met), details };
+            }
+
+            if (prerequisites.type === 'blocks') {
+                let allCoursesInRequiredBlocks = [];
+                prerequisites.blocks.forEach(blockId => {
+                    const requiredBlock = plan.blocks.find(b => b.id === blockId);
+                    if (requiredBlock) {
+                        requiredBlock.courses.forEach(c => allCoursesInRequiredBlocks.push(c.courseCode));
+                    }
+                });
+
+                const details = allCoursesInRequiredBlocks.map(reqCode => {
+                    const met = state.approvedCourses.has(reqCode);
+                    return { text: `${getCourse(reqCode).name} (${reqCode})`, met, block: true };
+                });
+
+                const met = details.every(d => d.met);
+                const summaryDetail = { text: `Todos los cursos de los bloques: ${prerequisites.blocks.join(', ')}`, met };
+
+                return { met, details: [summaryDetail] };
+            }
+
+            return { met: false, details: [] };
+        }
+
+        function getCourseStatus(courseCode, planId) {
+            if (state.approvedCourses.has(courseCode)) {
+                return 'approved';
+            }
+            if (checkPrerequisites(courseCode, planId).met) {
+                return 'available';
+            }
+            return 'locked';
+        }
+
+        function checkCredentialStatus(credentialId) {
+            const credential = DB.credentials[credentialId];
+            if (!credential) return { met: false, progress: 0, details: [] };
+
+            const conditions = credential.rules.conditions;
+            let totalConditions = 0;
+            let metConditions = 0;
+            const details = [];
+
+            const check = (conds) => {
+                conds.forEach(condition => {
+                    totalConditions++;
+                    let conditionMet = false;
+                    let detailText = "";
+                    let subDetails = [];
+
+                    if (condition.type === 'courses' && condition.operator === 'all') {
+                        let metCount = 0;
+                        condition.courses.forEach(c => {
+                            if (state.approvedCourses.has(c)) metCount++;
+                            subDetails.push({ text: `${getCourse(c).name} (${c})`, met: state.approvedCourses.has(c) });
+                        });
+                        conditionMet = metCount === condition.courses.length;
+                        detailText = `Aprobar ${condition.courses.length} cursos específicos (${metCount}/${condition.courses.length})`;
+                    } else if (condition.type === 'categories' && condition.operator === 'credits') {
+                        const approvedInCategory = Array.from(state.approvedCourses)
+                            .map(getCourse)
+                            .filter(c => c.categories.some(cat => condition.categories.includes(cat)));
+                        const creditsEarned = approvedInCategory.reduce((sum, c) => sum + c.credits, 0);
+                        conditionMet = creditsEarned >= condition.creditsRequired;
+                        detailText = `Obtener ${condition.creditsRequired} créditos en ${condition.categories.join('/')} (${creditsEarned}/${condition.creditsRequired})`;
+                    } else if (condition.type === 'credentials' && condition.operator === 'all') {
+                        const subCredentialStatus = checkCredentialStatus(condition.credentials[0]);
+                        conditionMet = subCredentialStatus.met;
+                        detailText = `Tener la credencial ${DB.credentials[condition.credentials[0]].name}`;
+                        subDetails = subCredentialStatus.details;
+                    } else if (condition.type === 'courses' && condition.operator === 'credits') {
+                        const approvedElectives = Array.from(state.approvedCourses)
+                            .filter(c => condition.availableCourses.includes(c));
+                        const creditsEarned = approvedElectives.reduce((sum, c) => sum + getCourse(c).credits, 0);
+                        conditionMet = creditsEarned >= condition.creditsRequired;
+                        detailText = `Obtener ${condition.creditsRequired} créditos de cursos electivos (${creditsEarned}/${condition.creditsRequired})`;
+                    }
+                    
+                    if(conditionMet) metConditions++;
+                    details.push({ text: detailText, met: conditionMet, subDetails });
+                });
+            }
+            check(conditions);
+            
+            return {
+                met: metConditions === totalConditions,
+                progress: totalConditions > 0 ? (metConditions / totalConditions) * 100 : 0,
+                details
+            };
+        }
+
+        function renderAll() {
+            if (!state.selectedPlanId) {
+                ui.appBody.classList.add('hidden');
+                return;
+            }
+            ui.appBody.classList.remove('hidden');
+
+            const plan = getPlan(state.selectedPlanId);
+            const allCourses = getAllCoursesInPlan(state.selectedPlanId);
+
+            renderStats(allCourses);
+            renderCourseChecklist(plan);
+            renderCurriculumMap(plan);
+            renderAvailableCourses(allCourses);
+            renderCredentialsProgress();
+            
+            saveState();
+        }
+        
+        function renderStats(allCourses) {
+            const approvedCoursesObjects = Array.from(state.approvedCourses)
+                .map(getCourse)
+                .filter(c => c); 
+            const approvedCredits = approvedCoursesObjects.reduce((sum, course) => sum + course.credits, 0);
+            const totalCredits = allCourses.reduce((sum, course) => sum + course.credits, 0);
+
+            ui.stats.approvedCourses.textContent = approvedCoursesObjects.length;
+            ui.stats.approvedCredits.textContent = approvedCredits;
+            ui.stats.totalCredits.textContent = totalCredits;
+            
+            renderCreditsChart(approvedCredits, totalCredits - approvedCredits);
+        }
+
+        function renderCreditsChart(approved, pending) {
+            const ctx = document.getElementById('credits-chart').getContext('2d');
+            const data = {
+                labels: ['Aprobados', 'Pendientes'],
+                datasets: [{
+                    data: [approved, pending],
+                    backgroundColor: ['#22c55e', '#e2e8f0'],
+                    borderColor: ['#ffffff', '#ffffff'],
+                    borderWidth: 2,
+                }]
+            };
+            if (creditsChart) {
+                creditsChart.data = data;
+                creditsChart.update();
+            } else {
+                creditsChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw} créditos`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        function renderCourseChecklist(plan) {
+            let html = '';
+            plan.blocks.forEach(block => {
+                html += `<div class="p-4 border border-slate-200 rounded-lg">
+                            <h4 class="text-lg font-semibold text-slate-700 mb-3">${block.name}</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">`;
+                block.courses.forEach(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    const isChecked = state.approvedCourses.has(course.code);
+                    html += `<label class="flex items-center space-x-3 p-2 rounded-md hover:bg-slate-50 transition">
+                                <input type="checkbox" data-course-code="${course.code}" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" ${isChecked ? 'checked' : ''}>
+                                <span>${course.name} (${course.code})</span>
+                            </label>`;
+                });
+                html += `</div></div>`;
+            });
+            ui.coursesChecklist.innerHTML = html;
+        }
+
+        function renderCurriculumMap(plan) {
+            let html = '';
+            plan.blocks.forEach(block => {
+                    html += `<div class="p-4 border border-slate-200 rounded-lg">
+                            <h4 class="text-lg font-semibold text-slate-700 mb-4">${block.name}</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">`;
+                block.courses.forEach(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    const status = getCourseStatus(course.code, state.selectedPlanId);
+                    const colorClass = {
+                        approved: 'bg-green-500 hover:bg-green-600',
+                        available: 'bg-blue-500 hover:bg-blue-600',
+                        locked: 'bg-slate-500 hover:bg-slate-600'
+                    }[status];
+                    
+                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${colorClass}">
+                                <p class="font-semibold text-sm">${course.name}</p>
+                                <p class="text-xs opacity-80">${course.code}</p>
+                            </div>`;
+                });
+                html += `</div></div>`;
+            });
+            ui.curriculumMap.innerHTML = html;
+        }
+
+        function renderAvailableCourses(allCourses) {
+                const availableCourses = allCourses.filter(course => {
+                const status = getCourseStatus(course.code, state.selectedPlanId);
+                return status === 'available';
+                });
+
+                const periodMap = { q1: 'quarters', q2: 'quarters', q3: 'quarters', s1: 'semesters', s2: 'semesters' };
+                const periodNum = { q1: 1, q2: 2, q3: 3, s1: 1, s2: 2 };
+
+                const filteredCourses = state.periodFilter === 'all' 
+                ? availableCourses
+                : availableCourses.filter(course => {
+                    const availability = course.availability;
+                    const periodType = periodMap[state.periodFilter];
+                    return availability[periodType] && availability[periodType].includes(periodNum[state.periodFilter]);
+                });
+            
+            let html = '';
+            if (filteredCourses.length === 0) {
+                html = `<p class="text-slate-500 col-span-full">No hay cursos disponibles que coincidan con sus filtros. Intente seleccionar "Todos" o verifique su avance.</p>`;
+            } else {
+                filteredCourses.forEach(course => {
+                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-4 rounded-lg border border-slate-200 bg-white hover:border-amber-500">
+                                <p class="font-semibold text-slate-800">${course.name}</p>
+                                <p class="text-sm text-slate-500">${course.code}</p>
+                                <div class="text-xs mt-2 text-slate-600">
+                                    ${getAvailabilityText(course.availability, true)}
+                                </div>
+                            </div>`;
+                });
+            }
+            ui.availableCoursesList.innerHTML = html;
+        }
+
+        function renderCredentialsProgress() {
+            let html = '';
+            Object.keys(DB.credentials).forEach(credId => {
+                const status = checkCredentialStatus(credId);
+                const credential = DB.credentials[credId];
+                html += `
+                    <div data-credential-id="${credId}" class="credential-item cursor-pointer">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-slate-700">${credential.name}</span>
+                            <span class="text-sm font-medium ${status.met ? 'text-green-600' : 'text-slate-500'}">${status.met ? 'Completado' : `${Math.round(status.progress)}%`}</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-${status.met ? 'green' : 'amber'}-500 h-2.5 rounded-full progress-bar-fill" style="width: ${status.progress}%"></div>
+                        </div>
+                    </div>`;
+            });
+            ui.credentialsProgress.innerHTML = html;
+        }
+
+        function openCourseModal(courseCode) {
+            const course = getCourse(courseCode);
+            const prerequisites = checkPrerequisites(course.code, state.selectedPlanId);
+            const allCoursesInPlan = getAllCoursesInPlan(state.selectedPlanId);
+            const unlocks = allCoursesInPlan.filter(c => {
+                let prereqsForC = null;
+                    getPlan(state.selectedPlanId).blocks.forEach(block => {
+                    const courseInfo = block.courses.find(ci => ci.courseCode === c.code);
+                    if (courseInfo) prereqsForC = courseInfo.prerequisites;
+                });
+                return prereqsForC && prereqsForC.type === 'courses' && prereqsForC.courses.includes(course.code);
+            });
+
+            ui.courseModal.name.textContent = course.name;
+            ui.courseModal.code.textContent = course.code;
+            ui.courseModal.credits.textContent = course.credits;
+            ui.courseModal.level.textContent = course.level;
+            ui.courseModal.categories.textContent = course.categories.join(', ');
+            ui.courseModal.availability.textContent = getAvailabilityText(course.availability);
+            
+            ui.courseModal.prerequisites.innerHTML = prerequisites.details.length > 0
+                ? prerequisites.details.map(p => `<li class="${p.met ? 'text-green-600' : 'text-red-600'}">${p.text}</li>`).join('')
+                : '<li>Ninguno</li>';
+
+            ui.courseModal.unlocks.innerHTML = unlocks.length > 0
+                ? unlocks.map(c => `<li>${c.name} (${c.code})</li>`).join('')
+                : '<li>No desbloquea cursos directamente.</li>';
+
+            ui.courseModal.el.classList.remove('hidden');
+            setTimeout(() => {
+                ui.courseModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.courseModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+        
+        function closeCourseModal() {
+            ui.courseModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.courseModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.courseModal.el.classList.add('hidden'), 300);
+        }
+        
+        function openCredentialModal(credentialId) {
+            const credential = DB.credentials[credentialId];
+            const status = checkCredentialStatus(credentialId);
+
+            ui.credentialModal.name.textContent = `${credential.name} - Detalles`;
+            let rulesHtml = '';
+            status.details.forEach(detail => {
+                const icon = detail.met ? '<span class="text-green-500 mr-2">&#10003;</span>' : '<span class="text-red-500 mr-2">&#10007;</span>';
+                rulesHtml += `<div>${icon}${detail.text}</div>`;
+                if (detail.subDetails && detail.subDetails.length > 0) {
+                    rulesHtml += `<ul class="list-disc list-inside pl-6 text-sm text-slate-600">`;
+                    detail.subDetails.forEach(sub => {
+                        const subIcon = sub.met ? 'text-green-500' : 'text-red-500';
+                        rulesHtml += `<li class="${subIcon}">${sub.text}</li>`;
+                    });
+                    rulesHtml += `</ul>`;
+                }
+            });
+
+            ui.credentialModal.rules.innerHTML = rulesHtml;
+            ui.credentialModal.el.classList.remove('hidden');
+            setTimeout(() => {
+                ui.credentialModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.credentialModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeCredentialModal() {
+            ui.credentialModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.credentialModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.credentialModal.el.classList.add('hidden'), 300);
+        }
+
+        function getAvailabilityText(availability, compact = false) {
+            let text = [];
+            if (availability.quarters) text.push(`${compact ? 'Cuatris' : 'Cuatrimestres'}: ${availability.quarters.join(', ')}`);
+            if (availability.semesters) text.push(`${compact ? 'Sems' : 'Semestres'}: ${availability.semesters.join(', ')}`);
+            return text.join(' | ');
+        }
+
+        function handlePlanChange(e) {
+            state.selectedPlanId = e.target.value;
+            state.approvedCourses.clear(); 
+            renderAll();
+        }
+
+        function handleCourseCheck(e) {
+            if (e.target.type === 'checkbox') {
+                const courseCode = e.target.dataset.courseCode;
+                if (e.target.checked) {
+                    state.approvedCourses.add(courseCode);
+                } else {
+                    state.approvedCourses.delete(courseCode);
+                }
+                renderAll();
+            }
+        }
+
+        function handleTabClick(e) {
+            const tab = e.target.closest('.tab-btn');
+            if (!tab) return;
+            
+            state.activeTab = tab.dataset.tab;
+
+            ui.tabs.forEach(t => t.classList.remove('tab-active'));
+            tab.classList.add('tab-active');
+
+            ui.tabPanes.forEach(p => p.classList.add('hidden'));
+            document.getElementById(`${state.activeTab}-tab`).classList.remove('hidden');
+        }
+        
+        function handlePeriodFilterClick(e) {
+            const btn = e.target.closest('.period-btn');
+            if (!btn) return;
+
+            state.periodFilter = btn.dataset.period;
+            
+            ui.periodFilterBtns.forEach(b => b.classList.replace('bg-amber-500', 'bg-slate-200') || b.classList.replace('text-white', 'text-slate-700'));
+            btn.classList.replace('bg-slate-200', 'bg-amber-500');
+            btn.classList.replace('text-slate-700', 'text-white');
+
+            renderAll();
+        }
+
+        function init() {
+            loadState();
+
+            DB.programs.forEach(program => {
+                const option = document.createElement('option');
+                option.value = program.id;
+                option.textContent = `${program.name} (${program.degree})`;
+                ui.planSelect.appendChild(option);
+            });
+
+            if (state.selectedPlanId) {
+                ui.planSelect.value = state.selectedPlanId;
+            } else {
+                state.selectedPlanId = DB.programs[0].id;
+                ui.planSelect.value = state.selectedPlanId;
+            }
+
+            ui.planSelect.addEventListener('change', handlePlanChange);
+            ui.coursesChecklist.addEventListener('change', handleCourseCheck);
+            ui.appBody.addEventListener('click', handleTabClick);
+            ui.periodFilterBtns.forEach(btn => btn.addEventListener('click', handlePeriodFilterClick));
+            
+            document.body.addEventListener('click', (e) => {
+                const courseCard = e.target.closest('.course-card');
+                if(courseCard) openCourseModal(courseCard.dataset.courseCode);
+
+                const credentialItem = e.target.closest('.credential-item');
+                if(credentialItem) openCredentialModal(credentialItem.dataset.credentialId);
+            });
+            
+            ui.courseModal.closeBtn.addEventListener('click', closeCourseModal);
+            ui.courseModal.el.addEventListener('click', (e) => { if(e.target === ui.courseModal.el) closeCourseModal()});
+            
+            ui.credentialModal.closeBtn.addEventListener('click', closeCredentialModal);
+            ui.credentialModal.el.addEventListener('click', (e) => { if(e.target === ui.credentialModal.el) closeCredentialModal()});
+
+            renderAll();
+        }
+
+        init();
+    });
+</script>
