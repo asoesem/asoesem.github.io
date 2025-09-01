@@ -1125,10 +1125,8 @@
             {
               "name": "Electivas Matemáticas",
               "creditsRequired": 3,
-              "categoryRequirements": [
-                {
-                  "categories": ["Matemáticas", "Investigación"],
-                  "creditsRequired": 3,
+              "courseRequirements": [
+                {                                    
                   "availableCourses": ["03451", "03450", "03219"]
                 }
               ]
@@ -1531,10 +1529,8 @@
             {
               "name": "Electivas Matemáticas",
               "creditsRequired": 3,
-              "categoryRequirements": [
-                {
-                  "categories": ["Matemáticas", "Investigación"],
-                  "creditsRequired": 3,
+              "courseRequirements": [
+                {                                   
                   "availableCourses": ["03451", "03450", "03219"]
                 }
               ]
