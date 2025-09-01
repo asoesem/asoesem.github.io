@@ -116,7 +116,12 @@ permalink: /planificador/
                         </div>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-slate-800 mt-8 mb-4">2. Marque los cursos que ha aprobado:</h3>
+                    <div class="flex justify-between items-center mt-8 mb-4">
+                        <h3 class="text-xl font-semibold text-slate-800">2. Marque los cursos que ha aprobado:</h3>
+                        <button id="reset-button" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-colors">
+                            Volver a empezar
+                        </button>
+                    </div>
                     <div id="courses-checklist" class="space-y-6"></div>
                 </div>
                 
@@ -210,6 +215,26 @@ permalink: /planificador/
     </div>
 </div>
 
+<!-- Confirmation Modal -->
+<div id="confirm-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md modal-content transform scale-95 opacity-0">
+        <div class="p-6">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-800">Confirmar reinicio</h3>
+            </div>
+            <p class="text-slate-600 mb-6">¿Está seguro que desea eliminar todos los cursos aprobados y volver a empezar? Esta acción no se puede deshacer.</p>
+            <div class="flex gap-3 justify-end">
+                <button id="confirm-cancel" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Cancelar</button>
+                <button id="confirm-reset" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors">Volver a empezar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     const DB = {{ site.data.curriculumdb | jsonify }};
@@ -258,6 +283,12 @@ permalink: /planificador/
                 name: document.getElementById('modal-credential-name'),
                 rules: document.getElementById('modal-credential-rules'),
                 closeBtn: document.getElementById('credential-modal-close-btn'),
+            },
+            
+            confirmModal: {
+                el: document.getElementById('confirm-modal'),
+                cancelBtn: document.getElementById('confirm-cancel'),
+                confirmBtn: document.getElementById('confirm-reset'),
             }
         };
 
@@ -283,13 +314,26 @@ permalink: /planificador/
                 });
                 if (block.electives) {
                     block.electives.forEach(elective => {
-                        elective.categoryRequirements.forEach(req => {
-                            req.availableCourses.forEach(code => {
+                        // Handle both old categoryRequirements and new courseRequirements structure
+                        if (elective.categoryRequirements) {
+                            elective.categoryRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
                                     if (!courses.has(code)) {
-                                    courses.set(code, getCourse(code));
+                                        courses.set(code, getCourse(code));
                                     }
+                                });
                             });
-                        });
+                        }
+                        
+                        if (elective.courseRequirements) {
+                            elective.courseRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    if (!courses.has(code)) {
+                                        courses.set(code, getCourse(code));
+                                    }
+                                });
+                            });
+                        }
                     });
                 }
             });
@@ -312,14 +356,28 @@ permalink: /planificador/
                             };
                         }
                         
-                        elective.categoryRequirements.forEach(req => {
-                            req.availableCourses.forEach(code => {
-                                const course = getCourse(code);
-                                if (course) {
-                                    electivesByName[elective.name].courses.add(course);
-                                }
+                        // Handle both old categoryRequirements and new courseRequirements structure
+                        if (elective.categoryRequirements) {
+                            elective.categoryRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    const course = getCourse(code);
+                                    if (course) {
+                                        electivesByName[elective.name].courses.add(course);
+                                    }
+                                });
                             });
-                        });
+                        }
+                        
+                        if (elective.courseRequirements) {
+                            elective.courseRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    const course = getCourse(code);
+                                    if (course) {
+                                        electivesByName[elective.name].courses.add(course);
+                                    }
+                                });
+                            });
+                        }
                     });
                 }
             });
@@ -525,6 +583,9 @@ permalink: /planificador/
 
         function renderCreditsChart(approved, pending) {
             const ctx = document.getElementById('credits-chart').getContext('2d');
+            const total = approved + pending;
+            const percentage = total > 0 ? Math.round((approved / total) * 100) : 0;
+            
             const data = {
                 labels: ['Aprobados', 'Pendientes'],
                 datasets: [{
@@ -536,6 +597,7 @@ permalink: /planificador/
             };
             if (creditsChart) {
                 creditsChart.data = data;
+                creditsChart.options.plugins.centerText = { percentage };
                 creditsChart.update();
             } else {
                 creditsChart = new Chart(ctx, {
@@ -557,7 +619,28 @@ permalink: /planificador/
                                 }
                             }
                         }
-                    }
+                    },
+                    plugins: [{
+                        id: 'centerText',
+                        beforeDraw: function(chart) {
+                            const width = chart.width;
+                            const height = chart.height;
+                            const ctx = chart.ctx;
+                            
+                            ctx.save();
+                            const fontSize = Math.min(width, height) / 8;
+                            ctx.font = `bold ${fontSize}px Inter, sans-serif`;
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillStyle = '#1e293b';
+                            
+                            const currentPercentage = chart.options.plugins.centerText?.percentage || 0;
+                            const text = `${currentPercentage}%`;
+                            
+                            ctx.fillText(text, width / 2, height / 2);
+                            ctx.restore();
+                        }
+                    }]
                 });
             }
         }
@@ -763,6 +846,21 @@ permalink: /planificador/
             setTimeout(() => ui.credentialModal.el.classList.add('hidden'), 300);
         }
 
+        function openConfirmModal() {
+            ui.confirmModal.el.classList.remove('hidden');
+            ui.confirmModal.el.classList.remove('opacity-0');
+            setTimeout(() => {
+                ui.confirmModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.confirmModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeConfirmModal() {
+            ui.confirmModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.confirmModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.confirmModal.el.classList.add('hidden'), 300);
+        }
+
         function getAvailabilityText(availability, compact = false) {
             let text = [];
             if (availability.quarters) text.push(`${compact ? 'Cuatris' : 'Cuatrimestres'}: ${availability.quarters.join(', ')}`);
@@ -814,6 +912,16 @@ permalink: /planificador/
             renderAll();
         }
 
+        function clearAllCourses() {
+            openConfirmModal();
+        }
+
+        function confirmReset() {
+            state.approvedCourses.clear();
+            renderAll();
+            closeConfirmModal();
+        }
+
         function init() {
             loadState();
 
@@ -849,8 +957,18 @@ permalink: /planificador/
             
             ui.credentialModal.closeBtn.addEventListener('click', closeCredentialModal);
             ui.credentialModal.el.addEventListener('click', (e) => { if(e.target === ui.credentialModal.el) closeCredentialModal()});
+            
+            ui.confirmModal.cancelBtn.addEventListener('click', closeConfirmModal);
+            ui.confirmModal.confirmBtn.addEventListener('click', confirmReset);
+            ui.confirmModal.el.addEventListener('click', (e) => { if(e.target === ui.confirmModal.el) closeConfirmModal()});
 
             renderAll();
+            
+            // Add reset button event listener after rendering
+            const resetButton = document.getElementById('reset-button');
+            if (resetButton) {
+                resetButton.addEventListener('click', clearAllCourses);
+            }
         }
 
         init();
