@@ -11,8 +11,10 @@
     {"name": "Resta", "preview": "\\[a - b\\]", "code": "a - b", "category": "operators", "size": 1},
     {"name": "Multiplicación", "preview": "\\[a \\times b\\]", "code": "a \\times b", "category": "operators", "size": 1},
     {"name": "Producto", "preview": "\\[a \\cdot b\\]", "code": "a \\cdot b", "category": "operators", "size": 1},
-    {"name": "División", "preview": "\\[\\frac{a}{b}\\]", "code": "\\frac{a}{b}", "category": "operators", "size": 1},
-    {"name": "Sum-Resta", "preview": "\\[a \\pm b\\]", "code": "a \\pm b", "category": "operators", "size": 1},
+    {"name": "División", "preview": "\\[a \\div b\\]", "code": "a \\div b", "category": "operators", "size": 1},
+    {"name": "Fracción", "preview": "\\[\\frac{a}{b}\\]", "code": "\\frac{a}{b}", "category": "operators", "size": 1},
+    {"name": "Fracción continua", "preview": "\\[\\cfrac{a}{\\sqrt{b}+\\cfrac{a}{\\sqrt{b}+\\cfrac{a}{\\sqrt{b}+\\dotsb}}}\\]", "code": "\\cfrac{a}{b}", "category": "operators", "size": 2},
+    {"name": "Suma-Resta", "preview": "\\[a \\pm b\\]", "code": "a \\pm b", "category": "operators", "size": 1},
     {"name": "Resta-Suma", "preview": "\\[a \\mp b\\]", "code": "a \\mp b", "category": "operators", "size": 1}
   ],
   "Relaciones": [
@@ -85,9 +87,13 @@
     {"name": "Complemento", "preview": "\\[A'\\]", "code": "A'", "category": "sets", "size": 1},
     {"name": "Producto cartesiano", "preview": "\\[A \\times B\\]", "code": "A \\times B", "category": "sets", "size": 1},
     {"name": "Conjunto potencia", "preview": "\\[\\mathcal{P}(A)\\]", "code": "\\mathcal{P}(A)", "category": "sets", "size": 1},
-    {"name": "Cardinalidad", "preview": "\\[|A|\\]", "code": "|A|", "category": "sets", "size": 1},
-    {"name": "Por notación", "preview": "\\[P = \\{2,3,5,7,11,13,17,23,...\\}\\]", "code": "P = \\{2,3,5,7,11,13,17,23,...\\}", "category": "sets", "size": 2},
-    {"name": "Por extensión", "preview": "\\[\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}\\]", "code": "\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}", "category": "sets", "size": 2}
+    {"name": "Cardinalidad", "preview": "\\[\\lvert A \\rvert\\]", "code": "\\lvert A \\rvert", "category": "sets", "size": 1},
+    {"name": "Unión", "preview": "\\[\\bigcup_{i=1}^{3}{A_i}\\]", "code": "\\bigcup_{i=1}^{3}{A_i}", "category": "sets", "size": 2},
+    {"name": "Unión", "preview": "\\[\\bigcup_{i \\in \\{1,2,3\\}}{A_i}\\]", "code": "\\bigcup_{i \\in \\{1,2,3\\}}{A_i}", "category": "sets", "size": 2},
+    {"name": "Intersección", "preview": "\\[\\bigcap_{i=1}^{3}{A_i}\\]", "code": "\\bigcap_{i=1}^{3}{A_i}", "category": "sets", "size": 2},
+    {"name": "Intersección", "preview": "\\[\\bigcap_{i \\in \\{1,2,3\\}}{A_i}\\]", "code": "\\bigcap_{i \\in \\{1,2,3\\}}{A_i}", "category": "sets", "size": 2},
+    {"name": "Conjunto por notación", "preview": "\\[P = \\{2,3,5,7,11,13,17,23,...\\}\\]", "code": "P = \\{2,3,5,7,11,13,17,23,...\\}", "category": "sets", "size": 2},
+    {"name": "Conjunto por extensión", "preview": "\\[\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}\\]", "code": "\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}", "category": "sets", "size": 2}
   ],
   "Funciones": [
     {"name": "Función", "preview": "\\[f(x)\\]", "code": "f(x)", "category": "functions", "size": 1},
@@ -107,7 +113,7 @@
     {"name": "Factorial", "preview": "\\[n!\\]", "code": "n!", "category": "functions", "size": 1},
     {"name": "Binomio", "preview": "\\[\\binom{n}{k}\\]", "code": "\\binom{n}{k}", "category": "functions", "size": 1},
     {"name": "Valor absoluto", "preview": "\\[\\lvert a \\rvert\\]", "code": "\\lvert a\\rvert", "category": "functions", "size": 1},
-    {"name": "Función a trozos", "preview": "\\[|x|= \\begin{cases} x & \\mbox{si } x \\ge 0 \\\\ -x & \\mbox{si } x < 0\\end{cases}\\]", "code": "|x|= \\begin{cases}\n\t\t\tx & \\mbox{si } x \\ge 0 \\\\\n\t\t  -x & \\mbox{si } x < 0\n\\end{cases}", "category": "functions", "size": 3}
+    {"name": "Función a trozos", "preview": "\\[|x|= \\begin{cases} x & \\mbox{si } x \\ge 0 \\\\ -x & \\mbox{si } x < 0\\end{cases}\\]", "code": "|x|= \\begin{cases}\n\t\t\tx & \\mbox{si } x \\ge 0 \\\\\n\t\t  -x & \\mbox{si } x < 0\n\\end{cases}", "category": "functions", "size": 3},
   ],
   "Cálculo": [
     {"name": "Límite", "preview": "\\[\\lim_{x \\to a}\\]", "code": "\\lim_{x \\to a}", "category": "calculus", "size": 1},
@@ -229,7 +235,7 @@
     {"name": "Ómicron", "preview": "\\[\\omicron\\]", "code": "\\omicron", "category": "greek", "size": 1},
     {"name": "Pi", "preview": "\\[\\pi, \\varpi, \\Pi, \\varPi\\]", "code": "\\pi, \\varpi, \\Pi, \\varPi", "category": "greek", "size": 2},
     {"name": "Rho", "preview": "\\[\\rho, \\varrho\\]", "code": "\\rho, \\varrho", "category": "greek", "size": 1},
-    {"name": "Sigma", "preview": "\\[\\sigma, \\varsigma, \\Sigma, \\varSigma\\]", "code": "\\sigma, \\varsigma, \\Sigma, , \\varSigma", "category": "greek", "size": 2},
+    {"name": "Sigma", "preview": "\\[\\sigma, \\varsigma, \\Sigma, \\varSigma\\]", "code": "\\sigma, \\varsigma, \\Sigma, \\varSigma", "category": "greek", "size": 2},
     {"name": "Tau", "preview": "\\[\\tau\\]", "code": "\\tau", "category": "greek", "size": 1},
     {"name": "Ípsilon", "preview": "\\[\\upsilon, \\Upsilon, \\varUpsilon\\]", "code": "\\upsilon, \\Upsilon, \\varUpsilon", "category": "greek", "size": 2},
     {"name": "Phi", "preview": "\\[\\phi, \\varphi, \\Phi, \\varPhi\\]", "code": "\\phi, \\varphi, \\Phi, \\varPhi", "category": "greek", "size": 2},
@@ -266,7 +272,7 @@
     {"name": "Parte imaginaria", "preview": "\\[\\Im\\]", "code": "\\Im", "category": "symbols", "size": 1},
     {"name": "i", "preview": "\\[\\imath\\]", "code": "\\imath", "category": "symbols", "size": 1},
     {"name": "j", "preview": "\\[\\jmath\\]", "code": "\\jmath", "category": "symbols", "size": 1},
-    {"name": "l", "preview": "\\[\\ell\\]", "code": "\\ell", "category": "symbols", "size": 1}
+    {"name": "l", "preview": "\\[\\ell\\]", "code": "\\ell", "category": "symbols", "size": 1},
   ],
   "Flechas": [
     {"name": "Izquierda", "preview": "\\[\\leftarrow, \\longleftarrow, \\Leftarrow, \\Longleftarrow\\]", "code": "\\leftarrow, \\longleftarrow, \\Leftarrow, \\Longleftarrow", "category": "arrows", "size": 1},
@@ -279,5 +285,29 @@
     {"name": "Ordinal/Intercardinal", "preview": "\\[\\nearrow, \\searrow, \\swarrow, \\nwarrow\\]", "code": "\\nearrow, \\searrow, \\swarrow, \\nwarrow", "category": "arrows", "size": 1},
     {"name": "Gancho", "preview": "\\[\\hookleftarrow, \\hookrightarrow\\]", "code": "\\hookleftarrow, \\hookrightarrow", "category": "arrows", "size": 1},
     {"name": "Arpón", "preview": "\\[\\leftharpoonup, \\rightharpoonup, \\leftharpoondown, \\rightharpoondown\\]", "code": "\\leftharpoonup, \\rightharpoonup, \\leftharpoondown, \\rightharpoondown", "category": "arrows", "size": 1}
+  ],
+  "Espaciado": [
+    {"name": "Delgado", "preview": "\\[a \\, b\\]", "code": "\\,", "category": "space", "size": 1},
+    {"name": "Mediano", "preview": "\\[a \\: b\\]", "code": "\\:", "category": "space", "size": 1},
+    {"name": "Grueso", "preview": "\\[a \\; b\\]", "code": "\\;", "category": "space", "size": 1},
+    {"name": "Cuádruple", "preview": "\\[a \\quad b\\]", "code": "\\quad", "category": "space", "size": 1},
+    {"name": "Doble cuádruple", "preview": "\\[a \\qquad b\\]", "code": "\\qquad", "category": "space", "size": 1},
+    {"name": "Espacio negativo", "preview": "\\[a \\! b\\]", "code": "\\!", "category": "space", "size": 1}
+  ],
+  "Puntos": [
+    {"name": "Puntos con coma", "preview": "\\[1,2,3,\\dotsc\\]", "code": "\\dotsc", "category": "dots", "size": 1},
+    {"name": "Puntos con relación", "preview": "\\[1+2+3+\\dotsb\\]", "code": "\\dotsb", "category": "dots", "size": 1},
+    {"name": "Puntos con producto", "preview": "\\[1 \\cdot 2 \\cdot 3 \\cdot \\dotsm\\]", "code": "\\dotsm", "category": "dots", "size": 1},
+    {"name": "Puntos con integral", "preview": "\\[\\int_{A_1}\\int_{A_2}\\dotsi\\]", "code": "\\dotsi", "category": "dots", "size": 1},
+    {"name": "Otros puntos", "preview": "\\[\\dotso\\]", "code": "\\dotso", "category": "dots", "size": 1}
+  ],
+  "Paréntesis": [
+    {"name": "Al texto", "preview": "\\[(b)(\\frac{c}{d})\\]", "code": "(b)(\\frac{c}{d})", "category": "parens", "size": 1},
+    {"name": "Ajustado", "preview": "\\[(b)\\left(\\frac{c}{d}\\right)\\]", "code": "\\left, \\right", "category": "parens", "size": 1},
+    {"name": "Grande", "preview": "\\[\\bigl(b\\bigr)\\bigl(\\frac{c}{d}\\bigr)\\]", "code": "\\bigl, \\bigr", "category": "parens", "size": 1},
+    {"name": "Más grande", "preview": "\\[\\Bigl(b\\Bigr)\\Bigl(\\frac{c}{d}\\Bigr)\\]", "code": "\\Bigl, \\Bigr", "category": "parens", "size": 1},
+    {"name": "Mucho más grande", "preview": "\\[\\biggl(b\\biggr)\\biggl(\\frac{c}{d}\\biggr)\\]", "code": "\\biggl, \\biggr", "category": "parens", "size": 1},
+    {"name": "Extra grande", "preview": "\\[\\Biggl(b\\Biggr)\\Biggl(\\frac{c}{d}\\Biggr)\\]", "code": "\\Biggl, \\Biggr", "category": "parens", "size": 1},
+    {"name": "Paréntesis combinados", "preview": "\\[\\Biggl\\{\\biggl[a\\left(\\frac{b}{c}\\right)\\biggr]\\Biggr\\}\\]", "code": "\\Biggl\\{\\biggl[a\\left(\\frac{b}{c}\\right)\\biggr]\\Biggr\\}", "category": "parens", "size": 3}
   ]
 }
