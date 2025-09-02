@@ -12,28 +12,28 @@ sort: 15
 
 \begin{document}
     \begin{tikzpicture}
-        % Define los puntos A,B
+        % Define los puntos A,B.
         \tkzDefPoint(1,1){A}
         \tkzDefPoint(5,1){B}
     
-        % Define el punto C relativo a A
-        % C está a 4cm de A a 60 grados
+        % Define el punto C relativo a A.
+        % C está a 4cm de A a 60 grados.
         \tkzDefShiftPoint[A](60:4){C}
     
-        % Define la altitud CP del triángulo △ACB
+        % Define la altitud CP del triángulo △ACB.
         \tkzDefLine[altitude](A,C,B)
-            \tkzGetPoint{P} % punto de altitud
+            \tkzGetPoint{P} % punto de altitud.
     
-        % Dibuja los puntos A,B,C,P
+        % Dibuja los puntos A,B,C,P.
         \tkzDrawPoints(A,B,C,P)
     
-        % Dibuja segmentos AB, BC, CA
+        % Dibuja segmentos AB, BC, CA.
         \tkzDrawSegments(A,B B,C C,A)
     
-        % Dibuja el segmento punteado CP
+        % Dibuja el segmento punteado CP.
         \tkzDrawSegment[dashed](C,P)
     
-        % Etiqueta los puntos A,B,C,P en posiciones convenientes
+        % Etiqueta los puntos A,B,C,P en posiciones convenientes:
         \tkzLabelPoints[left](A)  % izquierda.
         \tkzLabelPoints[right](B) % derecha.
         \tkzLabelPoints[above](C) % encima.

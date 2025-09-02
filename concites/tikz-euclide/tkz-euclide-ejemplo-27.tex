@@ -26,11 +26,13 @@ sort: 27
     
         % Traza las rectas de altitud desde cada vértice (A, B, C)
         % hacia el lado opuesto, obteniendo puntos a, b y c en dichas rectas.
-        \tkzDefLine[altitude](C,A,B)
+        \tkzDefLine[altitude](C,A,B) % altura en A
             \tkzGetPoint{a}
-        \tkzDefLine[altitude](A,B,C)
+
+        \tkzDefLine[altitude](A,B,C) % altura en B
             \tkzGetPoint{b}
-        \tkzDefLine[altitude](B,C,A)
+            
+        \tkzDefLine[altitude](B,C,A) % altura en C
             \tkzGetPoint{c}
     
         % Dibuja las altitudes como segmentos punteados.
@@ -49,7 +51,7 @@ sort: 27
         \tkzDrawPolygon(A,B,C)
     
         % Etiqueta los puntos principales.
-        \tkzLabelPoints(A,B)
-        \tkzLabelPoints[above](C)
+        \tkzLabelPoints(A,B)       % por debajo (predeterminado).
+        \tkzLabelPoints[above](C)  % por encima.
     \end{tikzpicture}
 \end{document}

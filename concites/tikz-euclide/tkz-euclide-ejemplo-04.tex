@@ -14,8 +14,10 @@ sort: 4
     \begin{tikzpicture}
         % Define el sistema de coordenadas ortogonales.
         \tkzInit[xmin=0,xmax=6,ymin=0,ymax=6]
+        
         % Dibuja los ejes x,y
         \tkzDrawXY
+        
         % Dibuja una cuadrícula en el área definida.
         \tkzGrid
     
@@ -26,7 +28,7 @@ sort: 4
         % Dibuja los puntos definidos.
         \tkzDrawPoints(A,B)
     
-        % Etiqueta los puntos arriba a la izquierda.
-        \tkzLabelPoints[above left](A,B)
+        % Etiqueta los puntos.
+        \tkzLabelPoints[above left](A,B) % arriba a la izquierda
     \end{tikzpicture}
 \end{document}

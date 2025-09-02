@@ -12,28 +12,31 @@ sort: 19
 
 \begin{document}
     \begin{tikzpicture}
-        % Define puntos A,B,C,D
+        % Define puntos A,B,C,D.
         \tkzDefPoints{
             2/1/A,
             3/4/B,
             5/0/C%
         }
 
-        % Rellena ángulo ∠CAB de color cyan
+        % Rellena ángulo ∠CAB 
+        % Usa color cyan, opacidad 20%.
         \tkzFillAngle[size=1,cyan!20](C,A,B)
-        % Marca el ángulo ∠CAB
+        
+        % Marca el ángulo ∠CAB.
         \tkzMarkAngle[size=1](C,A,B)
-        % Etiqueta el ángulo ∠CAB como 60°
+        
+        % Etiqueta el ángulo ∠CAB como 60°.
         \tkzLabelAngle[pos=0.5](C,A,B){$60^{\circ}$}
 
-        % Dibuja los puntos A,B,C
+        % Dibuja los puntos A,B,C.
         \tkzDrawPoints(A,B,C)
 
-        % Dibuja las rectas AB y AC
+        % Dibuja las rectas AB y AC.
         \tkzDrawLines[-Latex,add=0 and .5](A,B A,C)
 
         % Etiqueta los puntos en posiciones convenientes.
-        \tkzLabelPoints[left](A,B)
-        \tkzLabelPoints[below](C)
+        \tkzLabelPoints[left](A,B)  % a la izquierda
+        \tkzLabelPoints[below](C)   % por debajo
     \end{tikzpicture}
 \end{document}

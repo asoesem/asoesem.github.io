@@ -19,19 +19,18 @@ sort: 12
         % Dibuja el segmento AB.
         \tkzDrawSegment(A,B)
     
-        % Define una línea PQ que es mediatriz de AB.
+        % Define una recta PQ que es mediatriz de AB.
         \tkzDefLine[mediator](A,B)
             \tkzGetPoints{P}{Q}
     
         % Dibuja la mediatriz PQ con flechas a ambos lados.
         \tkzDrawLine[Latex-Latex](P,Q)
     
-        % Dinuja los puntos A,B,P,Q.
+        % Dibuja los puntos A,B,P,Q.
         \tkzDrawPoints(A,B,P,Q)
     
-        % Etiqueta los puntos A,B.
-        \tkzLabelPoints[above left](A,B) % arriba a la izquierda.
-        % Etiqueta los puntos P,Q
+        % Etiqueta los puntos A,B y P,Q.
+        \tkzLabelPoints[above left](A,B)  % arriba a la izquierda.
         \tkzLabelPoints[above right](P,Q) % arriba a la derecha.
     \end{tikzpicture}
 \end{document}

@@ -13,7 +13,10 @@ sort: 36
 \begin{document}
     \begin{tikzpicture}
         % Define el centro O y un punto P1 sobre el círculo circunscrito.
-        \tkzDefPoints{0/0/O,0/3/P1}
+        \tkzDefPoints{
+            0/0/O,
+            0/3/P1%
+        }
     
         % Construye un hexágono regular con centro O, comenzando en P1.
         \tkzDefRegPolygon[center,sides=6](O,P1)

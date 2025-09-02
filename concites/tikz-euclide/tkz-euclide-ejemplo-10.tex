@@ -12,22 +12,24 @@ sort: 10
 
 \begin{document}
     \begin{tikzpicture}
-        % Define puntos individuales A y B
+        % Define puntos individuales A y B.
         \tkzDefPoint(2,3){A}
         \tkzDefPoint(6,2){B}
     
-        % Define el punto medio M del segmento AB
+        % Define el punto medio M del segmento AB.
         \tkzDefMidPoint(A,B)
             \tkzGetPoint{M}
     
-        % Dibjua el segmento AB
+        % Dibjua el segmento AB.
         \tkzDrawSegment(A,B)
-        % Marca con dos rayitas los segmentos AM y MB
+        
+        % Marca con dos rayitas los segmentos AM y MB.
         \tkzMarkSegments[mark=s||](A,M M,B)
     
-        % Dibuja los puntos A,B,M
+        % Dibuja los puntos A,B,M.
         \tkzDrawPoints(A,B,M)
-        % Etiqueta lo puntos A,B,M
+
+        % Etiqueta lo puntos A,B,M.
         \tkzLabelPoints[below](A,B,M) % abajo
     \end{tikzpicture}
 \end{document}

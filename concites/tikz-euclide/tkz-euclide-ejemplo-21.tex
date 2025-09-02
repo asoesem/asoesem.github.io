@@ -25,13 +25,13 @@ sort: 21
     
         % Marca arcos de ángulo con diferentes estilos (arc=l, arc=ll)
         % para visualizar ∠BAC, ∠CBA y ∠ACB respectivamente.
-        \tkzMarkAngle[arc=ll](B,A,C)
-        \tkzMarkAngle[arc=ll](C,B,A)
-        \tkzMarkAngle[arc=l](A,C,B)
+        \tkzMarkAngle[arc=ll](B,A,C)   % arco doble.
+        \tkzMarkAngle[arc=ll](C,B,A)   % arco doble.
+        \tkzMarkAngle[arc=l](A,C,B)    % arco sencillo.
     
         % Etiqueta los vértices del triángulo.
-        \tkzLabelPoints[left](A)
-        \tkzLabelPoints[right](B)
-        \tkzLabelPoints[above](C)
+        \tkzLabelPoints[left](A)    % a la izquierda.
+        \tkzLabelPoints[right](B)   % a la derecha.
+        \tkzLabelPoints[above](C)   % por encima.
     \end{tikzpicture}
 \end{document}

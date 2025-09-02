@@ -24,7 +24,7 @@ sort: 28
         \tkzDefTriangleCenter[median](A,B,C)
             \tkzGetPoint{O}
     
-        % Calcula los puntos medios de los lados y obtén a, b y c.
+        % Calcula los puntos medios de los lados.
         \tkzDefMidPoint(B,C)
             \tkzGetPoint{a}
         \tkzDefMidPoint(A,C)
@@ -39,9 +39,9 @@ sort: 28
     
         % Dibuja y etiqueta puntos medios.
         \tkzDrawPoints[blue](a,b,c)
-        \tkzLabelPoint[right](a){$M_1$}
-        \tkzLabelPoint[left](b){$M_2$}
-        \tkzLabelPoint[below](c){$M_3$}
+        \tkzLabelPoint[right](a){$M_1$}  % a la derecha.
+        \tkzLabelPoint[left](b){$M_2$}   % a la izquierda.
+        \tkzLabelPoint[below](c){$M_3$}  % por debajo
     
         % Marca la igualdad de segmentos en cada lado.
         \tkzMarkSegments[mark=||](C,a a,B)
@@ -53,6 +53,6 @@ sort: 28
         \tkzDrawPoints(A,B,C)
         \tkzDrawPolygon(A,B,C)
         \tkzLabelPoints(A,B)
-        \tkzLabelPoints[above](C)
+        \tkzLabelPoints[above](C)  % por encima
     \end{tikzpicture}
 \end{document}

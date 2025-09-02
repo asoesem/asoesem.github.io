@@ -13,7 +13,11 @@ sort: 35
 \begin{document}
     \begin{tikzpicture}
         % Define tres vértices A, B y C para determinar un paralelogramo.
-        \tkzDefPoints{0/0/A,3/0/B,4/2/C}
+        \tkzDefPoints{
+            0/0/A,
+            3/0/B,
+            4/2/C%
+        }
     
         % Construye el paralelogramo ABCD y obtiene D.
         \tkzDefParallelogram(A,B,C)

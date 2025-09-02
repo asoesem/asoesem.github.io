@@ -27,8 +27,10 @@ sort: 29
         % Define las tres bisectrices desde A, B y C.
         \tkzDefLine[bisector](C,A,B)
             \tkzGetPoint{a}
+
         \tkzDefLine[bisector](C,B,A)
             \tkzGetPoint{b}
+
         \tkzDefLine[bisector](A,C,B)
             \tkzGetPoint{c}
 
@@ -38,15 +40,15 @@ sort: 29
         \tkzDrawSegment[dashed,add=0 and 0.1,-Stealth](C,c)
 
         % Marca ángulos iguales a cada lado de las bisectrices.
-        \tkzMarkAngles[mark=|,red](B,A,O O,A,C)
-        \tkzMarkAngles[mark=|,red](C,B,O O,B,A)
-        \tkzMarkAngles[mark=||,blue](A,C,O O,C,B)
+        \tkzMarkAngles[mark=|,red](B,A,O O,A,C)   % marca sencilla.
+        \tkzMarkAngles[mark=|,red](C,B,O O,B,A)   % marca sencilla.
+        \tkzMarkAngles[mark=||,blue](A,C,O O,C,B) % marca doble.
 
         % Dibuja y etiqueta puntos y triángulo.
         \tkzDrawPoints[red](O)
         \tkzDrawPoints(A,B,C)
         \tkzDrawPolygon(A,B,C)
         \tkzLabelPoints(A,B)
-        \tkzLabelPoints[above](C)
+        \tkzLabelPoints[above](C)  % por encima.
     \end{tikzpicture}
 \end{document}
