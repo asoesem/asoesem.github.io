@@ -247,7 +247,7 @@
     {"name": "Fraktur", "preview": "\\[\\mathfrak{RQSZ}\\]", "code": "\\mathfrak{RQSZ}", "category": "fuentes", "size": 1},
     {"name": "Pizarra", "preview": "\\[\\mathbb{RQSZ}\\]", "code": "\\mathfrak{RQSZ}", "category": "fuentes", "size": 1},
     {"name": "Script", "preview": "\\[\\mathscr{RQSZ}\\]", "code": "\\mathscr{RQSZ}", "category": "fuentes", "size": 1},
-    {"name": "Normal", "preview": "\\[\\mathnormal{3x^2}\\]", "code": "\\mathnormal{3x^2", "category": "fuentes", "size": 1},
+    {"name": "Normal", "preview": "\\[\\mathnormal{3x^2}\\]", "code": "\\mathnormal{3x^2}", "category": "fuentes", "size": 1},
     {"name": "Roman", "preview": "\\[\\mathrm{3x^2}\\]", "code": "\\mathrm{3x^2}", "category": "fuentes", "size": 1},
     {"name": "Cursiva", "preview": "\\[\\mathit{3x^2}\\]", "code": "\\mathit{3x^2}", "category": "fuentes", "size": 1},
     {"name": "Negrita", "preview": "\\[\\mathbf{3x^2}\\]", "code": "\\mathbf{3x^2}", "category": "fuentes", "size": 1},
