@@ -1,0 +1,30 @@
+---
+id: tkz-euclide-ejemplo-58
+title: "Pentágono regular"
+description: "Creación de un pentágono regular"
+keywords: [poligono, pentagono, taller3]
+tags: [tkzDefRegPolygon,tkzDrawPolygon]
+sort: 58
+---
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{xcolor}
+\usepackage{tkz-base}
+\usepackage{tkz-euclide}
+
+\begin{document}
+    \begin{tikzpicture}                
+        % Paso 1: Define puntos de la base
+        \tkzDefPoint(2,1){A}
+        \tkzDefPoint(7,1){B}
+
+        % Paso 2: Define polígono regular de 5 lados y base AB
+        % con vértices llamaodos P1,P2,...,P5.
+        \tkzDefRegPolygon[side,sides=5,name=P](A,B)
+
+        % Paso 3: Dibuja el pentágono
+        \tkzDrawPolygon(P1,P...,P5)  
+
+        % Paso 4: Coloca una leyenda debajo de la figura
+        \tkzText(4.3,0){\large{a) Pentágono}}        
+    \end{tikzpicture}
+\end{document}

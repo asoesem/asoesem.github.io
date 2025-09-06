@@ -997,5 +997,273 @@
     "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Aplica una rotación global de 30° a lo que se defina dentro del alcance.\n        \\begin{scope}[rotate=30]\n            % Define el punto A.\n            \\tkzDefPoint(2,3){A}\n            % Dentro de un alcance trasladado al punto A, define B y C en coordenadas polares.\n            \\begin{scope}[shift=(A)]\n                \\tkzDefPoint(90:5){B}\n                \\tkzDefPoint(30:5){C}\n            \\end{scope}\n        \\end{scope}\n    \n        % Dibuja el triángulo ABC y etiqueta sus vértices.\n        \\tkzDrawPolygon(A,B,C)\n        \\tkzLabelPoints[above](B,C)\n        \\tkzLabelPoints[below](A)\n        \\tkzDrawPoints(A,B,C)\n    \\end{tikzpicture}\n\\end{document}",
     "image": "/images/cientec/tkz-euclide/ejemplo-51.png",
     "sort": 51
+  },
+  {
+    "id": "tkz-euclide-ejemplo-52",
+    "title": "Ángulo agudo",
+    "keywords": [
+      "angulo",
+      "agudo",
+      "rayo",
+      "taller1"
+    ],
+    "tags": [
+      "tkzDefShiftPoint",
+      "tkzFillAngle",
+      "tkzMarkAngle",
+      "tkzDrawLines",
+      "ejemplo52"
+    ],
+    "description": "Creación de un ángulo agudo",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define vértice del ángulo\n        \\tkzDefPoint(1,2){A}\n\n        % Paso 2: Define punto del rayo inferior\n        \\tkzDefPoint(3,2){B}\n        \n        % Paso 3: Encuentra un punto C a 20°            \n        \\tkzDefShiftPoint[A](20:2){B}\n        \n        % Paso 4: Encuentra un punto C a 80°            \n        \\tkzDefShiftPoint[A](80:2){C}\n\n        % Paso 5: Dibuja los puntos y etiquétalos\n        \\tkzDrawPoints(A,B,C)\n        \\tkzLabelPoints[below left](A)\n        \\tkzLabelPoints[below](B)\n        \\tkzLabelPoints[left](C)\n\n        % Paso 6: Marca y rellena el ángulo\n        \\tkzFillAngle[fill=red!30](B,A,C)\n        \\tkzMarkAngle(B,A,C)\n\n        % Paso 7: Dibuja los segmentos de los rayos\n        \\tkzDrawLines[add=0 and 0.3, -Triangle](A,C A,B)\n\n        % Paso 8: Agrega leyenda al gráfico\n        \\tkzText(1,0){a) Ángulo agudo}                \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-52.png",
+    "sort": 52
+  },
+  {
+    "id": "tkz-euclide-ejemplo-53",
+    "title": "Ángulo recto",
+    "keywords": [
+      "angulo",
+      "recto",
+      "rayo",
+      "taller1"
+    ],
+    "tags": [
+      "tkzDefShiftPoint",
+      "tkzFillAngle",
+      "tkzMarkAngle",
+      "tkzDrawLines",
+      "ejemplo53"
+    ],
+    "description": "Creación de un ángulo recto",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}                        \n        % Paso 1: Define vértice del ángulo\n        \\tkzDefPoint(7,2){D}\n\n        % Paso 2: Define punto del rayo inferior a 30° de D\n        \\tkzDefShiftPoint[D](30:2){E}\n        % Paso 3: Define punto del rayo inferior a 120° de D\n        \\tkzDefShiftPoint[D](120:2){F}\n        \n        % Paso 4: Dibuja los puntos y etiquétalos\n        \\tkzDrawPoints(D,E,F)\n        \\tkzLabelPoints[below left](D)\n        \\tkzLabelPoints[below](E)\n        \\tkzLabelPoints[left](F)\n\n        % Paso 5: Marca y rellena el ángulo\n        \\tkzMarkRightAngle[fill=blue!30,size=0.5](E,D,F)\n\n        % Paso 6: Dibuja los segmentos de los rayos\n        \\tkzDrawLines[add=0 and 0.3, -Triangle](D,F D,E)\n\n        % Paso 7: Agrega leyenda al gráfico\n        \\tkzText(7,0){b) Ángulo recto}        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-53.png",
+    "sort": 53
+  },
+  {
+    "id": "tkz-euclide-ejemplo-54",
+    "title": "Ángulo obtuso",
+    "keywords": [
+      "angulo",
+      "obtuso",
+      "rayo",
+      "taller1"
+    ],
+    "tags": [
+      "tkzDefShiftPoint",
+      "tkzFillAngle",
+      "tkzMarkAngle",
+      "tkzDrawLines",
+      "ejemplo54"
+    ],
+    "description": "Creación de un ángulo obtuso",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}                \n        % Paso 1: Define vértice del ángulo\n        \\tkzDefPoint(13,2){G}\n\n        % Paso 2: Define punto del rayo inferior a 30° de G\n        \\tkzDefShiftPoint[G](30:2){H}\n        \n        % Paso 3: Define punto del rayo inferior a 180° de G\n        \\tkzDefShiftPoint[G](180:2){I}\n\n        % Paso 4: Dibuja los puntos y etiquétalos\n        \\tkzDrawPoints(G,H,I)        \n        \\tkzLabelPoints[below right](H)\n        \\tkzLabelPoints[below](I,G)\n\n        % Paso 5: Marca y rellena el ángulo\n        \\tkzFillAngle[fill=teal!30](H,G,I)\n        \\tkzMarkAngle(H,G,I)\n\n        % Paso 6: Dibuja los segmentos de los rayos\n        \\tkzDrawLines[add=0 and 0.3, -Triangle](G,H G,I)\n\n        % Paso 7: Describe cada ejemplo        \n        \\tkzText(13,0){c) Ángulo obtuso}\n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-54.png",
+    "sort": 54
+  },
+  {
+    "id": "tkz-euclide-ejemplo-55",
+    "title": "Triángulo equilátero",
+    "keywords": [
+      "angulo",
+      "triangulo",
+      "equilatero",
+      "taller2"
+    ],
+    "tags": [
+      "tkzDefTriangle",
+      "tkzMarkSegments",
+      "tkzMarkAngles",
+      "tkzFillAngles",
+      "tkzDrawPolygon",
+      "ejemplo55"
+    ],
+    "description": "Creación de un triángulo equilátero",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define los puntos de la base AB\n        \\tkzDefPoint(1,1){A}\n        \\tkzDefPoint(6,1){B}\n\n        % Paso 2: Define el triángulo equilatero por △ABC\n        % y obtienes el tercer punto C.\n        \\tkzDefTriangle[equilateral](A,B)\n             \\tkzGetPoint{C}\n\n        % Paso 3: Marca los segments congruentes\n        \\tkzMarkSegments[mark=s|](A,B B,C C,A)\n        \n        % Paso 4: Rellena ángulos y marca los congruentes\n        \\tkzFillAngles[fill=lime!20](B,A,C C,B,A A,C,B)\n        \\tkzMarkAngles[mark=||](B,A,C C,B,A A,C,B)\n\n        % Paso 5: Dibuja los puntos y el polígono\n        \\tkzDrawPoints(A,B,C)\n        \\tkzDrawPolygon(A,B,C)\n\n        % Paso 6: Agrega una leyenda al gráfico\n        \\tkzText(3.5,0.5){a) Equilátero}        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-55.png",
+    "sort": 55
+  },
+  {
+    "id": "tkz-euclide-ejemplo-56",
+    "title": "Triángulo isósceles recto",
+    "keywords": [
+      "angulo",
+      "triangulo",
+      "isosceles",
+      "recto",
+      "taller2"
+    ],
+    "tags": [
+      "tkzDefTriangle",
+      "tkzMarkSegments",
+      "tkzMarkAngles",
+      "tkzFillAngles",
+      "tkzDrawPolygon",
+      "ejemplo56"
+    ],
+    "description": "Creación de un triángulo isósceles recto",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define los puntos del triángulo △DEF\n        \\tkzDefPoint(7,1){D}\n        \\tkzDefPoint(11,1){E}\n        \\tkzDefPoint(7,5){F}\n\n        % Paso 2: Marca y rellena ángulos congruentes\n        \\tkzFillAngles[fill=cyan!20](D,F,E F,E,D)\n        \\tkzMarkAngles[mark=|](D,F,E F,E,D)\n\n        % Paso 3: Dibuja los puntos y el polígono\n        \\tkzDrawPoints(D,E,F)\n        \\tkzDrawPolygon(D,E,F)\n        \n        % Pasa 4: Marca segmentos congruentes\n        \\tkzMarkSegments[mark=||](F,D D,E)\n\n        % Pasa 5: Marca angulo recto\n        \\tkzMarkRightAngle[size=0.5,fill=brown!20](E,D,F)\n\n        % Paso 6: Agrega una leyenda al gráfico\n        \\tkzText(8.8,0.5){b) Isósceles}                \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-56.png",
+    "sort": 56
+  },
+  {
+    "id": "tkz-euclide-ejemplo-57",
+    "title": "Triángulo escaleno",
+    "keywords": [
+      "angulo",
+      "triangulo",
+      "escaleno",
+      "taller2"
+    ],
+    "tags": [
+      "tkzDefTriangle",
+      "tkzMarkSegment",
+      "tkzMarkAngle",
+      "tkzFillAngle",
+      "tkzDrawPolygon",
+      "ejemplo57"
+    ],
+    "description": "Creación de un triángulo escaleno",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define los puntos de la base GH\n        \\tkzDefPoint(12,1){G}\n        \\tkzDefPoint(17,1){H}\n\n        % Paso 2: Define triangulo escaleno △GHI \n        % (con ángulos 50°, 70°, 60°), recupera punto I\n        \\tkzDefTriangle[two angles = 50 and 70](G,H)\n            \\tkzGetPoint{I}\n\n        % Paso 3: Marca y rellena ángulos congruentes\n        \\tkzFillAngle[fill=red!20](H,G,I)\n        \\tkzFillAngle[fill=blue!20](I,H,G)\n        \\tkzFillAngle[fill=green!20](G,I,H)        \n\n        % Paso 4: Dibuja los puntos y el polígono\n        \\tkzDrawPoints(G,H,I)\n        \\tkzDrawPolygon(G,H,I)\n\n        % Paso 5: Marca los segmentos\n        \\tkzMarkSegment[mark=|](H,G)\n        \\tkzMarkSegment[mark=||](G,I)\n        \\tkzMarkSegment[mark=|||](H,I)        \n        \n        % Paso 6: Marca los angulos\n        \\tkzMarkAngle[arc=l](H,G,I)\n        \\tkzMarkAngle[arc=ll](I,H,G)\n        \\tkzMarkAngle[arc=lll](G,I,H)\n\n        % Paso 7: Agrega una leyenda al gráfico\n        \\tkzText(14.8,0.5){c) Escaleno}\n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-57.png",
+    "sort": 57
+  },
+  {
+    "id": "tkz-euclide-ejemplo-58",
+    "title": "Pentágono regular",
+    "keywords": [
+      "poligono",
+      "pentagono",
+      "taller3"
+    ],
+    "tags": [
+      "tkzDefRegPolygon",
+      "tkzDrawPolygon",
+      "ejemplo58"
+    ],
+    "description": "Creación de un pentágono regular",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}                \n        % Paso 1: Define puntos de la base\n        \\tkzDefPoint(2,1){A}\n        \\tkzDefPoint(7,1){B}\n\n        % Paso 2: Define polígono regular de 5 lados y base AB\n        % con vértices llamaodos P1,P2,...,P5.\n        \\tkzDefRegPolygon[side,sides=5,name=P](A,B)\n\n        % Paso 3: Dibuja el pentágono\n        \\tkzDrawPolygon(P1,P...,P5)  \n\n        % Paso 4: Coloca una leyenda debajo de la figura\n        \\tkzText(4.3,0){\\large{a) Pentágono}}        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-58.png",
+    "sort": 58
+  },
+  {
+    "id": "tkz-euclide-ejemplo-59",
+    "title": "Hexágono regular",
+    "keywords": [
+      "poligono",
+      "hexagono",
+      "taller3"
+    ],
+    "tags": [
+      "tkzDefRegPolygon",
+      "tkzDrawPolygon",
+      "ejemplo59"
+    ],
+    "description": "Creación de un hexágono regular",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define un punto central y uno del perímetro        \n        \\tkzDefPoint(13,5){O} % centro\n        \\tkzDefPoint(13,1){C} % vértice perimetral   \n\n        % Paso 2: Define polígono regular de 6 lados\n        % con centro O y punto perimetral C\n        % con vêrtices llamaodos Q1,Q2,...,Q6.\n        \\tkzDefRegPolygon[center,sides=6,name=Q](O,C)\n\n        % Paso 3: Dibuja el hexágono\n        \\tkzDrawPolygon(Q1,Q...,Q6)\n\n        % Paso B6: Rellena el triángulo O-Q4-Q5 de color turquesa\n        \\tkzFillPolygon[fill=teal!20](O,Q4,Q5)\n        \n        % Paso 4: Dibuja un segmento punteado entre el centro y\n        % cada uno de los vertices del hexágono\n        \\foreach \\j in {1,...,6} { \\tkzDrawSegment[dashed](O,Q\\j)}\n\n        % Paso 5: Coloca una leyenda debajo de la figura\n        \\tkzText(12.9,0){\\large{b) Hexágono}}        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-59.png",
+    "sort": 59
+  },
+  {
+    "id": "tkz-euclide-ejemplo-60",
+    "title": "Octágono regular",
+    "keywords": [
+      "poligono",
+      "octagono",
+      "taller3"
+    ],
+    "tags": [
+      "tkzDefRegPolygon",
+      "tkzDrawPolygon",
+      "ejemplo60"
+    ],
+    "description": "Creación de un octágono regular",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define un punto central y uno del perímetro\n        \\tkzDefPoint(20,1){C} % centro\n        \\tkzDefPoint(23,1){D} % vértice perimetral   \n\n        % Paso 2: Define polígono regular de 8 lados\n        % con centro C y punto perimetral D\n        % con vêrtices llamaodos R1,R2,...,R8.\n        \\tkzDefRegPolygon[side,sides=8,name=R](C,D)\n\n        % Paso 3: Dibuja el octágono\n        \\tkzDrawPolygon(R1,R...,R8)\n\n        % Paso 4: Rellena polígono con un patrón de líneas zules\n        \\tkzFillPolygon[pattern=north east lines,pattern color=blue!50](R1,R...,R8)\n        \n        % Paso 5: Coloca una leyenda debajo de la figura\n        \\tkzText(21.5,0){\\large{c) Heptágono}}        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-60.png",
+    "sort": 60
+  },
+  {
+    "id": "tkz-euclide-ejemplo-61",
+    "title": "Circunferencia y sector circular",
+    "keywords": [
+      "circunferencia",
+      "sector",
+      "circular",
+      "taller4"
+    ],
+    "tags": [
+      "tkzDrawCircle",
+      "tkzDefPointOnCircle",
+      "tkzFillSector",
+      "ejemplo61"
+    ],
+    "description": "Creación de una circunferencia y sectores circulares",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}        \n        % Paso 1: Define puntos de un radio.\n        \\tkzDefPoint(5,5){O} % Punto central\n        \\tkzDefPoint(8,5){A} % Punto de circunferencia\n\n        % Paso 2: Dibuja la circunferencia\n        \\tkzDrawCircle(O,A)        \n\n        % Paso 3: Define punto B en la circunferencia\n        % a 40 grados del punto A\n        \\tkzDefPointOnCircle[through=center O angle 40 point A]\n             \\tkzGetPoint{B}\n             \n        % Paso 4: Define punto C en la circunferencia\n        % a 80 grados del punto A\n        \\tkzDefPointOnCircle[through=center O angle 80 point A]\n            \\tkzGetPoint{C}\n\n        % Paso 5: Define punto D en la circunferencia\n        % a 190 grados del punto A\n        \\tkzDefPointOnCircle[through=center O angle 190 point A]\n            \\tkzGetPoint{D}\n\n        % Paso 6: Define punto E en la circunferencia\n        % a 220 grados del punto A            \n        \\tkzDefPointOnCircle[through=center O angle 220 point A]\n            \\tkzGetPoint{E}\n\n        % Paso 7: Dibuja los puntos A,B,C,D,E en la circunferencia\n        \\tkzDrawPoints(O,A,B,C,D,E)\n\n        % Paso 8: Rellena sector OB->C de color turquesa, opacidad 20%\n        \\tkzFillSector[teal!20](O,B)(C)\n\n        % Paso 9: Rellena sector OD->E de un patrón de lineas azules\n        \\tkzFillSector[pattern=north east lines, pattern color=blue!40](O,D)(E)\n\n        % Paso 10: Dibuja rayos OC y OB para resaltar sector circular\n        \\tkzDrawSegments[dashed](C,O O,B)\n\n        % Paso 11: Dibuja rayos OD y OE para resaltar sector circular\n        \\tkzDrawSegments[dashed](D,O O,E)        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-61.png",
+    "sort": 61
+  },
+  {
+    "id": "tkz-euclide-ejemplo-62",
+    "title": "Circunferencia por tres puntos y sector circular",
+    "keywords": [
+      "circunferencia",
+      "sector",
+      "circular",
+      "taller4"
+    ],
+    "tags": [
+      "tkzDrawCircle",
+      "tkzDefTriangle",
+      "tkzFillSector",
+      "tkzFillPolygon",
+      "ejemplo62"
+    ],
+    "description": "Creación de una circunferencia por tres puntos y sectores circulares",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define puntos de la base del triángulo PQR.\n        \\tkzDefPoint(9,3.5){P}\n        \\tkzDefPoint(14,3.5){Q}\n\n        % Paso 2: Define triángulo equilátero y encuentra punto R\n        \\tkzDefTriangle[equilateral](P,Q) \\tkzGetPoint{R}        \n        \n        % Paso 3: Define círculo cuya circunferencia pasa por PPR\n        % y determina el centro S del círculo.\n        \\tkzDefCircle[circum](P,Q,R) \\tkzGetPoint{S}\n\n        % Paso 4: Rellena el sector circula SR->P con líneas azules\n        \\tkzFillSector[pattern=north east lines, pattern color=blue](S,R)(P)\n\n        % Paso 5: Rellena el sector circula SQ->R con líneas color oliva\n        \\tkzFillSector[pattern=north west lines,pattern color=olive](S,Q)(R)\n\n        % Paso 6: Rellena el sector circula SP->Q con líneas color rojo\n        \\tkzFillSector[pattern=horizontal lines, pattern color=red](S,P)(Q)\n\n        % Paso 7: Rellena de blanco el polígono del triángulo PQR\n        \\tkzFillPolygon[white](P,Q,R)\n\n        % Paso 8: Dibuja los puntos del triángulo PQR\n        \\tkzDrawPoints(P,Q,R)\n        \n        % Paso 9: Dibuja el polígulo triangular PQR\n        \\tkzDrawPolygon(P,Q,R)\n        \n        % Paso 10: Dibuja la circunferencia SP\n        \\tkzDrawCircle[thick](S,P)        \n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-62.png",
+    "sort": 62
+  },
+  {
+    "id": "tkz-euclide-ejemplo-63",
+    "title": "Circunferencia y ángulos",
+    "keywords": [
+      "circunferencia",
+      "angulo",
+      "taller4"
+    ],
+    "tags": [
+      "tkzDrawCircle",
+      "tkzFillAngle",
+      "tkzFillAngle",
+      "tkzLabelAngle",
+      "ejemplo63"
+    ],
+    "description": "Creación de una circunferencia y ángulos",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}\n    \\begin{tikzpicture}\n        % Paso 1: Define puntos de un radio.\n        \\tkzDefPoint(18,5){U} % punto central\n        \\tkzDefPoint(21,5){V} % punto de circunferencia\n\n        % Paso 2: Dibuja la circunferencia\n        \\tkzDrawCircle(U,V)\n        \n        % Paso 3: Define punto W en la circunferencia\n        % a 45 grados del punto V\n        \\tkzDefPointOnCircle[through=center U angle 45 point V]\n            \\tkzGetPoint{W}\n\n        % Paso 4: Dibuja los puntos del centro y circunferencia\n        \\tkzDrawPoints(U,V,W)\n\n        % Paso 5: dibuja segmentos del sector circular \n        % y deja en evidencia el ângulo WUV\n        \\tkzDrawSegments(W,U U,V)\n        \n        % Paso 6: Rellena ángulo de color cyan con opacidad 20%\n        \\tkzFillAngle[cyan!20](V,U,W)\n        \n        % Paso 7: Marca y etiqueta el ángulo\n        \\tkzFillAngle(V,U,W)\n        \\tkzLabelAngle[pos=0.7](V,U,W){$\\vartheta$}\n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-63.png",
+    "sort": 63
+  },
+  {
+    "id": "tkz-euclide-ejemplo-64",
+    "title": "Modelando la Pirámide de Giza",
+    "keywords": [
+      "taller5",
+      "graficos",
+      "modelado"
+    ],
+    "tags": [
+      "tkzClip",
+      "node",
+      "includegraphics",
+      "tkzDrawPolySeg",
+      "tkzDefParallelogram",
+      "tkzInterLL",
+      "tkzMarkRightAngle",
+      "ejemplo64"
+    ],
+    "description": "Modelado de diagramas con gráficos",
+    "latex": "\\documentclass[tikz,border=2mm]{standalone}\n\\usepackage{graphicx}\n\\usepackage{xcolor}\n\\usepackage{tkz-base}\n\\usepackage{tkz-euclide}\n\n\\begin{document}    \n    \\begin{tikzpicture}[dim style/.style={dashed,sloped,Triangle-Triangle}]\n        \n        % Paso 1: Definir plano de coordenadas\n        \\tkzInit[xmin=0,xmax=16,ymin=0,ymax=15]        \n\n        % Paso 2: Corta el plano para que no exceda las coordenadas\n        \\tkzClip\n\n        % Paso 3: Carga imagen de la Pirámide de Giza en el plano\n        % en el punto (13,7.5) con opacidad del 50% a escala del 50%\n         \\node[opacity=0.5] at (13,7.5){\\includegraphics[scale=0.5]{piramide-giza.jpg}};\n\n        % Paso 4: Coloca título sobre la imagen\n        \\tkzText[font=\\Large](4,13.5){\\textbf{Pirámide de Giza}}\n        \n        % Paso 5: Define los puntos de la pirámide V-ABC\n        \\tkzDefPoints{\n            7.6  /12   /V,\n            0.8  /5.0  /A,\n            5.0  /3.3  /B,\n            15   /5.0  /C% \n        }\n\n        % Paso 6: Etiqueta los puntos en posiciones clave\n        \\tkzLabelPoints[left](A)\n        \\tkzLabelPoints[above right](B)\n        \\tkzLabelPoints[right](C)\n        \\tkzLabelPoints[above](V)\n\n        % Paso 7: Dibuja polígonos de la pirámide\n        \\tkzDrawPolygon[thick](A,B,V)\n        \\tkzDrawPolygon[thick](B,C,V)\n\n        % Paso 8: Dibuja dimensiones de la base de la pirámide\n        \\tkzDrawSegment[thick,dim={$230$,-10pt,below=2pt}](A,B)\n        \\tkzDrawSegment[thick,dim={$230$,-10pt,below=2pt}](B,C)\n\n        % Paso 9: Define el paralelogramo de la base para obtener punto D\n        \\tkzDefParallelogram(A,B,C) \\tkzGetPoint{D}\n        \\tkzLabelPoints[above right](D)\n\n        % Paso 10: Dibuja líneas punteadas de la base\n        \\tkzDrawPolySeg[thick,dashed](C,D,A)\n\n        % Paso 11: Encuentra el punto central de la base de la pirámide\n        \\tkzInterLL(A,C)(B,D) \\tkzGetPoint{P}        \n        \\tkzLabelPoints(P)            \n\n        % Paso 12: Dibuja líneas punteadas del resto de la pirámide\n        \\tkzDrawSegments[thick,dashed](D,V V,P P,C)\n\n        % Paso 13: Etiqueta el segmento de altura piramidal\n        \\tkzLabelSegment[right,darkgray!90](P,V){$137$}\n\n        % Paso 14: Marca el ángulo recto de la altura piramidal\n        \\tkzMarkRightAngle[size=0.5](V,P,C)\n\n        % Paso 15: Marca el ángulo de elevación de la pirámide\n        \\tkzMarkAngle[size=1.5](V,C,P)\n        \\tkzLabelAngle(V,C,P){$51^{\\circ}$}\n    \\end{tikzpicture}\n\\end{document}",
+    "image": "/images/cientec/tkz-euclide/ejemplo-64.png",
+    "sort": 64
   }
 ]

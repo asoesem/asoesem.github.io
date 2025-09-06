@@ -15,7 +15,7 @@ Esta entrada contiene decenas de ejemplos de cómo crear diagramas de geometría
 Los ejemplos aquí desarrollados son parte de una [presentación sobre geometría euclídea][1] para la edición del 2025 del 
 Congreso Nacional de Ciencia, Tecnología y Sociedad ([CONCITES][0]). 
 
-Abajo encontrarás una base de datos que contiene alrededor de 51 diferentes ejemplos básicos de diferentes tipos de 
+Abajo encontrarás una base de datos que contiene alrededor de 64 diferentes ejemplos básicos de diferentes tipos de 
 diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 
 ## Buscador de ejemplos
