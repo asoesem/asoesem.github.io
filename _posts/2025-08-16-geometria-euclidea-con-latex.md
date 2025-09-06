@@ -55,15 +55,17 @@ Cada ejemplo tiene un botón "Ver código LaTeX" que abre un popup con el códig
 
 ## Documentos Adicionales
 
-* [Descargar Ejercicios del Taller][3]
 * [Ejemplos de Geometría Euclídea con LaTex][1] 
 * [Lista de Comandos de tkz-euclide][2]
-* [Documentación Oficial de tkz-base][4]
-* [Documentación Oficial de tkz-euclide][5]
+* [Descargar Ejercicios del Taller][3]
+* [Caja de Arena del Taller][4]
+* [Documentación Oficial de tkz-base][5]
+* [Documentación Oficial de tkz-euclide][6]
 
 [0]: https://www.cientec.or.cr/programas/educadores-divulgadores/concites-m-2025
 [1]: {{site.baseurl}}/documentos/concites/ejemplos-geometria-latex.pdf
 [2]: {{site.baseurl}}/documentos/concites/poster-comandos-tkz-euclide.pdf
 [3]: {{site.baseurl}}/documentos/concites/taller-geometria-latex.pdf
-[4]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-base/doc/tkz-base.pdf
-[5]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-euclide/doc/tkz-euclide.pdf
+[4]: {{site.baseurl}}/documentos/concites/caja-de-arena-taller.zip
+[5]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-base/doc/tkz-base.pdf
+[6]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-euclide/doc/tkz-euclide.pdf
