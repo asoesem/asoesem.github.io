@@ -48,7 +48,7 @@ diagramas de geometría euclídea creados con el paquete `tkz-euclide`.
 Para localizar un ejemplo escribe una o más palabras clave (p.ej.: coordenadas, punto, segmento, ángulo, triángulo, equilátero, isósceles, escaleno, recto, polígono, mediatriz, bisectriz, circunferencia, baricentro, etc.), o comandos específicos de la librería `tkz-euclide` (p.ej.: `tkzDefPoint`, `tkzDrawSegment`, `tkzLabelPoint`, etc.) en el campo de búsqueda. 
 
 Los resultados se actualizarán automáticamente
-y se mostrarán ejemplos relevantes con su respectivo código LaTeX. Si quieres ver todos los ejemplos uno por uno puedes escribir `ejemplo1`, `ejemplo2`, `...`, `ejemplo51`.
+y se mostrarán ejemplos relevantes con su respectivo código LaTeX. Si quieres ver todos los ejemplos uno por uno puedes escribir `ejemplo1`, `ejemplo2`, `...`, `ejemplo64`.
 
 ## Como utilizar el código LaTeX
 Cada ejemplo tiene un botón "Ver código LaTeX" que abre un popup con el código correspondiente. Puedes copiar el código al portapapeles usando el botón "Copiar".  Luego, puedes pegar el código en tu editor LaTeX favorito, como Overleaf, TeXShop, TeXworks, etc, y compilarlo para ver el diagrama, el cual debe corresponderse con la vista previa que puedes ver en los resultados de la búsqueda. 
