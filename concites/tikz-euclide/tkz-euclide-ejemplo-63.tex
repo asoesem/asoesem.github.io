@@ -7,7 +7,6 @@ tags: [tkzDrawCircle,tkzFillAngle,tkzFillAngle,tkzLabelAngle]
 sort: 63
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -33,10 +32,10 @@ sort: 63
         \tkzDrawSegments(W,U U,V)
         
         % Paso 6: Rellena ángulo de color cyan con opacidad 20%
-        \tkzFillAngle[cyan!20](V,U,W)
+        \tkzFillAngle[cyan!20](V,U,W) % ∠VUW
         
         % Paso 7: Marca y etiqueta el ángulo
-        \tkzFillAngle(V,U,W)
-        \tkzLabelAngle[pos=0.7](V,U,W){$\vartheta$}
+        \tkzFillAngle(V,U,W) % ∠VUW
+        \tkzLabelAngle[pos=0.7](V,U,W){$\vartheta$} % ∠VUW
     \end{tikzpicture}
 \end{document}

@@ -24,7 +24,9 @@ sort: 43
     
         % Toma un punto C sobre el círculo de centro O a 45° desde el punto B.
         \tkzDefPointOnCircle[through=center O angle 45 point B]
-        \tkzGetPoint{C}
+            \tkzGetPoint{C}
+        
+        % Dibuja circunferencia con centro O, y de radio OB
         \tkzDrawCircle(O,B)
     
         % Dibuja los radios OB y OC con flechas para indicar dirección.

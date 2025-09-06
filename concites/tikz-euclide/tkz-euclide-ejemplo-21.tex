@@ -19,15 +19,17 @@ sort: 21
             3/4/C%
         }
     
-        % Dibuja los vértices y los lados del triángulo.
+        % Dibuja los vértices del triángulo ABC.
         \tkzDrawPoints(A,B,C)
+
+        % Dibuja lados del triángulo ABC.
         \tkzDrawSegments(A,B B,C C,A)
     
         % Marca arcos de ángulo con diferentes estilos (arc=l, arc=ll)
         % para visualizar ∠BAC, ∠CBA y ∠ACB respectivamente.
-        \tkzMarkAngle[arc=ll](B,A,C)   % arco doble.
-        \tkzMarkAngle[arc=ll](C,B,A)   % arco doble.
-        \tkzMarkAngle[arc=l](A,C,B)    % arco sencillo.
+        \tkzMarkAngle[arc=ll](B,A,C)   % ∠BAC con arco doble.
+        \tkzMarkAngle[arc=ll](C,B,A)   % ∠CBA con arco doble.
+        \tkzMarkAngle[arc=l](A,C,B)    % ∠ACB con arco sencillo.
     
         % Etiqueta los vértices del triángulo.
         \tkzLabelPoints[left](A)    % a la izquierda.

@@ -7,7 +7,6 @@ tags: [tkzDefRegPolygon,tkzDrawPolygon]
 sort: 60
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -19,7 +18,7 @@ sort: 60
 
         % Paso 2: Define polígono regular de 8 lados
         % con centro C y punto perimetral D
-        % con vêrtices llamaodos R1,R2,...,R8.
+        % con vértices llamaodos R1,R2,...,R8.
         \tkzDefRegPolygon[side,sides=8,name=R](C,D)
 
         % Paso 3: Dibuja el octágono

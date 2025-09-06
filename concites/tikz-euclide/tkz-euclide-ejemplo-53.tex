@@ -7,7 +7,6 @@ tags: [tkzDefShiftPoint,tkzFillAngle,tkzMarkAngle,tkzDrawLines]
 sort: 53
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -28,7 +27,7 @@ sort: 53
         \tkzLabelPoints[left](F)
 
         % Paso 5: Marca y rellena el ángulo
-        \tkzMarkRightAngle[fill=blue!30,size=0.5](E,D,F)
+        \tkzMarkRightAngle[fill=blue!30,size=0.5](E,D,F) % ∠EDF
 
         % Paso 6: Dibuja los segmentos de los rayos
         \tkzDrawLines[add=0 and 0.3, -Triangle](D,F D,E)

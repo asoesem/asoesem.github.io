@@ -7,7 +7,6 @@ tags: [tkzDefTriangle,tkzMarkSegments,tkzMarkAngles,tkzFillAngles,tkzDrawPolygon
 sort: 56
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -30,7 +29,7 @@ sort: 56
         \tkzMarkSegments[mark=||](F,D D,E)
 
         % Pasa 5: Marca angulo recto
-        \tkzMarkRightAngle[size=0.5,fill=brown!20](E,D,F)
+        \tkzMarkRightAngle[size=0.5,fill=brown!20](E,D,F) % ∠EDF
 
         % Paso 6: Agrega una leyenda al gráfico
         \tkzText(8.8,0.5){b) Isósceles}                

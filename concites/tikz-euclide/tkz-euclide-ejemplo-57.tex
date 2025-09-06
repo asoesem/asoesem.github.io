@@ -7,7 +7,6 @@ tags: [tkzDefTriangle,tkzMarkSegment,tkzMarkAngle,tkzFillAngle,tkzDrawPolygon]
 sort: 57
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -23,9 +22,9 @@ sort: 57
             \tkzGetPoint{I}
 
         % Paso 3: Marca y rellena ángulos congruentes
-        \tkzFillAngle[fill=red!20](H,G,I)
-        \tkzFillAngle[fill=blue!20](I,H,G)
-        \tkzFillAngle[fill=green!20](G,I,H)        
+        \tkzFillAngle[fill=red!20](H,G,I)   % ∠HGI
+        \tkzFillAngle[fill=blue!20](I,H,G)  % ∠IHG
+        \tkzFillAngle[fill=green!20](G,I,H) % ∠GIH
 
         % Paso 4: Dibuja los puntos y el polígono
         \tkzDrawPoints(G,H,I)
@@ -37,9 +36,9 @@ sort: 57
         \tkzMarkSegment[mark=|||](H,I)        
         
         % Paso 6: Marca los angulos
-        \tkzMarkAngle[arc=l](H,G,I)
-        \tkzMarkAngle[arc=ll](I,H,G)
-        \tkzMarkAngle[arc=lll](G,I,H)
+        \tkzMarkAngle[arc=l](H,G,I)    % ∠HGI
+        \tkzMarkAngle[arc=ll](I,H,G)   % ∠IHG
+        \tkzMarkAngle[arc=lll](G,I,H)  % ∠GHI
 
         % Paso 7: Agrega una leyenda al gráfico
         \tkzText(14.8,0.5){c) Escaleno}

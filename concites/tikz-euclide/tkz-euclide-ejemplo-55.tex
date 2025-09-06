@@ -7,7 +7,6 @@ tags: [tkzDefTriangle,tkzMarkSegments,tkzMarkAngles,tkzFillAngles,tkzDrawPolygon
 sort: 55
 ---
 \documentclass[tikz,border=2mm]{standalone}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -26,8 +25,8 @@ sort: 55
         \tkzMarkSegments[mark=s|](A,B B,C C,A)
         
         % Paso 4: Rellena ángulos y marca los congruentes
-        \tkzFillAngles[fill=lime!20](B,A,C C,B,A A,C,B)
-        \tkzMarkAngles[mark=||](B,A,C C,B,A A,C,B)
+        \tkzFillAngles[fill=lime!20](B,A,C C,B,A A,C,B) % ∠BAC, ∠CBA, ∠ACB
+        \tkzMarkAngles[mark=||](B,A,C C,B,A A,C,B) % ∠BAC, ∠CBA, ∠ACB
 
         % Paso 5: Dibuja los puntos y el polígono
         \tkzDrawPoints(A,B,C)

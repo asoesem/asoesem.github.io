@@ -20,11 +20,11 @@ sort: 26
             \tkzGetPoint{C}
     
         % Marca el ángulo recto
-        \tkzMarkRightAngles(C,B,A)
+        \tkzMarkRightAngles(C,B,A) % ∠CBA
 
         % Pocisiona etiqueta de los otros dos ángulos.
-        \tkzLabelAngle[pos=1.2](B,A,C){$30^\circ$}
-        \tkzLabelAngle[pos=0.8](A,C,B){$60^\circ$}
+        \tkzLabelAngle[pos=1.2](B,A,C){$30^\circ$} % ∠BAC
+        \tkzLabelAngle[pos=0.8](A,C,B){$60^\circ$} % ∠ACB
     
         % Dibuja el triángulo y etiqueta los puntos.
         \tkzDrawPolygon(A,B,C)

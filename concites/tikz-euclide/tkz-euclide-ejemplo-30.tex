@@ -11,7 +11,7 @@ sort: 30
 \usepackage{tkz-euclide}
 
 \begin{document}
-    \begin{tikzpicture}[scale=0.5]
+    \begin{tikzpicture}
         % Define la base AB.
         \tkzDefPoint(0,0){A}
         \tkzDefPoint(5,0){B}
@@ -35,9 +35,9 @@ sort: 30
         \tkzDrawSegment[dashed](O,M3)
 
         % Marca los ángulos rectos
-        \tkzMarkRightAngle(A,M1,O)
-        \tkzMarkRightAngle(B,M2,O)
-        \tkzMarkRightAngle(C,M3,O)
+        \tkzMarkRightAngle(A,M1,O) % ∠A-M1-0
+        \tkzMarkRightAngle(B,M2,O) % ∠B-M2-O
+        \tkzMarkRightAngle(C,M3,O) % ∠C-M3-O
 
         % Marca segmentos congruentes
         \tkzMarkSegments[mark=|](A,M1 M1,B)

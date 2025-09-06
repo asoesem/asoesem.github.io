@@ -20,15 +20,15 @@ sort: 24
         \tkzDefTriangle[isosceles right](A,B)
             \tkzGetPoint{C}
     
-        % Dibuja el triángulo.
+        % Dibuja el triángulo ABC.
         \tkzDrawPolygons(A,B,C)
     
         % Marca el ángulo recto en C.
-        \tkzMarkRightAngles(A,C,B)
+        \tkzMarkRightAngles(A,C,B) % ∠ACB
 
         % Marca los ángulos en A y en B como congruentes
-        \tkzMarkAngle[mark=||,size=0.5](B,A,C)
-        \tkzMarkAngle[mark=||,size=0.5](C,B,A)
+        \tkzMarkAngle[mark=||,size=0.5](B,A,C) % ∠BAC
+        \tkzMarkAngle[mark=||,size=0.5](C,B,A) % ∠CBA
     
         % Dibuja y etiqueta los puntos.
         \tkzDrawPoints(A,B,C)

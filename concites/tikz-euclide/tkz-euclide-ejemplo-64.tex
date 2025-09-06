@@ -8,7 +8,6 @@ sort: 64
 ---
 \documentclass[tikz,border=2mm]{standalone}
 \usepackage{graphicx}
-\usepackage{xcolor}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
 
@@ -68,10 +67,10 @@ sort: 64
         \tkzLabelSegment[right,darkgray!90](P,V){$137$}
 
         % Paso 14: Marca el ángulo recto de la altura piramidal
-        \tkzMarkRightAngle[size=0.5](V,P,C)
+        \tkzMarkRightAngle[size=0.5](V,P,C) % ∠VPC
 
         % Paso 15: Marca el ángulo de elevación de la pirámide
-        \tkzMarkAngle[size=1.5](V,C,P)
-        \tkzLabelAngle(V,C,P){$51^{\circ}$}
+        \tkzMarkAngle[size=1.5](V,C,P) % ∠VCP
+        \tkzLabelAngle(V,C,P){$51^{\circ}$} % ∠VCP
     \end{tikzpicture}
 \end{document}
