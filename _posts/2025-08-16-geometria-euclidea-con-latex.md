@@ -64,6 +64,6 @@ Cada ejemplo tiene un botón "Ver código LaTeX" que abre un popup con el códig
 [0]: https://www.cientec.or.cr/programas/educadores-divulgadores/concites-m-2025
 [1]: {{site.baseurl}}/documentos/concites/ejemplos-geometria-latex.pdf
 [2]: {{site.baseurl}}/documentos/concites/poster-comandos-tkz-euclide.pdf
-[3]: {{site.baseurl}}/documentos/concites/taller-geometría-latex.pdf
+[3]: {{site.baseurl}}/documentos/concites/taller-geometria-latex.pdf
 [4]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-base/doc/tkz-base.pdf
 [5]: http://mirrors.ctan.org/macros/latex/contrib/tkz/tkz-euclide/doc/tkz-euclide.pdf
