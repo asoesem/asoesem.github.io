@@ -246,6 +246,7 @@ permalink: /planificador/
             approvedCourses: new Set(),
             activeTab: 'avance',
             periodFilter: 'all',
+            cachedCredentialStatuses: null,
         };
 
         const ui = {
@@ -490,19 +491,23 @@ permalink: /planificador/
             return 'locked';
         }
 
-        function checkCredentialStatus(credentialId) {
+        function checkCredentialStatus(credentialId, allocatedCourses = new Map(), globalCredentialResults = null) {
             const credential = DB.credentials[credentialId];
-            if (!credential) return { met: false, progress: 0, details: [] };
+            if (!credential) return { met: false, progress: 0, details: [], allocatedCourses: new Map() };
 
             const conditions = credential.rules.conditions;
             let totalConditions = 0;
             let metConditions = 0;
+            let totalProgressPoints = 0;
+            let earnedProgressPoints = 0;
             const details = [];
+            const localAllocatedCourses = new Map(allocatedCourses);
 
             const check = (conds) => {
                 conds.forEach(condition => {
                     totalConditions++;
                     let conditionMet = false;
+                    let conditionProgress = 0;
                     let detailText = "";
                     let subDetails = [];
 
@@ -513,26 +518,73 @@ permalink: /planificador/
                             subDetails.push({ text: `${getCourse(c).name} (${c})`, met: state.approvedCourses.has(c) });
                         });
                         conditionMet = metCount === condition.courses.length;
+                        conditionProgress = condition.courses.length > 0 ? metCount / condition.courses.length : 0;
                         detailText = `Aprobar ${condition.courses.length} cursos específicos (${metCount}/${condition.courses.length})`;
+                        
                     } else if (condition.type === 'categories' && condition.operator === 'credits') {
-                        const approvedInCategory = Array.from(state.approvedCourses)
+                        // Get available courses (approved and not already allocated)
+                        const availableCoursesInCategory = Array.from(state.approvedCourses)
+                            .filter(courseCode => !localAllocatedCourses.has(courseCode))
                             .map(getCourse)
                             .filter(c => c.categories.some(cat => condition.categories.includes(cat)));
-                        const creditsEarned = approvedInCategory.reduce((sum, c) => sum + c.credits, 0);
+                        
+                        // Sort by credits descending to optimize allocation
+                        availableCoursesInCategory.sort((a, b) => b.credits - a.credits);
+                        
+                        let creditsNeeded = condition.creditsRequired;
+                        let allocatedForThisCondition = [];
+                        
+                        // Allocate courses for this condition
+                        for (let course of availableCoursesInCategory) {
+                            if (creditsNeeded <= 0) break;
+                            allocatedForThisCondition.push(course.code);
+                            localAllocatedCourses.set(course.code, credentialId);
+                            creditsNeeded -= course.credits;
+                        }
+                        
+                        const creditsEarned = condition.creditsRequired - Math.max(0, creditsNeeded);
                         conditionMet = creditsEarned >= condition.creditsRequired;
+                        conditionProgress = condition.creditsRequired > 0 ? Math.min(creditsEarned / condition.creditsRequired, 1) : 0;
                         detailText = `Obtener ${condition.creditsRequired} créditos en ${condition.categories.join('/')} (${creditsEarned}/${condition.creditsRequired})`;
+                        
+                        // Add subdetails showing which courses were allocated
+                        allocatedForThisCondition.forEach(courseCode => {
+                            const course = getCourse(courseCode);
+                            subDetails.push({ 
+                                text: `${course.name} (${courseCode}) - ${course.credits} créditos`, 
+                                met: true 
+                            });
+                        });
+                        
                     } else if (condition.type === 'credentials' && condition.operator === 'all') {
-                        const subCredentialStatus = checkCredentialStatus(condition.credentials[0]);
+                        const dependentCredentialId = condition.credentials[0];
+                        let subCredentialStatus;
+                        
+                        // Always use global results if available to ensure consistency
+                        if (globalCredentialResults && globalCredentialResults[dependentCredentialId]) {
+                            subCredentialStatus = globalCredentialResults[dependentCredentialId];
+                        } else {
+                            // For isolated checks or when dependency hasn't been processed yet
+                            // Use a fresh allocation context to avoid interference
+                            subCredentialStatus = checkCredentialStatus(dependentCredentialId, new Map(), globalCredentialResults);
+                        }
+                        
                         conditionMet = subCredentialStatus.met;
-                        detailText = `Tener la credencial ${DB.credentials[condition.credentials[0]].name}`;
+                        conditionProgress = subCredentialStatus.progress / 100; // Convert to 0-1 scale
+                        detailText = `Tener la credencial ${DB.credentials[dependentCredentialId].name}`;
                         subDetails = subCredentialStatus.details;
+                        
                     } else if (condition.type === 'courses' && condition.operator === 'credits') {
                         const approvedElectives = Array.from(state.approvedCourses)
                             .filter(c => condition.availableCourses.includes(c));
                         const creditsEarned = approvedElectives.reduce((sum, c) => sum + getCourse(c).credits, 0);
                         conditionMet = creditsEarned >= condition.creditsRequired;
+                        conditionProgress = condition.creditsRequired > 0 ? Math.min(creditsEarned / condition.creditsRequired, 1) : 0;
                         detailText = `Obtener ${condition.creditsRequired} créditos de cursos electivos (${creditsEarned}/${condition.creditsRequired})`;
                     }
+                    
+                    totalProgressPoints += 1;
+                    earnedProgressPoints += conditionProgress;
                     
                     if(conditionMet) metConditions++;
                     details.push({ text: detailText, met: conditionMet, subDetails });
@@ -542,12 +594,44 @@ permalink: /planificador/
             
             return {
                 met: metConditions === totalConditions,
-                progress: totalConditions > 0 ? (metConditions / totalConditions) * 100 : 0,
-                details
+                progress: totalProgressPoints > 0 ? (earnedProgressPoints / totalProgressPoints) * 100 : 0,
+                details,
+                allocatedCourses: localAllocatedCourses
             };
         }
 
+        // Global function that manages course allocation across all credentials
+        function getAllCredentialStatuses(forceRefresh = false) {
+            if (!forceRefresh && state.cachedCredentialStatuses) {
+                return state.cachedCredentialStatuses;
+            }
+            
+            const globalAllocatedCourses = new Map();
+            const credentialResults = {};
+            
+            // Process credentials in dependency order (MT1 before MT2, etc.)
+            const credentialOrder = ['MT1', 'MT2', 'MT3', 'MT4', 'MT5', 'MT6'];
+            
+            credentialOrder.forEach(credentialId => {
+                if (DB.credentials[credentialId]) {
+                    const result = checkCredentialStatus(credentialId, globalAllocatedCourses, credentialResults);
+                    credentialResults[credentialId] = result;
+                    
+                    // Update global allocation map
+                    result.allocatedCourses.forEach((credId, courseCode) => {
+                        globalAllocatedCourses.set(courseCode, credId);
+                    });
+                }
+            });
+            
+            state.cachedCredentialStatuses = credentialResults;
+            return credentialResults;
+        }
+
         function renderAll() {
+            // Clear cached credential statuses when rendering (courses may have changed)
+            state.cachedCredentialStatuses = null;
+            
             if (!state.selectedPlanId) {
                 ui.appBody.classList.add('hidden');
                 return;
@@ -617,7 +701,8 @@ permalink: /planificador/
                                         return `${context.label}: ${context.raw} créditos`;
                                     }
                                 }
-                            }
+                            },
+                            centerText: { percentage }
                         }
                     },
                     plugins: [{
@@ -755,8 +840,10 @@ permalink: /planificador/
 
         function renderCredentialsProgress() {
             let html = '';
+            const allCredentialStatuses = getAllCredentialStatuses();
+            
             Object.keys(DB.credentials).forEach(credId => {
-                const status = checkCredentialStatus(credId);
+                const status = allCredentialStatuses[credId] || checkCredentialStatus(credId, new Map(), allCredentialStatuses);
                 const credential = DB.credentials[credId];
                 html += `
                     <div data-credential-id="${credId}" class="credential-item cursor-pointer">
@@ -815,7 +902,8 @@ permalink: /planificador/
         
         function openCredentialModal(credentialId) {
             const credential = DB.credentials[credentialId];
-            const status = checkCredentialStatus(credentialId);
+            const allStatuses = getAllCredentialStatuses();
+            const status = allStatuses[credentialId] || checkCredentialStatus(credentialId, new Map(), allStatuses);
 
             ui.credentialModal.name.textContent = `${credential.name} - Detalles`;
             let rulesHtml = '';
