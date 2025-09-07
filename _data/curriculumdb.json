@@ -44,7 +44,7 @@
       "code": "00076",
       "name": "Globalización y Ambiente",
       "credits": 3,
-      "categories": ["Humanides", "Investigación Social y Ambiente"],
+      "categories": ["Humanidades", "Investigación Social y Ambiente"],
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2, 3]
@@ -790,7 +790,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Filosofía"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["05441", "05440"]
                 }
@@ -801,7 +801,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Historia"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["00069", "00023", "05427"]
                 }
@@ -812,7 +812,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Literatura"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["00060", "00061", "05413"]
                 }
@@ -1094,7 +1094,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Ciencias Sociales"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["05437", "05436", "05438", "05439"]
                 }
@@ -1151,7 +1151,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Ciencias Sociales", "Ambiente", "Investigación"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["00076", "05435", "05414"]
                 }
@@ -1183,7 +1183,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Filosofía"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["05441", "05440"]
                 }
@@ -1205,7 +1205,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Literatura"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["00060", "00061", "05413"]
                 }
@@ -1498,7 +1498,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Ciencias Sociales"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["05437", "05436", "05438", "05439"]
                 }
@@ -1555,7 +1555,7 @@
               "creditsRequired": 3,
               "categoryRequirements": [
                 {
-                  "categories": ["Ciencias Sociales", "Ambiente", "Investigación"],
+                  "categories": ["Humanidades"],
                   "creditsRequired": 3,
                   "availableCourses": ["00076", "05435", "05414"]
                 }

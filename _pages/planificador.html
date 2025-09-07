@@ -804,11 +804,91 @@ permalink: /planificador/
             ui.curriculumMap.innerHTML = html;
         }
 
-        function renderAvailableCourses(allCourses) {
-                const availableCourses = allCourses.filter(course => {
-                const status = getCourseStatus(course.code, state.selectedPlanId);
-                return status === 'available';
+        function isElectiveGroupSatisfied(planId, blockId, electiveName) {
+            const plan = getPlan(planId);
+            const block = plan.blocks.find(b => b.id === blockId);
+            if (!block || !block.electives) return false;
+            
+            const elective = block.electives.find(e => e.name === electiveName);
+            if (!elective) return false;
+            
+            let approvedCredits = 0;
+            
+            // Check categoryRequirements
+            if (elective.categoryRequirements) {
+                elective.categoryRequirements.forEach(catReq => {
+                    const approvedInCategory = Array.from(state.approvedCourses)
+                        .map(getCourse)
+                        .filter(course => 
+                            catReq.availableCourses.includes(course.code) &&
+                            course.categories.some(cat => catReq.categories.includes(cat))
+                        );
+                    approvedCredits += approvedInCategory.reduce((sum, c) => sum + c.credits, 0);
                 });
+            }
+            
+            // Check courseRequirements
+            if (elective.courseRequirements) {
+                elective.courseRequirements.forEach(courseReq => {
+                    const approvedElectiveCourses = Array.from(state.approvedCourses)
+                        .filter(courseCode => courseReq.availableCourses.includes(courseCode));
+                    approvedCredits += approvedElectiveCourses.reduce((sum, code) => sum + getCourse(code).credits, 0);
+                });
+            }
+            
+            return approvedCredits >= elective.creditsRequired;
+        }
+
+        function getCourseElectiveInfo(courseCode, planId) {
+            const plan = getPlan(planId);
+            for (const block of plan.blocks) {
+                if (!block.electives) continue;
+                
+                for (const elective of block.electives) {
+                    // Check if course is in categoryRequirements
+                    if (elective.categoryRequirements) {
+                        for (const catReq of elective.categoryRequirements) {
+                            if (catReq.availableCourses && catReq.availableCourses.includes(courseCode)) {
+                                return {
+                                    blockId: block.id,
+                                    electiveName: elective.name,
+                                    isElective: true
+                                };
+                            }
+                        }
+                    }
+                    
+                    // Check if course is in courseRequirements
+                    if (elective.courseRequirements) {
+                        for (const courseReq of elective.courseRequirements) {
+                            if (courseReq.availableCourses && courseReq.availableCourses.includes(courseCode)) {
+                                return {
+                                    blockId: block.id,
+                                    electiveName: elective.name,
+                                    isElective: true
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            return { isElective: false };
+        }
+
+        function renderAvailableCourses(allCourses) {
+            const availableCourses = allCourses.filter(course => {
+                const status = getCourseStatus(course.code, state.selectedPlanId);
+                if (status !== 'available') return false;
+                
+                // Check if this is an elective course and if its group is already satisfied
+                const electiveInfo = getCourseElectiveInfo(course.code, state.selectedPlanId);
+                if (electiveInfo.isElective) {
+                    // If the elective group is already satisfied, don't show this course
+                    return !isElectiveGroupSatisfied(state.selectedPlanId, electiveInfo.blockId, electiveInfo.electiveName);
+                }
+                
+                return true;
+            });
 
                 const periodMap = { q1: 'quarters', q2: 'quarters', q3: 'quarters', s1: 'semesters', s2: 'semesters' };
                 const periodNum = { q1: 1, q2: 2, q3: 3, s1: 1, s2: 2 };
