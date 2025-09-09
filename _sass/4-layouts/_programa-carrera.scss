@@ -25,9 +25,10 @@
     font-size: 12px;
     color: #fff;
   }
-  .badge.aprobado { background:#2e7d32 }
-  .badge.habilitado { background:#1565c0 }
-  .badge.bloqueado { background:#777 }
+  .badge.aprobado { background: var(--course-approved) }
+  .badge.habilitado { background: var(--course-available) }
+  .badge.bloqueado { background: var(--course-blocked) }
+  .badge.electivo { background: var(--course-elective) }
   .period-group h3{
     background: var(--background-alt-color);
     border: 1px solid var(--border-color);

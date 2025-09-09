@@ -37,6 +37,12 @@
   
   --card-background: #add8e6;
   --card-preview-bg: #e0f7fa;
+  
+  /* Course Status Colors - Color-blind friendly palette */
+  --course-approved: #009E73;     /* Bluish green - safe for color blindness */
+  --course-available: #0173B2;    /* Deep blue - universally accessible */
+  --course-blocked: #D55E00;      /* Vermillion - color-blind safe alternative to red */
+  --course-elective: #E69F00;     /* Orange - pairs with blue, color-blind safe */
 }
 
 :root[dark] {
@@ -73,4 +79,10 @@
   
   --card-background: #2a2b2d;
   --card-preview-bg: #3a3b3d;
+  
+  /* Course Status Colors - Dark mode variants */
+  --course-approved: #4ECDC4;     /* Light teal - maintains visibility on dark */
+  --course-available: #56B4E9;    /* Sky blue - high contrast on dark */
+  --course-blocked: #FF8C69;      /* Light coral - visible on dark backgrounds */
+  --course-elective: #FFB347;     /* Light orange - maintains warmth in dark mode */
 }

@@ -24,14 +24,109 @@ permalink: /planificador/
         --color-surface: #ffffff;
         --color-text-primary: #0f172a;
         --color-text-secondary: #475569;
-        --status-approved: #22c55e;
-        --status-available: #3b82f6;
-        --status-locked: #64748b;
+        --status-approved: #009E73;
+        --status-available: #0173B2;
+        --status-locked: #D55E00;
+        --status-elective: #E69F00;
+        --elective-bg: #fff7ed;
+        --elective-border: #fed7aa;
+        --elective-text: #c2410c;
+        --button-active-bg: #f59e0b;
+        --button-active-text: #ffffff;
+        --button-inactive-bg: #e2e8f0;
+        --button-inactive-text: #475569;
+    }
+    
+    :root[dark] {
+        --color-primary: #e2e8f0;
+        --color-secondary: #94a3b8;
+        --color-accent: #fbbf24;
+        --color-background: #0f172a;
+        --color-surface: #1e293b;
+        --color-text-primary: #f1f5f9;
+        --color-text-secondary: #94a3b8;
+        --status-approved: #4ECDC4;
+        --status-available: #56B4E9;
+        --status-locked: #FF8C69;
+        --status-elective: #FFB347;
+        --elective-bg: #2d1b0e;
+        --elective-border: #92400e;
+        --elective-text: #fbbf24;
+        --button-active-bg: #fbbf24;
+        --button-active-text: #1e293b;
+        --button-inactive-bg: #334155;
+        --button-inactive-text: #cbd5e1;
     }
     body {
         background-color: var(--color-background);
         color: var(--color-text-primary);
         font-family: 'Inter', sans-serif;
+    }
+    
+    /* Dark mode text color overrides */
+    .text-slate-800 { color: var(--color-text-primary) !important; }
+    .text-slate-700 { color: var(--color-text-primary) !important; }
+    .text-slate-600 { color: var(--color-text-secondary) !important; }
+    .text-slate-500 { color: var(--color-text-secondary) !important; }
+    
+    /* Dark mode background overrides */
+    .bg-white { background-color: var(--color-surface) !important; }
+    .bg-slate-50 { background-color: var(--color-background) !important; }
+    .bg-slate-100 { background-color: var(--color-background) !important; }
+    
+    /* Border colors for dark mode */
+    .border-slate-200 { border-color: var(--color-secondary) !important; }
+    .border-slate-300 { border-color: var(--color-secondary) !important; }
+    
+    /* Modal and card improvements for dark mode */
+    .course-card:hover { 
+        box-shadow: 0 2px 10px rgba(0,0,0,.15) !important; 
+    }
+    
+    /* Ensure form elements work in dark mode */
+    select, input[type="checkbox"] {
+        background-color: var(--color-surface);
+        color: var(--color-text-primary);
+        border-color: var(--color-secondary);
+    }
+    
+    /* Fix hover effects for course checkboxes and buttons */
+    .hover\:bg-slate-50:hover {
+        background-color: var(--color-background) !important;
+    }
+    .hover\:bg-slate-100:hover {
+        background-color: var(--color-background) !important;
+    }
+    
+    /* Elective courses section styling */
+    .bg-amber-50 {
+        background-color: var(--elective-bg) !important;
+    }
+    .border-amber-200 {
+        border-color: var(--elective-border) !important;
+    }
+    .text-amber-800 {
+        color: var(--elective-text) !important;
+    }
+    .hover\:bg-amber-100:hover {
+        background-color: var(--elective-bg) !important;
+        filter: brightness(0.95);
+    }
+    
+    /* Period filter buttons styling */
+    .period-btn.bg-amber-500 {
+        background-color: var(--button-active-bg) !important;
+        color: var(--button-active-text) !important;
+    }
+    .period-btn.bg-slate-200 {
+        background-color: var(--button-inactive-bg) !important;
+        color: var(--button-inactive-text) !important;
+    }
+    .period-btn.text-white {
+        color: var(--button-active-text) !important;
+    }
+    .period-btn.text-slate-700 {
+        color: var(--button-inactive-text) !important;
     }
     .tab-active {
         border-color: var(--color-accent);
@@ -66,7 +161,7 @@ permalink: /planificador/
         <p class="text-slate-600 mt-2">Enseñanza de la Matemática - UNED</p>
     </header>
 
-    <main id="main-content" class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+    <main id="main-content" class="rounded-xl shadow-lg p-6 md:p-8" style="background-color: var(--color-surface);">
         
         <div id="setup-section" class="mb-8">
             <label for="plan-select" class="flex items-center text-lg font-semibold text-slate-700 mb-2">
@@ -118,14 +213,14 @@ permalink: /planificador/
                                     <div class="flex items-center justify-center mb-2">
                                         <ion-icon name="checkmark-circle" class="text-green-600 text-2xl"></ion-icon>
                                     </div>
-                                    <div id="approved-courses-count" class="text-3xl font-bold text-green-600">0</div>
+                                    <div id="approved-courses-count" class="text-3xl font-bold text-slate-800">0</div>
                                     <div class="text-sm text-slate-600">Cursos Aprobados</div>
                                 </div>
                                 <div class="bg-slate-100 p-4 rounded-lg text-center">
                                     <div class="flex items-center justify-center mb-2">
                                         <ion-icon name="trophy" class="text-green-600 text-2xl"></ion-icon>
                                     </div>
-                                    <div id="approved-credits-count" class="text-3xl font-bold text-green-600">0</div>
+                                    <div id="approved-credits-count" class="text-3xl font-bold text-slate-800">0</div>
                                     <div class="text-sm text-slate-600">Créditos Ganados</div>
                                 </div>
                                 <div class="bg-slate-100 p-4 rounded-lg text-center">
@@ -173,10 +268,10 @@ permalink: /planificador/
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" id="filter-approved" class="status-filter sr-only">
                                 <div class="flex items-center select-none">
-                                    <div class="w-5 h-5 bg-white border-2 border-green-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="approved">
-                                        <ion-icon name="checkmark" class="text-green-500 text-sm hidden"></ion-icon>
+                                    <div class="w-5 h-5 bg-white border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="approved" style="border-color: var(--status-approved);">
+                                        <ion-icon name="checkmark" class="text-sm hidden" style="color: var(--status-approved);"></ion-icon>
                                     </div>
-                                    <div class="w-6 h-6 bg-green-500 rounded-full mr-2 flex items-center justify-center">
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-approved);">
                                         <ion-icon name="checkmark-circle" class="text-white text-sm"></ion-icon>
                                     </div>
                                     <span class="text-sm font-medium">Aprobado</span>
@@ -185,10 +280,10 @@ permalink: /planificador/
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" id="filter-available" class="status-filter sr-only" checked>
                                 <div class="flex items-center select-none">
-                                    <div class="w-5 h-5 bg-blue-500 border-2 border-blue-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="available">
+                                    <div class="w-5 h-5 border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="available" style="background-color: var(--status-available); border-color: var(--status-available);">
                                         <ion-icon name="checkmark" class="text-white text-sm"></ion-icon>
                                     </div>
-                                    <div class="w-6 h-6 bg-blue-500 rounded-full mr-2 flex items-center justify-center">
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-available);">
                                         <ion-icon name="play-circle" class="text-white text-sm"></ion-icon>
                                     </div>
                                     <span class="text-sm font-medium">Disponible</span>
@@ -197,10 +292,10 @@ permalink: /planificador/
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" id="filter-locked" class="status-filter sr-only">
                                 <div class="flex items-center select-none">
-                                    <div class="w-5 h-5 bg-white border-2 border-slate-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="locked">
-                                        <ion-icon name="checkmark" class="text-slate-500 text-sm hidden"></ion-icon>
+                                    <div class="w-5 h-5 bg-white border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="locked" style="border-color: var(--status-locked);">
+                                        <ion-icon name="checkmark" class="text-sm hidden" style="color: var(--status-locked);"></ion-icon>
                                     </div>
-                                    <div class="w-6 h-6 bg-slate-500 rounded-full mr-2 flex items-center justify-center">
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-locked);">
                                         <ion-icon name="lock-closed" class="text-white text-sm"></ion-icon>
                                     </div>
                                     <span class="text-sm font-medium">Bloqueado</span>
@@ -218,7 +313,7 @@ permalink: /planificador/
                     </h2>
                     <p class="flex items-center text-slate-600 mb-6">
                         <ion-icon name="information-circle-outline" class="text-slate-500 text-lg mr-2"></ion-icon>
-                        Estos son los cursos que puedes matricular según tu avance. Filtra por periodo para planificar.
+                        Estos son los cursos que puedes matricular según tu avance. Filtra por periodo para planificar. Haz click en el curso para ver más detalles.
                     </p>
                     <div class="mb-6">
                         <label for="period-filter" class="flex items-center font-semibold text-slate-700">
@@ -692,14 +787,14 @@ permalink: /planificador/
             
             // Restore period filter
             ui.periodFilterBtns.forEach(b => {
-                b.classList.replace('bg-amber-500', 'bg-slate-200');
-                b.classList.replace('text-white', 'text-slate-700');
+                b.classList.remove('bg-amber-500', 'text-white');
+                b.classList.add('bg-slate-200', 'text-slate-700');
             });
             
             const activePeriodBtn = document.querySelector(`[data-period="${state.periodFilter}"]`);
             if (activePeriodBtn) {
-                activePeriodBtn.classList.replace('bg-slate-200', 'bg-amber-500');
-                activePeriodBtn.classList.replace('text-slate-700', 'text-white');
+                activePeriodBtn.classList.remove('bg-slate-200', 'text-slate-700');
+                activePeriodBtn.classList.add('bg-amber-500', 'text-white');
             }
             
             // Restore curriculum filter checkboxes
@@ -712,17 +807,19 @@ permalink: /planificador/
                     checkbox.checked = state.curriculumFilter[status];
                     
                     if (state.curriculumFilter[status]) {
-                        checkboxCustom.classList.add('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkboxCustom.style.backgroundColor = `var(--status-${status})`;
+                        checkboxCustom.style.borderColor = `var(--status-${status})`;
                         checkboxCustom.classList.remove('bg-white');
                         checkIcon.classList.remove('hidden');
                         checkIcon.classList.add('text-white');
-                        checkIcon.classList.remove('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkIcon.style.color = 'white';
                     } else {
-                        checkboxCustom.classList.remove('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkboxCustom.style.backgroundColor = 'white';
+                        checkboxCustom.style.borderColor = `var(--status-${status})`;
                         checkboxCustom.classList.add('bg-white');
                         checkIcon.classList.add('hidden');
                         checkIcon.classList.remove('text-white');
-                        checkIcon.classList.add('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkIcon.style.color = `var(--status-${status})`;
                     }
                 }
             });
@@ -964,12 +1061,17 @@ permalink: /planificador/
             const total = approved + pending;
             const percentage = total > 0 ? Math.round((approved / total) * 100) : 0;
             
+            // Get computed colors for dark mode compatibility
+            const approvedColor = getComputedStyle(document.documentElement).getPropertyValue('--status-approved').trim();
+            const pendingColor = getComputedStyle(document.documentElement).getPropertyValue('--color-secondary').trim();
+            const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--color-surface').trim();
+            
             const data = {
                 labels: ['Aprobados', 'Pendientes'],
                 datasets: [{
                     data: [approved, pending],
-                    backgroundColor: ['#22c55e', '#e2e8f0'],
-                    borderColor: ['#ffffff', '#ffffff'],
+                    backgroundColor: [approvedColor, pendingColor],
+                    borderColor: [borderColor, borderColor],
                     borderWidth: 2,
                 }]
             };
@@ -1011,7 +1113,7 @@ permalink: /planificador/
                             ctx.font = `bold ${fontSize}px Inter, sans-serif`;
                             ctx.textAlign = 'center';
                             ctx.textBaseline = 'middle';
-                            ctx.fillStyle = '#1e293b';
+                            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text-primary').trim();
                             
                             const currentPercentage = chart.options.plugins.centerText?.percentage || 0;
                             const text = `${currentPercentage}%`;
@@ -1054,8 +1156,8 @@ permalink: /planificador/
                 
                 Object.entries(electivesByName).forEach(([electiveName, electiveData]) => {
                     if (electiveData.courses.length > 0) {
-                        html += `<div class="mb-4">
-                                    <h5 class="text-md font-medium text-slate-700 mb-2">${electiveName} 
+                        html += `<div class="mb-4 p-4 border border-slate-200 rounded-lg">
+                                    <h5 class="text-md font-medium text-slate-700 mb-3">${electiveName} 
                                         <span class="text-sm font-normal text-slate-500">(${electiveData.creditsRequired} créditos requeridos)</span>
                                     </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">`;
@@ -1099,23 +1201,26 @@ permalink: /planificador/
                         const status = getCourseStatus(course.code, state.selectedPlanId);
                         const statusConfig = {
                             approved: {
-                                colorClass: 'bg-green-500 hover:bg-green-600',
+                                colorStyle: 'background-color: var(--status-approved);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
                                 icon: 'checkmark-circle',
                                 iconColor: 'text-white'
                             },
                             available: {
-                                colorClass: 'bg-blue-500 hover:bg-blue-600',
+                                colorStyle: 'background-color: var(--status-available);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
                                 icon: 'play-circle',
                                 iconColor: 'text-white'
                             },
                             locked: {
-                                colorClass: 'bg-slate-500 hover:bg-slate-600',
+                                colorStyle: 'background-color: var(--status-locked);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
                                 icon: 'lock-closed',
                                 iconColor: 'text-white'
                             }
                         }[status];
                         
-                        html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${statusConfig.colorClass}">
+                        html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white" style="${statusConfig.colorStyle}" ${statusConfig.hoverStyle}>
                                     <div class="flex items-start justify-between mb-2">
                                         <ion-icon name="${statusConfig.icon}" class="${statusConfig.iconColor} text-lg flex-shrink-0"></ion-icon>
                                         <span class="text-xs opacity-80 ml-2">${course.code}</span>
@@ -1551,9 +1656,14 @@ permalink: /planificador/
             state.periodFilter = btn.dataset.period;
             saveState(); // Save state when period filter changes
             
-            ui.periodFilterBtns.forEach(b => b.classList.replace('bg-amber-500', 'bg-slate-200') || b.classList.replace('text-white', 'text-slate-700'));
-            btn.classList.replace('bg-slate-200', 'bg-amber-500');
-            btn.classList.replace('text-slate-700', 'text-white');
+            // Reset all buttons to inactive state
+            ui.periodFilterBtns.forEach(b => {
+                b.classList.remove('bg-amber-500', 'text-white');
+                b.classList.add('bg-slate-200', 'text-slate-700');
+            });
+            // Set clicked button to active state
+            btn.classList.remove('bg-slate-200', 'text-slate-700');
+            btn.classList.add('bg-amber-500', 'text-white');
 
             renderAll();
         }
@@ -1584,17 +1694,19 @@ permalink: /planificador/
             
             // Update visual state
             if (state.curriculumFilter[status]) {
-                checkboxCustom.classList.add('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkboxCustom.style.backgroundColor = `var(--status-${status})`;
+                checkboxCustom.style.borderColor = `var(--status-${status})`;
                 checkboxCustom.classList.remove('bg-white');
                 checkIcon.classList.remove('hidden');
                 checkIcon.classList.add('text-white');
-                checkIcon.classList.remove('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkIcon.style.color = 'white';
             } else {
-                checkboxCustom.classList.remove('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkboxCustom.style.backgroundColor = 'white';
+                checkboxCustom.style.borderColor = `var(--status-${status})`;
                 checkboxCustom.classList.add('bg-white');
                 checkIcon.classList.add('hidden');
                 checkIcon.classList.remove('text-white');
-                checkIcon.classList.add('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkIcon.style.color = `var(--status-${status})`;
             }
             
             // Save state and re-render curriculum map
@@ -1602,6 +1714,19 @@ permalink: /planificador/
             if (state.selectedPlanId) {
                 const plan = getPlan(state.selectedPlanId);
                 renderCurriculumMap(plan);
+            }
+        }
+
+        // Function to handle theme changes and update chart colors
+        function handleThemeChange() {
+            // Re-render the chart with updated colors
+            if (creditsChart && state.selectedPlanId) {
+                const approvedCoursesObjects = Array.from(state.approvedCourses)
+                    .map(getCourse)
+                    .filter(c => c); 
+                const approvedCredits = approvedCoursesObjects.reduce((sum, course) => sum + course.credits, 0);
+                const totalCredits = calculateTotalPlanCredits(state.selectedPlanId);
+                renderCreditsChart(approvedCredits, totalCredits - approvedCredits);
             }
         }
 
@@ -1657,6 +1782,31 @@ permalink: /planificador/
             const resetButton = document.getElementById('reset-button');
             if (resetButton) {
                 resetButton.addEventListener('click', clearAllCourses);
+            }
+            
+            // Add theme change observer for chart color updates
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && 
+                        (mutation.attributeName === 'dark' || mutation.attributeName === 'class')) {
+                        // Small delay to ensure CSS variables are updated
+                        setTimeout(handleThemeChange, 50);
+                    }
+                });
+            });
+            
+            // Observe changes to both dark attribute and class changes on the root element
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['dark', 'class']
+            });
+            
+            // Also listen for theme changes via media query (system preference changes)
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addListener(function(e) {
+                    setTimeout(handleThemeChange, 50);
+                });
             }
         }
 
