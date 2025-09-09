@@ -157,8 +157,8 @@ permalink: /planificador/
 <div id="app" class="container mx-auto p-4 md:p-8">
     
     <header class="mb-8 text-center">
-        <h1 class="text-4xl font-bold text-slate-800">Asistente Académico</h1>
-        <p class="text-slate-600 mt-2">Enseñanza de la Matemática - UNED</p>
+        <h1 class="text-4xl font-bold text-slate-800">Planificador Académico de Matrículas</h1>
+        <p class="text-slate-600 mt-2">Carrera de Enseñanza de la Matemática - UNED</p>
     </header>
 
     <main id="main-content" class="rounded-xl shadow-lg p-6 md:p-8" style="background-color: var(--color-surface);">
@@ -482,7 +482,8 @@ permalink: /planificador/
     document.addEventListener('DOMContentLoaded', () => {
         const state = {
             selectedPlanId: null,
-            approvedCourses: new Set(),
+            approvedCourses: new Set(), // Program-specific approved courses
+            globalApprovedCourses: new Set(), // Global approved courses across all programs
             activeTab: 'avance',
             periodFilter: 'all',
             cachedCredentialStatuses: null,
@@ -687,6 +688,9 @@ permalink: /planificador/
             localStorage.setItem('academicPlannerPrograms', JSON.stringify(allProgramsState));
             localStorage.setItem('academicPlannerSelectedPlan', state.selectedPlanId);
             
+            // Save global approved courses separately
+            localStorage.setItem('academicPlannerGlobalCourses', JSON.stringify(Array.from(state.globalApprovedCourses)));
+            
             console.log(`💾 Saved programs state:`, allProgramsState);
             console.log(`💾 Saved selected plan:`, state.selectedPlanId);
         }
@@ -700,6 +704,29 @@ permalink: /planificador/
             if (localStorage.getItem('academicPlannerMultiState')) {
                 console.log('🧹 Removing corrupted academicPlannerMultiState format');
                 localStorage.removeItem('academicPlannerMultiState');
+            }
+            
+            // Load global approved courses
+            const savedGlobalCourses = localStorage.getItem('academicPlannerGlobalCourses');
+            if (savedGlobalCourses) {
+                state.globalApprovedCourses = new Set(JSON.parse(savedGlobalCourses));
+                console.log(`📂 Loaded global approved courses:`, Array.from(state.globalApprovedCourses));
+            } else {
+                // Migration: If no global courses exist, build from existing program data
+                console.log('🔄 Migrating existing program data to global courses');
+                const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+                const allApprovedCourses = new Set();
+                
+                Object.values(allProgramsState).forEach(programState => {
+                    if (programState.approvedCourses) {
+                        programState.approvedCourses.forEach(courseCode => {
+                            allApprovedCourses.add(courseCode);
+                        });
+                    }
+                });
+                
+                state.globalApprovedCourses = allApprovedCourses;
+                console.log(`🔄 Migrated courses to global set:`, Array.from(state.globalApprovedCourses));
             }
             
             // Load selected plan
@@ -753,6 +780,20 @@ permalink: /planificador/
                     locked: false
                 };
             }
+            
+            // Sync program-specific courses with global courses
+            // Any course that exists in both the current program and global set should be checked
+            const allCoursesInPlan = getAllCoursesInPlan(planId);
+            const coursesInPlan = new Set(allCoursesInPlan.map(c => c.code));
+            
+            // Add globally approved courses that exist in this program to the program-specific set
+            for (const courseCode of state.globalApprovedCourses) {
+                if (coursesInPlan.has(courseCode)) {
+                    state.approvedCourses.add(courseCode);
+                }
+            }
+            
+            console.log(`📂 Synced with global courses - final approved courses:`, Array.from(state.approvedCourses));
             
             // Clear cached credential statuses when switching programs
             state.cachedCredentialStatuses = null;
@@ -905,8 +946,8 @@ permalink: /planificador/
                     if (condition.type === 'courses' && condition.operator === 'all') {
                         let metCount = 0;
                         condition.courses.forEach(c => {
-                            if (state.approvedCourses.has(c)) metCount++;
-                            subDetails.push({ text: `${getCourse(c).name} (${c})`, met: state.approvedCourses.has(c) });
+                            if (state.globalApprovedCourses.has(c)) metCount++;
+                            subDetails.push({ text: `${getCourse(c).name} (${c})`, met: state.globalApprovedCourses.has(c) });
                         });
                         conditionMet = metCount === condition.courses.length;
                         conditionProgress = condition.courses.length > 0 ? metCount / condition.courses.length : 0;
@@ -914,7 +955,7 @@ permalink: /planificador/
                         
                     } else if (condition.type === 'categories' && condition.operator === 'credits') {
                         // Get available courses (approved and not already allocated)
-                        const availableCoursesInCategory = Array.from(state.approvedCourses)
+                        const availableCoursesInCategory = Array.from(state.globalApprovedCourses)
                             .filter(courseCode => !localAllocatedCourses.has(courseCode))
                             .map(getCourse)
                             .filter(c => c.categories.some(cat => condition.categories.includes(cat)));
@@ -966,7 +1007,7 @@ permalink: /planificador/
                         subDetails = subCredentialStatus.details;
                         
                     } else if (condition.type === 'courses' && condition.operator === 'credits') {
-                        const approvedElectives = Array.from(state.approvedCourses)
+                        const approvedElectives = Array.from(state.globalApprovedCourses)
                             .filter(c => condition.availableCourses.includes(c));
                         const creditsEarned = approvedElectives.reduce((sum, c) => sum + getCourse(c).credits, 0);
                         conditionMet = creditsEarned >= condition.creditsRequired;
@@ -1628,8 +1669,10 @@ permalink: /planificador/
                 const courseCode = e.target.dataset.courseCode;
                 if (e.target.checked) {
                     state.approvedCourses.add(courseCode);
+                    state.globalApprovedCourses.add(courseCode);
                 } else {
                     state.approvedCourses.delete(courseCode);
+                    state.globalApprovedCourses.delete(courseCode);
                 }
                 renderAll();
             }
@@ -1674,6 +1717,7 @@ permalink: /planificador/
 
         function confirmReset() {
             state.approvedCourses.clear();
+            state.globalApprovedCourses.clear();
             state.cachedCredentialStatuses = null; // Clear cache
             saveState(); // Save the cleared state
             renderAll();
