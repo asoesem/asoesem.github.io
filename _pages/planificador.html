@@ -1243,41 +1243,74 @@ permalink: /planificador/
             const currentYear = currentDate.getFullYear();
             const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
             
-            // Determine current period based on date
-            let period;
-            
             // Check if course is offered in quarters or semesters
             const hasQuarters = courseAvailability.quarters && courseAvailability.quarters.length > 0;
             const hasSemesters = courseAvailability.semesters && courseAvailability.semesters.length > 0;
             
+            let availablePeriods = [];
+            
             if (hasQuarters) {
-                // Quarter-based course
-                if (currentMonth >= 2 && currentMonth <= 5) {
-                    period = 3; // First quarter (Feb-May)
-                } else if (currentMonth >= 6 && currentMonth <= 9) {
-                    period = 4; // Second quarter (Jun-Sep)
-                } else {
-                    period = 5; // Third quarter (Oct-Jan)
-                }
+                // Convert quarter numbers to period numbers (1st quarter = period 3, 2nd quarter = period 4, 3rd quarter = period 5)
+                availablePeriods = courseAvailability.quarters.map(q => q + 2);
             } else if (hasSemesters) {
-                // Semester-based course
-                if (currentMonth >= 2 && currentMonth <= 7) {
-                    period = 1; // First semester (Feb-Jul)
-                } else {
-                    period = 2; // Second semester (Aug-Jan)
-                }
+                // Semester numbers are period numbers (1st semester = period 1, 2nd semester = period 2)
+                availablePeriods = courseAvailability.semesters;
             } else {
-                // Default to quarters if no availability info
-                if (currentMonth >= 2 && currentMonth <= 5) {
-                    period = 3;
-                } else if (currentMonth >= 6 && currentMonth <= 9) {
-                    period = 4;
-                } else {
-                    period = 5;
+                // Default to all quarters if no availability info
+                availablePeriods = [3, 4, 5];
+            }
+            
+            // Find the most recent period where the course was offered
+            let bestYear = currentYear;
+            let bestPeriod = null;
+            
+            // Current period mapping
+            let currentPeriod;
+            if (currentMonth >= 2 && currentMonth <= 5) {
+                currentPeriod = 3; // First quarter (Feb-May)
+            } else if (currentMonth >= 6 && currentMonth <= 9) {
+                currentPeriod = 4; // Second quarter (Jun-Sep)
+            } else {
+                currentPeriod = 5; // Third quarter (Oct-Jan)
+            }
+            
+            // If we're in Jan (month 1), we're actually in the 3rd quarter of the previous academic year
+            if (currentMonth === 1) {
+                currentPeriod = 5;
+                bestYear = currentYear - 1;
+            }
+            
+            // Look for the most recent offering
+            // First, check if the course is offered in the current period
+            if (availablePeriods.includes(currentPeriod)) {
+                bestPeriod = currentPeriod;
+            } else {
+                // Find the most recent period before the current one
+                // Go backwards from current period in current year, then previous year
+                for (let yearOffset = 0; yearOffset <= 2; yearOffset++) {
+                    const checkYear = bestYear - yearOffset;
+                    
+                    // For current year, only check periods before current period
+                    // For previous years, check all periods in reverse order
+                    const periodsToCheck = yearOffset === 0 
+                        ? availablePeriods.filter(p => p < currentPeriod).sort((a, b) => b - a)
+                        : [...availablePeriods].sort((a, b) => b - a);
+                    
+                    if (periodsToCheck.length > 0) {
+                        bestYear = checkYear;
+                        bestPeriod = periodsToCheck[0];
+                        break;
+                    }
+                }
+                
+                // Fallback: if no previous offering found, use the latest period offered in current year
+                if (bestPeriod === null) {
+                    bestYear = currentYear;
+                    bestPeriod = Math.max(...availablePeriods);
                 }
             }
             
-            return `http://orientacionesacademicas.uned.ac.cr/documentos/${currentYear}${period}${courseCode}.pdf`;
+            return `http://orientacionesacademicas.uned.ac.cr/documentos/${bestYear}${bestPeriod}${courseCode}.pdf`;
         }
 
         function getAvailabilityText(availability, compact = false) {
