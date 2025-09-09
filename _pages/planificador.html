@@ -71,7 +71,7 @@ permalink: /planificador/
         <div id="setup-section" class="mb-8">
             <label for="plan-select" class="flex items-center text-lg font-semibold text-slate-700 mb-2">
                 <ion-icon name="school" class="text-amber-600 text-xl mr-2"></ion-icon>
-                1. Seleccione su Plan de Estudios:
+                1. Selecciona tu Plan de Estudios:
             </label>
             <select id="plan-select" class="w-full max-w-md p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition">
             </select>
@@ -149,7 +149,7 @@ permalink: /planificador/
                     <div class="flex justify-between items-center mt-8 mb-4">
                         <h3 class="flex items-center text-xl font-semibold text-slate-800">
                             <ion-icon name="checkbox" class="text-amber-600 text-2xl mr-3"></ion-icon>
-                            2. Marque los cursos que ha aprobado:
+                            2. Marca los cursos que ha aprobado:
                         </h3>
                         <button id="reset-button" class="flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-colors">
                             <ion-icon name="refresh" class="text-white text-base mr-2"></ion-icon>
@@ -161,7 +161,7 @@ permalink: /planificador/
                 
                 <div id="malla-tab" class="tab-pane hidden">
                     <h2 class="text-2xl font-bold text-slate-800 mb-2">Malla Curricular Interactiva</h2>
-                        <p class="text-slate-600 mb-6">Haga clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
+                        <p class="text-slate-600 mb-6">Haz clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
                     
                     <!-- Course Status Filters -->
                     <div class="mb-6 p-4 bg-slate-50 rounded-lg">
@@ -218,7 +218,7 @@ permalink: /planificador/
                     </h2>
                     <p class="flex items-center text-slate-600 mb-6">
                         <ion-icon name="information-circle-outline" class="text-slate-500 text-lg mr-2"></ion-icon>
-                        Estos son los cursos que puede matricular según su avance. Filtre por periodo para planificar.
+                        Estos son los cursos que puedes matricular según tu avance. Filtra por periodo para planificar.
                     </p>
                     <div class="mb-6">
                         <label for="period-filter" class="flex items-center font-semibold text-slate-700">
@@ -268,7 +268,9 @@ permalink: /planificador/
                         <ion-icon name="book" class="text-blue-600 text-xl"></ion-icon>
                     </div>
                     <div>
-                        <h3 id="modal-course-name" class="text-2xl font-bold text-slate-800"></h3>
+                        <div class="flex items-center gap-3 mb-1">
+                            <h3 id="modal-course-name" class="text-2xl font-bold text-slate-800"></h3>
+                        </div>
                         <p id="modal-course-code" class="text-sm text-slate-500"></p>
                     </div>
                 </div>
@@ -288,9 +290,13 @@ permalink: /planificador/
                     <div id="modal-course-level" class="text-xl font-semibold"></div>
                 </div>
                 <div class="flex flex-col items-center">
-                    <ion-icon name="pricetags" class="text-green-500 text-2xl mb-2"></ion-icon>
-                    <div class="text-sm text-slate-500">Categorías</div>
-                    <div id="modal-course-categories" class="text-sm font-semibold"></div>
+                    <ion-icon name="attach" class="text-green-500 text-2xl mb-2"></ion-icon>
+                    <div class="text-sm text-slate-500">Descargar</div>
+                    <div class="text-xl font-semibold">
+                        <a id="modal-course-syllabus-link" href="#" target="_blank" class="hover:text-blue-800" title="Descargar orientaciones académicas">
+                            Orientaciones
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -305,7 +311,7 @@ permalink: /planificador/
             <div class="mt-6">
                 <h4 class="flex items-center font-semibold text-slate-700 mb-3">
                     <ion-icon name="arrow-back" class="text-red-500 text-lg mr-2"></ion-icon>
-                    Prerrequisitos (necesita aprobar):
+                    Prerrequisitos (necesitas aprobar):
                 </h4>
                 <ul id="modal-course-prerequisites" class="space-y-1 text-slate-600 ml-7"></ul>
             </div>
@@ -396,9 +402,9 @@ permalink: /planificador/
                 el: document.getElementById('course-modal'),
                 name: document.getElementById('modal-course-name'),
                 code: document.getElementById('modal-course-code'),
+                syllabusLink: document.getElementById('modal-course-syllabus-link'),
                 credits: document.getElementById('modal-course-credits'),
                 level: document.getElementById('modal-course-level'),
-                categories: document.getElementById('modal-course-categories'),
                 availability: document.getElementById('modal-course-availability'),
                 prerequisites: document.getElementById('modal-course-prerequisites'),
                 unlocks: document.getElementById('modal-course-unlocks'),
@@ -1130,25 +1136,44 @@ permalink: /planificador/
 
             ui.courseModal.name.textContent = course.name;
             ui.courseModal.code.textContent = course.code;
+            ui.courseModal.syllabusLink.href = getSyllabusUrl(course.code, course.availability);
             ui.courseModal.credits.textContent = course.credits;
             ui.courseModal.level.textContent = course.level;
-            ui.courseModal.categories.textContent = course.categories.join(', ');
             ui.courseModal.availability.textContent = getAvailabilityText(course.availability);
             
             ui.courseModal.prerequisites.innerHTML = prerequisites.details.length > 0
-                ? prerequisites.details.map(p => `
+                ? prerequisites.details.map(p => {
+                    // Extract course code from prerequisite text (assuming format like "Course Name (CODE)")
+                    const codeMatch = p.text.match(/\(([^)]+)\)/);
+                    const prereqCourseCode = codeMatch ? codeMatch[1] : null;
+                    const prereqCourse = prereqCourseCode ? getCourse(prereqCourseCode) : null;
+                    const syllabusUrl = prereqCourse ? getSyllabusUrl(prereqCourseCode, prereqCourse.availability) : null;
+                    
+                    return `
                     <li class="flex items-center ${p.met ? 'text-green-600' : 'text-red-600'}">
                         <ion-icon name="${p.met ? 'checkmark-circle' : 'close-circle'}" class="text-base mr-2 flex-shrink-0"></ion-icon>
-                        ${p.text}
-                    </li>`).join('')
+                        <span>${p.text}</span>
+                        ${syllabusUrl ? `
+                            <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 ml-2" title="Descargar orientaciones académicas">
+                                <ion-icon name="attach" class="text-base"></ion-icon>
+                            </a>
+                        ` : ''}
+                    </li>`;
+                }).join('')
                 : '<li class="flex items-center text-slate-500"><ion-icon name="remove-circle" class="text-base mr-2"></ion-icon>Ninguno</li>';
 
             ui.courseModal.unlocks.innerHTML = unlocks.length > 0
-                ? unlocks.map(c => `
+                ? unlocks.map(c => {
+                    const syllabusUrl = getSyllabusUrl(c.code, c.availability);
+                    return `
                     <li class="flex items-center">
                         <ion-icon name="unlock" class="text-blue-500 text-base mr-2 flex-shrink-0"></ion-icon>
                         <span>${c.name} (${c.code})</span>
-                    </li>`).join('')
+                        <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 ml-2" title="Descargar orientaciones académicas">
+                            <ion-icon name="attach" class="text-base"></ion-icon>
+                        </a>
+                    </li>`;
+                }).join('')
                 : '<li class="flex items-center text-slate-500"><ion-icon name="ban" class="text-base mr-2"></ion-icon>No desbloquea cursos directamente.</li>';
 
             ui.courseModal.el.classList.remove('hidden');
@@ -1211,6 +1236,48 @@ permalink: /planificador/
             ui.confirmModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
             ui.confirmModal.el.classList.add('opacity-0');
             setTimeout(() => ui.confirmModal.el.classList.add('hidden'), 300);
+        }
+
+        function getSyllabusUrl(courseCode, courseAvailability) {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+            
+            // Determine current period based on date
+            let period;
+            
+            // Check if course is offered in quarters or semesters
+            const hasQuarters = courseAvailability.quarters && courseAvailability.quarters.length > 0;
+            const hasSemesters = courseAvailability.semesters && courseAvailability.semesters.length > 0;
+            
+            if (hasQuarters) {
+                // Quarter-based course
+                if (currentMonth >= 2 && currentMonth <= 5) {
+                    period = 3; // First quarter (Feb-May)
+                } else if (currentMonth >= 6 && currentMonth <= 9) {
+                    period = 4; // Second quarter (Jun-Sep)
+                } else {
+                    period = 5; // Third quarter (Oct-Jan)
+                }
+            } else if (hasSemesters) {
+                // Semester-based course
+                if (currentMonth >= 2 && currentMonth <= 7) {
+                    period = 1; // First semester (Feb-Jul)
+                } else {
+                    period = 2; // Second semester (Aug-Jan)
+                }
+            } else {
+                // Default to quarters if no availability info
+                if (currentMonth >= 2 && currentMonth <= 5) {
+                    period = 3;
+                } else if (currentMonth >= 6 && currentMonth <= 9) {
+                    period = 4;
+                } else {
+                    period = 5;
+                }
+            }
+            
+            return `http://orientacionesacademicas.uned.ac.cr/documentos/${currentYear}${period}${courseCode}.pdf`;
         }
 
         function getAvailabilityText(availability, compact = false) {
