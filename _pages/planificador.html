@@ -162,24 +162,50 @@ permalink: /planificador/
                 <div id="malla-tab" class="tab-pane hidden">
                     <h2 class="text-2xl font-bold text-slate-800 mb-2">Malla Curricular Interactiva</h2>
                         <p class="text-slate-600 mb-6">Haga clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
-                    <div class="flex flex-wrap gap-4 mb-6">
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 bg-green-500 rounded-full mr-2 flex items-center justify-center">
-                                <ion-icon name="checkmark-circle" class="text-white text-sm"></ion-icon>
-                            </div>
-                            <span class="text-sm font-medium">Aprobado</span>
+                    
+                    <!-- Course Status Filters -->
+                    <div class="mb-6 p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <ion-icon name="options" class="text-amber-600 text-lg mr-2"></ion-icon>
+                            <h3 class="text-lg font-semibold text-slate-700">Filtrar por estado:</h3>
                         </div>
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 bg-blue-500 rounded-full mr-2 flex items-center justify-center">
-                                <ion-icon name="play-circle" class="text-white text-sm"></ion-icon>
-                            </div>
-                            <span class="text-sm font-medium">Disponible</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 bg-slate-500 rounded-full mr-2 flex items-center justify-center">
-                                <ion-icon name="lock-closed" class="text-white text-sm"></ion-icon>
-                            </div>
-                            <span class="text-sm font-medium">Bloqueado</span>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-approved" class="status-filter sr-only">
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 bg-white border-2 border-green-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="approved">
+                                        <ion-icon name="checkmark" class="text-green-500 text-sm hidden"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 bg-green-500 rounded-full mr-2 flex items-center justify-center">
+                                        <ion-icon name="checkmark-circle" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Aprobado</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-available" class="status-filter sr-only" checked>
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 bg-blue-500 border-2 border-blue-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="available">
+                                        <ion-icon name="checkmark" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 bg-blue-500 rounded-full mr-2 flex items-center justify-center">
+                                        <ion-icon name="play-circle" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Disponible</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-locked" class="status-filter sr-only">
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 bg-white border-2 border-slate-500 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="locked">
+                                        <ion-icon name="checkmark" class="text-slate-500 text-sm hidden"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 bg-slate-500 rounded-full mr-2 flex items-center justify-center">
+                                        <ion-icon name="lock-closed" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Bloqueado</span>
+                                </div>
+                            </label>
                         </div>
                     </div>
                     <div id="curriculum-map" class="space-y-8"></div>
@@ -323,6 +349,11 @@ permalink: /planificador/
             activeTab: 'avance',
             periodFilter: 'all',
             cachedCredentialStatuses: null,
+            curriculumFilter: {
+                approved: false,
+                available: true,
+                locked: false
+            }
         };
 
         const ui = {
@@ -858,40 +889,61 @@ permalink: /planificador/
         function renderCurriculumMap(plan) {
             let html = '';
             plan.blocks.forEach(block => {
+                // Filter courses based on selected status filters
+                const filteredCourses = block.courses.filter(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    const status = getCourseStatus(course.code, state.selectedPlanId);
+                    return state.curriculumFilter[status];
+                });
+                
+                // Only show block if it has courses to display
+                if (filteredCourses.length > 0) {
                     html += `<div class="p-4 border border-slate-200 rounded-lg">
                             <h4 class="text-lg font-semibold text-slate-700 mb-4">${block.name}</h4>
                             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">`;
-                block.courses.forEach(courseInfo => {
-                    const course = getCourse(courseInfo.courseCode);
-                    const status = getCourseStatus(course.code, state.selectedPlanId);
-                    const statusConfig = {
-                        approved: {
-                            colorClass: 'bg-green-500 hover:bg-green-600',
-                            icon: 'checkmark-circle',
-                            iconColor: 'text-white'
-                        },
-                        available: {
-                            colorClass: 'bg-blue-500 hover:bg-blue-600',
-                            icon: 'play-circle',
-                            iconColor: 'text-white'
-                        },
-                        locked: {
-                            colorClass: 'bg-slate-500 hover:bg-slate-600',
-                            icon: 'lock-closed',
-                            iconColor: 'text-white'
-                        }
-                    }[status];
                     
-                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${statusConfig.colorClass}">
-                                <div class="flex items-start justify-between mb-2">
-                                    <ion-icon name="${statusConfig.icon}" class="${statusConfig.iconColor} text-lg flex-shrink-0"></ion-icon>
-                                    <span class="text-xs opacity-80 ml-2">${course.code}</span>
-                                </div>
-                                <p class="font-semibold text-sm leading-tight">${course.name}</p>
-                            </div>`;
-                });
-                html += `</div></div>`;
+                    filteredCourses.forEach(courseInfo => {
+                        const course = getCourse(courseInfo.courseCode);
+                        const status = getCourseStatus(course.code, state.selectedPlanId);
+                        const statusConfig = {
+                            approved: {
+                                colorClass: 'bg-green-500 hover:bg-green-600',
+                                icon: 'checkmark-circle',
+                                iconColor: 'text-white'
+                            },
+                            available: {
+                                colorClass: 'bg-blue-500 hover:bg-blue-600',
+                                icon: 'play-circle',
+                                iconColor: 'text-white'
+                            },
+                            locked: {
+                                colorClass: 'bg-slate-500 hover:bg-slate-600',
+                                icon: 'lock-closed',
+                                iconColor: 'text-white'
+                            }
+                        }[status];
+                        
+                        html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${statusConfig.colorClass}">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <ion-icon name="${statusConfig.icon}" class="${statusConfig.iconColor} text-lg flex-shrink-0"></ion-icon>
+                                        <span class="text-xs opacity-80 ml-2">${course.code}</span>
+                                    </div>
+                                    <p class="font-semibold text-sm leading-tight">${course.name}</p>
+                                </div>`;
+                    });
+                    html += `</div></div>`;
+                }
             });
+            
+            // Show message if no courses match the filter
+            if (html === '') {
+                html = `<div class="text-center py-12">
+                            <ion-icon name="filter-outline" class="text-slate-400 text-6xl mb-4"></ion-icon>
+                            <p class="text-slate-500 text-lg mb-2">No hay cursos para mostrar</p>
+                            <p class="text-slate-400 text-sm">Seleccione al menos una categoría en los filtros arriba</p>
+                        </div>`;
+            }
+            
             ui.curriculumMap.innerHTML = html;
         }
 
@@ -1195,6 +1247,40 @@ permalink: /planificador/
             closeConfirmModal();
         }
 
+        function handleCurriculumFilterClick(e) {
+            const checkboxCustom = e.target.closest('.checkbox-custom');
+            if (!checkboxCustom) return;
+            
+            const status = checkboxCustom.dataset.status;
+            const checkbox = checkboxCustom.closest('label').querySelector('.status-filter');
+            const checkIcon = checkboxCustom.querySelector('ion-icon');
+            
+            // Toggle the state
+            state.curriculumFilter[status] = !state.curriculumFilter[status];
+            checkbox.checked = state.curriculumFilter[status];
+            
+            // Update visual state
+            if (state.curriculumFilter[status]) {
+                checkboxCustom.classList.add('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkboxCustom.classList.remove('bg-white');
+                checkIcon.classList.remove('hidden');
+                checkIcon.classList.add('text-white');
+                checkIcon.classList.remove('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+            } else {
+                checkboxCustom.classList.remove('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                checkboxCustom.classList.add('bg-white');
+                checkIcon.classList.add('hidden');
+                checkIcon.classList.remove('text-white');
+                checkIcon.classList.add('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+            }
+            
+            // Re-render curriculum map
+            if (state.selectedPlanId) {
+                const plan = getPlan(state.selectedPlanId);
+                renderCurriculumMap(plan);
+            }
+        }
+
         function init() {
             loadState();
 
@@ -1216,6 +1302,9 @@ permalink: /planificador/
             ui.coursesChecklist.addEventListener('change', handleCourseCheck);
             ui.appBody.addEventListener('click', handleTabClick);
             ui.periodFilterBtns.forEach(btn => btn.addEventListener('click', handlePeriodFilterClick));
+            
+            // Handle curriculum filter checkboxes
+            document.addEventListener('click', handleCurriculumFilterClick);
             
             document.body.addEventListener('click', (e) => {
                 const courseCard = e.target.closest('.course-card');
