@@ -108,7 +108,8 @@
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 2]
-      }
+      },
+      "requiresAuth": true
     },
     "03421": {
       "code": "03421",
@@ -118,7 +119,8 @@
       "level": "Introductorio",
       "availability": {
         "quarters": [2, 3]
-      }
+      },
+      "requiresAuth": true
     },
     "03422": {
       "code": "03422",
@@ -138,7 +140,8 @@
       "level": "Introductorio",
       "availability": {
         "quarters": [1, 3]
-      }
+      },
+      "requiresAuth": true
     },
     "03424": {
       "code": "03424",
@@ -178,7 +181,8 @@
       "level": "Intermedio",
       "availability": {
         "quarters": [1]
-      }
+      },
+      "requiresAuth": true
     },
     "03428": {
       "code": "03428",
@@ -218,7 +222,8 @@
       "level": "Intermedio",
       "availability": {
         "quarters": [2]
-      }
+      },
+      "requiresAuth": true
     },
     "03432": {
       "code": "03432",
@@ -228,7 +233,8 @@
       "level": "Intermedio",
       "availability": {
         "quarters": [2]
-      }
+      },
+      "requiresAuth": true
     },
     "03433": {
       "code": "03433",
@@ -368,7 +374,8 @@
       "level": "Avanzado",
       "availability": {
         "quarters": [1, 3]
-      }
+      },
+      "requiresAuth": true
     },
     "03448": {
       "code": "03448",
@@ -388,7 +395,8 @@
       "level": "Avanzado",
       "availability": {
         "quarters": [2, 3]
-      }
+      },
+      "requiresAuth": true
     },
     "03450": {
       "code": "03450",
