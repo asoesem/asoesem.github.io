@@ -69,7 +69,10 @@ permalink: /planificador/
     <main id="main-content" class="bg-white rounded-xl shadow-lg p-6 md:p-8">
         
         <div id="setup-section" class="mb-8">
-            <label for="plan-select" class="block text-lg font-semibold text-slate-700 mb-2">1. Seleccione su Plan de Estudios:</label>
+            <label for="plan-select" class="flex items-center text-lg font-semibold text-slate-700 mb-2">
+                <ion-icon name="school" class="text-amber-600 text-xl mr-2"></ion-icon>
+                1. Seleccione su Plan de Estudios:
+            </label>
             <select id="plan-select" class="w-full max-w-md p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition">
             </select>
         </div>
@@ -77,9 +80,18 @@ permalink: /planificador/
         <div id="app-body" class="hidden">
             <div class="border-b border-slate-200 mb-6">
                 <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                    <button data-tab="avance" class="tab-btn tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Mi Avance</button>
-                    <button data-tab="malla" class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">Malla Curricular</button>
-                    <button data-tab="disponibles" class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">Cursos Disponibles</button>
+                    <button data-tab="avance" class="tab-btn tab-active flex items-center whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        <ion-icon name="analytics" class="text-base mr-2"></ion-icon>
+                        Mi Avance
+                    </button>
+                    <button data-tab="malla" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
+                        <ion-icon name="grid" class="text-base mr-2"></ion-icon>
+                        Malla Curricular
+                    </button>
+                    <button data-tab="disponibles" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
+                        <ion-icon name="list" class="text-base mr-2"></ion-icon>
+                        Cursos Disponibles
+                    </button>
                 </nav>
             </div>
 
@@ -88,37 +100,59 @@ permalink: /planificador/
                     <h2 class="text-2xl font-bold text-slate-800 mb-6">Panel de Avance</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
                         <div class="lg:col-span-1 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-lg">
-                                <h3 class="text-lg font-semibold text-slate-700 mb-4">Progreso de Créditos</h3>
+                                <h3 class="flex items-center justify-center text-lg font-semibold text-slate-700 mb-4">
+                                <ion-icon name="pie-chart" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                Progreso de Créditos
+                            </h3>
                             <div class="chart-container w-full max-w-xs mx-auto h-64">
                                 <canvas id="credits-chart"></canvas>
                             </div>
                         </div>
                         <div class="lg:col-span-2">
-                            <h3 class="text-lg font-semibold text-slate-700 mb-4">Estadísticas Clave</h3>
+                            <h3 class="flex items-center text-lg font-semibold text-slate-700 mb-4">
+                                <ion-icon name="bar-chart" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                Estadísticas Clave
+                            </h3>
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                                 <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="checkmark-circle" class="text-green-600 text-2xl"></ion-icon>
+                                    </div>
                                     <div id="approved-courses-count" class="text-3xl font-bold text-green-600">0</div>
                                     <div class="text-sm text-slate-600">Cursos Aprobados</div>
                                 </div>
                                 <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="trophy" class="text-green-600 text-2xl"></ion-icon>
+                                    </div>
                                     <div id="approved-credits-count" class="text-3xl font-bold text-green-600">0</div>
                                     <div class="text-sm text-slate-600">Créditos Ganados</div>
                                 </div>
                                 <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="library" class="text-slate-600 text-2xl"></ion-icon>
+                                    </div>
                                     <div id="total-credits" class="text-3xl font-bold text-slate-800">0</div>
                                     <div class="text-sm text-slate-600">Créditos del Plan</div>
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <h3 class="text-lg font-semibold text-slate-700 mb-4">Progreso de Credenciales</h3>
+                                <h3 class="flex items-center text-lg font-semibold text-slate-700 mb-4">
+                                    <ion-icon name="ribbon" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                    Progreso de Credenciales
+                                </h3>
                                 <div id="credentials-progress" class="space-y-4"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-center mt-8 mb-4">
-                        <h3 class="text-xl font-semibold text-slate-800">2. Marque los cursos que ha aprobado:</h3>
-                        <button id="reset-button" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-colors">
+                        <h3 class="flex items-center text-xl font-semibold text-slate-800">
+                            <ion-icon name="checkbox" class="text-amber-600 text-2xl mr-3"></ion-icon>
+                            2. Marque los cursos que ha aprobado:
+                        </h3>
+                        <button id="reset-button" class="flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-colors">
+                            <ion-icon name="refresh" class="text-white text-base mr-2"></ion-icon>
                             Volver a empezar
                         </button>
                     </div>
@@ -152,17 +186,44 @@ permalink: /planificador/
                 </div>
 
                 <div id="disponibles-tab" class="tab-pane hidden">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Asistente de Matrícula</h2>
-                    <p class="text-slate-600 mb-6">Estos son los cursos que puede matricular según su avance. Filtre por periodo para planificar.</p>
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-2">
+                        <ion-icon name="school-outline" class="text-amber-600 text-3xl mr-3"></ion-icon>
+                        Asistente de Matrícula
+                    </h2>
+                    <p class="flex items-center text-slate-600 mb-6">
+                        <ion-icon name="information-circle-outline" class="text-slate-500 text-lg mr-2"></ion-icon>
+                        Estos son los cursos que puede matricular según su avance. Filtre por periodo para planificar.
+                    </p>
                     <div class="mb-6">
-                        <label for="period-filter" class="font-semibold text-slate-700">Filtrar por periodo de oferta:</label>
+                        <label for="period-filter" class="flex items-center font-semibold text-slate-700">
+                            <ion-icon name="filter" class="text-amber-600 text-lg mr-2"></ion-icon>
+                            Filtrar por periodo de oferta:
+                        </label>
                         <div id="period-filter" class="flex flex-wrap gap-2 mt-2">
-                            <button data-period="all" class="period-btn bg-amber-500 text-white px-4 py-2 rounded-full text-sm">Todos</button>
-                            <button data-period="q1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">I Cuatrimestre</button>
-                            <button data-period="q2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">II Cuatrimestre</button>
-                            <button data-period="q3" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">III Cuatrimestre</button>
-                            <button data-period="s1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">I Semestre</button>
-                            <button data-period="s2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">II Semestre</button>
+                            <button data-period="all" class="period-btn bg-amber-500 text-white px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="apps" class="text-sm mr-1"></ion-icon>
+                                Todos
+                            </button>
+                            <button data-period="q1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                I Cuatrimestre
+                            </button>
+                            <button data-period="q2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                II Cuatrimestre
+                            </button>
+                            <button data-period="q3" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                III Cuatrimestre
+                            </button>
+                            <button data-period="s1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="time" class="text-sm mr-1"></ion-icon>
+                                I Semestre
+                            </button>
+                            <button data-period="s2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="time" class="text-sm mr-1"></ion-icon>
+                                II Semestre
+                            </button>
                         </div>
                     </div>
                     <div id="available-courses-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -933,13 +994,27 @@ permalink: /planificador/
             
             let html = '';
             if (filteredCourses.length === 0) {
-                html = `<p class="text-slate-500 col-span-full">No hay cursos disponibles que coincidan con sus filtros. Intente seleccionar "Todos" o verifique su avance.</p>`;
+                html = `<div class="col-span-full text-center py-12">
+                            <ion-icon name="search-outline" class="text-slate-400 text-6xl mb-4"></ion-icon>
+                            <p class="text-slate-500 text-lg mb-2">No hay cursos disponibles</p>
+                            <p class="text-slate-400 text-sm">No hay cursos que coincidan con sus filtros. Intente seleccionar "Todos" o verifique su avance.</p>
+                        </div>`;
             } else {
                 filteredCourses.forEach(course => {
-                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-4 rounded-lg border border-slate-200 bg-white hover:border-amber-500">
-                                <p class="font-semibold text-slate-800">${course.name}</p>
-                                <p class="text-sm text-slate-500">${course.code}</p>
-                                <div class="text-xs mt-2 text-slate-600">
+                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-4 rounded-lg border border-slate-200 bg-white hover:border-amber-500 hover:shadow-md transition-all">
+                                <div class="flex items-start justify-between mb-2">
+                                    <div class="flex items-center">
+                                        <ion-icon name="book-outline" class="text-blue-500 text-lg mr-2 flex-shrink-0"></ion-icon>
+                                        <span class="text-sm text-slate-500">${course.code}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <ion-icon name="star" class="text-amber-500 text-sm mr-1"></ion-icon>
+                                        <span class="text-xs text-slate-500">${course.credits} cr</span>
+                                    </div>
+                                </div>
+                                <p class="font-semibold text-slate-800 mb-2 leading-tight">${course.name}</p>
+                                <div class="flex items-center text-xs text-slate-600">
+                                    <ion-icon name="calendar-outline" class="text-slate-500 text-sm mr-1"></ion-icon>
                                     ${getAvailabilityText(course.availability, true)}
                                 </div>
                             </div>`;
