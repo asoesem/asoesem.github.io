@@ -568,20 +568,164 @@ permalink: /planificador/
         }
 
         function saveState() {
-            const stateToSave = {
-                selectedPlanId: state.selectedPlanId,
-                approvedCourses: Array.from(state.approvedCourses)
+            if (!state.selectedPlanId) return;
+            
+            console.log(`💾 Saving state for program ${state.selectedPlanId}:`, {
+                approvedCourses: Array.from(state.approvedCourses),
+                activeTab: state.activeTab,
+                periodFilter: state.periodFilter,
+                curriculumFilter: state.curriculumFilter
+            });
+            
+            // Load existing program states
+            const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+            
+            // Save current program state
+            allProgramsState[state.selectedPlanId] = {
+                approvedCourses: Array.from(state.approvedCourses),
+                activeTab: state.activeTab,
+                periodFilter: state.periodFilter,
+                curriculumFilter: { ...state.curriculumFilter }
             };
-            localStorage.setItem('academicPlannerState', JSON.stringify(stateToSave));
+            
+            // Save program states and selected plan separately
+            localStorage.setItem('academicPlannerPrograms', JSON.stringify(allProgramsState));
+            localStorage.setItem('academicPlannerSelectedPlan', state.selectedPlanId);
+            
+            console.log(`💾 Saved programs state:`, allProgramsState);
+            console.log(`💾 Saved selected plan:`, state.selectedPlanId);
         }
 
         function loadState() {
-            const savedState = localStorage.getItem('academicPlannerState');
-            if (savedState) {
-                const parsedState = JSON.parse(savedState);
-                state.selectedPlanId = parsedState.selectedPlanId;
-                state.approvedCourses = new Set(parsedState.approvedCourses);
+            // Clear old corrupted formats if they exist
+            if (localStorage.getItem('academicPlannerState')) {
+                console.log('🧹 Removing old academicPlannerState format');
+                localStorage.removeItem('academicPlannerState');
             }
+            if (localStorage.getItem('academicPlannerMultiState')) {
+                console.log('🧹 Removing corrupted academicPlannerMultiState format');
+                localStorage.removeItem('academicPlannerMultiState');
+            }
+            
+            // Load selected plan
+            const savedSelectedPlan = localStorage.getItem('academicPlannerSelectedPlan');
+            if (savedSelectedPlan) {
+                state.selectedPlanId = savedSelectedPlan;
+                console.log(`📂 Loaded selected plan: ${state.selectedPlanId}`);
+                
+                // Load program-specific state
+                const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+                if (allProgramsState[state.selectedPlanId]) {
+                    const programState = allProgramsState[state.selectedPlanId];
+                    state.approvedCourses = new Set(programState.approvedCourses || []);
+                    state.activeTab = programState.activeTab || 'avance';
+                    state.periodFilter = programState.periodFilter || 'all';
+                    state.curriculumFilter = { ...state.curriculumFilter, ...programState.curriculumFilter };
+                    console.log(`📂 Loaded program state for ${state.selectedPlanId}:`, programState);
+                }
+            }
+        }
+
+        function loadProgramState(planId) {
+            console.log(`📂 Loading state for program ${planId}`);
+            
+            const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+            
+            if (allProgramsState[planId]) {
+                const programState = allProgramsState[planId];
+                console.log(`📂 Found saved program state for ${planId}:`, programState);
+                
+                state.approvedCourses = new Set(programState.approvedCourses || []);
+                state.activeTab = programState.activeTab || 'avance';
+                state.periodFilter = programState.periodFilter || 'all';
+                state.curriculumFilter = { 
+                    approved: false,
+                    available: true,
+                    locked: false,
+                    ...programState.curriculumFilter 
+                };
+                
+                console.log(`📂 Loaded state - approved courses:`, Array.from(state.approvedCourses));
+            } else {
+                console.log(`📂 No saved state found for program ${planId}, using defaults`);
+                // Reset to defaults for new program
+                state.approvedCourses = new Set();
+                state.activeTab = 'avance';
+                state.periodFilter = 'all';
+                state.curriculumFilter = {
+                    approved: false,
+                    available: true,
+                    locked: false
+                };
+            }
+            
+            // Clear cached credential statuses when switching programs
+            state.cachedCredentialStatuses = null;
+            
+            // Restore UI state
+            restoreUIState();
+        }
+
+        function restoreUIState() {
+            // Restore active tab
+            ui.tabs.forEach(t => t.classList.remove('tab-active'));
+            ui.tabPanes.forEach(p => p.classList.add('hidden'));
+            
+            const activeTab = document.querySelector(`[data-tab="${state.activeTab}"]`);
+            if (activeTab) {
+                activeTab.classList.add('tab-active');
+                const tabPane = document.getElementById(`${state.activeTab}-tab`);
+                if (tabPane) {
+                    tabPane.classList.remove('hidden');
+                }
+            } else {
+                // Fallback to first tab if active tab not found
+                if (ui.tabs.length > 0) {
+                    ui.tabs[0].classList.add('tab-active');
+                    const firstTabPane = document.getElementById(`${ui.tabs[0].dataset.tab}-tab`);
+                    if (firstTabPane) {
+                        firstTabPane.classList.remove('hidden');
+                    }
+                    state.activeTab = ui.tabs[0].dataset.tab;
+                }
+            }
+            
+            // Restore period filter
+            ui.periodFilterBtns.forEach(b => {
+                b.classList.replace('bg-amber-500', 'bg-slate-200');
+                b.classList.replace('text-white', 'text-slate-700');
+            });
+            
+            const activePeriodBtn = document.querySelector(`[data-period="${state.periodFilter}"]`);
+            if (activePeriodBtn) {
+                activePeriodBtn.classList.replace('bg-slate-200', 'bg-amber-500');
+                activePeriodBtn.classList.replace('text-slate-700', 'text-white');
+            }
+            
+            // Restore curriculum filter checkboxes
+            Object.keys(state.curriculumFilter).forEach(status => {
+                const checkboxCustom = document.querySelector(`[data-status="${status}"]`);
+                const checkbox = checkboxCustom?.closest('label').querySelector('.status-filter');
+                const checkIcon = checkboxCustom?.querySelector('ion-icon');
+                
+                if (checkboxCustom && checkbox && checkIcon) {
+                    checkbox.checked = state.curriculumFilter[status];
+                    
+                    if (state.curriculumFilter[status]) {
+                        checkboxCustom.classList.add('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkboxCustom.classList.remove('bg-white');
+                        checkIcon.classList.remove('hidden');
+                        checkIcon.classList.add('text-white');
+                        checkIcon.classList.remove('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                    } else {
+                        checkboxCustom.classList.remove('bg-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                        checkboxCustom.classList.add('bg-white');
+                        checkIcon.classList.add('hidden');
+                        checkIcon.classList.remove('text-white');
+                        checkIcon.classList.add('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
+                    }
+                }
+            });
         }
         
         function checkPrerequisites(courseCode, planId) {
@@ -881,7 +1025,9 @@ permalink: /planificador/
         }
         
         function renderCourseChecklist(plan) {
+            console.log(`📝 Rendering course checklist with approved courses:`, Array.from(state.approvedCourses));
             let html = '';
+            let checkedCount = 0;
             
             // Render regular course blocks
             plan.blocks.forEach(block => {
@@ -891,6 +1037,7 @@ permalink: /planificador/
                 block.courses.forEach(courseInfo => {
                     const course = getCourse(courseInfo.courseCode);
                     const isChecked = state.approvedCourses.has(course.code);
+                    if (isChecked) checkedCount++;
                     html += `<label class="flex items-center space-x-3 p-2 rounded-md hover:bg-slate-50 transition">
                                 <input type="checkbox" data-course-code="${course.code}" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" ${isChecked ? 'checked' : ''}>
                                 <span>${course.name} (${course.code})</span>
@@ -915,6 +1062,7 @@ permalink: /planificador/
                         
                         electiveData.courses.forEach(course => {
                             const isChecked = state.approvedCourses.has(course.code);
+                            if (isChecked) checkedCount++;
                             html += `<label class="flex items-center space-x-3 p-2 rounded-md hover:bg-amber-100 transition">
                                         <input type="checkbox" data-course-code="${course.code}" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" ${isChecked ? 'checked' : ''}>
                                         <span>${course.name} (${course.code})</span>
@@ -926,6 +1074,7 @@ permalink: /planificador/
                 html += `</div>`;
             }
             
+            console.log(`📝 Rendered ${checkedCount} checked checkboxes`);
             ui.coursesChecklist.innerHTML = html;
         }
 
@@ -1346,8 +1495,26 @@ permalink: /planificador/
         }
 
         function handlePlanChange(e) {
+            console.log(`🔄 Plan change: from ${state.selectedPlanId} to ${e.target.value}`);
+            
+            // Save current program state before switching
+            if (state.selectedPlanId) {
+                console.log(`🔄 Current approved courses before switch:`, Array.from(state.approvedCourses));
+                saveState();
+            }
+            
+            // Switch to new program
+            const oldPlanId = state.selectedPlanId;
             state.selectedPlanId = e.target.value;
-            state.approvedCourses.clear(); 
+            console.log(`🔄 Switched from ${oldPlanId} to ${state.selectedPlanId}`);
+            
+            // Load state for the new program
+            loadProgramState(state.selectedPlanId);
+            
+            // Restore UI state after loading program state
+            restoreUIState();
+            
+            console.log(`🔄 Final approved courses after switch:`, Array.from(state.approvedCourses));
             renderAll();
         }
 
@@ -1368,6 +1535,7 @@ permalink: /planificador/
             if (!tab) return;
             
             state.activeTab = tab.dataset.tab;
+            saveState(); // Save state when tab changes
 
             ui.tabs.forEach(t => t.classList.remove('tab-active'));
             tab.classList.add('tab-active');
@@ -1381,6 +1549,7 @@ permalink: /planificador/
             if (!btn) return;
 
             state.periodFilter = btn.dataset.period;
+            saveState(); // Save state when period filter changes
             
             ui.periodFilterBtns.forEach(b => b.classList.replace('bg-amber-500', 'bg-slate-200') || b.classList.replace('text-white', 'text-slate-700'));
             btn.classList.replace('bg-slate-200', 'bg-amber-500');
@@ -1395,6 +1564,8 @@ permalink: /planificador/
 
         function confirmReset() {
             state.approvedCourses.clear();
+            state.cachedCredentialStatuses = null; // Clear cache
+            saveState(); // Save the cleared state
             renderAll();
             closeConfirmModal();
         }
@@ -1426,7 +1597,8 @@ permalink: /planificador/
                 checkIcon.classList.add('text-' + (status === 'approved' ? 'green' : status === 'available' ? 'blue' : 'slate') + '-500');
             }
             
-            // Re-render curriculum map
+            // Save state and re-render curriculum map
+            saveState();
             if (state.selectedPlanId) {
                 const plan = getPlan(state.selectedPlanId);
                 renderCurriculumMap(plan);
@@ -1477,6 +1649,9 @@ permalink: /planificador/
             ui.confirmModal.el.addEventListener('click', (e) => { if(e.target === ui.confirmModal.el) closeConfirmModal()});
 
             renderAll();
+            
+            // Restore UI state after initial render
+            restoreUIState();
             
             // Add reset button event listener after rendering
             const resetButton = document.getElementById('reset-button');
