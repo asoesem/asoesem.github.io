@@ -128,10 +128,25 @@ permalink: /planificador/
                 <div id="malla-tab" class="tab-pane hidden">
                     <h2 class="text-2xl font-bold text-slate-800 mb-2">Malla Curricular Interactiva</h2>
                         <p class="text-slate-600 mb-6">Haga clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <div class="flex items-center"><span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>Aprobado</div>
-                        <div class="flex items-center"><span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>Disponible</div>
-                        <div class="flex items-center"><span class="w-4 h-4 bg-slate-500 rounded-full mr-2"></span>Bloqueado</div>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-green-500 rounded-full mr-2 flex items-center justify-center">
+                                <ion-icon name="checkmark-circle" class="text-white text-sm"></ion-icon>
+                            </div>
+                            <span class="text-sm font-medium">Aprobado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full mr-2 flex items-center justify-center">
+                                <ion-icon name="play-circle" class="text-white text-sm"></ion-icon>
+                            </div>
+                            <span class="text-sm font-medium">Disponible</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-slate-500 rounded-full mr-2 flex items-center justify-center">
+                                <ion-icon name="lock-closed" class="text-white text-sm"></ion-icon>
+                            </div>
+                            <span class="text-sm font-medium">Bloqueado</span>
+                        </div>
                     </div>
                     <div id="curriculum-map" class="space-y-8"></div>
                 </div>
@@ -788,15 +803,30 @@ permalink: /planificador/
                 block.courses.forEach(courseInfo => {
                     const course = getCourse(courseInfo.courseCode);
                     const status = getCourseStatus(course.code, state.selectedPlanId);
-                    const colorClass = {
-                        approved: 'bg-green-500 hover:bg-green-600',
-                        available: 'bg-blue-500 hover:bg-blue-600',
-                        locked: 'bg-slate-500 hover:bg-slate-600'
+                    const statusConfig = {
+                        approved: {
+                            colorClass: 'bg-green-500 hover:bg-green-600',
+                            icon: 'checkmark-circle',
+                            iconColor: 'text-white'
+                        },
+                        available: {
+                            colorClass: 'bg-blue-500 hover:bg-blue-600',
+                            icon: 'play-circle',
+                            iconColor: 'text-white'
+                        },
+                        locked: {
+                            colorClass: 'bg-slate-500 hover:bg-slate-600',
+                            icon: 'lock-closed',
+                            iconColor: 'text-white'
+                        }
                     }[status];
                     
-                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${colorClass}">
-                                <p class="font-semibold text-sm">${course.name}</p>
-                                <p class="text-xs opacity-80">${course.code}</p>
+                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white ${statusConfig.colorClass}">
+                                <div class="flex items-start justify-between mb-2">
+                                    <ion-icon name="${statusConfig.icon}" class="${statusConfig.iconColor} text-lg flex-shrink-0"></ion-icon>
+                                    <span class="text-xs opacity-80 ml-2">${course.code}</span>
+                                </div>
+                                <p class="font-semibold text-sm leading-tight">${course.name}</p>
                             </div>`;
                 });
                 html += `</div></div>`;
