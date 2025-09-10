@@ -7,7 +7,7 @@ author: edalorzo
 image: '/images/137.png'
 video_embed: https://www.youtube.com/embed/OYG_9zVcV_0?si=3oJljltHeC_KyDxy
 featured: true
-tags: [ia,educación]
+tags: [tecnología,educación]
 ---
 
 Primera parte del vídeo taller que explora el uso de la Inteligencia Artificial (IA) en la educación, centrándose en herramientas como:
