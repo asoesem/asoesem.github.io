@@ -23,6 +23,8 @@ menu_settings:
       url: "/destacados/"
     # - title: "Autores"
     #   url: "/autores/"
+    - title: "Planificador"
+      url: "/planificador/"
     - title: "LaTeX"
       submenu:
       - url: "/comandos-latex"

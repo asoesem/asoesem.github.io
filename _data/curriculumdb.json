@@ -78,7 +78,7 @@
         "Humanidades",
         "Investigación Social y Ambiente"
       ],
-      "level": "Introductorio",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           1,
@@ -183,7 +183,7 @@
         "Matemáticas",
         "Geometría"
       ],
-      "level": "Introductorio",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           1,
@@ -321,7 +321,7 @@
         "Tecnología",
         "Educación"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
@@ -338,7 +338,7 @@
         "Pedagogía",
         "Educación"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
@@ -536,7 +536,7 @@
         "Matemáticas",
         "Teoría de Números"
       ],
-      "level": "Avanzado",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           1,
@@ -586,7 +586,7 @@
       "categories": [
         "Matemáticas"
       ],
-      "level": "Avanzado",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           3
@@ -652,7 +652,7 @@
         "Matemáticas",
         "Álgebra"
       ],
-      "level": "Avanzado",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           2,
@@ -686,7 +686,7 @@
         "Matemáticas",
         "Geometría"
       ],
-      "level": "Avanzado",
+      "level": "Intermedio",
       "availability": {
         "quarters": [
           2
@@ -935,7 +935,7 @@
         "Humanidades",
         "Investigación Social y Ambiente"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
@@ -953,7 +953,7 @@
         "Humanidades",
         "Historia"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           2,
@@ -970,7 +970,7 @@
         "Humanidades",
         "Investigación Social y Ambiente"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
@@ -1059,7 +1059,7 @@
         "Filosofía",
         "Ciencias"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
@@ -1078,7 +1078,7 @@
         "Filosofía",
         "Ética"
       ],
-      "level": "Intermedio",
+      "level": "Introductorio",
       "availability": {
         "quarters": [
           1,
