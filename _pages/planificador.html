@@ -368,84 +368,106 @@ permalink: /planificador/
 </div>
 
 <div id="course-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
-    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
         <div class="p-6 md:p-8">
-            <div class="flex justify-between items-start">
+            <!-- Header Section -->
+            <div class="flex justify-between items-start mb-6">
                 <div class="flex items-start">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
-                        <ion-icon name="book" class="text-blue-600 text-xl"></ion-icon>
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg">
+                        <ion-icon name="book" class="text-white text-2xl"></ion-icon>
                     </div>
                     <div>
-                        <div class="flex items-center gap-3 mb-1">
+                        <div class="flex items-center gap-3 mb-2">
                             <h3 id="modal-course-name" class="text-2xl font-bold text-slate-800"></h3>
                         </div>
-                        <p id="modal-course-code" class="text-sm text-slate-500"></p>
+                        <div class="flex items-center gap-4 mb-3">
+                            <span id="modal-course-code" class="text-sm font-mono bg-slate-100 px-3 py-1 rounded-full text-slate-700"></span>
+                            <a id="modal-course-syllabus-link" href="#" target="_blank" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors" title="Descargar orientaciones académicas">
+                                <ion-icon name="download-outline" class="text-base"></ion-icon>
+                                Descargar Orientaciones
+                            </a>
+                        </div>
+                        <div id="modal-course-chair" class="flex items-center gap-2 text-slate-600">
+                            <ion-icon name="business-outline" class="text-slate-500"></ion-icon>
+                            <span class="text-sm font-medium"></span>
+                        </div>
                     </div>
                 </div>
-                <button id="modal-close-btn" class="text-slate-400 hover:text-slate-600 text-2xl">
+                <button id="modal-close-btn" class="text-slate-400 hover:text-slate-600 text-2xl p-2 rounded-lg hover:bg-slate-100 transition-colors">
                     <ion-icon name="close"></ion-icon>
                 </button>
             </div>
-            <div class="mt-6 border-t pt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div class="flex flex-col items-center">
-                    <ion-icon name="star" class="text-amber-500 text-2xl mb-2"></ion-icon>
-                    <div class="text-sm text-slate-500">Créditos</div>
-                    <div id="modal-course-credits" class="text-xl font-semibold"></div>
+
+            <!-- Quick Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-amber-600 text-sm font-medium">Créditos</div>
+                            <div id="modal-course-credits" class="text-2xl font-bold text-amber-800"></div>
+                        </div>
+                        <ion-icon name="star" class="text-amber-500 text-2xl"></ion-icon>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <ion-icon name="trending-up" class="text-blue-500 text-2xl mb-2"></ion-icon>
-                    <div class="text-sm text-slate-500">Nivel</div>
-                    <div id="modal-course-level" class="text-xl font-semibold"></div>
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-blue-600 text-sm font-medium">Nivel</div>
+                            <div id="modal-course-level" class="text-2xl font-bold text-blue-800"></div>
+                        </div>
+                        <ion-icon name="trending-up" class="text-blue-500 text-2xl"></ion-icon>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <ion-icon name="attach" class="text-green-500 text-2xl mb-2"></ion-icon>
-                    <div class="text-sm text-slate-500">Descargar</div>
-                    <div class="text-xl font-semibold">
-                        <a id="modal-course-syllabus-link" href="#" target="_blank" class="hover:text-blue-800" title="Descargar orientaciones académicas">
-                            Orientaciones
-                        </a>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-green-600 text-sm font-medium">Disponibilidad</div>
+                            <div id="modal-course-availability" class="text-lg font-semibold text-green-800"></div>
+                        </div>
+                        <ion-icon name="calendar-outline" class="text-green-500 text-2xl"></ion-icon>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-6">
-                <h4 class="flex items-center font-semibold text-slate-700 mb-3">
-                    <ion-icon name="calendar-outline" class="text-slate-500 text-lg mr-2"></ion-icon>
-                    Disponibilidad
-                </h4>
-                <p id="modal-course-availability" class="text-slate-600 ml-7"></p>
+            <!-- Prerequisites Section -->
+            <div class="mb-6">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-red-700 mb-3">
+                        <ion-icon name="arrow-back-circle" class="text-red-500 text-xl mr-2"></ion-icon>
+                        Prerrequisitos (necesitas aprobar)
+                    </h4>
+                    <div id="modal-course-prerequisites" class="space-y-2 ml-7"></div>
+                </div>
             </div>
 
-            <div class="mt-6">
-                <h4 class="flex items-center font-semibold text-slate-700 mb-3">
-                    <ion-icon name="arrow-back" class="text-red-500 text-lg mr-2"></ion-icon>
-                    Prerrequisitos (necesitas aprobar):
-                </h4>
-                <ul id="modal-course-prerequisites" class="space-y-1 text-slate-600 ml-7"></ul>
+            <!-- Unlocks Section -->
+            <div class="mb-6">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-green-700 mb-3">
+                        <ion-icon name="arrow-forward-circle" class="text-green-500 text-xl mr-2"></ion-icon>
+                        Desbloquea los siguientes cursos
+                    </h4>
+                    <div id="modal-course-unlocks" class="space-y-2 ml-7"></div>
+                </div>
             </div>
 
-            <div class="mt-6">
-                <h4 class="flex items-center font-semibold text-slate-700 mb-3">
-                    <ion-icon name="arrow-forward" class="text-green-500 text-lg mr-2"></ion-icon>
-                    Desbloquea los siguientes cursos:
-                </h4>
-                <ul id="modal-course-unlocks" class="space-y-1 text-slate-600 ml-7"></ul>
-            </div>
-
-            <div id="modal-course-authorization" class="mt-6 hidden">
-                <h4 class="flex items-center font-semibold text-slate-700 mb-3">
-                    <ion-icon name="shield-checkmark" class="text-amber-500 text-lg mr-2"></ion-icon>
-                    Autorización requerida:
-                </h4>
-                <div class="p-4 ml-7">
-                    <!-- <p class="text-amber-800 mb-3">
-                        <ion-icon name="warning" class="text-amber-600 mr-2"></ion-icon>
-                        Este curso requiere autorización previo a la matrícula.
-                    </p> -->
-                    <a href="https://forms.gle/mMQis2ajYxUk9MTPA" target="_blank" class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition-colors">
-                        <ion-icon name="document-text" class="text-white mr-2"></ion-icon>
-                        Llenar formulario de autorización
-                    </a>
+            <!-- Authorization Section -->
+            <div id="modal-course-authorization" class="mb-6 hidden">
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-amber-700 mb-4">
+                        <ion-icon name="shield-checkmark" class="text-amber-500 text-xl mr-2"></ion-icon>
+                        Autorización requerida
+                    </h4>
+                    <div class="ml-7">
+                        <p class="text-amber-700 mb-4 text-sm">
+                            <ion-icon name="warning" class="text-amber-600 mr-2"></ion-icon>
+                            Este curso requiere autorización previa para matricular.
+                        </p>
+                        <a href="https://forms.gle/mMQis2ajYxUk9MTPA" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                            <ion-icon name="document-text" class="text-white mr-2"></ion-icon>
+                            Solicitar Autorización
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -528,6 +550,7 @@ permalink: /planificador/
                 el: document.getElementById('course-modal'),
                 name: document.getElementById('modal-course-name'),
                 code: document.getElementById('modal-course-code'),
+                chair: document.getElementById('modal-course-chair'),
                 syllabusLink: document.getElementById('modal-course-syllabus-link'),
                 credits: document.getElementById('modal-course-credits'),
                 level: document.getElementById('modal-course-level'),
@@ -1462,6 +1485,7 @@ permalink: /planificador/
 
             ui.courseModal.name.textContent = course.name;
             ui.courseModal.code.textContent = course.code;
+            ui.courseModal.chair.querySelector('span').textContent = course.chair || 'No disponible';
             ui.courseModal.syllabusLink.href = getSyllabusUrl(course.code, course.availability);
             ui.courseModal.credits.textContent = course.credits;
             ui.courseModal.level.textContent = course.level;
@@ -1476,31 +1500,37 @@ permalink: /planificador/
                     const syllabusUrl = prereqCourse ? getSyllabusUrl(prereqCourseCode, prereqCourse.availability) : null;
                     
                     return `
-                    <li class="flex items-center ${p.met ? 'text-green-600' : 'text-red-600'}">
-                        <ion-icon name="${p.met ? 'checkmark-circle' : 'close-circle'}" class="text-base mr-2 flex-shrink-0"></ion-icon>
-                        <span>${p.text}</span>
+                    <div class="flex items-center justify-between ${p.met ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'} border rounded-lg p-3">
+                        <div class="flex items-center">
+                            <ion-icon name="${p.met ? 'checkmark-circle' : 'close-circle'}" class="text-lg mr-3 flex-shrink-0 ${p.met ? 'text-green-600' : 'text-red-600'}"></ion-icon>
+                            <span class="${p.met ? 'text-green-700' : 'text-red-700'} font-medium">${p.text}</span>
+                        </div>
                         ${syllabusUrl ? `
-                            <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 ml-2" title="Descargar orientaciones académicas">
-                                <ion-icon name="attach" class="text-base"></ion-icon>
+                            <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-xs font-medium transition-colors" title="Descargar orientaciones">
+                                <ion-icon name="download-outline" class="text-sm"></ion-icon>
+                                Orientaciones
                             </a>
                         ` : ''}
-                    </li>`;
+                    </div>`;
                 }).join('')
-                : '<li class="flex items-center text-slate-500"><ion-icon name="remove-circle" class="text-base mr-2"></ion-icon>Ninguno</li>';
+                : '<div class="flex items-center text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3"><ion-icon name="information-circle" class="text-lg mr-3"></ion-icon>Sin prerrequisitos</div>';
 
             ui.courseModal.unlocks.innerHTML = unlocks.length > 0
                 ? unlocks.map(c => {
                     const syllabusUrl = getSyllabusUrl(c.code, c.availability);
                     return `
-                    <li class="flex items-center">
-                        <ion-icon name="unlock" class="text-blue-500 text-base mr-2 flex-shrink-0"></ion-icon>
-                        <span>${c.name} (${c.code})</span>
-                        <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 ml-2" title="Descargar orientaciones académicas">
-                            <ion-icon name="attach" class="text-base"></ion-icon>
+                    <div class="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-3">
+                        <div class="flex items-center">
+                            <ion-icon name="unlock" class="text-green-600 text-lg mr-3 flex-shrink-0"></ion-icon>
+                            <span class="text-green-700 font-medium">${c.name} (${c.code})</span>
+                        </div>
+                        <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-xs font-medium transition-colors" title="Descargar orientaciones">
+                            <ion-icon name="download-outline" class="text-sm"></ion-icon>
+                            Orientaciones
                         </a>
-                    </li>`;
+                    </div>`;
                 }).join('')
-                : '<li class="flex items-center text-slate-500"><ion-icon name="ban" class="text-base mr-2"></ion-icon>No desbloquea cursos directamente.</li>';
+                : '<div class="flex items-center text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3"><ion-icon name="information-circle" class="text-lg mr-3"></ion-icon>No desbloquea cursos directamente</div>';
 
             // Show or hide authorization section
             if (course.requiresAuth) {
@@ -1648,8 +1678,14 @@ permalink: /planificador/
 
         function getAvailabilityText(availability, compact = false) {
             let text = [];
-            if (availability.quarters) text.push(`${compact ? 'Cuatris' : 'Cuatrimestres'}: ${availability.quarters.join(', ')}`);
-            if (availability.semesters) text.push(`${compact ? 'Sems' : 'Semestres'}: ${availability.semesters.join(', ')}`);
+            if (availability.quarters) {
+                const quarterText = availability.quarters.map(q => `${q}C`).join(', ');
+                text.push(quarterText);
+            }
+            if (availability.semesters) {
+                const semesterText = availability.semesters.map(s => `${s}S`).join(', ');
+                text.push(semesterText);
+            }
             return text.join(' | ');
         }
 
