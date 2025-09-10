@@ -1,0 +1,1995 @@
+---
+layout: default
+title: Planificador de la Carrera de Enseñanza de la Matemática de la UNED
+permalink: /planificador/
+---
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Suppress Tailwind CDN production warning
+  if (typeof console !== 'undefined' && console.warn) {
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+      const message = args.join(' ');
+      if (message.includes('cdn.tailwindcss.com should not be used in production')) {
+        return; // Suppress this specific warning
+      }
+      originalWarn.apply(console, args);
+    };
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chosen Palette: Slate & Amber -->
+<!-- Application Structure Plan: Se diseñó una aplicación de página única con una estructura de navegación por pestañas para separar las funcionalidades clave: "Mi Avance" (el panel de control principal con selección de cursos y progreso de credenciales), "Malla Curricular" (una vista visual e interactiva del plan de estudios) y "Cursos Disponibles" (una herramienta proactiva que muestra qué matricular a continuación). Esta estructura orientada a tareas permite al usuario responder rápidamente a sus preguntas más comunes ("¿cómo voy?", "¿cuál es el plan completo?", "¿qué sigue?") de una manera intuitiva y sin salir de la página, centralizando la información que antes estaba dispersa. -->
+<!-- Visualization & Content Choices: 
+    - Progreso General: Goal: Informar. Viz: Gráfico de dona (Chart.js) para mostrar créditos aprobados vs. pendientes, y tarjetas de estadísticas. Interaction: Actualización en tiempo real al marcar cursos. Justification: Ofrece un resumen visual inmediato del avance.
+    - Malla Curricular: Goal: Organizar/Explorar. Viz: Diagrama de bloques con tarjetas de cursos (HTML/CSS con Tailwind Grid). Interaction: Clic en cursos para ver detalles en un modal, con codificación por colores (aprobado, disponible, bloqueado). Justification: Mucho más intuitivo que las listas para entender dependencias y planificar a futuro.
+    - Credenciales: Goal: Informar. Viz: Listas con barras de progreso (HTML/CSS). Interaction: Clic para ver desglose de requisitos. Justification: Automatiza el seguimiento manual, un punto de dolor clave.
+    - Cursos Disponibles: Goal: Decidir. Viz: Lista filtrable de tarjetas de cursos. Interaction: Filtros por periodo académico. Justification: Resuelve la pregunta más crítica del estudiante de manera directa y eficiente.
+    - Library/Method: Vanilla JS para toda la lógica, Tailwind para el diseño, Chart.js para el gráfico de progreso. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+    :root {
+        --color-primary: #1e293b; 
+        --color-secondary: #475569;
+        --color-accent: #f59e0b; 
+        --color-background: #f1f5f9;
+        --color-surface: #ffffff;
+        --color-text-primary: #0f172a;
+        --color-text-secondary: #475569;
+        --status-approved: #009E73;
+        --status-available: #0173B2;
+        --status-locked: #D55E00;
+        --status-elective: #E69F00;
+        --elective-bg: #fff7ed;
+        --elective-border: #fed7aa;
+        --elective-text: #c2410c;
+        --button-active-bg: #f59e0b;
+        --button-active-text: #ffffff;
+        --button-inactive-bg: #e2e8f0;
+        --button-inactive-text: #475569;
+    }
+    
+    :root[dark] {
+        --color-primary: #e2e8f0;
+        --color-secondary: #94a3b8;
+        --color-accent: #fbbf24;
+        --color-background: #0f172a;
+        --color-surface: #1e293b;
+        --color-text-primary: #f1f5f9;
+        --color-text-secondary: #94a3b8;
+        --status-approved: #4ECDC4;
+        --status-available: #56B4E9;
+        --status-locked: #FF8C69;
+        --status-elective: #FFB347;
+        --elective-bg: #2d1b0e;
+        --elective-border: #92400e;
+        --elective-text: #fbbf24;
+        --button-active-bg: #fbbf24;
+        --button-active-text: #1e293b;
+        --button-inactive-bg: #334155;
+        --button-inactive-text: #cbd5e1;
+    }
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text-primary);
+        font-family: 'Inter', sans-serif;
+    }
+    
+    /* Dark mode text color overrides */
+    .text-slate-800 { color: var(--color-text-primary) !important; }
+    .text-slate-700 { color: var(--color-text-primary) !important; }
+    .text-slate-600 { color: var(--color-text-secondary) !important; }
+    .text-slate-500 { color: var(--color-text-secondary) !important; }
+    
+    /* Dark mode background overrides */
+    .bg-white { background-color: var(--color-surface) !important; }
+    .bg-slate-50 { background-color: var(--color-background) !important; }
+    .bg-slate-100 { background-color: var(--color-background) !important; }
+    
+    /* Border colors for dark mode */
+    .border-slate-200 { border-color: var(--color-secondary) !important; }
+    .border-slate-300 { border-color: var(--color-secondary) !important; }
+    
+    /* Modal and card improvements for dark mode */
+    .course-card:hover { 
+        box-shadow: 0 2px 10px rgba(0,0,0,.15) !important; 
+    }
+    
+    /* Dark mode course modal specific overrides */
+    :root[dark] #course-modal {
+        /* Quick info cards - dark mode versions */
+        /* Amber/Credits card */
+        .bg-gradient-to-br.from-amber-50.to-amber-100 { 
+            background: linear-gradient(to bottom right, #451a03, #78350f) !important; 
+        }
+        .border-amber-200 { border-color: #92400e !important; }
+        .text-amber-600 { color: #fbbf24 !important; }
+        .text-amber-800 { color: #fde68a !important; }
+        
+        /* Blue/Level card */
+        .bg-gradient-to-br.from-blue-50.to-blue-100 { 
+            background: linear-gradient(to bottom right, #1e3a8a, #1d4ed8) !important; 
+        }
+        .border-blue-200 { border-color: #3b82f6 !important; }
+        .text-blue-600 { color: #60a5fa !important; }
+        .text-blue-800 { color: #dbeafe !important; }
+        
+        /* Green/Availability card */
+        .bg-gradient-to-br.from-green-50.to-green-100 { 
+            background: linear-gradient(to bottom right, #14532d, #166534) !important; 
+        }
+        .border-green-200 { border-color: #22c55e !important; }
+        .text-green-600 { color: #4ade80 !important; }
+        .text-green-800 { color: #dcfce7 !important; }
+        
+        /* Prerequisites section - subtle red-green theme */
+        .bg-red-50 { background-color: #1a2e1a !important; }
+        .border-red-200 { border-color: #ef4444 !important; }
+        .bg-red-50.border-red-200 { 
+            background-color: #1a2e1a !important; 
+            border-color: #ef4444 !important; 
+        }
+        .text-red-700 { color: #fca5a5 !important; }
+        .text-red-600 { color: #f87171 !important; }
+        
+        /* Prerequisites section - green theme (met requirements) */
+        .bg-green-50.border-green-200 { 
+            background-color: #14532d !important; 
+            border-color: #22c55e !important; 
+        }
+        .text-green-700 { color: #86efac !important; }
+        .text-green-600 { color: #4ade80 !important; }
+        
+        /* Unlocks section - base green theme */
+        .bg-green-50 { background-color: #14532d !important; }
+        .border-green-200 { border-color: #22c55e !important; }
+        
+        /* Authorization section - subtle green-amber theme */
+        .bg-amber-50 { background-color: #1a2e23 !important; }
+        .border-amber-200 { border-color: #f59e0b !important; }
+        .text-amber-700 { color: #fbbf24 !important; }
+        .text-amber-600 { color: #f59e0b !important; }
+        .text-amber-500 { color: #fbbf24 !important; }
+        
+        /* Generic slate backgrounds for empty states */
+        .bg-slate-50 { background-color: #334155 !important; }
+        .border-slate-200 { border-color: #64748b !important; }
+        .text-slate-500 { color: #94a3b8 !important; }
+        
+        /* Syllabus download buttons */
+        .bg-blue-100 { background-color: #1e3a8a !important; }
+        .hover\\:bg-blue-200:hover { background-color: #1d4ed8 !important; }
+        .text-blue-700 { color: #dbeafe !important; }
+        
+        /* Gradient icon background */
+        .bg-gradient-to-br.from-blue-500.to-blue-600 {
+            background: linear-gradient(to bottom right, #3b82f6, #2563eb) !important;
+        }
+        
+        /* Course code badge */
+        .bg-slate-100 { background-color: #475569 !important; }
+        .text-slate-700 { color: #e2e8f0 !important; }
+        
+        /* Modal close button */
+        .hover\\:bg-slate-100:hover { background-color: #475569 !important; }
+        
+        /* Authorization button gradient */
+        .bg-gradient-to-r.from-amber-500.to-amber-600 {
+            background: linear-gradient(to right, #f59e0b, #d97706) !important;
+        }
+        .hover\\:from-amber-600.hover\\:to-amber-700:hover {
+            background: linear-gradient(to right, #d97706, #b45309) !important;
+        }
+    }
+    
+    /* Ensure form elements work in dark mode */
+    select, input[type="checkbox"] {
+        background-color: var(--color-surface);
+        color: var(--color-text-primary);
+        border-color: var(--color-secondary);
+    }
+    
+    /* Fix hover effects for course checkboxes and buttons */
+    .hover\:bg-slate-50:hover {
+        background-color: var(--color-background) !important;
+    }
+    .hover\:bg-slate-100:hover {
+        background-color: var(--color-background) !important;
+    }
+    
+    /* Elective courses section styling */
+    .bg-amber-50 {
+        background-color: var(--elective-bg) !important;
+    }
+    .border-amber-200 {
+        border-color: var(--elective-border) !important;
+    }
+    .text-amber-800 {
+        color: var(--elective-text) !important;
+    }
+    .hover\:bg-amber-100:hover {
+        background-color: var(--elective-bg) !important;
+        filter: brightness(0.95);
+    }
+    
+    /* Period filter buttons styling */
+    .period-btn.bg-amber-500 {
+        background-color: var(--button-active-bg) !important;
+        color: var(--button-active-text) !important;
+    }
+    .period-btn.bg-slate-200 {
+        background-color: var(--button-inactive-bg) !important;
+        color: var(--button-inactive-text) !important;
+    }
+    .period-btn.text-white {
+        color: var(--button-active-text) !important;
+    }
+    .period-btn.text-slate-700 {
+        color: var(--button-inactive-text) !important;
+    }
+    .tab-active {
+        border-color: var(--color-accent);
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+    .course-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .modal-backdrop {
+        transition: opacity 0.3s ease;
+    }
+    .modal-content {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .progress-bar-fill {
+        transition: width 0.5s ease-in-out;
+    }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div id="app" class="container mx-auto p-4 md:p-8">
+    
+    <header class="mb-8 text-center">
+        <h1 class="text-4xl font-bold text-slate-800">Planificador Académico de Matrículas</h1>
+        <p class="text-slate-600 mt-2">Carrera de Enseñanza de la Matemática - UNED</p>
+    </header>
+
+    <main id="main-content" class="rounded-xl shadow-lg p-6 md:p-8" style="background-color: var(--color-surface);">
+        
+        <div id="setup-section" class="mb-8">
+            <label for="plan-select" class="flex items-center text-lg font-semibold text-slate-700 mb-2">
+                <ion-icon name="school" class="text-amber-600 text-xl mr-2"></ion-icon>
+                1. Selecciona tu Plan de Estudios:
+            </label>
+            <select id="plan-select" class="w-full max-w-md p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition">
+            </select>
+        </div>
+
+        <div id="app-body" class="hidden">
+            <div class="border-b border-slate-200 mb-6">
+                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                    <button data-tab="avance" class="tab-btn tab-active flex items-center whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        <ion-icon name="analytics" class="text-base mr-2"></ion-icon>
+                        Mi Avance
+                    </button>
+                    <button data-tab="malla" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
+                        <ion-icon name="grid" class="text-base mr-2"></ion-icon>
+                        Malla Curricular
+                    </button>
+                    <button data-tab="disponibles" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
+                        <ion-icon name="list" class="text-base mr-2"></ion-icon>
+                        Cursos Disponibles
+                    </button>
+                </nav>
+            </div>
+
+            <div id="tab-content">
+                <div id="avance-tab" class="tab-pane">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Panel de Avance</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                        <div class="lg:col-span-1 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-lg">
+                                <h3 class="flex items-center justify-center text-lg font-semibold text-slate-700 mb-4">
+                                <ion-icon name="pie-chart" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                Progreso de Créditos
+                            </h3>
+                            <div class="chart-container w-full max-w-xs mx-auto h-64">
+                                <canvas id="credits-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <h3 class="flex items-center text-lg font-semibold text-slate-700 mb-4">
+                                <ion-icon name="bar-chart" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                Estadísticas Clave
+                            </h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="checkmark-circle" class="text-green-600 text-2xl"></ion-icon>
+                                    </div>
+                                    <div id="approved-courses-count" class="text-3xl font-bold text-slate-800">0</div>
+                                    <div class="text-sm text-slate-600">Cursos Aprobados</div>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="trophy" class="text-green-600 text-2xl"></ion-icon>
+                                    </div>
+                                    <div id="approved-credits-count" class="text-3xl font-bold text-slate-800">0</div>
+                                    <div class="text-sm text-slate-600">Créditos Ganados</div>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg text-center">
+                                    <div class="flex items-center justify-center mb-2">
+                                        <ion-icon name="library" class="text-slate-600 text-2xl"></ion-icon>
+                                    </div>
+                                    <div id="total-credits" class="text-3xl font-bold text-slate-800">0</div>
+                                    <div class="text-sm text-slate-600">Créditos del Plan</div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="flex items-center text-lg font-semibold text-slate-700 mb-4">
+                                    <ion-icon name="ribbon" class="text-amber-600 text-xl mr-2"></ion-icon>
+                                    Progreso de Credenciales
+                                </h3>
+                                <div id="credentials-progress" class="space-y-4"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-8 mb-4">
+                        <h3 class="flex items-center text-xl font-semibold text-slate-800">
+                            <ion-icon name="checkbox" class="text-amber-600 text-2xl mr-3"></ion-icon>
+                            2. Marca los cursos que ha aprobado:
+                        </h3>
+                        <button id="reset-button" class="flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-colors">
+                            <ion-icon name="refresh" class="text-white text-base mr-2"></ion-icon>
+                            Volver a empezar
+                        </button>
+                    </div>
+                    <div id="courses-checklist" class="space-y-6"></div>
+                </div>
+                
+                <div id="malla-tab" class="tab-pane hidden">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Malla Curricular Interactiva</h2>
+                        <p class="text-slate-600 mb-6">Haz clic en un curso para ver sus detalles, prerrequisitos y qué cursos desbloquea.</p>
+                    
+                    <!-- Course Status Filters -->
+                    <div class="mb-6 p-4 bg-slate-50 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <ion-icon name="options" class="text-amber-600 text-lg mr-2"></ion-icon>
+                            <h3 class="text-lg font-semibold text-slate-700">Filtrar por estado:</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-approved" class="status-filter sr-only">
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 bg-white border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="approved" style="border-color: var(--status-approved);">
+                                        <ion-icon name="checkmark" class="text-sm hidden" style="color: var(--status-approved);"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-approved);">
+                                        <ion-icon name="checkmark-circle" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Aprobado</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-available" class="status-filter sr-only" checked>
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="available" style="background-color: var(--status-available); border-color: var(--status-available);">
+                                        <ion-icon name="checkmark" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-available);">
+                                        <ion-icon name="play-circle" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Disponible</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="filter-locked" class="status-filter sr-only">
+                                <div class="flex items-center select-none">
+                                    <div class="w-5 h-5 bg-white border-2 rounded mr-2 flex items-center justify-center checkbox-custom" data-status="locked" style="border-color: var(--status-locked);">
+                                        <ion-icon name="checkmark" class="text-sm hidden" style="color: var(--status-locked);"></ion-icon>
+                                    </div>
+                                    <div class="w-6 h-6 rounded-full mr-2 flex items-center justify-center" style="background-color: var(--status-locked);">
+                                        <ion-icon name="lock-closed" class="text-white text-sm"></ion-icon>
+                                    </div>
+                                    <span class="text-sm font-medium">Bloqueado</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="curriculum-map" class="space-y-8"></div>
+                </div>
+
+                <div id="disponibles-tab" class="tab-pane hidden">
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-2">
+                        <ion-icon name="school-outline" class="text-amber-600 text-3xl mr-3"></ion-icon>
+                        Asistente de Matrícula
+                    </h2>
+                    <p class="flex items-center text-slate-600 mb-6">
+                        <ion-icon name="information-circle-outline" class="text-slate-500 text-lg mr-2"></ion-icon>
+                        Estos son los cursos que puedes matricular según tu avance. Filtra por periodo para planificar. Haz click en el curso para ver más detalles.
+                    </p>
+                    <div class="mb-6">
+                        <label for="period-filter" class="flex items-center font-semibold text-slate-700">
+                            <ion-icon name="filter" class="text-amber-600 text-lg mr-2"></ion-icon>
+                            Filtrar por periodo de oferta:
+                        </label>
+                        <div id="period-filter" class="flex flex-wrap gap-2 mt-2">
+                            <button data-period="all" class="period-btn bg-amber-500 text-white px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="apps" class="text-sm mr-1"></ion-icon>
+                                Todos
+                            </button>
+                            <button data-period="q1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                I Cuatrimestre
+                            </button>
+                            <button data-period="q2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                II Cuatrimestre
+                            </button>
+                            <button data-period="q3" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="calendar" class="text-sm mr-1"></ion-icon>
+                                III Cuatrimestre
+                            </button>
+                            <button data-period="s1" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="time" class="text-sm mr-1"></ion-icon>
+                                I Semestre
+                            </button>
+                            <button data-period="s2" class="period-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm flex items-center">
+                                <ion-icon name="time" class="text-sm mr-1"></ion-icon>
+                                II Semestre
+                            </button>
+                        </div>
+                    </div>
+                    <div id="available-courses-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="course-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
+        <div class="p-6 md:p-8">
+            <!-- Header Section -->
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex items-start">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-lg">
+                        <ion-icon name="book" class="text-white text-2xl"></ion-icon>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <h3 id="modal-course-name" class="text-2xl font-bold text-slate-800"></h3>
+                        </div>
+                        <div class="flex items-center gap-4 mb-3">
+                            <span id="modal-course-code" class="text-sm font-mono bg-slate-100 px-3 py-1 rounded-full text-slate-700"></span>
+                            <a id="modal-course-syllabus-link" href="#" target="_blank" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors" title="Descargar orientaciones académicas">
+                                <ion-icon name="download-outline" class="text-base"></ion-icon>
+                                Descargar orientaciones
+                            </a>
+                        </div>
+                        <div id="modal-course-chair" class="flex items-center gap-2 text-slate-600">
+                            <ion-icon name="business-outline" class="text-slate-500"></ion-icon>
+                            <span class="text-sm font-medium"></span>
+                        </div>
+                    </div>
+                </div>
+                <button id="modal-close-btn" class="text-slate-400 hover:text-slate-600 text-2xl p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </div>
+
+            <!-- Quick Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-amber-600 text-sm font-medium">Créditos</div>
+                            <div id="modal-course-credits" class="text-2xl font-bold text-amber-800"></div>
+                        </div>
+                        <ion-icon name="star" class="text-amber-500 text-2xl"></ion-icon>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-blue-600 text-sm font-medium">Nivel</div>
+                            <div id="modal-course-level" class="text-2xl font-bold text-blue-800"></div>
+                        </div>
+                        <ion-icon name="trending-up" class="text-blue-500 text-2xl"></ion-icon>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-green-600 text-sm font-medium">Disponibilidad</div>
+                            <div id="modal-course-availability" class="text-lg font-semibold text-green-800"></div>
+                        </div>
+                        <ion-icon name="calendar-outline" class="text-green-500 text-2xl"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prerequisites Section -->
+            <div class="mb-6">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-red-700 mb-3">
+                        <ion-icon name="arrow-back-circle" class="text-red-500 text-xl mr-2"></ion-icon>
+                        Prerrequisitos (necesitas aprobar)
+                    </h4>
+                    <div id="modal-course-prerequisites" class="space-y-2 ml-7"></div>
+                </div>
+            </div>
+
+            <!-- Unlocks Section -->
+            <div class="mb-6">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-green-700 mb-3">
+                        <ion-icon name="arrow-forward-circle" class="text-green-500 text-xl mr-2"></ion-icon>
+                        Desbloquea los siguientes cursos
+                    </h4>
+                    <div id="modal-course-unlocks" class="space-y-2 ml-7"></div>
+                </div>
+            </div>
+
+            <!-- Authorization Section -->
+            <div id="modal-course-authorization" class="mb-6 hidden">
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                    <h4 class="flex items-center font-semibold text-amber-700 mb-4">
+                        <ion-icon name="shield-checkmark" class="text-amber-500 text-xl mr-2"></ion-icon>
+                        Autorización requerida
+                    </h4>
+                    <div class="ml-7">
+                        <p class="text-amber-700 mb-4 text-sm">
+                            <ion-icon name="warning" class="text-amber-600 mr-2"></ion-icon>
+                            Este curso requiere autorización previa para matricular.
+                        </p>
+                        <a href="https://forms.gle/mMQis2ajYxUk9MTPA" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                            <ion-icon name="document-text" class="text-white mr-2"></ion-icon>
+                            Solicitar Autorización
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="credential-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto modal-content transform scale-95 opacity-0">
+            <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start">
+                <h3 id="modal-credential-name" class="text-2xl font-bold text-slate-800"></h3>
+                <button id="credential-modal-close-btn" class="text-slate-400 hover:text-slate-600">&times;</button>
+            </div>
+            <div class="mt-6 border-t pt-6">
+                <h4 class="font-semibold text-slate-700 mb-3">Requisitos:</h4>
+                <div id="modal-credential-rules" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirm-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center p-4 z-50 hidden modal-backdrop">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md modal-content transform scale-95 opacity-0">
+        <div class="p-6">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-800">Confirmar reinicio</h3>
+            </div>
+            <p class="text-slate-600 mb-6">¿Estás seguro de que deseas eliminar todos los cursos aprobados y volver a empezar? Esta acción no se puede deshacer.</p>
+            <div class="flex gap-3 justify-end">
+                <button id="confirm-cancel" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Cancelar</button>
+                <button id="confirm-reset" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors">Volver a empezar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const DB = {{ site.data.curriculumdb | jsonify }};
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const state = {
+            selectedPlanId: null,
+            approvedCourses: new Set(), // Program-specific approved courses
+            globalApprovedCourses: new Set(), // Global approved courses across all programs
+            activeTab: 'avance',
+            periodFilter: 'all',
+            cachedCredentialStatuses: null,
+            curriculumFilter: {
+                approved: false,
+                available: true,
+                locked: false
+            }
+        };
+
+        const ui = {
+            planSelect: document.getElementById('plan-select'),
+            appBody: document.getElementById('app-body'),
+            tabs: document.querySelectorAll('.tab-btn'),
+            tabPanes: document.querySelectorAll('.tab-pane'),
+            coursesChecklist: document.getElementById('courses-checklist'),
+            curriculumMap: document.getElementById('curriculum-map'),
+            availableCoursesList: document.getElementById('available-courses-list'),
+            periodFilterBtns: document.querySelectorAll('.period-btn'),
+            
+            stats: {
+                approvedCourses: document.getElementById('approved-courses-count'),
+                approvedCredits: document.getElementById('approved-credits-count'),
+                totalCredits: document.getElementById('total-credits'),
+            },
+            credentialsProgress: document.getElementById('credentials-progress'),
+            
+            courseModal: {
+                el: document.getElementById('course-modal'),
+                name: document.getElementById('modal-course-name'),
+                code: document.getElementById('modal-course-code'),
+                chair: document.getElementById('modal-course-chair'),
+                syllabusLink: document.getElementById('modal-course-syllabus-link'),
+                credits: document.getElementById('modal-course-credits'),
+                level: document.getElementById('modal-course-level'),
+                availability: document.getElementById('modal-course-availability'),
+                prerequisites: document.getElementById('modal-course-prerequisites'),
+                unlocks: document.getElementById('modal-course-unlocks'),
+                authorization: document.getElementById('modal-course-authorization'),
+                closeBtn: document.getElementById('modal-close-btn'),
+            },
+            
+            credentialModal: {
+                el: document.getElementById('credential-modal'),
+                name: document.getElementById('modal-credential-name'),
+                rules: document.getElementById('modal-credential-rules'),
+                closeBtn: document.getElementById('credential-modal-close-btn'),
+            },
+            
+            confirmModal: {
+                el: document.getElementById('confirm-modal'),
+                cancelBtn: document.getElementById('confirm-cancel'),
+                confirmBtn: document.getElementById('confirm-reset'),
+            }
+        };
+
+        let creditsChart = null;
+
+        function getCourse(code) {
+            return DB.courseCatalog[code];
+        }
+
+        function getPlan(planId) {
+            return DB.programs.find(p => p.id === planId);
+        }
+        
+        function getAllCoursesInPlan(planId) {
+            const plan = getPlan(planId);
+            if (!plan) return [];
+            const courses = new Map();
+            plan.blocks.forEach(block => {
+                block.courses.forEach(c => {
+                    if (!courses.has(c.courseCode)) {
+                        courses.set(c.courseCode, getCourse(c.courseCode));
+                    }
+                });
+                if (block.electives) {
+                    block.electives.forEach(elective => {
+                        // Handle both old categoryRequirements and new courseRequirements structure
+                        if (elective.categoryRequirements) {
+                            elective.categoryRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    if (!courses.has(code)) {
+                                        courses.set(code, getCourse(code));
+                                    }
+                                });
+                            });
+                        }
+                        
+                        if (elective.courseRequirements) {
+                            elective.courseRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    if (!courses.has(code)) {
+                                        courses.set(code, getCourse(code));
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+            return Array.from(courses.values());
+        }
+
+        function getElectiveCoursesGroupedByName(planId) {
+            const plan = getPlan(planId);
+            if (!plan) return {};
+            
+            const electivesByName = {};
+            
+            plan.blocks.forEach(block => {
+                if (block.electives) {
+                    block.electives.forEach(elective => {
+                        if (!electivesByName[elective.name]) {
+                            electivesByName[elective.name] = {
+                                courses: new Set(),
+                                creditsRequired: elective.creditsRequired
+                            };
+                        }
+                        
+                        // Handle both old categoryRequirements and new courseRequirements structure
+                        if (elective.categoryRequirements) {
+                            elective.categoryRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    const course = getCourse(code);
+                                    if (course) {
+                                        electivesByName[elective.name].courses.add(course);
+                                    }
+                                });
+                            });
+                        }
+                        
+                        if (elective.courseRequirements) {
+                            elective.courseRequirements.forEach(req => {
+                                req.availableCourses.forEach(code => {
+                                    const course = getCourse(code);
+                                    if (course) {
+                                        electivesByName[elective.name].courses.add(course);
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+            
+            // Convert Sets to Arrays for easier rendering
+            Object.keys(electivesByName).forEach(name => {
+                electivesByName[name].courses = Array.from(electivesByName[name].courses);
+            });
+            
+            return electivesByName;
+        }
+
+        function calculateTotalPlanCredits(planId) {
+            const plan = getPlan(planId);
+            if (!plan) return 0;
+            
+            let totalCredits = 0;
+            
+            plan.blocks.forEach(block => {
+                // Add credits from required courses
+                block.courses.forEach(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    if (course) {
+                        totalCredits += course.credits;
+                    }
+                });
+                
+                // Add credits from electives (only the required amount, not all available courses)
+                if (block.electives) {
+                    block.electives.forEach(elective => {
+                        totalCredits += elective.creditsRequired;
+                    });
+                }
+            });
+            
+            return totalCredits;
+        }
+
+        function saveState() {
+            if (!state.selectedPlanId) return;
+            
+            console.log(`💾 Saving state for program ${state.selectedPlanId}:`, {
+                approvedCourses: Array.from(state.approvedCourses),
+                activeTab: state.activeTab,
+                periodFilter: state.periodFilter,
+                curriculumFilter: state.curriculumFilter
+            });
+            
+            // Load existing program states
+            const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+            
+            // Save current program state
+            allProgramsState[state.selectedPlanId] = {
+                approvedCourses: Array.from(state.approvedCourses),
+                activeTab: state.activeTab,
+                periodFilter: state.periodFilter,
+                curriculumFilter: { ...state.curriculumFilter }
+            };
+            
+            // Save program states and selected plan separately
+            localStorage.setItem('academicPlannerPrograms', JSON.stringify(allProgramsState));
+            localStorage.setItem('academicPlannerSelectedPlan', state.selectedPlanId);
+            
+            // Save global approved courses separately
+            localStorage.setItem('academicPlannerGlobalCourses', JSON.stringify(Array.from(state.globalApprovedCourses)));
+            
+            console.log(`💾 Saved programs state:`, allProgramsState);
+            console.log(`💾 Saved selected plan:`, state.selectedPlanId);
+        }
+
+        function loadState() {
+            // Clear old corrupted formats if they exist
+            if (localStorage.getItem('academicPlannerState')) {
+                console.log('🧹 Removing old academicPlannerState format');
+                localStorage.removeItem('academicPlannerState');
+            }
+            if (localStorage.getItem('academicPlannerMultiState')) {
+                console.log('🧹 Removing corrupted academicPlannerMultiState format');
+                localStorage.removeItem('academicPlannerMultiState');
+            }
+            
+            // Load global approved courses
+            const savedGlobalCourses = localStorage.getItem('academicPlannerGlobalCourses');
+            if (savedGlobalCourses) {
+                state.globalApprovedCourses = new Set(JSON.parse(savedGlobalCourses));
+                console.log(`📂 Loaded global approved courses:`, Array.from(state.globalApprovedCourses));
+            } else {
+                // Migration: If no global courses exist, build from existing program data
+                console.log('🔄 Migrating existing program data to global courses');
+                const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+                const allApprovedCourses = new Set();
+                
+                Object.values(allProgramsState).forEach(programState => {
+                    if (programState.approvedCourses) {
+                        programState.approvedCourses.forEach(courseCode => {
+                            allApprovedCourses.add(courseCode);
+                        });
+                    }
+                });
+                
+                state.globalApprovedCourses = allApprovedCourses;
+                console.log(`🔄 Migrated courses to global set:`, Array.from(state.globalApprovedCourses));
+            }
+            
+            // Load selected plan
+            const savedSelectedPlan = localStorage.getItem('academicPlannerSelectedPlan');
+            if (savedSelectedPlan) {
+                state.selectedPlanId = savedSelectedPlan;
+                console.log(`📂 Loaded selected plan: ${state.selectedPlanId}`);
+                
+                // Load program-specific state
+                const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+                if (allProgramsState[state.selectedPlanId]) {
+                    const programState = allProgramsState[state.selectedPlanId];
+                    state.approvedCourses = new Set(programState.approvedCourses || []);
+                    state.activeTab = programState.activeTab || 'avance';
+                    state.periodFilter = programState.periodFilter || 'all';
+                    state.curriculumFilter = { ...state.curriculumFilter, ...programState.curriculumFilter };
+                    console.log(`📂 Loaded program state for ${state.selectedPlanId}:`, programState);
+                }
+            }
+        }
+
+        function loadProgramState(planId) {
+            console.log(`📂 Loading state for program ${planId}`);
+            
+            const allProgramsState = JSON.parse(localStorage.getItem('academicPlannerPrograms') || '{}');
+            
+            if (allProgramsState[planId]) {
+                const programState = allProgramsState[planId];
+                console.log(`📂 Found saved program state for ${planId}:`, programState);
+                
+                state.approvedCourses = new Set(programState.approvedCourses || []);
+                state.activeTab = programState.activeTab || 'avance';
+                state.periodFilter = programState.periodFilter || 'all';
+                state.curriculumFilter = { 
+                    approved: false,
+                    available: true,
+                    locked: false,
+                    ...programState.curriculumFilter 
+                };
+                
+                console.log(`📂 Loaded state - approved courses:`, Array.from(state.approvedCourses));
+            } else {
+                console.log(`📂 No saved state found for program ${planId}, using defaults`);
+                // Reset to defaults for new program
+                state.approvedCourses = new Set();
+                state.activeTab = 'avance';
+                state.periodFilter = 'all';
+                state.curriculumFilter = {
+                    approved: false,
+                    available: true,
+                    locked: false
+                };
+            }
+            
+            // Sync program-specific courses with global courses
+            // Any course that exists in both the current program and global set should be checked
+            const allCoursesInPlan = getAllCoursesInPlan(planId);
+            const coursesInPlan = new Set(allCoursesInPlan.map(c => c.code));
+            
+            // Add globally approved courses that exist in this program to the program-specific set
+            for (const courseCode of state.globalApprovedCourses) {
+                if (coursesInPlan.has(courseCode)) {
+                    state.approvedCourses.add(courseCode);
+                }
+            }
+            
+            console.log(`📂 Synced with global courses - final approved courses:`, Array.from(state.approvedCourses));
+            
+            // Clear cached credential statuses when switching programs
+            state.cachedCredentialStatuses = null;
+            
+            // Restore UI state
+            restoreUIState();
+        }
+
+        function restoreUIState() {
+            // Restore active tab
+            ui.tabs.forEach(t => t.classList.remove('tab-active'));
+            ui.tabPanes.forEach(p => p.classList.add('hidden'));
+            
+            const activeTab = document.querySelector(`[data-tab="${state.activeTab}"]`);
+            if (activeTab) {
+                activeTab.classList.add('tab-active');
+                const tabPane = document.getElementById(`${state.activeTab}-tab`);
+                if (tabPane) {
+                    tabPane.classList.remove('hidden');
+                }
+            } else {
+                // Fallback to first tab if active tab not found
+                if (ui.tabs.length > 0) {
+                    ui.tabs[0].classList.add('tab-active');
+                    const firstTabPane = document.getElementById(`${ui.tabs[0].dataset.tab}-tab`);
+                    if (firstTabPane) {
+                        firstTabPane.classList.remove('hidden');
+                    }
+                    state.activeTab = ui.tabs[0].dataset.tab;
+                }
+            }
+            
+            // Restore period filter
+            ui.periodFilterBtns.forEach(b => {
+                b.classList.remove('bg-amber-500', 'text-white');
+                b.classList.add('bg-slate-200', 'text-slate-700');
+            });
+            
+            const activePeriodBtn = document.querySelector(`[data-period="${state.periodFilter}"]`);
+            if (activePeriodBtn) {
+                activePeriodBtn.classList.remove('bg-slate-200', 'text-slate-700');
+                activePeriodBtn.classList.add('bg-amber-500', 'text-white');
+            }
+            
+            // Restore curriculum filter checkboxes
+            Object.keys(state.curriculumFilter).forEach(status => {
+                const checkboxCustom = document.querySelector(`[data-status="${status}"]`);
+                const checkbox = checkboxCustom?.closest('label').querySelector('.status-filter');
+                const checkIcon = checkboxCustom?.querySelector('ion-icon');
+                
+                if (checkboxCustom && checkbox && checkIcon) {
+                    checkbox.checked = state.curriculumFilter[status];
+                    
+                    if (state.curriculumFilter[status]) {
+                        checkboxCustom.style.backgroundColor = `var(--status-${status})`;
+                        checkboxCustom.style.borderColor = `var(--status-${status})`;
+                        checkboxCustom.classList.remove('bg-white');
+                        checkIcon.classList.remove('hidden');
+                        checkIcon.classList.add('text-white');
+                        checkIcon.style.color = 'white';
+                    } else {
+                        checkboxCustom.style.backgroundColor = 'white';
+                        checkboxCustom.style.borderColor = `var(--status-${status})`;
+                        checkboxCustom.classList.add('bg-white');
+                        checkIcon.classList.add('hidden');
+                        checkIcon.classList.remove('text-white');
+                        checkIcon.style.color = `var(--status-${status})`;
+                    }
+                }
+            });
+        }
+        
+        function checkPrerequisites(courseCode, planId) {
+            const plan = getPlan(planId);
+            let prerequisites = null;
+            
+            for (const block of plan.blocks) {
+                const courseInfo = block.courses.find(c => c.courseCode === courseCode);
+                if (courseInfo) {
+                    prerequisites = courseInfo.prerequisites;
+                    break;
+                }
+            }
+
+            if (!prerequisites || prerequisites.type === 'none') {
+                return { met: true, details: [{ text: "Ninguno", met: true }] };
+            }
+
+            if (prerequisites.type === 'courses') {
+                const details = prerequisites.courses.map(reqCode => {
+                    const met = state.approvedCourses.has(reqCode);
+                    return { text: `${getCourse(reqCode).name} (${reqCode})`, met };
+                });
+                return { met: details.every(d => d.met), details };
+            }
+
+            if (prerequisites.type === 'blocks') {
+                let allCoursesInRequiredBlocks = [];
+                prerequisites.blocks.forEach(blockId => {
+                    const requiredBlock = plan.blocks.find(b => b.id === blockId);
+                    if (requiredBlock) {
+                        requiredBlock.courses.forEach(c => allCoursesInRequiredBlocks.push(c.courseCode));
+                    }
+                });
+
+                const details = allCoursesInRequiredBlocks.map(reqCode => {
+                    const met = state.approvedCourses.has(reqCode);
+                    return { text: `${getCourse(reqCode).name} (${reqCode})`, met, block: true };
+                });
+
+                const met = details.every(d => d.met);
+                const summaryDetail = { text: `Todos los cursos de los bloques: ${prerequisites.blocks.join(', ')}`, met };
+
+                return { met, details: [summaryDetail] };
+            }
+
+            return { met: false, details: [] };
+        }
+
+        function getCourseStatus(courseCode, planId) {
+            if (state.approvedCourses.has(courseCode)) {
+                return 'approved';
+            }
+            if (checkPrerequisites(courseCode, planId).met) {
+                return 'available';
+            }
+            return 'locked';
+        }
+
+        function checkCredentialStatus(credentialId, allocatedCourses = new Map(), globalCredentialResults = null) {
+            const credential = DB.credentials[credentialId];
+            if (!credential) return { met: false, progress: 0, details: [], allocatedCourses: new Map() };
+
+            const conditions = credential.rules.conditions;
+            let totalConditions = 0;
+            let metConditions = 0;
+            let totalProgressPoints = 0;
+            let earnedProgressPoints = 0;
+            const details = [];
+            const localAllocatedCourses = new Map(allocatedCourses);
+
+            const check = (conds) => {
+                conds.forEach(condition => {
+                    totalConditions++;
+                    let conditionMet = false;
+                    let conditionProgress = 0;
+                    let detailText = "";
+                    let subDetails = [];
+
+                    if (condition.type === 'courses' && condition.operator === 'all') {
+                        let metCount = 0;
+                        condition.courses.forEach(c => {
+                            if (state.globalApprovedCourses.has(c)) metCount++;
+                            subDetails.push({ text: `${getCourse(c).name} (${c})`, met: state.globalApprovedCourses.has(c) });
+                        });
+                        conditionMet = metCount === condition.courses.length;
+                        conditionProgress = condition.courses.length > 0 ? metCount / condition.courses.length : 0;
+                        detailText = `Aprobar ${condition.courses.length} cursos específicos (${metCount}/${condition.courses.length})`;
+                        
+                    } else if (condition.type === 'categories' && condition.operator === 'credits') {
+                        // Get available courses (approved and not already allocated)
+                        const availableCoursesInCategory = Array.from(state.globalApprovedCourses)
+                            .filter(courseCode => !localAllocatedCourses.has(courseCode))
+                            .map(getCourse)
+                            .filter(c => c.categories.some(cat => condition.categories.includes(cat)));
+                        
+                        // Sort by credits descending to optimize allocation
+                        availableCoursesInCategory.sort((a, b) => b.credits - a.credits);
+                        
+                        let creditsNeeded = condition.creditsRequired;
+                        let allocatedForThisCondition = [];
+                        
+                        // Allocate courses for this condition
+                        for (let course of availableCoursesInCategory) {
+                            if (creditsNeeded <= 0) break;
+                            allocatedForThisCondition.push(course.code);
+                            localAllocatedCourses.set(course.code, credentialId);
+                            creditsNeeded -= course.credits;
+                        }
+                        
+                        const creditsEarned = condition.creditsRequired - Math.max(0, creditsNeeded);
+                        conditionMet = creditsEarned >= condition.creditsRequired;
+                        conditionProgress = condition.creditsRequired > 0 ? Math.min(creditsEarned / condition.creditsRequired, 1) : 0;
+                        detailText = `Obtener ${condition.creditsRequired} créditos en ${condition.categories.join('/')} (${creditsEarned}/${condition.creditsRequired})`;
+                        
+                        // Add subdetails showing which courses were allocated
+                        allocatedForThisCondition.forEach(courseCode => {
+                            const course = getCourse(courseCode);
+                            subDetails.push({ 
+                                text: `${course.name} (${courseCode}) - ${course.credits} créditos`, 
+                                met: true 
+                            });
+                        });
+                        
+                    } else if (condition.type === 'credentials' && condition.operator === 'all') {
+                        const dependentCredentialId = condition.credentials[0];
+                        let subCredentialStatus;
+                        
+                        // Always use global results if available to ensure consistency
+                        if (globalCredentialResults && globalCredentialResults[dependentCredentialId]) {
+                            subCredentialStatus = globalCredentialResults[dependentCredentialId];
+                        } else {
+                            // For isolated checks or when dependency hasn't been processed yet
+                            // Use a fresh allocation context to avoid interference
+                            subCredentialStatus = checkCredentialStatus(dependentCredentialId, new Map(), globalCredentialResults);
+                        }
+                        
+                        conditionMet = subCredentialStatus.met;
+                        conditionProgress = subCredentialStatus.progress / 100; // Convert to 0-1 scale
+                        detailText = `Tener la credencial ${DB.credentials[dependentCredentialId].name}`;
+                        subDetails = subCredentialStatus.details;
+                        
+                    } else if (condition.type === 'courses' && condition.operator === 'credits') {
+                        const approvedElectives = Array.from(state.globalApprovedCourses)
+                            .filter(c => condition.availableCourses.includes(c));
+                        const creditsEarned = approvedElectives.reduce((sum, c) => sum + getCourse(c).credits, 0);
+                        conditionMet = creditsEarned >= condition.creditsRequired;
+                        conditionProgress = condition.creditsRequired > 0 ? Math.min(creditsEarned / condition.creditsRequired, 1) : 0;
+                        detailText = `Obtener ${condition.creditsRequired} créditos de cursos electivos (${creditsEarned}/${condition.creditsRequired})`;
+                    }
+                    
+                    totalProgressPoints += 1;
+                    earnedProgressPoints += conditionProgress;
+                    
+                    if(conditionMet) metConditions++;
+                    details.push({ text: detailText, met: conditionMet, subDetails });
+                });
+            }
+            check(conditions);
+            
+            return {
+                met: metConditions === totalConditions,
+                progress: totalProgressPoints > 0 ? (earnedProgressPoints / totalProgressPoints) * 100 : 0,
+                details,
+                allocatedCourses: localAllocatedCourses
+            };
+        }
+
+        // Global function that manages course allocation across all credentials
+        function getAllCredentialStatuses(forceRefresh = false) {
+            if (!forceRefresh && state.cachedCredentialStatuses) {
+                return state.cachedCredentialStatuses;
+            }
+            
+            const globalAllocatedCourses = new Map();
+            const credentialResults = {};
+            
+            // Process credentials in dependency order (MT1 before MT2, etc.)
+            const credentialOrder = ['MT1', 'MT2', 'MT3', 'MT4', 'MT5', 'MT6'];
+            
+            credentialOrder.forEach(credentialId => {
+                if (DB.credentials[credentialId]) {
+                    const result = checkCredentialStatus(credentialId, globalAllocatedCourses, credentialResults);
+                    credentialResults[credentialId] = result;
+                    
+                    // Update global allocation map
+                    result.allocatedCourses.forEach((credId, courseCode) => {
+                        globalAllocatedCourses.set(courseCode, credId);
+                    });
+                }
+            });
+            
+            state.cachedCredentialStatuses = credentialResults;
+            return credentialResults;
+        }
+
+        function renderAll() {
+            // Clear cached credential statuses when rendering (courses may have changed)
+            state.cachedCredentialStatuses = null;
+            
+            if (!state.selectedPlanId) {
+                ui.appBody.classList.add('hidden');
+                return;
+            }
+            ui.appBody.classList.remove('hidden');
+
+            const plan = getPlan(state.selectedPlanId);
+            const allCourses = getAllCoursesInPlan(state.selectedPlanId);
+
+            renderStats(allCourses);
+            renderCourseChecklist(plan);
+            renderCurriculumMap(plan);
+            renderAvailableCourses(allCourses);
+            renderCredentialsProgress();
+            
+            saveState();
+        }
+        
+        function renderStats(allCourses) {
+            const approvedCoursesObjects = Array.from(state.approvedCourses)
+                .map(getCourse)
+                .filter(c => c); 
+            const approvedCredits = approvedCoursesObjects.reduce((sum, course) => sum + course.credits, 0);
+            const totalCredits = calculateTotalPlanCredits(state.selectedPlanId);
+            console.log({approvedCredits, totalCredits});
+
+            ui.stats.approvedCourses.textContent = approvedCoursesObjects.length;
+            ui.stats.approvedCredits.textContent = approvedCredits;
+            ui.stats.totalCredits.textContent = totalCredits;
+            
+            renderCreditsChart(approvedCredits, totalCredits - approvedCredits);
+        }
+
+        function renderCreditsChart(approved, pending) {
+            const ctx = document.getElementById('credits-chart').getContext('2d');
+            const total = approved + pending;
+            const percentage = total > 0 ? Math.round((approved / total) * 100) : 0;
+            
+            // Get computed colors for dark mode compatibility
+            const approvedColor = getComputedStyle(document.documentElement).getPropertyValue('--status-approved').trim();
+            const pendingColor = getComputedStyle(document.documentElement).getPropertyValue('--color-secondary').trim();
+            const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--color-surface').trim();
+            
+            const data = {
+                labels: ['Aprobados', 'Pendientes'],
+                datasets: [{
+                    data: [approved, pending],
+                    backgroundColor: [approvedColor, pendingColor],
+                    borderColor: [borderColor, borderColor],
+                    borderWidth: 2,
+                }]
+            };
+            if (creditsChart) {
+                creditsChart.data = data;
+                creditsChart.options.plugins.centerText = { percentage };
+                creditsChart.update();
+            } else {
+                creditsChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw} créditos`;
+                                    }
+                                }
+                            },
+                            centerText: { percentage }
+                        }
+                    },
+                    plugins: [{
+                        id: 'centerText',
+                        beforeDraw: function(chart) {
+                            const width = chart.width;
+                            const height = chart.height;
+                            const ctx = chart.ctx;
+                            
+                            ctx.save();
+                            const fontSize = Math.min(width, height) / 8;
+                            ctx.font = `bold ${fontSize}px Inter, sans-serif`;
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text-primary').trim();
+                            
+                            const currentPercentage = chart.options.plugins.centerText?.percentage || 0;
+                            const text = `${currentPercentage}%`;
+                            
+                            ctx.fillText(text, width / 2, height / 2);
+                            ctx.restore();
+                        }
+                    }]
+                });
+            }
+        }
+        
+        function renderCourseChecklist(plan) {
+            console.log(`📝 Rendering course checklist with approved courses:`, Array.from(state.approvedCourses));
+            let html = '';
+            let checkedCount = 0;
+            
+            // Render regular course blocks
+            plan.blocks.forEach(block => {
+                html += `<div class="p-4 border border-slate-200 rounded-lg">
+                            <h4 class="text-lg font-semibold text-slate-700 mb-3">${block.name}</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">`;
+                block.courses.forEach(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    const isChecked = state.approvedCourses.has(course.code);
+                    if (isChecked) checkedCount++;
+                    html += `<label class="flex items-center space-x-3 p-2 rounded-md hover:bg-slate-50 transition">
+                                <input type="checkbox" data-course-code="${course.code}" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" ${isChecked ? 'checked' : ''}>
+                                <span>${course.name} (${course.code})</span>
+                            </label>`;
+                });
+                html += `</div></div>`;
+            });
+            
+            // Render elective courses pseudoblock
+            const electivesByName = getElectiveCoursesGroupedByName(state.selectedPlanId);
+            if (Object.keys(electivesByName).length > 0) {
+                html += `<div class="p-4 border border-amber-200 rounded-lg bg-amber-50">
+                            <h4 class="text-lg font-semibold text-amber-800 mb-3">Cursos Electivos</h4>`;
+                
+                Object.entries(electivesByName).forEach(([electiveName, electiveData]) => {
+                    if (electiveData.courses.length > 0) {
+                        html += `<div class="mb-4 p-4 border border-slate-200 rounded-lg">
+                                    <h5 class="text-md font-medium text-slate-700 mb-3">${electiveName} 
+                                        <span class="text-sm font-normal text-slate-500">(${electiveData.creditsRequired} créditos requeridos)</span>
+                                    </h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">`;
+                        
+                        electiveData.courses.forEach(course => {
+                            const isChecked = state.approvedCourses.has(course.code);
+                            if (isChecked) checkedCount++;
+                            html += `<label class="flex items-center space-x-3 p-2 rounded-md hover:bg-amber-100 transition">
+                                        <input type="checkbox" data-course-code="${course.code}" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" ${isChecked ? 'checked' : ''}>
+                                        <span>${course.name} (${course.code})</span>
+                                    </label>`;
+                        });
+                        html += `</div></div>`;
+                    }
+                });
+                html += `</div>`;
+            }
+            
+            console.log(`📝 Rendered ${checkedCount} checked checkboxes`);
+            ui.coursesChecklist.innerHTML = html;
+        }
+
+        function renderCurriculumMap(plan) {
+            let html = '';
+            plan.blocks.forEach(block => {
+                // Filter courses based on selected status filters
+                const filteredCourses = block.courses.filter(courseInfo => {
+                    const course = getCourse(courseInfo.courseCode);
+                    const status = getCourseStatus(course.code, state.selectedPlanId);
+                    return state.curriculumFilter[status];
+                });
+                
+                // Only show block if it has courses to display
+                if (filteredCourses.length > 0) {
+                    html += `<div class="p-4 border border-slate-200 rounded-lg">
+                            <h4 class="text-lg font-semibold text-slate-700 mb-4">${block.name}</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">`;
+                    
+                    filteredCourses.forEach(courseInfo => {
+                        const course = getCourse(courseInfo.courseCode);
+                        const status = getCourseStatus(course.code, state.selectedPlanId);
+                        const statusConfig = {
+                            approved: {
+                                colorStyle: 'background-color: var(--status-approved);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
+                                icon: 'checkmark-circle',
+                                iconColor: 'text-white'
+                            },
+                            available: {
+                                colorStyle: 'background-color: var(--status-available);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
+                                icon: 'play-circle',
+                                iconColor: 'text-white'
+                            },
+                            locked: {
+                                colorStyle: 'background-color: var(--status-locked);',
+                                hoverStyle: 'onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'"',
+                                icon: 'lock-closed',
+                                iconColor: 'text-white'
+                            }
+                        }[status];
+                        
+                        html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-3 rounded-lg text-white" style="${statusConfig.colorStyle}" ${statusConfig.hoverStyle}>
+                                    <div class="flex items-start justify-between mb-2">
+                                        <ion-icon name="${statusConfig.icon}" class="${statusConfig.iconColor} text-lg flex-shrink-0"></ion-icon>
+                                        <span class="text-xs opacity-80 ml-2">${course.code}</span>
+                                    </div>
+                                    <p class="font-semibold text-sm leading-tight">${course.name}</p>
+                                </div>`;
+                    });
+                    html += `</div></div>`;
+                }
+            });
+            
+            // Show message if no courses match the filter
+            if (html === '') {
+                html = `<div class="text-center py-12">
+                            <ion-icon name="filter-outline" class="text-slate-400 text-6xl mb-4"></ion-icon>
+                            <p class="text-slate-500 text-lg mb-2">No hay cursos para mostrar</p>
+                            <p class="text-slate-400 text-sm">Seleccione al menos una categoría en los filtros arriba</p>
+                        </div>`;
+            }
+            
+            ui.curriculumMap.innerHTML = html;
+        }
+
+        function isElectiveGroupSatisfied(planId, blockId, electiveName) {
+            const plan = getPlan(planId);
+            const block = plan.blocks.find(b => b.id === blockId);
+            if (!block || !block.electives) return false;
+            
+            const elective = block.electives.find(e => e.name === electiveName);
+            if (!elective) return false;
+            
+            let approvedCredits = 0;
+            
+            // Check categoryRequirements
+            if (elective.categoryRequirements) {
+                elective.categoryRequirements.forEach(catReq => {
+                    const approvedInCategory = Array.from(state.approvedCourses)
+                        .map(getCourse)
+                        .filter(course => 
+                            catReq.availableCourses.includes(course.code) &&
+                            course.categories.some(cat => catReq.categories.includes(cat))
+                        );
+                    approvedCredits += approvedInCategory.reduce((sum, c) => sum + c.credits, 0);
+                });
+            }
+            
+            // Check courseRequirements
+            if (elective.courseRequirements) {
+                elective.courseRequirements.forEach(courseReq => {
+                    const approvedElectiveCourses = Array.from(state.approvedCourses)
+                        .filter(courseCode => courseReq.availableCourses.includes(courseCode));
+                    approvedCredits += approvedElectiveCourses.reduce((sum, code) => sum + getCourse(code).credits, 0);
+                });
+            }
+            
+            return approvedCredits >= elective.creditsRequired;
+        }
+
+        function getCourseElectiveInfo(courseCode, planId) {
+            const plan = getPlan(planId);
+            for (const block of plan.blocks) {
+                if (!block.electives) continue;
+                
+                for (const elective of block.electives) {
+                    // Check if course is in categoryRequirements
+                    if (elective.categoryRequirements) {
+                        for (const catReq of elective.categoryRequirements) {
+                            if (catReq.availableCourses && catReq.availableCourses.includes(courseCode)) {
+                                return {
+                                    blockId: block.id,
+                                    electiveName: elective.name,
+                                    isElective: true
+                                };
+                            }
+                        }
+                    }
+                    
+                    // Check if course is in courseRequirements
+                    if (elective.courseRequirements) {
+                        for (const courseReq of elective.courseRequirements) {
+                            if (courseReq.availableCourses && courseReq.availableCourses.includes(courseCode)) {
+                                return {
+                                    blockId: block.id,
+                                    electiveName: elective.name,
+                                    isElective: true
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            return { isElective: false };
+        }
+
+        function renderAvailableCourses(allCourses) {
+            const availableCourses = allCourses.filter(course => {
+                const status = getCourseStatus(course.code, state.selectedPlanId);
+                if (status !== 'available') return false;
+                
+                // Check if this is an elective course and if its group is already satisfied
+                const electiveInfo = getCourseElectiveInfo(course.code, state.selectedPlanId);
+                if (electiveInfo.isElective) {
+                    // If the elective group is already satisfied, don't show this course
+                    return !isElectiveGroupSatisfied(state.selectedPlanId, electiveInfo.blockId, electiveInfo.electiveName);
+                }
+                
+                return true;
+            });
+
+                const periodMap = { q1: 'quarters', q2: 'quarters', q3: 'quarters', s1: 'semesters', s2: 'semesters' };
+                const periodNum = { q1: 1, q2: 2, q3: 3, s1: 1, s2: 2 };
+
+                const filteredCourses = state.periodFilter === 'all' 
+                ? availableCourses
+                : availableCourses.filter(course => {
+                    const availability = course.availability;
+                    const periodType = periodMap[state.periodFilter];
+                    return availability[periodType] && availability[periodType].includes(periodNum[state.periodFilter]);
+                });
+            
+            let html = '';
+            if (filteredCourses.length === 0) {
+                html = `<div class="col-span-full text-center py-12">
+                            <ion-icon name="search-outline" class="text-slate-400 text-6xl mb-4"></ion-icon>
+                            <p class="text-slate-500 text-lg mb-2">No hay cursos disponibles</p>
+                            <p class="text-slate-400 text-sm">No hay cursos que coincidan con el filtro seleccionado. Intenta seleccionar "Todos" o verifica tus cursos aprobados.</p>
+                        </div>`;
+            } else {
+                filteredCourses.forEach(course => {
+                    html += `<div data-course-code="${course.code}" class="course-card cursor-pointer p-4 rounded-lg border border-slate-200 bg-white hover:border-amber-500 hover:shadow-md transition-all">
+                                <div class="flex items-start justify-between mb-2">
+                                    <div class="flex items-center">
+                                        <ion-icon name="book-outline" class="text-blue-500 text-lg mr-2 flex-shrink-0"></ion-icon>
+                                        <span class="text-sm text-slate-500">${course.code}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <ion-icon name="star" class="text-amber-500 text-sm mr-1"></ion-icon>
+                                        <span class="text-xs text-slate-500">${course.credits} cr</span>
+                                    </div>
+                                </div>
+                                <p class="font-semibold text-slate-800 mb-2 leading-tight">${course.name}</p>
+                                <div class="flex items-center text-xs text-slate-600">
+                                    <ion-icon name="calendar-outline" class="text-slate-500 text-sm mr-1"></ion-icon>
+                                    ${getAvailabilityText(course.availability, true)}
+                                </div>
+                            </div>`;
+                });
+            }
+            ui.availableCoursesList.innerHTML = html;
+        }
+
+        function renderCredentialsProgress() {
+            let html = '';
+            const allCredentialStatuses = getAllCredentialStatuses();
+            
+            Object.keys(DB.credentials).forEach(credId => {
+                const status = allCredentialStatuses[credId] || checkCredentialStatus(credId, new Map(), allCredentialStatuses);
+                const credential = DB.credentials[credId];
+                html += `
+                    <div data-credential-id="${credId}" class="credential-item cursor-pointer">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-slate-700">${credential.name}</span>
+                            <span class="text-sm font-medium ${status.met ? 'text-green-600' : 'text-slate-500'}">${status.met ? 'Completado' : `${Math.round(status.progress)}%`}</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-${status.met ? 'green' : 'amber'}-500 h-2.5 rounded-full progress-bar-fill" style="width: ${status.progress}%"></div>
+                        </div>
+                    </div>`;
+            });
+            ui.credentialsProgress.innerHTML = html;
+        }
+
+        function openCourseModal(courseCode) {
+            const course = getCourse(courseCode);
+            const prerequisites = checkPrerequisites(course.code, state.selectedPlanId);
+            const allCoursesInPlan = getAllCoursesInPlan(state.selectedPlanId);
+            const unlocks = allCoursesInPlan.filter(c => {
+                let prereqsForC = null;
+                    getPlan(state.selectedPlanId).blocks.forEach(block => {
+                    const courseInfo = block.courses.find(ci => ci.courseCode === c.code);
+                    if (courseInfo) prereqsForC = courseInfo.prerequisites;
+                });
+                return prereqsForC && prereqsForC.type === 'courses' && prereqsForC.courses.includes(course.code);
+            });
+
+            ui.courseModal.name.textContent = course.name;
+            ui.courseModal.code.textContent = course.code;
+            ui.courseModal.chair.querySelector('span').textContent = course.chair || 'No disponible';
+            ui.courseModal.syllabusLink.href = getSyllabusUrl(course.code, course.availability);
+            ui.courseModal.credits.textContent = course.credits;
+            ui.courseModal.level.textContent = course.level;
+            ui.courseModal.availability.textContent = getAvailabilityText(course.availability);
+            
+            ui.courseModal.prerequisites.innerHTML = prerequisites.details.length > 0
+                ? prerequisites.details.map(p => {
+                    // Extract course code from prerequisite text (assuming format like "Course Name (CODE)")
+                    const codeMatch = p.text.match(/\(([^)]+)\)/);
+                    const prereqCourseCode = codeMatch ? codeMatch[1] : null;
+                    const prereqCourse = prereqCourseCode ? getCourse(prereqCourseCode) : null;
+                    const syllabusUrl = prereqCourse ? getSyllabusUrl(prereqCourseCode, prereqCourse.availability) : null;
+                    
+                    return `
+                    <div class="flex items-center justify-between ${p.met ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'} border rounded-lg p-3">
+                        <div class="flex items-center">
+                            <ion-icon name="${p.met ? 'checkmark-circle' : 'close-circle'}" class="text-lg mr-3 flex-shrink-0 ${p.met ? 'text-green-600' : 'text-red-600'}"></ion-icon>
+                            <span class="${p.met ? 'text-green-700' : 'text-red-700'} font-medium">${p.text}</span>
+                        </div>
+                        ${syllabusUrl ? `
+                            <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-xs font-medium transition-colors" title="Descargar orientaciones">
+                                <ion-icon name="download-outline" class="text-sm"></ion-icon>
+                                Orientaciones
+                            </a>
+                        ` : ''}
+                    </div>`;
+                }).join('')
+                : '<div class="flex items-center text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3"><ion-icon name="information-circle" class="text-lg mr-3"></ion-icon>Sin prerrequisitos</div>';
+
+            ui.courseModal.unlocks.innerHTML = unlocks.length > 0
+                ? unlocks.map(c => {
+                    const syllabusUrl = getSyllabusUrl(c.code, c.availability);
+                    return `
+                    <div class="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-3">
+                        <div class="flex items-center">
+                            <ion-icon name="unlock" class="text-green-600 text-lg mr-3 flex-shrink-0"></ion-icon>
+                            <span class="text-green-700 font-medium">${c.name} (${c.code})</span>
+                        </div>
+                        <a href="${syllabusUrl}" target="_blank" class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-xs font-medium transition-colors" title="Descargar orientaciones">
+                            <ion-icon name="download-outline" class="text-sm"></ion-icon>
+                            Orientaciones
+                        </a>
+                    </div>`;
+                }).join('')
+                : '<div class="flex items-center text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3"><ion-icon name="information-circle" class="text-lg mr-3"></ion-icon>No desbloquea cursos directamente</div>';
+
+            // Show or hide authorization section
+            if (course.requiresAuth) {
+                ui.courseModal.authorization.classList.remove('hidden');
+            } else {
+                ui.courseModal.authorization.classList.add('hidden');
+            }
+
+            ui.courseModal.el.classList.remove('hidden');
+            setTimeout(() => {
+                ui.courseModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.courseModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+        
+        function closeCourseModal() {
+            ui.courseModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.courseModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.courseModal.el.classList.add('hidden'), 300);
+        }
+        
+        function openCredentialModal(credentialId) {
+            const credential = DB.credentials[credentialId];
+            const allStatuses = getAllCredentialStatuses();
+            const status = allStatuses[credentialId] || checkCredentialStatus(credentialId, new Map(), allStatuses);
+
+            ui.credentialModal.name.textContent = `${credential.name} - Detalles`;
+            let rulesHtml = '';
+            status.details.forEach(detail => {
+                const icon = detail.met ? '<span class="text-green-500 mr-2">&#10003;</span>' : '<span class="text-red-500 mr-2">&#10007;</span>';
+                rulesHtml += `<div>${icon}${detail.text}</div>`;
+                if (detail.subDetails && detail.subDetails.length > 0) {
+                    rulesHtml += `<ul class="list-disc list-inside pl-6 text-sm text-slate-600">`;
+                    detail.subDetails.forEach(sub => {
+                        const subIcon = sub.met ? 'text-green-500' : 'text-red-500';
+                        rulesHtml += `<li class="${subIcon}">${sub.text}</li>`;
+                    });
+                    rulesHtml += `</ul>`;
+                }
+            });
+
+            ui.credentialModal.rules.innerHTML = rulesHtml;
+            ui.credentialModal.el.classList.remove('hidden');
+            setTimeout(() => {
+                ui.credentialModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.credentialModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeCredentialModal() {
+            ui.credentialModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.credentialModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.credentialModal.el.classList.add('hidden'), 300);
+        }
+
+        function openConfirmModal() {
+            ui.confirmModal.el.classList.remove('hidden');
+            ui.confirmModal.el.classList.remove('opacity-0');
+            setTimeout(() => {
+                ui.confirmModal.el.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                ui.confirmModal.el.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeConfirmModal() {
+            ui.confirmModal.el.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+            ui.confirmModal.el.classList.add('opacity-0');
+            setTimeout(() => ui.confirmModal.el.classList.add('hidden'), 300);
+        }
+
+        function getSyllabusUrl(courseCode, courseAvailability) {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+            
+            // Check if course is offered in quarters or semesters
+            const hasQuarters = courseAvailability.quarters && courseAvailability.quarters.length > 0;
+            const hasSemesters = courseAvailability.semesters && courseAvailability.semesters.length > 0;
+            
+            let availablePeriods = [];
+            
+            if (hasQuarters) {
+                // Convert quarter numbers to period numbers (1st quarter = period 3, 2nd quarter = period 4, 3rd quarter = period 5)
+                availablePeriods = courseAvailability.quarters.map(q => q + 2);
+            } else if (hasSemesters) {
+                // Semester numbers are period numbers (1st semester = period 1, 2nd semester = period 2)
+                availablePeriods = courseAvailability.semesters;
+            } else {
+                // Default to all quarters if no availability info
+                availablePeriods = [3, 4, 5];
+            }
+            
+            // Find the most recent period where the course was offered
+            let bestYear = currentYear;
+            let bestPeriod = null;
+            
+            // Current period mapping
+            let currentPeriod;
+            if (currentMonth >= 2 && currentMonth <= 5) {
+                currentPeriod = 3; // First quarter (Feb-May)
+            } else if (currentMonth >= 6 && currentMonth <= 9) {
+                currentPeriod = 4; // Second quarter (Jun-Sep)
+            } else {
+                currentPeriod = 5; // Third quarter (Oct-Jan)
+            }
+            
+            // If we're in Jan (month 1), we're actually in the 3rd quarter of the previous academic year
+            if (currentMonth === 1) {
+                currentPeriod = 5;
+                bestYear = currentYear - 1;
+            }
+            
+            // Look for the most recent offering
+            // First, check if the course is offered in the current period
+            if (availablePeriods.includes(currentPeriod)) {
+                bestPeriod = currentPeriod;
+            } else {
+                // Find the most recent period before the current one
+                // Go backwards from current period in current year, then previous year
+                for (let yearOffset = 0; yearOffset <= 2; yearOffset++) {
+                    const checkYear = bestYear - yearOffset;
+                    
+                    // For current year, only check periods before current period
+                    // For previous years, check all periods in reverse order
+                    const periodsToCheck = yearOffset === 0 
+                        ? availablePeriods.filter(p => p < currentPeriod).sort((a, b) => b - a)
+                        : [...availablePeriods].sort((a, b) => b - a);
+                    
+                    if (periodsToCheck.length > 0) {
+                        bestYear = checkYear;
+                        bestPeriod = periodsToCheck[0];
+                        break;
+                    }
+                }
+                
+                // Fallback: if no previous offering found, use the latest period offered in current year
+                if (bestPeriod === null) {
+                    bestYear = currentYear;
+                    bestPeriod = Math.max(...availablePeriods);
+                }
+            }
+            
+            return `http://orientacionesacademicas.uned.ac.cr/documentos/${bestYear}${bestPeriod}${courseCode}.pdf`;
+        }
+
+        function getAvailabilityText(availability, compact = false) {
+            let text = [];
+            if (availability.quarters) {
+                const quarterText = availability.quarters.map(q => `${q}C`).join(', ');
+                text.push(quarterText);
+            }
+            if (availability.semesters) {
+                const semesterText = availability.semesters.map(s => `${s}S`).join(', ');
+                text.push(semesterText);
+            }
+            return text.join(' | ');
+        }
+
+        function handlePlanChange(e) {
+            console.log(`🔄 Plan change: from ${state.selectedPlanId} to ${e.target.value}`);
+            
+            // Save current program state before switching
+            if (state.selectedPlanId) {
+                console.log(`🔄 Current approved courses before switch:`, Array.from(state.approvedCourses));
+                saveState();
+            }
+            
+            // Switch to new program
+            const oldPlanId = state.selectedPlanId;
+            state.selectedPlanId = e.target.value;
+            console.log(`🔄 Switched from ${oldPlanId} to ${state.selectedPlanId}`);
+            
+            // Load state for the new program
+            loadProgramState(state.selectedPlanId);
+            
+            // Restore UI state after loading program state
+            restoreUIState();
+            
+            console.log(`🔄 Final approved courses after switch:`, Array.from(state.approvedCourses));
+            renderAll();
+        }
+
+        function handleCourseCheck(e) {
+            if (e.target.type === 'checkbox') {
+                const courseCode = e.target.dataset.courseCode;
+                if (e.target.checked) {
+                    state.approvedCourses.add(courseCode);
+                    state.globalApprovedCourses.add(courseCode);
+                } else {
+                    state.approvedCourses.delete(courseCode);
+                    state.globalApprovedCourses.delete(courseCode);
+                }
+                renderAll();
+            }
+        }
+
+        function handleTabClick(e) {
+            const tab = e.target.closest('.tab-btn');
+            if (!tab) return;
+            
+            state.activeTab = tab.dataset.tab;
+            saveState(); // Save state when tab changes
+
+            ui.tabs.forEach(t => t.classList.remove('tab-active'));
+            tab.classList.add('tab-active');
+
+            ui.tabPanes.forEach(p => p.classList.add('hidden'));
+            document.getElementById(`${state.activeTab}-tab`).classList.remove('hidden');
+        }
+        
+        function handlePeriodFilterClick(e) {
+            const btn = e.target.closest('.period-btn');
+            if (!btn) return;
+
+            state.periodFilter = btn.dataset.period;
+            saveState(); // Save state when period filter changes
+            
+            // Reset all buttons to inactive state
+            ui.periodFilterBtns.forEach(b => {
+                b.classList.remove('bg-amber-500', 'text-white');
+                b.classList.add('bg-slate-200', 'text-slate-700');
+            });
+            // Set clicked button to active state
+            btn.classList.remove('bg-slate-200', 'text-slate-700');
+            btn.classList.add('bg-amber-500', 'text-white');
+
+            renderAll();
+        }
+
+        function clearAllCourses() {
+            openConfirmModal();
+        }
+
+        function confirmReset() {
+            state.approvedCourses.clear();
+            state.globalApprovedCourses.clear();
+            state.cachedCredentialStatuses = null; // Clear cache
+            saveState(); // Save the cleared state
+            renderAll();
+            closeConfirmModal();
+        }
+
+        function handleCurriculumFilterClick(e) {
+            const checkboxCustom = e.target.closest('.checkbox-custom');
+            if (!checkboxCustom) return;
+            
+            const status = checkboxCustom.dataset.status;
+            const checkbox = checkboxCustom.closest('label').querySelector('.status-filter');
+            const checkIcon = checkboxCustom.querySelector('ion-icon');
+            
+            // Toggle the state
+            state.curriculumFilter[status] = !state.curriculumFilter[status];
+            checkbox.checked = state.curriculumFilter[status];
+            
+            // Update visual state
+            if (state.curriculumFilter[status]) {
+                checkboxCustom.style.backgroundColor = `var(--status-${status})`;
+                checkboxCustom.style.borderColor = `var(--status-${status})`;
+                checkboxCustom.classList.remove('bg-white');
+                checkIcon.classList.remove('hidden');
+                checkIcon.classList.add('text-white');
+                checkIcon.style.color = 'white';
+            } else {
+                checkboxCustom.style.backgroundColor = 'white';
+                checkboxCustom.style.borderColor = `var(--status-${status})`;
+                checkboxCustom.classList.add('bg-white');
+                checkIcon.classList.add('hidden');
+                checkIcon.classList.remove('text-white');
+                checkIcon.style.color = `var(--status-${status})`;
+            }
+            
+            // Save state and re-render curriculum map
+            saveState();
+            if (state.selectedPlanId) {
+                const plan = getPlan(state.selectedPlanId);
+                renderCurriculumMap(plan);
+            }
+        }
+
+        // Function to handle theme changes and update chart colors
+        function handleThemeChange() {
+            // Re-render the chart with updated colors
+            if (creditsChart && state.selectedPlanId) {
+                const approvedCoursesObjects = Array.from(state.approvedCourses)
+                    .map(getCourse)
+                    .filter(c => c); 
+                const approvedCredits = approvedCoursesObjects.reduce((sum, course) => sum + course.credits, 0);
+                const totalCredits = calculateTotalPlanCredits(state.selectedPlanId);
+                renderCreditsChart(approvedCredits, totalCredits - approvedCredits);
+            }
+        }
+
+        function init() {
+            loadState();
+
+            DB.programs.forEach(program => {
+                const option = document.createElement('option');
+                option.value = program.id;
+                option.textContent = `${program.name} (${program.degree})`;
+                ui.planSelect.appendChild(option);
+            });
+
+            if (state.selectedPlanId) {
+                ui.planSelect.value = state.selectedPlanId;
+            } else {
+                state.selectedPlanId = DB.programs[0].id;
+                ui.planSelect.value = state.selectedPlanId;
+            }
+
+            ui.planSelect.addEventListener('change', handlePlanChange);
+            ui.coursesChecklist.addEventListener('change', handleCourseCheck);
+            ui.appBody.addEventListener('click', handleTabClick);
+            ui.periodFilterBtns.forEach(btn => btn.addEventListener('click', handlePeriodFilterClick));
+            
+            // Handle curriculum filter checkboxes
+            document.addEventListener('click', handleCurriculumFilterClick);
+            
+            document.body.addEventListener('click', (e) => {
+                const courseCard = e.target.closest('.course-card');
+                if(courseCard) openCourseModal(courseCard.dataset.courseCode);
+
+                const credentialItem = e.target.closest('.credential-item');
+                if(credentialItem) openCredentialModal(credentialItem.dataset.credentialId);
+            });
+            
+            ui.courseModal.closeBtn.addEventListener('click', closeCourseModal);
+            ui.courseModal.el.addEventListener('click', (e) => { if(e.target === ui.courseModal.el) closeCourseModal()});
+            
+            ui.credentialModal.closeBtn.addEventListener('click', closeCredentialModal);
+            ui.credentialModal.el.addEventListener('click', (e) => { if(e.target === ui.credentialModal.el) closeCredentialModal()});
+            
+            ui.confirmModal.cancelBtn.addEventListener('click', closeConfirmModal);
+            ui.confirmModal.confirmBtn.addEventListener('click', confirmReset);
+            ui.confirmModal.el.addEventListener('click', (e) => { if(e.target === ui.confirmModal.el) closeConfirmModal()});
+
+            renderAll();
+            
+            // Restore UI state after initial render
+            restoreUIState();
+            
+            // Add reset button event listener after rendering
+            const resetButton = document.getElementById('reset-button');
+            if (resetButton) {
+                resetButton.addEventListener('click', clearAllCourses);
+            }
+            
+            // Add theme change observer for chart color updates
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && 
+                        (mutation.attributeName === 'dark' || mutation.attributeName === 'class')) {
+                        // Small delay to ensure CSS variables are updated
+                        setTimeout(handleThemeChange, 50);
+                    }
+                });
+            });
+            
+            // Observe changes to both dark attribute and class changes on the root element
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['dark', 'class']
+            });
+            
+            // Also listen for theme changes via media query (system preference changes)
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addListener(function(e) {
+                    setTimeout(handleThemeChange, 50);
+                });
+            }
+        }
+
+        init();
+    });
+</script>
