@@ -274,18 +274,21 @@ permalink: /planificador/
 
         <div id="app-body" class="hidden">
             <div class="border-b border-slate-200 mb-6">
-                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                    <button data-tab="avance" class="tab-btn tab-active flex items-center whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                        <ion-icon name="analytics" class="text-base mr-2"></ion-icon>
-                        Mi Avance
+                <nav class="-mb-px flex flex-wrap gap-1 sm:gap-6" aria-label="Tabs">
+                    <button data-tab="avance" class="tab-btn tab-active flex items-center py-3 px-2 sm:py-4 sm:px-1 border-b-2 font-medium text-xs sm:text-sm flex-1 sm:flex-initial justify-center sm:justify-start min-w-0">
+                        <ion-icon name="analytics" class="text-base mr-1 sm:mr-2 flex-shrink-0"></ion-icon>
+                        <span class="hidden sm:inline">Mi Avance</span>
+                        <span class="sm:hidden truncate">Avance</span>
                     </button>
-                    <button data-tab="malla" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
-                        <ion-icon name="grid" class="text-base mr-2"></ion-icon>
-                        Malla Curricular
+                    <button data-tab="malla" class="tab-btn flex items-center py-3 px-2 sm:py-4 sm:px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-xs sm:text-sm flex-1 sm:flex-initial justify-center sm:justify-start min-w-0">
+                        <ion-icon name="grid" class="text-base mr-1 sm:mr-2 flex-shrink-0"></ion-icon>
+                        <span class="hidden sm:inline">Malla Curricular</span>
+                        <span class="sm:hidden truncate">Malla</span>
                     </button>
-                    <button data-tab="disponibles" class="tab-btn flex items-center whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-sm">
-                        <ion-icon name="list" class="text-base mr-2"></ion-icon>
-                        Cursos Disponibles
+                    <button data-tab="disponibles" class="tab-btn flex items-center py-3 px-2 sm:py-4 sm:px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium text-xs sm:text-sm flex-1 sm:flex-initial justify-center sm:justify-start min-w-0">
+                        <ion-icon name="list" class="text-base mr-1 sm:mr-2 flex-shrink-0"></ion-icon>
+                        <span class="hidden sm:inline">Cursos Disponibles</span>
+                        <span class="sm:hidden truncate">Cursos</span>
                     </button>
                 </nav>
             </div>
