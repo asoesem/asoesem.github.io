@@ -162,7 +162,7 @@
     },
     "03219": {
       "code": "03219",
-      "name": "Herramientas básicas de investigación",
+      "name": "Herramientas Básicas de Investigación",
       "credits": 3,
       "categories": [
         "Investigación"
@@ -964,7 +964,7 @@
     },
     "05435": {
       "code": "05435",
-      "name": "Introducción a la metodología de la investigación",
+      "name": "Introducción a la Metodología de la Investigación",
       "credits": 3,
       "categories": [
         "Humanidades",
@@ -999,7 +999,7 @@
     },
     "05437": {
       "code": "05437",
-      "name": "Género y multiculturalismo en el arte contemporáneo",
+      "name": "Género y Multiculturalismo en el Arte Contemporáneo",
       "credits": 3,
       "categories": [
         "Humanidades",
@@ -1016,7 +1016,7 @@
     },
     "05438": {
       "code": "05438",
-      "name": "Arte y realidad latinoamericana",
+      "name": "Arte y Realidad Latinoamericana",
       "credits": 3,
       "categories": [
         "Humanidades",
@@ -1034,7 +1034,7 @@
     },
     "05439": {
       "code": "05439",
-      "name": "Arte y cultura popular costarricense",
+      "name": "Arte y Cultura Popular Costarricense",
       "credits": 3,
       "categories": [
         "Humanidades",
@@ -1118,6 +1118,7 @@
             "type": "courses",
             "operator": "all",
             "courses": [
+              "05442",
               "03463",
               "00709",
               "03421",
@@ -1139,7 +1140,7 @@
             "categories": [
               "Humanidades"
             ],
-            "creditsRequired": 9
+            "creditsRequired": 12
           }
         ]
       }
