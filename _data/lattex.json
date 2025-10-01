@@ -67,6 +67,7 @@
     {"name": "O lógico", "preview": "\\[\\lor\\]", "code": "\\lor, \\vee", "category": "logic", "size": 1},
     {"name": "O exclusivo", "preview": "\\[\\veebar\\]", "code": "\\veebar", "category": "logic", "size": 1},
     {"name": "No lógico", "preview": "\\[\\neg\\]", "code": "\\neg", "category": "logic", "size": 1},
+    {"name": "Consecuencia lógica", "preview": "\\[\\vdash\\]", "code": "\\vdash", "category": "logic", "size": 1},
     {"name": "Por lo tanto", "preview": "\\[\\therefore\\]", "code": "\\therefore", "category": "logic", "size": 1},
     {"name": "Porque", "preview": "\\[\\because\\]", "code": "\\because", "category": "logic", "size": 1}
   ],
