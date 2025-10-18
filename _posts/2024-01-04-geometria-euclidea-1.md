@@ -246,7 +246,7 @@ El siguiente es material adicional que los tutores hicieron disponible en la pla
 [56]:https://libreriavirtual.uned.ac.cr/LibreriaVirtual/SitioLibreriaVirtual/PageDetalleLibro.aspx?Page=2&index=U07483
 [57]:https://www.uned.ac.cr/ecen/ensenanza-de-la-matematica
 [58]:https://store.doverpublications.com/0486780201.html
-[59]:https://www.tec.ac.cr/introduccion-geometria-euclidea
+[59]:https://libros.tec.ac.cr/introduccion-a-la-geometria-euclidea-n3u3t.html
 [60]:https://unedcr-my.sharepoint.com/:b:/g/personal/jordy_morales_uned_cr/EcI_pc2dNwdKrmGuE40_EF4BAEppuYvetNf47W_sxXGH2A?e=Pwp81J
 [61]:https://unedcr-my.sharepoint.com/:b:/g/personal/jordy_morales_uned_cr/EQeZg8-MEu9KobzQqbh0l6YB8Jj96e5FjSTGqO_Umg4rzA?e=z6U3Zb
 [62]:https://unedcr-my.sharepoint.com/:b:/g/personal/jordy_morales_uned_cr/EXXzJoWNC9lMkGnWTjtiHBABc5hIqkrOb-UjRILciiDUHg?e=5tS7PQ
