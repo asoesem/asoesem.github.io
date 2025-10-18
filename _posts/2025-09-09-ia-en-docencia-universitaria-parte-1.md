@@ -6,7 +6,7 @@ date: 2025-09-09T20:00:00-06:00
 author: edalorzo
 image: '/images/137.png'
 video_embed: https://www.youtube.com/embed/OYG_9zVcV_0?si=3oJljltHeC_KyDxy
-featured: true
+featured: false
 tags: [tecnología,educación]
 ---
 
