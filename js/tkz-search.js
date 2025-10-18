@@ -7,6 +7,8 @@ class TkzSearch {
     this.loading = true;
     this.error = null;
     this.debounceTimer = null;
+    this.trackingTimer = null;
+    this.lastTrackedQuery = '';
     
     this.setupPrismTheme();
     this.loadExamples();
@@ -76,9 +78,24 @@ class TkzSearch {
     this.query = e.target.value;
     
     clearTimeout(this.debounceTimer);
+    clearTimeout(this.trackingTimer);
+    
     this.debounceTimer = setTimeout(() => {
       this.search();
+      
+      // Set up tracking timer - track search after user stops typing for 2 seconds
+      this.trackingTimer = setTimeout(() => {
+        this.trackSearchIfNeeded();
+      }, 2000);
     }, 200);
+  }
+
+  handleKeyDown(e) {
+    // Track search immediately when user presses Enter
+    if (e.key === 'Enter') {
+      clearTimeout(this.trackingTimer);
+      this.trackSearchIfNeeded();
+    }
   }
 
   search() {
@@ -95,8 +112,6 @@ class TkzSearch {
       .sort(this.bySortThenTitle.bind(this))
       .slice(0, 50);
 
-    // Track search event with Google Analytics
-    this.trackSearchEvent(this.query, this.filteredExamples.length);
 
     this.renderResults();
     
@@ -145,10 +160,11 @@ class TkzSearch {
 
     this.container.innerHTML = searchInput;
     
-    // Set up event listener
+    // Set up event listeners
     const input = this.container.querySelector('#tkz-query');
     if (input) {
       input.addEventListener('input', this.handleInput.bind(this));
+      input.addEventListener('keydown', this.handleKeyDown.bind(this));
     }
 
     this.renderResults();
@@ -314,6 +330,26 @@ class TkzSearch {
       console.error('Error copying to clipboard:', err);
       alert('No se pudo copiar el código. Intente seleccionar y copiar manualmente.');
     }
+  }
+
+  // Track search only if it's different from the last tracked query and has meaningful content
+  trackSearchIfNeeded() {
+    const trimmedQuery = this.query.trim();
+    
+    // Don't track if query is empty, too short, or same as last tracked query
+    if (!trimmedQuery || trimmedQuery.length < 2 || trimmedQuery === this.lastTrackedQuery) {
+      return;
+    }
+    
+    // Calculate current results count
+    const terms = this.normalize(trimmedQuery).split(/\s+/).filter(Boolean);
+    const resultsCount = terms.length ? this.examples
+      .filter(item => this.matchItem(item, terms))
+      .length : 0;
+    
+    // Track the search and update last tracked query
+    this.trackSearchEvent(trimmedQuery, resultsCount);
+    this.lastTrackedQuery = trimmedQuery;
   }
 
   // Google Analytics tracking methods
