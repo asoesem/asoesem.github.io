@@ -10,244 +10,279 @@ commissions: [cofoma]
 featured: true
 ---
 
-El método de factorización por completado de cuadrados es una técnica algebraica que permite reescribir ciertos polinomios en productos de binomios cuadrados perfectos. Se basa en reconocer estructuras cuadráticas y transformarlas en expresiones factorizables. En este artículo, exploraremos algunos casos distintos donde se aplica este método, junto con ejemplos detallados.
+## ¿Cuándo y por qué usar el completado de cuadrados?
 
-## Cuadrado de un binomio
+El método de factorización por completado de cuadrados es útil cuando otros métodos más directos (como factor común, diferencia de cuadrados, o factorización por agrupación) no funcionan. Es especialmente valioso para:
 
-Para entender el método de completado de cuadrados es fundamental recordar la fórmula notable del cuadrado de un binomio:
+* **Trinomios cuadráticos** que no se factorizan fácilmente por inspección
+* **Expresiones con términos de grado alto** que contienen patrones cuadráticos ocultos
+* **Preparar expresiones** para aplicar otros métodos como diferencia de cuadrados
+
+Este método nos permite "construir" un cuadrado perfecto agregando y quitando el mismo término, manteniendo la expresión igual pero revelando una estructura factorizable.
+
+## Conceptos previos necesarios
+
+Antes de comenzar, es importante recordar algunos conceptos clave:
+
+**Cuadrado perfecto**: Una expresión que resulta de elevar otra al cuadrado: 
+
+$$\begin{aligned}x^2& \\9y^2 &= (3y)^2 \\25x^4 &= (5x^2)^2\end{aligned}$$
+
+**Trinomio cuadrático perfecto**: El resultado de elevar un binomio al cuadrado:
 
 $$a^2 \pm 2ab + b^2 = (a \pm b)^2$$
 
-El completado de cuadrados busca reescribir una expresión algebraica para reflejar este patrón y de esa manera poder factorizarla como un binomio al cuadrado. 
+**La idea central**: Si tenemos una expresión que "casi" es un trinomio cuadrático perfecto, podemos completarla agregando y restando el término faltante.
 
-Se pueden dar diferentes escenarios:
+## Los tres casos principales
 
-* Cuando se tiene un [binomio con dos cuadrados perfectos](#caso-1-binomio-con-dos-cuadrados-perfectos).
-* Cuando se tiene un [trinomio con dos cuadrados perfectos](#caso-2-trinomio-con-dos-cuadrados-perfectos).
-* Cuando se tiene un [trinomio con solo su primer término al cuadrado](#caso-3-trinomio-con-solo-su-primer-término-al-cuadrado).
+Organizaremos los casos de más simple a más complejo:
 
-### Caso 1: Binomio con dos cuadrados perfectos
+* [Caso 1: Trinomio cuadrático simple](#caso-1-trinomio-cuadrático-simple)
+* [Caso 2: Binomio con dos cuadrados perfectos](#caso-2-binomio-con-dos-cuadrados-perfectos)  
+* [Caso 3: Trinomio con dos cuadrados perfectos](#caso-3-trinomio-con-dos-cuadrados-perfectos)
 
-Este caso es, probablemente, el más sencillo, porque lo que nos hace falta es el segundo término del trinomio de un binomio al cuadrado. Todo lo que hay que hacer es sumar y restar ese término a la vez. Es decir, si tenemos:
+### Caso 1: Trinomio cuadrático simple
 
-$$\begin{aligned}
-a^2 + b^2 \\
-=a^2 + b^2 + 2ab -2ab \\
-=a^2 + 2ab + b^2 -2ab \\
-=(a^2 + 2ab + b^2) -2ab \\
-=(a + b)^2 - 2ab
-\end{aligned}$$
+Este es el caso más común y útil para estudiantes. Se aplica a trinomios de la forma $$ax^2 + bx + c$$ donde el primer término ya es un cuadrado perfecto (o se puede convertir en uno).
 
-En muchos ejercicios, un vez que llegamos a este punto, suele se posible factorizar la expresión resultante como una diferencia de cuadrados. Por ejemplo
+**La estrategia**: 
 
-$$\begin{aligned}
-(a + b)^2 - 2ab \\
-=\left[(a+b) + \sqrt{2ab}\right]\left[(a+b) - \sqrt{2ab}\right] \\
-=(a + b + \sqrt{2ab})(a + b - \sqrt{2ab})
-\end{aligned}$$
+1. Identificar el primer término como un cuadrado: $$(px)^2$$
+2. Usar el segundo término para determinar qué debería ser el tercer término en un trinomio cuadrático perfecto
+3. Agregar y restar ese "término faltante"
+4. Factorizar como $$(px + q)^2 - r$$ y continuar si es posible
 
-#### Ejemplo 1: 
+#### Ejemplo 1A (Simple): 
 
-Factorizar:
+Factorizar: $$x^2 + 6x + 5$$
 
-$$x^4 + 4$$
+##### Paso 1: Reconocer el primer término como cuadrado
+$$(x)^2 + 6x + 5$$
 
-##### Paso 1: Reconocer el patrón del binomio:
+Aquí $$p = 1$$, entonces el trinomio cuadrático perfecto sería $$(x + q)^2 = x^2 + 2qx + q^2$$
 
-$$(x^2)^2 + (2)^2$$
+##### Paso 2: Determinar qué debiera ser $$q$$
+Comparando los dos segundos términos $$6x = 2qx$$, obtenemos $$q = 3$$
 
-##### Paso 2: Calcular el segundo término del trinomio:
+Entonces el trinomio cuadrático perfecto sería: $$x^2 + 6x + 9 = (x + 3)^2$$
 
-Recordemos que el segundo término es $$2ab$$, es decir, dos veces la raíz del primer término por la raíz del segundo. Luego, en nuestro ejemplo, la raíz del primer término es $$x^2$$ y la del segundo es $$2$$, entonces: 
+##### Paso 3: Completar el cuadrado
 
-$$(2)(x^2)(2) = 4x^2$$
-
-
-##### Paso 3: Sumar y restar el nuevo término:
-
-Al sumar y restar el nuevo término, la expresión algebraica se mantiene igual, pero abre la posibilidad de factorizar la expresión resultante.
+Seguidamente, sumamos y restamos el tercer término para mantener el mismo valor polinomial original:
 
 $$\begin{aligned}
-(x^2)^2 + (2)^2 + 4x^2 - 4x^2 \\
-=x^4 + 4 + 4x^2 - 4x^2        \\
-=x^4 + 4x^2 + 4 - 4x^2    \\
+x^2 + 6x + 5 &= x^2 + 6x + 9 - 9 + 5 \\
+&= (x^2 + 6x + 9) - 4 \\
+&= (x + 3)^2 - 4
 \end{aligned}$$
 
-##### Paso 4: Factorizar usando suma de binomio al cuadrado:
-
+##### Paso 4: Factorizar como diferencia de cuadrados
 $$\begin{aligned}
-=(x^4 + 4x^2 + 4) - 4x^2   \\
-=(x^2 + 2)^2 - 4x^2       \\
+(x + 3)^2 - 4 &= (x + 3)^2 - 2^2 \\
+&= [(x + 3) + 2][(x + 3) - 2] \\
+&= (x + 5)(x + 1)
 \end{aligned}$$
 
-##### Paso 5: Completar la factorización
+##### Verificación:
+$$(x + 5)(x + 1) = x^2 + x + 5x + 5 = x^2 + 6x + 5$$ ✓
 
-En este caso, la expresión se puede factorizar aun más mediante la diferencia de cuadrados:
+#### Ejemplo 1B (Más complejo): 
 
+Factorizar: $$4x^2 + 4x - 15$$
+
+##### Paso 1: Reconocer el primer término como cuadrado
+$$4x^2 = (2x)^2$$, entonces tenemos $$(2x)^2 + 4x - 15$$
+
+##### Paso 2: Determinar el término faltante
+Para $$(2x + q)^2 = 4x^2 + 4qx + q^2$$
+
+Comparando $$4x = 4qx$$, obtenemos $$q = 1$$
+
+El trinomio perfecto sería: $$4x^2 + 4x + 1 = (2x + 1)^2$$
+
+##### Paso 3: Completar el cuadrado
 $$\begin{aligned}
-(x^2 + 2)^2 - 4x^2       \\
-=\left[(x^2 + 2) - 2x\right]\left[(x^2 + 2) + 2x\right]\\
-=(x^2 -2x + 2)(x^2 +2x+2)
+4x^2 + 4x - 15 &= 4x^2 + 4x + 1 - 1 - 15 \\
+&= (4x^2 + 4x + 1) - 16 \\
+&= (2x + 1)^2 - 16
 \end{aligned}$$
 
-### Caso 2: Trinomio con dos cuadrados perfectos
-
-Este es un caso en donde tenemos un trinomio en el que el primer y tercer términos son cuadrados, pero el segundo es incompatible con la fórmula notable del binomio al cuadrado.
-
-Por ejemplo:
-
-$$a^2 + ab + b^2$$
-
-En este caso, la estrategia consiste en considerar que podemos calcular un nuevo segundo término que sumamos y restamos del trinomio al mismo tiempo:
-
+##### Paso 4: Factorizar como diferencia de cuadrados
 $$\begin{aligned}
-a^2 + ab + b^2 \\
-= a^2 + ab + b^2 + 2ab - 2ab \\
-= a^2 + 2ab + b^2 + ab - 2ab \\
-=(a^2 + 2ab + b^2) + ab - 2ab \\
-=(a + b)^2 - ab \\
+(2x + 1)^2 - 16 &= (2x + 1)^2 - 4^2 \\
+&= [(2x + 1) + 4][(2x + 1) - 4] \\
+&= (2x + 5)(2x - 3)
 \end{aligned}$$
 
-En este punto, algunas veces suele ser posible aplicar otros métodos de factorización para completar el trabajo. Por ejemplo, la diferencia de cuadrados:
+##### Verificación:
+$$(2x + 5)(2x - 3) = 4x^2 - 6x + 10x - 15 = 4x^2 + 4x - 15$$ ✓
 
+### Caso 2: Binomio con dos cuadrados perfectos
+
+Este caso aparece cuando tenemos solo dos términos que son cuadrados perfectos, como $$a^2 + b^2$$. Para factorizar, necesitamos "crear" el término medio de un trinomio cuadrático perfecto.
+
+**La estrategia**: 
+1. Identificar los dos cuadrados perfectos: $$a^2$$ y $$b^2$$
+2. Calcular el término medio que necesitaríamos: $$2ab$$
+3. Sumar y restar ese término: $$a^2 + b^2 + 2ab - 2ab$$
+4. Reorganizar: $$(a^2 + 2ab + b^2) - 2ab = (a + b)^2 - 2ab$$
+5. Factorizar si es posible (frecuentemente como diferencia de cuadrados)
+
+#### Ejemplo 2A (Simple): 
+
+Factorizar: $$x^2 + 1$$
+
+##### Paso 1: Identificar los cuadrados perfectos
+$$x^2 + 1^2$$, donde $$a = x$$ y $$b = 1$$
+
+##### Paso 2: Calcular el término medio necesario
+Para $$(x + 1)^2$$, necesitaríamos: $$2(x)(1) = 2x$$
+
+##### Paso 3: Sumar y restar el término medio
 $$\begin{aligned}
-(a + b)^2 - ab \\
-=\left[(a+b) + \sqrt{ab}\right]\left[(a+b) - \sqrt{ab}\right] \\
-=(a + b + \sqrt{ab})(a + b - \sqrt{ab})\\
+x^2 + 1 &= x^2 + 1 + 2x - 2x \\
+&= (x^2 + 2x + 1) - 2x \\
+&= (x + 1)^2 - 2x
 \end{aligned}$$
 
-#### Ejemplo 2: 
+**Nota**: En este ejemplo, $$(x + 1)^2 - 2x$$ no se puede factorizar más sobre los reales, pero el método nos da una forma alternativa de escribir la expresión.
 
-Factorizar:
+#### Ejemplo 2B (Más complejo): 
 
-$$x^8 + x^4y^4 + y^8$$
+Factorizar: $$x^4 + 4$$
 
-##### Paso 1: Reconocer el patrón del trinomio:
+##### Paso 1: Identificar los cuadrados perfectos
+$$(x^2)^2 + 2^2$$
 
-Podemos ver que dos de los términos son cuadrados perfectos:
+##### Paso 2: Calcular el término medio necesario
+Para $$(x^2 + 2)^2$$, necesitaríamos: $$2(x^2)(2) = 4x^2$$
 
-$$(x^4)^2 + x^4y^4 + (y^4)^2$$
-
-##### Paso 2: Calcular el segundo término del trinomio:
-
-Recordemos que el segundo término es dos veces la raíz del primer término ($$x^4$$) por la raíz del tercero ($$y^4$$): 
-
-$$2(x^4)(y^4)$$
-
-##### Paso 3: Sumar y restar el nuevo término:
-
-Al sumar y restar el nuevo término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión resultante.
-
+##### Paso 3: Sumar y restar el término medio
 $$\begin{aligned}
-(x^4)^2 + x^4y^4 + (y^4)^2 + 2x^4y^4 - 2x^4y^4\\
-=x^8 + 2x^4y^4 + y^8 + x^4y^4 - 2x^4y^4\\
-=(x^8 + 2x^4y^4 + y^8) + x^4y^4 - 2x^4y^4\\
-=(x^8 + 2x^4y^4 + y^8) - x^4y^4\\
+x^4 + 4 &= x^4 + 4 + 4x^2 - 4x^2 \\
+&= (x^4 + 4x^2 + 4) - 4x^2 \\
+&= (x^2 + 2)^2 - (2x)^2
 \end{aligned}$$
 
-##### Paso 4: Factorizar usando suma de binomio al cuadrado:
-
+##### Paso 4: Factorizar como diferencia de cuadrados
 $$\begin{aligned}
-(x^8 + 2x^4y^4 + y^8) - x^4y^4\\
-=(x^4 + y^4)^2 - x^4y^4\\
+(x^2 + 2)^2 - (2x)^2 &= [(x^2 + 2) + 2x][(x^2 + 2) - 2x] \\
+&= (x^2 + 2x + 2)(x^2 - 2x + 2)
 \end{aligned}$$
 
-##### Paso 5: Completar la factorización
+##### Verificación:
+$$(x^2 + 2x + 2)(x^2 - 2x + 2) = x^4 + 4$$ ✓
 
-En este caso la expresión se puede factorizar aun más mediante la diferencia de cuadrados:
+(Al expandir: $$x^4 - 2x^3 + 2x^2 + 2x^3 - 4x^2 + 4x + 2x^2 - 4x + 4 = x^4 + 4$$)
 
+### Caso 3: Trinomio con dos cuadrados perfectos
+
+Este caso aparece cuando tenemos un trinomio donde el primer y tercer términos son cuadrados perfectos, pero el segundo término no coincide con lo que necesitaríamos para un trinomio cuadrático perfecto.
+
+**La estrategia**: 
+1. Identificar los dos cuadrados perfectos: $$a^2$$ y $$b^2$$
+2. Calcular qué término medio necesitaríamos para $$(a \pm b)^2$$: $$2ab$$
+3. Sumar y restar ese término para completar el cuadrado
+4. Reorganizar como $$(a \pm b)^2 \pm \text{término restante}$$
+5. Factorizar la expresión resultante si es posible
+
+#### Ejemplo 3A (Simple): 
+
+Factorizar: $$x^2 + xy + y^2$$
+
+##### Paso 1: Identificar los cuadrados perfectos
+$$x^2$$ y $$y^2$$ son cuadrados perfectos
+
+##### Paso 2: Determinar el término medio para un trinomio perfecto
+Para $$(x + y)^2 = x^2 + 2xy + y^2$$, necesitaríamos $$2xy$$ como término medio
+
+Pero tenemos $$xy$$, así que nos falta $$xy$$ adicional
+
+##### Paso 3: Sumar y restar el término faltante
 $$\begin{aligned}
-(x^4 + y^4)^2 - x^4y^4\\
-=\left[(x^4 + y^4) + x^2y^2\right]\left[(x^4 + y^4) - x^2y^2\right]\\
-=(x^4 + y^4 + x^2y^2)(x^4 + y^4 - x^2y^2)\\
-=(x^4 + x^2y^2 + y^4)(x^4 - x^2y^2 + y^4)
+x^2 + xy + y^2 &= x^2 + xy + y^2 + xy - xy \\
+&= x^2 + 2xy + y^2 - xy \\
+&= (x + y)^2 - xy
 \end{aligned}$$
 
-### Caso 3: Trinomio con solo su primer término al cuadrado
+**Nota**: Esta expresión generalmente no se puede factorizar más sobre los reales, pero el método nos da una forma útil de reescribirla.
 
-Este caso aplica para expresiones de la forma $$(ax)^{2n} + bx^{n} + c$$. Es decir, casos en donde solo el primer término es un cuadrado.
+#### Ejemplo 3B (Más complejo): 
 
-En la expresión $$(ax)^{2n} + bx^{n} + c$$ podemos ver que $$(ax)^n$$ es el primer término de un binomio y se puede derivar su segundo término a partir de $$bx^{n}$$, porque sabemos que, dado un binomio al cuadrado, $$bx^{n}$$ es el doble producto de su primer término por el segundo. A fin de encontrar el segundo término del binomio debemos dividir $$bx^{n}$$ entre dos veces el primer término:
+Factorizar: $$x^4 + x^2y^2 + y^4$$
 
-$$\frac{bx^n}{2a^nx^n} = \frac{b}{2a^n}$$
+##### Paso 1: Identificar los cuadrados perfectos
+$$(x^2)^2$$ y $$(y^2)^2$$ son cuadrados perfectos
 
-Luego, el tercer término del trinomio tendría que ser: 
+##### Paso 2: Determinar el término medio necesario
+Para $$(x^2 + y^2)^2 = x^4 + 2x^2y^2 + y^4$$, necesitaríamos $$2x^2y^2$$
 
-$$\left(\frac{b}{2a^n}\right)^2 = \frac{b^2}{4a^{2n}}$$
+Tenemos $$x^2y^2$$, así que nos falta $$x^2y^2$$ adicional
 
-El cuadrado del binomio y su respectivo trinomio serían de la siguiente forma:
-
+##### Paso 3: Sumar y restar el término faltante
 $$\begin{aligned}
-\left[(ax)^n+\frac{b}{2a^n}\right]^2 = (ax)^{2n} + (\cancel{2})(\cancel{a^n}x^n)\left(\frac{b}{\cancel{2}\cancel{a^n}}\right) + \frac{b^2}{4a^{2n}} \\
-= (ax)^{2n} + bx^n + \frac{b^2}{4a^{2n}}
+x^4 + x^2y^2 + y^4 &= x^4 + x^2y^2 + y^4 + x^2y^2 - x^2y^2 \\
+&= x^4 + 2x^2y^2 + y^4 - x^2y^2 \\
+&= (x^2 + y^2)^2 - x^2y^2 \\
+&= (x^2 + y^2)^2 - (xy)^2
 \end{aligned}$$
 
-Con este conocimiento podemos reformular nuestro trinomio original sumando y restando ese tercer término que hemos descubierto:
-
-
+##### Paso 4: Factorizar como diferencia de cuadrados
 $$\begin{aligned}
-(ax)^{2n} + bx^n + c + \frac{b^2}{4a^{2n}} - \frac{b^2}{4a^{2n}} \\
-=\left[(ax)^{2n} + bx^n + \frac{b^2}{4a^{2n}}\right] + c - \frac{b^2}{4a^{2n}}\\
-=\left[(ax)^{n} + \frac{b}{2a^n}\right]^2 + c - \frac{b^2}{4a^{2n}}
+(x^2 + y^2)^2 - (xy)^2 &= [(x^2 + y^2) + xy][(x^2 + y^2) - xy] \\
+&= (x^2 + xy + y^2)(x^2 - xy + y^2)
 \end{aligned}$$
 
-Llegados a este punto, muchos ejercicios de factorización permiten factorizar la expresión resultante usando otros métodos adicionales.
+##### Verificación:
+$$(x^2 + xy + y^2)(x^2 - xy + y^2) = x^4 + x^2y^2 + y^4$$ ✓
 
+## Errores comunes a evitar
 
-#### Ejemplo 3: 
+### 1. Olvidar restar el término que se suma
+**Error**: $$x^2 + 1 = x^2 + 2x + 1 = (x + 1)^2$$
 
-Factorizar:
+**Correcto**: $$x^2 + 1 = x^2 + 2x + 1 - 2x = (x + 1)^2 - 2x$$
 
-$$4x^2 + 4x - 15$$
+### 2. Errores en el cálculo del término medio
+**Error**: Para completar $$(2x)^2 + 4x$$, usar $$2(2x)(1) = 4x$$ como término medio
 
-##### Paso 1: Reconocer el patrón del trinomio:
+**Correcto**: El término medio de $$(2x + q)^2$$ es $$2(2x)(q) = 4qx$$. Si tenemos $$4x$$, entonces $$q = 1$$
 
-Podemos ver que el primer término es un cuadrado:
+### 3. No verificar la respuesta final
+Siempre expande el resultado final para verificar que coincida con la expresión original.
 
-$$(2x)^2 + 4x - 15$$
+## Ejercicios de práctica
 
-##### Paso 2: Calcular un nuevo tercer término del trinomio a partir del segundo:
+**Nivel Básico:**
+1. $$x^2 + 4x + 1$$
+2. $$x^2 + 8x + 7$$
+3. $$x^2 + 9$$
 
-El nuevo tercer término será:
+**Nivel Intermedio:**
+4. $$4x^2 + 8x + 1$$
+5. $$x^2 + 2xy + 2y^2$$
+6. $$9x^2 + 6x - 8$$
 
-$$\frac{b^2}{4a^{2n}} = \frac{4^2}{4 \cdot 2^2} = \frac{16}{16} = 1$$
+**Nivel Avanzado:**
+7. $$x^4 + 2x^2 + 5$$
+8. $$x^4 + x^2y^2 + 4y^4$$
 
-##### Paso 3: Sumar y restar el nuevo término:
+## Resumen y conclusión
 
-Al sumar y restar el nuevo término la expresión se mantiene igual, pero abre la posibilidad de factorizar la expresión resultante.
+El completado de cuadrados es una técnica fundamental que:
 
-$$\begin{aligned}
-(2x)^2 + 4x + 1 - 1 - 15\\
-(4x^2 + 4x + 1) - 16\\
-\end{aligned}$$
+* ✓ **Funciona cuando otros métodos fallan**
+* ✓ **Se aplica en tres casos principales**: trinomios cuadráticos simples, binomios con cuadrados perfectos, y trinomios con dos cuadrados perfectos
+* ✓ **Requiere práctica** para dominar el cálculo de términos medios
+* ✓ **Siempre debe verificarse** expandiendo el resultado
 
-##### Paso 4: Factorizar usando suma de binomio al cuadrado:
+**Progreso sugerido de aprendizaje:**
+1. Domina el [Caso 1](#caso-1-trinomio-cuadrático-simple) con trinomios cuadráticos simples
+2. Practica el [Caso 2](#caso-2-binomio-con-dos-cuadrados-perfectos) con binomios
+3. Aborda el [Caso 3](#caso-3-trinomio-con-dos-cuadrados-perfectos) con trinomios complejos
 
-$$\begin{aligned}
-(4x^2 + 4x + 1) - 16\\
-=(2x + 1)^2 - 16\\
-\end{aligned}$$
-
-##### Paso 5: Completar la factorización
-
-En este caso la expresión se puede factorizar aun más mediante la diferencia de cuadrados:
-
-$$\begin{aligned}
-(2x + 1)^2 - 16\\
-=\left[(2x + 1) + 4\right]\left[(2x + 1) - 4\right]\\
-=\left[2x + 1 + 4\right]\left[2x + 1 - 4\right]\\
-=(2x+5)(2x-3)\\
-\end{aligned}$$
-
-## Conclusión
-
-El método de completado de cuadrados es una herramienta poderosa para factorizar polinomios de diversas estructuras. Se puede aplicar cuando otros métodos más sencillos han fallado, particulamente en tres situaciones clave:
-
-* Cuando se tiene un [binomio con dos cuadrados perfectos](#caso-1-binomio-con-dos-cuadrados-perfectos).
-* Cuando se tiene un [trinomio con dos cuadrados perfectos](#caso-2-trinomio-con-dos-cuadrados-perfectos).
-* Cuando se tien un [trinomio con solo su primer término al cuadrado](#caso-3-trinomio-con-solo-su-primer-término-al-cuadrado).
-
-Con la práctica, el completado de cuadrados se vuelve una herramienta útil no solo en factorización, sino también en ecuaciones cuadráticas y cálculo.
+Con la práctica, esta técnica se vuelve invaluable no solo para factorización, sino también para resolver ecuaciones cuadráticas y problemas de cálculo.
 
 ## Otros Métodos de Factorización:
 
