@@ -108,9 +108,8 @@ Para $$ax^2 + bx + c$$:
 1. Calcula $$ac$$ (producto del primer y último coeficiente)
 2. Busca dos números $$m$$ y $$n$$ tales que:
 
-$$m \times n = ac$$
-
-$$m + n = b$$
+* Producto: $$m \times n = ac$$
+* Suma: $$m + n = b$$
 
 3. Reescribe el término medio y factoriza por agrupación
 
