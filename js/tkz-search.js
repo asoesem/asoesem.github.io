@@ -95,6 +95,9 @@ class TkzSearch {
       .sort(this.bySortThenTitle.bind(this))
       .slice(0, 50);
 
+    // Track search event with Google Analytics
+    this.trackSearchEvent(this.query, this.filteredExamples.length);
+
     this.renderResults();
     
     setTimeout(() => {
@@ -208,6 +211,9 @@ class TkzSearch {
     const item = this.examples.find(ex => ex.id === itemId);
     if (!item) return;
 
+    // Track popup view event with Google Analytics
+    this.trackPopupViewEvent(item.title, itemId);
+
     const escapedLatex = item.latex
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
@@ -289,6 +295,9 @@ class TkzSearch {
     try {
       await navigator.clipboard.writeText(item.latex);
       
+      // Track copy event with Google Analytics
+      this.trackCopyEvent(item.title, itemId);
+      
       // Show feedback
       const button = document.querySelector(`button[onclick="tkzSearchInstance.copyToClipboard('${itemId}')"]`);
       if (button) {
@@ -304,6 +313,64 @@ class TkzSearch {
     } catch (err) {
       console.error('Error copying to clipboard:', err);
       alert('No se pudo copiar el código. Intente seleccionar y copiar manualmente.');
+    }
+  }
+
+  // Google Analytics tracking methods
+  trackSearchEvent(searchTerm, resultsCount) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'search', {
+        search_term: searchTerm,
+        event_category: 'tkz_euclide_search',
+        event_label: searchTerm,
+        custom_parameter_1: resultsCount,
+        page_title: 'Geometría Euclídea con LaTeX'
+      });
+      
+      // Also track as a custom event for easier filtering
+      gtag('event', 'tkz_search_performed', {
+        event_category: 'engagement',
+        event_label: searchTerm,
+        value: resultsCount
+      });
+    }
+  }
+
+  trackPopupViewEvent(exampleTitle, exampleId) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'view_item', {
+        event_category: 'tkz_euclide_examples',
+        event_label: exampleTitle,
+        item_id: exampleId,
+        item_name: exampleTitle,
+        content_type: 'latex_example'
+      });
+      
+      // Also track as a custom event
+      gtag('event', 'tkz_example_viewed', {
+        event_category: 'content_interaction',
+        event_label: exampleTitle,
+        custom_parameter_1: exampleId
+      });
+    }
+  }
+
+  trackCopyEvent(exampleTitle, exampleId) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'select_content', {
+        event_category: 'tkz_euclide_examples',
+        event_label: exampleTitle,
+        content_type: 'latex_code',
+        item_id: exampleId
+      });
+      
+      // Also track as a custom event
+      gtag('event', 'tkz_code_copied', {
+        event_category: 'content_interaction',
+        event_label: exampleTitle,
+        custom_parameter_1: exampleId,
+        value: 1
+      });
     }
   }
 }
