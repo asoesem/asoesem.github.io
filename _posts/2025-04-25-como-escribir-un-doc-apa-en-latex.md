@@ -13,6 +13,8 @@ toc: true
 
 Como parte de las herramientas para facilitar su vida académica, te traemos esta guía sobre cómo utilizar LaTeX para formatear tus trabajos según las normas APA 7. Si bien la idea es complementar un taller que tendremos próximamente, este post les servirá como referencia rápida cuando necesiten escribir sus documentos.
 
+[Descarga el documento plantilla][0] que te servirá de guía al aplicar los conceptos de este tutorial.
+
 LaTeX es una herramienta poderosa para la escritura académica, especialmente cuando se trata de formatear documentos complejos y manejar referencias. Afortunadamente, existe una clase específica que nos facilita aplicar el formato APA 7.
 
 ## Clase de Documento APA 7
