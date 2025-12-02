@@ -1100,7 +1100,7 @@ Se utiliza para referenciar informes técnicos, informes de investigación, info
 
 ```bibtex
 @report{CGR,
-  title = {Los servicios educativos del MEP ante un punto de inflexión: Habilitando la transformación de cara al futuro},
+  title = {Los servicios educativos del MEP ante un punto de inflexión},
   author = {CGR},
   year = {2024},
   month = {8},
