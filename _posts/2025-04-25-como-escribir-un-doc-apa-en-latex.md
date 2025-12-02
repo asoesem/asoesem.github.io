@@ -1350,7 +1350,7 @@ Cuando estés listo(a) para iniciar un nuevo proyecto APA usando LaTeX puedes in
 * [Documentación de BibLaTeX][3]
 * [Guía de Usuario de BibTeX][4]
 
-[0]: https://www.overleaf.com/project/680c4d23e37f1054545afa6f
+[0]: https://www.overleaf.com/read/zbrjdtcbvbgh#6d1f5e
 [1]: https://mirrors.ucr.ac.cr/CTAN/info/lshort/spanish/lshort-letter.pdf
 [2]: https://www.overleaf.com/learn/latex/Questions/Which_OTF_or_TTF_fonts_are_supported_via_fontspec%3F
 [3]: https://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
