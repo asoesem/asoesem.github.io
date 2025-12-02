@@ -1350,7 +1350,7 @@ Cuando estés listo(a) para iniciar un nuevo proyecto APA usando LaTeX puedes in
 * [Descargar esta guía][5]
 * [Plantilla de Proyecto APA][0]
 * [La Introducción No Tan Corta de LaTeX][1]
-* [Lista de Fuentes Soportadas por Overlead][2]
+* [Lista de Fuentes Soportadas por Overleaf][2]
 * [Documentación de BibLaTeX][3]
 * [Guía de Usuario de BibTeX][4]
 
