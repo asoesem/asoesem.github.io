@@ -363,7 +363,7 @@ Este es el nivel de encabezado más bajo que generalmente se utiliza en document
 
 ## Enumeraciones y Viñetas
 
-Los documentos de la clase `apa7` ofrecen algunos comandos especiales para crear enumeraciones y viñetas.
+Los documentos de la clase `apa7` ofrecen algunos comandos especiales para crear enumeraciones y viñetas. Estos comandos están diseñados para respetar las normas APA y son preferibles a los entornos estandard como `enumerate` y `itemize`, que si se usan, podrían romper el formato APA.
 
 ### Serie
 
@@ -528,11 +528,13 @@ En el modo estudiante (`stu`) y en el modo manuscrito (`man`) las tablas y figur
 Al definir una tabla se le puede colocar una etiqueta que luego se puede utilizar para referenciarla. Por ejemplo, se puede etiquetar de la siguiente manera:
 
 ```tex
-\caption{Título de tabla}
-\label{tab:NombreReferencia}
-\begin{tabular}{ll}
-    ...
-\end{tabular}
+\begin{table}
+   \caption{Título de tabla}
+   \label{tab:NombreReferencia}
+   \begin{tabular}{ll}
+      ...
+   \end{tabular}
+\end{table}
 ```
 
 Donde `\label{tab:NombreTabla}` define una etiqueta llamada `NombreTabla` para la tabla. 
