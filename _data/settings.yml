@@ -28,13 +28,13 @@ menu_settings:
     - title: "LaTeX"
       submenu:
       - url: "/comandos-latex"
-        title: "Matemáticas"
+        title: "Comandos LaTeX"
       - url: "/articulos/latex-en-foro-de-consultas"
-        title: "Foros"
+        title: "LaTeX en Foros"
       - url: "/articulos/como-escribir-un-doc-apa-en-latex"
-        title: "APA 7"
+        title: "LaTeX con APA 7"
       - url: "/articulos/geometria-euclidea-con-latex"
-        title: "Geometría"  
+        title: "LaTeX para Geometría"  
     - title: "Comisiones"
       submenu:
       - url: "/cofoma/"
