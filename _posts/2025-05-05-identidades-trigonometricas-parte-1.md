@@ -222,6 +222,68 @@ $$
 
 [Regresar al índice](#toc)
 
+
+### Tangente de un Ángulo Doble
+
+Finalmente consideremos el caso del coseno de una tangente de ángulo doble:
+
+$$\begin{align} \begin{split} \label{eq:tandoble}
+\tan(2\vartheta) = \frac{\sin(2\vartheta)}{\cos(2\vartheta)} = \frac{2\sin \vartheta \cos \vartheta}{\cos^2 \vartheta - \sin^2 \vartheta} \quad \text{[Por $\eqref{eq:senodoble}$ y $\eqref{eq:cosenodoble}$]} \\[3mm]
+= \frac{2\sin \vartheta \cos \vartheta}{\cos^2 \vartheta - \sin^2 \vartheta} \cdot \frac{1/\cos^2(\vartheta)}{1/\cos^2(\vartheta)} \\[3mm]
+= \frac{2\sin \vartheta \cos \vartheta}{\cos^2(\vartheta)} \div \frac{\cos^2 \vartheta - \sin^2 \vartheta}{\cos^2(\vartheta)} = \frac{2\sin \vartheta}{\cos \vartheta} \div \left(\frac{\cos^2 \vartheta}{\cos^2 \vartheta} - \frac{\sin^2 \vartheta}{\cos^2 \vartheta}\right) \\[3mm]
+\boxed{\frac{2\tan \vartheta}{1-\tan^2 \vartheta}}
+\end{split} \end{align}$$
+
+
+[Regresar al índice](#toc)
+
+
+## Identidades de Reducción de Potencia
+
+Las identidades de reducción de potencia, son comunes en cálculo para integrar funciones trigonométricas pares, simplificar expresiones trigonométricas complejas y convertir potencias de funciones a ángulos dobles. 
+
+### Reducción del Cuadrado del Seno
+
+Despejando $$\sin^2 \vartheta$$ en $$\eqref{eq:cosdoble3}$$ obtenemos:
+
+$$\begin{gather} \begin{split} \label{eq:reduxpsin}
+\cos(2\vartheta) = 1 - 2 \sin^2 \vartheta \\
+2 \sin^2 \vartheta = 1 - \cos(2\vartheta) \\[3mm]
+\boxed{\sin^2 \vartheta = \frac{1 - \cos(2\vartheta)}{2}}
+\end{split} \end{gather}$$
+
+### Reducción del Cuadrado de Coseno
+
+Despejando $$\cos^2 \vartheta$$ en $$\eqref{eq:cosdoble2}$$ obtenemos:
+
+$$\begin{gather} \begin{split} \label{eq:reduxpcos}
+2\cos^2 \vartheta - 1 = \cos(2\vartheta) \\
+2\cos^2 \vartheta = 1 + \cos(2\vartheta) \\[3mm]
+\boxed{\cos^2 \vartheta = \frac{1 + \cos(2\vartheta)}{2}} \\
+\end{split} \end{gather}$$
+
+
+### Reducción del Cuadrado del Producto de Seno por Coseno
+
+Primero, debemos recordar que segun $$\eqref{eq:senodoble}$$:
+
+$$\begin{gather}\begin{split}
+2 \sin \vartheta \cos \vartheta = \sin(2\vartheta) \\
+\boxed{\sin \vartheta \cos \vartheta = \frac{\sin(2\vartheta)}{2}}
+\end{split}\end{gather}$$
+
+Luego, podemos derivar una identidad para $$\sin^2 \vartheta \cos^2 \vartheta$$ de la siguienta manera:
+
+$$\begin{align}\begin{split}
+\sin^2 \vartheta \cos^2 \vartheta &= (\sin \vartheta \cos \vartheta)^2 \\
+&= \left(\frac{\sin(2\vartheta)}{2}\right)^2 = \frac{\sin^2(2\vartheta)}{4} = \sin^2(2\vartheta) \cdot \frac{1}{4} \\[4mm]
+&= \frac{1-\cos(2(2\vartheta))}{2} \cdot \frac{1}{4} \quad \text{[Por $\eqref{eq:reduxpsin}$]} \\[4mm]
+&= \boxed{\frac{1-\cos(4\vartheta)}{8}}
+\end{split}\end{align}$$
+
+
+[Regresar al índice](#toc)
+
 ## Identidades de Ángulo Medio
 
 En este caso, tenemos un ángulo que es la mitad de otro. Curiosamente, estas identidades se pueden derivar de las de ángulo doble, como se muestra a continuación.
@@ -384,8 +446,12 @@ $$
 |                                   | $$\tan(\vartheta\pm\varphi)=\dfrac{\tan\vartheta\pm\tan\varphi}{1\mp\tan\vartheta\tan\varphi}$$                                                                         |
 | **Ángulo doble**                  | $$\sin2\vartheta = 2\sin\vartheta\cos\vartheta \quad = (\sin \vartheta + \cos \vartheta)^2-1 \quad = \dfrac{2\tan \vartheta}{\tan^2 \vartheta +1}$$                     |
 |                                   | $$\cos2\vartheta = \cos^2\vartheta - \sin^2\vartheta \quad = 2\cos^2 \vartheta -1 \quad = 1-2\sin^2 \vartheta \quad = \dfrac{1-\tan^2 \vartheta}{1+\tan^2 \vartheta} $$ |
-| **Ángulo medio**                  | $$\sin\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1-\cos\vartheta}{2}},\quad \cos\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1+\cos\vartheta}{2}}$$                                       |
-|                                   | $$\tan\dfrac{\vartheta}{2} = \dfrac{1-\cos\vartheta}{\sin\vartheta} \quad = \dfrac{\sin \vartheta}{1-\cos \vartheta}$$                                                            |
+|                                   | $$\tan(2\vartheta) = \dfrac{2\tan \vartheta}{1-\tan^2 \vartheta}$$                                                                                                      |
+| **Ángulo medio**                  | $$\sin\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1-\cos\vartheta}{2}},\quad \cos\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1+\cos\vartheta}{2}}$$                               |
+|                                   | $$\tan\dfrac{\vartheta}{2} = \dfrac{1-\cos\vartheta}{\sin\vartheta} \quad = \dfrac{\sin \vartheta}{1-\cos \vartheta}$$                                                  |
+| **Reducción de Potencia**         | $$\sin^2 \vartheta = \dfrac{1-\cos(2\vartheta)}{2}$$                                                                                                                    |
+|                                   | $$\cos^2 \vartheta = \dfrac{1+\cos(2\vartheta)}{2}$$                                                                                                                    |
+|                                   | $$\sin^2 \vartheta \cos^2 \vartheta = \dfrac{1-\cos(4\vartheta)}{8}$$                                                                                                   |
 
 [Regresar al índice](#toc)
 
