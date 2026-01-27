@@ -32,7 +32,7 @@ $$
 \end{alignat}
 $$
 
-Es decir, en el círculo unitario, el cateto horizontal ($$x$$) siempre será igual al coseno del ángulo que subtiende con la hipotenusa; y el cateto vertical ($$y$$) siempre será igual al seno del ángulo que subtiende con la hipotenusa.
+Es decir, en el triángululo $$\mathrm{\triangle{OQP}}$$ que se forma dentro del círculo unitario, la longitud  del cateto horizontal ($$x$$) siempre será igual al coseno del ángulo que subtiende con la hipotenusa; y la longitud del cateto vertical ($$y$$) siempre será igual al seno del ángulo que subtiende con la hipotenusa.
 
 ## Identidades Pitagóricas
 
@@ -225,7 +225,7 @@ $$
 
 ### Tangente de un Ángulo Doble
 
-Finalmente consideremos el caso del coseno de una tangente de ángulo doble:
+Finalmente consideremos el caso de la tangente de ángulo doble:
 
 $$\begin{align} \begin{split} \label{eq:tandoble}
 \tan(2\vartheta) = \frac{\sin(2\vartheta)}{\cos(2\vartheta)} = \frac{2\sin \vartheta \cos \vartheta}{\cos^2 \vartheta - \sin^2 \vartheta} \quad \text{[Por $\eqref{eq:senodoble}$ y $\eqref{eq:cosenodoble}$]} \\[3mm]
