@@ -678,6 +678,20 @@
       },
       "chair": "Matemática Educativa"
     },
+    "05426": {
+      "code": "05426",
+      "name":"Matemáticas para el Comercio",
+      "credits": 3,
+      "categories": [
+        "Matemáticas"
+      ],
+      "level": "Introductorio",
+      "availability": [
+        2,
+        3
+      ],
+      "chair": "Ciencias Sociales"
+    },
     "03451": {
       "code": "03451",
       "name": "Geometrías no Euclídeas",
@@ -1729,6 +1743,7 @@
               "courseRequirements": [
                 {
                   "availableCourses": [
+                    "05426",
                     "03451",
                     "03450",
                     "03219"
