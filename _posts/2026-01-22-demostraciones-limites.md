@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Demostraciones de Límites"
-description: Una breve exploración sobre la definición de límite y demostraciones de los mismo.
+description: Una breve exploración sobre la definición de límite y demostraciones de los mismos.
 date: 2026-01-22T15:00:00-06:00
 author: edalorzo
 image: '/images/67.png'
