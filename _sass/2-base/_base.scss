@@ -227,3 +227,11 @@ table td {
 .lightense-backdrop {
   background-color: var(--background-color) !important;
 }
+
+.center-img {
+  display: block;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
