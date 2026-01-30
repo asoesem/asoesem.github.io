@@ -32,13 +32,13 @@ Nota como he etiquetado los extremos del intervalo como $$L-\varepsilon$$ y $$L+
 
 En fin, el punto es que no estás dispuesto a tolerar que ninguna parte de la función se pase de esas dos rectas horizontales.
 
-Por otro lado, mi movida consiste en descartar una parte de la función por medio de restringir su dominio. Tan solo me tengo que asegurar que el nuevo dominio sea un intervalo con $$a$$ como su centro y que cada parte de la función resultante quede dentro de las dos rectas que definiste, excepto posiblemente en $$x=a$$. Por ejemplo, mi movida podría lucir de la siguiente manera:
+Por otro lado, mi movida consiste en descartar una parte de la función por medio de restringir su dominio. Tan solo me tengo que asegurar de que el nuevo dominio sea un intervalo con $$a$$ como su centro y que cada parte de la función resultante quede dentro de las dos rectas que definiste, excepto posiblemente en $$x=a$$. Por ejemplo, mi movida podría lucir de la siguiente manera:
 
 ![Juego de Límites 2]({{site.baseurl}}/images/limite-juego-02.png "Juego de Límites 2"){:.center-img}
 
 Podría incluso haber descartado más y eso estaría bien, siempre y cuando lo que queda esté dentro de las dos rectas que definiste en tu movida.
 
-Ahora es tu turno de nuevo. Ya te habrás dado cuenta de que mi trabajo se vuelve más complicado a medida que tus dos rectas se acercan la una a la otra, así que esta vez escoges un valor de delta mucho más pequeño.
+Ahora es tu turno de nuevo. Ya te habrás dado cuenta de que mi trabajo se vuelve más complicado a medida que tus dos rectas se acercan la una a la otra, así que esta vez escoges un valor $$\varepsilon$$ mucho más pequeño.
 
 ![Juego de Límites 3]({{site.baseurl}}/images/limite-juego-03.png "Juego de Límites 3"){:.center-img}
 
