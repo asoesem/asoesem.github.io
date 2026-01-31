@@ -349,7 +349,7 @@ $$\begin{align}
 0 < \delta \leq 1 \land 0 < \delta \leq \frac{\varepsilon}{5} \\
 \end{align}$$
 
-Lo usual es tomar la menor cota superior de las dos, usualmente expresado como:
+Se toma la menor cota superior de las dos, usualmente expresado como:
 
 $$\begin{equation} \label{lim:mdelta3}
 \boxed{0 < \delta \leq min\Biggl\{1,\frac{\varepsilon}{5}\Biggr\}}
@@ -510,7 +510,7 @@ $$\begin{align}
 0 < \delta \leq 1 \land 0 < \delta \leq \frac{3\varepsilon}{2} \\
 \end{align}$$
 
-Lo usual es tomar la menor cota superior de las dos, usualmente expresado como:
+Se toma la menor cota superior de las dos, usualmente expresado como:
 
 $$\begin{equation} \label{lim:mdelta4}
 \boxed{0 < \delta \leq min\Biggl\{1,\frac{3\varepsilon}{2}\Biggr\}}
@@ -683,7 +683,7 @@ $$\begin{align}
 \left(0 < \delta \leq \frac{1}{2}\right) \land \left(0 < \delta \leq \frac{\varepsilon}{4(\sqrt{6}-\sqrt{2})}\right)
 \end{align}$$
 
-Lo usual es tomar la menor cota superior de las dos, usualmente expresado como:
+Se toma la menor cota superior de las dos, usualmente expresado como:
 
 $$\begin{equation} \label{lim:mdelta5}
 \boxed{0 < \delta \leq min\Biggl\{\frac{1}{2},\frac{\varepsilon}{4(\sqrt{6}-\sqrt{2})}\Biggr\}}
