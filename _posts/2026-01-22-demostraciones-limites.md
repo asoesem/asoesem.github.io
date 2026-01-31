@@ -56,7 +56,7 @@ Ambos nos acercaríamos cada vez más. Tu empujado tus dos rectas cada vez más 
 
 En este juego, "$$\displaystyle \lim_{x \to a} f(x) = L$$" significa que para cualquier elección que hagas de un $$\varepsilon > 0$$, yo puedo encontrar un $$\delta>0$$ tal que $$\lvert f(x)-L \rvert < \varepsilon$$ para todo $$x$$ que satisface que $$0 < \lvert x-a \rvert < \delta$$.
 
-Es fundamental que mi movida ocurra después de la tuya, pues mi elección de un $$\delta$$ depende de tu elección de un $$\varepsilon$$. Normalmente no es posible elegier un $$\delta$$ que pueda satisfacer cualquier $$\varepsilon > 0$$. Por eso, yo siempre debo adaptarme a tu elección.
+Es fundamental que mi movida ocurra después de la tuya, pues mi elección de un $$\delta$$ depende de tu elección de un $$\varepsilon$$. Normalmente no es posible elegir un $$\delta$$ que pueda satisfacer cualquier $$\varepsilon > 0$$. Por eso, yo siempre debo adaptarme a tu elección.
 
 [Regresar al índice](#toc)
 
@@ -73,9 +73,9 @@ L-\varepsilon < f(x) < L+\varepsilon \\
 
 Podemos ver claramente que esa última expresión se puede leer como que la distancia entre $$f(x)$$ y $$L$$ es inferior al margen de error $$\varepsilon$$.
 
-Para ilustrarlo, imagina que eres un arquero y que debes colocar una flecha en un blanco ($$L$$), pero dentro de un radio de margen de error ($$\varepsilon$$): un círculo rojo alrededor del punto central. Tu eres las $$x$$ y tu reto como arquero experimentado es ubicarte a una distancia muy cercana del punto de disparo ($$a$$), pero sin llegar a pararte directamente en él, que garantice que darás en el blanco. Siempre estarás a un radio de distancia ($$\delta$$) del punto de disparo $$a$$ antes de lanzar tu flecha. Tu flecha, bien podría dar exactamente en el punto central, pero también podría caer muy cerca del mismo. La cosa es que siempre y cuando tu flecha caiga dentro del radio del margen de error ($$\varepsilon$$), se dice que has dado en blanco ($$L$$). Es decir, se cumple que $$\displaystyle \lim_{x \to a} f(x) = L$$.
+Para ilustrarlo, imagina que eres un arquero y que debes colocar una flecha en un blanco ($$L$$), pero dentro de un radio de margen de error ($$\varepsilon$$): un círculo rojo alrededor del punto central. Tu eres la $$x$$ y tu reto como arquero experimentado es ubicarte a una distancia muy cercana del punto de disparo ($$a$$), pero sin llegar a pararte directamente en él, que garantice que darás en el blanco. Siempre estarás a un radio de distancia ($$\delta$$) del punto de disparo $$a$$ antes de lanzar tu flecha. Tu flecha, bien podría dar exactamente en el punto central $$L$$, pero también podría caer muy cerca del mismo. La cosa es que siempre y cuando tu flecha caiga dentro del radio del margen de error ($$\varepsilon$$), se dice que has dado en blanco ($$L$$). Es decir, se cumple que $$\displaystyle \lim_{x \to a} f(x) = L$$.
 
-Exploremos la definición en detalle: sea un $$\varepsilon>0$$ cualquiera, y supongamos la existencia de un $$\delta >0$$ que define un intervalo dentro del cual $$x$$ se aproxima a $$a$$ (pero sin llegar a alcanzarlo). A medida que $$x$$ se aproxima arbitrariamente a $$a$$ se cumple que $$f(x)$$ se aproxima a $$L$$ dentro del margen de error $$\varepsilon > 0$$ preestablecido como aceptable.
+Exploremos la definición en detalle: sea un $$\varepsilon>0$$ cualquiera, y supongamos la existencia de un $$\delta >0$$ que define un intervalo dentro del cual $$x$$ se aproxima a $$a$$ (pero sin llegar a alcanzarlo, i.e. $$x \neq a$$). A medida que $$x$$ se aproxima arbitrariamente a $$a$$ se cumple que $$f(x)$$ se aproxima a $$L$$ dentro del margen de error $$\varepsilon > 0$$ preestablecido como aceptable.
 
 Luego, el intervalo de movimiento de $$x$$ se puede denotar de la siguiente manera:
 
