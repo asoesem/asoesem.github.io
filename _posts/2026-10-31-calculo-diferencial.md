@@ -25,7 +25,7 @@ Los objetivos específicos de aprendizaje del curso son:
 
 La asignatura se encuentra distribuida en cuatro unidades temáticas de aprendizaje:
 
-* **Tema 1**: Límites de funciones (límites).
+* **Tema 1**: Límites de funciones.
 * **Tema 2**: Continuidad de una función.
 * **Tema 3**: Derivada de una función.
 * **Tema 4**: Aplicaciones de la derivada de una función.
@@ -36,7 +36,7 @@ La Unidad Didáctica Modular (UDM) es el libro [Cálculo Diferencial][1] de Lize
 
 El libro tiene aproximadamente 385 páginas y durante el cuatrimestre se cubren todos sus cuatro capítulos. La estructura del libro está organizada en capítulos que coinciden con las mismas unidades temáticas del curso:
 
-* **Capítulo 1**: Elementos básicos.
+* **Capítulo 1**: Elementos básicos (límites).
 * **Capítulo 2**: Continudad.
 * **Capítulo 3**: Derivación.
 * **Capítulo 4**: Aplicaciones de la derivada.
