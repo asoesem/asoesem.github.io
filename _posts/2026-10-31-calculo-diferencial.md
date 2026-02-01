@@ -43,13 +43,14 @@ El libro tiene aproximadamente 385 páginas y durante el cuatrimestre se cubren 
 
 Solo hubo dos temas en el capítulo 3 que **no se evaluaron**: 1) la derivada de coordenadas paramétricas y 2) la derivada de coordenadas polares, que se supone se estudiarán a profundidad en cursos futuros. 
 
-## Pósters del Material
+## Pósters y Material de Apoyo
 
-Cuando llevé el curso, creé varios pósters con resúmenes del material que los dejo por acá para su consideración y por si les pueden sacar algo de provecho.
+Cuando llevé el curso, creé varios pósters con resúmenes del material. Los dejo por acá para su consideración y por si les pueden sacar algo de provecho. También escribí una lista de errores que encontré en el libro de clase, ya que en mi edición del curso no se nos proveyó ninguna Fe de Erratas. Ojalá y este listado les ahorre tiempo y sufrimiento.
 
 * [Póster de Límites][31]
 * [Póster de Continuidad][32]
 * [Póster de Derivada][33]
+* [Lista de Errores][34]
 
 ## Evaluación
 
