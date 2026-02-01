@@ -19,15 +19,13 @@ La finalidad principal de este curso es que los estudiantes apliquen los conocim
 
 Los objetivos específicos de aprendizaje del curso son:
 
-Los objetivos específicos de aprendizaje del curso son:
-
 * Aplicar los conocimientos sobre límites de una función, continuidad y derivación en la realización de demostraciones y resolución de problemas.
 * Aplicar el concepto de continuidad de una función y sus principales teoremas para la solución de ejercicios relacionados con diversas áreas del conocimiento.
 * Aplicar el concepto de derivada de una función y sus principales teoremas para la solución de problemas matemáticos y de aplicación en diversas áreas.
 
 La asignatura se encuentra distribuida en cuatro unidades temáticas de aprendizaje:
 
-* **Tema 1**: Límites de funciones.
+* **Tema 1**: Límites de funciones (límites).
 * **Tema 2**: Continuidad de una función.
 * **Tema 3**: Derivada de una función.
 * **Tema 4**: Aplicaciones de la derivada de una función.
@@ -60,6 +58,10 @@ A continuación, se listan ejemplos de instrumentos previamente evaluados.
 
 | Instrumento                | Edición  |
 |----------------------------|----------|
+| [Tarea Comprensiva I][13]  | 2023-I   |
+| [Tarea Comprensiva II][14] | 2023-I   |
+| [Tarea Comprensiva III][15]| 2023-I   |
+| [Tarea Comprensiva IV][16] | 2023-I   |
 | [Quiz 1][2]                | 2024-III |
 | [Quiz 2][3]                | 2024-III |
 | [Quiz 3][4]                | 2024-III |
@@ -71,10 +73,6 @@ A continuación, se listan ejemplos de instrumentos previamente evaluados.
 | [Taller][10]               | 2025-I   |
 | [Examen Ordinario 1][11]   | 2025-I   |
 | [Examen Ordinario 2][12]   | 2025-I   |
-| [Tarea Comprensiva I][13]  | 2023-I   |
-| [Tarea Comprensiva II][14] | 2023-I   |
-| [Tarea Comprensiva III][15]| 2023-I   |
-| [Tarea Comprensiva IV][16] | 2023-I   |
 
 
 Haz clic en los enlaces proporcionados para ver solucionarios y ejemplos de los instrumentos en cuestión. Los enlaces apuntan a recursos en el OneDrive de la UNED, así que necesitarás ingresar con tu cuenta institucional para tener acceso a estos recursos.
