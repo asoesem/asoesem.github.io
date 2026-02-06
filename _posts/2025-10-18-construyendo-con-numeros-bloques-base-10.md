@@ -138,7 +138,7 @@ El método del "Canje hacia Abajo" proporciona un enfoque paso a paso y basado e
 
 ## CPA en la Resta
 
-Al igual que con la suma, la transición de los bloques concretos al algoritmo abstracto se gestiona mejor a través de la vía CPA.
+Al igual que con la suma, la transición de los bloques concretos al algoritmo abstracto se gestiona mejor a través de la vía CPA (Concreto-Pictórico-Abstracta).
 
 **Etapa Pictórica**: El niño comienza dibujando los bloques para el primer número (por ejemplo, 4 barras y 2 puntos para 42). Para mostrar la reagrupación, tacha una de las barras y luego dibuja 10 nuevos puntos en la columna de las unidades. Finalmente, tacha los bloques que se están restando (1 barra y 5 puntos) para encontrar la respuesta {% cite ascd2024numbers --file bloques-base-10 %}.
 
