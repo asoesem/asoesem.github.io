@@ -109,7 +109,7 @@ Los siguientes consejos pueden ayudar a obtener buenos resultados:
 * **Trabajar de forma ordenada y procedimental**: muchos de los problemas son intrincados y requieren múltiples pasos para llegar a una solución. Mantener un enfoque sistemático y ordenado ayuda a evitar errores y facilita el seguimiento del proceso de resolución.
 * **Repasar Material de las Tutorías**: durante las tutorías, el tutor presentó material adicional y desarrolló ejemplos adicionales que complementaron, de formas muy útiles, lo estudiado independientemente con unidad didáctica. Mucho de los visto en las tutorías puede resultar increíbemente útil durante los exámenes ordinarios y no se debe pasar por alto su estudio concienzudo.
 * **Usar GeoGebra**: utilizar Geogebra para alcanzar una mejor comprensión del comportamiento de las funciones y sus límites puede ser realmente útil mientras se estudia el material, sobre todo para alcanzar niveles de compresión por encima de lo superficial y que pueden conducir a grandes beneficios más adelante.
-* **Uso de IA**: la mayoría de los chatbots, como ChatGPT, Gemini, Claude, Grok y Deepseek, son extremadamente efectivos como tutores personalizados. Utilizarlos para aclarar dudas, para tratar de comprender lo que no entiendes, para ampliar conceptos de forma más amplia o para crear prácticas de ejercicios adicionales puede convertirlos en una herramienta muy poderosa para el éxito en este curso. Solo procura utilizarlas para mejorar tu comprensión, no para que te den una respuesta.
+* **Uso de IA**: la mayoría de los chatbots, como [ChatGPT][37], [Gemini][36], [Claude][39], [Copilot][38], [Grok][40] o [Deepseek][41], son extremadamente efectivos como *tutores personalizados*. Utilizarlos para aclarar dudas, para tratar de comprender lo que no entiendes, para ampliar conceptos de forma más amplia o para crear prácticas de ejercicios adicionales puede convertirlos en una herramienta muy poderosa para el éxito en este curso. Solo procura utilizarlas para mejorar tu comprensión, **no para que te den una respuesta**.
 
 
 ## Otros Libros Recomendados
@@ -125,6 +125,7 @@ Las siguientes herramientas tecnológicas pueden resultar útiles:
 
 * [GeoGebra][22]: es la herramienta fundamental para visualizar funciones, comprender mejor su comportamiento e incluso como sistema de álgebra computacional (CAS).
 * Calculadoras como [Symbolab][35] y [Wolfram Alpha][25] pueden resultar muy útiles pues explican el desarrollo de las operaciones matemáticas paso a paso.
+* AI Chatbots como [Gemini][36], [ChatGPT][37], [Copilot][38], [Claude][39], [Grok][40], [Deep Seek][41], [Llama][42] pueden resultar extremadamente útiles como tutores personalizados.
 * También se pueden utilizar herramientas CAS (computer algebra systems) como [Wolfram Mathematica][23], [SageMath][24], [GNU Octave][26] para resolver problemas más complejos.
 
 ## Si Deseo Llevar el Curso
@@ -173,3 +174,12 @@ Si ya has aprobado Álgebra y Funciones (03421) y Lógica y Teoría de Conjuntos
 [33]:https://unedcr-my.sharepoint.com/:b:/g/personal/edwin_dalorzo_uned_cr/IQAgEwqyVGdPRZ20gJHEiqRrAf-0awdsgY11ID3fYBozKQA?e=YzgdzE
 [34]:https://unedcr-my.sharepoint.com/:b:/g/personal/edwin_dalorzo_uned_cr/IQC_Jgmaa2w5S7jQsF2xZHvgAUjlFiqLZktkX3GplCUkRoY?e=aO1fZE
 [35]:https://es.symbolab.com/
+[36]:https://gemini.google.com/
+[37]:https://chat.openai.com/
+[38]:http://copilot.microsoft.com/
+[39]:https://claude.ai/	
+[40]:https://x.ai/
+[41]:https://deepseek.ai/
+[42]:https://www.llama.com/
+
+
