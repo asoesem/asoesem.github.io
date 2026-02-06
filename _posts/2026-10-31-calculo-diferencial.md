@@ -98,6 +98,7 @@ Los siguientes son algunos aspectos retadores del curso:
 * **Escritura de Demostraciones**: una parte del aprendizaje redundará en la escritura de demostraciones, para límites de diferentes tipos y para conjuntos acotados. Si se traen vacíos en este campo puede resultar retador comprender las demostraciones en el libro y más aún la escritura propia de demostraciones que son requeridas en el capítulo de límites y en del continuidad al estudiar conjuntos acotados.
 * **Dominio de Funciones**: el curso se basa en una buena comprensión de todo tipo de funciones. Particularmente saber cómo determinar el dominio máximo es un requisito fundamental. Y una amplia comprensión de la función afín y sus propiedades será fundamental para un mejor entendimiento de la derivada y la resolución de múltiples tipos de problemas. El curso también asume un buen dominio de las funciones trigonométricas, y muchos ejercicios van a poner a prueba el dominio del estudiante en este campo, llegando incluso a exigir que se conozcan las identidades trigonométricas fundamentales de memoria. Un repaso de estos temas antes de llevar al curso solo puede redundar en un mejor desempeño.
 * **Numerosos Teoremas y Tipos de Problemas**: en el estudio de la derivada y sus múltiples aplicaciones se aprenden numerosos teoremas que no siempre es sencillo recordar o saber cuando es el momento apropiado de aplicarlos. La variedad de tipos de problemas que es necesario dominar puede ser retador. Para dar fe de lo amplio del tema, el capítulo 4 tienen 111 ejercicios de autoevaluación sobre la aplicación de la derivada en diferentes tipos de problemas. Realmente requiere mucha dedicación y práctica alcanzar un buen dominio de la aplicación de lo aprendido en el curso.
+* **Regla de la Cadena**: la comprensión y aplicación de la regla de la cadena puede resultar muy confusa según las explicaciones del libro del curso. Para comenzar, la regla requiere una aplicación recursiva de sus principios, que a menudo es propensa a errores, sobre todo cuando se involucran múltiples funciones compuestas (p.ej. funciones trigonométricas, raíces). Pero además de eso, la comprensión de la regla en los casos de funciones paramétricas y polares puede resultar muy confuso. Invertir tiempo en comprender la regla de la cadenar apropiadamente puede ahorrarte muchos dolores de cabeza.
 * **Errores del Libro**: al estudiar el libro documenté todos los errores que encontré y al final escribí 15 páginas de [Fe de Erratas][34] que luego compartí con la cátedra para que las compartan con los estudiantes en futuras ediciones del curso. En una segunda revisión que hice he logrado encontrar algunos otros errores que se me pasaron la primera vez. Todos estos errores puede inducir al estudiante a equivocarse, a malinterpretar conceptos o simplemente hacerlo invertir tiempo innecesario en la comprensión de ejercicios explicados erróneamente o de forma confusa.
 
 ## Consejos para el Éxito
@@ -123,7 +124,8 @@ Los siguientes consejos pueden ayudar a obtener buenos resultados:
 Las siguientes herramientas tecnológicas pueden resultar útiles:
 
 * [GeoGebra][22]: es la herramienta fundamental para visualizar funciones, comprender mejor su comportamiento e incluso como sistema de álgebra computacional (CAS).
-* También se pueden utilizar herramientas como [Wolfram Mathematica][23], [SageMath][24], [GNU Octave][26], o incluso calculadoras en línea como [WolframAlpha][25].
+* Calculadoras como [Symbolab][35] y [Wolfram Alpha][25] pueden resultar muy útiles pues explican el desarrollo de las operaciones matemáticas paso a paso.
+* También se pueden utilizar herramientas CAS (computer algebra systems) como [Wolfram Mathematica][23], [SageMath][24], [GNU Octave][26] para resolver problemas más complejos.
 
 ## Si Deseo Llevar el Curso
 
@@ -170,3 +172,4 @@ Si ya has aprobado Álgebra y Funciones (03421) y Lógica y Teoría de Conjuntos
 [32]:https://unedcr-my.sharepoint.com/:b:/g/personal/edwin_dalorzo_uned_cr/IQB6_3ymfqVJTasudsF7b-TcAV8Y0E4ml_EjP12pnw253JE?e=6dxEoD
 [33]:https://unedcr-my.sharepoint.com/:b:/g/personal/edwin_dalorzo_uned_cr/IQAgEwqyVGdPRZ20gJHEiqRrAf-0awdsgY11ID3fYBozKQA?e=YzgdzE
 [34]:https://unedcr-my.sharepoint.com/:b:/g/personal/edwin_dalorzo_uned_cr/IQC_Jgmaa2w5S7jQsF2xZHvgAUjlFiqLZktkX3GplCUkRoY?e=aO1fZE
+[35]:https://es.symbolab.com/
