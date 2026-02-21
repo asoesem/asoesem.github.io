@@ -864,6 +864,15 @@ function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// ── Duplicate Detection ──
+// Two cards are duplicates when every group has the same dot positions and types.
+function cardFingerprint(card) {
+  return card.groups.map(g => {
+    const positions = g.pattern.arrangements.map(({r, c}) => `${r},${c}`).join(';');
+    return `${positions}:${g.dotTypes.join('')}`;
+  }).join('||');
+}
+
 // ── Card Generation by Type ──
 
 function generateSubitizeCards(count, min, max, useOpen) {
@@ -1142,16 +1151,28 @@ function generateCards() {
   const useOpen = document.getElementById('useOpenDots').checked;
   const showHints = document.getElementById('showHints').checked;
 
-  let cards = [];
-  switch (cardType) {
-    case 'subitize': cards = generateSubitizeCards(count, min, max, useOpen); break;
-    case 'addition': cards = generateAdditionCards(count, min, max, useOpen); break;
-    case 'near-doubles': cards = generateNearDoublesCards(count, min, max, useOpen); break;
-    case 'make-ten': cards = generateMakeTenCards(count); break;
-    case 'multiplication': cards = generateMultiplicationCards(count, min, max); break;
-    case 'comparison': cards = generateComparisonCards(count, min, max); break;
-    case 'decomposition': cards = generateDecompositionCards(count, min, max); break;
+  // Overgenerate (5×) so deduplication can still fulfil the requested count.
+  const pool = count * 5;
+  function makeBatch(n) {
+    switch (cardType) {
+      case 'subitize':      return generateSubitizeCards(n, min, max, useOpen);
+      case 'addition':      return generateAdditionCards(n, min, max, useOpen);
+      case 'near-doubles':  return generateNearDoublesCards(n, min, max, useOpen);
+      case 'make-ten':      return generateMakeTenCards(n);
+      case 'multiplication':return generateMultiplicationCards(n, min, max);
+      case 'comparison':    return generateComparisonCards(n, min, max);
+      case 'decomposition': return generateDecompositionCards(n, min, max);
+      default:              return [];
+    }
   }
+
+  const seen = new Set();
+  const cards = makeBatch(pool).filter(card => {
+    const fp = cardFingerprint(card);
+    if (seen.has(fp)) return false;
+    seen.add(fp);
+    return true;
+  }).slice(0, count);
 
   generatedCards = cards;
   renderCards(cards, showHints);
