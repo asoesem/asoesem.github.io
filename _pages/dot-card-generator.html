@@ -1,0 +1,1550 @@
+---
+layout: default
+title: Generador de Tarjetas de Puntos
+permalink: /generador-dot-cards/
+---
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Backgrounds — reference site color scheme */
+  --bg: var(--background-alt-color);          /* light: #eaecef */
+  --card-bg: #FFFFFF;
+
+  /* Text — reference site color scheme */
+  --ink: var(--heading-font-color);           /* light: #111 */
+  --ink-light: var(--text-alt-color);         /* light: #697177 */
+  --ink-faint: var(--gray);                   /* light: #9e9e9e */
+
+  /* Accent — use site primary (golden yellow) */
+  --accent: var(--primary-color);             /* light: #f8ce5f */
+  --accent-hover: var(--button-background-hover); /* light: #edc352 */
+  --accent-soft: #fef9e7;
+  --accent-text: #8a6200;                     /* dark amber — readable on light bg */
+
+  /* Button text on accent background */
+  --btn-primary-text: var(--button-color);    /* light: #320101 */
+
+  /* Card header — always distinct from card body */
+  --card-header-bg: #1A1A1A;
+  --card-header-text: #FFFFFF;
+
+  /* Presentation mode border (overridden in dark mode) */
+  --presentation-border: var(--card-header-bg);
+  --presentation-btn-bg: var(--card-header-bg);
+  --presentation-btn-text: var(--card-header-text);
+
+  /* Dots (light mode: dark on white) */
+  --dot-fill: #1A1A1A;
+  --dot-open: #FFFFFF;
+  --dot-open-stroke: #1A1A1A;
+
+  /* Semantic dot colors — reuse site's color-blind-safe palette */
+  --blue-dot: var(--course-available);        /* light: #0173B2 */
+  --red-dot: var(--course-blocked);           /* light: #D55E00 */
+  --green-dot: var(--course-approved);        /* light: #009E73 */
+
+  /* Borders, shadows, shape */
+  --border: var(--border-color);              /* light: #e4e6eb */
+  --shadow: rgba(0,0,0,0.06);
+  --radius: 10px;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+:root[dark] {
+  /* Backgrounds */
+  --bg: var(--background-color);              /* dark: #181818 */
+  --card-bg: var(--background-alt-color);     /* dark: #2a2b2d */
+
+  /* Text */
+  --ink-faint: #5a5a5a;                       /* subdued on dark bg */
+
+  /* Accent */
+  --accent-soft: #3d2e1a;
+  --accent-text: var(--primary-color);        /* peach/gold — readable on dark bg */
+
+  /* Card header — slightly lighter than card body for distinction */
+  --card-header-bg: #3d4150;
+  --card-header-text: var(--heading-font-color); /* dark: #f5f5f5 */
+
+  /* Presentation mode — accent-colored interactive elements for high contrast */
+  --presentation-btn-bg: var(--primary-color);      /* peach/gold: #fbdab1 */
+  --presentation-btn-text: var(--button-color);     /* dark: #2a2b2d */
+  --presentation-border: var(--primary-color);      /* peach/gold border */
+
+  /* Dots (dark mode: light on dark bg) */
+  --dot-fill: #e0e0e0;
+  --dot-open: var(--background-alt-color);    /* dark: #2a2b2d */
+  --dot-open-stroke: #e0e0e0;
+
+  --shadow: rgba(0,0,0,0.25);
+}
+
+/* ── Presentation mode – dark mode high-contrast overrides ── */
+:root[dark] .presentation-close {
+  background: var(--presentation-btn-bg);
+  color: var(--presentation-btn-text);
+}
+
+:root[dark] .presentation-nav button {
+  background: var(--presentation-btn-bg);
+  color: var(--presentation-btn-text);
+}
+
+:root[dark] .presentation-nav button:hover {
+  background: #e8c99a;
+  color: var(--presentation-btn-text);
+}
+
+:root[dark] .presentation-nav button:disabled {
+  background: #4b5563;
+  color: #9ca3af;
+  opacity: 0.55;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Header ── */
+.app-header {
+  padding: 2rem 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.app-header h1 span {
+  color: var(--accent-text);
+}
+
+.app-header p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-top: 0.25rem;
+  max-width: 640px;
+}
+
+/* ── Layout ── */
+.app-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── Controls Panel ── */
+.controls-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.control-section {
+  margin-bottom: 1.5rem;
+}
+
+.control-section:last-child {
+  margin-bottom: 0;
+}
+
+.control-section h3 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+}
+
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 0.35rem;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--bg);
+  transition: border-color 0.2s;
+  appearance: auto;
+}
+
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.range-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.range-row .control-group {
+  flex: 1;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-row input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-row label {
+  margin-bottom: 0;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--ink-light);
+  border: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+.btn-secondary:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
+/* ── Card Display Area ── */
+.cards-area {
+  min-height: 400px;
+}
+
+.cards-area-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.cards-area-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card-count {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Individual Dot Card ── */
+.dot-card-wrapper {
+  animation: cardAppear 0.4s ease-out both;
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dot-card {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.dot-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+}
+
+.dot-card-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.dot-card-meta {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.dot-card-canvas-area {
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 200px;
+  align-items: center;
+}
+
+.dot-card-single {
+  justify-content: center;
+}
+
+.dot-group {
+  position: relative;
+}
+
+.dot-group-label {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.dot-group-label.blue { color: var(--blue-dot); }
+.dot-group-label.red { color: var(--red-dot); }
+
+.dot-grid {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  align-items: center;
+}
+
+.dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: transform 0.15s;
+}
+
+.dot.filled { background: var(--dot-fill); }
+.dot.open {
+  background: var(--dot-open);
+  border: 2.5px solid var(--dot-open-stroke);
+}
+.dot.blue { background: var(--blue-dot); }
+.dot.red { background: var(--red-dot); }
+.dot.green { background: var(--green-dot); }
+
+.dot-card-footer {
+  padding: 0.65rem 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dot-card-footer .strategy-hint {
+  font-style: italic;
+  max-width: 80%;
+}
+
+.group-divider {
+  width: 2px;
+  background: var(--border);
+  align-self: stretch;
+  border-radius: 1px;
+}
+
+/* ── Presentation Mode ── */
+.presentation-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--card-bg);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.presentation-overlay.active {
+  display: flex;
+}
+
+.presentation-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.presentation-close:hover {
+  transform: scale(1.1);
+}
+
+.presentation-nav {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.presentation-nav button {
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.presentation-nav button:hover {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.presentation-nav button:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+}
+
+.presentation-counter {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink-light);
+}
+
+.presentation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.presentation-card .dot-card-canvas-area {
+  padding: 3rem;
+  min-height: auto;
+}
+
+.presentation-card .dot {
+  width: 52px;
+  height: 52px;
+}
+
+.presentation-card .dot-grid {
+  gap: 14px;
+}
+
+.presentation-card .dot-group-label {
+  font-size: 1rem;
+}
+
+.presentation-question {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+}
+
+.presentation-timer {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.presentation-timer.visible {
+  opacity: 1;
+}
+
+/* ── Empty State ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--ink-faint);
+}
+
+.empty-state-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.empty-state h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 0.35rem;
+}
+
+.empty-state p {
+  font-size: 0.85rem;
+  max-width: 300px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  .controls-panel {
+    position: static;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header { padding: 1.25rem 1rem 1rem; }
+  .app-header h1 { font-size: 1.5rem; }
+  .app-layout { padding: 0 1rem 2rem; gap: 1.25rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Print Styles ── */
+@media print {
+  body { background: white; }
+  .controls-panel, .app-header, .cards-area-header { display: none; }
+  .app-layout { grid-template-columns: 1fr; padding: 0; }
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .dot-card-wrapper { break-inside: avoid; }
+  .dot-card { box-shadow: none; }
+}
+</style>
+
+<body>
+
+<header class="app-header">
+  <h1>Generador de <span>Tarjetas de Puntos</span></h1>
+  <p>Crea tarjetas de puntos para <a href="{{site.baseurl}}/articulos/charlas-de-puntos">Charlas de Puntos</a> (Dot Talks). Configura la cantidad, el rango, el tipo de estrategia y genera secuencias pedagógicamente significativas.</p>
+</header>
+
+<div class="app-layout">
+  <!-- Controls -->
+  <aside class="controls-panel">
+    <div class="control-section">
+      <h3>Tipo de tarjeta</h3>
+      <div class="control-group">
+        <label for="cardType">Objetivo pedagógico</label>
+        <select id="cardType">
+          <option value="subitize">Subitización (1–10)</option>
+          <option value="addition">Suma — dos grupos</option>
+          <option value="near-doubles">Casi-dobles</option>
+          <option value="make-ten">Completar a 10</option>
+          <option value="multiplication">Multiplicación — arreglos</option>
+          <option value="comparison">Comparación — ¿cuál tiene más?</option>
+          <option value="decomposition">Descomposición — ver de varias formas</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-section">
+      <h3>Configuración</h3>
+      <div class="range-row">
+        <div class="control-group">
+          <label for="minDots">Mín. puntos</label>
+          <input type="number" id="minDots" min="1" max="36" value="3">
+        </div>
+        <div class="control-group">
+          <label for="maxDots">Máx. puntos</label>
+          <input type="number" id="maxDots" min="2" max="36" value="10">
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="numCards">Cantidad de tarjetas</label>
+        <select id="numCards">
+          <option value="1">1 tarjeta</option>
+          <option value="3" selected>3 tarjetas (secuencia)</option>
+          <option value="5">5 tarjetas</option>
+          <option value="8">8 tarjetas</option>
+        </select>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="useOpenDots">
+        <label for="useOpenDots">Incluir puntos abiertos (○)</label>
+      </div>
+      <div style="font-size:0.73rem; color:var(--ink-faint); margin-top:0.3rem; line-height:1.4; padding-left:1.6rem;">
+        Los puntos abiertos resaltan "los extras" — por ejemplo, 5●+1○ muestra "cinco y uno más", fomentando la estrategia de contar desde un ancla.
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showHints" checked>
+        <label for="showHints">Mostrar pistas de estrategia</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-section">
+      <h3>Presentación</h3>
+      <div class="control-group">
+        <label for="timerDuration">Tiempo de exposición (segundos)</label>
+        <select id="timerDuration">
+          <option value="0">Sin límite</option>
+          <option value="3">3 segundos</option>
+          <option value="5" selected>5 segundos</option>
+          <option value="8">8 segundos</option>
+          <option value="10">10 segundos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-primary" onclick="generateCards()">
+      <span class="btn-icon">⬥</span> Generar tarjetas
+    </button>
+    <button class="btn btn-secondary" onclick="startPresentation()">
+      ▶ Modo presentación
+    </button>
+    <button class="btn btn-secondary" onclick="window.print()">
+      🖨 Imprimir tarjetas
+    </button>
+  </aside>
+
+  <!-- Cards Display -->
+  <main class="cards-area">
+    <div class="cards-area-header">
+      <h2>Tarjetas generadas</h2>
+      <span class="card-count" id="cardCount"></span>
+    </div>
+    <div class="cards-grid" id="cardsGrid">
+      <div class="empty-state">
+        <div class="empty-state-icon">⬥</div>
+        <h3>Ninguna tarjeta generada</h3>
+        <p>Configura las opciones y presiona "Generar tarjetas" para comenzar.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Presentation Mode Overlay -->
+<div class="presentation-overlay" id="presentationOverlay">
+  <button class="presentation-close" onclick="closePresentation()">✕</button>
+  <div class="presentation-timer" id="presentationTimer"></div>
+  <div class="presentation-card" id="presentationCard"></div>
+  <div class="presentation-nav">
+    <button onclick="prevCard()" id="prevBtn">← Anterior</button>
+    <span class="presentation-counter" id="presentationCounter"></span>
+    <button onclick="nextCard()" id="nextBtn">Siguiente →</button>
+  </div>
+</div>
+
+<script>
+// ── State ──
+let generatedCards = [];
+let currentPresentationIndex = 0;
+let timerInterval = null;
+
+// ── Dot Arrangement Patterns ──
+// Hand-crafted patterns inspired by dice, dominoes, ten-frames, regular polygons,
+// and research on subitizing. Each number has many distinct spatial arrangements —
+// including the vertices of regular polygons — so that repeated generation rarely
+// produces the same visual layout.
+// Polygon patterns place dots at the corners of regular n-gons: students who
+// recognise the shape can use their knowledge of its vertex count to subitize.
+const PATTERNS = {
+
+  // ── 1 ──────────────────────────────────────────────────────────────────
+  1: [
+    { arrangements: [{r:0,c:0}], rows: 1, cols: 1 },
+  ],
+
+  // ── 2 ──────────────────────────────────────────────────────────────────
+  2: [
+    { arrangements: [{r:0,c:0},{r:1,c:1}], rows: 2, cols: 2 },             // diagonal ↘
+    { arrangements: [{r:0,c:1},{r:1,c:0}], rows: 2, cols: 2 },             // diagonal ↙
+    { arrangements: [{r:0,c:0},{r:0,c:1}], rows: 1, cols: 2 },             // horizontal
+    { arrangements: [{r:0,c:0},{r:1,c:0}], rows: 2, cols: 1 },             // vertical
+    { arrangements: [{r:0,c:0},{r:0,c:2}], rows: 1, cols: 3 },             // spread horizontal
+    { arrangements: [{r:0,c:0},{r:2,c:0}], rows: 3, cols: 1 },             // spread vertical
+  ],
+
+  // ── 3 ──────────────────────────────────────────────────────────────────
+  3: [
+    { arrangements: [{r:0,c:0},{r:1,c:1},{r:2,c:2}], rows: 3, cols: 3 },   // diagonal ↘
+    { arrangements: [{r:0,c:2},{r:1,c:1},{r:2,c:0}], rows: 3, cols: 3 },   // diagonal ↙
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2}], rows: 1, cols: 3 },   // row
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0}], rows: 3, cols: 1 },   // column
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2}], rows: 2, cols: 3 },   // triangle ∆ (1 top, 2 bottom)
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:1}], rows: 2, cols: 3 },   // triangle ▽ (2 top, 1 bottom)
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 2 },   // L-shape
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 2 },   // reverse-L
+    // Polygon: regular triangle — wider spacing makes shape unmistakable
+    { arrangements: [{r:0,c:1},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },   // polygon △ vertex top
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:2,c:1}], rows: 3, cols: 3 },   // polygon ▽ vertex bottom
+    { arrangements: [{r:0,c:0},{r:1,c:2},{r:2,c:0}], rows: 3, cols: 3 },   // polygon ▷ vertex right
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:2,c:2}], rows: 3, cols: 3 },   // polygon ◁ vertex left
+  ],
+
+  // ── 4 ──────────────────────────────────────────────────────────────────
+  4: [
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 2 },                    // 2×2 square
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3}], rows: 1, cols: 4 },                    // row of 4
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:3,c:0}], rows: 4, cols: 1 },                    // column of 4
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:1}], rows: 3, cols: 3 },                    // diamond ◇
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 2 },                    // L-shape
+    { arrangements: [{r:0,c:1},{r:1,c:1},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 2 },                    // reverse-L
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:1}], rows: 2, cols: 3 },                    // T (top bar)
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 3 },                    // T (bottom bar)
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 3 },                    // Z-shape
+    { arrangements: [{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 3 },                    // S-shape
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },                    // corners spread
+  ],
+
+  // ── 5 ──────────────────────────────────────────────────────────────────
+  5: [
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:1},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },          // dice-5 X
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:1}], rows: 3, cols: 3 },          // plus / cross
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4}], rows: 1, cols: 5 },          // row of 5
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:3,c:0},{r:4,c:0}], rows: 5, cols: 1 },          // column of 5
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 3 },          // 3+2 domino
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:1,c:0},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 3 },          // 2+3 domino
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },          // house / pentagon
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:1,c:1},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },          // staircase ↗
+    { arrangements: [{r:0,c:2},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 3 },          // staircase ↙
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:0,c:4},{r:1,c:1},{r:1,c:3}], rows: 2, cols: 5 },          // W / crown
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:3,c:0},{r:3,c:1}], rows: 4, cols: 2 },          // L-shape tall
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:1}], rows: 2, cols: 4 },          // T wide
+    // Polygon: regular pentagon — vertices at corners of a 5×5 grid
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:4,c:1},{r:4,c:3},{r:1,c:4}], rows: 5, cols: 5 },          // polygon ⬠ vertex top
+    { arrangements: [{r:0,c:1},{r:0,c:3},{r:3,c:0},{r:3,c:4},{r:4,c:2}], rows: 5, cols: 5 },          // polygon ⬠ vertex bottom
+  ],
+
+  // ── 6 ──────────────────────────────────────────────────────────────────
+  6: [
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:1,c:0},{r:1,c:1},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 2 },                   // 3×2 rect
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 3 },                   // 2×3 rect
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:0,c:2},{r:1,c:2},{r:2,c:2}], rows: 3, cols: 3 },                   // two columns (dice 6)
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:1,c:1},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },                   // staircase 1+2+3
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:2,c:0}], rows: 3, cols: 3 },                   // staircase 3+2+1
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },                   // two rows with gap
+    { arrangements: [{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 4 },                   // parallelogram
+    { arrangements: [{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:3},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 4 },                   // hexagon outline
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:1},{r:2,c:0},{r:2,c:2},{r:3,c:1}], rows: 4, cols: 3 },                   // diamond / hourglass
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4},{r:0,c:5}], rows: 1, cols: 6 },                   // row of 6
+    // Polygon: regular hexagon — two orientations on a 5×5 grid
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:1,c:4},{r:3,c:0},{r:3,c:4},{r:4,c:2}], rows: 5, cols: 5 },                   // polygon ⬡ pointy top
+    { arrangements: [{r:0,c:1},{r:0,c:3},{r:2,c:0},{r:2,c:4},{r:4,c:1},{r:4,c:3}], rows: 5, cols: 5 },                   // polygon ⬡ flat top
+  ],
+
+  // ── 7 ──────────────────────────────────────────────────────────────────
+  7: [
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2}], rows: 2, cols: 4 },        // 4+3 rows
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:1,c:3}], rows: 2, cols: 4 },        // 3+4 rows
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 3 },        // staircase 3+2+2
+    { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:0,c:2},{r:1,c:2},{r:2,c:2},{r:1,c:1}], rows: 3, cols: 3 },        // dice-6 + center
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },        // arrow / 1+3+3
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:1}], rows: 3, cols: 3 },        // 3+3+1 (T inverted)
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },        // H-shape
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:3,c:1}], rows: 4, cols: 3 },        // diamond + poles
+    // Polygon: regular heptagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:1},{r:4,c:0},{r:6,c:2},{r:6,c:4},{r:4,c:6},{r:1,c:5}], rows: 7, cols: 7 },        // polygon heptagon
+  ],
+
+  // ── 8 ──────────────────────────────────────────────────────────────────
+  8: [
+    { arrangements: Array.from({length:8}, (_,i) => ({r: Math.floor(i/4), c: i%4})), rows: 2, cols: 4 },                 // 2×4 rect
+    { arrangements: Array.from({length:8}, (_,i) => ({r: Math.floor(i/2), c: i%2})), rows: 4, cols: 2 },                 // 4×2 rect
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 3 },  // 3×3 minus corner
+    { arrangements: [{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:3},{r:2,c:0},{r:2,c:3},{r:3,c:1},{r:3,c:2}], rows: 4, cols: 4 },  // octagon outline
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },  // square frame (no center)
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0}], rows: 3, cols: 4 },  // staircase 4+3+1
+    { arrangements: [{r:0,c:2},{r:0,c:3},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:3,c:0},{r:3,c:1}], rows: 4, cols: 4 },  // diagonal block staircase
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },  // staircase 3+2+3
+    // Polygon: regular octagon — compact 5×5 grid, vertex at top
+    { arrangements: [{r:0,c:2},{r:1,c:1},{r:2,c:0},{r:3,c:1},{r:4,c:2},{r:3,c:3},{r:2,c:4},{r:1,c:3}], rows: 5, cols: 5 },  // polygon octagon ⯃
+  ],
+
+  // ── 9 ──────────────────────────────────────────────────────────────────
+  9: [
+    { arrangements: Array.from({length:9}, (_,i) => ({r: Math.floor(i/3), c: i%3})), rows: 3, cols: 3 },                 // 3×3 grid
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:1,c:3}], rows: 2, cols: 5 },  // 5+4 rows
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:1,c:3},{r:1,c:4}], rows: 2, cols: 5 },  // 4+5 rows
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 4 },  // staircase 4+3+2
+    { arrangements: [{r:0,c:2},{r:1,c:1},{r:1,c:3},{r:2,c:0},{r:2,c:2},{r:2,c:4},{r:3,c:1},{r:3,c:3},{r:4,c:2}], rows: 5, cols: 5 },  // diamond
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:3,c:0}], rows: 4, cols: 3 },  // staircase 3+3+2+1
+    // Polygon: regular nonagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:5},{r:2,c:6},{r:5,c:6},{r:6,c:4},{r:6,c:2},{r:5,c:0},{r:2,c:0},{r:1,c:1}], rows: 7, cols: 7 },  // polygon nonagon
+  ],
+
+  // ── 10 ─────────────────────────────────────────────────────────────────
+  10: [
+    { arrangements: Array.from({length:10}, (_,i) => ({r: Math.floor(i/5), c: i%5})), rows: 2, cols: 5 },                // 2×5 ten-frame
+    { arrangements: Array.from({length:10}, (_,i) => ({r: Math.floor(i/2), c: i%2})), rows: 5, cols: 2 },                // 5×2 vertical
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:2,c:3},{r:2,c:4}], rows: 3, cols: 5 },  // 5+5 with gap
+    { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 4 },  // staircase 4+3+3
+    { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:3,c:0},{r:3,c:2},{r:4,c:0},{r:4,c:1}], rows: 5, cols: 3 },  // diamond column
+    // Polygon: regular decagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:5},{r:2,c:6},{r:4,c:6},{r:5,c:5},{r:6,c:3},{r:5,c:1},{r:4,c:0},{r:2,c:0},{r:1,c:1}], rows: 7, cols: 7 },  // polygon decagon
+  ],
+
+  // ── 11 ─────────────────────────────────────────────────────────────────
+  11: [
+    { arrangements: [...Array.from({length:6}, (_,i) => ({r:0, c:i})), ...Array.from({length:5}, (_,i) => ({r:1, c:i}))], rows: 2, cols: 6 },  // 6+5
+    { arrangements: [...Array.from({length:5}, (_,i) => ({r:0, c:i})), ...Array.from({length:6}, (_,i) => ({r:1, c:i}))], rows: 2, cols: 6 },  // 5+6
+  ],
+
+  // ── 12+ (rectangular grids for multiplication mode) ─────────────────────
+  12: [
+    { arrangements: Array.from({length:12}, (_,i) => ({r: Math.floor(i/4), c: i%4})), rows: 3, cols: 4 },
+    { arrangements: Array.from({length:12}, (_,i) => ({r: Math.floor(i/3), c: i%3})), rows: 4, cols: 3 },
+    { arrangements: Array.from({length:12}, (_,i) => ({r: Math.floor(i/6), c: i%6})), rows: 2, cols: 6 },
+  ],
+  15: [
+    { arrangements: Array.from({length:15}, (_,i) => ({r: Math.floor(i/5), c: i%5})), rows: 3, cols: 5 },
+    { arrangements: Array.from({length:15}, (_,i) => ({r: Math.floor(i/3), c: i%3})), rows: 5, cols: 3 },
+  ],
+  16: [
+    { arrangements: Array.from({length:16}, (_,i) => ({r: Math.floor(i/4), c: i%4})), rows: 4, cols: 4 },
+  ],
+  18: [
+    { arrangements: Array.from({length:18}, (_,i) => ({r: Math.floor(i/6), c: i%6})), rows: 3, cols: 6 },
+  ],
+  20: [
+    { arrangements: Array.from({length:20}, (_,i) => ({r: Math.floor(i/5), c: i%5})), rows: 4, cols: 5 },
+  ],
+  24: [
+    { arrangements: Array.from({length:24}, (_,i) => ({r: Math.floor(i/6), c: i%6})), rows: 4, cols: 6 },
+  ],
+  25: [
+    { arrangements: Array.from({length:25}, (_,i) => ({r: Math.floor(i/5), c: i%5})), rows: 5, cols: 5 },
+  ],
+};
+
+// Generate a rectangular grid pattern for any number
+function generateGridPattern(total) {
+  if (PATTERNS[total]) {
+    return pickRandom(PATTERNS[total]);
+  }
+  // Find best rectangle
+  let bestCols = Math.ceil(Math.sqrt(total));
+  let bestRows = Math.ceil(total / bestCols);
+  const arrangements = [];
+  for (let i = 0; i < total; i++) {
+    arrangements.push({ r: Math.floor(i / bestCols), c: i % bestCols });
+  }
+  return { arrangements, rows: bestRows, cols: bestCols };
+}
+
+// Generate a scattered/non-rectangular pattern
+function generateScatteredPattern(total, maxRows, maxCols) {
+  const positions = new Set();
+  const arrangements = [];
+  let attempts = 0;
+  while (arrangements.length < total && attempts < 500) {
+    const r = Math.floor(Math.random() * maxRows);
+    const c = Math.floor(Math.random() * maxCols);
+    const key = `${r},${c}`;
+    if (!positions.has(key)) {
+      positions.add(key);
+      arrangements.push({ r, c });
+    }
+    attempts++;
+  }
+  return { arrangements, rows: maxRows, cols: maxCols };
+}
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// ── Duplicate Detection ──
+// Two cards are duplicates when every group has the same dot positions and types.
+function cardFingerprint(card) {
+  return card.groups.map(g => {
+    const positions = g.pattern.arrangements.map(({r, c}) => `${r},${c}`).join(';');
+    return `${positions}:${g.dotTypes.join('')}`;
+  }).join('||');
+}
+
+// ── Card Generation by Type ──
+
+function generateSubitizeCards(count, min, max, useOpen) {
+  const cards = [];
+  for (let i = 0; i < count; i++) {
+    const total = randInt(Math.max(min, 1), Math.min(max, 10));
+    const pattern = generateGridPattern(total);
+
+    // Open dots: mark the last 1–2 dots as open to highlight
+    // "anchor + extra" (e.g., 5 filled + 1 open = "five and one more")
+    let openCount = 0;
+    let hintText = '';
+    if (useOpen && total > 2) {
+      openCount = randInt(1, Math.min(2, total - 1));
+      const anchor = total - openCount;
+      hintText = `${anchor} y ${openCount} más → ${anchor} + ${openCount} = ${total}`;
+    } else {
+      hintText = total <= 5
+        ? `Subitización perceptual: reconocer ${total} sin contar`
+        : `Subitización conceptual: agrupar para reconocer ${total}`;
+    }
+
+    const dotTypes = pattern.arrangements.map((pos, idx) =>
+      idx >= total - openCount ? 'open' : 'filled'
+    );
+    cards.push({
+      type: 'single',
+      total,
+      groups: [{
+        pattern,
+        dotTypes,
+        label: null,
+      }],
+      question: `¿Cuántos puntos hay?`,
+      hint: hintText,
+    });
+  }
+  return cards;
+}
+
+function generateAdditionCards(count, min, max, useOpen) {
+  const cards = [];
+  for (let i = 0; i < count; i++) {
+    const total = randInt(Math.max(min, 3), max);
+    const a = randInt(1, total - 1);
+    const b = total - a;
+    const patternA = generateGridPattern(a);
+    const patternB = generateGridPattern(b);
+
+    // Open dots: mark the smaller group as open to visually
+    // distinguish "start from the bigger group, add on the rest"
+    let dotTypesA, dotTypesB, hintText;
+    if (useOpen) {
+      if (a <= b) {
+        dotTypesA = patternA.arrangements.map(() => 'open');
+        dotTypesB = patternB.arrangements.map(() => 'filled');
+        hintText = `Contar desde ${b}, sumar ${a} abiertos → ${b} + ${a} = ${total}`;
+      } else {
+        dotTypesA = patternA.arrangements.map(() => 'filled');
+        dotTypesB = patternB.arrangements.map(() => 'open');
+        hintText = `Contar desde ${a}, sumar ${b} abiertos → ${a} + ${b} = ${total}`;
+      }
+    } else {
+      dotTypesA = patternA.arrangements.map(() => 'filled');
+      dotTypesB = patternB.arrangements.map(() => 'filled');
+      hintText = `Suma: ${a} + ${b} = ${total}`;
+    }
+
+    cards.push({
+      type: 'two-groups',
+      total,
+      groups: [
+        { pattern: patternA, dotTypes: dotTypesA, label: null },
+        { pattern: patternB, dotTypes: dotTypesB, label: null },
+      ],
+      question: `¿Cuántos puntos hay en total?`,
+      hint: hintText,
+    });
+  }
+  return cards;
+}
+
+function generateNearDoublesCards(count, min, max, useOpen) {
+  const cards = [];
+  const doublesBase = [];
+  for (let d = Math.max(1, Math.ceil(min / 2)); d <= Math.floor(max / 2); d++) {
+    doublesBase.push(d);
+  }
+  if (doublesBase.length === 0) doublesBase.push(3, 4, 5);
+
+  for (let i = 0; i < count; i++) {
+    const base = pickRandom(doublesBase);
+    const variation = pickRandom([-1, 1]);
+    const a = base;
+    const b = base + variation;
+    if (b < 1) continue;
+    const total = a + b;
+
+    const patternA = generateGridPattern(a);
+    const patternB = generateGridPattern(b);
+
+    // When useOpen is active OR by default for near-doubles,
+    // mark the "extra" dot as open to highlight the near-double relationship
+    const markOpen = useOpen;
+    const dotTypesA = patternA.arrangements.map((_, idx) =>
+      (markOpen && variation < 0 && idx === a - 1) ? 'open' : 'filled'
+    );
+    const dotTypesB = patternB.arrangements.map((_, idx) =>
+      (markOpen && variation > 0 && idx === b - 1) ? 'open' : 'filled'
+    );
+
+    cards.push({
+      type: 'two-groups',
+      total,
+      groups: [
+        { pattern: patternA, dotTypes: dotTypesA, label: null },
+        { pattern: patternB, dotTypes: dotTypesB, label: null },
+      ],
+      question: `¿Cuántos puntos hay en total?`,
+      hint: variation > 0
+        ? `Casi-doble: ${base}+${base}=${base*2}, más 1 es ${total}`
+        : `Casi-doble: ${base}+${base}=${base*2}, menos 1 es ${total}`,
+    });
+  }
+  return cards.length >= count ? cards : cards.concat(generateNearDoublesCards(count - cards.length, min, max, useOpen));
+}
+
+function generateMakeTenCards(count) {
+  const pairs = [[1,9],[2,8],[3,7],[4,6],[5,5],[6,4],[7,3],[8,2],[9,1]];
+  const cards = [];
+  for (let i = 0; i < count; i++) {
+    const [a, b] = pickRandom(pairs);
+    const patternA = generateGridPattern(a);
+    const patternB = generateGridPattern(b);
+    const dotTypesA = patternA.arrangements.map(() => 'blue');
+    const dotTypesB = patternB.arrangements.map(() => 'red');
+    cards.push({
+      type: 'two-groups',
+      total: 10,
+      groups: [
+        { pattern: patternA, dotTypes: dotTypesA, label: null, labelColor: 'blue' },
+        { pattern: patternB, dotTypes: dotTypesB, label: null, labelColor: 'red' },
+      ],
+      question: `¿Cuántos puntos hay en total?`,
+      hint: `Completar 10: ${a} + ${b} = 10`,
+    });
+  }
+  return cards;
+}
+
+function generateMultiplicationCards(count, min, max) {
+  const cards = [];
+  for (let i = 0; i < count; i++) {
+    const total = randInt(Math.max(min, 4), max);
+    // Find valid factor pairs
+    const factors = [];
+    for (let f = 2; f <= Math.floor(Math.sqrt(total)); f++) {
+      if (total % f === 0) factors.push([f, total / f]);
+    }
+    if (factors.length === 0) {
+      // prime or 1, use nearest composite
+      const adjusted = total + 1;
+      factors.push([2, Math.ceil(adjusted / 2)]);
+    }
+    const [rows, cols] = pickRandom(factors);
+    const actualTotal = rows * cols;
+    const arrangements = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        arrangements.push({ r, c });
+      }
+    }
+    const dotTypes = arrangements.map(() => 'filled');
+    cards.push({
+      type: 'single',
+      total: actualTotal,
+      groups: [{
+        pattern: { arrangements, rows, cols },
+        dotTypes,
+        label: null,
+      }],
+      question: `¿Cuántos puntos hay? ¿Cómo los ves?`,
+      hint: `Arreglo: ${rows} × ${cols} = ${actualTotal} (o ${cols} × ${rows})`,
+    });
+  }
+  return cards;
+}
+
+function generateComparisonCards(count, min, max) {
+  const cards = [];
+  for (let i = 0; i < count; i++) {
+    const a = randInt(Math.max(min, 2), max);
+    const diff = randInt(0, 3);
+    const b = a + pickRandom([-1, 1]) * diff;
+    const bClamped = Math.max(1, b);
+
+    const patternA = generateGridPattern(a);
+    const patternB = generateGridPattern(bClamped);
+    const dotTypesA = patternA.arrangements.map(() => 'blue');
+    const dotTypesB = patternB.arrangements.map(() => 'red');
+
+    cards.push({
+      type: 'two-groups',
+      total: a + bClamped,
+      groups: [
+        { pattern: patternA, dotTypes: dotTypesA, label: 'Azul', labelColor: 'blue' },
+        { pattern: patternB, dotTypes: dotTypesB, label: 'Rojo', labelColor: 'red' },
+      ],
+      question: `¿Cuál grupo tiene más puntos?`,
+      hint: a > bClamped
+        ? `Azul tiene ${a - bClamped} más (${a} vs ${bClamped})`
+        : a < bClamped
+        ? `Rojo tiene ${bClamped - a} más (${bClamped} vs ${a})`
+        : `Ambos tienen ${a} — ¡son iguales!`,
+    });
+  }
+  return cards;
+}
+
+function generateDecompositionCards(count, min, max) {
+  const cards = [];
+  // Generate same number in different arrangements
+  const targets = [];
+  for (let i = 0; i < count; i++) {
+    targets.push(randInt(Math.max(min, 4), max));
+  }
+
+  for (const total of targets) {
+    // Pick a random arrangement style
+    const style = pickRandom(['grid', 'scattered', 'split']);
+    if (style === 'grid') {
+      const pattern = generateGridPattern(total);
+      cards.push({
+        type: 'single',
+        total,
+        groups: [{ pattern, dotTypes: pattern.arrangements.map(() => 'filled'), label: null }],
+        question: `¿Cuántos puntos hay? ¿De cuántas formas puedes verlos?`,
+        hint: `Descomposición: busca diferentes formas de agrupar ${total}`,
+      });
+    } else if (style === 'scattered') {
+      const gridSize = Math.ceil(Math.sqrt(total)) + 1;
+      const pattern = generateScatteredPattern(total, gridSize, gridSize);
+      cards.push({
+        type: 'single',
+        total,
+        groups: [{ pattern, dotTypes: pattern.arrangements.map(() => 'filled'), label: null }],
+        question: `¿Cuántos puntos hay? ¿De cuántas formas puedes verlos?`,
+        hint: `Descomposición: los puntos dispersos invitan a buscar sub-grupos`,
+      });
+    } else {
+      const a = randInt(1, total - 1);
+      const b = total - a;
+      const patternA = generateGridPattern(a);
+      const patternB = generateGridPattern(b);
+      cards.push({
+        type: 'two-groups',
+        total,
+        groups: [
+          { pattern: patternA, dotTypes: patternA.arrangements.map(() => 'filled'), label: null },
+          { pattern: patternB, dotTypes: patternB.arrangements.map(() => 'filled'), label: null },
+        ],
+        question: `¿Cuántos puntos hay en total? ¿Cómo los ves?`,
+        hint: `Descomposición: ${a} + ${b} = ${total}`,
+      });
+    }
+  }
+  return cards;
+}
+
+// ── Main Generation ──
+function generateCards() {
+  const cardType = document.getElementById('cardType').value;
+  const min = parseInt(document.getElementById('minDots').value);
+  const max = parseInt(document.getElementById('maxDots').value);
+  const count = parseInt(document.getElementById('numCards').value);
+  const useOpen = document.getElementById('useOpenDots').checked;
+  const showHints = document.getElementById('showHints').checked;
+
+  // Overgenerate (5×) so deduplication can still fulfil the requested count.
+  const pool = count * 5;
+  function makeBatch(n) {
+    switch (cardType) {
+      case 'subitize':      return generateSubitizeCards(n, min, max, useOpen);
+      case 'addition':      return generateAdditionCards(n, min, max, useOpen);
+      case 'near-doubles':  return generateNearDoublesCards(n, min, max, useOpen);
+      case 'make-ten':      return generateMakeTenCards(n);
+      case 'multiplication':return generateMultiplicationCards(n, min, max);
+      case 'comparison':    return generateComparisonCards(n, min, max);
+      case 'decomposition': return generateDecompositionCards(n, min, max);
+      default:              return [];
+    }
+  }
+
+  const seen = new Set();
+  const cards = makeBatch(pool).filter(card => {
+    const fp = cardFingerprint(card);
+    if (seen.has(fp)) return false;
+    seen.add(fp);
+    return true;
+  }).slice(0, count);
+
+  generatedCards = cards;
+  renderCards(cards, showHints);
+}
+
+// ── Rendering ──
+function renderDotGrid(group, large) {
+  const { pattern, dotTypes } = group;
+  const dotSize = large ? 52 : 28;
+  const gap = large ? 14 : 8;
+  const { rows, cols, arrangements } = pattern;
+
+  // Build a grid
+  const grid = document.createElement('div');
+  grid.className = 'dot-grid';
+  grid.style.gridTemplateColumns = `repeat(${cols}, ${dotSize}px)`;
+  grid.style.gridTemplateRows = `repeat(${rows}, ${dotSize}px)`;
+  grid.style.gap = `${gap}px`;
+
+  // Create a map of positions
+  const posMap = new Map();
+  arrangements.forEach((pos, idx) => {
+    posMap.set(`${pos.r},${pos.c}`, dotTypes[idx]);
+  });
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const key = `${r},${c}`;
+      if (posMap.has(key)) {
+        const dot = document.createElement('div');
+        dot.className = `dot ${posMap.get(key)}`;
+        dot.style.width = `${dotSize}px`;
+        dot.style.height = `${dotSize}px`;
+        grid.appendChild(dot);
+      } else {
+        const spacer = document.createElement('div');
+        spacer.style.width = `${dotSize}px`;
+        spacer.style.height = `${dotSize}px`;
+        grid.appendChild(spacer);
+      }
+    }
+  }
+  return grid;
+}
+
+function renderCards(cards, showHints) {
+  const grid = document.getElementById('cardsGrid');
+  const countEl = document.getElementById('cardCount');
+  grid.innerHTML = '';
+  countEl.textContent = `${cards.length} tarjeta${cards.length !== 1 ? 's' : ''}`;
+
+  cards.forEach((card, idx) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'dot-card-wrapper';
+    wrapper.style.animationDelay = `${idx * 0.08}s`;
+
+    const typeLabels = {
+      'single': 'Individual',
+      'two-groups': 'Dos grupos',
+    };
+
+    const cardEl = document.createElement('div');
+    cardEl.className = 'dot-card';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'dot-card-header';
+    header.innerHTML = `
+      <span class="dot-card-number">#${idx + 1}</span>
+      <span class="dot-card-meta">${typeLabels[card.type]}</span>
+    `;
+    cardEl.appendChild(header);
+
+    // Canvas area
+    const canvasArea = document.createElement('div');
+    canvasArea.className = `dot-card-canvas-area ${card.type === 'single' ? 'dot-card-single' : ''}`;
+
+    card.groups.forEach((group, gIdx) => {
+      const groupEl = document.createElement('div');
+      groupEl.className = 'dot-group';
+
+      if (group.label) {
+        const label = document.createElement('div');
+        label.className = `dot-group-label ${group.labelColor || ''}`;
+        label.textContent = group.label;
+        groupEl.appendChild(label);
+      }
+
+      groupEl.appendChild(renderDotGrid(group, false));
+      canvasArea.appendChild(groupEl);
+
+      if (gIdx < card.groups.length - 1) {
+        const divider = document.createElement('div');
+        divider.className = 'group-divider';
+        canvasArea.appendChild(divider);
+      }
+    });
+
+    cardEl.appendChild(canvasArea);
+
+    // Footer
+    const footer = document.createElement('div');
+    footer.className = 'dot-card-footer';
+    footer.innerHTML = `
+      <span class="strategy-hint">${showHints ? card.hint : card.question}</span>
+    `;
+    cardEl.appendChild(footer);
+
+    wrapper.appendChild(cardEl);
+    grid.appendChild(wrapper);
+  });
+}
+
+// ── Presentation Mode ──
+function startPresentation() {
+  if (generatedCards.length === 0) {
+    generateCards();
+  }
+  if (generatedCards.length === 0) return;
+
+  currentPresentationIndex = 0;
+  const overlay = document.getElementById('presentationOverlay');
+  overlay.classList.add('active');
+  renderPresentationCard();
+  document.addEventListener('keydown', handlePresentationKeys);
+}
+
+function closePresentation() {
+  const overlay = document.getElementById('presentationOverlay');
+  overlay.classList.remove('active');
+  clearInterval(timerInterval);
+  document.removeEventListener('keydown', handlePresentationKeys);
+}
+
+function handlePresentationKeys(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') nextCard();
+  if (e.key === 'ArrowLeft') prevCard();
+  if (e.key === 'Escape') closePresentation();
+}
+
+function nextCard() {
+  if (currentPresentationIndex < generatedCards.length - 1) {
+    currentPresentationIndex++;
+    renderPresentationCard();
+  }
+}
+
+function prevCard() {
+  if (currentPresentationIndex > 0) {
+    currentPresentationIndex--;
+    renderPresentationCard();
+  }
+}
+
+function renderPresentationCard() {
+  const card = generatedCards[currentPresentationIndex];
+  const container = document.getElementById('presentationCard');
+  const counter = document.getElementById('presentationCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  counter.textContent = `${currentPresentationIndex + 1} / ${generatedCards.length}`;
+  prevBtn.disabled = currentPresentationIndex === 0;
+  nextBtn.disabled = currentPresentationIndex === generatedCards.length - 1;
+
+  container.innerHTML = '';
+
+  // Question
+  const question = document.createElement('div');
+  question.className = 'presentation-question';
+  question.textContent = card.question;
+  container.appendChild(question);
+
+  // Card area
+  const canvasArea = document.createElement('div');
+  canvasArea.className = `dot-card-canvas-area ${card.type === 'single' ? 'dot-card-single' : ''}`;
+  canvasArea.style.background = 'var(--card-bg)';
+  canvasArea.style.border = '3px solid var(--presentation-border, var(--card-header-bg))';
+  canvasArea.style.borderRadius = '14px';
+  canvasArea.style.padding = '3rem';
+  canvasArea.style.minWidth = '300px';
+
+  card.groups.forEach((group, gIdx) => {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'dot-group';
+
+    if (group.label) {
+      const label = document.createElement('div');
+      label.className = `dot-group-label ${group.labelColor || ''}`;
+      label.style.fontSize = '1.1rem';
+      label.textContent = group.label;
+      groupEl.appendChild(label);
+    }
+
+    groupEl.appendChild(renderDotGrid(group, true));
+    canvasArea.appendChild(groupEl);
+
+    if (gIdx < card.groups.length - 1) {
+      const divider = document.createElement('div');
+      divider.className = 'group-divider';
+      divider.style.margin = '0 1.5rem';
+      canvasArea.appendChild(divider);
+    }
+  });
+
+  container.appendChild(canvasArea);
+
+  // Timer
+  startTimer();
+}
+
+function startTimer() {
+  const duration = parseInt(document.getElementById('timerDuration').value);
+  const timerEl = document.getElementById('presentationTimer');
+  clearInterval(timerInterval);
+
+  if (duration === 0) {
+    timerEl.classList.remove('visible');
+    return;
+  }
+
+  let remaining = duration;
+  timerEl.textContent = remaining;
+  timerEl.classList.add('visible');
+
+  timerInterval = setInterval(() => {
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      timerEl.textContent = '⏱';
+    } else {
+      timerEl.textContent = remaining;
+    }
+  }, 1000);
+}
+
+// ── Auto-adjust ranges based on card type ──
+document.getElementById('cardType').addEventListener('change', function() {
+  const type = this.value;
+  const minEl = document.getElementById('minDots');
+  const maxEl = document.getElementById('maxDots');
+
+  switch (type) {
+    case 'subitize':
+      minEl.value = 3; maxEl.value = 10; break;
+    case 'addition':
+      minEl.value = 5; maxEl.value = 15; break;
+    case 'near-doubles':
+      minEl.value = 4; maxEl.value = 18; break;
+    case 'make-ten':
+      minEl.value = 10; maxEl.value = 10; break;
+    case 'multiplication':
+      minEl.value = 6; maxEl.value = 25; break;
+    case 'comparison':
+      minEl.value = 3; maxEl.value = 12; break;
+    case 'decomposition':
+      minEl.value = 5; maxEl.value = 16; break;
+  }
+});
+</script>
+</body>
+</html>
