@@ -19,6 +19,7 @@ permalink: /generador-dot-cards/
   --accent: var(--primary-color);             /* light: #f8ce5f */
   --accent-hover: var(--button-background-hover); /* light: #edc352 */
   --accent-soft: #fef9e7;
+  --accent-text: #8a6200;                     /* dark amber — readable on light bg */
 
   /* Button text on accent background */
   --btn-primary-text: var(--button-color);    /* light: #320101 */
@@ -61,6 +62,7 @@ permalink: /generador-dot-cards/
 
   /* Accent */
   --accent-soft: #3d2e1a;
+  --accent-text: var(--primary-color);        /* peach/gold — readable on dark bg */
 
   /* Card header — slightly lighter than card body for distinction */
   --card-header-bg: #3d4150;
@@ -127,7 +129,7 @@ body {
 }
 
 .app-header h1 span {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .app-header p {
