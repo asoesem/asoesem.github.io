@@ -759,9 +759,12 @@ let currentPresentationIndex = 0;
 let timerInterval = null;
 
 // ── Dot Arrangement Patterns ──
-// Hand-crafted patterns inspired by dice, dominoes, ten-frames, and research
-// on subitizing. Each number has many distinct spatial arrangements so that
-// repeated generation rarely produces the same visual layout.
+// Hand-crafted patterns inspired by dice, dominoes, ten-frames, regular polygons,
+// and research on subitizing. Each number has many distinct spatial arrangements —
+// including the vertices of regular polygons — so that repeated generation rarely
+// produces the same visual layout.
+// Polygon patterns place dots at the corners of regular n-gons: students who
+// recognise the shape can use their knowledge of its vertex count to subitize.
 const PATTERNS = {
 
   // ── 1 ──────────────────────────────────────────────────────────────────
@@ -789,6 +792,11 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:1}], rows: 2, cols: 3 },   // triangle ▽ (2 top, 1 bottom)
     { arrangements: [{r:0,c:0},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 2 },   // L-shape
     { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:1}], rows: 2, cols: 2 },   // reverse-L
+    // Polygon: regular triangle — wider spacing makes shape unmistakable
+    { arrangements: [{r:0,c:1},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },   // polygon △ vertex top
+    { arrangements: [{r:0,c:0},{r:0,c:2},{r:2,c:1}], rows: 3, cols: 3 },   // polygon ▽ vertex bottom
+    { arrangements: [{r:0,c:0},{r:1,c:2},{r:2,c:0}], rows: 3, cols: 3 },   // polygon ▷ vertex right
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:2,c:2}], rows: 3, cols: 3 },   // polygon ◁ vertex left
   ],
 
   // ── 4 ──────────────────────────────────────────────────────────────────
@@ -820,6 +828,9 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:2},{r:0,c:4},{r:1,c:1},{r:1,c:3}], rows: 2, cols: 5 },          // W / crown
     { arrangements: [{r:0,c:0},{r:1,c:0},{r:2,c:0},{r:3,c:0},{r:3,c:1}], rows: 4, cols: 2 },          // L-shape tall
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:1}], rows: 2, cols: 4 },          // T wide
+    // Polygon: regular pentagon — vertices at corners of a 5×5 grid
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:4,c:1},{r:4,c:3},{r:1,c:4}], rows: 5, cols: 5 },          // polygon ⬠ vertex top
+    { arrangements: [{r:0,c:1},{r:0,c:3},{r:3,c:0},{r:3,c:4},{r:4,c:2}], rows: 5, cols: 5 },          // polygon ⬠ vertex bottom
   ],
 
   // ── 6 ──────────────────────────────────────────────────────────────────
@@ -834,6 +845,9 @@ const PATTERNS = {
     { arrangements: [{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:3},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 4 },                   // hexagon outline
     { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:1},{r:2,c:0},{r:2,c:2},{r:3,c:1}], rows: 4, cols: 3 },                   // diamond / hourglass
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4},{r:0,c:5}], rows: 1, cols: 6 },                   // row of 6
+    // Polygon: regular hexagon — two orientations on a 5×5 grid
+    { arrangements: [{r:0,c:2},{r:1,c:0},{r:1,c:4},{r:3,c:0},{r:3,c:4},{r:4,c:2}], rows: 5, cols: 5 },                   // polygon ⬡ pointy top
+    { arrangements: [{r:0,c:1},{r:0,c:3},{r:2,c:0},{r:2,c:4},{r:4,c:1},{r:4,c:3}], rows: 5, cols: 5 },                   // polygon ⬡ flat top
   ],
 
   // ── 7 ──────────────────────────────────────────────────────────────────
@@ -846,6 +860,8 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:1}], rows: 3, cols: 3 },        // 3+3+1 (T inverted)
     { arrangements: [{r:0,c:0},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:2}], rows: 3, cols: 3 },        // H-shape
     { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:3,c:1}], rows: 4, cols: 3 },        // diamond + poles
+    // Polygon: regular heptagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:1},{r:4,c:0},{r:6,c:2},{r:6,c:4},{r:4,c:6},{r:1,c:5}], rows: 7, cols: 7 },        // polygon heptagon
   ],
 
   // ── 8 ──────────────────────────────────────────────────────────────────
@@ -858,6 +874,8 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0}], rows: 3, cols: 4 },  // staircase 4+3+1
     { arrangements: [{r:0,c:2},{r:0,c:3},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:3,c:0},{r:3,c:1}], rows: 4, cols: 4 },  // diagonal block staircase
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 3 },  // staircase 3+2+3
+    // Polygon: regular octagon — compact 5×5 grid, vertex at top
+    { arrangements: [{r:0,c:2},{r:1,c:1},{r:2,c:0},{r:3,c:1},{r:4,c:2},{r:3,c:3},{r:2,c:4},{r:1,c:3}], rows: 5, cols: 5 },  // polygon octagon ⯃
   ],
 
   // ── 9 ──────────────────────────────────────────────────────────────────
@@ -868,6 +886,8 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1}], rows: 3, cols: 4 },  // staircase 4+3+2
     { arrangements: [{r:0,c:2},{r:1,c:1},{r:1,c:3},{r:2,c:0},{r:2,c:2},{r:2,c:4},{r:3,c:1},{r:3,c:3},{r:4,c:2}], rows: 5, cols: 5 },  // diamond
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:3,c:0}], rows: 4, cols: 3 },  // staircase 3+3+2+1
+    // Polygon: regular nonagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:5},{r:2,c:6},{r:5,c:6},{r:6,c:4},{r:6,c:2},{r:5,c:0},{r:2,c:0},{r:1,c:1}], rows: 7, cols: 7 },  // polygon nonagon
   ],
 
   // ── 10 ─────────────────────────────────────────────────────────────────
@@ -877,6 +897,8 @@ const PATTERNS = {
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:0,c:4},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:2,c:3},{r:2,c:4}], rows: 3, cols: 5 },  // 5+5 with gap
     { arrangements: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}], rows: 3, cols: 4 },  // staircase 4+3+3
     { arrangements: [{r:0,c:1},{r:1,c:0},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:3,c:0},{r:3,c:2},{r:4,c:0},{r:4,c:1}], rows: 5, cols: 3 },  // diamond column
+    // Polygon: regular decagon — 7×7 grid, vertex at top
+    { arrangements: [{r:0,c:3},{r:1,c:5},{r:2,c:6},{r:4,c:6},{r:5,c:5},{r:6,c:3},{r:5,c:1},{r:4,c:0},{r:2,c:0},{r:1,c:1}], rows: 7, cols: 7 },  // polygon decagon
   ],
 
   // ── 11 ─────────────────────────────────────────────────────────────────
