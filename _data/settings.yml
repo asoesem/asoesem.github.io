@@ -23,8 +23,12 @@ menu_settings:
       url: "/destacados/"
     # - title: "Autores"
     #   url: "/autores/"
-    - title: "Planificador"
-      url: "/planificador/"
+    - title: "Herramientas"
+      submenu:
+      - url: "/planificador/"
+        title: "Planificador"
+      - url: "/generador-dot-cards"
+        title: "Tarjetas de Puntos"
     - title: "LaTeX"
       submenu:
       - url: "/comandos-latex"
