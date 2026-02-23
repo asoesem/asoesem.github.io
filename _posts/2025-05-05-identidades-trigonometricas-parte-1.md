@@ -137,8 +137,8 @@ Comencemos con el seno de un ángulo doble:
 $$
 \begin{align} \label{eq:senodoble}
 \begin{split} 
-\sin(2\vartheta) = \sin(\vartheta + \vartheta) = \sin \vartheta \cos \vartheta + \sin \vartheta \cos \vartheta \\[10pt]
-= \boxed{2\sin \vartheta \cos \vartheta}
+\sin(2\vartheta) = \sin(\vartheta + \vartheta) &= \sin \vartheta \cos \vartheta + \sin \vartheta \cos \vartheta \quad \text{[Por \eqref{eq:senosm}]} \\[10pt]
+&= \boxed{2\sin \vartheta \cos \vartheta}
 \end{split}
 \end{align}
 $$
@@ -149,7 +149,10 @@ $$
 \begin{align}
 \begin{split}
 \sin(2\vartheta) = 2\sin \vartheta \cos \vartheta \\
-= (\sin^2 \vartheta + 2\sin \vartheta \cos \vartheta + \cos^2 \vartheta) - (\sin^2 \vartheta + \cos^2 \vartheta) \\[10pt]
+= 2\sin \vartheta \cos \vartheta + 1 - 1 \\
+= 2\sin \vartheta \cos \vartheta + \sin^2 \vartheta + \cos^2 \vartheta - 1 \\
+= \sin^2 \vartheta + 2\sin \vartheta \cos \vartheta + \cos^2 \vartheta - 1 \\
+= (\sin^2 \vartheta + 2\sin \vartheta \cos \vartheta + \cos^2 \vartheta) - 1 \\[10pt]
 = \boxed{(\sin \vartheta + \cos \vartheta)^2 - 1}
 \end{split}
 \end{align}
@@ -214,8 +217,8 @@ $$
 \cos^2 \vartheta - \sin^2 \vartheta \\[10pt]
 =(\cos^2 \vartheta - \sin^2 \vartheta) \cdot \frac{\cos^2 \vartheta}{\cos^2 \vartheta} \cdot \frac{1}{1} = \frac{(\cos^2 \vartheta - \sin^2 \vartheta)}{\cos^2 \vartheta} \cdot \frac{\cos^2 \vartheta}{(\cos^2 \vartheta + \sin^2 \vartheta)} \\[10pt]
 = \frac{(\cos^2 \vartheta - \sin^2 \vartheta)}{\cos^2 \vartheta} \div \frac{(\cos^2 \vartheta + \sin^2 \vartheta)}{\cos^2 \vartheta} = \left[\frac{\cos^2 \vartheta}{\cos^2 \vartheta} - \frac{\sin^2 \vartheta}{\cos^2 \vartheta}\right] \div \left[\frac{\cos^2 \vartheta}{\cos^2 \vartheta} + \frac{\sin^2 \vartheta}{\cos^2 \vartheta}\right]\\[10pt]
-\left[1-\tan^2 \vartheta\right] \div \left[1+\tan^2 \vartheta\right]\\[10pt]
-\boxed{\frac{1-\tan^2 \vartheta}{1+\tan^2 \vartheta}}
+=\left[1-\tan^2 \vartheta\right] \div \left[1+\tan^2 \vartheta\right]\\[10pt]
+=\boxed{\frac{1-\tan^2 \vartheta}{1+\tan^2 \vartheta}}
 \end{split}
 \end{align}
 $$
@@ -231,7 +234,7 @@ $$\begin{align} \begin{split} \label{eq:tandoble}
 \tan(2\vartheta) = \frac{\sin(2\vartheta)}{\cos(2\vartheta)} = \frac{2\sin \vartheta \cos \vartheta}{\cos^2 \vartheta - \sin^2 \vartheta} \quad \text{[Por $\eqref{eq:senodoble}$ y $\eqref{eq:cosenodoble}$]} \\[3mm]
 = \frac{2\sin \vartheta \cos \vartheta}{\cos^2 \vartheta - \sin^2 \vartheta} \cdot \frac{1/\cos^2(\vartheta)}{1/\cos^2(\vartheta)} \\[3mm]
 = \frac{2\sin \vartheta \cos \vartheta}{\cos^2(\vartheta)} \div \frac{\cos^2 \vartheta - \sin^2 \vartheta}{\cos^2(\vartheta)} = \frac{2\sin \vartheta}{\cos \vartheta} \div \left(\frac{\cos^2 \vartheta}{\cos^2 \vartheta} - \frac{\sin^2 \vartheta}{\cos^2 \vartheta}\right) \\[3mm]
-\boxed{\frac{2\tan \vartheta}{1-\tan^2 \vartheta}}
+=\boxed{\frac{2\tan \vartheta}{1-\tan^2 \vartheta}}
 \end{split} \end{align}$$
 
 
@@ -437,21 +440,21 @@ $$
 
 ## Resumen de Identidades
 
-| Identidad                         | Fórmula                                                                                                                                                                 |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pitagórica fundamental**        | $$\cos^2\vartheta + \sin^2\vartheta = 1$$                                                                                                                               |
-| **Pitagóricas derivadas**         | $$\sec^2\vartheta - \tan^2\vartheta = 1,\quad \csc^2\vartheta - \cot^2\vartheta = 1$$                                                                                   |
-| **Suma y diferencia**             | $$\sin(\vartheta\pm\varphi)=\sin\vartheta\cos\varphi\pm\cos\vartheta\sin\varphi$$                                                                                       |
-|                                   | $$\cos(\vartheta\pm\varphi)=\cos\vartheta\cos\varphi\mp\sin\vartheta\sin\varphi$$                                                                                       |   
-|                                   | $$\tan(\vartheta\pm\varphi)=\dfrac{\tan\vartheta\pm\tan\varphi}{1\mp\tan\vartheta\tan\varphi}$$                                                                         |
-| **Ángulo doble**                  | $$\sin2\vartheta = 2\sin\vartheta\cos\vartheta \quad = (\sin \vartheta + \cos \vartheta)^2-1 \quad = \dfrac{2\tan \vartheta}{\tan^2 \vartheta +1}$$                     |
-|                                   | $$\cos2\vartheta = \cos^2\vartheta - \sin^2\vartheta \quad = 2\cos^2 \vartheta -1 \quad = 1-2\sin^2 \vartheta \quad = \dfrac{1-\tan^2 \vartheta}{1+\tan^2 \vartheta} $$ |
-|                                   | $$\tan(2\vartheta) = \dfrac{2\tan \vartheta}{1-\tan^2 \vartheta}$$                                                                                                      |
-| **Ángulo medio**                  | $$\sin\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1-\cos\vartheta}{2}},\quad \cos\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1+\cos\vartheta}{2}}$$                               |
-|                                   | $$\tan\dfrac{\vartheta}{2} = \dfrac{1-\cos\vartheta}{\sin\vartheta} \quad = \dfrac{\sin \vartheta}{1-\cos \vartheta}$$                                                  |
-| **Reducción de Potencia**         | $$\sin^2 \vartheta = \dfrac{1-\cos(2\vartheta)}{2}$$                                                                                                                    |
-|                                   | $$\cos^2 \vartheta = \dfrac{1+\cos(2\vartheta)}{2}$$                                                                                                                    |
-|                                   | $$\sin^2 \vartheta \cos^2 \vartheta = \dfrac{1-\cos(4\vartheta)}{8}$$                                                                                                   |
+| Identidad                         | Fórmula                                                                                                                                                                        |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Pitagórica fundamental**        | $$\cos^2\vartheta + \sin^2\vartheta = 1$$                                                                                                                                      |
+| **Pitagóricas derivadas**         | $$\sec^2\vartheta - \tan^2\vartheta = 1,\quad \csc^2\vartheta - \cot^2\vartheta = 1$$                                                                                          |
+| **Suma y diferencia**             | $$\sin(\vartheta\pm\varphi)=\sin\vartheta\cos\varphi\pm\cos\vartheta\sin\varphi$$                                                                                              |
+|                                   | $$\cos(\vartheta\pm\varphi)=\cos\vartheta\cos\varphi\mp\sin\vartheta\sin\varphi$$                                                                                              |   
+|                                   | $$\tan(\vartheta\pm\varphi)=\dfrac{\tan\vartheta\pm\tan\varphi}{1\mp\tan\vartheta\tan\varphi}$$                                                                                |
+| **Ángulo doble**                  | $$\sin2\vartheta = 2\sin\vartheta\cos\vartheta \quad = (\sin \vartheta + \cos \vartheta)^2-1 \quad = \dfrac{2\tan \vartheta}{\tan^2 \vartheta +1}$$                            |
+|                                   | $$\cos2\vartheta = \cos^2\vartheta - \sin^2\vartheta \quad = 2\cos^2 \vartheta -1 \quad = 1-2\sin^2 \vartheta \quad = \dfrac{1-\tan^2 \vartheta}{1+\tan^2 \vartheta} $$        |
+|                                   | $$\tan(2\vartheta) = \dfrac{2\tan \vartheta}{1-\tan^2 \vartheta}$$                                                                                                             |
+| **Ángulo medio**                  | $$\sin\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1-\cos\vartheta}{2}},\quad \cos\dfrac{\vartheta}{2} = \pm\sqrt{\dfrac{1+\cos\vartheta}{2}}$$                                      |
+|                                   | $$\tan\dfrac{\vartheta}{2} = \dfrac{1-\cos\vartheta}{\sin\vartheta} \quad = \dfrac{\sin \vartheta}{1-\cos \vartheta} \quad = \pm \sqrt{\dfrac{1-\cos \vartheta}{1+\cos \vartheta}}$$ |
+| **Reducción de Potencia**         | $$\sin^2 \vartheta = \dfrac{1-\cos(2\vartheta)}{2}$$                                                                                                                           |
+|                                   | $$\cos^2 \vartheta = \dfrac{1+\cos(2\vartheta)}{2}$$                                                                                                                           |
+|                                   | $$\sin^2 \vartheta \cos^2 \vartheta = \dfrac{1-\cos(4\vartheta)}{8}$$                                                                                                          |
 
 [Regresar al índice](#toc)
 
