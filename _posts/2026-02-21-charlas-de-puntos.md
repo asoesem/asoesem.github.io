@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Charlas de Puntos: Dot Talks"
+title: "Charlas de Puntos: Desarrollando el Sentido Numérico en Primaria"
 description: "Describe una divertida actividad para desarollar el sentido numérico de tus estudiantes de primaria."
 date: 2026-02-21T10:00:00-06:00
 author: edalorzo
@@ -14,6 +14,8 @@ toc: true
 # Dot Talks: El arte de ver las matemáticas sin contar
 
 ¿Alguna vez se ha detenido a observar cómo las personas interpretan un patrón visual? Lo que para uno es un simple grupo de puntos, para otro es una composición de figuras geométricas, simetrías o agrupaciones numéricas. Esta premisa es la base de las **Dot Talks** (Charlas de Puntos), una herramienta pedagógica poderosa que está transformando la enseñanza de las matemáticas al enfocarse en el pensamiento visual y la flexibilidad numérica.
+
+Prueba nuestro [Generador de Tarjetas de Puntos]({{site.baseurl}}/generador-dot-cards/) como recurso didáctico.
 
 ### ¿Qué es una Dot Talk?
 
