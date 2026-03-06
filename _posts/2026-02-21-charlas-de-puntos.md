@@ -11,28 +11,27 @@ featured: true
 toc: true
 ---
 
-# Dot Talks: El arte de ver las matemáticas sin contar
+# El arte de ver las matemáticas sin contar
 
-¿Alguna vez se ha detenido a observar cómo las personas interpretan un patrón visual? Lo que para uno es un simple grupo de puntos, para otro es una composición de figuras geométricas, simetrías o agrupaciones numéricas. Esta premisa es la base de las **Dot Talks** (Charlas de Puntos), una herramienta pedagógica poderosa que está transformando la enseñanza de las matemáticas al enfocarse en el pensamiento visual y la flexibilidad numérica.
+¿Alguna vez se ha detenido a observar cómo las personas interpretan un patrón visual? Lo que para uno es un simple grupo de puntos, para otro es una composición de figuras geométricas, simetrías o agrupaciones numéricas. Esta premisa es la base de las **Charlas de Puntos** (Dot Talks), una herramienta pedagógica poderosa que está transformando la enseñanza de las matemáticas al enfocarse en el pensamiento visual y la flexibilidad numérica.
 
 Prueba nuestro [Generador de Tarjetas de Puntos]({{site.baseurl}}/generador-dot-cards/) como recurso didáctico.
 
 ### ¿Qué es una Dot Talk?
 
-En esencia, una *Dot Talk* es una variante de las "Charlas Numéricas" (Number Talks) diseñada para desarrollar el **Sentido Numérico Aproximado (ANS)**. A diferencia de los ejercicios tradicionales basados en procedimientos y lápiz, esta actividad se centra en una imagen con puntos organizada de forma específica que se muestra solo por un breve instante.
+En esencia, una *Charla de Puntos* es una variante de las "Charlas Numéricas" (Number Talks) diseñada para desarrollar el **Sentido Numérico Aproximado (ANS)**. A diferencia de los ejercicios tradicionales basados en procedimientos y lápiz, esta actividad se centra en una imagen con puntos organizada de forma específica que se muestra solo por un breve instante.
 
 El objetivo no es que el estudiante cuente los puntos de uno en uno, sino que "vea" la cantidad a través de la **subitización** (la capacidad de reconocer instantáneamente el número de elementos en un grupo pequeño) y la composición/descomposición de números.
 
-![Dot Talks]({{site.baseurl}}/images/dot-talks/dot-talks.png "Charlas de Puntos"){:.center-img}
+![Charlas de Puntos]({{site.baseurl}}/images/dot-talks/dot-talks.png "Charlas de Puntos"){:.center-img}
 
 ### ¿Por qué son tan efectivas?
 
-Como bien señala la investigadora Jo Boaler, las matemáticas son una asignatura abierta y visual. Las *Dot Talks* enseñan tres pilares fundamentales:
+Como bien señala la investigadora Jo Boaler, las matemáticas son una asignatura abierta y visual. Las *Charlas de Puntos* enseñan tres pilares fundamentales:
 
 1. **Creatividad:** No existe una única forma "correcta" de llegar al total.
 2. **Visualización:** Permite conectar conceptos abstractos con representaciones mentales claras.
 3. **Equidad:** Al no haber una carrera por el cálculo algorítmico, se valora la diversidad de perspectivas en el aula.
-
 
 ### Guía para llevar a cabo una Dot Talk
 
@@ -57,8 +56,7 @@ Esta es la parte más importante. Invite a los niños a explicar: *"¿Cómo vist
 
 #### 4. Consenso y Conexión
 
-Al final, la clase o la familia debe llegar a un consenso sobre el total, apreciando que un mismo número (por ejemplo, el 7) puede ser visto como $$3+3+1$$, o $$2+3+2$$, o incluso $$2+2+2+1$$.
-
+Al final, la clase o la familia debe llegar a un consenso sobre el total, apreciando que un mismo número (por ejemplo, el 7) puede ser visto como $$3+3+1$$, o $$2+3+2$$, o incluso $$2+2+2+1$$, que es un pilar del sentido numérico.
 
 ### Consejos para el Éxito (Docentes y Padres)
 
@@ -68,7 +66,7 @@ Al final, la clase o la familia debe llegar a un consenso sobre el total, apreci
 
 ### Conclusión
 
-Las *Dot Talks* son más que un ejercicio de conteo rápido; son una invitación a entender que las matemáticas se tratan de **patrones, relaciones y comunicación**. Al implementar esta rutina diaria, estamos construyendo estudiantes más flexibles, seguros de su capacidad de razonamiento y, sobre todo, conscientes de que en las matemáticas —como en la vida— siempre hay más de una forma de ver la realidad.
+Las *Charlas de Puntos* son más que un ejercicio de conteo rápido; son una invitación a entender que las matemáticas se tratan de **patrones, relaciones y comunicación**. Al implementar esta rutina diaria, estamos construyendo estudiantes más flexibles, seguros de su capacidad de razonamiento y, sobre todo, conscientes de que en las matemáticas —como en la vida— siempre hay más de una forma de ver la realidad.
 
 ## Herramienta Sugerida
 
