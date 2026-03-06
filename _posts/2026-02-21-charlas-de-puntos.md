@@ -17,7 +17,7 @@ toc: true
 
 Prueba nuestro [Generador de Tarjetas de Puntos]({{site.baseurl}}/generador-dot-cards/) como recurso didáctico.
 
-### ¿Qué es una Dot Talk?
+### ¿Qué es una Charla de Puntos?
 
 En esencia, una *Charla de Puntos* es una variante de las "Charlas Numéricas" (Number Talks) diseñada para desarrollar el **Sentido Numérico Aproximado (ANS)**. A diferencia de los ejercicios tradicionales basados en procedimientos y lápiz, esta actividad se centra en una imagen con puntos organizada de forma específica que se muestra solo por un breve instante.
 
@@ -33,7 +33,7 @@ Como bien señala la investigadora Jo Boaler, las matemáticas son una asignatur
 2. **Visualización:** Permite conectar conceptos abstractos con representaciones mentales claras.
 3. **Equidad:** Al no haber una carrera por el cálculo algorítmico, se valora la diversidad de perspectivas en el aula.
 
-### Guía para llevar a cabo una Dot Talk
+### Guía para llevar a cabo una Charla de Puntos
 
 Ya sea usted un docente frente a un grupo de treinta estudiantes o un padre de familia en la mesa del comedor, el protocolo es similar y requiere apenas 10 a 15 minutos.
 
