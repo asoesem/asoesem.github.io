@@ -1,0 +1,1945 @@
+---
+layout: default
+title: Generador de Tarjetas de Charlas Numéricas
+description: "Genera diversas tarjetas de charlas numéricas para el desarrollo de sentido numérico con estudiantes de primaria y secundaria."
+permalink: /generador-charla-numerica
+---
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Backgrounds — reference site color scheme */
+  --bg: var(--background-alt-color);          /* light: #eaecef */
+  --card-bg: #FFFFFF;
+
+  /* Text — reference site color scheme */
+  --ink: var(--heading-font-color);           /* light: #111 */
+  --ink-light: var(--text-alt-color);         /* light: #697177 */
+  --ink-faint: var(--gray);                   /* light: #9e9e9e */
+
+  /* Accent — use site primary (golden yellow) */
+  --accent: var(--primary-color);             /* light: #f8ce5f */
+  --accent-hover: var(--button-background-hover); /* light: #edc352 */
+  --accent-soft: #fef9e7;
+  --accent-text: #8a6200;                     /* dark amber — readable on light bg */
+
+  /* Button text on accent background */
+  --btn-primary-text: var(--button-color);    /* light: #320101 */
+
+  /* Card header — always distinct from card body */
+  --card-header-bg: #1A1A1A;
+  --card-header-text: #FFFFFF;
+
+  /* Presentation mode */
+  --presentation-border: var(--card-header-bg);
+  --presentation-btn-bg: var(--card-header-bg);
+  --presentation-btn-text: var(--card-header-text);
+
+  /* Semantic colors — reuse site's color-blind-safe palette */
+  --color-green: var(--course-approved);      /* light: #009E73 */
+  --color-blue: var(--course-available);      /* light: #0173B2 */
+  --color-rose: var(--course-blocked);        /* light: #D55E00 */
+  --color-violet: #7c60b8;
+
+  /* Borders, shadows, shape */
+  --border: var(--border-color);              /* light: #e4e6eb */
+  --shadow: rgba(0,0,0,0.06);
+  --radius: 10px;
+  --radius-sm: 8px;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-math: 'JetBrains Mono', monospace;
+}
+
+:root[dark] {
+  /* Backgrounds */
+  --bg: var(--background-color);              /* dark: #181818 */
+  --card-bg: var(--background-alt-color);     /* dark: #2a2b2d */
+
+  /* Text */
+  --ink-faint: #5a5a5a;
+
+  /* Accent */
+  --accent-soft: #3d2e1a;
+  --accent-text: var(--primary-color);        /* peach/gold — readable on dark bg */
+
+  /* Card header */
+  --card-header-bg: #3d4150;
+  --card-header-text: var(--heading-font-color); /* dark: #f5f5f5 */
+
+  /* Presentation mode */
+  --presentation-btn-bg: var(--primary-color);
+  --presentation-btn-text: var(--button-color);
+  --presentation-border: var(--primary-color);
+
+  --color-violet: #9b7ad4;
+  --shadow: rgba(0,0,0,0.25);
+}
+
+/* ── Presentation mode – dark mode high-contrast overrides ── */
+:root[dark] .pres-close {
+  background: var(--presentation-btn-bg);
+  color: var(--presentation-btn-text);
+  border-color: var(--presentation-btn-bg);
+}
+
+:root[dark] .pres-nav button {
+  background: var(--presentation-btn-bg);
+  color: var(--presentation-btn-text);
+  border-color: var(--presentation-btn-bg);
+}
+
+:root[dark] .pres-nav button:hover {
+  background: #e8c99a;
+  color: var(--presentation-btn-text);
+}
+
+:root[dark] .pres-nav button:disabled {
+  background: #4b5563;
+  color: #9ca3af;
+  opacity: 0.55;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Header ── */
+.app-header {
+  padding: 2rem 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-top {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.app-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.app-header h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-text);
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.app-header p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-top: 0.25rem;
+  max-width: 640px;
+}
+
+/* ── Layout ── */
+.app-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── Controls Panel ── */
+.controls-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.control-section {
+  margin-bottom: 1.5rem;
+}
+
+.control-section:last-child { margin-bottom: 0; }
+
+.control-section h3 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+}
+
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.control-group:last-child { margin-bottom: 0; }
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 0.35rem;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--bg);
+  transition: border-color 0.2s;
+  appearance: auto;
+}
+
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-row input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-row label {
+  margin-bottom: 0;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── Strategy Tags ── */
+.strategy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.strategy-tag {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.strategy-tag.green  { background: rgba(0,158,115,0.12);  color: var(--color-green); }
+.strategy-tag.blue   { background: rgba(1,115,178,0.12);   color: var(--color-blue); }
+.strategy-tag.rose   { background: rgba(213,94,0,0.12);    color: var(--color-rose); }
+.strategy-tag.violet { background: rgba(124,96,184,0.12);  color: var(--color-violet); }
+.strategy-tag.amber  { background: var(--accent-soft);     color: var(--accent-text); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--ink-light);
+  border: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+.btn-secondary:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+/* ── Cards Area ── */
+.cards-area {
+  min-height: 400px;
+}
+
+.cards-area-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.cards-area-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card-count {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Number Talk Card ── */
+.nt-card-wrapper {
+  animation: cardIn 0.45s ease-out both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nt-card {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nt-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.nt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+}
+
+.nt-card-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.nt-card-level {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.nt-card-body {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+
+.nt-expression {
+  font-family: var(--font-math);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.nt-expression .operator {
+  color: var(--accent-text);
+  margin: 0 0.15em;
+}
+
+.nt-expression .equals {
+  color: var(--ink-faint);
+}
+
+.nt-expression .question-mark {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.nt-sequence-label {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.nt-card-footer {
+  padding: 0.65rem 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.nt-card-footer .strategy-hint {
+  font-style: italic;
+  flex: 1;
+}
+
+.nt-card-footer .answer-reveal {
+  font-family: var(--font-math);
+  font-size: 0.78rem;
+  color: var(--card-header-text);
+  background: var(--card-header-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.nt-card-footer .answer-reveal:hover {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.nt-card-footer .answer-reveal.revealed {
+  background: transparent;
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+/* ── Sequence Connector ── */
+.sequence-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0;
+  color: var(--ink-faint);
+  font-size: 1.2rem;
+  opacity: 0.4;
+}
+
+/* ── Presentation Mode ── */
+.pres-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--card-bg);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pres-overlay.active { display: flex; }
+
+.pres-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+.pres-close:hover {
+  transform: scale(1.1);
+}
+
+.pres-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.pres-expression {
+  font-family: var(--font-math);
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: opacity 0.3s;
+}
+
+.pres-expression .operator { color: var(--accent-text); }
+.pres-expression .equals { color: var(--ink-faint); }
+.pres-expression .question-mark { color: var(--accent-text); }
+
+.pres-question {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-light);
+  margin-bottom: 2.5rem;
+}
+
+.pres-timer {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+
+.pres-timer.visible { opacity: 1; }
+
+.pres-nav {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  z-index: 2;
+}
+
+.pres-nav button {
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pres-nav button:hover {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.pres-nav button:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+}
+
+.pres-counter {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink-light);
+}
+
+/* ── Empty State ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--ink-faint);
+}
+
+.empty-state-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.empty-state h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 0.35rem;
+}
+
+.empty-state p {
+  font-size: 0.85rem;
+  max-width: 300px;
+}
+
+/* ── Strategy Info Card ── */
+.strategy-info {
+  margin-top: 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.strategy-info-desc {
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  line-height: 1.55;
+}
+
+.strategy-info-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.strategy-info-example {
+  font-family: var(--font-math);
+  font-size: 0.78rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.35rem 0.6rem;
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.strategy-info-example .example-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-text);
+  margin-right: 0.4em;
+}
+
+.strategy-info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  .controls-panel {
+    position: static;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header { padding: 1.25rem 1rem 1rem; }
+  .app-header h1 { font-size: 1.5rem; }
+  .app-layout { padding: 0 1rem 2rem; gap: 1.25rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .pres-expression { font-size: 3rem; }
+}
+
+/* ── Print Styles ── */
+@media print {
+  body { background: white; }
+  .controls-panel, .app-header, .cards-area-header { display: none; }
+  .app-layout { grid-template-columns: 1fr; padding: 0; }
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .nt-card-wrapper { break-inside: avoid; }
+  .nt-card { box-shadow: none; }
+  .sequence-connector { display: none; }
+}
+</style>
+
+<header class="app-header">
+  <div class="header-top">
+    <h1>Charlas <em>Numéricas</em></h1>
+    <span class="header-badge">⬥ Grados 4–12</span>
+  </div>
+  <p>Genera secuencias de problemas numéricos para Charlas Numéricas (Number Talks). Cada secuencia está diseñada para provocar estrategias específicas de cálculo mental.</p>
+</header>
+
+<div class="app-layout">
+  <aside class="controls-panel">
+
+    <div class="control-section">
+      <h3>Nivel y operación</h3>
+      <div class="control-group">
+        <label for="gradeLevel">Nivel</label>
+        <select id="gradeLevel">
+          <option value="lower-elem">Primaria inferior (1°–3°)</option>
+          <option value="upper-elem">Primaria superior (4°–6°)</option>
+          <option value="middle">Secundaria (7°–9°)</option>
+          <option value="high">Preparatoria (10°–12°)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="operation">Operación</label>
+        <select id="operation">
+          <option value="addition">Suma</option>
+          <option value="subtraction">Resta</option>
+          <option value="multiplication">Multiplicación</option>
+          <option value="division">División</option>
+          <option value="fractions">Fracciones</option>
+          <option value="decimals">Decimales</option>
+          <option value="percents">Porcentajes</option>
+          <option value="powers">Potencias y raíces</option>
+          <option value="algebra">Expresiones algebraicas</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-section">
+      <h3>Estrategia objetivo</h3>
+      <div class="control-group">
+        <label for="strategy">Estrategia a provocar</label>
+        <select id="strategy">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+      <div id="strategyDescription"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-section">
+      <h3>Configuración</h3>
+      <div class="control-group">
+        <label for="numCards">Tarjetas por secuencia</label>
+        <select id="numCards">
+          <option value="3" selected>3 (secuencia corta)</option>
+          <option value="5">5 (secuencia estándar)</option>
+          <option value="7">7 (secuencia extendida)</option>
+        </select>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showHints" checked>
+        <label for="showHints">Mostrar pistas de estrategia</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showAnswers">
+        <label for="showAnswers">Mostrar respuestas</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="sequenceMode" checked>
+        <label for="sequenceMode">Modo secuencia (problemas conectados)</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-section">
+      <h3>Presentación</h3>
+      <div class="control-group">
+        <label for="timerDuration">Tiempo por problema (seg)</label>
+        <select id="timerDuration">
+          <option value="0">Sin límite</option>
+          <option value="10">10 segundos</option>
+          <option value="15" selected>15 segundos</option>
+          <option value="20">20 segundos</option>
+          <option value="30">30 segundos</option>
+          <option value="60">60 segundos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-primary" onclick="generate()">
+      <span style="font-size:1.1rem;">⬥</span> Generar secuencia
+    </button>
+    <button class="btn btn-secondary" onclick="startPresentation()">▶ Modo presentación</button>
+    <button class="btn btn-secondary" onclick="window.print()">🖨 Imprimir</button>
+
+  </aside>
+
+  <main class="cards-area">
+    <div class="cards-area-header">
+      <h2>Secuencia generada</h2>
+      <span class="card-count" id="cardCount"></span>
+    </div>
+    <div class="cards-grid" id="cardsGrid">
+      <div class="empty-state">
+        <div class="empty-state-icon">∑</div>
+        <h3>Ninguna secuencia generada</h3>
+        <p>Selecciona nivel, operación y estrategia, luego presiona "Generar secuencia".</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Presentation Overlay -->
+<div class="pres-overlay" id="presOverlay">
+  <button class="pres-close" onclick="closePresentation()">✕</button>
+  <div class="pres-timer" id="presTimer"></div>
+  <div class="pres-content" id="presContent"></div>
+  <div class="pres-nav">
+    <button onclick="presPrev()" id="presPrevBtn">← Anterior</button>
+    <span class="pres-counter" id="presCounter"></span>
+    <button onclick="presNext()" id="presNextBtn">Siguiente →</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let cards = [];
+let presIndex = 0;
+let presTimerInterval = null;
+
+// ══════════════════════════════════════════════
+// STRATEGY DEFINITIONS
+// ══════════════════════════════════════════════
+const STRATEGIES = {
+  addition: {
+    'break-apart': {
+      name: 'Descomposición (Valor posicional)',
+      desc: 'Sumar por valor posicional: separar decenas y unidades, sumar por partes. Ej: 45+37 → (40+30)+(5+7) = 82',
+      tags: [{ text: 'Valor posicional', cls: 'green' }, { text: 'Descomponer', cls: 'blue' }],
+    },
+    'compensation': {
+      name: 'Compensación (Redondeo)',
+      desc: 'Redondear un número a la decena más cercana y ajustar el error. Ej: 59+26 → (60+26)−1 = 85',
+      tags: [{ text: 'Redondear', cls: 'amber' }, { text: 'Ajustar', cls: 'rose' }],
+    },
+    'jump': {
+      name: 'Salto',
+      desc: 'Mantener el primer número íntegro y sumar las partes del segundo. Ej: 123+45 → 123+40=163, 163+5=168',
+      tags: [{ text: 'Mantener entero', cls: 'green' }, { text: 'Sumar partes', cls: 'violet' }],
+    },
+    'doubles-near': {
+      name: 'Dobles y casi-dobles',
+      desc: 'Usar hechos de dobles como ancla y ajustar. Ej: 36+37 → 36+36=72, +1=73',
+      tags: [{ text: 'Dobles', cls: 'violet' }, { text: 'Ajustar ±1', cls: 'amber' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias de suma',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  subtraction: {
+    'add-up': {
+      name: 'Sumar para restar',
+      desc: 'Calcular cuánto falta para llegar del sustraendo al minuendo. Ej: 100−72 → 72+8=80, 80+20=100 → 28',
+      tags: [{ text: 'Contar hacia adelante', cls: 'green' }, { text: 'Diferencia', cls: 'blue' }],
+    },
+    'compensation-sub': {
+      name: 'Compensación (Redondeo)',
+      desc: 'Redondear el sustraendo a la decena más cercana y ajustar. Ej: 83−29 → 83−30=53, +1=54',
+      tags: [{ text: 'Redondear', cls: 'amber' }, { text: 'Compensar', cls: 'rose' }],
+    },
+    'jump-sub': {
+      name: 'Salto (Restar por partes)',
+      desc: 'Mantener el minuendo y restar las partes del sustraendo. Ej: 163−45 → 163−40=123, 123−5=118',
+      tags: [{ text: 'Mantener entero', cls: 'green' }, { text: 'Restar partes', cls: 'violet' }],
+    },
+    'same-difference': {
+      name: 'Diferencia constante',
+      desc: 'Sumar o restar la misma cantidad a ambos términos para simplificar. Ej: 154−98 → (+2) → 156−100=56',
+      tags: [{ text: 'Invarianza', cls: 'blue' }, { text: 'Simplificar', cls: 'amber' }],
+    },
+    'decompose-sub': {
+      name: 'Descomposición del sustraendo',
+      desc: 'Restar en partes usando valor posicional. Ej: 74−36 → 74−30=44, 44−6=38',
+      tags: [{ text: 'Valor posicional', cls: 'green' }, { text: 'Partes', cls: 'violet' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias de resta',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  multiplication: {
+    'double-half': {
+      name: 'Duplicar y mediar',
+      desc: 'Cuando un factor es par: dividirlo entre 2 y multiplicar el otro por 2. Ej: 14×15 = 7×30 = 210',
+      tags: [{ text: 'Doblar', cls: 'green' }, { text: 'Mitad', cls: 'rose' }],
+    },
+    'factor-factor': {
+      name: 'Factorización de sub-factores',
+      desc: 'Descomponer un factor en sub-factores convenientes. Ej: 12×15 → (12×5)×3 = 60×3 = 180',
+      tags: [{ text: 'Asociativa', cls: 'green' }, { text: 'Sub-factores', cls: 'violet' }],
+    },
+    'diff-squares': {
+      name: 'Diferencia de cuadrados',
+      desc: 'Para números cercanos cuya media es fácil de elevar al cuadrado. Ej: 19×21 = (20−1)(20+1) = 400−1 = 399',
+      tags: [{ text: '(a−b)(a+b)', cls: 'violet' }, { text: 'Cuadrados', cls: 'blue' }],
+    },
+    'anchor-ten': {
+      name: 'Anclaje en 10 o 100',
+      desc: 'Multiplicar por (10±n) o (100±n) usando distributiva. Ej: 12×9 = 12(10−1) = 120−12 = 108',
+      tags: [{ text: 'Distributiva', cls: 'amber' }, { text: '10±n', cls: 'green' }],
+    },
+    'partial-products': {
+      name: 'Productos parciales',
+      desc: 'Descomponer un factor por valor posicional y sumar productos. Ej: 7×23 = 7×20 + 7×3 = 140+21 = 161',
+      tags: [{ text: 'Distributiva', cls: 'violet' }, { text: 'Valor posicional', cls: 'blue' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias de multiplicación',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  division: {
+    'chunking': {
+      name: 'División por partes',
+      desc: 'Descomponer el dividendo en múltiplos conocidos del divisor. Ej: 156÷12 → (120÷12)+(36÷12) = 10+3 = 13',
+      tags: [{ text: 'Descomponer', cls: 'green' }, { text: 'Múltiplos conocidos', cls: 'blue' }],
+    },
+    'proportional': {
+      name: 'Simplificación proporcional',
+      desc: 'Dividir ambos términos por el mismo factor para simplificar. Ej: 400÷16 = 200÷8 = 100÷4 = 25',
+      tags: [{ text: 'Simplificar', cls: 'violet' }, { text: 'Proporcional', cls: 'amber' }],
+    },
+    'divide-5-25-50': {
+      name: 'División por 5, 25 o 50',
+      desc: 'Multiplicar el dividendo por un factor que convierta el divisor en una potencia de 10, y luego dividir entre esa potencia: para ÷5 se multiplica por 2 y se divide entre 10; para ÷25 se multiplica por 4 y se divide entre 100; para ÷50 se multiplica por 2 y se divide entre 100. Ej: 145÷5 → 145×2=290 → 290÷10=29. Ej: 175÷25 → 175×4=700 → 700÷100=7. Ej: 350÷50 → 350×2=700 → 700÷100=7',
+      tags: [{ text: 'Potencia de 10', cls: 'green' }, { text: 'Equivalencia', cls: 'blue' }],
+    },
+    'multiply-up': {
+      name: 'Multiplicar hacia arriba',
+      desc: '¿Cuántos grupos del divisor forman el dividendo? Ej: 96÷8 → 8×?=96 → 8×12=96',
+      tags: [{ text: 'Inverso ×', cls: 'violet' }, { text: 'Construir', cls: 'amber' }],
+    },
+    'factor-pairs': {
+      name: 'División en etapas (factores)',
+      desc: 'Dividir en pasos usando los factores del divisor. Ej: 180÷12 → 180÷3=60, 60÷4=15',
+      tags: [{ text: 'Factores del divisor', cls: 'rose' }, { text: 'Etapas', cls: 'green' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias de división',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  fractions: {
+    'benchmarks': {
+      name: 'Fracciones de referencia',
+      desc: `Reconocer que ${fmtFrac(1,2)}, ${fmtFrac(1,4)} y ${fmtFrac(3,4)} son fracciones ancla y reescribir una de las fracciones como equivalente de esa ancla para operar directamente con el mismo denominador. Ej: ${fmtFrac(1,2)} + ${fmtFrac(3,8)} → reescribir ${fmtFrac(1,2)}=${fmtFrac(4,8)}, entonces ${fmtFrac(4,8)}+${fmtFrac(3,8)}=${fmtFrac(7,8)}. Ej: ${fmtFrac(3,4)} − ${fmtFrac(1,8)} → reescribir ${fmtFrac(3,4)}=${fmtFrac(6,8)}, entonces ${fmtFrac(6,8)}−${fmtFrac(1,8)}=${fmtFrac(5,8)}`,
+      tags: [{ text: 'Fracciones ancla', cls: 'green' }, { text: 'Equivalencias', cls: 'blue' }],
+    },
+    'equivalence': {
+      name: 'Equivalencias',
+      desc: 'Encontrar fracciones equivalentes para simplificar operaciones',
+      tags: [{ text: 'Equivalentes', cls: 'blue' }, { text: 'Simplificar', cls: 'violet' }],
+    },
+    'decompose-frac': {
+      name: 'Descomponer fracciones',
+      desc: 'Separar fracciones en partes unitarias o conocidas',
+      tags: [{ text: 'Partes unitarias', cls: 'rose' }, { text: 'Descomponer', cls: 'green' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias con fracciones',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  decimals: {
+    'place-value': {
+      name: 'Valor posicional decimal',
+      desc: 'Operar usando la estructura posicional de los decimales',
+      tags: [{ text: 'Valor posicional', cls: 'green' }, { text: 'Décimas/centésimas', cls: 'blue' }],
+    },
+    'fraction-link': {
+      name: 'Conexión fracción-decimal',
+      desc: 'Convertir a fracciones para operar mentalmente',
+      tags: [{ text: 'Conversión', cls: 'violet' }, { text: 'Fracciones', cls: 'amber' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias con decimales',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  percents: {
+    'commutative-pct': {
+      name: 'Propiedad conmutativa',
+      desc: 'x% de y = y% de x. Intercambiar cuando uno es más fácil. Ej: 8% de 50 → 50% de 8 = 4',
+      tags: [{ text: 'x% de y = y% de x', cls: 'violet' }, { text: 'Intercambiar', cls: 'green' }],
+    },
+    'benchmark-pct': {
+      name: 'Referencia de 10% y 1%',
+      desc: 'Hallar 10% (÷10) y 1% (÷100), luego combinar. Ej: 15% de 200 → 10%(20)+5%(10) = 30',
+      tags: [{ text: '10% y 1%', cls: 'green' }, { text: 'Combinar', cls: 'amber' }],
+    },
+    'fraction-pct': {
+      name: 'Conexión fracción-porcentaje',
+      desc: `Pensar el porcentaje como fracción para operar. Ej: 25% = ${fmtFrac(1,4)}, 75% = ${fmtFrac(3,4)}`,
+      tags: [{ text: 'Fracción', cls: 'violet' }, { text: 'Equivalencia', cls: 'blue' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias con porcentajes',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  powers: {
+    'squares-end-5': {
+      name: 'Cuadrados que terminan en 5',
+      desc: 'Para (10n+5)²: calcular n(n+1) y agregar 25. Ej: 65² → 6×7=42 → 4225',
+      tags: [{ text: 'Terminan en 5', cls: 'green' }, { text: 'n(n+1)||25', cls: 'violet' }],
+    },
+    'binomial-identity': {
+      name: 'Identidad binomial',
+      desc: '(a+b)² = a²+2ab+b². Ej: 21² = (20+1)² = 400+40+1 = 441',
+      tags: [{ text: '(a+b)²', cls: 'blue' }, { text: 'Expandir', cls: 'amber' }],
+    },
+    'sqrt-interpolation': {
+      name: 'Estimación de raíces (interpolación)',
+      desc: 'Encontrar cuadrados perfectos cercanos e interpolar. Ej: √50 ≈ 7.1 (entre √49=7 y √64=8)',
+      tags: [{ text: 'Cuadrados cercanos', cls: 'rose' }, { text: 'Estimar', cls: 'green' }],
+    },
+    'pattern-powers': {
+      name: 'Patrones de potencias',
+      desc: 'Reconocer patrones en cuadrados, cubos y potencias de 2',
+      tags: [{ text: 'Cuadrados/cubos', cls: 'green' }, { text: 'Patrones', cls: 'violet' }],
+    },
+    'decompose-powers': {
+      name: 'Propiedades de exponentes',
+      desc: 'Usar propiedades de exponentes para simplificar. Ej: 2³×2⁴ = 2⁷ = 128',
+      tags: [{ text: 'Propiedades', cls: 'blue' }, { text: 'Descomponer', cls: 'amber' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias con potencias y raíces',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+  algebra: {
+    'properties': {
+      name: 'Propiedades algebraicas',
+      desc: 'Aplicar conmutativa, asociativa, distributiva',
+      tags: [{ text: 'Propiedades', cls: 'green' }, { text: 'Estructura', cls: 'violet' }],
+    },
+    'equivalence-alg': {
+      name: 'Expresiones equivalentes',
+      desc: '¿Son estas expresiones iguales? Justifica.',
+      tags: [{ text: 'Equivalencia', cls: 'blue' }, { text: 'Justificar', cls: 'amber' }],
+    },
+    'random': {
+      name: 'Mixto (aleatorio)',
+      desc: 'Mezcla de estrategias algebraicas',
+      tags: [{ text: 'Variado', cls: 'blue' }],
+    },
+  },
+};
+
+// ══════════════════════════════════════════════
+// POPULATE STRATEGY DROPDOWN
+// ══════════════════════════════════════════════
+function updateStrategies() {
+  const op = document.getElementById('operation').value;
+  const sel = document.getElementById('strategy');
+  const desc = document.getElementById('strategyDescription');
+  const strats = STRATEGIES[op] || {};
+
+  sel.innerHTML = '';
+  for (const [key, val] of Object.entries(strats)) {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = val.name;
+    sel.appendChild(opt);
+  }
+  updateStrategyDesc();
+}
+
+function updateStrategyDesc() {
+  const op = document.getElementById('operation').value;
+  const strat = document.getElementById('strategy').value;
+  const container = document.getElementById('strategyDescription');
+  const info = STRATEGIES[op]?.[strat];
+
+  if (!info) { container.innerHTML = ''; return; }
+
+  // Split prose description from embedded examples ("Ej: ...")
+  const parts = info.desc.split(/ Ej: /);
+  const explanation = parts[0];
+  const examples = parts.slice(1);
+
+  const examplesHTML = examples.length
+    ? `<div class="strategy-info-examples">${
+        examples.map(e =>
+          `<div class="strategy-info-example"><span class="example-label">Ej.</span>${e}</div>`
+        ).join('')
+      }</div>`
+    : '';
+
+  const tagsHTML = info.tags.length
+    ? `<div class="strategy-info-tags">${
+        info.tags.map(t => `<span class="strategy-tag ${t.cls}">${t.text}</span>`).join('')
+      }</div>`
+    : '';
+
+  container.innerHTML = `
+    <div class="strategy-info">
+      <div class="strategy-info-desc">${explanation}</div>
+      ${examplesHTML}
+      ${tagsHTML}
+    </div>`;
+  if (window.MathJax) MathJax.typesetPromise([container]);
+}
+
+document.getElementById('operation').addEventListener('change', updateStrategies);
+document.getElementById('strategy').addEventListener('change', updateStrategyDesc);
+document.getElementById('gradeLevel').addEventListener('change', updateOperations);
+
+// Operations available per grade level
+const OPERATIONS_BY_LEVEL = {
+  'lower-elem': ['addition', 'subtraction', 'multiplication', 'division'],
+  'upper-elem': ['addition', 'subtraction', 'multiplication', 'division', 'fractions', 'decimals'],
+  'middle': ['addition', 'subtraction', 'multiplication', 'division', 'fractions', 'decimals', 'percents', 'powers', 'algebra'],
+  'high': ['addition', 'subtraction', 'multiplication', 'division', 'fractions', 'decimals', 'percents', 'powers', 'algebra'],
+};
+
+const OPERATION_NAMES = {
+  addition: 'Suma', subtraction: 'Resta', multiplication: 'Multiplicación',
+  division: 'División', fractions: 'Fracciones', decimals: 'Decimales',
+  percents: 'Porcentajes', powers: 'Potencias y raíces', algebra: 'Expresiones algebraicas',
+};
+
+function updateOperations() {
+  const level = document.getElementById('gradeLevel').value;
+  const opSel = document.getElementById('operation');
+  const currentOp = opSel.value;
+  const allowed = OPERATIONS_BY_LEVEL[level] || OPERATIONS_BY_LEVEL['upper-elem'];
+
+  opSel.innerHTML = '';
+  for (const op of allowed) {
+    const opt = document.createElement('option');
+    opt.value = op;
+    opt.textContent = OPERATION_NAMES[op];
+    opSel.appendChild(opt);
+  }
+
+  // Try to keep current selection; otherwise default to first
+  if (allowed.includes(currentOp)) {
+    opSel.value = currentOp;
+  }
+
+  updateStrategies();
+}
+
+// ══════════════════════════════════════════════
+// PROBLEM GENERATORS
+// ══════════════════════════════════════════════
+
+function randInt(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = randInt(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function fmtFrac(n, d) {
+  if (d === 1) return `${n}`;
+  return `\\(\\frac{${n}}{${d}}\\)`;
+}
+
+// Each generator returns: { expression (HTML), answer, hint, level }
+
+// ── ADDITION ──
+const additionGens = {
+  'break-apart': (level) => {
+    const [a, b] = level === 'lower-elem'
+      ? [randInt(10, 30), randInt(10, 30)]
+      : level === 'upper-elem'
+      ? [randInt(20, 99), randInt(20, 99)]
+      : level === 'middle'
+      ? [randInt(100, 499), randInt(100, 499)]
+      : [randInt(200, 999), randInt(200, 999)];
+    const ans = a + b;
+    const aTens = Math.floor(a / 10) * 10, aOnes = a % 10;
+    const bTens = Math.floor(b / 10) * 10, bOnes = b % 10;
+    return { expr: `${a} <span class="operator">+</span> ${b}`, answer: ans,
+      hint: `Descomposición: (${aTens}+${bTens}) + (${aOnes}+${bOnes}) = ${aTens+bTens} + ${aOnes+bOnes} = ${ans}` };
+  },
+  'compensation': (level) => {
+    // Generate a number that's close to a round number
+    const roundTarget = level === 'lower-elem' ? pick([10, 20]) :
+                        level === 'upper-elem' ? pick([30, 40, 50, 60, 70, 80]) :
+                        pick([50, 100, 150, 200, 250]);
+    const offset = level === 'lower-elem' ? 1 : randInt(1, 3);
+    const a = roundTarget - offset;
+    const b = level === 'lower-elem' ? randInt(3, 15) :
+              level === 'upper-elem' ? randInt(15, 80) : randInt(50, 400);
+    const ans = a + b;
+    return { expr: `${a} <span class="operator">+</span> ${b}`, answer: ans,
+      hint: `Compensación: (${roundTarget}+${b}) − ${offset} = ${roundTarget + b} − ${offset} = ${ans}` };
+  },
+  'jump': (level) => {
+    const a = level === 'lower-elem' ? randInt(5, 20) :
+              level === 'upper-elem' ? randInt(30, 99) :
+              level === 'middle' ? randInt(100, 500) : randInt(200, 800);
+    const bTens = level === 'lower-elem' ? pick([10, 20]) : randInt(2, 8) * 10;
+    const bOnes = level === 'lower-elem' ? randInt(1, 5) : randInt(1, 9);
+    const b = level === 'lower-elem' && bTens === 20 ? 10 + bOnes : bTens + bOnes;
+    const actualBTens = Math.floor(b / 10) * 10;
+    const actualBOnes = b % 10;
+    const ans = a + b;
+    const step1 = a + actualBTens;
+    return { expr: `${a} <span class="operator">+</span> ${b}`, answer: ans,
+      hint: `Salto: ${a}+${actualBTens} = ${step1}; ${step1}+${actualBOnes} = ${ans}` };
+  },
+  'doubles-near': (level) => {
+    const base = level === 'lower-elem' ? randInt(2, 10) :
+                 level === 'upper-elem' ? randInt(10, 50) :
+                 level === 'middle' ? randInt(20, 150) : randInt(50, 300);
+    const offset = level === 'lower-elem' ? pick([-1, 1]) : pick([-2, -1, 1, 2]);
+    const a = base;
+    const b = base + offset;
+    const ans = a + b;
+    return { expr: `${a} <span class="operator">+</span> ${b}`, answer: ans,
+      hint: `Casi-doble: ${base}+${base} = ${base*2}, ${offset > 0 ? '+' : ''}${offset} = ${ans}` };
+  },
+};
+
+// ── SUBTRACTION ──
+const subtractionGens = {
+  'add-up': (level) => {
+    // Generate problems where "sumar para restar" is natural — landmarks nearby
+    const landmark = level === 'lower-elem' ? pick([10, 20]) :
+                     level === 'upper-elem' ? pick([50, 80, 100]) :
+                     pick([100, 200, 300, 500]);
+    const b = landmark - randInt(1, level === 'lower-elem' ? 5 : landmark <= 100 ? 15 : 30);
+    const a = landmark + randInt(0, level === 'lower-elem' ? 8 : landmark <= 100 ? 20 : 50);
+    const ans = a - b;
+    const jumpToLandmark = landmark - b;
+    const jumpFromLandmark = a - landmark;
+    return { expr: `${a} <span class="operator">−</span> ${b}`, answer: ans,
+      hint: `Sumar para restar: ${b}+${jumpToLandmark}=${landmark}; ${landmark}+${jumpFromLandmark}=${a} → ${jumpToLandmark}+${jumpFromLandmark} = ${ans}` };
+  },
+  'compensation-sub': (level) => {
+    const roundTarget = level === 'lower-elem' ? pick([10, 20]) :
+                        level === 'upper-elem' ? pick([20, 30, 40, 50, 60]) :
+                        pick([50, 100, 150, 200]);
+    const offset = level === 'lower-elem' ? 1 : randInt(1, 3);
+    const b = roundTarget - offset;
+    const a = level === 'lower-elem' ? randInt(b + 3, 30) :
+              level === 'upper-elem' ? randInt(b + 10, 150) : randInt(b + 50, 800);
+    const ans = a - b;
+    return { expr: `${a} <span class="operator">−</span> ${b}`, answer: ans,
+      hint: `Compensación: ${a}−${roundTarget} = ${a - roundTarget}, +${offset} = ${ans}` };
+  },
+  'jump-sub': (level) => {
+    const a = level === 'lower-elem' ? randInt(15, 30) :
+              level === 'upper-elem' ? randInt(60, 180) :
+              level === 'middle' ? randInt(150, 600) : randInt(300, 900);
+    const bTens = level === 'lower-elem' ? 10 : randInt(2, 6) * 10;
+    const bOnes = level === 'lower-elem' ? randInt(1, 4) : randInt(1, 9);
+    const b = bTens + bOnes;
+    if (b >= a) return subtractionGens['jump-sub'](level);
+    const ans = a - b;
+    const step1 = a - bTens;
+    return { expr: `${a} <span class="operator">−</span> ${b}`, answer: ans,
+      hint: `Salto: ${a}−${bTens} = ${step1}; ${step1}−${bOnes} = ${ans}` };
+  },
+  'same-difference': (level) => {
+    const roundTarget = level === 'lower-elem' ? pick([10, 20]) :
+                        level === 'upper-elem' ? pick([30, 40, 50, 60, 80, 100]) :
+                        pick([100, 150, 200, 250]);
+    const offset = level === 'lower-elem' ? randInt(1, 2) : randInt(1, 4);
+    const b = roundTarget - offset;
+    const a = level === 'lower-elem' ? randInt(b + 3, 30) :
+              level === 'upper-elem' ? randInt(b + 15, 200) : randInt(b + 50, 800);
+    const ans = a - b;
+    return { expr: `${a} <span class="operator">−</span> ${b}`, answer: ans,
+      hint: `Diferencia constante: (+${offset}) → ${a+offset}−${roundTarget} = ${ans}` };
+  },
+  'decompose-sub': (level) => {
+    const a = level === 'lower-elem' ? randInt(15, 30) :
+              level === 'upper-elem' ? randInt(50, 150) :
+              level === 'middle' ? randInt(150, 500) : randInt(300, 900);
+    const bTens = level === 'lower-elem' ? 10 : randInt(1, Math.min(6, Math.floor(a / 20))) * 10;
+    const bOnes = level === 'lower-elem' ? randInt(1, 4) : randInt(1, 9);
+    const b = bTens + bOnes;
+    if (b >= a) return subtractionGens['decompose-sub'](level);
+    const ans = a - b;
+    return { expr: `${a} <span class="operator">−</span> ${b}`, answer: ans,
+      hint: `Descomposición: ${a}−${bTens} = ${a - bTens}; ${a - bTens}−${bOnes} = ${ans}` };
+  },
+};
+
+// ── MULTIPLICATION ──
+const multiplicationGens = {
+  'double-half': (level) => {
+    const evenFactors = level === 'lower-elem'
+      ? [2, 4, 6, 8]
+      : level === 'upper-elem'
+      ? [4, 6, 8, 12, 14, 16, 18]
+      : level === 'middle'
+      ? [6, 8, 12, 14, 16, 18, 22, 24, 26]
+      : [12, 14, 16, 18, 22, 24, 26, 28, 32, 36];
+    const a = pick(evenFactors);
+    const b = level === 'lower-elem' ? pick([3, 5, 7]) :
+              level === 'upper-elem' ? pick([5, 7, 9, 13, 15, 25]) :
+              pick([7, 9, 13, 15, 17, 25, 35]);
+    const ans = a * b;
+    return { expr: `${a} <span class="operator">×</span> ${b}`, answer: ans,
+      hint: `Duplicar y mediar: ${a}÷2 = ${a/2}, ${b}×2 = ${b*2} → ${a/2}×${b*2} = ${ans}` };
+  },
+  'factor-factor': (level) => {
+    const composites = level === 'lower-elem'
+      ? [[4,2,2],[6,2,3],[8,2,4],[9,3,3],[10,2,5]]
+      : level === 'upper-elem'
+      ? [[6,2,3],[8,2,4],[10,2,5],[12,3,4],[12,2,6],[15,3,5],[14,2,7],[18,3,6],[20,4,5]]
+      : [[12,3,4],[15,3,5],[18,3,6],[20,4,5],[24,4,6],[25,5,5],[28,4,7],[30,5,6],[36,6,6]];
+    const [b, f1, f2] = pick(composites);
+    const a = level === 'lower-elem' ? randInt(2, 5) :
+              level === 'upper-elem' ? randInt(3, 12) : randInt(6, 20);
+    const ans = a * b;
+    const step1 = a * f1;
+    return { expr: `${a} <span class="operator">×</span> ${b}`, answer: ans,
+      hint: `Sub-factores: ${b} = ${f1}×${f2} → (${a}×${f1})×${f2} = ${step1}×${f2} = ${ans}` };
+  },
+  'diff-squares': (level) => {
+    const mid = level === 'lower-elem' ? pick([5, 6, 7, 8]) :
+                level === 'upper-elem' ? pick([10, 15, 20, 25, 30]) :
+                level === 'middle' ? pick([15, 20, 25, 30, 40, 50]) :
+                pick([20, 25, 30, 40, 50, 100]);
+    const offset = level === 'lower-elem' ? 1 : randInt(1, 3);
+    const a = mid - offset;
+    const b = mid + offset;
+    const ans = a * b;
+    return { expr: `${a} <span class="operator">×</span> ${b}`, answer: ans,
+      hint: `Diferencia de cuadrados: (${mid}−${offset})(${mid}+${offset}) = ${mid}²−${offset}² = ${mid*mid}−${offset*offset} = ${ans}` };
+  },
+  'anchor-ten': (level) => {
+    const anchors = level === 'lower-elem' ? [10] :
+                    level === 'upper-elem' ? [10, 20] :
+                    level === 'middle' ? [10, 20, 50] : [10, 20, 50, 100];
+    const anchor = pick(anchors);
+    const offset = level === 'lower-elem' ? 1 : randInt(1, 2);
+    const sign = pick([-1, 1]);
+    const b = anchor + sign * offset;
+    const a = level === 'lower-elem' ? randInt(2, 6) :
+              level === 'upper-elem' ? randInt(3, 12) : randInt(6, 25);
+    const ans = a * b;
+    const anchorProduct = a * anchor;
+    const adjustment = a * offset;
+    const opSign = sign > 0 ? '+' : '−';
+    return { expr: `${a} <span class="operator">×</span> ${b}`, answer: ans,
+      hint: `Anclaje: ${a}×(${anchor}${sign > 0 ? '+' : '−'}${offset}) = ${anchorProduct} ${opSign} ${adjustment} = ${ans}` };
+  },
+  'partial-products': (level) => {
+    const a = level === 'lower-elem' ? randInt(2, 5) :
+              level === 'upper-elem' ? randInt(3, 9) :
+              level === 'middle' ? randInt(6, 15) : randInt(11, 25);
+    const b = level === 'lower-elem' ? randInt(11, 15) :
+              level === 'upper-elem' ? randInt(12, 30) : randInt(12, 50);
+    const bTens = Math.floor(b / 10) * 10;
+    const bOnes = b % 10;
+    const ans = a * b;
+    return { expr: `${a} <span class="operator">×</span> ${b}`, answer: ans,
+      hint: `Productos parciales: ${a}×${bTens} + ${a}×${bOnes} = ${a*bTens}+${a*bOnes} = ${ans}` };
+  },
+};
+
+// ── DIVISION ──
+const divisionGens = {
+  'chunking': (level) => {
+    const d = level === 'lower-elem' ? pick([2, 3, 4, 5]) :
+              level === 'upper-elem' ? pick([3, 4, 5, 6, 7, 8]) :
+              level === 'middle' ? pick([6, 7, 8, 9, 12, 15]) :
+              pick([8, 9, 12, 15, 16, 18]);
+    const q1 = level === 'lower-elem' ? pick([2, 5, 10]) : pick([10, 20, 30]);
+    const q2 = level === 'lower-elem' ? randInt(1, 4) :
+               level === 'upper-elem' ? randInt(2, 7) : randInt(2, 12);
+    const q = q1 + q2;
+    const a = d * q;
+    const chunk1 = d * q1;
+    const chunk2 = d * q2;
+    return { expr: `${a} <span class="operator">÷</span> ${d}`, answer: q,
+      hint: `División por partes: (${chunk1}÷${d}) + (${chunk2}÷${d}) = ${q1}+${q2} = ${q}` };
+  },
+  'proportional': (level) => {
+    // Generate a division where both terms can be halved or simplified nicely
+    const simplifyFactor = pick([2, 2, 2, 4, 5]); // bias toward halving
+    const finalD = level === 'upper-elem' ? pick([2, 3, 4, 5, 8]) : pick([4, 5, 8, 10, 12, 25]);
+    const d = finalD * simplifyFactor;
+    const q = level === 'upper-elem' ? randInt(5, 20) : randInt(8, 40);
+    const a = d * q;
+    // Build simplification chain
+    const steps = [];
+    let currA = a, currD = d;
+    let tempFactor = simplifyFactor;
+    // Show at most 2-3 steps
+    while (tempFactor > 1) {
+      const stepDiv = tempFactor % 2 === 0 ? 2 : tempFactor;
+      currA = currA / stepDiv;
+      currD = currD / stepDiv;
+      steps.push(`${currA}÷${currD}`);
+      tempFactor = tempFactor / stepDiv;
+      if (steps.length >= 3) break;
+    }
+    return { expr: `${a} <span class="operator">÷</span> ${d}`, answer: q,
+      hint: `Simplificación: ${a}÷${d} = ${steps.join(' = ')} = ${q}` };
+  },
+  'divide-5-25-50': (level) => {
+    const divisorType = pick(['5', '25', '50']);
+    let d, a, q, hint;
+    if (divisorType === '5') {
+      d = 5;
+      q = level === 'upper-elem' ? randInt(10, 50) : randInt(20, 100);
+      a = d * q;
+      hint = `${a}÷5 → ${a}×2=${a * 2} → ${a * 2}÷10=${q}`;
+    } else if (divisorType === '25') {
+      d = 25;
+      q = level === 'upper-elem' ? randInt(4, 20) : randInt(8, 40);
+      a = d * q;
+      hint = `${a}÷25 → ${a}×4=${a * 4} → ${a * 4}÷100=${q}`;
+    } else {
+      d = 50;
+      q = level === 'upper-elem' ? randInt(3, 15) : randInt(5, 30);
+      a = d * q;
+      hint = `${a}÷50 → ${a}×2=${a * 2} → ${a * 2}÷100=${q}`;
+    }
+    return { expr: `${a} <span class="operator">÷</span> ${d}`, answer: q, hint };
+  },
+  'multiply-up': (level) => {
+    const d = level === 'lower-elem' ? pick([2, 3, 4, 5]) :
+              level === 'upper-elem' ? pick([3, 4, 5, 6, 7, 8]) :
+              level === 'middle' ? pick([6, 7, 8, 9, 12]) :
+              pick([7, 8, 9, 12, 15, 16]);
+    const q = level === 'lower-elem' ? randInt(2, 10) :
+              level === 'upper-elem' ? randInt(5, 20) : randInt(10, 40);
+    const a = d * q;
+    const step1 = d * 10;
+    return { expr: `${a} <span class="operator">÷</span> ${d}`, answer: q,
+      hint: q > 10
+        ? `Multiplicar arriba: ${d}×10=${step1}, ${d}×${q-10}=${d*(q-10)} → ${d}×${q}=${a}`
+        : `Multiplicar arriba: ${d}×?=${a} → ${d}×${q}=${a}` };
+  },
+  'factor-pairs': (level) => {
+    // Divisor must be composite so it can be split into factors
+    const composites = [[4,2,2],[6,2,3],[8,2,4],[9,3,3],[12,3,4],[12,2,6],[15,3,5],[16,4,4],[18,3,6],[20,4,5],[24,4,6]];
+    const validComposites = level === 'upper-elem' ? composites.slice(0, 7) : composites;
+    const [d, f1, f2] = pick(validComposites);
+    const q = level === 'upper-elem' ? randInt(5, 20) : randInt(8, 35);
+    const a = d * q;
+    const step1 = a / f1;
+    return { expr: `${a} <span class="operator">÷</span> ${d}`, answer: q,
+      hint: `Etapas: ${d}=${f1}×${f2} → ${a}÷${f1}=${step1}, ${step1}÷${f2}=${q}` };
+  },
+};
+
+// ── FRACTIONS ──
+const fractionGens = {
+  'benchmarks': () => {
+    const pairs = [
+      { a: [1, 2], b: [3, 8], op: '+', hint: `Ancla ${fmtFrac(1,2)}=${fmtFrac(4,8)} → ${fmtFrac(4,8)}+${fmtFrac(3,8)}=${fmtFrac(7,8)}` },
+      { a: [1, 4], b: [3, 8], op: '+', hint: `Ancla ${fmtFrac(1,4)}=${fmtFrac(2,8)} → ${fmtFrac(2,8)}+${fmtFrac(3,8)}=${fmtFrac(5,8)}` },
+      { a: [3, 4], b: [1, 8], op: '+', hint: `Ancla ${fmtFrac(3,4)}=${fmtFrac(6,8)} → ${fmtFrac(6,8)}+${fmtFrac(1,8)}=${fmtFrac(7,8)}` },
+      { a: [1, 2], b: [1, 4], op: '+', hint: `Ancla ${fmtFrac(1,2)}=${fmtFrac(2,4)} → ${fmtFrac(2,4)}+${fmtFrac(1,4)}=${fmtFrac(3,4)}` },
+      { a: [2, 3], b: [1, 6], op: '+', hint: `Ancla ${fmtFrac(2,3)}=${fmtFrac(4,6)} → ${fmtFrac(4,6)}+${fmtFrac(1,6)}=${fmtFrac(5,6)}` },
+      { a: [3, 4], b: [1, 8], op: '−', hint: `Ancla ${fmtFrac(3,4)}=${fmtFrac(6,8)} → ${fmtFrac(6,8)}−${fmtFrac(1,8)}=${fmtFrac(5,8)}` },
+      { a: [1, 2], b: [1, 8], op: '−', hint: `Ancla ${fmtFrac(1,2)}=${fmtFrac(4,8)} → ${fmtFrac(4,8)}−${fmtFrac(1,8)}=${fmtFrac(3,8)}` },
+      { a: [3, 4], b: [1, 4], op: '−', hint: `Ancla ${fmtFrac(3,4)}−${fmtFrac(1,4)}=${fmtFrac(2,4)}=${fmtFrac(1,2)}` },
+      { a: [5, 6], b: [1, 3], op: '−', hint: `Ancla ${fmtFrac(1,3)}=${fmtFrac(2,6)} → ${fmtFrac(5,6)}−${fmtFrac(2,6)}=${fmtFrac(3,6)}=${fmtFrac(1,2)}` },
+      { a: [2, 3], b: [1, 6], op: '−', hint: `Ancla ${fmtFrac(2,3)}=${fmtFrac(4,6)} → ${fmtFrac(4,6)}−${fmtFrac(1,6)}=${fmtFrac(3,6)}=${fmtFrac(1,2)}` },
+    ];
+    const p = pick(pairs);
+    let ans;
+    if (p.op === '+') {
+      ans = (p.a[0] * p.b[1] + p.b[0] * p.a[1]) + '/' + (p.a[1] * p.b[1]);
+    } else {
+      ans = (p.a[0] * p.b[1] - p.b[0] * p.a[1]) + '/' + (p.a[1] * p.b[1]);
+    }
+    const opSymbol = p.op === '+' ? '+' : '−';
+    return { expr: `${fmtFrac(p.a[0], p.a[1])} <span class="operator">${opSymbol}</span> ${fmtFrac(p.b[0], p.b[1])}`,
+      answer: ans, hint: p.hint };
+  },
+  'equivalence': () => {
+    const d = pick([2, 3, 4, 5, 6, 8]);
+    const n = randInt(1, d - 1);
+    const mult = pick([2, 3, 4, 5]);
+    return { expr: `${fmtFrac(n, d)} <span class="operator">=</span> ${fmtFrac(n * mult, '?')}`,
+      answer: `${d * mult}`, hint: `Equivalencia: ×${mult} arriba y abajo → ${fmtFrac(n*mult, d*mult)}` };
+  },
+  'decompose-frac': () => {
+    const d = pick([3, 4, 5, 6, 8]);
+    const n = randInt(2, d * 2 - 1);
+    return { expr: `${fmtFrac(n, d)}`, answer: n >= d ? `${Math.floor(n/d)} ${n%d > 0 ? fmtFrac(n%d, d) : ''}` : `${fmtFrac(n, d)}`,
+      hint: `Descomponer: ${fmtFrac(n, d)} = ${n >= d ? Math.floor(n/d) + ' + ' + fmtFrac(n%d || 0, d) : Array.from({length: n}, () => fmtFrac(1, d)).join(' + ')}` };
+  },
+};
+
+// ── DECIMALS ──
+const decimalGens = {
+  'place-value': (level) => {
+    const a = (randInt(10, 99) / 10).toFixed(1);
+    const b = (randInt(10, 99) / 10).toFixed(1);
+    const op = pick(['+', '−']);
+    const ans = op === '+' ? (parseFloat(a) + parseFloat(b)).toFixed(1) : (Math.max(parseFloat(a), parseFloat(b)) - Math.min(parseFloat(a), parseFloat(b))).toFixed(1);
+    const big = Math.max(parseFloat(a), parseFloat(b));
+    const small = Math.min(parseFloat(a), parseFloat(b));
+    const opSymbol = op === '+' ? '+' : '−';
+    return { expr: `${op === '−' ? big : a} <span class="operator">${opSymbol}</span> ${op === '−' ? small : b}`, answer: ans,
+      hint: `Valor posicional: operar enteros y décimas por separado` };
+  },
+  'fraction-link': () => {
+    const pairs = [
+      { dec: '0.25', frac: fmtFrac(1,4), hint: `0.25 = ${fmtFrac(1,4)}` },
+      { dec: '0.75', frac: fmtFrac(3,4), hint: `0.75 = ${fmtFrac(3,4)}` },
+      { dec: '0.5',  frac: fmtFrac(1,2), hint: `0.5 = ${fmtFrac(1,2)}` },
+      { dec: '0.125',frac: fmtFrac(1,8), hint: `0.125 = ${fmtFrac(1,8)}` },
+      { dec: '0.2',  frac: fmtFrac(1,5), hint: `0.2 = ${fmtFrac(1,5)}` },
+    ];
+    const p = pick(pairs);
+    const mult = pick([2, 3, 4, 6, 8]);
+    const ans = parseFloat(p.dec) * mult;
+    return { expr: `${mult} <span class="operator">×</span> ${p.dec}`, answer: ans,
+      hint: `Convertir: ${p.dec} = ${p.frac}, entonces ${mult} × ${p.frac}` };
+  },
+};
+
+// ── PERCENTS ──
+const percentGens = {
+  'commutative-pct': () => {
+    // Generate cases where swapping makes it much easier
+    // Small % of round number → round % of small number
+    const cases = [
+      { pct: 4, base: 50, hint: '4% de 50 → 50% de 4 = 2' },
+      { pct: 8, base: 50, hint: '8% de 50 → 50% de 8 = 4' },
+      { pct: 6, base: 25, hint: '6% de 25 → 25% de 6 = 1.5' },
+      { pct: 12, base: 50, hint: '12% de 50 → 50% de 12 = 6' },
+      { pct: 3, base: 200, hint: '3% de 200 → 200% de 3 = 6' },
+      { pct: 15, base: 20, hint: '15% de 20 → 20% de 15 = 3' },
+      { pct: 5, base: 40, hint: '5% de 40 → 40% de 5 = 2' },
+      { pct: 16, base: 25, hint: '16% de 25 → 25% de 16 = 4' },
+      { pct: 2, base: 150, hint: '2% de 150 → 150% de 2 = 3' },
+      { pct: 7, base: 50, hint: '7% de 50 → 50% de 7 = 3.5' },
+      { pct: 4, base: 75, hint: '4% de 75 → 75% de 4 = 3' },
+      { pct: 8, base: 25, hint: '8% de 25 → 25% de 8 = 2' },
+    ];
+    const c = pick(cases);
+    const ans = (c.pct / 100) * c.base;
+    return { expr: `${c.pct}% <span class="operator">de</span> ${c.base}`, answer: ans,
+      hint: `Conmutativa: ${c.hint}` };
+  },
+  'benchmark-pct': () => {
+    // Build from 10% and 1% combinations
+    const base = pick([60, 80, 120, 150, 200, 240, 300, 400, 500, 800]);
+    const tenPct = base / 10;
+    const onePct = base / 100;
+    // Generate percentages that combine nicely from 10% and 5% and 1%
+    const combos = [
+      { pct: 15, build: `10%(${tenPct}) + 5%(${tenPct/2})`, ans: base * 0.15 },
+      { pct: 25, build: `10%(${tenPct}) × 2 + 5%(${tenPct/2})`, ans: base * 0.25 },
+      { pct: 30, build: `10%(${tenPct}) × 3`, ans: base * 0.30 },
+      { pct: 35, build: `10%(${tenPct}) × 3 + 5%(${tenPct/2})`, ans: base * 0.35 },
+      { pct: 12, build: `10%(${tenPct}) + 1%(${onePct}) × 2`, ans: base * 0.12 },
+      { pct: 45, build: `50%(${base/2}) − 5%(${tenPct/2})`, ans: base * 0.45 },
+      { pct: 75, build: `50%(${base/2}) + 25%(${base/4})`, ans: base * 0.75 },
+    ];
+    const c = pick(combos);
+    return { expr: `${c.pct}% <span class="operator">de</span> ${base}`, answer: c.ans,
+      hint: `Referencia 10%: ${c.build} = ${c.ans}` };
+  },
+  'fraction-pct': () => {
+    const map = [
+      { pct: 25,   frac: fmtFrac(1,4)  }, { pct: 50,  frac: fmtFrac(1,2)  }, { pct: 75,  frac: fmtFrac(3,4)  },
+      { pct: 20,   frac: fmtFrac(1,5)  }, { pct: 33,  frac: fmtFrac(1,3)  }, { pct: 10,  frac: fmtFrac(1,10) },
+      { pct: 12.5, frac: fmtFrac(1,8)  }, { pct: 40,  frac: fmtFrac(2,5)  },
+    ];
+    const p = pick(map);
+    const base = pick([60, 80, 100, 120, 200, 240, 300, 400, 480, 600]);
+    const ans = (p.pct / 100) * base;
+    return { expr: `${p.pct}% <span class="operator">de</span> ${base}`, answer: ans,
+      hint: `Fracción: ${p.pct}% = ${p.frac}, entonces ${p.frac} de ${base} = ${ans}` };
+  },
+};
+
+// ── POWERS ──
+const powersGens = {
+  'squares-end-5': () => {
+    // Numbers ending in 5: 15, 25, 35, 45, 55, 65, 75, 85, 95
+    const n = pick([15, 25, 35, 45, 55, 65, 75, 85, 95]);
+    const tens = Math.floor(n / 10);
+    const product = tens * (tens + 1);
+    const ans = product * 100 + 25;
+    return { expr: `${n}<sup>2</sup>`, answer: ans,
+      hint: `Termina en 5: ${tens}×${tens+1} = ${product} → ${ans}` };
+  },
+  'binomial-identity': () => {
+    // (a+b)² where a is round and b is small
+    const a = pick([10, 20, 30, 40, 50]);
+    const b = randInt(1, 5);
+    const n = a + b;
+    const ans = n * n;
+    return { expr: `${n}<sup>2</sup>`, answer: ans,
+      hint: `Binomial: (${a}+${b})² = ${a}²+2·${a}·${b}+${b}² = ${a*a}+${2*a*b}+${b*b} = ${ans}` };
+  },
+  'sqrt-interpolation': () => {
+    // Pick a number between two perfect squares
+    const perfectSquares = [4,9,16,25,36,49,64,81,100,121,144,169,196,225];
+    const idx = randInt(1, perfectSquares.length - 2);
+    const lower = perfectSquares[idx];
+    const upper = perfectSquares[idx + 1];
+    const lowerRoot = Math.round(Math.sqrt(lower));
+    const upperRoot = Math.round(Math.sqrt(upper));
+    // Pick a number between them, not too close to either
+    const n = randInt(lower + 1, upper - 1);
+    const actual = Math.sqrt(n);
+    const approx = actual.toFixed(1);
+    const fraction = ((n - lower) / (upper - lower)).toFixed(2);
+    return { expr: `√${n}`, answer: `≈ ${approx}`,
+      hint: `Interpolar: √${lower}=${lowerRoot} y √${upper}=${upperRoot}. ${n} está a ${n-lower}/${upper-lower} del intervalo ≈ ${approx}` };
+  },
+  'pattern-powers': () => {
+    const type = pick(['square', 'cube', 'pow2']);
+    if (type === 'square') {
+      const n = randInt(4, 15);
+      return { expr: `${n}<sup>2</sup>`, answer: n * n,
+        hint: `Cuadrado: ${n}² = ${n}×${n} = ${n*n}` };
+    } else if (type === 'cube') {
+      const n = randInt(2, 7);
+      return { expr: `${n}<sup>3</sup>`, answer: n ** 3,
+        hint: `Cubo: ${n}³ = ${n}×${n}×${n} = ${n**3}` };
+    } else {
+      const exp = randInt(3, 8);
+      return { expr: `2<sup>${exp}</sup>`, answer: 2 ** exp,
+        hint: `Potencia de 2: ir doblando → ${Array.from({length: exp}, (_, i) => 2 ** (i + 1)).join(', ')}` };
+    }
+  },
+  'decompose-powers': () => {
+    const base = pick([2, 3, 5]);
+    const a = randInt(2, 4);
+    const b = randInt(1, 3);
+    const ans = base ** (a + b);
+    return { expr: `${base}<sup>${a}</sup> <span class="operator">×</span> ${base}<sup>${b}</sup>`, answer: ans,
+      hint: `Propiedad: ${base}${supNum(a)} × ${base}${supNum(b)} = ${base}${supNum(a+b)} = ${ans}` };
+  },
+};
+
+function supNum(n) { return `<sup>${n}</sup>`; }
+
+// ── ALGEBRA ──
+const algebraGens = {
+  'properties': () => {
+    const type = pick(['distributive', 'commutative', 'associative']);
+    if (type === 'distributive') {
+      const a = randInt(2, 9);
+      const b = randInt(10, 30);
+      const c = randInt(1, 9);
+      return { expr: `${a}(${b} <span class="operator">+</span> ${c})`, answer: a * (b + c),
+        hint: `Distributiva: ${a}×${b} + ${a}×${c} = ${a*b} + ${a*c}` };
+    } else if (type === 'commutative') {
+      const a = randInt(2, 12);
+      const b = randInt(2, 12);
+      const c = randInt(2, 12);
+      return { expr: `${a} <span class="operator">×</span> ${b} <span class="operator">×</span> ${c}`,
+        answer: a * b * c,
+        hint: `Conmutativa: ¿qué par conviene multiplicar primero?` };
+    } else {
+      const a = randInt(10, 50);
+      const b = randInt(10, 50);
+      const c = randInt(10, 50);
+      return { expr: `(${a} <span class="operator">+</span> ${b}) <span class="operator">+</span> ${c}`,
+        answer: a + b + c,
+        hint: `Asociativa: ¿es más fácil ${a}+(${b}+${c}) = ${a}+${b+c}?` };
+    }
+  },
+  'equivalence-alg': () => {
+    const x = randInt(2, 10);
+    const a = randInt(1, 5);
+    const b = randInt(1, 5);
+    const expressions = [
+      { expr: `${a}x <span class="operator">+</span> ${b}x`, answer: `${a+b}x`, hint: `Combinar términos: (${a}+${b})x = ${a+b}x` },
+      { expr: `${a}(x <span class="operator">+</span> ${b})`, answer: `${a}x + ${a*b}`, hint: `Distribuir: ${a}·x + ${a}·${b} = ${a}x + ${a*b}` },
+      { expr: `x<sup>2</sup> <span class="operator">−</span> ${b*b}`, answer: `(x+${b})(x−${b})`, hint: `Diferencia de cuadrados: (x+${b})(x−${b})` },
+    ];
+    return pick(expressions);
+  },
+};
+
+// ══════════════════════════════════════════════
+// SEQUENCE BUILDER
+// ══════════════════════════════════════════════
+const ALL_GENS = {
+  addition: additionGens,
+  subtraction: subtractionGens,
+  multiplication: multiplicationGens,
+  division: divisionGens,
+  fractions: fractionGens,
+  decimals: decimalGens,
+  percents: percentGens,
+  powers: powersGens,
+  algebra: algebraGens,
+};
+
+function buildSequence(op, strategy, count, level) {
+  const gens = ALL_GENS[op];
+  if (!gens) return [];
+
+  const results = [];
+
+  if (strategy === 'random') {
+    const keys = Object.keys(gens).filter(k => k !== 'random');
+    for (let i = 0; i < count; i++) {
+      const gen = gens[pick(keys)];
+      const card = gen(level);
+      results.push(card);
+    }
+  } else if (gens[strategy]) {
+    for (let i = 0; i < count; i++) {
+      results.push(gens[strategy](level));
+    }
+  }
+
+  return results;
+}
+
+// ══════════════════════════════════════════════
+// GENERATE & RENDER
+// ══════════════════════════════════════════════
+function generate() {
+  const level = document.getElementById('gradeLevel').value;
+  const op = document.getElementById('operation').value;
+  const strategy = document.getElementById('strategy').value;
+  const count = parseInt(document.getElementById('numCards').value);
+  const showHints = document.getElementById('showHints').checked;
+  const showAnswers = document.getElementById('showAnswers').checked;
+  const sequenceMode = document.getElementById('sequenceMode').checked;
+
+  cards = buildSequence(op, strategy, count, level);
+  renderCards(cards, showHints, showAnswers, sequenceMode);
+}
+
+function renderCards(cardsList, showHints, showAnswers, sequenceMode) {
+  const grid = document.getElementById('cardsGrid');
+  const countEl = document.getElementById('cardCount');
+  grid.innerHTML = '';
+  countEl.textContent = `${cardsList.length} problema${cardsList.length !== 1 ? 's' : ''}`;
+
+  const opNames = {
+    addition: 'Suma', subtraction: 'Resta', multiplication: 'Multiplicación',
+    division: 'División', fractions: 'Fracciones', decimals: 'Decimales',
+    percents: 'Porcentajes', powers: 'Potencias', algebra: 'Álgebra'
+  };
+  const opName = opNames[document.getElementById('operation').value] || '';
+
+  cardsList.forEach((card, idx) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'nt-card-wrapper';
+    wrapper.style.animationDelay = `${idx * 0.1}s`;
+
+    const el = document.createElement('div');
+    el.className = 'nt-card';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'nt-card-header';
+    header.innerHTML = `
+      <span class="nt-card-number">#${idx + 1}</span>
+      <span class="nt-card-level">${opName}</span>
+    `;
+    el.appendChild(header);
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'nt-card-body';
+
+    const expr = document.createElement('div');
+    expr.className = 'nt-expression';
+    expr.innerHTML = card.expr + ` <span class="equals">=</span> <span class="question-mark">?</span>`;
+    body.appendChild(expr);
+
+    if (sequenceMode && idx > 0) {
+      const seqLabel = document.createElement('div');
+      seqLabel.className = 'nt-sequence-label';
+      seqLabel.textContent = `↑ ¿Cómo te ayuda el problema anterior?`;
+      body.appendChild(seqLabel);
+    }
+
+    el.appendChild(body);
+
+    // Footer
+    const footer = document.createElement('div');
+    footer.className = 'nt-card-footer';
+
+    if (showHints) {
+      const hint = document.createElement('span');
+      hint.className = 'strategy-hint';
+      hint.innerHTML = card.hint;
+      footer.appendChild(hint);
+    }
+
+    if (showAnswers) {
+      const ansBtn = document.createElement('span');
+      ansBtn.className = 'answer-reveal';
+      ansBtn.textContent = 'ver';
+      ansBtn.onclick = function() {
+        if (this.classList.contains('revealed')) {
+          this.innerHTML = 'ver';
+          this.classList.remove('revealed');
+        } else {
+          this.innerHTML = `= ${card.answer}`;
+          this.classList.add('revealed');
+          if (window.MathJax) MathJax.typesetPromise([this]);
+        }
+      };
+      footer.appendChild(ansBtn);
+    }
+
+    el.appendChild(footer);
+    wrapper.appendChild(el);
+    grid.appendChild(wrapper);
+
+    // Sequence connector arrow
+    if (sequenceMode && idx < cardsList.length - 1) {
+      const connector = document.createElement('div');
+      connector.className = 'sequence-connector';
+      connector.textContent = '↓';
+      grid.appendChild(connector);
+    }
+  });
+  if (window.MathJax) MathJax.typesetPromise([grid]);
+}
+
+// ══════════════════════════════════════════════
+// PRESENTATION MODE
+// ══════════════════════════════════════════════
+function startPresentation() {
+  if (cards.length === 0) generate();
+  if (cards.length === 0) return;
+  presIndex = 0;
+  document.getElementById('presOverlay').classList.add('active');
+  renderPresCard();
+  document.addEventListener('keydown', presKeys);
+}
+
+function closePresentation() {
+  document.getElementById('presOverlay').classList.remove('active');
+  clearInterval(presTimerInterval);
+  document.removeEventListener('keydown', presKeys);
+}
+
+function presKeys(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') presNext();
+  if (e.key === 'ArrowLeft') presPrev();
+  if (e.key === 'Escape') closePresentation();
+}
+
+function presNext() {
+  if (presIndex < cards.length - 1) { presIndex++; renderPresCard(); }
+}
+
+function presPrev() {
+  if (presIndex > 0) { presIndex--; renderPresCard(); }
+}
+
+function renderPresCard() {
+  const card = cards[presIndex];
+  const content = document.getElementById('presContent');
+  const counter = document.getElementById('presCounter');
+  document.getElementById('presPrevBtn').disabled = presIndex === 0;
+  document.getElementById('presNextBtn').disabled = presIndex === cards.length - 1;
+  counter.textContent = `${presIndex + 1} / ${cards.length}`;
+
+  content.innerHTML = `
+    <div class="pres-question">¿Cómo lo resolverías mentalmente?</div>
+    <div class="pres-expression">${card.expr} <span class="equals">=</span> <span class="question-mark">?</span></div>
+  `;
+
+  startPresTimer();
+  if (window.MathJax) MathJax.typesetPromise([content]);
+}
+
+function startPresTimer() {
+  const dur = parseInt(document.getElementById('timerDuration').value);
+  const timerEl = document.getElementById('presTimer');
+  clearInterval(presTimerInterval);
+  if (dur === 0) { timerEl.classList.remove('visible'); return; }
+  let rem = dur;
+  timerEl.textContent = rem;
+  timerEl.classList.add('visible');
+  presTimerInterval = setInterval(() => {
+    rem--;
+    if (rem <= 0) { clearInterval(presTimerInterval); timerEl.textContent = '⏱'; }
+    else timerEl.textContent = rem;
+  }, 1000);
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+updateOperations();
+</script>
