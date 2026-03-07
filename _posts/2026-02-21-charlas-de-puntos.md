@@ -15,7 +15,7 @@ toc: true
 
 ¿Alguna vez se ha detenido a observar cómo las personas interpretan un patrón visual? Lo que para uno es un simple grupo de puntos, para otro es una composición de figuras geométricas, simetrías o agrupaciones numéricas. Esta premisa es la base de las **Charlas de Puntos** (Dot Talks), una herramienta pedagógica poderosa que está transformando la enseñanza de las matemáticas al enfocarse en el pensamiento visual y la flexibilidad numérica.
 
-Prueba nuestro [Generador de Tarjetas de Puntos]({{site.baseurl}}/generador-dot-cards/) como recurso didáctico.
+Prueba nuestro [Generador de Charlas de Puntos]({{site.baseurl}}/generador-charla-puntos) como recurso didáctico.
 
 ### ¿Qué es una Charla de Puntos?
 
@@ -72,7 +72,9 @@ Las *Charlas de Puntos* son más que un ejercicio de conteo rápido; son una inv
 
 En la ASOESEM hemos desarrollado una herramienta para que puedas generar tarjetas de puntos con diferentes tipos de patrones para que puedas implementar un Charla de Puntos con tus estudiantes:
 
-* [Generador de Tarjetas de Puntos]({{site.baseurl}}/generador-dot-cards/).
+* [Generador de Charlas de Puntos]({{site.baseurl}}/generador-charla-puntos).
+
+Si te gusta nuestro generador de tarjetas de puntos, considera nuestro [Generador de Charlas Numéricas]({{site.baseurl}}/generador-charla-numerica), una vez que estés listo para abandonar la etapa pictórica y moverte a la etapa abstracta del desarrollo del pensamiento numérico.
 
 ## Videos Sugeridos
 
