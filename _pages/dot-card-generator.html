@@ -88,17 +88,17 @@ permalink: /generador-charla-puntos
   color: var(--presentation-btn-text);
 }
 
-:root[dark] .presentation-nav button {
+:root[dark] .presentation-bottom button {
   background: var(--presentation-btn-bg);
   color: var(--presentation-btn-text);
 }
 
-:root[dark] .presentation-nav button:hover {
+:root[dark] .presentation-bottom button:hover {
   background: #e8c99a;
   color: var(--presentation-btn-text);
 }
 
-:root[dark] .presentation-nav button:disabled {
+:root[dark] .presentation-bottom button:disabled {
   background: #4b5563;
   color: #9ca3af;
   opacity: 0.55;
@@ -483,15 +483,15 @@ select:focus, input[type="number"]:focus {
   transform: scale(1.1);
 }
 
-.presentation-nav {
+.presentation-bottom {
   position: absolute;
   bottom: 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   align-items: center;
 }
 
-.presentation-nav button {
+.presentation-bottom button {
   background: var(--card-header-bg);
   color: var(--card-header-text);
   border: none;
@@ -504,16 +504,52 @@ select:focus, input[type="number"]:focus {
   transition: all 0.2s;
 }
 
-.presentation-nav button:hover {
+.presentation-bottom button:hover {
   background: var(--accent);
   color: var(--btn-primary-text);
 }
 
-.presentation-nav button:disabled {
+.presentation-bottom button:disabled {
   opacity: 0.3;
   cursor: default;
   background: var(--card-header-bg);
   color: var(--card-header-text);
+  pointer-events: none;
+}
+
+.presentation-action-btn.active {
+  background: var(--color-green, #009E73);
+  color: #fff;
+}
+
+.dot-card-canvas-area {
+  transition: opacity 0.5s ease;
+}
+
+.dot-card-canvas-area.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.presentation-answer {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-green, #009E73);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.presentation-answer.visible {
+  opacity: 1;
+  animation: answerReveal 0.35s ease-out;
+}
+
+@keyframes answerReveal {
+  from { opacity: 0; transform: scale(1.4); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .presentation-counter {
@@ -748,10 +784,12 @@ select:focus, input[type="number"]:focus {
   <button class="presentation-close" onclick="closePresentation()">✕</button>
   <div class="presentation-timer" id="presentationTimer"></div>
   <div class="presentation-card" id="presentationCard"></div>
-  <div class="presentation-nav">
+  <div class="presentation-bottom">
+    <button class="presentation-action-btn" id="toggleCardBtn" onclick="togglePresCard()">Ocultar tarjeta</button>
     <button onclick="prevCard()" id="prevBtn">← Anterior</button>
     <span class="presentation-counter" id="presentationCounter"></span>
     <button onclick="nextCard()" id="nextBtn">Siguiente →</button>
+    <button class="presentation-action-btn" id="toggleAnswerBtn" onclick="togglePresAnswer()">Ver respuesta</button>
   </div>
 </div>
 
@@ -760,6 +798,8 @@ select:focus, input[type="number"]:focus {
 let generatedCards = [];
 let currentPresentationIndex = 0;
 let timerInterval = null;
+let presCardVisible = true;
+let presAnswerShown = false;
 
 // ── Dot Arrangement Patterns ──
 // Hand-crafted patterns inspired by dice, dominoes, ten-frames, regular polygons,
@@ -1425,6 +1465,8 @@ function handlePresentationKeys(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') nextCard();
   if (e.key === 'ArrowLeft') prevCard();
   if (e.key === 'Escape') closePresentation();
+  if (e.key === 'h' || e.key === 'H') togglePresCard();
+  if (e.key === 'a' || e.key === 'A') togglePresAnswer();
 }
 
 function nextCard() {
@@ -1447,10 +1489,20 @@ function renderPresentationCard() {
   const counter = document.getElementById('presentationCounter');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const toggleCardBtn = document.getElementById('toggleCardBtn');
+  const toggleAnswerBtn = document.getElementById('toggleAnswerBtn');
 
   counter.textContent = `${currentPresentationIndex + 1} / ${generatedCards.length}`;
   prevBtn.disabled = currentPresentationIndex === 0;
   nextBtn.disabled = currentPresentationIndex === generatedCards.length - 1;
+
+  // Reset presentation state
+  presCardVisible = true;
+  presAnswerShown = false;
+  toggleCardBtn.textContent = 'Ocultar tarjeta';
+  toggleCardBtn.classList.remove('active');
+  toggleAnswerBtn.textContent = 'Ver respuesta';
+  toggleAnswerBtn.disabled = false;
 
   container.innerHTML = '';
 
@@ -1462,6 +1514,7 @@ function renderPresentationCard() {
 
   // Card area
   const canvasArea = document.createElement('div');
+  canvasArea.id = 'presentationCanvasArea';
   canvasArea.className = `dot-card-canvas-area ${card.type === 'single' ? 'dot-card-single' : ''}`;
   canvasArea.style.background = 'var(--card-bg)';
   canvasArea.style.border = '3px solid var(--presentation-border, var(--card-header-bg))';
@@ -1494,6 +1547,13 @@ function renderPresentationCard() {
 
   container.appendChild(canvasArea);
 
+  // Answer (hidden until revealed)
+  const answerEl = document.createElement('div');
+  answerEl.id = 'presentationAnswerEl';
+  answerEl.className = 'presentation-answer';
+  answerEl.textContent = card.total;
+  container.appendChild(answerEl);
+
   // Timer
   startTimer();
 }
@@ -1517,10 +1577,66 @@ function startTimer() {
     if (remaining <= 0) {
       clearInterval(timerInterval);
       timerEl.textContent = '⏱';
+      // Auto-hide the card on timer expiry
+      const canvasArea = document.getElementById('presentationCanvasArea');
+      if (canvasArea && presCardVisible) {
+        canvasArea.classList.add('hidden');
+        presCardVisible = false;
+        const toggleCardBtn = document.getElementById('toggleCardBtn');
+        const toggleAnswerBtn = document.getElementById('toggleAnswerBtn');
+        if (toggleCardBtn) toggleCardBtn.textContent = 'Mostrar tarjeta';
+        if (toggleAnswerBtn) toggleAnswerBtn.disabled = true;
+      }
     } else {
       timerEl.textContent = remaining;
     }
   }, 1000);
+}
+
+function togglePresCard() {
+  const canvasArea = document.getElementById('presentationCanvasArea');
+  const toggleCardBtn = document.getElementById('toggleCardBtn');
+  const toggleAnswerBtn = document.getElementById('toggleAnswerBtn');
+  if (!canvasArea) return;
+
+  presCardVisible = !presCardVisible;
+  if (presCardVisible) {
+    canvasArea.classList.remove('hidden');
+    toggleCardBtn.textContent = 'Ocultar tarjeta';
+    toggleCardBtn.classList.remove('active');
+    toggleAnswerBtn.disabled = false;
+  } else {
+    canvasArea.classList.add('hidden');
+    toggleCardBtn.textContent = 'Mostrar tarjeta';
+    toggleCardBtn.classList.add('active');
+    // Reset answer if shown
+    if (presAnswerShown) {
+      const answerEl = document.getElementById('presentationAnswerEl');
+      if (answerEl) answerEl.classList.remove('visible');
+      presAnswerShown = false;
+      toggleAnswerBtn.textContent = 'Ver respuesta';
+      toggleAnswerBtn.classList.remove('active');
+    }
+    toggleAnswerBtn.disabled = true;
+  }
+}
+
+function togglePresAnswer() {
+  if (!presCardVisible) return;
+  const answerEl = document.getElementById('presentationAnswerEl');
+  const toggleAnswerBtn = document.getElementById('toggleAnswerBtn');
+  if (!answerEl) return;
+
+  presAnswerShown = !presAnswerShown;
+  if (presAnswerShown) {
+    answerEl.classList.add('visible');
+    toggleAnswerBtn.textContent = 'Ocultar respuesta';
+    toggleAnswerBtn.classList.add('active');
+  } else {
+    answerEl.classList.remove('visible');
+    toggleAnswerBtn.textContent = 'Ver respuesta';
+    toggleAnswerBtn.classList.remove('active');
+  }
 }
 
 // ── Auto-adjust ranges based on card type ──
