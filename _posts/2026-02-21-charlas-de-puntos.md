@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Charlas de Puntos: Desarrollando el Sentido Numérico en Primaria"
-description: "Describe una divertida actividad para desarollar el sentido numérico de tus estudiantes de primaria."
+description: "Describe una divertida actividad para desarollar el sentido numérico de tus estudiantes de primaria: la charlas de puntos (dot talks)."
 date: 2026-02-21T10:00:00-06:00
 author: edalorzo
 image: '/images/69.png'
-tags: [matemáticas,primaria]
+tags: [matemáticas,primaria,didáctica]
 commissions: [cofoma]
 featured: true
 toc: true

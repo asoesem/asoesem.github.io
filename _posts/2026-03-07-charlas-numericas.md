@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Charlas Numéricas: Desarrollando el Sentido Numérico Mediante el Cálculo Mental"
-description: "Describe una divertida actividad para desarollar el sentido numérico de tus estudiantes de primaria y secundaria."
+description: "Describe una divertida actividad para desarollar el sentido numérico de tus estudiantes de primaria y secundaria: las charlas numéricas (number talks)."
 date: 2026-03-07T18:00:00-06:00
 author: edalorzo
 image: '/images/70.png'
