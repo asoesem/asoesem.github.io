@@ -83,21 +83,31 @@ permalink: /generador-charla-numerica
   border-color: var(--presentation-btn-bg);
 }
 
-:root[dark] .pres-nav button {
+:root[dark] .pres-bottom button {
   background: var(--presentation-btn-bg);
   color: var(--presentation-btn-text);
   border-color: var(--presentation-btn-bg);
 }
 
-:root[dark] .pres-nav button:hover {
+:root[dark] .pres-bottom button:hover {
   background: #e8c99a;
   color: var(--presentation-btn-text);
 }
 
-:root[dark] .pres-nav button:disabled {
+:root[dark] .pres-bottom button:disabled {
   background: #4b5563;
   color: #9ca3af;
   opacity: 0.55;
+}
+
+:root[dark] .pres-action-btn.active {
+  background: var(--color-green);
+  color: #fff;
+}
+
+:root[dark] .pres-action-btn.active:hover {
+  background: #e8c99a;
+  color: var(--presentation-btn-text);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -535,7 +545,7 @@ select:focus, input[type="number"]:focus {
   color: var(--ink);
   letter-spacing: 0.02em;
   line-height: 1.4;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s ease;
 }
 
 .pres-expression .operator { color: var(--accent-text); }
@@ -567,16 +577,17 @@ select:focus, input[type="number"]:focus {
 
 .pres-timer.visible { opacity: 1; }
 
-.pres-nav {
+.pres-bottom {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.5rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
   align-items: center;
+  gap: 0.75rem;
   z-index: 2;
 }
 
-.pres-nav button {
+.pres-action-btn {
   background: var(--card-header-bg);
   color: var(--card-header-text);
   border: none;
@@ -589,12 +600,40 @@ select:focus, input[type="number"]:focus {
   transition: all 0.2s;
 }
 
-.pres-nav button:hover {
+.pres-action-btn:hover {
   background: var(--accent);
   color: var(--btn-primary-text);
 }
 
-.pres-nav button:disabled {
+.pres-action-btn.active {
+  background: var(--color-green);
+  color: #fff;
+}
+
+.pres-action-btn.active:hover {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.pres-bottom button {
+  background: var(--card-header-bg);
+  color: var(--card-header-text);
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pres-bottom button:hover {
+  background: var(--accent);
+  color: var(--btn-primary-text);
+}
+
+.pres-bottom button:disabled {
   opacity: 0.3;
   cursor: default;
   background: var(--card-header-bg);
@@ -605,6 +644,28 @@ select:focus, input[type="number"]:focus {
   font-family: var(--font-display);
   font-size: 1rem;
   color: var(--ink-light);
+}
+
+.pres-expression.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pres-expression .question-mark.answer-shown {
+  color: var(--color-green);
+  display: inline-block;
+  animation: answerReveal 0.35s ease-out;
+}
+
+@keyframes answerReveal {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.pres-action-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ── Empty State ── */
@@ -851,10 +912,12 @@ select:focus, input[type="number"]:focus {
   <button class="pres-close" onclick="closePresentation()">✕</button>
   <div class="pres-timer" id="presTimer"></div>
   <div class="pres-content" id="presContent"></div>
-  <div class="pres-nav">
+  <div class="pres-bottom">
+    <button class="pres-action-btn" id="presToggleExprBtn" onclick="togglePresExpr()">Ocultar operación</button>
     <button onclick="presPrev()" id="presPrevBtn">← Anterior</button>
     <span class="pres-counter" id="presCounter"></span>
     <button onclick="presNext()" id="presNextBtn">Siguiente →</button>
+    <button class="pres-action-btn" id="presToggleAnsBtn" onclick="togglePresAnswer()">Ver respuesta</button>
   </div>
 </div>
 
@@ -865,6 +928,8 @@ select:focus, input[type="number"]:focus {
 let cards = [];
 let presIndex = 0;
 let presTimerInterval = null;
+let presExprVisible = true;
+let presAnswerShown = false;
 
 // ══════════════════════════════════════════════
 // STRATEGY DEFINITIONS
@@ -1207,6 +1272,12 @@ function updateOperations() {
 function randInt(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = randInt(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+// Format a plain "n/d" answer string as LaTeX; pass through everything else.
+function fmtAnswer(ans) {
+  const m = String(ans).match(/^(\d+)\/(\d+)$/);
+  return m ? fmtFrac(parseInt(m[1]), parseInt(m[2])) : String(ans);
+}
 
 function fmtFrac(n, d) {
   if (d === 1) return `${n}`;
@@ -1896,6 +1967,8 @@ function presKeys(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') presNext();
   if (e.key === 'ArrowLeft') presPrev();
   if (e.key === 'Escape') closePresentation();
+  if (e.key === 'h' || e.key === 'H') togglePresExpr();
+  if (e.key === 'a' || e.key === 'A') togglePresAnswer();
 }
 
 function presNext() {
@@ -1914,13 +1987,67 @@ function renderPresCard() {
   document.getElementById('presNextBtn').disabled = presIndex === cards.length - 1;
   counter.textContent = `${presIndex + 1} / ${cards.length}`;
 
+  // Reset visibility state for each new card
+  presExprVisible = true;
+  presAnswerShown = false;
+  const toggleBtn = document.getElementById('presToggleExprBtn');
+  const ansBtn = document.getElementById('presToggleAnsBtn');
+  if (toggleBtn) { toggleBtn.textContent = 'Ocultar operación'; toggleBtn.classList.remove('active'); }
+  if (ansBtn)    { ansBtn.textContent = 'Ver respuesta'; ansBtn.classList.remove('active'); ansBtn.disabled = false; }
+
   content.innerHTML = `
     <div class="pres-question">¿Cómo lo resolverías mentalmente?</div>
-    <div class="pres-expression">${card.expr} <span class="equals">=</span> <span class="question-mark">?</span></div>
+    <div class="pres-expression" id="presExpression">${card.expr} <span class="equals">=</span> <span class="question-mark">?</span></div>
   `;
 
   startPresTimer();
   if (window.MathJax) MathJax.typesetPromise([content]);
+}
+
+function togglePresExpr() {
+  presExprVisible = !presExprVisible;
+  const exprEl = document.getElementById('presExpression');
+  const toggleBtn = document.getElementById('presToggleExprBtn');
+  const ansBtn = document.getElementById('presToggleAnsBtn');
+  if (!exprEl) return;
+  if (presExprVisible) {
+    exprEl.classList.remove('hidden');
+    toggleBtn.textContent = 'Ocultar operación';
+    toggleBtn.classList.remove('active');
+    ansBtn.disabled = false;
+  } else {
+    // If answer was revealed, reset to ? before hiding
+    if (presAnswerShown) {
+      presAnswerShown = false;
+      ansBtn.textContent = 'Ver respuesta';
+      ansBtn.classList.remove('active');
+      const card = cards[presIndex];
+      exprEl.innerHTML = `${card.expr} <span class="equals">=</span> <span class="question-mark">?</span>`;
+      if (window.MathJax) MathJax.typesetPromise([exprEl]);
+    }
+    exprEl.classList.add('hidden');
+    toggleBtn.textContent = 'Mostrar operación';
+    toggleBtn.classList.add('active');
+    ansBtn.disabled = true;
+  }
+}
+
+function togglePresAnswer() {
+  presAnswerShown = !presAnswerShown;
+  const exprEl = document.getElementById('presExpression');
+  const btn = document.getElementById('presToggleAnsBtn');
+  if (!exprEl) return;
+  const card = cards[presIndex];
+  if (presAnswerShown) {
+    exprEl.innerHTML = `${card.expr} <span class="equals">=</span> <span class="question-mark answer-shown">${fmtAnswer(card.answer)}</span>`;
+    btn.textContent = 'Ocultar respuesta';
+    btn.classList.add('active');
+  } else {
+    exprEl.innerHTML = `${card.expr} <span class="equals">=</span> <span class="question-mark">?</span>`;
+    btn.textContent = 'Ver respuesta';
+    btn.classList.remove('active');
+  }
+  if (window.MathJax) MathJax.typesetPromise([exprEl]);
 }
 
 function startPresTimer() {
@@ -1933,8 +2060,20 @@ function startPresTimer() {
   timerEl.classList.add('visible');
   presTimerInterval = setInterval(() => {
     rem--;
-    if (rem <= 0) { clearInterval(presTimerInterval); timerEl.textContent = '⏱'; }
-    else timerEl.textContent = rem;
+    if (rem <= 0) {
+      clearInterval(presTimerInterval);
+      timerEl.textContent = '⏱';
+      // Auto-hide expression when time is up
+      presExprVisible = false;
+      const exprEl = document.getElementById('presExpression');
+      const toggleBtn = document.getElementById('presToggleExprBtn');
+      const ansBtn = document.getElementById('presToggleAnsBtn');
+      if (exprEl) exprEl.classList.add('hidden');
+      if (toggleBtn) { toggleBtn.textContent = 'Mostrar operación'; toggleBtn.classList.add('active'); }
+      if (ansBtn) { ansBtn.disabled = true; }
+    } else {
+      timerEl.textContent = rem;
+    }
   }, 1000);
 }
 
