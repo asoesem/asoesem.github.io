@@ -6,7 +6,6 @@ date: 2024-03-29T18:00:00-06:00
 author: sebas
 image: '/images/124.jpg'
 tags: [apa]
-commissions: [cofoma]
 toc: true
 ---
 

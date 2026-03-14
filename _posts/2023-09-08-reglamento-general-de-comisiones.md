@@ -7,7 +7,6 @@ author: axell
 image: '/images/45.jpg'
 tags: [reglamentos]
 toc: true
-commissions: [cofoma,cocodi]
 ---
 
 ## TÍTULO I
