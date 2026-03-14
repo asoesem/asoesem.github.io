@@ -1,0 +1,1119 @@
+---
+layout: default
+title: Taxonomía Revisada de Bloom — Enseñanza de la Matemática
+description: "Guía interactiva de la Taxonomía Revisada de Bloom aplicada a la enseñanza de la matemática. Tabla taxonómica, constructor de objetivos, banco de ejemplos y análisis de la relación con la inteligencia artificial."
+permalink: /bloom-matematica
+---
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+/* ─── Bloom Taxonomía — Design Tokens ────────────────────────────── */
+:root {
+  --bloom-bg:       #FAF8F2;
+  --bloom-bg-card:  #F1EDE4;
+  --bloom-card:     #FFFFFF;
+  --bloom-ink:      #1A1A2E;
+  --bloom-ink-l:    #3D3D5C;
+  --bloom-ink-m:    #7070A0;
+  --bloom-gold:     #C9872B;
+  --bloom-gold-l:   #FBF0D9;
+  --bloom-teal:     #1E6B4F;
+  --bloom-teal-l:   #E5F2EC;
+  --bloom-border:   rgba(26,26,46,.1);
+  --bloom-border-m: rgba(26,26,46,.2);
+  /* Level text: darkened for ≥4.5:1 contrast on their light backgrounds */
+  --lv1:#1a3d6e; --lv2:#0c4530; --lv3:#7a4808; --lv4:#7a2a0a; --lv5:#481070; --lv6:#7a1010;
+  /* Level backgrounds: slightly more saturated than before */
+  --lv1-l:#d8e8f8; --lv2-l:#c8eedd; --lv3-l:#f5e2a8; --lv4-l:#f5ceb8; --lv5-l:#e8d2f8; --lv6-l:#f8c8c8;
+  --lot:#1a3d6e; --lot-l:#d8e8f8; --hot:#481070; --hot-l:#e8d2f8;
+  --r:8px; --r-lg:14px;
+}
+
+:root[dark] {
+  --bloom-bg:       #1a1a24;
+  --bloom-bg-card:  #22222e;
+  --bloom-card:     #2a2a38;
+  --bloom-ink:      #eaeaf5;
+  --bloom-ink-l:    #9090b8;
+  --bloom-ink-m:    #5a5a88;
+  --bloom-gold:     #d4913a;
+  --bloom-gold-l:   #2a1d08;
+  --bloom-teal:     #2cb87e;
+  --bloom-teal-l:   #0e2218;
+  --bloom-border:   rgba(200,200,255,.08);
+  --bloom-border-m: rgba(200,200,255,.15);
+  /* Level text: near-white tints for ≥7:1 contrast on the dark saturated backgrounds */
+  --lv1:#c8e0ff; --lv2:#b0f0d8; --lv3:#ffe0a0; --lv4:#ffc8a8; --lv5:#e8c8ff; --lv6:#ffbebe;
+  --lot:#c8e0ff; --hot:#e8c8ff;
+  --lv1-l:#0d1e38; --lv2-l:#0a2016; --lv3-l:#2c1f06; --lv4-l:#2c1006; --lv5-l:#1c0c2e; --lv6-l:#2c0808;
+  --lot-l:#0d1e38; --hot-l:#1c0c2e;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bloom-bg);
+  color: var(--bloom-ink);
+  line-height: 1.65;
+  font-size: 16px;
+}
+h1,h2,h3,h4 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; line-height:1.2 }
+h1 { font-size: clamp(2.2rem,5vw,3.6rem) }
+h2 { font-size: clamp(1.6rem,3vw,2.4rem) }
+h3 { font-size: 1.4rem }
+h4 { font-size: 1.1rem; font-weight: 500 }
+a  { color: var(--bloom-teal); text-decoration: none }
+p  { color: var(--bloom-ink-l) }
+
+/* ─── In-page section navigation (replaces global nav) ─────────── */
+.bloom-page-nav {
+  background: var(--bloom-bg-card);
+  border-top:    1px solid var(--bloom-border);
+  border-bottom: 1px solid var(--bloom-border);
+  padding: .55rem 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bloom-page-nav::-webkit-scrollbar { display: none }
+.bloom-page-nav-inner {
+  display: flex;
+  gap: .2rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-width: max-content;
+}
+.bloom-page-nav-inner::before {
+  content: '§';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--bloom-gold);
+  margin-right: .5rem;
+  flex-shrink: 0;
+}
+.bloom-page-nav a {
+  color: var(--bloom-ink-l);
+  font-size: .77rem;
+  font-weight: 500;
+  padding: .28rem .65rem;
+  border-radius: 20px;
+  transition: all .18s;
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+.bloom-page-nav a:hover {
+  background: var(--bloom-card);
+  color: var(--bloom-teal);
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────── */
+.hero {
+  padding: 4rem 2rem 3.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero-text .eyebrow {
+  font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bloom-teal); font-family: 'DM Sans',sans-serif; font-weight: 500; margin-bottom: .75rem;
+}
+.hero-text h1 { margin-bottom: 1.25rem; color: var(--bloom-ink) }
+.hero-text p  { font-size: 1.05rem; margin-bottom: 2rem; max-width: 44ch }
+.hero-cta {
+  display: inline-block; background: var(--bloom-teal); color: #fff;
+  padding: .75rem 1.75rem; border-radius: var(--r); font-size: .9rem; font-weight: 500; transition: opacity .2s;
+}
+.hero-cta:hover { opacity: .88; color: #fff }
+
+.hero-pyramid { display: flex; flex-direction: column; gap: 3px }
+.pyramid-level {
+  border-radius: var(--r); padding: .7rem 1.2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: default; transition: transform .15s;
+}
+.pyramid-level:hover { transform: translateX(4px) }
+.pyramid-level span:first-child { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600 }
+.pyramid-level span:last-child  { font-size:.75rem; opacity:.9 }
+.pl-1{background:var(--lv1-l);color:var(--lv1)} .pl-2{background:var(--lv2-l);color:var(--lv2)}
+.pl-3{background:var(--lv3-l);color:var(--lv3)} .pl-4{background:var(--lv4-l);color:var(--lv4)}
+.pl-5{background:var(--lv5-l);color:var(--lv5)} .pl-6{background:var(--lv6-l);color:var(--lv6)}
+
+/* ─── Sections ──────────────────────────────────────────────────── */
+.section-divider { height:1px; background:var(--bloom-border); margin:0 2rem }
+.section-label { display:flex; align-items:center; gap:.75rem; margin-bottom:.5rem }
+.section-label::before { content:''; display:block; width:2.5rem; height:2px; background:var(--bloom-gold) }
+.section-label span { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bloom-gold); font-weight:500 }
+.section { padding:4rem 2rem; max-width:1100px; margin:0 auto }
+.section h2 { margin-bottom:1rem }
+.section > p { margin-bottom:2rem; max-width:70ch }
+
+/* ─── About grid ────────────────────────────────────────────────── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem }
+.about-card { background:var(--bloom-bg-card); border:1px solid var(--bloom-border); border-radius:var(--r-lg); padding:1.5rem }
+.about-card h4 { margin-bottom:.5rem; color:var(--bloom-ink) }
+.about-card p  { font-size:.9rem; line-height:1.6 }
+.about-card .icon-box { width:36px; height:36px; border-radius:var(--r); display:flex; align-items:center; justify-content:center; margin-bottom:.75rem; font-size:1rem }
+
+/* ─── Taxonomy table ────────────────────────────────────────────── */
+.table-wrapper { overflow-x:auto; margin-top:2rem }
+.tax-table { width:100%; border-collapse:separate; border-spacing:3px; min-width:720px }
+.tax-table th { padding:.6rem .8rem; font-family:'DM Sans',sans-serif; font-size:.75rem; font-weight:500; text-align:left; text-transform:uppercase; letter-spacing:.06em }
+.tax-table th.level-th { text-align:center; border-radius:var(--r); padding:.6rem }
+.th-1{background:var(--lv1-l);color:var(--lv1)} .th-2{background:var(--lv2-l);color:var(--lv2)}
+.th-3{background:var(--lv3-l);color:var(--lv3)} .th-4{background:var(--lv4-l);color:var(--lv4)}
+.th-5{background:var(--lv5-l);color:var(--lv5)} .th-6{background:var(--lv6-l);color:var(--lv6)}
+.row-th { background:var(--bloom-card); border:1px solid var(--bloom-border); border-radius:var(--r); font-weight:500; font-size:.82rem; color:var(--bloom-ink-l); width:130px }
+.tax-cell { border-radius:var(--r); padding:.65rem .8rem; cursor:pointer; border:1.5px solid transparent; transition:all .18s; font-size:.8rem; color:var(--bloom-ink-l); min-height:72px; vertical-align:top }
+.tax-cell:hover { border-color:currentColor; transform:scale(1.02) }
+.tax-cell .cell-verb { font-weight:500; font-size:.82rem; display:block; margin-bottom:.25rem }
+.tax-cell .cell-ex  { font-size:.74rem; line-height:1.4; opacity:.8 }
+.c1{background:var(--lv1-l);color:var(--lv1)} .c2{background:var(--lv2-l);color:var(--lv2)}
+.c3{background:var(--lv3-l);color:var(--lv3)} .c4{background:var(--lv4-l);color:var(--lv4)}
+.c5{background:var(--lv5-l);color:var(--lv5)} .c6{background:var(--lv6-l);color:var(--lv6)}
+
+/* ─── Level cards ───────────────────────────────────────────────── */
+.levels-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.25rem; margin-top:2rem; align-items:start }
+.level-card { border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--bloom-border) }
+.level-card-header { padding:1.1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; cursor:pointer }
+.level-card-header h3 { font-size:1.15rem; display:flex; align-items:center; gap:.6rem }
+.level-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'DM Sans',sans-serif; font-size:.75rem; font-weight:500; flex-shrink:0; color:#fff }
+.level-card-body { padding:0 1.25rem 1.25rem; display:none }
+.level-card-body.open { display:block }
+.level-desc { font-size:.88rem; color:var(--bloom-ink-m); margin-bottom:1rem; line-height:1.6 }
+.verb-chips { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1rem }
+.chip { font-size:.75rem; padding:.3rem .65rem; border-radius:20px; font-weight:500 }
+.level-examples h4 { font-size:.8rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-ink-m); margin-bottom:.5rem; font-family:'DM Sans',sans-serif }
+.level-example { font-size:.85rem; padding:.5rem .75rem; border-radius:var(--r); margin-bottom:.35rem; border-left:3px solid; line-height:1.5 }
+.toggle-icon { font-size:.9rem; color:var(--bloom-ink-m); transition:transform .2s; flex-shrink:0 }
+
+/* ─── Badges ────────────────────────────────────────────────────── */
+.lot-badge,.hot-badge { display:inline-block; font-size:.66rem; font-weight:500; text-transform:uppercase; letter-spacing:.07em; padding:.15rem .45rem; border-radius:20px; vertical-align:middle; margin-left:.4rem }
+.lot-badge    { background:var(--lot); color:#fff }
+.hot-badge    { background:var(--hot); color:#fff }
+.border-badge { background:var(--bloom-gold); color:#fff; display:inline-block; font-size:.66rem; font-weight:500; text-transform:uppercase; letter-spacing:.07em; padding:.15rem .45rem; border-radius:20px; vertical-align:middle; margin-left:.4rem }
+
+/* ─── Builder ───────────────────────────────────────────────────── */
+.builder-section { background:var(--bloom-card); border:1px solid var(--bloom-border); border-radius:var(--r-lg); padding:2rem; margin-top:2rem }
+.builder-form { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.5rem }
+.form-group label { display:block; font-size:.8rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-ink-m); margin-bottom:.4rem; font-weight:500 }
+.form-group select {
+  width:100%; padding:.65rem .9rem; border:1px solid var(--bloom-border-m); border-radius:var(--r);
+  font-family:'DM Sans',sans-serif; font-size:.9rem; background:var(--bloom-bg); color:var(--bloom-ink);
+  appearance:none; cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237070A0' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right .8rem center;
+}
+.form-group select:focus { outline:2px solid var(--bloom-teal); outline-offset:2px }
+.builder-output { background:var(--bloom-bg); border-radius:var(--r-lg); padding:1.5rem; min-height:160px; border:1px solid var(--bloom-border) }
+.output-label    { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--bloom-gold); font-weight:500; margin-bottom:.75rem }
+.output-verbs    { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1rem }
+.output-template { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:var(--bloom-ink); line-height:1.5; font-style:italic; margin-bottom:.75rem; border-left:3px solid var(--bloom-gold); padding-left:.75rem }
+.output-examples { margin-top:.75rem }
+.output-examples h4 { font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-ink-m); margin-bottom:.4rem }
+.output-example { font-size:.88rem; padding:.5rem .75rem; border-radius:var(--r); margin-bottom:.35rem; background:var(--bloom-card); border:1px solid var(--bloom-border) }
+.btn-gen { margin-top:1.25rem; padding:.65rem 1.5rem; background:var(--bloom-teal); color:#fff; border:none; border-radius:var(--r); font-family:'DM Sans',sans-serif; font-size:.9rem; font-weight:500; cursor:pointer; transition:opacity .2s }
+.btn-gen:hover { opacity:.87 }
+
+.builder-alert { border-radius:var(--r); padding:.9rem 1rem; font-size:.85rem; line-height:1.55; margin-top:.75rem; display:none }
+.builder-alert.lot-warn  { background:var(--lot-l); border-left:3px solid var(--lot); color:var(--bloom-ink-l) }
+.builder-alert.lot-warn strong { color:var(--lot) }
+.builder-alert.hot-note  { background:var(--hot-l); border-left:3px solid var(--hot); color:var(--bloom-ink-l) }
+.builder-alert.hot-note strong { color:var(--hot) }
+
+/* ─── Bank tabs ─────────────────────────────────────────────────── */
+.bank-tabs { display:flex; gap:.5rem; margin-bottom:1.5rem; flex-wrap:wrap }
+.bank-tab { padding:.45rem 1rem; border-radius:20px; font-size:.82rem; font-weight:500; cursor:pointer; border:1.5px solid transparent; transition:all .2s; background:var(--bloom-bg-card); color:var(--bloom-ink-l) }
+.bank-tab.active { color:#fff }
+/* Dark mode: inactive tabs get near-white text; active tabs get dark text since
+   backgrounds are now light pastels (--lv1 = #c8e0ff etc.) */
+:root[dark] .bank-tab { color:var(--bloom-ink) }
+:root[dark] .bank-tab.active { color:var(--bloom-bg) }
+.bank-tab[data-level="1"].active{background:var(--lv1);border-color:var(--lv1)}
+.bank-tab[data-level="2"].active{background:var(--lv2);border-color:var(--lv2)}
+.bank-tab[data-level="3"].active{background:var(--lv3);border-color:var(--lv3)}
+.bank-tab[data-level="4"].active{background:var(--lv4);border-color:var(--lv4)}
+.bank-tab[data-level="5"].active{background:var(--lv5);border-color:var(--lv5)}
+.bank-tab[data-level="6"].active{background:var(--lv6);border-color:var(--lv6)}
+.bank-content { display:none }
+.bank-content.active { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem }
+.obj-card { background:var(--bloom-card); border:1px solid var(--bloom-border); border-radius:var(--r-lg); padding:1.25rem }
+.obj-card .obj-tag { font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; font-weight:500; padding:.2rem .5rem; border-radius:4px; margin-bottom:.65rem; display:inline-block }
+.obj-card p { font-size:.9rem; color:var(--bloom-ink-l); line-height:1.55 }
+
+/* ─── LOT/HOT section ───────────────────────────────────────────── */
+.lot-hot-section { padding:4rem 2rem; max-width:1100px; margin:0 auto }
+.lot-hot-grid    { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem }
+.lh-card { border-radius:var(--r-lg); padding:1.5rem; border:2px solid }
+.lh-card.lot { background:var(--lot-l); border-color:rgba(62,106,173,.25) }
+.lh-card.hot { background:var(--hot-l); border-color:rgba(122,59,158,.25) }
+.lh-card h3 { font-size:1.15rem; margin-bottom:.4rem }
+.lh-card.lot h3 { color:var(--lot) }
+.lh-card.hot h3 { color:var(--hot) }
+.lh-card .lh-badge { display:inline-block; font-size:.72rem; font-weight:500; text-transform:uppercase; letter-spacing:.07em; padding:.2rem .55rem; border-radius:20px; margin-bottom:.65rem }
+.lh-card.lot .lh-badge { background:var(--lot); color:#fff }
+.lh-card.hot .lh-badge { background:var(--hot); color:#fff }
+/* Dark mode: --lot/--hot are now light pastels, so invert to dark bg + light text */
+:root[dark] .lh-card.lot .lh-badge { background:rgba(200,224,255,.2); color:var(--lot); border:1px solid rgba(200,224,255,.4) }
+:root[dark] .lh-card.hot .lh-badge { background:rgba(232,200,255,.2); color:var(--hot); border:1px solid rgba(232,200,255,.4) }
+.lh-card p { font-size:.88rem; line-height:1.65; color:var(--bloom-ink-l) }
+.lh-levels { display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.75rem }
+.lh-level-chip { font-size:.75rem; padding:.25rem .55rem; border-radius:20px; font-weight:500 }
+.lh-card.lot .lh-level-chip { background:rgba(62,106,173,.12); color:var(--lot) }
+.lh-card.hot .lh-level-chip { background:rgba(122,59,158,.12); color:var(--hot) }
+
+.familiarity-box { background:var(--bloom-card); border:1.5px solid var(--bloom-gold); border-radius:var(--r-lg); padding:1.5rem; margin-top:1.5rem }
+.familiarity-box h4 { color:var(--bloom-gold); margin-bottom:.5rem; font-size:1.05rem }
+.familiarity-box p  { font-size:.9rem; color:var(--bloom-ink-l); line-height:1.65 }
+.familiarity-box strong { color:var(--bloom-ink) }
+.familiarity-test { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem }
+.ft-col { border-radius:var(--r); padding:.9rem 1rem; font-size:.82rem; line-height:1.6 }
+.ft-col.lot { background:var(--lot-l); color:var(--bloom-ink-l); border-left:3px solid var(--lot) }
+.ft-col.hot { background:var(--hot-l); color:var(--bloom-ink-l); border-left:3px solid var(--hot) }
+.ft-col strong { display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; margin-bottom:.4rem }
+.ft-col.lot strong { color:var(--lot) }
+.ft-col.hot strong { color:var(--hot) }
+
+.misconceptions-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; margin-top:1.25rem }
+.mc-card { background:var(--bloom-bg-card); border-radius:var(--r-lg); padding:1.25rem; border-left:3px solid var(--bloom-gold) }
+.mc-card .mc-label { font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-gold); font-weight:500; margin-bottom:.35rem }
+.mc-card h4 { font-size:.92rem; margin-bottom:.35rem; color:var(--bloom-ink) }
+.mc-card p  { font-size:.82rem; color:var(--bloom-ink-l); line-height:1.55 }
+
+/* ─── AI section ────────────────────────────────────────────────── */
+.ai-section { padding:4rem 2rem; max-width:1100px; margin:0 auto }
+.ai-principle { background:var(--bloom-card); border:1px solid var(--bloom-border); border-radius:var(--r-lg); padding:1.5rem; margin-bottom:1.25rem }
+.ai-principle h4 { margin-bottom:.4rem; color:var(--bloom-ink) }
+.ai-principle p  { font-size:.88rem; line-height:1.65; color:var(--bloom-ink-l) }
+
+.ai-level-table { width:100%; border-collapse:separate; border-spacing:0 4px; margin-top:1.75rem }
+.ai-level-table thead th { font-size:.74rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-ink-m); font-weight:500; padding:.5rem .9rem; text-align:left; background:var(--bloom-bg-card); border-bottom:1px solid var(--bloom-border) }
+.ai-level-table thead th:first-child { border-radius:var(--r) 0 0 var(--r); width:120px }
+.ai-level-table thead th:last-child  { border-radius:0 var(--r) var(--r) 0 }
+.ai-level-row td { padding:.85rem .9rem; vertical-align:top; font-size:.83rem; line-height:1.55; color:var(--bloom-ink-l); background:var(--bloom-card); border-top:1px solid var(--bloom-border); border-bottom:1px solid var(--bloom-border) }
+.ai-level-row td:first-child { border-left:1px solid var(--bloom-border); border-radius:var(--r) 0 0 var(--r); font-family:'Cormorant Garamond',serif; font-size:.95rem; font-weight:600 }
+.ai-level-row td:last-child  { border-right:1px solid var(--bloom-border); border-radius:0 var(--r) var(--r) 0 }
+.ai-level-row td ul { padding-left:1rem; margin:0 }
+.ai-level-row td li { margin-bottom:.2rem }
+.ai-level-row.r1 td:first-child{color:var(--lv1);border-left:3px solid var(--lv1)}
+.ai-level-row.r2 td:first-child{color:var(--lv2);border-left:3px solid var(--lv2)}
+.ai-level-row.r3 td:first-child{color:var(--lv3);border-left:3px solid var(--lv3)}
+.ai-level-row.r4 td:first-child{color:var(--lv4);border-left:3px solid var(--lv4)}
+.ai-level-row.r5 td:first-child{color:var(--lv5);border-left:3px solid var(--lv5)}
+.ai-level-row.r6 td:first-child{color:var(--lv6);border-left:3px solid var(--lv6)}
+
+.ai-warning-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; margin-top:1.25rem }
+.ai-warn-card { border-radius:var(--r-lg); padding:1.25rem; border:1px solid var(--bloom-border); background:var(--bloom-card) }
+.ai-warn-card .aw-icon { font-size:1.1rem; margin-bottom:.5rem }
+.ai-warn-card h4 { font-size:.9rem; margin-bottom:.35rem; color:var(--bloom-ink) }
+.ai-warn-card p  { font-size:.82rem; color:var(--bloom-ink-l); line-height:1.55 }
+
+.design-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; margin-top:1.25rem }
+.design-card { background:var(--bloom-bg-card); border-radius:var(--r-lg); padding:1.25rem; border-top:3px solid var(--bloom-teal) }
+.design-card h4 { font-size:.88rem; color:var(--bloom-teal); margin-bottom:.35rem }
+.design-card p  { font-size:.82rem; color:var(--bloom-ink-l); line-height:1.55 }
+
+/* ─── Modal ─────────────────────────────────────────────────────── */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(26,26,46,.5); z-index:200; align-items:center; justify-content:center; padding:1rem }
+.modal-overlay.open { display:flex }
+.modal { background:var(--bloom-bg); border-radius:var(--r-lg); padding:2rem; max-width:520px; width:100%; max-height:90vh; overflow-y:auto; position:relative }
+.modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.25rem; cursor:pointer; color:var(--bloom-ink-m); line-height:1 }
+.modal h3 { margin-bottom:.25rem; color:var(--bloom-ink) }
+.modal .modal-sub { font-size:.85rem; color:var(--bloom-ink-m); margin-bottom:1.25rem }
+.modal-verbs { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:1.25rem }
+.modal-examples h4 { font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; color:var(--bloom-ink-m); margin-bottom:.5rem }
+
+/* ─── References ────────────────────────────────────────────────── */
+.ref-list { margin-top:2rem; display:flex; flex-direction:column; gap:.5rem }
+.ref-item {
+  padding:.4rem 0 .4rem 1.8rem; text-indent:-1.8rem;
+  font-size:.87rem; color:var(--bloom-ink-l); line-height:1.75;
+}
+.ref-note { font-size:.78rem; color:var(--bloom-ink-m); margin-top:1.25rem; font-style:italic }
+
+/* ─── Callout box helper ────────────────────────────────────────── */
+.callout-gold {
+  background:var(--bloom-gold-l); border-left:4px solid var(--bloom-gold);
+  border-radius:var(--r-lg); padding:1.25rem 1.5rem;
+}
+.callout-gold .callout-label {
+  font-size:.78rem; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--bloom-gold); font-weight:500; margin-bottom:.4rem;
+}
+.callout-gold p { font-size:.9rem; color:var(--bloom-ink-l); line-height:1.65 }
+.callout-gold strong { color:var(--bloom-ink) }
+
+.callout-teal {
+  background:var(--bloom-teal-l); border-left:4px solid var(--bloom-teal);
+  border-radius:var(--r-lg); padding:1.25rem 1.5rem;
+}
+.callout-teal .callout-label {
+  font-size:.78rem; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--bloom-teal); font-weight:500; margin-bottom:.4rem;
+}
+
+/* Transformation comparison grid inside callout-teal */
+.transform-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:.5rem }
+.transform-grid .t-label { font-size:.75rem; font-weight:500; margin-bottom:.3rem }
+.transform-grid .t-label.before { color:var(--bloom-ink-m) }
+.transform-grid .t-label.after  { color:var(--bloom-teal) }
+.transform-box {
+  font-size:.88rem; color:var(--bloom-ink-l); background:var(--bloom-card);
+  padding:.75rem; border-radius:var(--r); line-height:1.55; font-style:italic;
+}
+.transform-box.before { border-left:3px solid var(--lv3) }
+.transform-box.after  { border-left:3px solid var(--bloom-teal) }
+.transform-note { font-size:.78rem; color:var(--bloom-ink-m); margin-top:.35rem }
+
+/* Frontier callout */
+.callout-frontier {
+  background:var(--bloom-gold-l); border:1.5px solid rgba(201,135,43,.4);
+  border-radius:var(--r-lg); padding:1.25rem 1.5rem;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media(max-width:760px){
+  .hero            { grid-template-columns:1fr; gap:2rem; padding:3rem 1.25rem 2.5rem }
+  .about-grid      { grid-template-columns:1fr }
+  .lot-hot-grid    { grid-template-columns:1fr }
+  .familiarity-test{ grid-template-columns:1fr }
+  .builder-form    { grid-template-columns:1fr }
+  .transform-grid  { grid-template-columns:1fr }
+  .section         { padding:3rem 1.25rem }
+  .lot-hot-section { padding:3rem 1.25rem }
+  .ai-section      { padding:3rem 1.25rem }
+  .section-divider { margin:0 1.25rem }
+  .bloom-page-nav  { padding:.55rem 1rem }
+}
+</style>
+
+<!-- ── In-page section navigation (replaces standalone sticky nav) ── -->
+<nav class="bloom-page-nav" aria-label="Secciones de este artículo">
+  <div class="bloom-page-nav-inner">
+    <a href="#que-es">¿Qué es?</a>
+    <a href="#tabla">Tabla Taxonómica</a>
+    <a href="#niveles">Niveles Cognitivos</a>
+    <a href="#constructor">Constructor de Objetivos</a>
+    <a href="#banco">Banco de Objetivos</a>
+    <a href="#pot">POI / POS</a>
+    <a href="#ia">Bloom e IA</a>
+    <a href="#referencias">Referencias</a>
+  </div>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Recurso Pedagógico</div>
+    <h1>Construye objetivos de aprendizaje más poderosos</h1>
+    <p>Una guía interactiva de la Taxonomía Revisada de Bloom aplicada a la enseñanza de la matemática, para docentes en formación y en ejercicio.</p>
+    <a href="#constructor" class="hero-cta">Construir un objetivo ↓</a>
+  </div>
+  <div class="hero-pyramid">
+    <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:4px">
+      <span style="font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .55rem;border-radius:20px;background:var(--hot-l);color:var(--hot)">Pensamiento de Orden Superior</span>
+    </div>
+    <div class="pyramid-level pl-6">
+      <span>6. Crear</span><span>Generar · Planificar · Producir</span>
+    </div>
+    <div class="pyramid-level pl-5">
+      <span>5. Evaluar</span><span>Verificar · Criticar</span>
+    </div>
+    <div class="pyramid-level pl-4">
+      <span>4. Analizar</span><span>Diferenciar · Organizar · Atribuir</span>
+    </div>
+    <div style="height:2px;background:var(--bloom-border-m);border-radius:2px;margin:3px 0;position:relative">
+      <span style="position:absolute;right:0;top:-8px;font-size:.65rem;color:var(--bloom-gold);background:var(--bloom-gold-l);border:1px solid rgba(201,135,43,.3);padding:.1rem .4rem;border-radius:20px">zona fronteriza</span>
+    </div>
+    <div class="pyramid-level pl-3" style="border:1.5px dashed rgba(201,135,43,.4)">
+      <span>3. Aplicar</span><span>Ejecutar · Implementar</span>
+    </div>
+    <div style="height:2px;background:var(--bloom-border-m);border-radius:2px;margin:3px 0"></div>
+    <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:2px">
+      <span style="font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .55rem;border-radius:20px;background:var(--lot-l);color:var(--lot)">Pensamiento de Orden Inferior</span>
+    </div>
+    <div class="pyramid-level pl-2">
+      <span>2. Comprender</span><span>Interpretar · Inferir · Explicar…</span>
+    </div>
+    <div class="pyramid-level pl-1">
+      <span>1. Recordar</span><span>Reconocer · Recordar</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ── ¿Qué es? ────────────────────────────────────────────────────── -->
+<section class="section" id="que-es">
+  <div class="section-label"><span>Fundamento teórico</span></div>
+  <h2>La Taxonomía Revisada: dos dimensiones</h2>
+  <p>Anderson y Krathwohl (2001) actualizaron el modelo original de Bloom transformándolo en un marco <strong>bidimensional</strong>: el tipo de conocimiento (sustantivo) y el proceso cognitivo (verbo). Todo objetivo de aprendizaje puede ubicarse en la intersección de ambas dimensiones.</p>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="icon-box" style="background:var(--bloom-teal-l)">🔢</div>
+      <h4>Dimensión del Conocimiento</h4>
+      <p>Clasifica <em>qué</em> aprende el estudiante. Va de lo concreto a lo abstracto: <strong>Factual</strong> (terminología, hechos específicos), <strong>Conceptual</strong> (clasificaciones, principios, teorías), <strong>Procedimental</strong> (algoritmos, técnicas, criterios) y <strong>Metacognitivo</strong> (estrategias de aprendizaje, autoconocimiento).</p>
+    </div>
+    <div class="about-card">
+      <div class="icon-box" style="background:var(--bloom-gold-l)">🧠</div>
+      <h4>Dimensión del Proceso Cognitivo</h4>
+      <p>Clasifica <em>cómo</em> opera el estudiante sobre ese conocimiento. Seis categorías de menor a mayor complejidad: <strong>Recordar, Comprender, Aplicar, Analizar, Evaluar</strong> y <strong>Crear</strong>. La revisión cambió la nomenclatura a verbos y elevó Crear sobre Evaluar.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon-box" style="background:var(--lv5-l)">⚖️</div>
+      <h4>Alineación curricular</h4>
+      <p>La Tabla Taxonómica permite verificar que los <em>objetivos</em>, las <em>actividades de aprendizaje</em> y las <em>evaluaciones</em> apunten a la misma celda. La desalineación es una causa frecuente de enseñanza ineficaz y evaluación injusta.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon-box" style="background:var(--lv4-l)">📐</div>
+      <h4>Aplicación en matemática</h4>
+      <p>En matemática la mayoría de currículos enfatizan el nivel <em>Recordar</em> (fórmulas, definiciones) y el nivel <em>Aplicar</em> (ejercicios). La taxonomía invita a diseñar objetivos que alcancen también los niveles de <em>Analizar, Evaluar</em> y <em>Crear</em>, promoviendo el aprendizaje significativo.</p>
+    </div>
+  </div>
+  <div class="callout-gold" style="margin-top:2rem">
+    <p class="callout-label">Hallazgo de investigación</p>
+    <p>Jurić, Mišurac y Vežić (2019) analizaron libros de texto de matemática de primaria y encontraron que <strong>únicamente los primeros cuatro niveles de la taxonomía estaban presentes</strong>; los niveles de creación y evaluación estaban completamente ausentes. La mayoría de tareas se concentraban en conocimiento factual y automatización del cálculo. Esto implica que el docente debe diseñar deliberadamente actividades y objetivos que alcancen los niveles superiores, ya que los materiales curriculares típicos no lo hacen por sí solos.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Tabla Taxonómica ────────────────────────────────────────────── -->
+<section class="section" id="tabla">
+  <div class="section-label"><span>Herramienta visual</span></div>
+  <h2>Tabla Taxonómica Interactiva</h2>
+  <p>Cada celda representa la intersección de un tipo de conocimiento con un nivel cognitivo. Haz clic en cualquier celda para ver verbos y ejemplos matemáticos específicos.</p>
+  <div class="table-wrapper">
+    <table class="tax-table" id="taxTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="level-th th-1">1. Recordar</th>
+          <th class="level-th th-2">2. Comprender</th>
+          <th class="level-th th-3">3. Aplicar</th>
+          <th class="level-th th-4">4. Analizar</th>
+          <th class="level-th th-5">5. Evaluar</th>
+          <th class="level-th th-6">6. Crear</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Niveles ────────────────────────────────────────────────────── -->
+<section class="section" id="niveles">
+  <div class="section-label"><span>Referencia de aula</span></div>
+  <h2>Verbos y ejemplos por nivel cognitivo</h2>
+  <p>Expande cada nivel para ver sus procesos cognitivos, verbos recomendados para objetivos matemáticos y ejemplos concretos por tipo de conocimiento.</p>
+  <div class="levels-grid" id="levelsGrid"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Constructor ────────────────────────────────────────────────── -->
+<section class="section" id="constructor">
+  <div class="section-label"><span>Herramienta interactiva</span></div>
+  <h2>Constructor de Objetivos de Aprendizaje</h2>
+  <p>Selecciona el tipo de conocimiento y el nivel cognitivo que deseas trabajar. El constructor te mostrará verbos apropiados y ejemplos de objetivos matemáticos redactados correctamente.</p>
+  <div class="builder-section">
+    <div class="builder-form">
+      <div class="form-group">
+        <label>Tipo de conocimiento (sustantivo)</label>
+        <select id="selKnowledge">
+          <option value="">— Selecciona —</option>
+          <option value="factual">A. Conocimiento Factual</option>
+          <option value="conceptual">B. Conocimiento Conceptual</option>
+          <option value="procedural">C. Conocimiento Procedimental</option>
+          <option value="metacognitive">D. Conocimiento Metacognitivo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nivel cognitivo (verbo)</label>
+        <select id="selLevel">
+          <option value="">— Selecciona —</option>
+          <option value="1">1. Recordar</option>
+          <option value="2">2. Comprender</option>
+          <option value="3">3. Aplicar</option>
+          <option value="4">4. Analizar</option>
+          <option value="5">5. Evaluar</option>
+          <option value="6">6. Crear</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-gen" onclick="generateObjective()">Generar orientaciones →</button>
+    <div id="builderLevelAlert" class="builder-alert"></div>
+    <div class="builder-output" id="builderOutput" style="margin-top:1.25rem">
+      <p style="color:var(--bloom-ink-m);font-size:.9rem">Selecciona ambas dimensiones y haz clic en el botón para recibir orientaciones personalizadas.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Banco de Objetivos ─────────────────────────────────────────── -->
+<section class="section" id="banco">
+  <div class="section-label"><span>Referencia práctica</span></div>
+  <h2>Banco de Objetivos Matemáticos</h2>
+  <p>Ejemplos de objetivos bien redactados para distintos niveles. Recuerda que un buen objetivo contiene un <em>verbo de proceso cognitivo</em> + el <em>tipo de conocimiento</em> involucrado.</p>
+  <div class="bank-tabs" id="bankTabs"></div>
+  <div id="bankContent"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── POI / POS ──────────────────────────────────────────────────── -->
+<section class="lot-hot-section" id="pot">
+  <div class="section-label"><span>Distinción fundamental</span></div>
+  <h2>Pensamiento de Orden Inferior y de Orden Superior</h2>
+  <p style="max-width:72ch;color:var(--bloom-ink-l)">La taxonomía no solo clasifica niveles — establece una frontera crítica entre dos tipos de demanda cognitiva. Comprender esta distinción es esencial para diseñar objetivos, actividades y evaluaciones que realmente desarrollen el pensamiento matemático.</p>
+
+  <div class="lot-hot-grid">
+    <div class="lh-card lot">
+      <span class="lh-badge">POI — Pensamiento de Orden Inferior</span>
+      <h3>Recordar · Comprender</h3>
+      <p>Implica operar con información o procedimientos que el estudiante <strong>ya conoce y ha practicado</strong>. El camino a la solución es predecible: se aplica un algoritmo conocido, se recupera información memorizada, o se usa un procedimiento tal como fue enseñado.</p>
+      <p style="margin-top:.6rem;font-size:.82rem;color:var(--bloom-ink-m);font-style:italic">Ejemplo en álgebra: Simplificar 3x − 7y + 5 − x + 8y siguiendo los pasos practicados en clase.</p>
+      <div class="lh-levels">
+        <span class="lh-level-chip">1. Recordar</span>
+        <span class="lh-level-chip">2. Comprender</span>
+      </div>
+    </div>
+    <div class="lh-card hot">
+      <span class="lh-badge">POS — Pensamiento de Orden Superior</span>
+      <h3>Analizar · Evaluar · Crear</h3>
+      <p>Implica que <strong>no existe un algoritmo enseñado</strong> para resolver la tarea, o que el estudiante debe aplicar conocimientos en un contexto o situación genuinamente nueva o no practicada. Requiere razonamiento, juicio o producción original.</p>
+      <p style="margin-top:.6rem;font-size:.82rem;color:var(--bloom-ink-m);font-style:italic">Ejemplo en álgebra: Para 2x² − bx + 3, ¿qué valores enteros de b hacen que la ecuación sea factorizable? Razona y justifica.</p>
+      <div class="lh-levels">
+        <span class="lh-level-chip">4. Analizar</span>
+        <span class="lh-level-chip">5. Evaluar</span>
+        <span class="lh-level-chip">6. Crear</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="familiarity-box">
+    <h4>El criterio de familiaridad: la clave que los docentes suelen omitir</h4>
+    <p>Thompson (2008) encontró que el factor decisivo para distinguir POI de POS no es la dificultad del problema ni la cantidad de pasos, sino el <strong>grado de familiaridad del estudiante con el procedimiento o la situación</strong>. Bloom lo estableció con claridad desde 1956: <em>un ítem no es de nivel Aplicar o superior si el estudiante solo necesita recordar cómo resolvió un problema idéntico en clase, aunque cambien los números.</em></p>
+    <div class="familiarity-test">
+      <div class="ft-col lot">
+        <strong>Es POI si…</strong>
+        El estudiante fue enseñado el algoritmo específico para esta situación. El camino es conocido; solo cambian los datos. No se requiere justificación ni explicación del razonamiento. Hay una única respuesta posible y un único método esperado.
+      </div>
+      <div class="ft-col hot">
+        <strong>Es POS si…</strong>
+        No se enseñó un algoritmo para esta situación específica. El estudiante debe decidir qué conocimiento aplicar y cómo. Se requiere justificación, explicación o prueba del razonamiento. Puede haber más de una solución o más de un enfoque válido.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem">
+    <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bloom-ink-m);font-weight:500;margin-bottom:.75rem">Nivel Aplicar: la zona fronteriza</p>
+    <div class="callout-frontier">
+      <p style="font-size:.9rem;color:var(--bloom-ink-l);line-height:1.65">El nivel <strong style="color:var(--bloom-ink)">Aplicar</strong> es ambivalente: puede ser POI o POS según el contexto. Si el estudiante aplica un procedimiento ya practicado en una situación familiar (ejecutar), es POI. Si aplica ese mismo procedimiento en un contexto genuinamente nuevo que no ha visto antes (implementar), se convierte en POS. Esta distinción es la que más frecuentemente se malinterpreta: muchos docentes clasifican como POS cualquier ejercicio con múltiples pasos o que parezca difícil, cuando en realidad sigue siendo POI si el procedimiento fue enseñado y practicado con situaciones similares (Thompson, 2008).</p>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem">
+    <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bloom-ink-m);font-weight:500;margin-bottom:.75rem">Errores de interpretación más comunes en docentes de matemática</p>
+    <div class="misconceptions-grid">
+      <div class="mc-card">
+        <div class="mc-label">Error 1</div>
+        <h4>Confundir dificultad con orden superior</h4>
+        <p>Un problema algorítmico puede ser muy difícil y seguir siendo POI. La complejidad computacional no determina el nivel cognitivo; lo determina la familiaridad con el procedimiento.</p>
+      </div>
+      <div class="mc-card">
+        <div class="mc-label">Error 2</div>
+        <h4>Contar pasos para clasificar</h4>
+        <p>Que un problema requiera tres o más pasos no lo convierte en POS. Si cada paso fue enseñado y practicado, el proceso completo sigue siendo POI, independientemente de cuántos pasos tome.</p>
+      </div>
+      <div class="mc-card">
+        <div class="mc-label">Error 3</div>
+        <h4>Clasificar por el tema ("matemática avanzada = POS")</h4>
+        <p>El cálculo, el álgebra lineal o la estadística inferencial pueden evaluarse a nivel POI si solo se pide aplicar fórmulas conocidas. El tema en sí no determina el nivel cognitivo del objetivo.</p>
+      </div>
+      <div class="mc-card">
+        <div class="mc-label">Error 4</div>
+        <h4>Malinterpretar "evaluar" como "calcular un valor"</h4>
+        <p>Thompson (2008) documentó que muchos docentes interpretan Evaluar (nivel 5) como "encontrar el valor de una expresión", cuando en la taxonomía significa emitir un juicio fundamentado en criterios explícitos.</p>
+      </div>
+      <div class="mc-card">
+        <div class="mc-label">Error 5</div>
+        <h4>Creer que pedir "explica" garantiza POS</h4>
+        <p>Agregar "explica cómo lo resolviste" a un procedimiento ya practicado no eleva automáticamente el nivel cognitivo. La explicación es POS solo si el razonamiento mismo es no algorítmico o la situación es desconocida.</p>
+      </div>
+      <div class="mc-card">
+        <div class="mc-label">Dato investigativo</div>
+        <h4>El 55% de los ítems mal clasificados</h4>
+        <p>Thompson (2008) encontró que el 55% de los ítems que los docentes etiquetaron como POS eran en realidad POI. Reconocer esta tendencia es el primer paso para corregirla.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Bloom e IA ─────────────────────────────────────────────────── -->
+<section class="ai-section" id="ia">
+  <div class="section-label"><span>Contexto contemporáneo</span></div>
+  <h2>La Taxonomía de Bloom en la era de la IA</h2>
+  <p style="max-width:72ch;color:var(--bloom-ink-l)">La IA generativa puede realizar con facilidad muchas tareas de los niveles inferiores de la taxonomía. Esto no hace obsoletos esos niveles, pero sí transforma el rol del docente: el foco debe desplazarse hacia las habilidades que son distintivamente humanas y hacia el diseño de objetivos donde la IA sea un complemento, no un sustituto del aprendizaje.</p>
+
+  <div class="callout-gold" style="margin-top:1.5rem">
+    <p class="callout-label">Principio orientador</p>
+    <p>Oregon State University (2024) propone usar la taxonomía como brújula para identificar qué habilidades son <strong>distintivamente humanas</strong> y cuáles pueden ser complementadas por la IA. No se trata de prohibir ni de permitir sin criterio, sino de <strong>diseñar deliberadamente</strong> cómo la IA apoya el proceso sin reemplazar el aprendizaje que le corresponde al estudiante.</p>
+  </div>
+
+  <div style="overflow-x:auto;margin-top:2rem">
+    <table class="ai-level-table">
+      <thead>
+        <tr>
+          <th>Nivel</th>
+          <th>Habilidad humana distintiva en matemática</th>
+          <th>Qué puede hacer la IA como complemento</th>
+          <th>Cómo usar la IA en objetivos matemáticos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ai-level-row r6">
+          <td>6. Crear</td>
+          <td>Formular problemas originales desde la experiencia vivida; generar demostraciones propias; diseñar modelos matemáticos para situaciones reales inéditas; aplicar intuición, reflexión y juicio creativo</td>
+          <td>Sugerir variantes de un problema; generar contraejemplos; crear representaciones visuales de borradores del estudiante; ofrecer retroalimentación sobre coherencia interna</td>
+          <td><ul><li>El estudiante propone el problema; la IA genera una versión alternativa para comparar</li><li>El estudiante diseña una demostración; la IA verifica la notación y señala posibles vacíos lógicos</li><li>El estudiante evalúa si el resultado de la IA es correcto o incorrecto</li></ul></td>
+        </tr>
+        <tr class="ai-level-row r5">
+          <td>5. Evaluar</td>
+          <td>Reflexión metacognitiva; ponderar consecuencias éticas de modelos matemáticos; situar resultados en contexto disciplinar completo; emitir juicios holísticos con criterios propios</td>
+          <td>Identificar pros y contras de métodos alternativos; elaborar rúbricas de evaluación como punto de partida; contrastar soluciones según criterios explícitos</td>
+          <td><ul><li>La IA genera dos soluciones distintas; el estudiante justifica cuál es más eficiente y por qué</li><li>La IA propone una rúbrica; el estudiante la revisa, critica y mejora</li><li>El estudiante evalúa si una demostración producida por la IA es válida</li></ul></td>
+        </tr>
+        <tr class="ai-level-row r4">
+          <td>4. Analizar</td>
+          <td>Pensar crítica y creativamente dentro de los dominios cognitivo y afectivo; justificar análisis con profundidad y claridad; detectar sesgos y falacias en argumentos matemáticos</td>
+          <td>Comparar y contrastar datos en contextos bien definidos; inferir tendencias; computar; interpretar y relacionar con problemas reales; predecir resultados</td>
+          <td><ul><li>La IA procesa un conjunto de datos; el estudiante interpreta el significado matemático y las limitaciones</li><li>El estudiante analiza si la solución de la IA contiene errores de razonamiento</li><li>La IA visualiza una función; el estudiante analiza sus propiedades a partir de la gráfica</li></ul></td>
+        </tr>
+        <tr class="ai-level-row r3">
+          <td>3. Aplicar</td>
+          <td>Operar, ejecutar y experimentar en situaciones reales; aplicar creatividad e imaginación humana al desarrollo de ideas y soluciones; trabajar con herramientas físicas y contextos vividos</td>
+          <td>Usar un proceso o método para resolver una consulta cuantitativa o cualitativa; ayudar al estudiante a identificar dónde cometió un error al resolver un problema</td>
+          <td><ul><li>El estudiante resuelve el problema; usa la IA para verificar los pasos y localizar el error específico</li><li>La IA aplica un método conocido; el estudiante adapta el procedimiento a una situación con condiciones distintas</li><li>Cuidado: si la IA hace todo el procedimiento, el estudiante pierde la oportunidad de practicar la ejecución</li></ul></td>
+        </tr>
+        <tr class="ai-level-row r2">
+          <td>2. Comprender</td>
+          <td>Contextualizar respuestas con consideraciones éticas, morales o emocionales; seleccionar información relevante con criterio propio; explicar la significancia en un contexto amplio</td>
+          <td>Describir un concepto con otras palabras; reconocer un ejemplo relacionado; traducir entre representaciones (verbal, simbólica, gráfica)</td>
+          <td><ul><li>El estudiante explica con sus propias palabras; la IA ofrece una formulación alternativa para comparar</li><li>La IA traduce un enunciado a lenguaje algebraico; el estudiante verifica si la traducción es fiel al contexto</li><li>El estudiante selecciona cuál explicación de la IA es más precisa y fundamenta por qué</li></ul></td>
+        </tr>
+        <tr class="ai-level-row r1">
+          <td>1. Recordar</td>
+          <td>Recordar información en situaciones donde la tecnología no está disponible; construir fluidez conceptual que soporte el pensamiento superior</td>
+          <td>Recuperar información factual; listar posibles respuestas; definir términos; construir cronologías o líneas de tiempo básicas</td>
+          <td><ul><li>Usar la IA como glosario interactivo o generador de tarjetas de estudio</li><li>La IA genera un quiz de términos; el estudiante lo usa para autoevaluación antes de una clase</li><li>No evaluar solo con tareas que la IA puede completar trivialmente (definir, listar, enunciar)</li></ul></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:2.5rem">
+    <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bloom-ink-m);font-weight:500;margin-bottom:.75rem">Advertencias para el diseño de objetivos</p>
+    <div class="ai-warning-grid">
+      <div class="ai-warn-card">
+        <div class="aw-icon">⚠️</div>
+        <h4>La IA invierte la jerarquía tradicional</h4>
+        <p>Rivers y Holland (2023) proponen que la IA efectivamente invierte la jerarquía de Bloom: ejecuta con facilidad tareas de los niveles 1–3, pero tiene dificultades genuinas con los niveles 4–6. Esto significa que los objetivos de orden superior protegen el aprendizaje humano de ser reemplazado.</p>
+      </div>
+      <div class="ai-warn-card">
+        <div class="aw-icon">🔢</div>
+        <h4>En matemática: la IA falla en exactitud</h4>
+        <p>Pham et al. (2024) encontraron que más de 1 de cada 10 preguntas generadas por IA en matemáticas eran incorrectas o inapropiadas. Los docentes deben entrenar a los estudiantes para verificar críticamente cualquier solución matemática producida por IA.</p>
+      </div>
+      <div class="ai-warn-card">
+        <div class="aw-icon">🎯</div>
+        <h4>Aplicar tiene el menor impacto cuando la IA lo hace</h4>
+        <p>Un estudio de 2024 con estudiantes de primaria encontró que el nivel Aplicar mostró la influencia más baja cuando la IA resolvía las tareas. Si el estudiante no ejecuta el procedimiento matemático, no desarrolla la habilidad.</p>
+      </div>
+      <div class="ai-warn-card">
+        <div class="aw-icon">🧩</div>
+        <h4>La IA confunde niveles al generar ítems</h4>
+        <p>Las plataformas de IA etiquetan incorrectamente los niveles cognitivos con frecuencia — por ejemplo, tratan "comparar y contrastar" como Comprender en lugar de Analizar. No delegar a la IA la clasificación final de los objetivos.</p>
+      </div>
+      <div class="ai-warn-card">
+        <div class="aw-icon">🔒</div>
+        <h4>La comprensión real no puede delegarse</h4>
+        <p>La comprensión genuina implica juicio, reflexión y construcción de significado desde la experiencia vivida — capacidades humanas ausentes en la IA. Si un objetivo puede cumplirse completamente con IA sin aprendizaje real, el objetivo necesita ser rediseñado.</p>
+      </div>
+      <div class="ai-warn-card">
+        <div class="aw-icon">✅</div>
+        <h4>La IA como andamiaje, no como autor</h4>
+        <p>El rol pedagógico apropiado de la IA es de <em>andamiaje</em>: apoya el proceso del estudiante, ofrece retroalimentación inmediata y genera variantes para explorar — pero el razonamiento, la creación y el juicio deben seguir siendo del estudiante.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2.5rem">
+    <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bloom-ink-m);font-weight:500;margin-bottom:.75rem">Principios para redactar objetivos matemáticos en la era de la IA</p>
+    <div class="design-cards">
+      <div class="design-card">
+        <h4>Pregúntate: ¿puede la IA cumplir este objetivo sin aprendizaje humano?</h4>
+        <p>Si la respuesta es sí, el objetivo probablemente sea solo POI (niveles 1–2). Considera añadir una capa de análisis, evaluación o creación que exija razonamiento propio.</p>
+      </div>
+      <div class="design-card">
+        <h4>Diseña tareas donde la IA sea materia prima, no autor final</h4>
+        <p>El estudiante recibe un resultado de IA y debe criticarlo, corregirlo, ampliarlo o compararlo con su propia solución. Esto activa los niveles 4 y 5 de la taxonomía.</p>
+      </div>
+      <div class="design-card">
+        <h4>Incluye el criterio de novedad en los objetivos de Aplicar</h4>
+        <p>Especifica explícitamente que la situación es nueva para el estudiante. Esto convierte un objetivo de POI en POS y dificulta que la IA resuelva la tarea en lugar del estudiante.</p>
+      </div>
+      <div class="design-card">
+        <h4>Diseña para la verificación, no solo para la producción</h4>
+        <p>Objetivos del tipo "verifica si la solución de la IA es correcta y corrige los errores" activan el nivel Evaluar, desarrollan pensamiento crítico y resisten la delegación automática a la IA.</p>
+      </div>
+      <div class="design-card">
+        <h4>Usa el nivel Crear para anclar la autenticidad</h4>
+        <p>Pide al estudiante que genere los datos, el problema, la demostración o el modelo. La IA puede sugerir variantes, pero la idea original debe ser del estudiante.</p>
+      </div>
+      <div class="design-card">
+        <h4>Evalúa el proceso, no solo el producto</h4>
+        <p>En entornos con IA disponible, los objetivos que evalúan el razonamiento documentado, las decisiones tomadas y las justificaciones dadas son más resistentes al reemplazo que los que solo evalúan la respuesta final.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-teal" style="margin-top:2rem">
+    <p class="callout-label">Ejemplo de transformación de un objetivo en el contexto de IA</p>
+    <div class="transform-grid">
+      <div>
+        <p class="t-label before">OBJETIVO ORIGINAL (vulnerable a delegación)</p>
+        <p class="transform-box before">"Resolver un sistema de ecuaciones lineales 3×3 usando el método de Gauss-Jordan."</p>
+        <p class="transform-note">Una IA puede ejecutar este procedimiento completo. Si el estudiante copia el resultado, el objetivo queda vacío.</p>
+      </div>
+      <div>
+        <p class="t-label after">OBJETIVO REDISEÑADO (resistente a delegación)</p>
+        <p class="transform-box after">"Dada la solución de un sistema 3×3 generada por una herramienta de IA, identificar en qué paso el procedimiento contiene un error, corregirlo y justificar por qué el paso original es incorrecto."</p>
+        <p class="transform-note">Activa niveles 4 y 5. La IA apoya como generadora del material; el razonamiento crítico es del estudiante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Referencias ────────────────────────────────────────────────── -->
+<section class="section" id="referencias">
+  <div class="section-label"><span>Fuentes académicas</span></div>
+  <h2>Referencias bibliográficas</h2>
+  <div class="ref-list">
+    <div class="ref-item">Anderson, L. W. (Ed.), Krathwohl, D. R. (Ed.), Airasian, P. W., Cruikshank, K. A., Mayer, R. E., Pintrich, P. R., Raths, J., &amp; Wittrock, M. C. (2001). <em>A taxonomy for learning, teaching, and assessing: A revision of Bloom's taxonomy of educational objectives</em> (Complete edition). New York: Longman.</div>
+    <div class="ref-item">Bloom, B. S. (Ed.), Engelhart, M. D., Furst, E. J., Hill, W. H., &amp; Krathwohl, D. R. (1956). <em>Taxonomy of educational objectives: The classification of educational goals. Handbook I: Cognitive domain</em>. New York: David McKay.</div>
+    <div class="ref-item">Heer, R. (2015). <em>A model of learning objectives: Based on A taxonomy for learning, teaching, and assessing: A revision of Bloom's taxonomy of educational objectives</em>. Ames, IA: Center for Excellence in Learning and Teaching, Iowa State University.</div>
+    <div class="ref-item">Jurić, J., Mišurac, I., &amp; Vežić, I. (2019). Task structure by Bloom taxonomy in the mathematics textbooks of lower elementary classes. <em>Školski vjesnik, 68</em>(2), 488-507.</div>
+    <div class="ref-item">Krathwohl, D. R. (2002). A revision of Bloom's taxonomy: An overview. <em>Theory Into Practice, 41</em>(4), 212-218.</div>
+    <div class="ref-item">Mayer, R. E. (2002). Rote versus meaningful learning. <em>Theory Into Practice, 41</em>(4), 226-232.</div>
+    <div class="ref-item">Oregon State University Ecampus. (2024). <em>Bloom's taxonomy revisited</em> (Versión 2.0). Corvallis, OR: Oregon State University.</div>
+    <div class="ref-item">Pham Van Long, P., Vu, D. A., Hoang, N. M., Do, X. L., &amp; Luu, A. T. (2024). ChatGPT as a math questioner? Evaluating ChatGPT on generating pre-university math questions. En <em>Proceedings of the 39th ACM/SIGAPP Symposium on Applied Computing</em> (SAC '24). New York: ACM. https://doi.org/10.48550/arXiv.2312.01661</div>
+    <div class="ref-item">Pintrich, P. R. (2002). The role of metacognitive knowledge in learning, teaching, and assessing. <em>Theory Into Practice, 41</em>(4), 219-225.</div>
+    <div class="ref-item">Raths, J. (2002). Improving instruction. <em>Theory Into Practice, 41</em>(4), 233-237.</div>
+    <div class="ref-item">Rivers, C., &amp; Holland, A. (2023, 12 de octubre). How can ChatGPT intersect with Bloom's taxonomy? <em>Times Higher Education Campus</em>.</div>
+    <div class="ref-item">Shorser, L. (s.f.). <em>Bloom's taxonomy interpreted for mathematics</em>. Toronto: Department of Mathematics, University of Toronto.</div>
+    <div class="ref-item">Thompson, T. (2008). Mathematics teachers' interpretation of higher-order thinking in Bloom's taxonomy. <em>International Electronic Journal of Mathematics Education, 3</em>(2), 96-109.</div>
+    <div class="ref-item">Zaphir, L., Lodge, J. M., Lisec, J., McGrath, D., &amp; Khosravi, H. (2024). <em>How critically can an AI think? A framework for evaluating the quality of thinking of generative artificial intelligence</em>. Preprint, arXiv:2406.14769.</div>
+  </div>
+</section>
+
+<!-- ── Modal overlay ───────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-sub" id="modalSub"></p>
+    <div class="modal-verbs" id="modalVerbs"></div>
+    <div class="modal-examples">
+      <h4>Ejemplos de objetivos matemáticos</h4>
+      <div id="modalExamples"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LEVELS = [
+  {id:1,name:'Recordar',color:'var(--lv1)',light:'var(--lv1-l)',lot:true,def:'Recuperar conocimiento relevante de la memoria a largo plazo.',processes:'Reconocer (identificar) · Recordar (recuperar)',verbs:['Citar','Definir','Enlistar','Enumerar','Identificar','Nombrar','Reconocer','Recordar','Seleccionar','Señalar','Subrayar','Reproducir'],hotNote:'Pensamiento de Orden Inferior (POI). Los objetivos de este nivel son necesarios como base, pero insuficientes por sí solos para desarrollar el pensamiento matemático. Deben complementarse con niveles superiores.'},
+  {id:2,name:'Comprender',color:'var(--lv2)',light:'var(--lv2-l)',lot:true,def:'Construir significado a partir de mensajes instruccionales; establecer conexiones entre el conocimiento nuevo y el previo.',processes:'Interpretar · Ejemplificar · Clasificar · Resumir · Inferir · Comparar · Explicar',verbs:['Clasificar','Comparar','Describir','Ejemplificar','Explicar','Expresar','Extrapolar','Ilustrar','Inferir','Interpretar','Parafrasear','Predecir','Relacionar','Resumir','Traducir','Distinguir'],hotNote:'Pensamiento de Orden Inferior (POI). Este nivel exige más que el Recordar, pero el estudiante opera con conocimiento ya enseñado. Cuidado: un objetivo de Comprender que pide "explica cómo lo resolviste" sobre un procedimiento practicado sigue siendo POI.'},
+  {id:3,name:'Aplicar',color:'var(--lv3)',light:'var(--lv3-l)',lot:false,def:'Llevar a cabo o usar un procedimiento en una situación dada.',processes:'Ejecutar (para tareas familiares) · Implementar (para tareas nuevas)',verbs:['Aplicar','Calcular','Construir','Demostrar','Desarrollar','Ejecutar','Emplear','Operar','Resolver','Trazar','Usar','Utilizar','Implementar','Computar','Manipular'],hotNote:'Zona fronteriza. Ejecutar (situación familiar) = POI. Implementar (situación genuinamente nueva) = POS. La clave es si el estudiante fue enseñado a resolver exactamente ese tipo de situación. Si solo cambian los números pero el procedimiento es idéntico, es POI.'},
+  {id:4,name:'Analizar',color:'var(--lv4)',light:'var(--lv4-l)',lot:false,def:'Descomponer el material en sus partes constituyentes y determinar cómo se relacionan entre sí y con la estructura general.',processes:'Diferenciar · Organizar · Atribuir',verbs:['Analizar','Comparar','Deconstruir','Descomponer','Diferenciar','Discriminar','Distinguir','Examinar','Organizar','Relacionar','Separar','Seleccionar','Enfocar','Integrar','Estructurar'],hotNote:'Pensamiento de Orden Superior (POS). Requiere que el estudiante identifique qué elementos son relevantes, cómo se relacionan, o qué intención o sesgo subyace — sin que el procedimiento para hacer ese análisis esté completamente prescrito.'},
+  {id:5,name:'Evaluar',color:'var(--lv5)',light:'var(--lv5-l)',lot:false,def:'Emitir juicios basados en criterios y estándares de calidad, eficacia, eficiencia o consistencia.',processes:'Verificar (consistencia interna) · Criticar (criterios externos)',verbs:['Argumentar','Comprobar','Contrastar','Criticar','Defender','Evaluar','Juzgar','Justificar','Seleccionar','Valorar','Verificar','Fundamentar','Estimar','Validar','Monitorear'],hotNote:'Pensamiento de Orden Superior (POS). Importante: en la taxonomía, Evaluar NO significa "calcular el valor de una expresión". Significa emitir un juicio fundamentado con criterios explícitos sobre la validez, eficacia o calidad de algo.'},
+  {id:6,name:'Crear',color:'var(--lv6)',light:'var(--lv6-l)',lot:false,def:'Reunir elementos para formar un todo coherente y funcional; reorganizar elementos en un nuevo patrón o estructura original.',processes:'Generar (hipótesis) · Planificar (diseño) · Producir (construcción)',verbs:['Componer','Construir','Crear','Diseñar','Elaborar','Formular','Generar','Inventar','Organizar','Planificar','Producir','Proponer','Sintetizar','Desarrollar','Combinar'],hotNote:'Pensamiento de Orden Superior (POS). Es el nivel más exigente. El producto debe ser genuinamente original — no reorganizar pasos ya conocidos. Un objetivo de Crear que en realidad pide seguir un procedimiento prescrito desciende a nivel Aplicar.'}
+];
+
+const KNOWLEDGE = [
+  {key:'factual',name:'A. Factual',short:'Terminología · Hechos específicos'},
+  {key:'conceptual',name:'B. Conceptual',short:'Clasificaciones · Principios · Teorías'},
+  {key:'procedural',name:'C. Procedimental',short:'Algoritmos · Técnicas · Criterios'},
+  {key:'metacognitive',name:'D. Metacognitivo',short:'Estrategias · Tareas cognitivas · Autoconocimiento'}
+];
+
+const CELL_DATA = {
+  'factual-1':{verbs:['Citar','Identificar','Listar','Nombrar','Reconocer'],examples:['Identificar los axiomas del sistema de números reales.','Nombrar las propiedades de las operaciones aritméticas.','Listar los criterios de congruencia de triángulos.','Reconocer figuras geométricas básicas (triángulo, círculo, cuadrado) en el entorno del aula.','Enunciar los múltiplos de 10 hasta 100, identificando el patrón numérico.']},
+  'factual-2':{verbs:['Clasificar','Ejemplificar','Resumir','Interpretar'],examples:['Clasificar números según sus propiedades (primos, compuestos, perfectos).','Resumir con palabras propias la definición de función.','Ejemplificar el concepto de número irracional con al menos tres casos.','Convertir unidades de longitud de mayor a menor y viceversa (p.ej., metros a centímetros).']},
+  'factual-3':{verbs:['Calcular','Ejecutar','Resolver','Operar'],examples:['Calcular el perímetro y área de figuras planas compuestas.','Resolver operaciones combinadas con números racionales.','Ejecutar el algoritmo de la división con números de varios dígitos.','Calcular una longitud que sea el doble de otra dada, expresando el resultado con la unidad de medida apropiada.']},
+  'factual-4':{verbs:['Diferenciar','Discriminar','Seleccionar'],examples:['Diferenciar datos relevantes e irrelevantes en problemas verbales.','Identificar el patrón numérico en una sucesión dada.']},
+  'factual-5':{verbs:['Detectar','Verificar','Comprobar'],examples:['Detectar errores en una secuencia de operaciones aritméticas.','Verificar la exactitud de un cálculo mediante estimación.']},
+  'factual-6':{verbs:['Formular','Generar','Producir'],examples:['Formular tres problemas contextualizados que involucren fracciones.','Generar ejemplos y contraejemplos de números racionales e irracionales.']},
+  'conceptual-1':{verbs:['Reconocer','Recordar','Identificar'],examples:['Reconocer la definición formal de límite de una función.','Identificar los postulados de la geometría euclidiana.','Recordar las propiedades de las funciones continuas.']},
+  'conceptual-2':{verbs:['Explicar','Comparar','Inferir','Ilustrar','Interpretar'],examples:['Explicar la relación entre una función y su derivada usando representación gráfica.','Comparar los Teoremas Fundamental del Álgebra y del Cálculo.','Inferir la continuidad de una función a partir de su gráfica.','Interpretar el significado geométrico del determinante de una matriz.']},
+  'conceptual-3':{verbs:['Aplicar','Usar','Demostrar','Implementar'],examples:['Aplicar el Teorema de Pitágoras en problemas de geometría analítica.','Usar el concepto de proporcionalidad para resolver problemas de semejanza.','Demostrar la irracionalidad de √2 usando el método de contradicción.']},
+  'conceptual-4':{verbs:['Organizar','Diferenciar','Atribuir','Examinar'],examples:['Organizar las propiedades de las funciones reales en un mapa conceptual jerárquico.','Diferenciar entre correlación y causalidad en un análisis estadístico.','Examinar las condiciones bajo las que el Teorema del Valor Medio es aplicable.','¿Cuántas raíces reales puede tener un polinomio de cuarto grado? Analizar todos los casos posibles y justificar la respuesta.']},
+  'conceptual-5':{verbs:['Juzgar','Criticar','Argumentar','Validar'],examples:['Juzgar la validez de una demostración por inducción matemática.','Argumentar a favor o en contra de distintos métodos de resolución de ecuaciones.','Evaluar la pertinencia de un modelo matemático para representar una situación real.','Comparar dos métodos de multiplicación de un número por un múltiplo de 10, seleccionar el más eficiente y justificar la elección.']},
+  'conceptual-6':{verbs:['Diseñar','Construir','Planificar','Generar'],examples:['Diseñar una situación problemática que integre el concepto de función cuadrática.','Construir una prueba alternativa del Teorema de Pitágoras.','Planificar una investigación estadística sobre fenómenos del contexto estudiantil.','Plantear y resolver un problema de optimización en contexto real, generando la función objetivo a partir del análisis del enunciado.']},
+  'procedural-1':{verbs:['Recordar','Enunciar','Recuperar'],examples:['Recordar el procedimiento paso a paso para completar el cuadrado.','Enunciar el algoritmo de la división de polinomios.']},
+  'procedural-2':{verbs:['Explicar','Predecir','Ilustrar'],examples:['Explicar cuándo usar la regla de la cadena versus la del producto.','Ilustrar el Algoritmo de Euclides con un ejemplo numérico concreto.','Predecir el tipo de raíces de una ecuación cuadrática según su discriminante.']},
+  'procedural-3':{verbs:['Ejecutar','Calcular','Resolver','Trazar','Demostrar'],examples:['Resolver ecuaciones cuadráticas usando al menos tres métodos distintos.','Ejecutar el método de Gauss-Jordan para resolver un sistema 3×3.','Trazar la gráfica de una función racional identificando asíntotas e interceptos.','Calcular la derivada de funciones compuestas usando la regla de la cadena.','Calcular la derivada de una función definida implícitamente, aplicando derivación logarítmica cuando corresponda.']},
+  'procedural-4':{verbs:['Descomponer','Diferenciar','Organizar'],examples:['Descomponer el proceso de una demostración por contradicción en sus fases lógicas.','Diferenciar cuándo es más eficiente usar integración por partes o sustitución trigonométrica.']},
+  'procedural-5':{verbs:['Seleccionar','Verificar','Juzgar'],examples:['Seleccionar el método de resolución más eficiente para un tipo dado de ecuación diferencial.','Verificar la consistencia interna de una demostración matemática paso a paso.','En un problema de razones relacionadas, seleccionar las fórmulas pertinentes y distinguir entre los valores dados que son constantes y los que son valores instantáneos.']},
+  'procedural-6':{verbs:['Generar','Diseñar','Producir','Planificar'],examples:['Generar un procedimiento original para resolver un tipo específico de inecuación con valor absoluto.','Diseñar una estrategia de resolución para problemas de optimización en contextos reales.','Producir una rutina algorítmica para calcular el MCD de n números naturales.']},
+  'metacognitive-1':{verbs:['Identificar','Reconocer'],examples:['Identificar qué estrategias de estudio emplea para aprender un tema matemático nuevo.','Reconocer las condiciones en que comete errores con mayor frecuencia.']},
+  'metacognitive-2':{verbs:['Predecir','Explicar','Reflexionar'],examples:['Predecir qué partes de un tema le resultarán más difíciles y fundamentar por qué.','Explicar qué estrategias usa al enfrentarse a un problema matemático que no ha visto antes.']},
+  'metacognitive-3':{verbs:['Usar','Implementar','Adaptar'],examples:['Usar técnicas de automonitoreo mientras resuelve un problema de geometría.','Adaptar el ritmo y estrategia de estudio según el nivel de dificultad percibida.']},
+  'metacognitive-4':{verbs:['Examinar','Analizar','Reflexionar'],examples:['Examinar sus propios errores recurrentes en cálculo diferencial y clasificarlos por tipo.','Analizar la eficacia de las distintas estrategias de resolución que ha usado durante el semestre.']},
+  'metacognitive-5':{verbs:['Autoevaluar','Juzgar','Valorar'],examples:['Autoevaluar el nivel de comprensión conceptual alcanzado al finalizar una unidad temática.','Juzgar la efectividad de su propio proceso de resolución de un problema complejo.']},
+  'metacognitive-6':{verbs:['Planificar','Diseñar','Generar'],examples:['Diseñar un plan de estudio personalizado que integre sus fortalezas y debilidades identificadas.','Generar un portafolio reflexivo sobre el propio proceso de aprendizaje matemático a lo largo del curso.']}
+};
+
+const BANK_DATA = {
+  1:[
+    {tag:'Factual',obj:'Identificar y nombrar las propiedades conmutativa, asociativa y distributiva de las operaciones en los números reales.'},
+    {tag:'Conceptual',obj:'Reconocer la definición formal de función y distinguirla de una relación que no lo es mediante ejemplos gráficos.'},
+    {tag:'Procedimental',obj:'Recordar los pasos del algoritmo de la división euclidiana de enteros.'},
+    {tag:'Metacognitivo',obj:'Identificar cuáles tipos de problemas matemáticos le generan mayor dificultad y por qué.'}
+  ],
+  2:[
+    {tag:'Factual',obj:'Clasificar un conjunto dado de números según sus propiedades (primos, compuestos, racionales, irracionales).'},
+    {tag:'Conceptual',obj:'Explicar la relación entre una función y su derivada usando representación gráfica y lenguaje propio.'},
+    {tag:'Conceptual',obj:'Interpretar el significado geométrico del determinante de una matriz 2×2 en términos de área.'},
+    {tag:'Procedimental',obj:'Predecir el tipo de raíces de una ecuación cuadrática a partir del valor de su discriminante, sin resolver la ecuación.'},
+    {tag:'Metacognitivo',obj:'Explicar cuáles estrategias de lectura aplica al enfrentarse a un enunciado matemático complejo.'}
+  ],
+  3:[
+    {tag:'Factual',obj:'Calcular el área y perímetro de figuras compuestas formadas por combinación de polígonos regulares.'},
+    {tag:'Factual (primaria)',obj:'Calcular una longitud el doble de grande que otra dada y estimar visualmente la masa de objetos del entorno del aula.'},
+    {tag:'Conceptual',obj:'Aplicar el Teorema de Pitágoras para resolver problemas en el plano cartesiano.'},
+    {tag:'Procedimental',obj:'Resolver sistemas de ecuaciones lineales 3×3 usando el método de Gauss-Jordan.'},
+    {tag:'Procedimental (universidad)',obj:'Calcular la derivada de una función implícitamente definida, aplicando regla de la cadena y diferenciación logarítmica según corresponda.'},
+    {tag:'Metacognitivo',obj:'Usar técnicas de automonitoreo para verificar la coherencia de sus pasos mientras resuelve un problema de optimización.'}
+  ],
+  4:[
+    {tag:'Factual',obj:'Diferenciar los datos relevantes de los irrelevantes en problemas verbales de estadística descriptiva.'},
+    {tag:'Conceptual',obj:'Organizar jerárquicamente las propiedades de las familias de funciones reales (lineales, cuadráticas, exponenciales, logarítmicas).'},
+    {tag:'Conceptual (universidad)',obj:'¿Cuántas raíces reales puede tener un polinomio de cuarto grado? Determinar y justificar todos los casos posibles mediante argumentos algebraicos y gráficos.'},
+    {tag:'Procedimental',obj:'Diferenciar cuándo es más eficiente utilizar integración por partes o sustitución trigonométrica para resolver una integral.'},
+    {tag:'Metacognitivo',obj:'Examinar y clasificar los errores recurrentes cometidos en las pruebas de álgebra del semestre, identificando sus causas.'}
+  ],
+  5:[
+    {tag:'Factual',obj:'Verificar la exactitud de un cálculo aritmético complejo mediante estrategias de estimación y razonamiento inverso.'},
+    {tag:'Conceptual',obj:'Juzgar la validez lógica de una demostración por inducción matemática, señalando explícitamente cualquier falla en el razonamiento.'},
+    {tag:'Conceptual (primaria)',obj:'Comparar dos métodos distintos para multiplicar múltiplos de 10 por un número de un dígito, seleccionar el más eficiente y argumentar la elección.'},
+    {tag:'Procedimental (universidad)',obj:'En un problema de razones relacionadas, seleccionar con justificación cuáles fórmulas geométricas son pertinentes y determinar cuáles valores dados son constantes y cuáles son valores instantáneos.'},
+    {tag:'Metacognitivo',obj:'Autoevaluar el nivel de comprensión conceptual alcanzado en geometría analítica usando una rúbrica de indicadores propios.'}
+  ],
+  6:[
+    {tag:'Factual (primaria)',obj:'Escribir un problema en palabras a partir de una imagen dada y resolverlo de dos maneras distintas; construir una figura geométrica combinando ángulos dados.'},
+    {tag:'Factual',obj:'Formular un conjunto de tres problemas contextualizados que involucren fracciones y sean apropiados para estudiantes de sétimo grado.'},
+    {tag:'Conceptual (universidad)',obj:'Plantear y resolver un problema de optimización en contexto real: dada una situación en lenguaje natural, generar la función objetivo, establecer restricciones y determinar el valor óptimo mediante cálculo diferencial.'},
+    {tag:'Conceptual',obj:'Construir una demostración alternativa del Teorema de Pitágoras usando un enfoque geométrico diferente al estudiado en clase.'},
+    {tag:'Procedimental',obj:'Generar un algoritmo propio para determinar si un número de hasta ocho dígitos es primo, justificando su eficiencia.'},
+    {tag:'Metacognitivo',obj:'Diseñar un plan de estudio personalizado para el semestre, sustentado en el diagnóstico de sus fortalezas y debilidades matemáticas identificadas.'}
+  ]
+};
+
+const BUILDER_DATA = {
+  'factual-1':{template:'Identificar / Nombrar / Listar [terminología o hechos específicos] en el contexto de [tema matemático].',examples:['Identificar los axiomas del sistema de números reales.','Nombrar las propiedades de las operaciones aritméticas.','Listar los criterios de congruencia de triángulos.'],tip:'Los objetivos factuales de nivel Recordar validan que el estudiante tiene el vocabulario básico del dominio. Son necesarios pero insuficientes por sí solos.'},
+  'factual-2':{template:'Clasificar / Resumir / Ejemplificar [datos o terminología] a partir de [situación o contexto].',examples:['Clasificar números según sus propiedades (primos, compuestos, perfectos).','Ejemplificar el concepto de número irracional con tres casos de la geometría.'],tip:''},
+  'factual-3':{template:'Calcular / Ejecutar / Resolver [operación o procedimiento rutinario] con [tipo de números o figuras].',examples:['Calcular el área de figuras compuestas usando fórmulas conocidas.','Resolver operaciones combinadas con números racionales.'],tip:''},
+  'factual-4':{template:'Diferenciar / Seleccionar [datos relevantes de irrelevantes] en [tipo de problema matemático].',examples:['Diferenciar datos útiles de datos distractores en problemas verbales de estadística.'],tip:''},
+  'factual-5':{template:'Detectar / Verificar [errores o inconsistencias] en [cálculo o secuencia de operaciones].',examples:['Detectar errores en una secuencia de operaciones con números enteros.','Verificar la exactitud de un cálculo usando estimación.'],tip:''},
+  'factual-6':{template:'Formular / Generar [nuevos problemas o ejemplos] que involucren [concepto o propiedad matemática].',examples:['Formular tres problemas contextualizados que usen fracciones.','Generar ejemplos y contraejemplos de números irracionales.'],tip:''},
+  'conceptual-1':{template:'Reconocer / Identificar [definición, principio o teoría] del dominio de [área matemática].',examples:['Reconocer la definición formal de límite de una función.','Identificar los postulados de la geometría euclidiana.'],tip:''},
+  'conceptual-2':{template:'Explicar / Comparar / Inferir [relación conceptual] entre [concepto A] y [concepto B] usando [representación o lenguaje].',examples:['Explicar la relación entre una función y su derivada usando representación gráfica.','Comparar los Teoremas Fundamentales del Álgebra y del Cálculo.'],tip:'Este nivel es muy relevante en matemáticas. Promover explicaciones en lenguaje propio revela comprensión real versus memorización.'},
+  'conceptual-3':{template:'Aplicar / Usar / Demostrar [teorema, principio o concepto] para resolver [tipo de problema o situación].',examples:['Aplicar el Teorema de Pitágoras en problemas de geometría analítica.','Demostrar la irracionalidad de √2 por contradicción.'],tip:''},
+  'conceptual-4':{template:'Organizar / Examinar / Diferenciar [estructura conceptual] del dominio de [área matemática] a través de [representación o análisis].',examples:['Organizar jerárquicamente las propiedades de las funciones reales.','Examinar las condiciones del Teorema del Valor Medio.'],tip:''},
+  'conceptual-5':{template:'Juzgar / Argumentar / Evaluar [validez, pertinencia o eficacia] de [demostración, modelo o método] en función de [criterios explícitos].',examples:['Juzgar la validez lógica de una demostración por inducción matemática.','Argumentar a favor del método más eficiente para resolver ecuaciones diferenciales.'],tip:'Incluir siempre criterios explícitos de juicio para que el objetivo sea evaluable.'},
+  'conceptual-6':{template:'Diseñar / Construir / Planificar [producto o demostración original] que integre [conceptos matemáticos] en [contexto o propósito].',examples:['Diseñar una situación problema que integre función cuadrática y optimización.','Construir una prueba alternativa del Teorema de Pitágoras.'],tip:'Este es el nivel más exigente. El producto debe ser genuinamente original, no una reorganización de un procedimiento ya conocido.'},
+  'procedural-1':{template:'Recordar / Enunciar [algoritmo, técnica o procedimiento] paso a paso.',examples:['Recordar el procedimiento para completar el cuadrado.','Enunciar el algoritmo de la división euclidiana de enteros.'],tip:''},
+  'procedural-2':{template:'Explicar / Predecir [cuándo y por qué usar] [procedimiento o técnica] en [tipo de situación matemática].',examples:['Explicar cuándo usar la regla de la cadena versus la regla del producto.','Predecir el tipo de raíces según el discriminante.'],tip:''},
+  'procedural-3':{template:'Ejecutar / Resolver / Trazar / Calcular [tarea procedimental] usando [método o algoritmo específico].',examples:['Resolver sistemas de ecuaciones 3×3 usando el método de Gauss-Jordan.','Trazar la gráfica de una función racional identificando asíntotas e interceptos.'],tip:'El nivel Aplicar-Procedimental es el núcleo de la mayoría de clases de matemática. Asegúrate de complementarlo con niveles superiores.'},
+  'procedural-4':{template:'Descomponer / Diferenciar [proceso o algoritmo] en sus fases lógicas e identificar [criterios o condiciones de uso].',examples:['Descomponer el proceso de demostración por contradicción en sus fases lógicas.','Diferenciar cuándo usar integración por partes o sustitución trigonométrica.'],tip:''},
+  'procedural-5':{template:'Seleccionar / Verificar / Juzgar [método o procedimiento] como el más [eficiente, válido o apropiado] para [tipo de problema], justificando con [criterios].',examples:['Seleccionar el método más eficiente para resolver un tipo dado de ecuación diferencial.','Verificar la consistencia interna de una demostración paso a paso.'],tip:''},
+  'procedural-6':{template:'Generar / Diseñar / Producir [procedimiento, algoritmo o estrategia original] para resolver [tipo de problema matemático no trabajado antes].',examples:['Generar un procedimiento original para resolver inecuaciones con valor absoluto.','Diseñar una estrategia de resolución para problemas de optimización en contextos reales.'],tip:''},
+  'metacognitive-1':{template:'Identificar / Reconocer [estrategias propias, fortalezas o debilidades] en relación con [aprendizaje de área matemática].',examples:['Identificar las estrategias de estudio que le resultan más efectivas en matemática.','Reconocer los tipos de errores que comete con más frecuencia en álgebra.'],tip:'El conocimiento metacognitivo es nuevo en la taxonomía revisada. Es fundamental para formar estudiantes autónomos y autorregulados.'},
+  'metacognitive-2':{template:'Predecir / Explicar [qué dificultades o estrategias propias] aparecerán / utilizará al abordar [tarea o tema matemático].',examples:['Predecir qué partes de un tema le resultarán más difíciles y fundamentar por qué.','Explicar qué estrategias usa al enfrentarse a un problema matemático desconocido.'],tip:''},
+  'metacognitive-3':{template:'Usar / Implementar / Adaptar [estrategia metacognitiva] durante [proceso de resolución o aprendizaje matemático].',examples:['Usar técnicas de automonitoreo mientras resuelve un problema de geometría.','Adaptar el ritmo de estudio según el nivel de dificultad percibida en el tema.'],tip:''},
+  'metacognitive-4':{template:'Examinar / Analizar [el propio proceso cognitivo] durante [tarea matemática] para identificar [patrones, errores o estrategias].',examples:['Examinar y clasificar los errores recurrentes cometidos en las pruebas de álgebra.','Analizar la eficacia de las estrategias de resolución utilizadas durante el semestre.'],tip:''},
+  'metacognitive-5':{template:'Autoevaluar / Valorar [el propio nivel de comprensión o desempeño] en [área matemática] usando [criterios o rúbrica explícita].',examples:['Autoevaluar el nivel de comprensión conceptual alcanzado en geometría analítica.','Juzgar la efectividad del propio proceso de resolución de un problema complejo.'],tip:''},
+  'metacognitive-6':{template:'Diseñar / Planificar / Generar [plan de aprendizaje o portafolio reflexivo] sustentado en el diagnóstico de [fortalezas y debilidades propias] en matemática.',examples:['Diseñar un plan de estudio personalizado basado en el diagnóstico de fortalezas y debilidades.','Generar un portafolio reflexivo sobre el propio proceso de aprendizaje matemático.'],tip:''}
+};
+
+function buildTable(){
+  const tbody=document.querySelector('#taxTable tbody');
+  KNOWLEDGE.forEach(k=>{
+    const tr=document.createElement('tr');
+    let html=`<th class="row-th">${k.name}<br><span style="font-size:.72rem;font-weight:400;color:var(--bloom-ink-m)">${k.short}</span></th>`;
+    LEVELS.forEach(l=>{
+      const key=`${k.key}-${l.id}`;
+      const d=CELL_DATA[key]||{verbs:[],examples:[]};
+      const v=d.verbs.slice(0,2).join(' · ')||'—';
+      const ex=d.examples[0]||'';
+      const shortEx=ex.length>60?ex.slice(0,57)+'…':ex;
+      html+=`<td class="tax-cell c${l.id}" onclick='showModal("${k.name}","${l.name}","${key}")'>
+        <span class="cell-verb">${v}</span>
+        <span class="cell-ex">${shortEx}</span>
+      </td>`;
+    });
+    tr.innerHTML=html;
+    tbody.appendChild(tr);
+  });
+}
+
+function showModal(knName,lvName,key){
+  const d=CELL_DATA[key]||{verbs:[],examples:[]};
+  const lv=LEVELS.find(l=>l.name===lvName);
+  document.getElementById('modalTitle').textContent=`${knName} × ${lvName}`;
+  document.getElementById('modalSub').textContent=lv?lv.def:'';
+  const vc=document.getElementById('modalVerbs');
+  vc.innerHTML=d.verbs.map(v=>`<span class="chip" style="background:${lv.light};color:${lv.color}">${v}</span>`).join('');
+  const ec=document.getElementById('modalExamples');
+  ec.innerHTML=d.examples.map(e=>`<div style="font-size:.88rem;padding:.5rem .75rem;border-radius:var(--r);margin-bottom:.35rem;background:${lv.light};border-left:3px solid ${lv.color};color:var(--bloom-ink-l);line-height:1.5">${e}</div>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function buildLevels(){
+  const grid=document.getElementById('levelsGrid');
+  LEVELS.forEach(l=>{
+    const card=document.createElement('div');
+    card.className='level-card';
+    card.style.borderColor=l.color+'40';
+    const chipColor=l.light;
+    const chipText=l.color;
+    const badgeHtml = l.lot===true
+      ? `<span class="lot-badge">POI</span>`
+      : l.id===3
+        ? `<span class="border-badge">Fronterizo</span>`
+        : `<span class="hot-badge">POS</span>`;
+    const noteHtml=l.hotNote?`<div style="margin-top:.75rem;font-size:.8rem;padding:.6rem .8rem;border-radius:var(--r);background:${l.lot===true?'var(--lot-l)':l.id===3?'var(--bloom-gold-l)':'var(--hot-l)'};border-left:3px solid ${l.lot===true?'var(--lot)':l.id===3?'var(--bloom-gold)':'var(--hot)'};color:var(--bloom-ink-l);line-height:1.55">${l.hotNote}</div>`:'';
+    const examplesPerType=['factual','conceptual','procedural','metacognitive'].map(k=>{
+      const d=CELL_DATA[`${k}-${l.id}`]||{examples:[]};
+      const kName=KNOWLEDGE.find(kn=>kn.key===k).name;
+      const ex=d.examples[0]||'';
+      return ex?`<div class="level-example" style="background:${l.light};border-left-color:${l.color};color:var(--bloom-ink-l)"><span style="font-size:.72rem;font-weight:500;color:${l.color}">${kName}:</span><br>${ex}</div>`:'';
+    }).filter(Boolean).join('');
+    card.innerHTML=`
+      <div class="level-card-header" onclick="toggleLevel(this)" style="background:${l.light}">
+        <h3 style="color:${l.color}">
+          <span class="level-num" style="background:${l.color}">${l.id}</span>
+          ${l.name}${badgeHtml}
+        </h3>
+        <span class="toggle-icon">▾</span>
+      </div>
+      <div class="level-card-body">
+        <p class="level-desc" style="margin-top:.75rem">${l.def}</p>
+        ${noteHtml}
+        <p style="font-size:.78rem;color:var(--bloom-ink-m);margin-top:.6rem;margin-bottom:.5rem"><strong>Procesos cognitivos:</strong> ${l.processes}</p>
+        <div class="verb-chips">${l.verbs.slice(0,10).map(v=>`<span class="chip" style="background:${chipColor};color:${chipText}">${v}</span>`).join('')}</div>
+        <div class="level-examples"><h4>Ejemplos por tipo de conocimiento</h4>${examplesPerType}</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function toggleLevel(header){
+  const body=header.nextElementSibling;
+  const icon=header.querySelector('.toggle-icon');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  icon.style.transform=isOpen?'':'rotate(180deg)';
+}
+
+function generateObjective(){
+  const k=document.getElementById('selKnowledge').value;
+  const l=document.getElementById('selLevel').value;
+  const out=document.getElementById('builderOutput');
+  const alertEl=document.getElementById('builderLevelAlert');
+  if(!k||!l){
+    out.innerHTML='<p style="color:var(--bloom-ink-m);font-size:.9rem">Por favor selecciona ambas opciones para recibir orientaciones.</p>';
+    alertEl.style.display='none';
+    return;
+  }
+  const lv=LEVELS.find(x=>x.id==l);
+  if(lv.lot===true){
+    alertEl.className='builder-alert lot-warn';
+    alertEl.style.display='block';
+    alertEl.innerHTML=`<strong>POI — Pensamiento de Orden Inferior.</strong> Este objetivo opera con conocimiento o procedimientos que el estudiante ya ha aprendido. Es una base importante, pero recuerda complementar la unidad con objetivos de niveles 4, 5 o 6 para promover el pensamiento de orden superior.`;
+  } else if(lv.id===3){
+    alertEl.className='builder-alert';
+    alertEl.style.display='block';
+    alertEl.style.background='var(--bloom-gold-l)';
+    alertEl.style.borderLeft='3px solid var(--bloom-gold)';
+    alertEl.style.color='var(--bloom-ink-l)';
+    alertEl.innerHTML=`<strong style="color:var(--bloom-gold)">Zona fronteriza (POI o POS según contexto).</strong> Si el estudiante aplica un procedimiento ya practicado en una situación familiar → POI. Si el contexto o la situación es genuinamente nuevo para el estudiante → POS. Asegúrate de que tu objetivo especifique claramente si la tarea es nueva o conocida.`;
+  } else {
+    alertEl.className='builder-alert hot-note';
+    alertEl.style.display='block';
+    alertEl.style.background='';alertEl.style.borderLeft='';alertEl.style.color='';
+    alertEl.innerHTML=`<strong>POS — Pensamiento de Orden Superior.</strong> Excelente. Este nivel exige que el estudiante razone, juzgue o produzca algo genuinamente original en una situación que no fue resuelta paso a paso durante la instrucción.`;
+  }
+  const key=`${k}-${l}`;
+  const d=BUILDER_DATA[key];
+  const kn=KNOWLEDGE.find(x=>x.key===k);
+  if(!d){out.innerHTML='<p style="color:var(--bloom-ink-m)">Sin datos para esta combinación.</p>';return;}
+  const chips=d.verbs||(CELL_DATA[key]||{verbs:[]}).verbs;
+  const verbs=(chips||[]).map(v=>`<span class="chip" style="background:${lv.light};color:${lv.color}">${v}</span>`).join('')||'';
+  const examples=(d.examples||[]).map(e=>`<div class="output-example">${e}</div>`).join('');
+  const tipHtml=d.tip?`<p style="font-size:.82rem;background:var(--bloom-gold-l);border-left:3px solid var(--bloom-gold);padding:.6rem .75rem;border-radius:var(--r);color:var(--bloom-ink-l);margin-top:.75rem"><strong>Nota pedagógica:</strong> ${d.tip}</p>`:'';
+  out.innerHTML=`
+    <div class="output-label">Celda: ${kn.name} × ${lv.name}</div>
+    <div class="output-verbs">${verbs}</div>
+    <div class="output-template">${d.template}</div>
+    <div class="output-examples"><h4>Ejemplos de objetivos correctamente redactados</h4>${examples}</div>
+    ${tipHtml}`;
+}
+
+function buildBank(){
+  const tabsEl=document.getElementById('bankTabs');
+  const contentEl=document.getElementById('bankContent');
+  LEVELS.forEach(l=>{
+    const tab=document.createElement('button');
+    tab.className='bank-tab'+(l.id===1?' active':'');
+    tab.dataset.level=l.id;
+    tab.textContent=l.name;
+    tab.onclick=()=>{
+      document.querySelectorAll('.bank-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.bank-content').forEach(c=>c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(`bank-${l.id}`).classList.add('active');
+    };
+    tabsEl.appendChild(tab);
+    const section=document.createElement('div');
+    section.className='bank-content'+(l.id===1?' active':'');
+    section.id=`bank-${l.id}`;
+    const objs=BANK_DATA[l.id]||[];
+    section.innerHTML=objs.map(o=>`<div class="obj-card">
+      <span class="obj-tag" style="background:${l.light};color:${l.color}">${o.tag}</span>
+      <p>${o.obj}</p>
+    </div>`).join('');
+    contentEl.appendChild(section);
+  });
+}
+
+buildTable();
+buildLevels();
+buildBank();
+</script>
