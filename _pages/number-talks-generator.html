@@ -773,6 +773,30 @@ select:focus, input[type="number"]:focus {
   .pres-expression { font-size: 3rem; }
 }
 
+/* ── Slideshow bottom bar — responsive ── */
+@media (max-width: 640px) {
+  .pres-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    bottom: 1rem;
+    width: 100%;
+  }
+  .pres-bottom button,
+  .pres-action-btn {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  /* Nav trio stays on first row */
+  #presPrevBtn   { order: 1; }
+  #presCounter   { order: 1; }
+  #presNextBtn   { order: 1; }
+  /* Action buttons wrap to second row, share the full width */
+  #presToggleExprBtn { order: 2; flex: 1 1 auto; }
+  #presToggleAnsBtn  { order: 2; flex: 1 1 auto; }
+}
+
 /* ── Print Styles ── */
 @media print {
   body { background: white; }

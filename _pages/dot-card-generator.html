@@ -658,6 +658,29 @@ select:focus, input[type="number"]:focus {
   .cards-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Slideshow bottom bar — responsive ── */
+@media (max-width: 640px) {
+  .presentation-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    bottom: 1rem;
+    width: 100%;
+  }
+  .presentation-bottom button {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  /* Nav trio stays on first row */
+  #prevBtn             { order: 1; }
+  #presentationCounter { order: 1; }
+  #nextBtn             { order: 1; }
+  /* Action buttons wrap to second row, share the full width */
+  #toggleCardBtn   { order: 2; flex: 1 1 auto; }
+  #toggleAnswerBtn { order: 2; flex: 1 1 auto; }
+}
+
 /* ── Print Styles ── */
 @media print {
   body { background: white; }
