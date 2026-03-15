@@ -950,8 +950,7 @@ body {
 
 @media (max-width: 700px) {
   .area-alignment { grid-template-columns: 1fr; }
-  .area-arrows { flex-direction: row; padding-top: 0; }
-  .area-arrow { transform: rotate(90deg); }
+  .area-arrows { display: none; }
 }
 
 /* ── PISA SECTION ── */
@@ -1030,7 +1029,7 @@ body {
 }
 @media (max-width: 600px) {
   .pisa-cycle { flex-direction: column; gap: 0.5rem; }
-  .pisa-cycle-arrow { transform: rotate(90deg); }
+  .pisa-cycle-arrow { display: none; }
 }
 
 .pisa-understanding-grid {
@@ -2583,27 +2582,18 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Active nav link
-const sections = document.querySelectorAll('.section');
+// Active nav link — uses IntersectionObserver to avoid scroll-event layout thrashing
 const navLinks = document.querySelectorAll('.toc a');
-const tocNav = document.querySelector('.toc');
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  const offset = tocNav.offsetHeight + 20;
-  
-  sections.forEach(section => {
-    const top = section.offsetTop - offset - 60;
-    if (window.scrollY >= top) {
-      current = section.getAttribute('id');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
     }
   });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-});
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+document.querySelectorAll('.section').forEach(s => navObserver.observe(s));
 </script>
