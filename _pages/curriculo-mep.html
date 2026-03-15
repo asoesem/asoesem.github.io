@@ -1,0 +1,2609 @@
+---
+layout: default
+title: Programa de Matemáticas MEP — Guía Curricular
+description: "Guía curricular del Programa de Matemáticas del MEP para estudiantes y futuros docentes de Enseñanza de la Matemática. Estructura, fundamentos y expectativas del currículo para I y II Ciclo, III Ciclo y Diversificada."
+permalink: /curriculo-mep
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1a3a2a;
+  --forest-light: #2d5a42;
+  --emerald: #3d8b63;
+  --sage: #7fb094;
+  --gold: #c8a84e;
+  --gold-light: #e8d48a;
+  --cream: #faf6ee;
+  --cream-dark: #f0e9d8;
+  --ink: #1c1c1c;
+  --ink-light: #4a4a4a;
+  --ink-muted: #7a7a7a;
+  --white: #ffffff;
+  --red-soft: #c45c4a;
+  --blue-deep: #2c5f7c;
+  --violet: #6b5b8a;
+  --orange: #c47a2a;
+  --section-radius: 12px;
+}
+
+/* ── DARK MODE ─────────────────────────────────────────────────────────── */
+:root[dark] {
+  --forest:       #5ec49a;   /* light green — used as TEXT on dark surfaces */
+  --forest-light: #4dae88;
+  --emerald:      #5ec488;   /* brighter for dark-bg readability */
+  --sage:         #8cc4a8;
+  --gold:         #d4b85a;   /* slightly brighter */
+  --gold-light:   #eed89e;
+  /* --cream kept light — it's text on dark hero/footer backgrounds */
+  --cream-dark:   #1c2820;   /* inverted to dark alt surface */
+  --ink:          #e2ddd6;   /* warm off-white for body text */
+  --ink-light:    #a8a4a0;
+  --ink-muted:    #6c6a6e;
+  --white:        #1e2822;   /* dark green-tinted card / surface background */
+  --red-soft:     #e07868;
+  --blue-deep:    #5094b8;
+  --violet:       #9a88c0;
+  --orange:       #d49848;
+}
+
+:root[dark] body {
+  background: #141e18;
+  color: var(--ink);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 3rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,168,78,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(61,139,99,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(200,168,78,0.4);
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(250,246,238,0.80);
+  max-width: 650px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hero-meta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: rgba(250,246,238,0.55);
+}
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── NAV ── */
+.toc {
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 1rem;
+}
+.toc-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.toc-inner::-webkit-scrollbar { display: none; }
+.toc a {
+  display: block;
+  white-space: nowrap;
+  padding: 0.85rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.toc a:hover, .toc a.active {
+  color: var(--forest);
+  border-bottom-color: var(--emerald);
+}
+
+/* ── MAIN ── */
+.main-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 3.5rem 0 2rem;
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  max-width: 700px;
+  margin-bottom: 2rem;
+  line-height: 1.75;
+}
+
+/* ── CARDS ── */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+.card-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.card-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+.card {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.5rem 1.6rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.25s, transform 0.25s;
+  cursor: default;
+}
+.card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.45rem;
+}
+.card p {
+  font-size: 0.92rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+
+/* Color variants for card icons */
+.icon-green { background: rgba(61,139,99,0.12); color: var(--emerald); }
+.icon-gold { background: rgba(200,168,78,0.15); color: var(--gold); }
+.icon-blue { background: rgba(44,95,124,0.12); color: var(--blue-deep); }
+.icon-violet { background: rgba(107,91,138,0.12); color: var(--violet); }
+.icon-red { background: rgba(196,92,74,0.12); color: var(--red-soft); }
+.icon-orange { background: rgba(196,122,42,0.12); color: var(--orange); }
+
+/* ── EXPANDABLE ── */
+.expandable {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  border: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+.expandable-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.expandable-header:hover { background: rgba(0,0,0,0.015); }
+.expandable-header .chevron {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+.expandable.open .chevron { transform: rotate(180deg); }
+.expandable-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+.expandable-header .exp-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--emerald);
+  background: rgba(61,139,99,0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.expandable-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.expandable-body-inner {
+  padding: 0 1.5rem 1.3rem;
+  font-size: 0.93rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+.expandable-body-inner ul {
+  margin: 0.5rem 0 0.5rem 1.2rem;
+}
+.expandable-body-inner li {
+  margin-bottom: 0.3rem;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+  color: var(--cream);
+  border-radius: var(--section-radius);
+  padding: 2rem 2rem;
+  margin: 1.5rem 0;
+}
+.highlight-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  margin-bottom: 0.7rem;
+}
+.highlight-box p, .highlight-box li {
+  color: rgba(250,246,238,0.85);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+.highlight-box ul {
+  margin: 0.5rem 0 0 1.2rem;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 1rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--emerald), var(--gold));
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--emerald);
+  background: var(--white);
+  z-index: 1;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.2rem;
+}
+.timeline-item p {
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* ── TWO-STAGE DIAGRAM ── */
+.stage-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+@media (max-width: 700px) {
+  .stage-container { grid-template-columns: 1fr; }
+}
+.stage-box {
+  border-radius: var(--section-radius);
+  padding: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.stage-box.stage-1 {
+  background: linear-gradient(150deg, rgba(61,139,99,0.06), rgba(61,139,99,0.02));
+  border-color: rgba(61,139,99,0.2);
+}
+.stage-box.stage-2 {
+  background: linear-gradient(150deg, rgba(200,168,78,0.06), rgba(200,168,78,0.02));
+  border-color: rgba(200,168,78,0.25);
+}
+.stage-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.stage-1 .stage-label { color: var(--emerald); }
+.stage-2 .stage-label { color: var(--gold); }
+.stage-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.8rem;
+}
+.stage-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+.stage-step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stage-1 .stage-step-num { background: rgba(61,139,99,0.15); color: var(--emerald); }
+.stage-2 .stage-step-num { background: rgba(200,168,78,0.18); color: var(--gold); }
+.stage-step-content h5 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.stage-step-content p {
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+/* ── LEVEL METER ── */
+.levels-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.level-card {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.3rem 1.4rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.level-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.level-card.level-repro::before { background: var(--emerald); }
+.level-card.level-conn::before { background: var(--gold); }
+.level-card.level-refl::before { background: var(--red-soft); }
+.level-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.level-repro .level-tag { color: var(--emerald); }
+.level-conn .level-tag { color: var(--gold); }
+.level-refl .level-tag { color: var(--red-soft); }
+.level-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.35rem;
+}
+.level-card p {
+  font-size: 0.87rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* ── TAG LIST ── */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.tag {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  font-weight: 500;
+}
+.tag-green { background: rgba(61,139,99,0.1); color: var(--emerald); }
+.tag-gold { background: rgba(200,168,78,0.15); color: #9a7e30; }
+.tag-blue { background: rgba(44,95,124,0.1); color: var(--blue-deep); }
+.tag-violet { background: rgba(107,91,138,0.1); color: var(--violet); }
+.tag-red { background: rgba(196,92,74,0.1); color: var(--red-soft); }
+
+/* ── PHASES ── */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+@media (max-width: 700px) {
+  .phase-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.phase-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--section-radius);
+  padding: 1.2rem;
+  text-align: center;
+  position: relative;
+}
+.phase-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(61,139,99,0.15);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.phase-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.3rem;
+}
+.phase-card p {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+/* ── AREA STRIP ── */
+.area-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.area-item {
+  padding: 1.2rem 1rem;
+  border-radius: var(--section-radius);
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.area-item:hover { transform: translateY(-2px); }
+.area-emoji { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
+.area-item h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.25rem;
+}
+.area-item p {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.area-nums { background: rgba(44,95,124,0.05); }
+.area-med { background: rgba(200,168,78,0.06); }
+.area-geo { background: rgba(61,139,99,0.05); }
+.area-alg { background: rgba(107,91,138,0.05); }
+.area-est { background: rgba(196,92,74,0.05); }
+
+/* ── TRANSVERSAL ── */
+.transversal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+.transversal-card {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.2rem 1.3rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+.transversal-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.transversal-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.2rem;
+}
+.transversal-card p {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+/* ── DUA ── */
+.dua-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.dua-card {
+  border-radius: var(--section-radius);
+  padding: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.dua-card.dua-1 { background: linear-gradient(150deg, rgba(44,95,124,0.07), rgba(44,95,124,0.02)); border-color: rgba(44,95,124,0.2); }
+.dua-card.dua-2 { background: linear-gradient(150deg, rgba(61,139,99,0.06), rgba(61,139,99,0.02)); border-color: rgba(61,139,99,0.2); }
+.dua-card.dua-3 { background: linear-gradient(150deg, rgba(200,168,78,0.07), rgba(200,168,78,0.02)); border-color: rgba(200,168,78,0.25); }
+.dua-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+.dua-card p {
+  font-size: 0.87rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+.dua-card ul {
+  margin: 0.4rem 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+.dua-card li { margin-bottom: 0.2rem; }
+
+/* ── CALLOUT ── */
+.callout {
+  background: rgba(200,168,78,0.08);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--section-radius) var(--section-radius) 0;
+  padding: 1rem 1.3rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+.callout strong { color: var(--forest); }
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  margin: 1rem 0;
+}
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  background: var(--forest);
+  color: var(--sage);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.page-footer strong { color: var(--gold-light); }
+.page-footer a { color: var(--gold-light); text-decoration: none; }
+.page-footer a:hover { text-decoration: underline; }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NCTM SECTION ── */
+.nctm-intro-banner {
+  background: linear-gradient(135deg, var(--blue-deep) 0%, #1e4a63 100%);
+  color: var(--cream);
+  border-radius: var(--section-radius);
+  padding: 2rem 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.nctm-intro-banner::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.nctm-intro-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #9ecbdf;
+  margin-bottom: 0.5rem;
+}
+.nctm-intro-banner p {
+  color: rgba(250,246,238,0.85);
+  font-size: 0.93rem;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.principle-card {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.principle-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.principle-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+}
+.principle-card.pc-equity::before { background: var(--emerald); }
+.principle-card.pc-curriculum::before { background: var(--blue-deep); }
+.principle-card.pc-teaching::before { background: var(--gold); }
+.principle-card.pc-learning::before { background: var(--violet); }
+.principle-card.pc-assessment::before { background: var(--red-soft); }
+.principle-card.pc-technology::before { background: var(--orange); }
+.principle-card .pc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.pc-equity .pc-label { color: var(--emerald); }
+.pc-curriculum .pc-label { color: var(--blue-deep); }
+.pc-teaching .pc-label { color: var(--gold); }
+.pc-learning .pc-label { color: var(--violet); }
+.pc-assessment .pc-label { color: var(--red-soft); }
+.pc-technology .pc-label { color: var(--orange); }
+.principle-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.35rem;
+}
+.principle-card p {
+  font-size: 0.87rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+.principle-card .pc-mep-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+  background: rgba(44,95,124,0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+}
+
+/* mapping table */
+.mapping-table-wrap {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  border-radius: var(--section-radius);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--white);
+}
+.mapping-table thead th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+  white-space: nowrap;
+}
+.mapping-table thead th:nth-child(1) { color: var(--blue-deep); background: rgba(44,95,124,0.04); }
+.mapping-table thead th:nth-child(2) { color: var(--emerald); background: rgba(61,139,99,0.04); }
+.mapping-table thead th:nth-child(3) { color: var(--ink-muted); }
+.mapping-table tbody td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  vertical-align: top;
+  line-height: 1.55;
+  color: var(--ink-light);
+}
+.mapping-table tbody tr:last-child td { border-bottom: none; }
+.mapping-table tbody tr:hover { background: rgba(0,0,0,0.012); }
+.mapping-table .match-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.match-exact { background: rgba(61,139,99,0.12); color: var(--emerald); }
+.match-enriches { background: rgba(200,168,78,0.15); color: #9a7e30; }
+
+.nctm-enrichment {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  border: 1px solid rgba(44,95,124,0.15);
+  border-left: 3px solid var(--blue-deep);
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.nctm-enrichment h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.3rem;
+}
+.nctm-enrichment p, .nctm-enrichment li {
+  font-size: 0.87rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+.nctm-enrichment ul {
+  margin: 0.4rem 0 0 1.2rem;
+}
+.nctm-enrichment li { margin-bottom: 0.2rem; }
+.nctm-enrichment .enrich-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.enrich-tag.et-process { background: rgba(44,95,124,0.1); color: var(--blue-deep); }
+.enrich-tag.et-pedagogy { background: rgba(107,91,138,0.1); color: var(--violet); }
+.enrich-tag.et-metacog { background: rgba(200,168,78,0.12); color: #9a7e30; }
+
+/* content area alignment */
+.area-alignment {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.area-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.area-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+.area-col-label.acl-nctm { color: var(--blue-deep); }
+.area-col-label.acl-mep { color: var(--emerald); }
+.area-pill {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: center;
+}
+.area-pill-nctm { background: rgba(44,95,124,0.08); color: var(--blue-deep); border: 1px solid rgba(44,95,124,0.15); }
+.area-pill-mep { background: rgba(61,139,99,0.08); color: var(--emerald); border: 1px solid rgba(61,139,99,0.15); }
+.area-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+.area-arrow {
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+  opacity: 0.4;
+}
+
+@media (max-width: 700px) {
+  .area-alignment { grid-template-columns: 1fr; }
+  .area-arrows { flex-direction: row; padding-top: 0; }
+  .area-arrow { transform: rotate(90deg); }
+}
+
+/* ── PISA SECTION ── */
+.pisa-intro-banner {
+  background: linear-gradient(135deg, #7c3a2c 0%, #5a2a1e 100%);
+  color: var(--cream);
+  border-radius: var(--section-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.pisa-intro-banner::after {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.pisa-intro-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #e8b89a;
+  margin-bottom: 0.5rem;
+}
+.pisa-intro-banner p {
+  color: rgba(250,246,238,0.85);
+  font-size: 0.93rem;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.pisa-cycle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+.pisa-cycle-step {
+  text-align: center;
+  padding: 1rem 1.2rem;
+  border-radius: var(--section-radius);
+  min-width: 140px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.pisa-cycle-step h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.pisa-cycle-step p {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+.pisa-cycle-step.pcs-formulate { background: rgba(124,58,44,0.07); }
+.pisa-cycle-step.pcs-formulate h4 { color: #7c3a2c; }
+.pisa-cycle-step.pcs-employ { background: rgba(61,139,99,0.06); }
+.pisa-cycle-step.pcs-employ h4 { color: var(--emerald); }
+.pisa-cycle-step.pcs-interpret { background: rgba(44,95,124,0.06); }
+.pisa-cycle-step.pcs-interpret h4 { color: var(--blue-deep); }
+.pisa-cycle-step.pcs-reasoning {
+  background: linear-gradient(135deg, rgba(200,168,78,0.1), rgba(200,168,78,0.04));
+  border-color: rgba(200,168,78,0.25);
+}
+.pisa-cycle-step.pcs-reasoning h4 { color: var(--gold); }
+.pisa-cycle-arrow {
+  font-size: 1.3rem;
+  color: var(--ink-muted);
+  opacity: 0.35;
+  padding: 0 0.3rem;
+}
+@media (max-width: 600px) {
+  .pisa-cycle { flex-direction: column; gap: 0.5rem; }
+  .pisa-cycle-arrow { transform: rotate(90deg); }
+}
+
+.pisa-understanding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.pisa-understanding {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.1rem 1.3rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-left: 3px solid #7c3a2c;
+}
+.pisa-understanding h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.2rem;
+}
+.pisa-understanding p {
+  font-size: 0.83rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.pisa-skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+.pisa-skill {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-weight: 500;
+  background: rgba(124,58,44,0.08);
+  color: #7c3a2c;
+  border: 1px solid rgba(124,58,44,0.15);
+}
+
+.pisa-content-map {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5rem;
+  align-items: start;
+  margin: 1rem 0;
+}
+@media (max-width: 700px) {
+  .pisa-content-map { grid-template-columns: 1fr; }
+}
+.pcm-col { display: flex; flex-direction: column; gap: 0.5rem; }
+.pcm-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+.pcm-label.pcm-pisa { color: #7c3a2c; }
+.pcm-label.pcm-mep { color: var(--emerald); }
+.pcm-pill {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: center;
+}
+.pcm-pill-pisa { background: rgba(124,58,44,0.07); color: #7c3a2c; border: 1px solid rgba(124,58,44,0.15); }
+.pcm-pill-mep { background: rgba(61,139,99,0.08); color: var(--emerald); border: 1px solid rgba(61,139,99,0.15); }
+.pcm-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+.pcm-arrow { color: var(--ink-muted); font-size: 1.1rem; opacity: 0.4; }
+
+/* ── POLYA SECTION ── */
+.polya-intro-banner {
+  background: linear-gradient(135deg, #3a3a5c 0%, #2a2a42 100%);
+  color: var(--cream);
+  border-radius: var(--section-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.polya-intro-banner::after {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.polya-intro-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #b8a9d4;
+  margin-bottom: 0.5rem;
+}
+.polya-intro-banner p {
+  color: rgba(250,246,238,0.85);
+  font-size: 0.93rem;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.polya-phase-map {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.4rem 1rem;
+  align-items: center;
+  margin: 1.2rem 0;
+}
+@media (max-width: 700px) {
+  .polya-phase-map { grid-template-columns: 1fr; }
+  .polya-phase-map .ppm-arrow-col { display: none; }
+}
+.ppm-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem;
+}
+.ppm-header.ppm-h-polya { color: #6b5b8a; }
+.ppm-header.ppm-h-mep { color: var(--emerald); }
+.ppm-polya-cell, .ppm-mep-cell {
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.ppm-polya-cell {
+  background: rgba(107,91,138,0.06);
+  border-color: rgba(107,91,138,0.18);
+}
+.ppm-polya-cell h4 { color: #6b5b8a; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+.ppm-mep-cell {
+  background: rgba(61,139,99,0.05);
+  border-color: rgba(61,139,99,0.18);
+}
+.ppm-mep-cell h4 { color: var(--emerald); font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+.ppm-polya-cell p, .ppm-mep-cell p { font-size: 0.82rem; color: var(--ink-light); }
+.ppm-arrow-col { text-align: center; color: var(--ink-muted); opacity: 0.35; font-size: 1.1rem; }
+
+.polya-question-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.polya-q-card {
+  background: var(--white);
+  border-radius: var(--section-radius);
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-top: 3px solid;
+}
+.polya-q-card.pq-understand { border-top-color: #6b5b8a; }
+.polya-q-card.pq-plan { border-top-color: var(--gold); }
+.polya-q-card.pq-execute { border-top-color: var(--emerald); }
+.polya-q-card.pq-look { border-top-color: var(--blue-deep); }
+.polya-q-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+.polya-q-card .pq-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.pq-understand .pq-label { color: #6b5b8a; }
+.pq-plan .pq-label { color: var(--gold); }
+.pq-execute .pq-label { color: var(--emerald); }
+.pq-look .pq-label { color: var(--blue-deep); }
+.polya-q-card p {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.polya-quote {
+  background: rgba(107,91,138,0.06);
+  border-left: 3px solid #6b5b8a;
+  border-radius: 0 var(--section-radius) var(--section-radius) 0;
+  padding: 1.2rem 1.5rem;
+  margin: 1.2rem 0;
+}
+.polya-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+.polya-quote .pq-attr {
+  font-family: 'Source Sans 3', sans-serif;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* ── DARK MODE — element overrides ─────────────────────────────────────── */
+
+/* TOC nav */
+:root[dark] .toc {
+  background: #1a2420;
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+:root[dark] .toc a { color: var(--ink-muted); }
+:root[dark] .toc a:hover, :root[dark] .toc a.active {
+  color: var(--emerald);
+  border-bottom-color: var(--emerald);
+}
+
+/* Hero — keep rich dark background */
+:root[dark] .hero { background: #0d1a12; }
+
+/* Cards / surfaces — flip transparent-black borders to transparent-white */
+:root[dark] .card,
+:root[dark] .expandable,
+:root[dark] .level-card,
+:root[dark] .phase-card,
+:root[dark] .transversal-card,
+:root[dark] .principle-card,
+:root[dark] .pisa-cycle-step,
+:root[dark] .polya-q-card {
+  border-color: rgba(255,255,255,0.07);
+}
+:root[dark] .card:hover,
+:root[dark] .principle-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+}
+:root[dark] .expandable-header:hover { background: rgba(255,255,255,0.03); }
+
+/* Stage boxes */
+:root[dark] .stage-box { border-color: rgba(255,255,255,0.07); }
+:root[dark] .stage-box.stage-1 {
+  background: linear-gradient(150deg, rgba(61,139,99,0.12), rgba(61,139,99,0.04));
+  border-color: rgba(61,139,99,0.22);
+}
+:root[dark] .stage-box.stage-2 {
+  background: linear-gradient(150deg, rgba(200,168,78,0.12), rgba(200,168,78,0.04));
+  border-color: rgba(200,168,78,0.22);
+}
+
+/* Highlight box */
+:root[dark] .highlight-box {
+  background: linear-gradient(135deg, #0d1a12 0%, #162a1e 100%);
+}
+
+/* Timeline dot */
+:root[dark] .timeline-item::before {
+  background: var(--white);
+  border-color: var(--emerald);
+}
+
+/* Tags — fix hardcoded muted gold (#9a7e30 has poor contrast on dark) */
+:root[dark] .tag-gold { background: rgba(200,168,78,0.15); color: var(--gold); }
+
+/* Area items */
+:root[dark] .area-item { border-color: rgba(255,255,255,0.06); }
+:root[dark] .area-nums { background: rgba(44,95,124,0.10); }
+:root[dark] .area-med  { background: rgba(200,168,78,0.10); }
+:root[dark] .area-geo  { background: rgba(61,139,99,0.10); }
+:root[dark] .area-alg  { background: rgba(107,91,138,0.10); }
+:root[dark] .area-est  { background: rgba(196,92,74,0.10); }
+
+/* DUA cards */
+:root[dark] .dua-card { border-color: rgba(255,255,255,0.07); }
+:root[dark] .dua-card.dua-1 {
+  background: linear-gradient(150deg, rgba(44,95,124,0.12), rgba(44,95,124,0.05));
+  border-color: rgba(44,95,124,0.22);
+}
+:root[dark] .dua-card.dua-2 {
+  background: linear-gradient(150deg, rgba(61,139,99,0.10), rgba(61,139,99,0.05));
+  border-color: rgba(61,139,99,0.22);
+}
+:root[dark] .dua-card.dua-3 {
+  background: linear-gradient(150deg, rgba(200,168,78,0.10), rgba(200,168,78,0.05));
+  border-color: rgba(200,168,78,0.22);
+}
+
+/* Callout */
+:root[dark] .callout {
+  background: rgba(200,168,78,0.10);
+  color: var(--ink-light);
+}
+
+/* Divider */
+:root[dark] .divider {
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+/* Page footer */
+:root[dark] .page-footer { background: #0d1a12; }
+
+/* ── NCTM section ── */
+:root[dark] .nctm-intro-banner {
+  background: linear-gradient(135deg, #1a3c52 0%, #112835 100%);
+}
+:root[dark] .nctm-enrichment {
+  background: var(--white);
+  border-color: rgba(44,95,124,0.20);
+  border-left-color: var(--blue-deep);
+}
+:root[dark] .mapping-table-wrap { border-color: rgba(255,255,255,0.08); }
+:root[dark] .mapping-table thead th { border-bottom-color: rgba(255,255,255,0.08); }
+:root[dark] .mapping-table thead th:nth-child(1) { background: rgba(44,95,124,0.10); }
+:root[dark] .mapping-table thead th:nth-child(2) { background: rgba(61,139,99,0.08); }
+:root[dark] .mapping-table tbody td { border-bottom-color: rgba(255,255,255,0.04); }
+:root[dark] .mapping-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+:root[dark] .match-exact    { background: rgba(61,139,99,0.15); }
+:root[dark] .match-enriches { background: rgba(200,168,78,0.15); color: var(--gold); }
+:root[dark] .principle-card .pc-mep-link { background: rgba(44,95,124,0.15); }
+:root[dark] .area-pill-nctm { background: rgba(44,95,124,0.12); border-color: rgba(44,95,124,0.20); }
+:root[dark] .area-pill-mep  { background: rgba(61,139,99,0.10); border-color: rgba(61,139,99,0.18); }
+:root[dark] .enrich-tag.et-metacog { background: rgba(200,168,78,0.15); color: var(--gold); }
+
+/* ── PISA section ── */
+:root[dark] .pisa-intro-banner {
+  background: linear-gradient(135deg, #4a2418 0%, #341810 100%);
+}
+:root[dark] .pisa-cycle-step.pcs-formulate { background: rgba(124,58,44,0.15); }
+:root[dark] .pisa-cycle-step.pcs-employ    { background: rgba(61,139,99,0.10); }
+:root[dark] .pisa-cycle-step.pcs-interpret { background: rgba(44,95,124,0.10); }
+:root[dark] .pisa-cycle-step.pcs-reasoning {
+  background: linear-gradient(135deg, rgba(200,168,78,0.12), rgba(200,168,78,0.05));
+  border-color: rgba(200,168,78,0.22);
+}
+:root[dark] .pisa-understanding {
+  background: var(--white);
+  border-color: rgba(255,255,255,0.07);
+  border-left-color: #c87060;
+}
+:root[dark] .pisa-skill {
+  background: rgba(124,58,44,0.15);
+  border-color: rgba(124,58,44,0.25);
+  color: #e09080;
+}
+:root[dark] .pcm-pill-pisa {
+  background: rgba(124,58,44,0.12);
+  border-color: rgba(124,58,44,0.22);
+  color: #e09080;
+}
+:root[dark] .pcm-pill-mep { background: rgba(61,139,99,0.10); border-color: rgba(61,139,99,0.18); }
+
+/* ── Polya section ── */
+:root[dark] .polya-intro-banner {
+  background: linear-gradient(135deg, #28284a 0%, #1e1e38 100%);
+}
+:root[dark] .ppm-polya-cell {
+  background: rgba(107,91,138,0.12);
+  border-color: rgba(107,91,138,0.22);
+}
+:root[dark] .ppm-mep-cell {
+  background: rgba(61,139,99,0.08);
+  border-color: rgba(61,139,99,0.18);
+}
+:root[dark] .polya-quote {
+  background: rgba(107,91,138,0.12);
+  border-left-color: var(--violet);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hero { padding: 2rem 1.2rem 3rem; }
+  .hero h1 { font-size: 1.7rem; }
+  .section h2 { font-size: 1.5rem; }
+  .stage-container { grid-template-columns: 1fr; }
+  .phase-grid { grid-template-columns: 1fr 1fr; }
+  .area-strip { grid-template-columns: 1fr 1fr; }
+  .principle-grid { grid-template-columns: 1fr; }
+  .pisa-understanding-grid { grid-template-columns: 1fr; }
+  .pisa-content-map { grid-template-columns: 1fr; }
+  .pcm-arrows { flex-direction: row; padding-top: 0; }
+  .pcm-arrow { transform: rotate(90deg); }
+  .polya-question-grid { grid-template-columns: 1fr; }
+  .polya-phase-map { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Programa de Estudios<br>de <em>Matemáticas</em> del MEP</h1>
+    <p class="hero-sub">Guía curricular para estudiantes y futuros docentes de Enseñanza de la Matemática. Conoce la estructura, los fundamentos y las expectativas del currículo que darás vida en tus aulas.</p>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#ejes">Ejes</a>
+    <a href="#procesos">Procesos</a>
+    <a href="#lecciones">Lecciones</a>
+    <a href="#niveles">Niveles</a>
+    <a href="#fases">Fases</a>
+    <a href="#areas">Áreas</a>
+    <a href="#transversales">Transversales</a>
+    <a href="#dua">DUA</a>
+    <a href="#nctm">NCTM</a>
+    <a href="#pisa">PISA</a>
+    <a href="#polya">Polya</a>
+  </div>
+</nav>
+
+<main class="main-content">
+
+<!-- ═══════════ 1. EJES DISCIPLINARES ═══════════ -->
+<section class="section fade-in" id="ejes">
+  <div class="section-num">01 — Ejes Disciplinares</div>
+  <h2>Los cinco ejes que articulan el currículo</h2>
+  <p class="section-lead">Son dimensiones transversales específicas de la Matemática que recorren todos los años lectivos y potencian una enseñanza efectiva. Su acción conjunta contribuye a la integración vertical del currículo.</p>
+
+  <div class="expandable open" id="eje-1">
+    <div class="expandable-header" onclick="toggleExpand('eje-1')">
+      <span class="exp-num">01</span>
+      <h3>Resolución de Problemas</h3>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <p>Es el <strong>enfoque principal</strong> del currículo y la estrategia metodológica central. No se trata de una prescripción mecánica sino de un instrumento poderoso para lograr el dominio de habilidades, la realización de procesos y el progreso de la competencia matemática.</p>
+        <div class="callout">
+          <strong>Idea clave:</strong> Se privilegian problemas en contextos reales (personales, comunitarios, científicos), aunque los problemas abstractos también son muy importantes. Lo que se busca en última instancia es la construcción de capacidades para la manipulación de objetos matemáticos cuya naturaleza es abstracta.
+        </div>
+        <p>Se promueve no solo resolver problemas, sino también <strong>descubrir, plantear y diseñar problemas</strong>, pues en la vida las personas se verán más expuestas a circunstancias donde los problemas no están formulados previamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" id="eje-2">
+    <div class="expandable-header" onclick="toggleExpand('eje-2')">
+      <span class="exp-num">02</span>
+      <h3>Contextualización Activa</h3>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <p>Busca conectar las Matemáticas con la realidad del estudiantado y sus contextos sociales, culturales y científicos. Es un componente pedagógico que permite andamios para construir aprendizajes desde lo concreto hacia lo abstracto.</p>
+        <h4 style="font-size:0.95rem; font-weight:700; color:var(--forest); margin:0.8rem 0 0.4rem;">Modelización y Matematización</h4>
+        <p>La identificación, uso y construcción de <strong>modelos matemáticos</strong> es parte sustancial del trabajo con problemas en contextos reales. Un modelo es un conjunto de elementos matemáticos conectados que representan una realidad específica: explican, describen y permiten hacer predicciones.</p>
+        <p style="margin-top:0.5rem;">La <strong>matematización</strong> refiere al proceso de traducir una situación real al lenguaje matemático, procesarla y devolver los resultados al contexto original.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" id="eje-3">
+    <div class="expandable-header" onclick="toggleExpand('eje-3')">
+      <span class="exp-num">03</span>
+      <h3>Tecnologías Digitales</h3>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <p>Las tecnologías digitales han tenido un extraordinario impacto en la Educación Matemática. Se incluyen instrumentos de construcción y experiencias geométricas, análisis de datos, modelación, simulación, cálculo algebraico, «tutores» inteligentes y entornos virtuales.</p>
+        <div class="callout">
+          <strong>Principio rector:</strong> El uso de tecnología debe hacerse en función estricta del aporte al logro de fines de aprendizaje, no por el valor intrínseco de la tecnología misma.
+        </div>
+        <p>Las calculadoras deben ser un <strong>auxiliar</strong>; no deben sustituir la construcción de destrezas de cálculo mental y aproximación numérica, especialmente en los primeros ciclos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" id="eje-4">
+    <div class="expandable-header" onclick="toggleExpand('eje-4')">
+      <span class="exp-num">04</span>
+      <h3>Actitudes y Creencias Positivas</h3>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <p>Los espacios actitudinales y socioafectivos son cruciales para los aprendizajes. El currículo busca romper el mito de que las Matemáticas son «áridas, imposiblemente difíciles y algo de lo que hay que sentir miedo».</p>
+        <p style="margin:0.8rem 0 0.5rem; font-weight:600; color:var(--forest);">Las cinco actitudes a desarrollar:</p>
+        <div class="tag-list">
+          <span class="tag tag-green">💪 Perseverancia</span>
+          <span class="tag tag-blue">🔑 Confianza en la utilidad</span>
+          <span class="tag tag-gold">⭐ Autoestima</span>
+          <span class="tag tag-violet">💜 Aprecio, respeto y disfrute</span>
+          <span class="tag tag-red">🤝 Participación activa y colaborativa</span>
+        </div>
+        <p style="margin-top:0.8rem;">Se recomienda planificar bien el tiempo, fomentar el trabajo en grupo con exposiciones orales, poner atención a comentarios negativos, y reconocer avances y esfuerzos del estudiantado.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable" id="eje-5">
+    <div class="expandable-header" onclick="toggleExpand('eje-5')">
+      <span class="exp-num">05</span>
+      <h3>Historia de las Matemáticas</h3>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="expandable-body">
+      <div class="expandable-body-inner">
+        <p>Busca dar un rostro humano a las Matemáticas. Los objetos matemáticos son producciones influidas por contextos sociales, como respuesta a condiciones del medio. Conocer el proceso histórico subraya su naturaleza constructiva, activa y dinámica.</p>
+        <p style="margin:0.6rem 0; font-weight:600; color:var(--forest); font-size:0.92rem;">Tres usos en el aula:</p>
+        <ul>
+          <li><strong>Motivación e interés</strong> — Anécdotas, biografías y contextos históricos.</li>
+          <li><strong>Contextualización cultural</strong> — Comparación multicultural de ideas matemáticas (p.ej., pruebas del Teorema de Pitágoras en distintas civilizaciones).</li>
+          <li><strong>Recurso didáctico</strong> — Resolver problemas históricos originales con los conocimientos de la época, luego contrastarlos con herramientas modernas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 2. PROCESOS MATEMÁTICOS ═══════════ -->
+<section class="section fade-in" id="procesos">
+  <div class="section-num">02 — Procesos Matemáticos</div>
+  <h2>Capacidades cognitivas transversales</h2>
+  <p class="section-lead">Los procesos matemáticos son formas de comprender, aprender y usar los conocimientos que promueven capacidades de alto nivel y la competencia matemática. Su realización constante permite generar progreso en todas las áreas.</p>
+
+  <div class="card-grid cols-2">
+    <div class="card">
+      <div class="card-icon icon-green">R</div>
+      <h3>Razonar y argumentar</h3>
+      <p>Fomenta la capacidad de deducción lógica, la inducción a partir de casos, la comparación analítica, la generalización y la justificación de resultados. Incluye el uso de pruebas, ejemplos y contraejemplos como herramientas de validación matemática.</p>
+      <div class="tag-list" style="margin-top:0.7rem;">
+        <span class="tag tag-green">Deducción</span>
+        <span class="tag tag-green">Inducción</span>
+        <span class="tag tag-green">Generalización</span>
+        <span class="tag tag-green">Justificación</span>
+        <span class="tag tag-green">Pruebas</span>
+        <span class="tag tag-green">Contraejemplo</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-blue">P</div>
+      <h3>Plantear y resolver problemas</h3>
+      <p>Potencia la capacidad para identificar, formular y resolver problemas en contextos personales, comunitarios o científicos, dentro y fuera de las Matemáticas. Incluye determinar estrategias, valorar la pertinencia de métodos y evaluar el desarrollo del trabajo.</p>
+      <div class="tag-list" style="margin-top:0.7rem;">
+        <span class="tag tag-blue">Contexto real</span>
+        <span class="tag tag-blue">Personal</span>
+        <span class="tag tag-blue">Comunitario</span>
+        <span class="tag tag-blue">Científico</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-violet">C</div>
+      <h3>Conectar y establecer relaciones</h3>
+      <p>Busca establecer relaciones entre distintas áreas matemáticas, entre la Matemática y otras asignaturas, y entre los conceptos matemáticos y las realidades del entorno. Las conexiones otorgan sentido y profundidad al aprendizaje.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-gold">R</div>
+      <h3>Representar de diversas formas</h3>
+      <p>Fomenta el reconocimiento, interpretación y manipulación de múltiples representaciones de las nociones matemáticas, así como la capacidad de traducir entre ellas comprendiendo las ventajas de cada una.</p>
+      <div class="tag-list" style="margin-top:0.7rem;">
+        <span class="tag tag-gold">Gráficas</span>
+        <span class="tag tag-gold">Numéricas</span>
+        <span class="tag tag-gold">Visuales</span>
+        <span class="tag tag-gold">Simbólicas</span>
+        <span class="tag tag-gold">Tabulares</span>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-icon icon-red">M</div>
+      <h3>Comunicar y expresar ideas matemáticas</h3>
+      <p>Desarrolla la capacidad de expresar ideas, resultados y argumentos de forma formal y verbal, visual, oral y escrita, utilizando lenguaje matemático. Una idea matemática, para ser «correcta», debe poder ser comunicada y aceptada por una comunidad. Este proceso se relaciona estrechamente con Representar y con Razonar y argumentar.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>¿Cómo actúan los procesos?</h4>
+    <p>Si desde el inicio de la lección se plantea identificar, formular y resolver un problema, se activa el proceso <em>Plantear y resolver problemas</em>. A partir de éste se introducen los demás: se buscan diferentes representaciones, se razona sobre los resultados, se comunican las conclusiones. La realización de un proceso puede conducir a otros. No deben verse como acciones aisladas sino como un sistema integrado de capacidades.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 3. ORGANIZACIÓN DE LECCIONES ═══════════ -->
+<section class="section fade-in" id="lecciones">
+  <div class="section-num">03 — Organización de las Lecciones</div>
+  <h2>Dos etapas para la acción de aula</h2>
+  <p class="section-lead">El currículo propone organizar las lecciones en dos etapas complementarias que no deben verse de manera lineal ni como secuencia obligatoria, sino como un modelo flexible que el docente adapta a su planeamiento.</p>
+
+  <div class="stage-container">
+    <div class="stage-box stage-1">
+      <div class="stage-label">Etapa 1</div>
+      <h4>Aprendizaje del Conocimiento</h4>
+      <div class="stage-step">
+        <span class="stage-step-num">1</span>
+        <div class="stage-step-content">
+          <h5>Propuesta del problema</h5>
+          <p>Se coloca como punto de partida un problema contextualizado, un desafío o una actividad para provocar la indagación.</p>
+        </div>
+      </div>
+      <div class="stage-step">
+        <span class="stage-step-num">2</span>
+        <div class="stage-step-content">
+          <h5>Trabajo estudiantil independiente</h5>
+          <p>Tiempo para el trabajo individual o en subgrupos donde el estudiantado aborda el problema de forma autónoma.</p>
+        </div>
+      </div>
+      <div class="stage-step">
+        <span class="stage-step-num">3</span>
+        <div class="stage-step-content">
+          <h5>Discusión interactiva y comunicativa</h5>
+          <p>Socialización y contrastación de respuestas, estrategias y argumentos entre estudiantes y con el docente.</p>
+        </div>
+      </div>
+      <div class="stage-step">
+        <span class="stage-step-num">4</span>
+        <div class="stage-step-content">
+          <h5>Clausura o cierre</h5>
+          <p>El docente formaliza los conocimientos, sintetiza las ideas principales y establece conclusiones.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-box stage-2">
+      <div class="stage-label">Etapa 2</div>
+      <h4>Movilización y Aplicación</h4>
+      <div class="stage-step">
+        <span class="stage-step-num">1</span>
+        <div class="stage-step-content">
+          <h5>Apropiación del problema</h5>
+          <p>Se presentan problemas que requieran movilizar y transferir los conocimientos aprendidos en la Etapa 1.</p>
+        </div>
+      </div>
+      <div class="stage-step">
+        <span class="stage-step-num">2</span>
+        <div class="stage-step-content">
+          <h5>Formulación de estrategias e hipótesis</h5>
+          <p>El estudiantado diseña procedimientos, plantea hipótesis y elige herramientas para abordar el problema.</p>
+        </div>
+      </div>
+      <div class="stage-step">
+        <span class="stage-step-num">3</span>
+        <div class="stage-step-content">
+          <h5>Resolución o investigación estudiantil</h5>
+          <p>Aplicación directa de conocimientos para resolver problemas de mayor complejidad o realizar pequeñas investigaciones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Para el planeamiento:</strong> Estas etapas son complementarias. Es posible comenzar con la Etapa 2 para movilizar conocimientos previos antes de un tema nuevo. El docente debe incluir comprensión conceptual <em>y</em> destreza procedimental, y pensar desde el inicio cómo evaluará el tópico.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 4. NIVELES DE COMPLEJIDAD ═══════════ -->
+<section class="section fade-in" id="niveles">
+  <div class="section-num">04 — Niveles de Complejidad</div>
+  <h2>Tres niveles para clasificar los problemas</h2>
+  <p class="section-lead">Basados en el marco de competencias de PISA/OCDE, estos niveles permiten graduar la demanda cognitiva de los problemas propuestos en el aula.</p>
+
+  <div class="levels-row">
+    <div class="level-card level-repro">
+      <div class="level-tag">Nivel I</div>
+      <h4>Reproducción</h4>
+      <p>Involucra operaciones rutinarias, aplicación directa de definiciones, hechos conocidos, procedimientos simples y cálculos elementales. Son tareas familiares que no requieren conexiones entre conceptos.</p>
+    </div>
+
+    <div class="level-card level-conn">
+      <div class="level-tag">Nivel II</div>
+      <h4>Conexión</h4>
+      <p>Se basa en las capacidades de reproducción pero va más allá: problemas no rutinarios en ambientes familiares, interpretación con mayor exigencia y conexión entre diversos elementos y representaciones.</p>
+    </div>
+
+    <div class="level-card level-refl">
+      <div class="level-tag">Nivel III</div>
+      <h4>Reflexión</h4>
+      <p>Exige pensamiento creativo, reflexión profunda, planificación de procesos de resolución, originalidad, generalización de resultados y el uso de múltiples fuentes de información integradas.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>Implicación para la evaluación</h4>
+    <p>Los problemas de reproducción son más fáciles de evaluar por sus resultados. Los de conexión y reflexión requieren evaluar también <strong>los procesos, las estrategias y la argumentación</strong>, no solo la respuesta final. El currículo espera que se trabaje en los tres niveles progresivamente durante todos los ciclos.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 5. FASES DE RESOLUCIÓN DE PROBLEMAS ═══════════ -->
+<section class="section fade-in" id="fases">
+  <div class="section-num">05 — Fases de Resolución de Problemas</div>
+  <h2>Cuatro fases para abordar un problema</h2>
+  <p class="section-lead">Inspiradas en la metodología de Polya y adaptadas al enfoque curricular costarricense, estas fases guían el proceso de resolución como un ciclo que puede reiterarse.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-num">I</div>
+      <h4>Entendimiento del problema</h4>
+      <p>Comprender qué pide el problema, identificar datos, condiciones y lo que se busca determinar.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">II</div>
+      <h4>Diseño de una estrategia</h4>
+      <p>Elaborar un plan de acción: elegir herramientas, plantear hipótesis y definir el camino a seguir.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">III</div>
+      <h4>Control y ejecución</h4>
+      <p>Implementar la estrategia diseñada, monitoreando el proceso y ajustando cuando sea necesario.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">IV</div>
+      <h4>Revisión y comprobación</h4>
+      <p>Verificar el resultado, evaluar la solución obtenida y reflexionar sobre el proceso y posibles generalizaciones.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>En la práctica docente:</strong> Estas fases deben enseñarse explícitamente al estudiantado como herramientas metacognitivas. No son lineales: un estudiante puede regresar al entendimiento del problema si su estrategia no funciona, fomentando la perseverancia.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 6. ÁREAS MATEMÁTICAS ═══════════ -->
+<section class="section fade-in" id="areas">
+  <div class="section-num">06 — Áreas Matemáticas</div>
+  <h2>Cinco áreas que organizan los contenidos</h2>
+  <p class="section-lead">Los conocimientos y habilidades se organizan verticalmente (desde el primer año hasta el último) en cinco áreas integradas entre sí.</p>
+
+  <div class="area-strip">
+    <div class="area-item area-nums">
+      <span class="area-emoji">🔢</span>
+      <h4>Números</h4>
+      <p>Sentido numérico, operaciones, propiedades, estimación y cálculo. Ocupa un lugar preponderante en Primaria.</p>
+    </div>
+    <div class="area-item area-med">
+      <span class="area-emoji">📏</span>
+      <h4>Medidas</h4>
+      <p>Conexión entre áreas matemáticas y la realidad. Magnitudes, unidades, estimación y conversiones en contexto.</p>
+    </div>
+    <div class="area-item area-geo">
+      <span class="area-emoji">📐</span>
+      <h4>Geometría</h4>
+      <p>Visualización espacial, movimiento, transformaciones, razonamiento deductivo. Patrones y modelos del espacio.</p>
+    </div>
+    <div class="area-item area-alg">
+      <span class="area-emoji">🔣</span>
+      <h4>Relaciones y Álgebra</h4>
+      <p>Patrones, relaciones, funciones como relaciones de cambio, ecuaciones, generalización y simbolización.</p>
+    </div>
+    <div class="area-item area-est">
+      <span class="area-emoji">📊</span>
+      <h4>Estadística y Probabilidad</h4>
+      <p>Organización de información, análisis de datos, pensamiento aleatorio, incertidumbre y azar.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>Integración vertical</h4>
+    <p>Las Matemáticas no son una colección dispersa de conceptos. Los conocimientos se integran a partir de ideas generales cuya construcción se amplía progresivamente. Cada área tiene ideas fundamentales que se reconstruyen en los distintos ciclos, profundizando comprensión y complejidad. Esta integración es una de las decisiones epistemológicas más importantes del currículo.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 7. EJES TRANSVERSALES ═══════════ -->
+<section class="section fade-in" id="transversales">
+  <div class="section-num">07 — Ejes Transversales</div>
+  <h2>Temas transversales del sistema educativo</h2>
+  <p class="section-lead">En acuerdo con la política educativa costarricense, el currículo de Matemáticas incorpora los ejes transversales institucionales que promueven la formación integral de la ciudadanía.</p>
+
+  <div class="transversal-grid">
+    <div class="transversal-card">
+      <span class="transversal-icon">🌿</span>
+      <div>
+        <h4>Cultura ambiental para el desarrollo sostenible</h4>
+        <p>Los problemas en contextos reales ofrecen oportunidades para trabajar con datos ambientales, recursos naturales y modelos ecológicos.</p>
+      </div>
+    </div>
+    <div class="transversal-card">
+      <span class="transversal-icon">🌈</span>
+      <div>
+        <h4>Educación integral de la sexualidad</h4>
+        <p>Se promueve el respeto, la equidad de género y la comprensión de datos demográficos y de salud pública mediante el análisis estadístico.</p>
+      </div>
+    </div>
+    <div class="transversal-card">
+      <span class="transversal-icon">❤️</span>
+      <div>
+        <h4>Educación para la salud</h4>
+        <p>Uso de datos de salud, nutrición y actividad física como contextos para problemas de estadística, medidas y proporciones.</p>
+      </div>
+    </div>
+    <div class="transversal-card">
+      <span class="transversal-icon">🕊️</span>
+      <div>
+        <h4>Vivencia de los derechos humanos para la democracia y la paz</h4>
+        <p>El trabajo colaborativo, la argumentación respetuosa y la participación activa en el aula de Matemáticas contribuyen a una formación ciudadana democrática.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>En el aula de Matemáticas:</strong> Los ejes transversales se integran naturalmente a través de la contextualización activa. Al elegir problemas en contextos reales, el docente puede seleccionar situaciones que conecten con estos temas, dándoles presencia orgánica en la lección sin forzar su inclusión.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 8. DUA ═══════════ -->
+<section class="section fade-in" id="dua">
+  <div class="section-num">08 — Diseño Universal para el Aprendizaje</div>
+  <h2>Educación inclusiva y accesible</h2>
+  <p class="section-lead">El Diseño Universal para el Aprendizaje (DUA) es un marco que guía la práctica educativa para atender la diversidad del estudiantado, asegurando que todos puedan acceder, participar y progresar en el currículo. El programa señala que es necesario un enfoque inclusivo en el aula y que se deben ofrecer opciones a los diversos segmentos de estudiantes.</p>
+
+  <div class="dua-principles">
+    <div class="dua-card dua-1">
+      <h4>I. Múltiples formas de representación</h4>
+      <p>Presentar la información y el contenido de diversas maneras:</p>
+      <ul>
+        <li>Material concreto, visual, simbólico y digital.</li>
+        <li>Diversas representaciones matemáticas (gráficas, tabulares, numéricas, simbólicas).</li>
+        <li>Contextos variados para un mismo conocimiento.</li>
+      </ul>
+    </div>
+    <div class="dua-card dua-2">
+      <h4>II. Múltiples formas de acción y expresión</h4>
+      <p>Ofrecer distintas vías para que el estudiantado demuestre lo que sabe:</p>
+      <ul>
+        <li>Respuestas orales, escritas, gráficas o usando tecnología.</li>
+        <li>Trabajo individual, en parejas o en grupo.</li>
+        <li>Resolución de problemas con distintas estrategias válidas.</li>
+      </ul>
+    </div>
+    <div class="dua-card dua-3">
+      <h4>III. Múltiples formas de motivación</h4>
+      <p>Estimular el interés y la motivación del estudiantado:</p>
+      <ul>
+        <li>Problemas relevantes y conectados con sus realidades.</li>
+        <li>Opciones de elección en tareas y proyectos.</li>
+        <li>Retroalimentación constructiva que fomente la perseverancia y la autoestima.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>DUA y el currículo de Matemáticas</h4>
+    <p>El programa enfatiza que existen distintos talentos e inteligencias y que es muy importante usar el tiempo de manera diferenciada. Los cinco procesos matemáticos son en sí mismos vehículos para el DUA: al representar de diversas formas, comunicar de múltiples maneras, y conectar con distintos contextos, se atiende naturalmente la diversidad. El uso de tecnologías digitales amplía aún más las posibilidades de acceso y participación para todo el estudiantado.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 9. PERSPECTIVA INTERNACIONAL NCTM ═══════════ -->
+<section class="section fade-in" id="nctm">
+  <div class="section-num">09 — Perspectiva Internacional</div>
+  <h2>Principios y Estándares del NCTM</h2>
+  <p class="section-lead">Los <em>Principles and Standards for School Mathematics</em> (NCTM, 2000) constituyen una referencia central para la educación matemática a nivel mundial. Compararlos con el programa del MEP revela una convergencia significativa que valida y enriquece nuestro currículo.</p>
+
+  <div class="nctm-intro-banner">
+    <h3>¿Por qué conocer los estándares NCTM?</h3>
+    <p>Como futuros docentes de matemática, conocer los estándares internacionales permite fundamentar nuestras decisiones pedagógicas con un marco más amplio, comprender el lugar de nuestro currículo en el contexto global y adoptar prácticas respaldadas por décadas de investigación en educación matemática. El programa del MEP se alinea estrechamente con los estándares NCTM, lo cual confirma su rigor y solidez.</p>
+  </div>
+
+  <!-- ── 6 PRINCIPLES ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin-bottom:0.4rem;">Los Seis Principios Rectores</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1.2rem; max-width:700px;">NCTM organiza su visión alrededor de seis principios que guían una educación matemática de alta calidad. Cada uno encuentra eco en el programa del MEP.</p>
+
+  <div class="principle-grid">
+    <div class="principle-card pc-equity">
+      <div class="pc-label">Principio I</div>
+      <h4>Equidad <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Equity</span></h4>
+      <p>La excelencia en educación matemática requiere altas expectativas y apoyo sólido para <strong>todos</strong> los estudiantes. No hay conflicto entre equidad y excelencia: las matemáticas pueden y deben ser aprendidas por todos.</p>
+      <span class="pc-mep-link">↔ MEP: DUA · Actitudes positivas</span>
+    </div>
+
+    <div class="principle-card pc-curriculum">
+      <div class="pc-label">Principio II</div>
+      <h4>Currículo <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Curriculum</span></h4>
+      <p>Un currículo debe ser <strong>coherente</strong>, organizar e integrar ideas matemáticas importantes y desafiar al estudiantado con ideas progresivamente más sofisticadas. No debe ser una colección dispersa de temas.</p>
+      <span class="pc-mep-link">↔ MEP: Integración vertical</span>
+    </div>
+
+    <div class="principle-card pc-teaching">
+      <div class="pc-label">Principio III</div>
+      <h4>Enseñanza <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Teaching</span></h4>
+      <p>Enseñar matemáticas es un quehacer complejo sin recetas fáciles. Los docentes deben conocer profundamente las matemáticas, comprender cómo aprenden sus estudiantes y seleccionar tareas e interacciones que promuevan la comprensión.</p>
+      <span class="pc-mep-link">↔ MEP: Gestión y planeamiento pedagógico</span>
+    </div>
+
+    <div class="principle-card pc-learning">
+      <div class="pc-label">Principio IV</div>
+      <h4>Aprendizaje <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Learning</span></h4>
+      <p>El estudiantado debe aprender matemáticas <strong>con comprensión</strong>, construyendo activamente nuevo conocimiento a partir de la experiencia y saberes previos. El aprendizaje con comprensión es esencial para resolver los problemas nuevos que inevitablemente enfrentarán.</p>
+      <span class="pc-mep-link">↔ MEP: Enfoque constructivista · Etapa 1</span>
+    </div>
+
+    <div class="principle-card pc-assessment">
+      <div class="pc-label">Principio V</div>
+      <h4>Evaluación <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Assessment</span></h4>
+      <p>La evaluación debe ser parte integral de la instrucción, no solo un examen al final. Debe servir para informar decisiones docentes, dar retroalimentación al estudiantado y fomentar la <strong>autoevaluación</strong> y la reflexión.</p>
+      <span class="pc-mep-link">↔ MEP: Evaluación de los aprendizajes</span>
+    </div>
+
+    <div class="principle-card pc-technology">
+      <div class="pc-label">Principio VI</div>
+      <h4>Tecnología <span style="font-weight:400; font-family:'Source Sans 3'; font-size:0.85rem; color:var(--ink-muted);">Technology</span></h4>
+      <p>La tecnología es esencial en la enseñanza y aprendizaje de las matemáticas: influye en lo que se enseña y mejora el aprendizaje. No debe ser un reemplazo de la comprensión básica sino un medio para fomentarla.</p>
+      <span class="pc-mep-link">↔ MEP: Eje de Tecnologías Digitales</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── PROCESS MAPPING ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Mapeo de Procesos Matemáticos</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Los cinco procesos del NCTM tienen correspondencia directa con los cinco procesos del MEP. Esta convergencia confirma que nuestro currículo está alineado con las mejores prácticas internacionales.</p>
+
+  <div class="mapping-table-wrap">
+    <table class="mapping-table">
+      <thead>
+        <tr>
+          <th>Estándar de Proceso NCTM</th>
+          <th>MEP Proceso Matemático</th>
+          <th>Correspondencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Resolución de Problemas</strong> — Construir conocimiento mediante la resolución de problemas; aplicar estrategias variadas; monitorear y reflexionar sobre el proceso.</td>
+          <td><strong>Plantear y resolver problemas</strong> — Identificar, formular y resolver problemas en contextos diversos, valorando la pertinencia de métodos y resultados.</td>
+          <td><span class="match-badge match-exact">Convergencia directa</span></td>
+        </tr>
+        <tr>
+          <td><strong>Razonamiento y Demostración</strong> — Reconocer el razonamiento como aspecto fundamental; hacer e investigar conjeturas; desarrollar y evaluar argumentos y pruebas.</td>
+          <td><strong>Razonar y argumentar</strong> — Deducción, inducción, comparación analítica, generalización, justificación, pruebas, ejemplo y contraejemplo.</td>
+          <td><span class="match-badge match-exact">Convergencia directa</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comunicación</strong> — Organizar y consolidar el pensamiento matemático; comunicar con claridad a pares y docentes; analizar y evaluar el pensamiento de otros.</td>
+          <td><strong>Comunicar y expresar</strong> — Expresar ideas, resultados y argumentos de forma formal y verbal, visual, oral y escrita, con lenguaje matemático.</td>
+          <td><span class="match-badge match-exact">Convergencia directa</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conexiones</strong> — Reconocer y usar conexiones entre ideas matemáticas; comprender cómo se interrelacionan y construyen un todo coherente; aplicar las matemáticas en contextos externos.</td>
+          <td><strong>Conectar</strong> — Establecer relaciones entre distintas áreas matemáticas, entre la Matemática y otras asignaturas, y entre conceptos matemáticos y la realidad.</td>
+          <td><span class="match-badge match-exact">Convergencia directa</span></td>
+        </tr>
+        <tr>
+          <td><strong>Representación</strong> — Crear y usar representaciones para organizar, registrar y comunicar ideas; seleccionar, aplicar y traducir entre representaciones; usar representaciones para modelar fenómenos.</td>
+          <td><strong>Representar</strong> — Reconocer, interpretar y manipular representaciones múltiples (gráficas, numéricas, visuales, simbólicas, tabulares), traducir entre ellas.</td>
+          <td><span class="match-badge match-exact">Convergencia directa</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── CONTENT AREA ALIGNMENT ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Áreas de Contenido: Alineación uno a uno</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Las cinco áreas de contenido del NCTM se corresponden exactamente con las cinco áreas matemáticas del programa del MEP.</p>
+
+  <div class="area-alignment">
+    <div class="area-col">
+      <div class="area-col-label acl-nctm">Estándares NCTM</div>
+      <div class="area-pill area-pill-nctm">Números y Operaciones</div>
+      <div class="area-pill area-pill-nctm">Álgebra</div>
+      <div class="area-pill area-pill-nctm">Geometría</div>
+      <div class="area-pill area-pill-nctm">Medición</div>
+      <div class="area-pill area-pill-nctm">Análisis de Datos y Probabilidad</div>
+    </div>
+    <div class="area-arrows">
+      <span class="area-arrow">⟷</span>
+      <span class="area-arrow">⟷</span>
+      <span class="area-arrow">⟷</span>
+      <span class="area-arrow">⟷</span>
+      <span class="area-arrow">⟷</span>
+    </div>
+    <div class="area-col">
+      <div class="area-col-label acl-mep">MEP Costa Rica</div>
+      <div class="area-pill area-pill-mep">Números</div>
+      <div class="area-pill area-pill-mep">Relaciones y Álgebra</div>
+      <div class="area-pill area-pill-mep">Geometría</div>
+      <div class="area-pill area-pill-mep">Medidas</div>
+      <div class="area-pill area-pill-mep">Estadística y Probabilidad</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── ENRICHMENTS ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Enriquecimientos desde el NCTM</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1.2rem; max-width:700px;">Más allá de la convergencia, los estándares NCTM aportan perspectivas complementarias que enriquecen la comprensión y aplicación del currículo del MEP.</p>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-process">Resolución de problemas</span>
+    <h4>Estrategias explícitas de resolución</h4>
+    <p>NCTM lista estrategias concretas que los estudiantes deben aprender y que los docentes deben enseñar explícitamente. Complementan las cuatro fases de resolución del MEP con herramientas específicas:</p>
+    <ul>
+      <li><strong>Usar diagramas</strong> para visualizar relaciones.</li>
+      <li><strong>Buscar patrones</strong> en datos o resultados parciales.</li>
+      <li><strong>Listar todas las posibilidades</strong> de forma sistemática.</li>
+      <li><strong>Probar casos especiales</strong> o valores particulares.</li>
+      <li><strong>Trabajar hacia atrás</strong> desde el resultado esperado.</li>
+      <li><strong>Ensayo y error</strong> organizado (guess and check).</li>
+      <li><strong>Crear un problema equivalente</strong> más simple.</li>
+    </ul>
+  </div>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-process">Razonamiento y prueba</span>
+    <h4>Progresión del razonamiento a lo largo de los ciclos</h4>
+    <p>NCTM describe una progresión deliberada de las habilidades de razonamiento que ayuda a planificar la demanda cognitiva en cada nivel. La conjetura es considerada «el camino principal hacia el descubrimiento»:</p>
+    <ul>
+      <li><strong>Primaria:</strong> Justificaciones informales usando casos específicos y razonamiento intuitivo.</li>
+      <li><strong>Grados medios:</strong> Hacer e investigar conjeturas, argumentar con ejemplos y contraejemplos, usar razonamiento proporcional y geométrico.</li>
+      <li><strong>Secundaria:</strong> Pruebas formales, razonamiento algebraico y deductivo, selección de tipos de prueba apropiados.</li>
+    </ul>
+  </div>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-pedagogy">Equilibrio pedagógico</span>
+    <h4>Comprensión conceptual y fluidez procedimental</h4>
+    <p>NCTM enfatiza que la fluidez computacional requiere un <strong>equilibrio y conexión</strong> entre la comprensión conceptual y la destreza procedimental. Los métodos computacionales practicados sin comprensión se olvidan o se recuerdan incorrectamente; pero la comprensión sin fluidez puede inhibir la resolución de problemas. Ambas dimensiones se refuerzan mutuamente y deben trabajarse de forma integrada. El programa del MEP comparte este principio al promover tanto la comprensión como el dominio de procedimientos en su enfoque constructivista.</p>
+  </div>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-process">Representación</span>
+    <h4>Valor de las representaciones propias del estudiante</h4>
+    <p>NCTM subraya que las representaciones idiosincráticas — aquellas que el estudiante construye por sí mismo para entender un problema — son valiosas y deben respetarse como punto de partida antes de introducir representaciones convencionales. Estas representaciones propias son herramientas genuinas de comprensión que revelan el pensamiento matemático del estudiante y sirven como puente hacia la formalización.</p>
+  </div>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-metacog">Metacognición</span>
+    <h4>Aprendices autónomos y automonitoreo</h4>
+    <p>Una meta principal del NCTM es crear <strong>aprendices autónomos</strong> que definen sus propias metas y monitorean su progreso. Esto conecta directamente con la fase de <em>Control</em> en la resolución de problemas del MEP. NCTM propone preguntas metacognitivas que los docentes pueden modelar en el aula:</p>
+    <ul>
+      <li>«¿Estamos seguros de que entendemos esto antes de continuar?»</li>
+      <li>«¿Cuáles son nuestras opciones?»</li>
+      <li>«¿Tenemos un plan? ¿Estamos progresando o debemos reconsiderar?»</li>
+      <li>«¿Por qué creemos que esto es cierto?»</li>
+    </ul>
+  </div>
+
+  <div class="nctm-enrichment">
+    <span class="enrich-tag et-pedagogy">Comunicación</span>
+    <h4>Progresión de la comunicación escrita</h4>
+    <p>NCTM describe cómo la comunicación matemática escrita debe desarrollarse gradualmente a lo largo de los ciclos, complementando el proceso de Comunicar del MEP:</p>
+    <ul>
+      <li><strong>Primeros grados:</strong> Dibujos y representaciones visuales como forma primaria de comunicación.</li>
+      <li><strong>Grados 3–5:</strong> Secuenciación de ideas, agregar detalles, escritura más elaborada.</li>
+      <li><strong>Grados medios:</strong> Escritura explícita con sentido de audiencia y propósito.</li>
+      <li><strong>Secundaria:</strong> Expresión formal con lenguaje simbólico y argumentativo preciso.</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box" style="background: linear-gradient(135deg, var(--blue-deep) 0%, #1e4a63 100%);">
+    <h4 style="color:#9ecbdf;">Convergencia con los estándares NCTM</h4>
+    <p>La correspondencia entre el programa del MEP y los estándares NCTM no es coincidencia. Ambos se nutren de la investigación contemporánea en educación matemática y comparten una visión donde la resolución de problemas, el razonamiento, la comunicación, las conexiones y las representaciones son procesos centrales. Pero hay otra fuente de influencia directa en nuestro currículo: el marco de evaluación PISA de la OCDE.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 10. PISA ═══════════ -->
+<section class="section fade-in" id="pisa">
+  <div class="section-num">10 — Marco de Evaluación Internacional</div>
+  <h2>PISA 2022 y el Currículo del MEP</h2>
+  <p class="section-lead">El Programa Internacional de Evaluación de los Aprendizajes (PISA) de la OCDE constituye una referencia central y explícita del programa del MEP. Los niveles de complejidad, la definición de competencia matemática y el enfoque en contextos reales del currículo costarricense provienen directamente de este marco.</p>
+
+  <div class="pisa-intro-banner">
+    <h3>¿Qué es PISA y por qué importa?</h3>
+    <p>PISA evalúa la <strong>alfabetización matemática</strong> de estudiantes de 15 años en más de 80 países. No mide la memorización de contenidos sino la capacidad de razonar matemáticamente y usar las matemáticas para resolver problemas en contextos del mundo real. Costa Rica participa en PISA, y nuestro currículo fue diseñado en diálogo directo con este marco. Comprender PISA es comprender la lógica profunda de nuestro programa de estudios.</p>
+  </div>
+
+  <!-- ── MATHEMATICAL LITERACY ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin-bottom:0.4rem;">Alfabetización Matemática</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">PISA 2022 define la alfabetización matemática así:</p>
+
+  <div class="highlight-box" style="background: linear-gradient(135deg, #7c3a2c 0%, #5a2a1e 100%);">
+    <h4 style="color:#e8b89a;">Definición PISA 2022</h4>
+    <p>La alfabetización matemática es la capacidad de un individuo para <strong>razonar matemáticamente</strong> y para <strong>formular, emplear e interpretar</strong> las matemáticas para resolver problemas en una variedad de contextos del mundo real. Incluye conceptos, procedimientos, hechos y herramientas para describir, explicar y predecir fenómenos. Asiste a los individuos a conocer el papel que las matemáticas juegan en el mundo y a tomar los juicios y decisiones bien fundamentados que necesitan los ciudadanos constructivos, comprometidos y reflexivos del siglo XXI.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Conexión directa con el MEP:</strong> El programa del MEP adopta explícitamente esta definición de competencia matemática de PISA/OCDE. Cuando nuestro currículo habla de «competencia matemática», se refiere a esta misma concepción: la capacidad de usar las matemáticas para analizar, razonar y comunicarse con eficacia al plantear, resolver e interpretar problemas.
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── MODELLING CYCLE ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">El Ciclo de Modelización</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">PISA organiza la resolución de problemas como un ciclo donde el razonamiento matemático es central. Este ciclo es la columna vertebral tanto de la evaluación PISA como de la organización de lecciones del MEP.</p>
+
+  <div class="pisa-cycle">
+    <div class="pisa-cycle-step pcs-formulate">
+      <h4>Formular</h4>
+      <p>Transformar una situación real en un problema matemático</p>
+    </div>
+    <span class="pisa-cycle-arrow">→</span>
+    <div class="pisa-cycle-step pcs-employ">
+      <h4>Emplear</h4>
+      <p>Aplicar conceptos, procedimientos y razonamiento</p>
+    </div>
+    <span class="pisa-cycle-arrow">→</span>
+    <div class="pisa-cycle-step pcs-interpret">
+      <h4>Interpretar y Evaluar</h4>
+      <p>Reflexionar sobre la solución en el contexto original</p>
+    </div>
+    <span class="pisa-cycle-arrow" style="opacity:0.2;">⟲</span>
+    <div class="pisa-cycle-step pcs-reasoning">
+      <h4>Razonamiento</h4>
+      <p>Presente en cada fase del ciclo</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>El MEP refleja este ciclo:</strong> La Etapa 1 (Aprendizaje) del MEP — propuesta del problema, trabajo independiente, discusión, clausura — recorre el ciclo completo de Formular → Emplear → Interpretar. La Etapa 2 (Movilización) lo reitera en problemas de mayor complejidad. Las cuatro fases de resolución de problemas (Entendimiento → Diseño → Control → Revisión) son una versión pedagógica del mismo ciclo.
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── LEVELS OF COMPLEXITY - DIRECT ADOPTION ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Niveles de Complejidad: Adopción directa de PISA</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Los tres niveles de complejidad del MEP provienen directamente del marco de competencias PISA. Esta es una de las conexiones más explícitas entre nuestro currículo y el estándar internacional.</p>
+
+  <div class="levels-row">
+    <div class="level-card level-repro">
+      <div class="level-tag">PISA → MEP</div>
+      <h4>Reproducción</h4>
+      <p>Operaciones rutinarias, aplicación directa de definiciones y procedimientos conocidos. PISA lo evalúa en los niveles más bajos de competencia.</p>
+    </div>
+    <div class="level-card level-conn">
+      <div class="level-tag">PISA → MEP</div>
+      <h4>Conexión</h4>
+      <p>Problemas no rutinarios que requieren conectar elementos, trabajar con múltiples representaciones e interpretar con mayor exigencia.</p>
+    </div>
+    <div class="level-card level-refl">
+      <div class="level-tag">PISA → MEP</div>
+      <h4>Reflexión</h4>
+      <p>Pensamiento creativo, planificación de estrategias, generalización y uso integrado de múltiples fuentes. Los niveles más altos de PISA.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── SIX KEY UNDERSTANDINGS ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Seis Comprensiones Fundamentales</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">PISA 2022 identifica seis comprensiones que sustentan el razonamiento matemático escolar. Estas ideas no se enseñan como temas aislados sino que se manifiestan y refuerzan a lo largo de toda la experiencia de aprendizaje — exactamente como el MEP propone con su integración vertical.</p>
+
+  <div class="pisa-understanding-grid">
+    <div class="pisa-understanding">
+      <h4>Cantidad y sistemas numéricos</h4>
+      <p>Comprender los números, sus propiedades algebraicas y cómo sistemas más amplios permiten resolver ecuaciones más complejas.</p>
+    </div>
+    <div class="pisa-understanding">
+      <h4>Abstracción y representación simbólica</h4>
+      <p>Apreciar cómo la abstracción simplifica la realidad y cómo las representaciones permiten comunicar ideas de forma eficiente.</p>
+    </div>
+    <div class="pisa-understanding">
+      <h4>Estructuras y regularidades</h4>
+      <p>Ver la estructura matemática en expresiones y situaciones, encontrando patrones que reemplazan reglas mecánicas con comprensión conceptual.</p>
+    </div>
+    <div class="pisa-understanding">
+      <h4>Relaciones funcionales</h4>
+      <p>Reconocer cómo las cantidades dependen unas de otras, desde la proporcionalidad directa hasta funciones más complejas.</p>
+    </div>
+    <div class="pisa-understanding">
+      <h4>Modelización matemática</h4>
+      <p>Usar modelos como lente para entender el mundo real: simplificaciones que explican, describen y permiten hacer predicciones.</p>
+    </div>
+    <div class="pisa-understanding">
+      <h4>Variabilidad como corazón de la estadística</h4>
+      <p>Entender que la variación es inherente a los datos y que las decisiones deben tomarse reconociendo la incertidumbre y sus límites.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Para el aula:</strong> Estas seis comprensiones cruzan todas las áreas del MEP. La modelización aparece en Relaciones y Álgebra; la variabilidad en Estadística y Probabilidad; las estructuras en Geometría y Números. Como docentes, podemos usar estas comprensiones como hilos conductores que dan coherencia a lo que a veces parece una lista desconectada de temas.
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── CONTENT CATEGORIES ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Categorías de Contenido</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">PISA organiza el contenido en cuatro categorías fenomenológicas. El MEP usa cinco áreas curriculares. Ambos cubren el mismo territorio matemático.</p>
+
+  <div class="pisa-content-map">
+    <div class="pcm-col">
+      <div class="pcm-label pcm-pisa">PISA 2022 (OCDE)</div>
+      <div class="pcm-pill pcm-pill-pisa">Cantidad</div>
+      <div class="pcm-pill pcm-pill-pisa">Cambio y Relaciones</div>
+      <div class="pcm-pill pcm-pill-pisa">Espacio y Forma</div>
+      <div class="pcm-pill pcm-pill-pisa">Incertidumbre y Datos</div>
+    </div>
+    <div class="pcm-arrows">
+      <span class="pcm-arrow">⟷</span>
+      <span class="pcm-arrow">⟷</span>
+      <span class="pcm-arrow">⟷</span>
+      <span class="pcm-arrow">⟷</span>
+    </div>
+    <div class="pcm-col">
+      <div class="pcm-label pcm-mep">MEP Costa Rica</div>
+      <div class="pcm-pill pcm-pill-mep">Números · Medidas</div>
+      <div class="pcm-pill pcm-pill-mep">Relaciones y Álgebra</div>
+      <div class="pcm-pill pcm-pill-mep">Geometría</div>
+      <div class="pcm-pill pcm-pill-mep">Estadística y Probabilidad</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── CONTEXTS ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Contextos para los Problemas</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Tanto PISA como el MEP insisten en que los problemas deben situarse en contextos significativos del mundo real.</p>
+
+  <div class="mapping-table-wrap">
+    <table class="mapping-table">
+      <thead>
+        <tr>
+          <th style="color:#7c3a2c; background:rgba(124,58,44,0.04);">Contexto PISA</th>
+          <th style="color:var(--emerald); background:rgba(61,139,99,0.04);">Contexto MEP</th>
+          <th>Ejemplos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Personal</strong></td>
+          <td><strong>Personal</strong></td>
+          <td>Compras, salud personal, juegos, transporte, finanzas personales, recreación.</td>
+        </tr>
+        <tr>
+          <td><strong>Ocupacional</strong></td>
+          <td><strong>—</strong> (integrado en comunitario)</td>
+          <td>Medición de materiales, costos, control de calidad, diseño, inventarios.</td>
+        </tr>
+        <tr>
+          <td><strong>Social</strong></td>
+          <td><strong>Comunitario</strong></td>
+          <td>Sistemas de votación, transporte público, políticas, demografía, economía, salud pública.</td>
+        </tr>
+        <tr>
+          <td><strong>Científico</strong></td>
+          <td><strong>Científico</strong></td>
+          <td>Clima, ecología, medicina, ciencias espaciales, genética, problemas intramatemáticos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 21ST CENTURY SKILLS ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Habilidades del Siglo XXI</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">PISA 2022 introduce explícitamente ocho habilidades del siglo XXI que la alfabetización matemática desarrolla. Estas conectan con los ejes de actitudes y procesos del MEP.</p>
+
+  <div class="pisa-skills-wrap">
+    <span class="pisa-skill">Pensamiento crítico</span>
+    <span class="pisa-skill">Creatividad</span>
+    <span class="pisa-skill">Investigación e indagación</span>
+    <span class="pisa-skill">Autodirección, iniciativa y persistencia</span>
+    <span class="pisa-skill">Uso de la información</span>
+    <span class="pisa-skill">Pensamiento sistémico</span>
+    <span class="pisa-skill">Comunicación</span>
+    <span class="pisa-skill">Reflexión</span>
+  </div>
+
+  <div class="callout">
+    <strong>Conexión con el MEP:</strong> La <em>persistencia</em> de PISA es la <em>perseverancia</em> del MEP. La <em>comunicación</em> corresponde al proceso matemático de Comunicar. El <em>pensamiento crítico</em> se cultiva a través de Razonar y argumentar. El <em>pensamiento sistémico</em> conecta con Conectar y establecer relaciones. PISA enfatiza que estas habilidades no se enseñan como temas separados sino que emergen naturalmente de una enseñanza matemática rica — exactamente lo que propone el MEP.
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── COMPUTATIONAL THINKING ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Pensamiento Computacional</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Una novedad significativa del marco PISA 2022 es la incorporación del pensamiento computacional como componente de la alfabetización matemática.</p>
+
+  <div class="nctm-enrichment" style="border-left-color:#7c3a2c;">
+    <span class="enrich-tag" style="background:rgba(124,58,44,0.1); color:#7c3a2c;">Nuevo en PISA 2022</span>
+    <h4>Del cálculo al razonamiento computacional</h4>
+    <p>PISA 2022 reconoce que la relación entre el pensamiento matemático y el pensamiento computacional es sinérgica y recíproca. Las habilidades de pensamiento computacional relevantes para las matemáticas incluyen:</p>
+    <ul>
+      <li><strong>Reconocimiento de patrones</strong> — identificar regularidades en datos y estructuras.</li>
+      <li><strong>Descomposición</strong> — dividir problemas complejos en partes manejables.</li>
+      <li><strong>Abstracción</strong> — identificar las características esenciales de un problema.</li>
+      <li><strong>Pensamiento algorítmico</strong> — diseñar secuencias de pasos para resolver problemas.</li>
+      <li><strong>Uso de herramientas computacionales</strong> — determinar cuándo y cómo un recurso digital puede ayudar.</li>
+    </ul>
+    <p style="margin-top:0.6rem;">Esto refuerza y amplía el eje de <strong>Tecnologías Digitales</strong> del MEP, sugiriendo que el uso de tecnología en el aula debe ir más allá de la calculadora hacia la modelización dinámica, las simulaciones y la exploración interactiva de conceptos matemáticos.</p>
+  </div>
+
+  <!-- ── BRIDGE TO POLYA ── -->
+  <div class="highlight-box" style="background: linear-gradient(135deg, #7c3a2c 0%, #5a2a1e 100%);">
+    <h4 style="color:#e8b89a;">De PISA a la raíz: Polya</h4>
+    <p>Tanto el marco PISA como los estándares NCTM heredan su enfoque de resolución de problemas de un origen común: la obra de George Polya (1887–1985), cuyo libro <em>How to Solve It</em> (1945) sentó las bases del pensamiento heurístico moderno. Las cuatro fases de resolución de problemas del MEP son una adaptación directa del método de Polya.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ 11. POLYA ═══════════ -->
+<section class="section fade-in" id="polya">
+  <div class="section-num">11 — Fundamento Pedagógico</div>
+  <h2>Polya y el Arte de Resolver Problemas</h2>
+  <p class="section-lead">George Polya, matemático húngaro-estadounidense, transformó la enseñanza de las matemáticas con <em>How to Solve It</em> (1945). Su método heurístico de cuatro fases es la columna vertebral de las fases de resolución de problemas del programa del MEP.</p>
+
+  <div class="polya-intro-banner">
+    <h3>¿Por qué Polya sigue vigente?</h3>
+    <p>Después de casi 80 años, el método de Polya permanece como referencia central de la educación matemática mundial. Los estándares NCTM, el marco PISA y el currículo del MEP incorporan sus ideas. Para un futuro docente de matemática, comprender a Polya no es un ejercicio histórico: es entender la lógica profunda de cómo enseñamos a resolver problemas.</p>
+  </div>
+
+  <div class="polya-quote">
+    <p>«Un gran descubrimiento resuelve un gran problema, pero hay un grano de descubrimiento en la solución de cualquier problema. Tu problema puede ser modesto; pero si desafía tu curiosidad y pone en juego tus facultades inventivas, y si lo resolvés por tus propios medios, podés experimentar la tensión y disfrutar el triunfo del descubrimiento.»</p>
+    <span class="pq-attr">— George Polya, <em>How to Solve It</em>, Prefacio</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── THE FOUR PHASES: POLYA → MEP ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Las Cuatro Fases: de Polya al MEP</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Las cuatro fases del programa del MEP son una adaptación directa del método de Polya. Esta tabla muestra la correspondencia lado a lado con las preguntas originales que Polya propone para cada fase.</p>
+
+  <div class="polya-phase-map">
+    <div class="ppm-header ppm-h-polya">Polya (1945)</div>
+    <div></div>
+    <div class="ppm-header ppm-h-mep">MEP Costa Rica</div>
+
+    <div class="ppm-polya-cell">
+      <h4>I. Comprender el Problema</h4>
+      <p>¿Cuál es la incógnita? ¿Cuáles son los datos? ¿Cuál es la condición? ¿Es posible satisfacerla? ¿Es suficiente, insuficiente, redundante o contradictoria? Dibujá una figura. Introducí notación adecuada.</p>
+    </div>
+    <div class="ppm-arrow-col">⟷</div>
+    <div class="ppm-mep-cell">
+      <h4>1. Entendimiento del problema</h4>
+      <p>Comprender qué pide el problema, identificar datos, condiciones y lo que se busca determinar.</p>
+    </div>
+
+    <div class="ppm-polya-cell">
+      <h4>II. Concebir un Plan</h4>
+      <p>¿Lo has visto antes? ¿Conocés un problema relacionado? ¿Un teorema útil? Mirá la incógnita y pensá en un problema familiar con la misma incógnita o una similar. ¿Podés replantear el problema? ¿Resolver una parte? ¿Usar todos los datos?</p>
+    </div>
+    <div class="ppm-arrow-col">⟷</div>
+    <div class="ppm-mep-cell">
+      <h4>2. Diseño de una estrategia</h4>
+      <p>Elaborar un plan de acción: elegir herramientas, plantear hipótesis y definir el camino a seguir.</p>
+    </div>
+
+    <div class="ppm-polya-cell">
+      <h4>III. Ejecutar el Plan</h4>
+      <p>Ejecutá tu plan de solución. Verificá <em>cada paso</em>. ¿Podés ver claramente que el paso es correcto? ¿Podés demostrar que es correcto?</p>
+    </div>
+    <div class="ppm-arrow-col">⟷</div>
+    <div class="ppm-mep-cell">
+      <h4>3. Control y ejecución</h4>
+      <p>Implementar la estrategia diseñada, monitoreando el proceso y ajustando cuando sea necesario.</p>
+    </div>
+
+    <div class="ppm-polya-cell">
+      <h4>IV. Visión Retrospectiva</h4>
+      <p>¿Podés verificar el resultado? ¿Podés verificar el argumento? ¿Podés derivar el resultado de forma diferente? ¿Podés usar el resultado o el método para algún otro problema?</p>
+    </div>
+    <div class="ppm-arrow-col">⟷</div>
+    <div class="ppm-mep-cell">
+      <h4>4. Revisión y comprobación</h4>
+      <p>Verificar el resultado, evaluar la solución obtenida y reflexionar sobre el proceso y posibles generalizaciones.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>La cuarta fase es la más descuidada y la más valiosa:</strong> Polya insistía en que «Looking Back» (mirar atrás) es donde ocurre el aprendizaje más profundo. Al revisar la solución, el estudiante puede consolidar su conocimiento, descubrir conexiones inesperadas y desarrollar la capacidad de transferir lo aprendido a problemas nuevos. El MEP refleja esto al incluir «Revisión y comprobación» como fase explícita, pero Polya advierte que es la fase más frecuentemente omitida en la práctica docente.
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── HEURISTIC QUESTIONS ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Las Preguntas Heurísticas de Polya</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">El corazón del método de Polya no son las fases en sí, sino las <strong>preguntas</strong> que el docente modela y que el estudiante gradualmente internaliza. Estas preguntas son herramientas metacognitivas que guían el pensamiento sin dar la respuesta.</p>
+
+  <div class="polya-question-grid">
+    <div class="polya-q-card pq-understand">
+      <span class="pq-label">Fase I · Comprender</span>
+      <h4>Preguntas para el entendimiento</h4>
+      <p>¿Cuál es la incógnita? ¿Cuáles son los datos? ¿Cuál es la condición? ¿Podés enunciar el problema con tus propias palabras? ¿Podés dibujar una figura? ¿Podés señalar las partes principales del problema?</p>
+    </div>
+    <div class="polya-q-card pq-plan">
+      <span class="pq-label">Fase II · Planificar</span>
+      <h4>Preguntas para el diseño</h4>
+      <p>¿Has visto un problema similar antes? ¿Conocés un problema relacionado? ¿Podés usar su método? ¿Podés replantear el problema de otra forma? ¿Resolver un caso más simple primero? ¿Usar solo parte de la condición?</p>
+    </div>
+    <div class="polya-q-card pq-execute">
+      <span class="pq-label">Fase III · Ejecutar</span>
+      <h4>Preguntas para el control</h4>
+      <p>¿Estás siguiendo tu plan? ¿Podés ver claramente que cada paso es correcto? ¿Podés demostrarlo? ¿Usaste todos los datos? ¿Tomaste en cuenta toda la condición?</p>
+    </div>
+    <div class="polya-q-card pq-look">
+      <span class="pq-label">Fase IV · Revisar</span>
+      <h4>Preguntas para la reflexión</h4>
+      <p>¿Podés verificar el resultado? ¿Podés obtenerlo de otra manera? ¿Podés verlo de un vistazo? ¿Podés usar el resultado o el método para algún otro problema? ¿Qué aprendiste?</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Para el docente MEP:</strong> Estas preguntas corresponden directamente a lo que el programa del MEP espera durante la <em>Discusión interactiva y comunicativa</em> (Etapa 1, paso 3). El docente no da respuestas sino que formula preguntas que orientan el pensamiento del estudiante. Polya lo llama <em>ayuda discreta</em>: «El docente debe ayudar, pero no demasiado ni muy poco, para que el estudiante tenga una parte razonable del trabajo.»
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── THE ROLE OF THE TEACHER ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">El Rol del Docente según Polya</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Polya dedica la primera parte de su libro al aula y al rol docente. Sus principios sobre cómo debe actuar el docente coinciden asombrosamente con las indicaciones metodológicas del programa del MEP.</p>
+
+  <div class="polya-quote">
+    <p>«Si [el docente] llena su tiempo con ejercicios rutinarios, mata el interés de sus estudiantes, obstaculiza su desarrollo intelectual y desaprovecha su oportunidad. Pero si desafía la curiosidad de sus estudiantes con problemas proporcionados a su conocimiento, y les ayuda a resolverlos con preguntas estimulantes, puede darles gusto por el pensamiento independiente y algunos medios para lograrlo.»</p>
+    <span class="pq-attr">— George Polya, <em>How to Solve It</em>, Prefacio a la primera edición</span>
+  </div>
+
+  <div class="card-grid cols-2" style="margin-top:1rem;">
+    <div class="card">
+      <div class="card-icon icon-violet">P</div>
+      <h3>Polya: Imitación y práctica</h3>
+      <p>El docente que desea desarrollar la capacidad de resolución de problemas debe <strong>modelar el proceso</strong>: plantear las mismas preguntas heurísticas frente a la clase, dramatizar su propio proceso de pensamiento. El estudiante eventualmente internaliza estas preguntas y las usa de forma autónoma. Se aprende a resolver problemas <em>resolviendo problemas</em>.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-green">M</div>
+      <h3>MEP: Organización de lecciones</h3>
+      <p>La Etapa 1 del MEP replica esta estructura: el docente propone un problema (no una rutina), da tiempo para trabajo independiente (el estudiante se enfrenta al problema), luego guía la discusión interactiva (modelando preguntas heurísticas) y finalmente formaliza en la clausura. El estudiante tiene su <em>parte razonable del trabajo</em>.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── KEY HEURISTIC STRATEGIES ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Estrategias Heurísticas Clave</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Polya identifica varias estrategias heurísticas que los estudiantes pueden desarrollar a lo largo de su formación. Estas estrategias alimentan los procesos matemáticos del MEP y las habilidades que evalúa PISA.</p>
+
+  <div class="card-grid cols-3">
+    <div class="card">
+      <h3>Problema análogo</h3>
+      <p>Buscar un problema similar que ya se haya resuelto y adaptar su método. Conecta con el proceso MEP de <em>Conectar y establecer relaciones</em>.</p>
+    </div>
+    <div class="card">
+      <h3>Caso particular</h3>
+      <p>Resolver primero un caso más simple o especial para encontrar un patrón o ganar intuición. Base de la <em>generalización</em> en el MEP.</p>
+    </div>
+    <div class="card">
+      <h3>Trabajar hacia atrás</h3>
+      <p>Partir del resultado deseado y razonar en reversa hacia los datos. Fortalece el <em>razonamiento deductivo</em>.</p>
+    </div>
+    <div class="card">
+      <h3>Descomponer el problema</h3>
+      <p>Dividir el problema en subproblemas manejables. Conecta con el <em>pensamiento computacional</em> de PISA 2022.</p>
+    </div>
+    <div class="card">
+      <h3>Dibujar una figura</h3>
+      <p>Visualizar el problema mediante una representación gráfica. Conecta con el proceso MEP de <em>Representar</em> de diversas formas.</p>
+    </div>
+    <div class="card">
+      <h3>Introducir notación</h3>
+      <p>Usar símbolos y variables para traducir el problema a lenguaje matemático. Conecta con el proceso MEP de <em>Comunicar</em> y con <em>Formular</em> de PISA.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── POLYA AND THE MEP'S VISION ── -->
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--forest); margin:1.5rem 0 0.4rem;">Polya y la Visión Actitudinal del MEP</h3>
+  <p style="font-size:0.93rem; color:var(--ink-light); margin-bottom:1rem; max-width:700px;">Polya no solo habla de técnicas: su libro está impregnado de una filosofía sobre las actitudes necesarias para hacer matemáticas. Estas coinciden con el eje de Actitudes y Creencias Positivas del MEP.</p>
+
+  <div class="card-grid cols-2">
+    <div class="card">
+      <div class="card-icon icon-gold">⭐</div>
+      <h3>Perseverancia y curiosidad</h3>
+      <p>Polya insiste en que resolver problemas requiere <strong>persistencia</strong> y <strong>curiosidad intelectual</strong>. Describe cómo los estudiantes deben estar dispuestos a intentar, fracasar, reconsiderar y volver a intentar. Esto es la <em>perseverancia</em> del MEP en su forma más pura.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-violet">💡</div>
+      <h3>Experiencia del descubrimiento</h3>
+      <p>El prefacio de Polya describe cómo resolver un problema por cuenta propia produce «la tensión y el triunfo del descubrimiento», experiencias que a una edad formativa «pueden crear un gusto por el trabajo mental y dejar huella en la mente y el carácter para toda la vida». Esto fundamenta el <em>disfrute de las matemáticas</em> del MEP.</p>
+    </div>
+  </div>
+
+  <div class="polya-quote">
+    <p>«El docente debería ponerse en el lugar del estudiante, debería ver el caso del estudiante, debería tratar de entender qué está pasando en su mente, y hacer una pregunta o indicar un paso que <em>podría habérsele ocurrido al estudiante mismo</em>.»</p>
+    <span class="pq-attr">— George Polya, <em>How to Solve It</em>, Part I: In the Classroom, §1</span>
+  </div>
+
+  <!-- ── GRAND CONCLUSION ── -->
+  <div class="highlight-box" style="background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);">
+    <h4 style="color:var(--gold-light);">Un currículo con raíces profundas y alcance global</h4>
+    <p>El programa de Matemáticas del MEP no es un documento aislado. Sus raíces se hunden en la tradición heurística de <strong>Polya</strong> (1945), se ramifican a través de los estándares del <strong>NCTM</strong> (2000) y florecen en el marco de competencias de <strong>PISA/OCDE</strong> (2022). Las cuatro fases de resolución de problemas, los cinco procesos matemáticos, los niveles de complejidad, la organización de lecciones en dos etapas y el énfasis en actitudes positivas — todo tiene fundamentación teórica y validación internacional.</p>
+    <p style="margin-top:0.6rem;">Como futuros docentes de matemática en Costa Rica, no solo enseñamos contenidos: somos herederos de una tradición pedagógica que valora el pensamiento, la curiosidad y la perseverancia. Nuestra responsabilidad — y nuestro privilegio — es llevar esta visión a cada aula, con cada estudiante, todos los días.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+function toggleExpand(id) {
+  const el = document.getElementById(id);
+  const body = el.querySelector('.expandable-body');
+  const inner = el.querySelector('.expandable-body-inner');
+  
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    body.style.maxHeight = '0';
+  } else {
+    // Close others in the same section
+    el.closest('.section').querySelectorAll('.expandable.open').forEach(other => {
+      if (other !== el) {
+        other.classList.remove('open');
+        other.querySelector('.expandable-body').style.maxHeight = '0';
+      }
+    });
+    el.classList.add('open');
+    body.style.maxHeight = inner.scrollHeight + 40 + 'px';
+  }
+}
+
+// Initialize open expandables
+document.querySelectorAll('.expandable.open').forEach(el => {
+  const body = el.querySelector('.expandable-body');
+  const inner = el.querySelector('.expandable-body-inner');
+  body.style.maxHeight = inner.scrollHeight + 40 + 'px';
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.toc a');
+const tocNav = document.querySelector('.toc');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  const offset = tocNav.offsetHeight + 20;
+  
+  sections.forEach(section => {
+    const top = section.offsetTop - offset - 60;
+    if (window.scrollY >= top) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>

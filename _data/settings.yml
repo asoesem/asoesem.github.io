@@ -27,6 +27,8 @@ menu_settings:
       submenu:
       - url: "/planificador/"
         title: "Planificador"
+      - url: "/curriculo-mep"
+        title: "Currículo del MEP"
       - url: "/taxonomia-bloom"
         title: "Taxonomía de Bloom"
       - url: "/generador-charla-puntos"
