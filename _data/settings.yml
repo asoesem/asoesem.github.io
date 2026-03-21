@@ -31,6 +31,8 @@ menu_settings:
         title: "Currículo del MEP"
       - url: "/taxonomia-bloom"
         title: "Taxonomía de Bloom"
+      - url: "/metodo-polya"
+        title: "Método de Pólya"
       - url: "/generador-charla-puntos"
         title: "Charla de Puntos"
       - url: "/generador-charla-numerica"

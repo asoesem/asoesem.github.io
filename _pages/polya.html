@@ -1,0 +1,2421 @@
+---
+layout: default
+title: El Método de Polya — Resolución de Problemas Matemáticos
+description: "Un recorrido detallado por las cuatro fases del método de George Pólya para la resolución de problemas matemáticos: comprender, planificar, ejecutar y revisar."
+permalink: /metodo-polya
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1410;
+  --cream: #f6f1e7;
+  --parchment: #ede4d3;
+  --gold: #c5953a;
+  --gold-light: #e8c96a;
+  --gold-dark: #8a6820;
+  --rust: #a0522d;
+  --teal: #2a7a6d;
+  --teal-light: #3aa391;
+  --teal-dark: #1d5a50;
+  --blue-deep: #2c4a6e;
+  --blue-light: #4a7eb5;
+  --violet: #6b4c8a;
+  --violet-light: #8e6db5;
+  --red-warm: #b54a3a;
+  --phase1: #2a7a6d;
+  --phase2: #c5953a;
+  --phase3: #a0522d;
+  --phase4: #6b4c8a;
+  --shadow-soft: 0 2px 20px rgba(26,20,16,0.08);
+  --shadow-card: 0 4px 30px rgba(26,20,16,0.12);
+  --shadow-elevated: 0 12px 50px rgba(26,20,16,0.18);
+}
+
+/* ── DARK MODE ─────────────────────────────────────────────────────────── */
+:root[dark] {
+  --ink:            #e2d9c4;
+  --cream:          #1a180e;
+  --parchment:      #272310;
+  --gold:           #c8a050;
+  --gold-light:     #dfc070;
+  --gold-dark:      #907030;
+  --rust:           #c07850;
+  --teal:           #4a9e8c;
+  --teal-light:     #5ab8a4;
+  --teal-dark:      #2d7a6a;
+  --blue-deep:      #5888b0;
+  --blue-light:     #78a8d0;
+  --violet:         #9070b0;
+  --violet-light:   #b090d0;
+  --red-warm:       #c86858;
+  --phase1:         #3d8a78;
+  --phase2:         #b88c38;
+  --phase3:         #a86838;
+  --phase4:         #806898;
+  --shadow-soft:    0 2px 20px rgba(0,0,0,0.4);
+  --shadow-card:    0 4px 30px rgba(0,0,0,0.5);
+  --shadow-elevated: 0 12px 50px rgba(0,0,0,0.6);
+}
+
+/* Base */
+:root[dark] body {
+  background: #14120a;
+  color: var(--ink);
+}
+
+/* Hero — keep its own gradient but darken base */
+:root[dark] .hero {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(61,138,120,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(200,160,80,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(128,104,152,0.05) 0%, transparent 50%),
+    #14120a;
+}
+:root[dark] .hero::before {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(226,217,196,0.025) 39px, rgba(226,217,196,0.025) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(226,217,196,0.015) 39px, rgba(226,217,196,0.015) 40px);
+}
+:root[dark] .hero h1 { color: var(--ink); }
+:root[dark] .hero-description { color: rgba(226,217,196,0.6); }
+:root[dark] .hero-author { color: var(--rust); }
+
+/* Sticky nav */
+:root[dark] .sticky-nav {
+  background: rgba(20,18,10,0.95);
+  border-bottom: 1px solid rgba(226,217,196,0.07);
+}
+:root[dark] .sticky-nav a { color: rgba(226,217,196,0.6); }
+
+/* Context / intro section */
+:root[dark] .context-section { background: #1e1c10; }
+:root[dark] .context-main h2 { color: var(--ink); }
+:root[dark] .context-main p { color: rgba(226,217,196,0.7); }
+:root[dark] .context-sidebar { background: #272310; }
+:root[dark] .context-sidebar blockquote { color: var(--ink); }
+:root[dark] .context-sidebar cite { color: var(--gold); }
+
+/* Overview / diagram section */
+:root[dark] .overview-section { background: #14120a; }
+:root[dark] .overview-section h2 { color: var(--ink); }
+:root[dark] .overview-subtitle { color: rgba(226,217,196,0.55); }
+:root[dark] .phase-diagram-card:not(:last-child)::after {
+  background: repeating-linear-gradient(to bottom, rgba(226,217,196,0.12) 0px, rgba(226,217,196,0.12) 6px, transparent 6px, transparent 12px);
+}
+:root[dark] .phase-diagram-content h3 { color: var(--ink); }
+:root[dark] .phase-diagram-content p { color: rgba(226,217,196,0.65); }
+
+/* Phase sections */
+:root[dark] .phase-section { background: #14120a; }
+:root[dark] .phase-header-text h2 { color: var(--ink); }
+:root[dark] .phase-intro { color: rgba(226,217,196,0.72); }
+:root[dark] .role-tab {
+  border-color: rgba(226,217,196,0.15);
+  color: var(--ink);
+  background: transparent;
+}
+:root[dark] .role-tab:hover { border-color: rgba(226,217,196,0.35); }
+:root[dark] .q-card { background: #252210; }
+:root[dark] .q-card .q-text { color: var(--ink); }
+:root[dark] .q-card .q-note { color: rgba(226,217,196,0.5); }
+:root[dark] .strategy-box { background: #1e1c10; box-shadow: none; border: 1px solid rgba(226,217,196,0.06); }
+:root[dark] .strategy-box h4 { color: var(--ink); }
+:root[dark] .strategy-item { background: #272310; color: rgba(226,217,196,0.75); }
+:root[dark] .strategy-item strong { color: var(--ink); }
+:root[dark] .connection-note {
+  background: linear-gradient(135deg, rgba(61,138,120,0.08), rgba(128,104,152,0.08));
+  border-color: rgba(226,217,196,0.07);
+}
+:root[dark] .connection-note p { color: rgba(226,217,196,0.65); }
+:root[dark] .connection-note strong { color: var(--ink); }
+:root[dark] .concept-highlight { background: linear-gradient(to bottom, transparent 60%, rgba(200,160,80,0.18) 60%); }
+
+/* Heuristics section — already dark-on-dark in light mode; keep it very dark */
+:root[dark] .heuristics-section { background: #0e0c06; }
+:root[dark] .heuristics-section h2 { color: var(--ink); }
+:root[dark] .heuristics-subtitle { color: rgba(226,217,196,0.45); }
+:root[dark] .heuristic-category-header { border-bottom-color: rgba(226,217,196,0.08); }
+:root[dark] .heuristic-category-header h3 { color: var(--ink); }
+:root[dark] .heuristic-category-header .cat-desc { color: rgba(226,217,196,0.35); }
+:root[dark] .heuristic-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(226,217,196,0.07);
+}
+:root[dark] .heuristic-card h4 { color: var(--gold); }
+:root[dark] .heuristic-card p { color: rgba(226,217,196,0.6); }
+:root[dark] .heuristic-card .h-en { color: rgba(226,217,196,0.25); }
+
+/* Teacher section */
+:root[dark] .teacher-deep-section { background: linear-gradient(180deg, #1a1e24 0%, #14120a 100%); }
+:root[dark] .teacher-deep-section h2 { color: var(--blue-deep); }
+:root[dark] .teacher-deep-subtitle { color: rgba(226,217,196,0.5); }
+:root[dark] .mandamiento { background: #1c1a10; border: 1px solid rgba(226,217,196,0.05); box-shadow: none; }
+:root[dark] .mandamiento h4 { color: var(--blue-light); }
+:root[dark] .mandamiento p { color: rgba(226,217,196,0.6); }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(42,122,109,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(197,149,58,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(107,76,138,0.05) 0%, transparent 50%),
+    var(--cream);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(26,20,16,0.03) 39px, rgba(26,20,16,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(26,20,16,0.02) 39px, rgba(26,20,16,0.02) 40px);
+  pointer-events: none;
+}
+
+.hero-ornament {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 1s ease-out 0.2s both;
+}
+
+.hero-subtitle-top {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 1s ease-out 0.4s both;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  animation: fadeSlideUp 1s ease-out 0.6s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-dark);
+}
+
+.hero-author {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--rust);
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 1s ease-out 0.8s both;
+}
+
+.hero-description {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.15rem;
+  max-width: 640px;
+  color: rgba(26,20,16,0.7);
+  line-height: 1.85;
+  margin-bottom: 3rem;
+  animation: fadeSlideUp 1s ease-out 1s both;
+}
+
+.hero-phases-preview {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeSlideUp 1s ease-out 1.2s both;
+}
+
+.phase-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.phase-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.phase-pill .num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.pill-1 { background: var(--phase1); }
+.pill-2 { background: var(--phase2); color: var(--ink); }
+.pill-2 .num { background: rgba(0,0,0,0.15); color: var(--ink); }
+.pill-3 { background: var(--phase3); }
+.pill-4 { background: var(--phase4); }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite 2s;
+}
+
+.scroll-indicator svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--gold);
+  opacity: 0.5;
+}
+
+/* ===== CONTEXT / INTRO ===== */
+.context-section {
+  padding: 6rem 2rem;
+  background: white;
+  position: relative;
+}
+
+.context-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.context-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.context-main h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.context-main p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  color: rgba(26,20,16,0.75);
+  margin-bottom: 1.2rem;
+  line-height: 1.85;
+}
+
+.context-sidebar {
+  background: var(--parchment);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.context-sidebar::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  color: var(--gold);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.context-sidebar blockquote {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+}
+
+.context-sidebar cite {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--rust);
+  font-weight: 600;
+}
+
+/* ===== DIAGRAM OVERVIEW ===== */
+.overview-section {
+  padding: 6rem 2rem;
+  background: var(--cream);
+}
+
+.overview-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.overview-subtitle {
+  text-align: center;
+  font-family: 'Source Serif 4', serif;
+  color: rgba(26,20,16,0.6);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.phases-diagram {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  position: relative;
+}
+
+.phase-diagram-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  position: relative;
+  align-items: start;
+}
+
+.phase-diagram-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 39px;
+  top: 80px;
+  bottom: -10px;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, rgba(26,20,16,0.15) 0px, rgba(26,20,16,0.15) 6px, transparent 6px, transparent 12px);
+}
+
+.phase-number-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.phase-number-circle .roman {
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pnc-1 { background: var(--phase1); box-shadow: 0 4px 20px rgba(42,122,109,0.3); }
+.pnc-2 { background: var(--phase2); box-shadow: 0 4px 20px rgba(197,149,58,0.3); }
+.pnc-3 { background: var(--phase3); box-shadow: 0 4px 20px rgba(160,82,45,0.3); }
+.pnc-4 { background: var(--phase4); box-shadow: 0 4px 20px rgba(107,76,138,0.3); }
+
+.phase-diagram-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+
+.phase-diagram-content p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  color: rgba(26,20,16,0.7);
+  line-height: 1.8;
+}
+
+/* ===== PHASE SECTIONS ===== */
+.phase-section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.phase-section:nth-child(odd) { background: white; }
+.phase-section:nth-child(even) { background: var(--cream); }
+
+.phase-header {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.phase-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.badge-1 { background: var(--phase1); }
+.badge-2 { background: var(--phase2); }
+.badge-3 { background: var(--phase3); }
+.badge-4 { background: var(--phase4); }
+
+.phase-header-text {
+  padding-top: 0.75rem;
+}
+
+.phase-header-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+.phase-body {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.phase-intro {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(26,20,16,0.75);
+  margin-bottom: 3rem;
+  max-width: 750px;
+}
+
+/* Role tabs */
+.role-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.role-tab {
+  padding: 0.7rem 1.5rem;
+  border: 2px solid rgba(26,20,16,0.12);
+  background: transparent;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--ink);
+}
+
+.role-tab:hover { border-color: rgba(26,20,16,0.3); }
+
+.role-tab.active {
+  border-color: currentColor;
+  color: white;
+}
+
+.role-tab.student-tab.active { background: var(--teal); border-color: var(--teal); }
+.role-tab.teacher-tab.active { background: var(--blue-deep); border-color: var(--blue-deep); }
+
+.role-content { display: none; }
+.role-content.active { display: block; }
+
+/* Question cards */
+.questions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.q-card {
+  background: var(--parchment);
+  border-radius: 12px;
+  padding: 1.5rem 1.8rem;
+  border-left: 4px solid;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.q-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.q-card.student-card { border-left-color: var(--teal); }
+.q-card.teacher-card { border-left-color: var(--blue-deep); }
+
+.q-card .q-icon {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.q-card .q-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.q-card .q-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(26,20,16,0.55);
+  line-height: 1.6;
+}
+
+/* Strategy boxes */
+.strategy-box {
+  background: white;
+  border-radius: 14px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.strategy-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.strategy-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.strategy-item {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  background: var(--parchment);
+  border-radius: 8px;
+  color: rgba(26,20,16,0.8);
+  line-height: 1.6;
+}
+
+.strategy-item strong {
+  color: var(--ink);
+}
+
+/* ===== CONNECTIONS / ARROWS ===== */
+.connection-note {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, rgba(42,122,109,0.06), rgba(107,76,138,0.06));
+  border-radius: 14px;
+  border: 1px solid rgba(26,20,16,0.06);
+  margin-top: 2rem;
+}
+
+.connection-note p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  color: rgba(26,20,16,0.7);
+  line-height: 1.8;
+}
+
+.connection-note strong {
+  color: var(--ink);
+}
+
+/* ===== HEURISTICS CATALOG ===== */
+.heuristics-section {
+  padding: 6rem 2rem;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.heuristics-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--cream);
+}
+
+.heuristics-subtitle {
+  text-align: center;
+  font-family: 'Source Serif 4', serif;
+  color: rgba(246,241,231,0.5);
+  margin-bottom: 1.5rem;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heuristics-count {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3.5rem;
+  opacity: 0.7;
+}
+
+.heuristic-category {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.heuristic-category-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(246,241,231,0.1);
+}
+
+.heuristic-category-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.heuristic-category-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.cat-strategy .heuristic-category-icon { background: rgba(42,122,109,0.25); }
+.cat-reasoning .heuristic-category-icon { background: rgba(197,149,58,0.25); }
+.cat-representation .heuristic-category-icon { background: rgba(160,82,45,0.25); }
+.cat-metacognition .heuristic-category-icon { background: rgba(107,76,138,0.25); }
+.cat-comprehension .heuristic-category-icon { background: rgba(74,126,181,0.25); }
+.cat-mobilize .heuristic-category-icon { background: rgba(58,163,145,0.25); }
+.cat-verify .heuristic-category-icon { background: rgba(181,74,58,0.25); }
+.cat-historical .heuristic-category-icon { background: rgba(246,241,231,0.12); }
+
+.heuristic-category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  padding-top: 0.3rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.heuristic-category-header .cat-desc {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: rgba(246,241,231,0.4);
+}
+
+.heuristics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.heuristic-card {
+  background: rgba(246,241,231,0.05);
+  border: 1px solid rgba(246,241,231,0.08);
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.heuristic-card:hover {
+  background: rgba(246,241,231,0.1);
+  border-color: rgba(246,241,231,0.2);
+  transform: translateY(-3px);
+}
+
+.heuristic-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.heuristic-card-head .h-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.heuristic-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.08rem;
+  color: var(--gold-light);
+  line-height: 1.3;
+}
+
+.heuristic-card .h-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,0.3);
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.heuristic-card p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem;
+  color: rgba(246,241,231,0.6);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.heuristic-card .h-example {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(246,241,231,0.08);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(246,241,231,0.45);
+  line-height: 1.6;
+}
+
+.heuristic-card .h-example strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.phase-tags {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.phase-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.75;
+}
+
+.phase-tag.t1 { background: var(--phase1); }
+.phase-tag.t2 { background: var(--phase2); color: var(--ink); }
+.phase-tag.t3 { background: var(--phase3); }
+.phase-tag.t4 { background: var(--phase4); }
+
+/* ===== TEACHER SECTION ===== */
+.teacher-deep-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, #eef3f8 0%, white 100%);
+}
+
+.teacher-deep-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--blue-deep);
+}
+
+.teacher-deep-subtitle {
+  text-align: center;
+  font-family: 'Source Serif 4', serif;
+  color: rgba(26,20,16,0.5);
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mandamientos-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.mandamiento {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease;
+}
+
+.mandamiento:hover { transform: translateX(4px); }
+
+.mandamiento-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--blue-deep);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.mandamiento h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--blue-deep);
+  margin-bottom: 0.4rem;
+}
+
+.mandamiento p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.92rem;
+  color: rgba(26,20,16,0.65);
+  line-height: 1.7;
+}
+
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-8px); }
+  60% { transform: translateX(-50%) translateY(-4px); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .context-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .strategy-list { grid-template-columns: 1fr; }
+  .heuristics-grid { grid-template-columns: 1fr; }
+  .heuristic-category-header { flex-direction: column; gap: 0.5rem; }
+  .phase-diagram-card { grid-template-columns: 60px 1fr; gap: 1rem; }
+  .phase-number-circle { width: 60px; height: 60px; }
+  .phase-number-circle .roman { font-size: 1.2rem; }
+  .phase-header { flex-direction: column; align-items: flex-start; }
+  .role-tabs { flex-wrap: wrap; }
+  .sticky-nav { justify-content: flex-start; padding: 0.5rem 0.5rem; }
+  .sticky-nav a { font-size: 0.72rem; padding: 0.35rem 0.65rem; }
+}
+
+/* Nav sticky */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(246,241,231,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,20,16,0.08);
+  padding: 0.6rem 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+
+.sticky-nav::-webkit-scrollbar { display: none; }
+
+.sticky-nav.visible { transform: translateY(0); }
+
+.sticky-nav a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.sticky-nav a:hover { background: rgba(26,20,16,0.06); }
+.sticky-nav a.nav-1:hover, .sticky-nav a.nav-1.active { background: var(--phase1); color: white; }
+.sticky-nav a.nav-2:hover, .sticky-nav a.nav-2.active { background: var(--phase2); color: var(--ink); }
+.sticky-nav a.nav-3:hover, .sticky-nav a.nav-3.active { background: var(--phase3); color: white; }
+.sticky-nav a.nav-4:hover, .sticky-nav a.nav-4.active { background: var(--phase4); color: white; }
+
+/* Print awareness */
+.print-note {
+  display: none;
+}
+
+/* Tooltip-like emphasis */
+.concept-highlight {
+  background: linear-gradient(to bottom, transparent 60%, rgba(197,149,58,0.2) 60%);
+  padding: 0 2px;
+}
+</style>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="stickyNav">
+  <a href="#fase1" class="nav-1">I. Comprender</a>
+  <a href="#fase2" class="nav-2">II. Concebir un Plan</a>
+  <a href="#fase3" class="nav-3">III. Ejecutar</a>
+  <a href="#fase4" class="nav-4">IV. Examinar</a>
+  <a href="#heuristicas">Heurísticas</a>
+  <a href="#docente">Docente</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-subtitle-top">Guía de estudio basada en «How to Solve It» (1945)</div>
+  <h1>El Método de <em>Polya</em></h1>
+  <div class="hero-author">George Pólya · Resolución de Problemas Matemáticos</div>
+  <p class="hero-description">
+    Un recorrido detallado por las cuatro fases que todo estudiante y docente de matemática 
+    debería dominar para enfrentar — y disfrutar — la resolución de problemas.
+  </p>
+  <div class="hero-phases-preview">
+    <a href="#fase1" class="phase-pill pill-1"><span class="num">I</span> Comprender el problema</a>
+    <a href="#fase2" class="phase-pill pill-2"><span class="num">II</span> Concebir un plan</a>
+    <a href="#fase3" class="phase-pill pill-3"><span class="num">III</span> Ejecutar el plan</a>
+    <a href="#fase4" class="phase-pill pill-4"><span class="num">IV</span> Examinar la solución</a>
+  </div>
+  <div class="scroll-indicator">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<section class="context-section fade-in">
+  <div class="context-grid">
+    <div class="context-main">
+      <h2>¿Por qué estudiar a Polya?</h2>
+      <p>
+        George Pólya (1887–1985), matemático húngaro-estadounidense, dedicó gran parte de su carrera
+        a entender <span class="concept-highlight">cómo piensan las personas cuando resuelven problemas</span>.
+        Su obra <em>How to Solve It</em>, publicada en 1945, no es simplemente un libro de técnicas:
+        es un tratado sobre el pensamiento humano aplicado a la matemática.
+      </p>
+      <p>
+        Polya observó que los grandes solucionadores de problemas no poseen un «don mágico», sino que
+        siguen — consciente o inconscientemente — un proceso heurístico que puede enseñarse y aprenderse.
+        Su método de cuatro fases se ha convertido en la piedra angular de la enseñanza moderna de la
+        resolución de problemas, adoptado por estándares como los del NCTM y los programas del MEP en
+        Costa Rica.
+      </p>
+      <p>
+        Las primeras 33 páginas de su libro presentan este proceso con claridad cristalina:
+        la estructura de las cuatro fases, las preguntas que el resolutor debe plantearse, y el papel
+        crucial que juega el docente como guía socrática.
+      </p>
+    </div>
+    <div class="context-sidebar">
+      <blockquote>
+        «Un gran descubrimiento resuelve un gran problema, pero hay una pizca de descubrimiento
+        en la resolución de cualquier problema. Tu problema puede ser modesto; pero si desafía
+        tu curiosidad y pone en juego tus facultades inventivas, y si lo resuelves por tus propios
+        medios, puedes experimentar la tensión y el triunfo del descubrimiento.»
+      </blockquote>
+      <cite>— George Pólya, How to Solve It (1945)</cite>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW DIAGRAM -->
+<section class="overview-section fade-in">
+  <h2>Las Cuatro Fases</h2>
+  <p class="overview-subtitle">
+    Un proceso iterativo, no lineal. Se puede — y se debe — volver atrás cuando sea necesario.
+  </p>
+
+  <div class="phases-diagram">
+    <div class="phase-diagram-card fade-in">
+      <div class="phase-number-circle pnc-1"><span class="roman">I</span></div>
+      <div class="phase-diagram-content">
+        <h3>Comprender el problema</h3>
+        <p>Antes de hacer cualquier otra cosa, el resolutor debe entender completamente qué se le pide. 
+        ¿Cuál es la incógnita? ¿Cuáles son los datos? ¿Cuál es la condición? Sin esta comprensión, 
+        todo esfuerzo posterior es en vano. Polya insiste: es absurdo responder una pregunta que no se comprende.</p>
+      </div>
+    </div>
+
+    <div class="phase-diagram-card fade-in">
+      <div class="phase-number-circle pnc-2"><span class="roman">II</span></div>
+      <div class="phase-diagram-content">
+        <h3>Concebir un plan</h3>
+        <p>El momento de mayor creatividad: encontrar la conexión entre los datos y la incógnita.
+        Puede requerir considerar problemas auxiliares, recordar problemas análogos, reformular el problema,
+        o usar alguna de las heurísticas del catálogo de Polya. La idea del plan es la chispa central de la resolución.</p>
+      </div>
+    </div>
+
+    <div class="phase-diagram-card fade-in">
+      <div class="phase-number-circle pnc-3"><span class="roman">III</span></div>
+      <div class="phase-diagram-content">
+        <h3>Ejecutar el plan</h3>
+        <p>Implementar el plan con cuidado y disciplina. Verificar cada paso. La principal virtud aquí 
+        es la paciencia. Polya distingue entre la dificultad de concebir el plan y la relativa simplicidad 
+        de ejecutarlo — siempre que se tenga la formación técnica adecuada y la concentración necesaria.</p>
+      </div>
+    </div>
+
+    <div class="phase-diagram-card fade-in">
+      <div class="phase-number-circle pnc-4"><span class="roman">IV</span></div>
+      <div class="phase-diagram-content">
+        <h3>Examinar la solución obtenida</h3>
+        <p>La fase más descuidada y más valiosa. Al reexaminar el resultado y el camino recorrido, se consolida 
+        el conocimiento, se descubren conexiones nuevas, se verifican los resultados y se desarrolla la capacidad 
+        de resolver problemas futuros. «Ningún problema está completamente agotado», dice Polya.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connection-note fade-in">
+    <p>
+      <strong>Nota importante:</strong> Polya enfatiza que estas fases no son estrictamente lineales. 
+      Un resolutor puede, al intentar ejecutar un plan, descubrir que no comprendía bien el problema 
+      y necesitar regresar a la Fase I. O al examinar la solución, percibir un plan más elegante.
+      El proceso es <span class="concept-highlight">naturalmente cíclico e iterativo</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ======================== FASE I ======================== -->
+<section class="phase-section" id="fase1">
+  <div class="phase-header fade-in">
+    <div class="phase-badge badge-1">I</div>
+    <div class="phase-header-text">
+      <h2>Comprender el Problema</h2>
+    </div>
+  </div>
+
+  <div class="phase-body">
+    <p class="phase-intro fade-in">
+      Polya considera esta fase como el cimiento indispensable. El estudiante debe desear resolver el problema
+      y comprender cada parte del enunciado. No se trata solo de leer: se trata de <em>interrogar</em> al
+      problema hasta que cada pieza encaje. El docente debe resistir la tentación de dar pistas prematuras
+      y en su lugar guiar al estudiante a descubrir la estructura del problema por sí mismo.
+    </p>
+
+    <!-- ROLE TABS -->
+    <div class="role-tabs fade-in">
+      <button class="role-tab student-tab active" onclick="switchRole(this, 'student', 'fase1')">🎓 Como estudiante</button>
+      <button class="role-tab teacher-tab" onclick="switchRole(this, 'teacher', 'fase1')">📚 Como docente</button>
+    </div>
+
+    <!-- STUDENT VIEW -->
+    <div class="role-content active" id="fase1-student">
+      <div class="questions-grid fade-in">
+        <div class="q-card student-card">
+          <span class="q-icon">❓</span>
+          <div class="q-text">¿Cuál es la incógnita?</div>
+          <div class="q-note">Identifica claramente qué es lo que debes encontrar, calcular, demostrar o construir. Nómbralo explícitamente.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">📋</span>
+          <div class="q-text">¿Cuáles son los datos?</div>
+          <div class="q-note">Haz una lista de toda la información que el problema te proporciona. ¿Hay números, figuras, relaciones, propiedades conocidas?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">⚖️</span>
+          <div class="q-text">¿Cuál es la condición?</div>
+          <div class="q-note">¿Qué relación vincula la incógnita con los datos? ¿Es la condición suficiente para determinar la incógnita? ¿Es insuficiente? ¿Redundante? ¿Contradictoria?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">✏️</span>
+          <div class="q-text">¿Puedo dibujar una figura o un diagrama?</div>
+          <div class="q-note">Una representación visual casi siempre ayuda. Introduce notación adecuada. Separa las distintas partes de la condición.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🔄</span>
+          <div class="q-text">¿Puedo reformular el problema con mis propias palabras?</div>
+          <div class="q-note">Si puedes explicar el problema a otra persona sin mirar el enunciado, lo comprendes. Si no puedes, hay partes que aún no dominas.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEACHER VIEW -->
+    <div class="role-content" id="fase1-teacher">
+      <div class="questions-grid fade-in">
+        <div class="q-card teacher-card">
+          <span class="q-icon">🎯</span>
+          <div class="q-text">¿Puede el estudiante enunciar el problema con sus propias palabras?</div>
+          <div class="q-note">Polya sugiere que el docente pida al estudiante que repita el enunciado. Si no puede, no lo ha comprendido.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">👁️</span>
+          <div class="q-text">¿Ha identificado el estudiante la incógnita, los datos y la condición?</div>
+          <div class="q-note">Señala cada parte y pregunta al estudiante que las identifique. Usa preguntas como «¿Qué se busca?», «¿Qué se sabe?».</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">📐</span>
+          <div class="q-text">¿Ha dibujado una figura e introducido notación apropiada?</div>
+          <div class="q-note">Sugiere que visualice el problema. La figura no es decorativa: es una herramienta de pensamiento.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🧩</span>
+          <div class="q-text">¿Ha separado las distintas partes de la condición?</div>
+          <div class="q-note">Ayuda al estudiante a descomponer condiciones complejas en partes manejables. Esta descomposición revela la estructura del problema.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">⚡</span>
+          <div class="q-text">¿Muestra el estudiante interés genuino y deseo de resolver el problema?</div>
+          <div class="q-note">Polya insiste: sin motivación, sin deseo de encontrar la respuesta, el proceso no funciona. El docente debe elegir problemas que despierten curiosidad y presentarlos de manera atractiva.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FASE II ======================== -->
+<section class="phase-section" id="fase2">
+  <div class="phase-header fade-in">
+    <div class="phase-badge badge-2">II</div>
+    <div class="phase-header-text">
+      <h2>Concebir un Plan</h2>
+    </div>
+  </div>
+
+  <div class="phase-body">
+    <p class="phase-intro fade-in">
+      Esta es la fase más sutil y creativa. Polya la describe como el momento donde se halla la 
+      <span class="concept-highlight">«idea brillante»</span> — la conexión entre lo que se sabe y lo que se busca.
+      No siempre ocurre de golpe: a menudo requiere explorar caminos, recordar problemas similares y perseverar.
+      El docente puede guiar con preguntas, pero nunca debe robar al estudiante la alegría del descubrimiento.
+    </p>
+
+    <div class="role-tabs fade-in">
+      <button class="role-tab student-tab active" onclick="switchRole(this, 'student', 'fase2')">🎓 Como estudiante</button>
+      <button class="role-tab teacher-tab" onclick="switchRole(this, 'teacher', 'fase2')">📚 Como docente</button>
+    </div>
+
+    <div class="role-content active" id="fase2-student">
+      <div class="questions-grid fade-in">
+        <div class="q-card student-card">
+          <span class="q-icon">🔍</span>
+          <div class="q-text">¿He visto este problema antes? ¿O he visto uno similar en alguna forma diferente?</div>
+          <div class="q-note">Busca en tu memoria un problema con la misma incógnita o una incógnita similar. La experiencia previa es tu recurso más valioso.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🧠</span>
+          <div class="q-text">¿Conozco un problema relacionado? ¿Conozco algún teorema que pueda ser útil?</div>
+          <div class="q-note">Repasa los teoremas, fórmulas y resultados que conoces. ¿Alguno se conecta con la incógnita o con los datos del problema?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">👀</span>
+          <div class="q-text">Mira la incógnita. ¿Puedes pensar en un problema familiar que tenga la misma incógnita o una similar?</div>
+          <div class="q-note">Concéntrate en lo que buscas. Esta perspectiva puede abrir caminos que no veías.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">♻️</span>
+          <div class="q-text">Si hay un problema relacionado que ya resolví, ¿puedo usar su resultado? ¿Puedo usar su método?</div>
+          <div class="q-note">Quizás el resultado directo no aplique, pero la técnica o estrategia que usaste podría adaptarse.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🔧</span>
+          <div class="q-text">¿Debería introducir algún elemento auxiliar para poder usar un problema conocido?</div>
+          <div class="q-note">Líneas auxiliares en geometría, variables adicionales en álgebra, lemas en demostraciones — a veces el problema necesita un «puente» extra.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🎭</span>
+          <div class="q-text">¿Puedo reformular el problema? ¿Puedo plantearlo de otra manera?</div>
+          <div class="q-note">Polya recomienda volver a la definición de los conceptos involucrados. A veces cambiar la perspectiva revela la solución.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🪜</span>
+          <div class="q-text">Si no puedo resolver el problema propuesto, ¿puedo resolver un problema más simple relacionado?</div>
+          <div class="q-note">Resuelve un caso particular, un caso más simple, una parte del problema. Mantén solo una parte de la condición y descarta el resto. ¿Qué tanto puedes determinar la incógnita así?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">📊</span>
+          <div class="q-text">¿He usado todos los datos? ¿He usado toda la condición?</div>
+          <div class="q-note">Si hay datos que no has utilizado, posiblemente tu plan está incompleto o hay un camino que no has explorado.</div>
+        </div>
+      </div>
+
+      <div class="strategy-box fade-in">
+        <h4>📖 Catálogo de estrategias para encontrar el plan</h4>
+        <div class="strategy-list">
+          <div class="strategy-item"><strong>Analogía:</strong> Buscar un problema análogo ya resuelto.</div>
+          <div class="strategy-item"><strong>Generalización:</strong> Reemplazar el problema por uno más general que sea, paradójicamente, más fácil.</div>
+          <div class="strategy-item"><strong>Especialización:</strong> Probar con un caso particular concreto para encontrar un patrón.</div>
+          <div class="strategy-item"><strong>Descomposición:</strong> Dividir el problema en sub-problemas más manejables.</div>
+          <div class="strategy-item"><strong>Trabajo hacia atrás:</strong> Partir de la incógnita y preguntarse qué se necesitaría para llegar a ella.</div>
+          <div class="strategy-item"><strong>Variación:</strong> Cambiar la incógnita, los datos, o ambos, y observar qué sucede.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="fase2-teacher">
+      <div class="questions-grid fade-in">
+        <div class="q-card teacher-card">
+          <span class="q-icon">🌉</span>
+          <div class="q-text">¿Puede el estudiante identificar un problema familiar relacionado?</div>
+          <div class="q-note">Guía al estudiante a revisar su repertorio. Pregunta: «¿Recuerdas algún problema donde tuviste que encontrar algo parecido?» No des la respuesta; evoca el recuerdo.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🗝️</span>
+          <div class="q-text">¿Puedo sugerir un problema auxiliar más accesible?</div>
+          <div class="q-note">Polya recomienda que el docente proponga un problema relacionado pero más simple como escalón. El estudiante resuelve el problema auxiliar y luego transfiere la estrategia.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🔬</span>
+          <div class="q-text">¿He guiado al estudiante a considerar casos especiales?</div>
+          <div class="q-note">Probar con números concretos, dibujar casos particulares, o explorar instancias simples puede revelar el patrón general.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🧭</span>
+          <div class="q-text">¿Estoy haciendo preguntas generales que el estudiante podría hacerse a sí mismo en el futuro?</div>
+          <div class="q-note">Polya insiste: las preguntas del docente deben ser <em>transferibles</em>. El objetivo no es resolver este problema sino enseñar a pensar. Las preguntas deben poder usarse una y otra vez en problemas distintos.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">⏳</span>
+          <div class="q-text">¿Estoy dando tiempo suficiente al estudiante antes de intervenir?</div>
+          <div class="q-note">La paciencia del docente es fundamental. Polya advierte contra la tentación de «soplar» la solución. El estudiante necesita luchar con el problema para que la solución sea verdaderamente suya.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FASE III ======================== -->
+<section class="phase-section" id="fase3">
+  <div class="phase-header fade-in">
+    <div class="phase-badge badge-3">III</div>
+    <div class="phase-header-text">
+      <h2>Ejecutar el Plan</h2>
+    </div>
+  </div>
+
+  <div class="phase-body">
+    <p class="phase-intro fade-in">
+      Polya describe esta fase como considerablemente más fácil que concebir el plan. Una vez que se tiene
+      la idea, se requiere <span class="concept-highlight">paciencia, concentración y dominio técnico</span>. 
+      El peligro principal es perder de vista la idea del plan o cometer errores de ejecución por descuido. 
+      Cada paso debe verificarse, no solo intuitivamente, sino rigurosamente cuando sea posible.
+    </p>
+
+    <div class="role-tabs fade-in">
+      <button class="role-tab student-tab active" onclick="switchRole(this, 'student', 'fase3')">🎓 Como estudiante</button>
+      <button class="role-tab teacher-tab" onclick="switchRole(this, 'teacher', 'fase3')">📚 Como docente</button>
+    </div>
+
+    <div class="role-content active" id="fase3-student">
+      <div class="questions-grid fade-in">
+        <div class="q-card student-card">
+          <span class="q-icon">✅</span>
+          <div class="q-text">Al ejecutar el plan, ¿verifico cada paso?</div>
+          <div class="q-note">No avances sin estar seguro de que cada paso es correcto. Polya distingue entre «ver claramente» que un paso es correcto (intuición) y poder «demostrar» que lo es (rigor).</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">📝</span>
+          <div class="q-text">¿Puedo ver claramente que cada paso es correcto?</div>
+          <div class="q-note">Para algunos pasos bastará la percepción intuitiva; para otros necesitarás una justificación formal. Ambas son válidas según el contexto.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🧮</span>
+          <div class="q-text">¿Puedo demostrar que cada paso es correcto?</div>
+          <div class="q-note">En problemas de demostración, esta pregunta es esencial. En problemas de cálculo, equivale a verificar las operaciones y las sustituciones.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🔗</span>
+          <div class="q-text">¿Mantengo presente la idea general del plan mientras trabajo en los detalles?</div>
+          <div class="q-note">Es fácil perderse en los cálculos y olvidar el «por qué» de cada paso. Detente periódicamente y recuerda el plan global.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🚧</span>
+          <div class="q-text">Si el plan no funciona, ¿debo volver a la Fase II?</div>
+          <div class="q-note">Si al ejecutar el plan descubres que no lleva a ninguna parte o encuentras una contradicción, no insistas: regresa y busca un plan alternativo. Esto es normal y esperable.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="fase3-teacher">
+      <div class="questions-grid fade-in">
+        <div class="q-card teacher-card">
+          <span class="q-icon">🔎</span>
+          <div class="q-text">¿El estudiante tiene la formación técnica necesaria para ejecutar el plan?</div>
+          <div class="q-note">A veces el plan es bueno pero faltan herramientas algebraicas, geométricas o de cálculo. El docente debe identificar estas lagunas sin reemplazar el trabajo del estudiante.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🎯</span>
+          <div class="q-text">¿El estudiante verifica cada paso o avanza mecánicamente?</div>
+          <div class="q-note">Fomenta el hábito de la verificación constante. Pregunta: «¿Cómo sabes que ese paso es correcto?» o «¿Qué justifica esa igualdad?»</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🧘</span>
+          <div class="q-text">¿Estoy fomentando la paciencia y la perseverancia?</div>
+          <div class="q-note">Polya enfatiza que la ejecución requiere paciencia. El docente modela esta virtud dando tiempo y evitando resolver «la parte aburrida» por el estudiante.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">↩️</span>
+          <div class="q-text">Si el plan falla, ¿ayudo al estudiante a volver a la Fase II sin frustración?</div>
+          <div class="q-note">Normaliza el fracaso productivo. Reconocer que un plan no funciona y volver a empezar es parte esencial del proceso. El docente lo enmarca como avance, no retroceso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FASE IV ======================== -->
+<section class="phase-section" id="fase4">
+  <div class="phase-header fade-in">
+    <div class="phase-badge badge-4">IV</div>
+    <div class="phase-header-text">
+      <h2>Examinar la Solución Obtenida</h2>
+    </div>
+  </div>
+
+  <div class="phase-body">
+    <p class="phase-intro fade-in">
+      Polya lamenta que esta fase se omita con demasiada frecuencia, tanto por estudiantes como por docentes.
+      Es aquí donde el aprendizaje más profundo ocurre: al reconsiderar y reexaminar el resultado y el camino que 
+      condujo a él, <span class="concept-highlight">se consolida el conocimiento y se desarrolla la capacidad para resolver
+      problemas futuros</span>. Un problema bien examinado vale por diez resueltos sin reflexión.
+    </p>
+
+    <div class="role-tabs fade-in">
+      <button class="role-tab student-tab active" onclick="switchRole(this, 'student', 'fase4')">🎓 Como estudiante</button>
+      <button class="role-tab teacher-tab" onclick="switchRole(this, 'teacher', 'fase4')">📚 Como docente</button>
+    </div>
+
+    <div class="role-content active" id="fase4-student">
+      <div class="questions-grid fade-in">
+        <div class="q-card student-card">
+          <span class="q-icon">🔍</span>
+          <div class="q-text">¿Puedo verificar el resultado?</div>
+          <div class="q-note">Sustituye la respuesta en las condiciones originales. ¿Se cumplen todas? ¿El resultado tiene sentido en el contexto del problema?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🛤️</span>
+          <div class="q-text">¿Puedo verificar el razonamiento?</div>
+          <div class="q-note">Revisa cada paso de tu argumentación. ¿Hay algún salto lógico? ¿Cada paso se sigue del anterior? ¿Podrías convencer a otra persona?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🔀</span>
+          <div class="q-text">¿Puedo obtener el resultado de una manera diferente?</div>
+          <div class="q-note">Un segundo camino al mismo resultado aumenta enormemente tu confianza en que la respuesta es correcta. Además, revela conexiones entre métodos.</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">🌐</span>
+          <div class="q-text">¿Puedo usar el resultado o el método para resolver algún otro problema?</div>
+          <div class="q-note">Esta es la pregunta que convierte un problema resuelto en una herramienta permanente de tu arsenal. Generaliza: ¿en qué otros contextos aplicaría este método?</div>
+        </div>
+        <div class="q-card student-card">
+          <span class="q-icon">📏</span>
+          <div class="q-text">¿El resultado concuerda con estimaciones o verificaciones parciales?</div>
+          <div class="q-note">Verifica con casos extremos, valores especiales o estimaciones a gran escala. Si el área de un triángulo te da un número negativo, algo falló.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-content" id="fase4-teacher">
+      <div class="questions-grid fade-in">
+        <div class="q-card teacher-card">
+          <span class="q-icon">🏗️</span>
+          <div class="q-text">¿Guío al estudiante a reflexionar sobre el proceso completo?</div>
+          <div class="q-note">No basta con verificar la respuesta. Pregunta: «¿Qué fue lo que hizo que encontraras la solución?», «¿En qué momento tuviste la idea clave?»</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🔗</span>
+          <div class="q-text">¿Ayudo al estudiante a conectar este problema con otros del curso?</div>
+          <div class="q-note">Polya enfatiza que situar un resultado dentro de un contexto más amplio multiplica su valor. Haz preguntas que vinculen el problema con temas anteriores y posteriores.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">🧪</span>
+          <div class="q-text">¿Promuevo la búsqueda de soluciones alternativas?</div>
+          <div class="q-note">Anima al estudiante o al grupo a encontrar un segundo camino. Esto profundiza la comprensión y revela la riqueza del problema.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">📈</span>
+          <div class="q-text">¿Planteo extensiones o generalizaciones del problema?</div>
+          <div class="q-note">«¿Qué pasaría si cambiamos esta condición?», «¿Se puede generalizar a n dimensiones?» Estas preguntas son el puente hacia problemas más avanzados.</div>
+        </div>
+        <div class="q-card teacher-card">
+          <span class="q-icon">📓</span>
+          <div class="q-text">¿Incentivo que el estudiante registre las técnicas y lecciones aprendidas?</div>
+          <div class="q-note">Polya implica que la resolución de problemas construye un repertorio personal. Ayuda al estudiante a mantener un «diario de métodos» que pueda consultar ante problemas futuros.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== HEURÍSTICAS ======================== -->
+<section class="heuristics-section" id="heuristicas">
+  <h2 class="fade-in">Diccionario Heurístico Completo</h2>
+  <p class="heuristics-subtitle fade-in">Catálogo exhaustivo de las herramientas mentales presentadas por Polya en la sección central de <em>How to Solve It</em> (pp. 37–225), organizadas temáticamente</p>
+  <p class="heuristics-count fade-in">52 técnicas principales · 12 reflexiones históricas · 7 categorías</p>
+
+  <!-- ── CATEGORÍA 1: Comprender y organizar el problema ── -->
+  <div class="heuristic-category cat-comprehension fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">📖</div>
+      <div class="heuristic-category-title">
+        <h3>Comprender y organizar el problema</h3>
+        <span class="cat-desc">El cimiento: desmenuzar el enunciado antes de buscar una solución</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">❓</span>
+          <h4>¿Cuál es la incógnita?</h4>
+        </div>
+        <span class="h-en">What Is the Unknown? · pp. 216–220</span>
+        <p>La primera pregunta que debe hacerse el resolutor. Polya insiste en que nombrar explícitamente la incógnita — qué se busca, qué se debe encontrar, demostrar o construir — es el acto fundacional de toda resolución.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚖️</span>
+          <h4>La condición</h4>
+        </div>
+        <span class="h-en">Condition · pp. 72–75</span>
+        <p>Analizar la condición que vincula datos e incógnita. ¿Es suficiente para determinar la incógnita? ¿Insuficiente? ¿Redundante? ¿Contradictoria? Cada caso requiere una respuesta diferente.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔍</span>
+          <h4>¿Es posible satisfacer la condición?</h4>
+        </div>
+        <span class="h-en">Is It Possible to Satisfy the Condition? · pp. 121–122</span>
+        <p>Antes de buscar una solución, preguntarse si el problema tiene solución. Verificar que las condiciones no sean contradictorias y que el número de datos sea coherente con el número de incógnitas. Este análisis previo puede ahorrar mucho esfuerzo.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">✂️</span>
+          <h4>Separar las partes de la condición</h4>
+        </div>
+        <span class="h-en">Separate the Various Parts of the Condition · pp. 173–174</span>
+        <p>Descomponer una condición compleja en cláusulas independientes y examinar cada una por separado. Esta disección revela la estructura interna del problema y facilita el uso selectivo de cada parte.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">✏️</span>
+          <h4>Dibujar una figura</h4>
+        </div>
+        <span class="h-en">Draw a Figure · pp. 65–68</span>
+        <p>No solo para geometría: cualquier problema puede beneficiarse de una representación visual. La figura es una herramienta de pensamiento. Dibujar activa la intuición espacial y hace visibles relaciones que el texto esconde.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔤</span>
+          <h4>Notación adecuada</h4>
+        </div>
+        <span class="h-en">Notation · pp. 134–139</span>
+        <p>La elección de símbolos es un acto creativo. Una buena notación sugiere operaciones, revela simetrías y abrevia el pensamiento. Una notación mal elegida puede oscurecer lo que una buena notación haría evidente.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📋</span>
+          <h4>¿He usado todos los datos?</h4>
+        </div>
+        <span class="h-en">Did You Use All the Data? · pp. 60–63</span>
+        <p>Pregunta diagnóstica fundamental. Si hay datos sin utilizar, el plan probablemente está incompleto. Si la solución no necesita todos los datos, quizá el problema tiene condiciones redundantes — lo cual también es información valiosa.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔀</span>
+          <h4>Problemas por encontrar vs. problemas por demostrar</h4>
+        </div>
+        <span class="h-en">Problems to Find, Problems to Prove · pp. 154–157</span>
+        <p>Polya distingue dos familias de problemas. En los primeros se busca un valor o un objeto (incógnita/datos/condición); en los segundos se establece la verdad de una afirmación (hipótesis/conclusión). Reconocer el tipo orienta la estrategia.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📚</span>
+          <h4>Volver a la definición</h4>
+        </div>
+        <span class="h-en">Definition · pp. 84–89</span>
+        <p>Cuando un concepto parece difuso, regresar a su definición formal. Muchos bloqueos se resuelven al preguntar «¿qué significa exactamente este término?». La definición contiene las propiedades que se pueden usar como herramientas.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚠️</span>
+          <h4>Condiciones contradictorias y redundantes</h4>
+        </div>
+        <span class="h-en">Contradictory / Redundant · pp. 75, 162</span>
+        <p>Un problema con condiciones contradictorias no tiene solución; uno con condiciones redundantes tiene información sobrante. Detectar ambas situaciones tempranamente evita perder tiempo o permite simplificar el problema.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 2: Movilizar conocimiento previo ── -->
+  <div class="heuristic-category cat-mobilize fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">🔗</div>
+      <div class="heuristic-category-title">
+        <h3>Movilizar conocimiento previo</h3>
+        <span class="cat-desc">Conectar el problema actual con lo que ya se sabe</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🧠</span>
+          <h4>¿Lo has visto antes?</h4>
+        </div>
+        <span class="h-en">Have You Seen It Before? · pp. 110–111</span>
+        <p>La pregunta que activa la memoria: «¿He visto este problema antes, o al menos uno parecido?» La experiencia acumulada es el recurso más valioso del resolutor, pero solo si se activa conscientemente.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🌉</span>
+          <h4>¿Conoces un problema relacionado?</h4>
+        </div>
+        <span class="h-en">Do You Know a Related Problem? · pp. 63–65</span>
+        <p>Buscar en el repertorio personal un problema que comparta la incógnita, los datos, o la estructura general. No hace falta que sea idéntico: basta con que su método o resultado sea transferible al problema actual.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🎁</span>
+          <h4>Aquí hay un problema relacionado ya resuelto</h4>
+        </div>
+        <span class="h-en">Here Is a Problem Related to Yours… · pp. 111–114</span>
+        <p>El momento donde se identifica un problema conocido que se conecta con el actual. La clave: «¿Puedo usar su resultado? ¿Puedo usar su método? ¿Debería introducir algún elemento auxiliar para hacer la conexión?»</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">👁️</span>
+          <h4>Mira la incógnita</h4>
+        </div>
+        <span class="h-en">Look at the Unknown · pp. 126–131</span>
+        <p>Concentrarse en lo que se busca, no en lo que se tiene. Pensar en problemas familiares que tengan la misma incógnita o una similar. Esta inversión del foco — del dato a la meta — puede abrir caminos que la mirada convencional no ve.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔗</span>
+          <h4>Analogía</h4>
+        </div>
+        <span class="h-en">Analogy · pp. 37–46</span>
+        <p>Buscar un problema análogo — no idéntico, sino estructuralmente parecido — y transferir la estrategia. La analogía entre un problema plano y uno espacial, entre lo discreto y lo continuo, entre lo finito y lo infinito. Polya la considera una de las herramientas más poderosas.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📦</span>
+          <h4>¿Puedes derivar algo útil de los datos?</h4>
+        </div>
+        <span class="h-en">Could You Derive Something Useful from the Data? · pp. 75–76</span>
+        <p>Cuando no se ve un camino directo, explorar qué consecuencias se pueden extraer de los datos disponibles. Combinar datos, operar con ellos, buscar patrones. A veces el resultado intermedio es la pieza que faltaba.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 3: Estrategias de búsqueda del plan ── -->
+  <div class="heuristic-category cat-strategy fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">🧭</div>
+      <div class="heuristic-category-title">
+        <h3>Estrategias de búsqueda del plan</h3>
+        <span class="cat-desc">Técnicas activas para encontrar el camino hacia la solución</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⏪</span>
+          <h4>Trabajo hacia atrás</h4>
+        </div>
+        <span class="h-en">Working Backwards · pp. 225–232</span>
+        <p>Partir de la conclusión deseada y preguntar: «¿Qué necesitaría para llegar aquí?» Retroceder paso a paso hasta conectar con los datos conocidos. Polya remonta esta técnica a Pappus y los geómetras griegos.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🪜</span>
+          <h4>Problemas auxiliares</h4>
+        </div>
+        <span class="h-en">Auxiliary Problem · pp. 50–55</span>
+        <p>Inventar un problema intermedio más accesible cuya solución contribuya a resolver el original. Polya lo compara con buscar un trampolín: a veces necesitamos un escalón para alcanzar lo que está alto.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔧</span>
+          <h4>Elementos auxiliares</h4>
+        </div>
+        <span class="h-en">Auxiliary Elements · pp. 46–50</span>
+        <p>Introducir un nuevo elemento — una línea auxiliar, una variable nueva, un punto de construcción — para hacer visible una relación oculta. Una sola línea auxiliar puede transformar un problema opaco en uno transparente.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📐</span>
+          <h4>Establecer ecuaciones</h4>
+        </div>
+        <span class="h-en">Setting Up Equations · pp. 174–179</span>
+        <p>Traducir el problema del lenguaje natural al algebraico: identificar las incógnitas, nombrarlas con variables, expresar cada condición como ecuación y verificar que el sistema esté determinado.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🎭</span>
+          <h4>¿Puedes replantear el problema?</h4>
+        </div>
+        <span class="h-en">Could You Restate the Problem? · pp. 75–76</span>
+        <p>Reformular el enunciado con otras palabras o en otro lenguaje matemático. A veces un problema de geometría se aclara al traducirlo al álgebra, o viceversa. Volver a las definiciones es una forma de replanteo.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🆘</span>
+          <h4>Si no puedes resolver el problema propuesto…</h4>
+        </div>
+        <span class="h-en">If You Cannot Solve the Proposed Problem · pp. 114–121</span>
+        <p>Polya ofrece un abanico de salidas: resolver un problema más simple, más general, análogo, o solo una parte. Mantener solo una parte de la condición y descartar el resto. Cambiar la incógnita. Cada opción puede desbloquear el pensamiento.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🧩</span>
+          <h4>Lema</h4>
+        </div>
+        <span class="h-en">Lemma · pp. 122–126</span>
+        <p>Un resultado auxiliar que se demuestra como paso previo al principal. Dividir la prueba en lemas convierte un argumento abrumador en una serie de pasos manejables, cada uno verificable por separado.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 4: Transformar, representar y reformular ── -->
+  <div class="heuristic-category cat-representation fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">✏️</div>
+      <div class="heuristic-category-title">
+        <h3>Transformar, representar y reformular</h3>
+        <span class="cat-desc">Cambiar la forma del problema para ver lo que antes era invisible</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔎</span>
+          <h4>Generalización</h4>
+        </div>
+        <span class="h-en">Generalization · pp. 108–110</span>
+        <p>Pasar de un problema particular a uno más general. Lo que Polya llama la «paradoja del inventor»: el problema general puede ser más fácil porque permite usar herramientas más poderosas y ver la estructura subyacente.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔬</span>
+          <h4>Especialización</h4>
+        </div>
+        <span class="h-en">Specialization · pp. 190–197</span>
+        <p>Lo opuesto: probar con un caso particular, con números concretos, con una versión simplificada. Polya recomienda especializar cuando el problema general parece inalcanzable. El caso particular puede revelar el patrón general.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔀</span>
+          <h4>Variación del problema</h4>
+        </div>
+        <span class="h-en">Variation of the Problem · pp. 209–216</span>
+        <p>Modificar sistemáticamente: cambiar la incógnita, alterar los datos, relajar o fortalecer condiciones, intercambiar hipótesis y conclusión. Cada variación ilumina el original desde un ángulo nuevo.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔨</span>
+          <h4>Descomposición y recombinación</h4>
+        </div>
+        <span class="h-en">Decomposing and Recombining · pp. 75–84</span>
+        <p>Separar el problema en partes, resolver cada una y combinar. Reorganizar los elementos en un orden diferente. Polya lo describe como el «proceso más fundamental del pensamiento productivo» — análisis y síntesis en acción.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🪞</span>
+          <h4>Simetría</h4>
+        </div>
+        <span class="h-en">Symmetry · pp. 187–188</span>
+        <p>Detectar y explotar simetrías: geométricas, algebraicas, o de roles entre variables. Cuando un problema tiene simetría, la solución a menudo la hereda. Reconocer simetría puede reducir drásticamente la complejidad.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">💡</span>
+          <h4>La paradoja del inventor</h4>
+        </div>
+        <span class="h-en">Inventor's Paradox · pp. 121</span>
+        <p>«El plan más ambicioso puede tener más posibilidades de éxito.» Generalizar el problema, lejos de complicarlo, puede simplificarlo. Demostrar un resultado más general a veces requiere menos ingenio que demostrar el caso particular.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📝</span>
+          <h4>Corolario</h4>
+        </div>
+        <span class="h-en">Corollary · pp. 75</span>
+        <p>Un resultado que se sigue fácilmente de otro ya demostrado. Reconocer corolarios multiplica el valor de cada resultado: cada teorema puede generar consecuencias adicionales con poco esfuerzo, enriqueciendo el repertorio.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🏷️</span>
+          <h4>Términos viejos y nuevos</h4>
+        </div>
+        <span class="h-en">Terms, Old and New · pp. 197–202</span>
+        <p>Comprender el origen y significado de los términos matemáticos (raíz, tangente, función) ilumina los conceptos mismos. Cuando el resolutor entiende por qué se llama así, entiende mejor qué es.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 5: Razonar y demostrar ── -->
+  <div class="heuristic-category cat-reasoning fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">⚡</div>
+      <div class="heuristic-category-title">
+        <h3>Razonar y demostrar</h3>
+        <span class="cat-desc">Formas de pensamiento que validan, generan y aseguran resultados</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📈</span>
+          <h4>Inducción y demostración por inducción</h4>
+        </div>
+        <span class="h-en">Induction and Mathematical Induction · pp. 114–121</span>
+        <p>Polya distingue la <em>inducción heurística</em> (observar casos para conjeturar) de la <em>inducción matemática</em> (demostrar formalmente). Primero se descubre observando; luego se demuestra rigurosamente. Ambas son esenciales.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🚫</span>
+          <h4>Reducción al absurdo y prueba indirecta</h4>
+        </div>
+        <span class="h-en">Reductio ad Absurdum · pp. 162–168</span>
+        <p>Suponer lo contrario de lo que se quiere demostrar y derivar una contradicción. Si negar la conclusión conduce a algo imposible, la conclusión debe ser verdadera. Incluye también la prueba indirecta en general.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🎯</span>
+          <h4>Examina tu conjetura</h4>
+        </div>
+        <span class="h-en">Examine Your Guess · pp. 68–72</span>
+        <p>Formular una conjetura razonable y verificarla sistemáticamente. No es adivinar a ciegas: cada ensayo informado genera retroalimentación. Polya valora la conjetura como motor del descubrimiento — siempre que se examine críticamente después.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔀</span>
+          <h4>Dos demostraciones son mejor que una</h4>
+        </div>
+        <span class="h-en">Two Proofs Are Better Than One · pp. 209</span>
+        <p>Encontrar un segundo camino al mismo resultado aumenta la confianza, revela conexiones entre áreas de la matemática y profundiza la comprensión. Un resultado con dos demostraciones independientes es doblemente seguro y triplemente instructivo.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🏛️</span>
+          <h4>¿Por qué demostrar?</h4>
+        </div>
+        <span class="h-en">Why Proofs? · pp. 220–222</span>
+        <p>Polya defiende el valor de la demostración no como ritual vacío, sino como forma de comprensión profunda. Demostrar no es solo verificar: es entender <em>por qué</em> algo es verdad, no solo <em>que</em> lo es.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🧪</span>
+          <h4>Razonamiento heurístico</h4>
+        </div>
+        <span class="h-en">Heuristic Reasoning · pp. 102–103</span>
+        <p>Razonamiento provisional y plausible — no riguroso — que sirve para descubrir la solución. Primero se razona heurísticamente para encontrar el camino; después se razona rigurosamente para verificarlo. Confundir ambos es un error pedagógico grave.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🖼️</span>
+          <h4>Figuras del razonamiento</h4>
+        </div>
+        <span class="h-en">Figures · pp. 94–102</span>
+        <p>Polya analiza patrones recurrentes en el razonamiento: la cadena de inferencias, el argumento bifurcado, el dilema constructivo. Reconocer estas «figuras» del pensamiento matemático ayuda a organizar y presentar argumentos con claridad.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 6: Ejecutar, verificar y reflexionar ── -->
+  <div class="heuristic-category cat-verify fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">✅</div>
+      <div class="heuristic-category-title">
+        <h3>Ejecutar, verificar y reflexionar</h3>
+        <span class="cat-desc">Llevar a cabo el plan con rigor y aprovechar la solución al máximo</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚙️</span>
+          <h4>Ejecutar el plan</h4>
+        </div>
+        <span class="h-en">Carrying Out · pp. 55</span>
+        <p>Ejecutar es más fácil que concebir el plan — si se tiene la formación técnica necesaria. La virtud principal es la paciencia. Cada paso debe verificarse: «¿Puedo ver que este paso es correcto? ¿Puedo demostrarlo?»</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔍</span>
+          <h4>¿Puedes verificar el resultado?</h4>
+        </div>
+        <span class="h-en">Can You Check the Result? · pp. 59–60</span>
+        <p>Sustituir la respuesta en las condiciones originales, comprobar con casos especiales, verificar que el resultado sea razonable. La verificación no es un lujo: es parte integral del proceso. Un resultado no verificado es incompleto.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🛤️</span>
+          <h4>¿Puedes obtener el resultado de otra forma?</h4>
+        </div>
+        <span class="h-en">Can You Derive the Result Differently? · pp. 61–62</span>
+        <p>Buscar un segundo camino al mismo resultado. Si dos métodos independientes dan la misma respuesta, la confianza aumenta enormemente. El segundo camino suele revelar conexiones inesperadas entre distintas ramas.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🌐</span>
+          <h4>¿Puedes usar el resultado?</h4>
+        </div>
+        <span class="h-en">Can You Use the Result? · pp. 62</span>
+        <p>¿Puede el resultado o el método aplicarse a otros problemas? Esta pregunta convierte cada problema resuelto en una herramienta reutilizable. Polya la considera esencial para construir un repertorio creciente de técnicas.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📏</span>
+          <h4>Verificación dimensional</h4>
+        </div>
+        <span class="h-en">Test by Dimension · pp. 202–207</span>
+        <p>Comprobar que el resultado tiene las dimensiones o unidades correctas. Si la fórmula para un área resulta en unidades de longitud, algo está mal. En álgebra, verificar la coherencia del grado de los términos cumple un rol análogo.</p>
+        <div class="phase-tags"><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📊</span>
+          <h4>Signos de progreso</h4>
+        </div>
+        <span class="h-en">Signs of Progress · pp. 179–180</span>
+        <p>Reconocer cuándo se va por buen camino: la situación se simplifica, las condiciones se satisfacen parcialmente, la incógnita se va «determinando» poco a poco. Estos signos sostienen la motivación y guían el esfuerzo.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🩺</span>
+          <h4>Diagnóstico</h4>
+        </div>
+        <span class="h-en">Diagnosis · pp. 89–94</span>
+        <p>Cuando un intento falla, diagnosticar por qué: ¿El plan era erróneo o la ejecución? ¿Faltó un dato? ¿Se usó un teorema incorrectamente? Identificar la causa del fallo dirige el siguiente intento con inteligencia.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CATEGORÍA 7: Actitudes, disposiciones y sabiduría ── -->
+  <div class="heuristic-category cat-metacognition fade-in">
+    <div class="heuristic-category-header">
+      <div class="heuristic-category-icon">🧠</div>
+      <div class="heuristic-category-title">
+        <h3>Actitudes, disposiciones y sabiduría del resolutor</h3>
+        <span class="cat-desc">El carácter y las disposiciones mentales que sostienen todo el proceso</span>
+      </div>
+    </div>
+    <div class="heuristics-grid">
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">💪</span>
+          <h4>Determinación, esperanza y éxito</h4>
+        </div>
+        <span class="h-en">Determination, Hope, Success · pp. 55–60</span>
+        <p>El ciclo emocional del resolutor: la determinación inicial, la esperanza al percibir un camino, y la satisfacción del éxito. La perseverancia informada — volver a intentar con nuevas ideas, no insistir ciegamente — es una heurística en sí misma.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🌙</span>
+          <h4>Trabajo subconsciente</h4>
+        </div>
+        <span class="h-en">Subconscious Work · pp. 188–190</span>
+        <p>Polya reconoce — citando a Helmholtz y Poincaré — que la mente continúa procesando el problema de forma subconsciente. Muchas ideas brillantes llegan durante el descanso, pero solo si el trabajo previo fue serio y profundo.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚡</span>
+          <h4>La idea brillante</h4>
+        </div>
+        <span class="h-en">Bright Idea · pp. 55</span>
+        <p>El momento del «¡eureka!». Polya lo desmitifica: no es magia, sino el resultado de preparación, esfuerzo y las preguntas correctas. La idea brillante llega a la mente preparada.</p>
+        <div class="phase-tags"><span class="phase-tag t2">Fase II</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚖️</span>
+          <h4>Pedantería y maestría</h4>
+        </div>
+        <span class="h-en">Pedantry and Mastery · pp. 148–151</span>
+        <p>Dos extremos: la pedantería (rigor sin comprensión) y la ligereza (saltar pasos sin justificación). La verdadera maestría combina comprensión intuitiva con rigor formal — saber cuándo la intuición basta y cuándo se necesita la prueba.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">✍️</span>
+          <h4>Reglas de estilo</h4>
+        </div>
+        <span class="h-en">Rules of Style · pp. 172–173</span>
+        <p>Consejos sobre cómo presentar una solución: ser claro, ordenado, ir de lo conocido a lo desconocido. La buena presentación no es cosmética: obliga a comprender completamente la propia solución.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🌿</span>
+          <h4>Sabiduría de los proverbios</h4>
+        </div>
+        <span class="h-en">Wisdom of Proverbs · pp. 222–225</span>
+        <p>Polya vincula la heurística con la sabiduría popular: «Quien mal empieza, mal acaba» (comprende bien), «El que busca, encuentra» (persevera), «Mide dos veces, corta una» (verifica). Los proverbios condensan siglos de experiencia heurística.</p>
+        <div class="phase-tags"><span class="phase-tag t1">Fase I</span><span class="phase-tag t2">Fase II</span><span class="phase-tag t3">Fase III</span><span class="phase-tag t4">Fase IV</span></div>
+      </div>
+
+      <div class="heuristic-card fade-in">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🎒</span>
+          <h4>Progreso y logro</h4>
+        </div>
+        <span class="h-en">Progress and Achievement · pp. 151–154</span>
+        <p>Polya distingue entre progreso (avanzar sin haber terminado) y logro (resolver). Reconocer el progreso parcial es vital: no todo es «correcto o incorrecto». Un paso en la dirección correcta es un logro genuino.</p>
+        <div class="phase-tags"><span class="phase-tag t3">Fase III</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN COMPLEMENTARIA: Contexto histórico ── -->
+  <div class="heuristic-category cat-historical fade-in" style="margin-bottom: 0;">
+    <div class="heuristic-category-header" style="cursor: pointer;" onclick="toggleHistorical()">
+      <div class="heuristic-category-icon" style="background: rgba(246,241,231,0.12);">📜</div>
+      <div class="heuristic-category-title">
+        <h3>Contexto histórico y reflexiones meta-heurísticas</h3>
+        <span class="cat-desc" id="historicalToggleHint">Figuras históricas, tipos de problemas y ensayos incluidos en el diccionario — clic para expandir ▾</span>
+      </div>
+    </div>
+    <div class="heuristics-grid" id="historicalGrid" style="display: none;">
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🏺</span>
+          <h4>Pappus de Alejandría</h4>
+        </div>
+        <span class="h-en">Pappus · pp. 141–148</span>
+        <p>Polya remonta la heurística a Pappus (siglo IV), quien describió el método de análisis y síntesis: partir de lo que se busca y retroceder hasta lo conocido (análisis), luego invertir el camino (síntesis). Ancestro del «trabajo hacia atrás».</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📐</span>
+          <h4>Descartes</h4>
+        </div>
+        <span class="h-en">Descartes · pp. 89</span>
+        <p>Las <em>Reglas para la dirección del espíritu</em> de Descartes representan uno de los intentos más importantes de sistematizar el pensamiento heurístico. Descartes buscaba un método universal para resolver problemas.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">⚙️</span>
+          <h4>Leibniz</h4>
+        </div>
+        <span class="h-en">Leibnitz · pp. 122</span>
+        <p>Leibniz soñaba con un «arte de inventar» — un sistema formal para descubrir verdades nuevas. Polya lo sitúa como parte de la tradición heurística, aunque reconoce que un método completamente mecánico para el descubrimiento sigue siendo una quimera.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📊</span>
+          <h4>Bolzano</h4>
+        </div>
+        <span class="h-en">Bolzano · pp. 55</span>
+        <p>Bernard Bolzano escribió un tratado (<em>Wissenschaftslehre</em>) con una de las discusiones más detalladas sobre heurística antes de Polya. Precursor importante que exploró las reglas del descubrimiento matemático.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🔎</span>
+          <h4>Heurística moderna</h4>
+        </div>
+        <span class="h-en">Modern Heuristic · pp. 129–134</span>
+        <p>Polya define su empresa: la heurística moderna busca entender el proceso de resolución de problemas de manera científica, observando cómo piensan los matemáticos y extrayendo patrones enseñables.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🎓</span>
+          <h4>El futuro matemático</h4>
+        </div>
+        <span class="h-en">The Future Mathematician · pp. 207</span>
+        <p>Cualidades de quien aspire a hacer matemáticas: curiosidad, capacidad de observación, deseo de descubrir por sí mismo. Polya argumenta que pueden cultivarse con la educación adecuada.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🧑‍🏫</span>
+          <h4>El profesor tradicional de matemáticas</h4>
+        </div>
+        <span class="h-en">The Traditional Mathematics Professor · pp. 208</span>
+        <p>Viñeta satírica: el profesor demuestra con claridad… pero nunca revela cómo descubrió la demostración. El estudiante ve el producto terminado, nunca el proceso creativo. Polya aboga por mostrar el camino, no solo el destino.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📖</span>
+          <h4>El lector inteligente / El solucionador inteligente</h4>
+        </div>
+        <span class="h-en">The Intelligent Reader / Problem-Solver · pp. 207–208</span>
+        <p>Actitudes del lector y resolutor competentes: no aceptan pasivamente, sino que cuestionan, verifican, buscan alternativas y conectan cada resultado con lo que ya saben.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📏</span>
+          <h4>Problemas rutinarios vs. problemas auténticos</h4>
+        </div>
+        <span class="h-en">Routine Problem / Practical Problems · pp. 171, 149</span>
+        <p>Problemas rutinarios (se resuelven aplicando un procedimiento) vs. auténticos (requieren pensar e inventar). Ambos tienen su lugar, pero la resolución genuina solo ocurre con los segundos.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">🧩</span>
+          <h4>Acertijos</h4>
+        </div>
+        <span class="h-en">Puzzles · pp. 157–162</span>
+        <p>Los acertijos dependen de un «truco» o idea ingeniosa. Aunque diferentes de los problemas formales, entrenan la flexibilidad mental y el pensamiento lateral — habilidades transferibles a la matemática seria.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📋</span>
+          <h4>Reglas del descubrimiento</h4>
+        </div>
+        <span class="h-en">Rules of Discovery · pp. 172</span>
+        <p>¿Existen reglas para descubrir verdades? No hay algoritmo infalible, pero sí principios orientadores que aumentan las probabilidades de éxito. Esos principios son precisamente las heurísticas de este diccionario.</p>
+      </div>
+
+      <div class="heuristic-card fade-in" style="border-color: rgba(246,241,231,0.06);">
+        <div class="heuristic-card-head">
+          <span class="h-icon">📚</span>
+          <h4>Reglas de la enseñanza</h4>
+        </div>
+        <span class="h-en">Rules of Teaching · pp. 173</span>
+        <p>Polya sintetiza sus principios docentes: el profesor debe conocer la materia, conocer al estudiante, y usar preguntas generales transferibles que enseñen a pensar, no solo a resolver un problema específico.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ======================== DOCENTE PROFUNDO ======================== -->
+<section class="teacher-deep-section" id="docente">
+  <h2 class="fade-in">Los Principios del Docente según Polya</h2>
+  <p class="teacher-deep-subtitle fade-in">
+    Polya dedica especial atención al rol del profesor. Estos principios sintetizan su visión del docente como guía socrático.
+  </p>
+
+  <div class="mandamientos-grid">
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">1</div>
+      <div>
+        <h4>Interésate genuinamente por tu materia</h4>
+        <p>Si el profesor no siente pasión por la matemática, no puede esperar que sus estudiantes la sientan. El entusiasmo se contagia — y su ausencia también.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">2</div>
+      <div>
+        <h4>Conoce tu materia en profundidad</h4>
+        <p>El docente necesita dominar no solo los contenidos, sino las conexiones entre ellos y los múltiples caminos para llegar a un resultado. Solo así puede guiar con flexibilidad.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">3</div>
+      <div>
+        <h4>Conoce las formas de aprender</h4>
+        <p>La mejor manera de aprender algo es descubrirlo por uno mismo. El docente debe conocer el proceso del descubrimiento y crear las condiciones para que ocurra.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">4</div>
+      <div>
+        <h4>Lee las caras de tus estudiantes</h4>
+        <p>Observa las expresiones, las dudas, los momentos de iluminación y los de confusión. Ajusta tu guía en tiempo real según lo que percibes en el aula.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">5</div>
+      <div>
+        <h4>No des la respuesta: da la pregunta correcta</h4>
+        <p>El arte del docente es hacer preguntas que guíen sin revelar. Preguntas generales y transferibles que el estudiante pueda reutilizar en problemas futuros. Es el método socrático aplicado a la matemática.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">6</div>
+      <div>
+        <h4>Deja que el estudiante descubra por sí mismo</h4>
+        <p>El descubrimiento personal genera un aprendizaje más profundo y duradero que la instrucción directa. El docente resiste la urgencia de «explicar» y en su lugar facilita el «descubrir».</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">7</div>
+      <div>
+        <h4>Sugiere, no impongas</h4>
+        <p>Las pistas deben llegar de manera natural, como si surgieran del propio razonamiento del estudiante. Polya detalla cómo las preguntas pueden gradualmente acercar al estudiante a la idea sin robársela.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">8</div>
+      <div>
+        <h4>Usa preguntas transferibles</h4>
+        <p>«¿Cuál es la incógnita?», «¿Conoces un problema relacionado?», «¿Has usado todos los datos?» — estas preguntas no son específicas de un problema: son herramientas mentales permanentes que el estudiante internalizará.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">9</div>
+      <div>
+        <h4>Enseña a verificar y mirar atrás</h4>
+        <p>Dedica tiempo explícito a la Fase IV. Muchos docentes pasan al siguiente problema demasiado rápido. La reflexión post-solución es donde se construye la verdadera maestría.</p>
+      </div>
+    </div>
+    <div class="mandamiento fade-in">
+      <div class="mandamiento-num">10</div>
+      <div>
+        <h4>Presenta problemas que despierten curiosidad</h4>
+        <p>Polya subraya que sin interés no hay esfuerzo, y sin esfuerzo no hay aprendizaje. La selección y presentación del problema es un acto pedagógico fundamental. El problema debe estar al alcance del estudiante pero ser suficientemente desafiante para motivar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+// Toggle historical section
+function toggleHistorical() {
+  const grid = document.getElementById('historicalGrid');
+  const hint = document.getElementById('historicalToggleHint');
+  if (grid.style.display === 'none') {
+    grid.style.display = 'grid';
+    hint.textContent = 'Figuras históricas, tipos de problemas y ensayos incluidos en el diccionario — clic para contraer ▴';
+    grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  } else {
+    grid.style.display = 'none';
+    hint.textContent = 'Figuras históricas, tipos de problemas y ensayos incluidos en el diccionario — clic para expandir ▾';
+  }
+}
+
+// Role tab switching
+function switchRole(btn, role, fase) {
+  const section = btn.closest('.phase-section') || btn.closest('.phase-body').parentElement;
+  const tabs = btn.parentElement.querySelectorAll('.role-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const contents = section.querySelectorAll('.role-content');
+  contents.forEach(c => c.classList.remove('active'));
+  
+  const target = document.getElementById(`${fase}-${role}`);
+  if (target) target.classList.add('active');
+}
+
+// Scroll-triggered animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroSection = document.querySelector('.hero');
+
+const navObserver = new IntersectionObserver(([entry]) => {
+  stickyNav.classList.toggle('visible', !entry.isIntersecting);
+}, { threshold: 0 });
+
+navObserver.observe(heroSection);
+
+// Active nav link highlighting
+const sections = document.querySelectorAll('.phase-section, .heuristics-section, .teacher-deep-section');
+const navLinks = stickyNav.querySelectorAll('a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(sec => sectionObserver.observe(sec));
+</script>
