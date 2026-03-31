@@ -616,5 +616,5 @@ Cuando la dominas, puedes:
 ## Practica aquí
 En el siguiente cuadro podrás generar un ejercicio de diversos niveles ¡ponte a prueba!
 
-<iframe src="factor_comun_widget.html" width="100%" height="500" style="border:none; border-radius:12px;"></iframe>
+<iframe src="../factor_comun_widget.html" width="100%" height="550" style="border:none; border-radius:12px;"></iframe>
 ---
