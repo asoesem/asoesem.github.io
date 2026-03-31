@@ -44,7 +44,7 @@ $$
 A_1 + A_2 + \cdots + A_n
 $$
 
-Diremos que existe un **factor común** $F$ si cada término $A_i$ puede escribirse como:
+Diremos que existe un **factor común** $$F$$ si cada término $$A_i$$ puede escribirse como:
 
 $$
 A_i = F \cdot B_i
@@ -559,7 +559,7 @@ $$
 
 ---
 
-# 15. Ejercicios de práctica (progresivos)
+# 15. Ejercicios de práctica 
 
 **Instrucción:** Factoriza completamente cada uno de las siguientes expresiones algebraicas 
 
