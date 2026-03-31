@@ -598,5 +598,5 @@ Cuando la dominas, puedes simplificar expresiones complejas, resolver ecuaciones
 ## Practica aquí
 En el siguiente cuadro podrás generar un ejercicio de diversos niveles ¡ponte a prueba!
 
-<iframe src="../factor_comun_widget.html" width="100%" height="150" style="border:none; border-radius:12px;"></iframe>
+<iframe src="../factor_comun_widget.html" width="100%" height="70" style="border:none; border-radius:12px;"></iframe>
 ---
