@@ -427,7 +427,7 @@ $$
 \frac{12x^2y - 18xy^2}{6xy} = 2x-3y
 $$
 
-> Restricción: $x \ne 0$ y $y \ne 0$.
+**Restricción:** $$x \ne 0$ y $y \ne 0$$.
 
 ---
 
