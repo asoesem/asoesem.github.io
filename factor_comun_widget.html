@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Generador de Ejercicios - Factor Común</title>
 
-  <!-- Tipografía estilo institucional (similar a asoesem.org) -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fuente principal (Inter + Source Sans 3) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
   <style>
     :root{
@@ -176,7 +179,7 @@
     }
 
     .exercise{
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--dark);
       overflow-x: auto;
@@ -213,10 +216,8 @@
     }
 
     .math{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size: 14px;
-      color: #93c5fd;
       font-weight: 600;
+      color: #93c5fd;
     }
 
     .note{
@@ -268,6 +269,8 @@
       <div class="exercise-title">
         Ejercicio generado <span id="nivelBadge" class="badge">Aleatorio</span>
       </div>
+
+      <!-- Aquí se imprimirá el ejercicio en LaTeX -->
       <div id="ejercicio" class="exercise">Presiona "Generar ejercicio"</div>
     </div>
 
@@ -276,23 +279,9 @@
       <div id="solucion"></div>
     </div>
 
-   
-
-
 
 <script>
   let ejercicioActual = null;
-
-  function mcd(a, b){
-    a = Math.abs(a);
-    b = Math.abs(b);
-    while(b !== 0){
-      let t = b;
-      b = a % b;
-      a = t;
-    }
-    return a;
-  }
 
   function randInt(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -302,8 +291,17 @@
     return arr[randInt(0, arr.length - 1)];
   }
 
+  function renderKatex(){
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ]
+    });
+  }
+
   // ==========================================================
-  // GENERADORES POR NIVEL
+  // GENERADORES
   // ==========================================================
 
   function generarFacil(){
@@ -313,19 +311,19 @@
 
     let variable = elegir(["x","y","a","m","n"]);
 
-    let expr = `${a}${variable} + ${b}`;
+    let exprLatex = `${a}${variable} + ${b}`;
 
     let solucion = [
       `Paso 1: Identificamos el factor común numérico.`,
       `Los coeficientes son ${a} y ${b}.`,
-      `El máximo común divisor es MCD(${a}, ${b}) = ${factor}.`,
+      `El máximo común divisor es ${factor}.`,
       `Paso 2: Extraemos el factor común:`,
-      `<span class="math">${a}${variable} + ${b} = ${factor}(${a/factor}${variable} + ${b/factor})</span>`
+      `<span class="math">$$${a}${variable} + ${b} = ${factor}(${a/factor}${variable} + ${b/factor})$$</span>`
     ];
 
     return {
       nivel: "Fácil",
-      ejercicio: expr,
+      ejercicio: `$$${exprLatex}$$`,
       solucion: solucion
     };
   }
@@ -347,32 +345,28 @@
     let coef1 = factorNum * randInt(2, 9);
     let coef2 = factorNum * randInt(2, 9);
 
-    let term1 = `${coef1}${var1}^${e1}${var2}^${e2}`;
-    let term2 = `${coef2}${var1}^${e3}${var2}^${e4}`;
+    let term1 = `${coef1}${var1}^{${e1}}${var2}^{${e2}}`;
+    let term2 = `${coef2}${var1}^{${e3}}${var2}^{${e4}}`;
 
-    let factorLiteral = `${var1}^${minE1}${var2}^${minE2}`;
+    let factorLiteral = `${var1}^{${minE1}}${var2}^{${minE2}}`;
 
-    let inside1 = `${coef1/factorNum}${var1}^${e1-minE1}${var2}^${e2-minE2}`;
-    let inside2 = `${coef2/factorNum}${var1}^${e3-minE1}${var2}^${e4-minE2}`;
-
-    inside1 = inside1.replace("^0","");
-    inside2 = inside2.replace("^0","");
+    let inside1 = `${coef1/factorNum}${var1}^{${e1-minE1}}${var2}^{${e2-minE2}}`;
+    let inside2 = `${coef2/factorNum}${var1}^{${e3-minE1}}${var2}^{${e4-minE2}}`;
 
     let expr = `${term1} + ${term2}`;
 
     let solucion = [
       `Paso 1: Identificamos el factor común numérico.`,
-      `Ambos términos son múltiplos de ${factorNum}.`,
+      `Ambos coeficientes son múltiplos de ${factorNum}.`,
       `Paso 2: Identificamos el factor común literal.`,
       `El menor exponente en ${var1} es ${minE1} y en ${var2} es ${minE2}.`,
-      `Por tanto, el factor común literal es ${factorLiteral}.`,
       `Paso 3: Extraemos el factor común total:`,
-      `<span class="math">${term1} + ${term2} = ${factorNum}${factorLiteral}(${inside1} + ${inside2})</span>`
+      `<span class="math">$$${expr} = ${factorNum}${factorLiteral}(${inside1} + ${inside2})$$</span>`
     ];
 
     return {
       nivel: "Medio",
-      ejercicio: expr,
+      ejercicio: `$$${expr}$$`,
       solucion: solucion
     };
   }
@@ -386,17 +380,17 @@
     let expr = `${a}${x} + ${a}${y} + ${b}${x} + ${b}${y}`;
 
     let solucion = [
-      `Paso 1: Agrupamos términos en dos partes:`,
-      `<span class="math">(${a}${x} + ${a}${y}) + (${b}${x} + ${b}${y})</span>`,
+      `Paso 1: Agrupamos en dos partes:`,
+      `<span class="math">$$(${a}${x} + ${a}${y}) + (${b}${x} + ${b}${y})$$</span>`,
       `Paso 2: Sacamos factor común en cada grupo:`,
-      `<span class="math">${a}(${x}+${y}) + ${b}(${x}+${y})</span>`,
-      `Paso 3: Ahora aparece un factor común polinómico (${x}+${y}):`,
-      `<span class="math">(${x}+${y})(${a}+${b})</span>`
+      `<span class="math">$$${a}(${x}+${y}) + ${b}(${x}+${y})$$</span>`,
+      `Paso 3: Extraemos el factor común polinómico:`,
+      `<span class="math">$$(${x}+${y})(${a}+${b})$$</span>`
     ];
 
     return {
       nivel: "Avanzado",
-      ejercicio: expr,
+      ejercicio: `$$${expr}$$`,
       solucion: solucion
     };
   }
@@ -408,52 +402,49 @@
     let v1 = elegir(vars);
     let v2 = elegir(vars.filter(v => v !== v1));
 
-    let e1 = randInt(2, 6);
+    let e1 = randInt(3, 6);
     let e2 = randInt(1, 5);
 
     let coef1 = factorNum * randInt(5, 15);
-    let coef2 = -factorNum * randInt(5, 15);
+    let coef2 = factorNum * randInt(5, 15);
     let coef3 = factorNum * randInt(5, 15);
 
-    let term1 = `${coef1}${v1}^${e1}${v2}^${e2}`;
-    let term2 = `${coef2}${v1}^${e1-1}${v2}^${e2+1}`;
-    let term3 = `${coef3}${v1}^${e1-2}${v2}^${e2}`;
+    let signo2 = elegir(["+","-"]);
+    let signo3 = elegir(["+","-"]);
 
-    let expr = `${term1} - ${Math.abs(coef2)}${v1}^${e1-1}${v2}^${e2+1} + ${term3}`;
+    let term1 = `${coef1}${v1}^{${e1}}${v2}^{${e2}}`;
+    let term2 = `${coef2}${v1}^{${e1-1}}${v2}^{${e2+1}}`;
+    let term3 = `${coef3}${v1}^{${e1-2}}${v2}^{${e2}}`;
+
+    let expr = `${term1} ${signo2} ${term2} ${signo3} ${term3}`;
 
     let minExpV1 = Math.min(e1, e1-1, e1-2);
     let minExpV2 = Math.min(e2, e2+1, e2);
 
-    let factorLiteral = `${v1}^${minExpV1}${v2}^${minExpV2}`;
+    let factorLiteral = `${v1}^{${minExpV1}}${v2}^{${minExpV2}}`;
 
-    let inside1 = `${coef1/factorNum}${v1}^${e1-minExpV1}${v2}^${e2-minExpV2}`;
-    let inside2 = `${coef2/factorNum}${v1}^${(e1-1)-minExpV1}${v2}^${(e2+1)-minExpV2}`;
-    let inside3 = `${coef3/factorNum}${v1}^${(e1-2)-minExpV1}${v2}^${e2-minExpV2}`;
-
-    inside1 = inside1.replace("^0","");
-    inside2 = inside2.replace("^0","");
-    inside3 = inside3.replace("^0","");
+    let inside1 = `${coef1/factorNum}${v1}^{${e1-minExpV1}}${v2}^{${e2-minExpV2}}`;
+    let inside2 = `${signo2}${coef2/factorNum}${v1}^{${(e1-1)-minExpV1}}${v2}^{${(e2+1)-minExpV2}}`;
+    let inside3 = `${signo3}${coef3/factorNum}${v1}^{${(e1-2)-minExpV1}}${v2}^{${e2-minExpV2}}`;
 
     let solucion = [
       `Paso 1: Identificamos el factor común numérico.`,
       `Todos los coeficientes son múltiplos de ${factorNum}.`,
       `Paso 2: Identificamos el factor común literal.`,
       `El menor exponente de ${v1} es ${minExpV1} y el menor exponente de ${v2} es ${minExpV2}.`,
-      `Por tanto, el factor común literal es ${factorLiteral}.`,
       `Paso 3: Extraemos el factor común total:`,
-      `<span class="math">${expr} = ${factorNum}${factorLiteral}(${inside1} + ${inside2} + ${inside3})</span>`,
-      `Paso 4: En este nivel, el objetivo principal es reconocer el factor común máximo.`
+      `<span class="math">$$${expr} = ${factorNum}${factorLiteral}(${inside1} ${inside2} ${inside3})$$</span>`
     ];
 
     return {
       nivel: "Experto",
-      ejercicio: expr,
+      ejercicio: `$$${expr}$$`,
       solucion: solucion
     };
   }
 
   // ==========================================================
-  // FUNCIÓN PRINCIPAL
+  // CONTROL
   // ==========================================================
 
   function generarEjercicio(){
@@ -487,8 +478,10 @@
 
     ejercicioActual = resultado;
 
-    document.getElementById("ejercicio").textContent = resultado.ejercicio;
+    document.getElementById("ejercicio").innerHTML = resultado.ejercicio;
     document.getElementById("solucion").innerHTML = "";
+
+    setTimeout(() => renderKatex(), 50);
   }
 
   function mostrarSolucion(){
@@ -510,11 +503,17 @@
     });
 
     box.style.display = "block";
+
+    setTimeout(() => renderKatex(), 50);
   }
 
   function ocultarSolucion(){
     document.getElementById("solucionBox").style.display = "none";
   }
+
+  window.onload = function(){
+    renderKatex();
+  };
 </script>
 
 </body>
