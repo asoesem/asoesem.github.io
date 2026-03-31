@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generador de Ejercicios - Factor Común</title>
+
+  <!-- Tipografía estilo institucional (similar a asoesem.org) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fuente principal (Inter + Source Sans 3) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+
+      --dark: #0f172a;
+      --dark-hover: #0b1220;
+
+      --soft: #f9fafb;
+      --soft2: #f3f4f6;
+
+      --radius: 16px;
+    }
+
+    body{
+      margin: 0;
+      padding: 22px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", "Source Sans 3", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+
+    .widget-container{
+      max-width: 980px;
+      margin: auto;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .widget-header{
+      padding: 24px 28px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .widget-header h1{
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--dark);
+    }
+
+    .widget-header p{
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .content{
+      padding: 22px 28px 28px 28px;
+    }
+
+    .controls{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+    }
+
+    .controls label{
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    select{
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      background: white;
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    button{
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-generate{
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-generate:hover{
+      background: var(--primary-hover);
+    }
+
+    .btn-solution{
+      background: var(--dark);
+      color: white;
+    }
+
+    .btn-solution:hover{
+      background: var(--dark-hover);
+    }
+
+    .btn-reset{
+      background: var(--soft2);
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    .btn-reset:hover{
+      background: #e5e7eb;
+    }
+
+    .exercise-box{
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .exercise-title{
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .exercise{
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      overflow-x: auto;
+      padding-bottom: 4px;
+      letter-spacing: 0.2px;
+      line-height: 1.4;
+    }
+
+    .solution-box{
+      display: none;
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.08);
+      background: #0b1220;
+      padding: 18px;
+      color: #f8fafc;
+    }
+
+    .solution-box h3{
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .solution-step{
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .math{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .note{
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer{
+      padding: 14px 28px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--soft);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="widget-container">
+  <div class="widget-header">
+    <h1>Generador de Ejercicios: Factorización por Factor Común</h1>
+    <p>
+      Selecciona un nivel de dificultad, genera un ejercicio y revisa la solución únicamente si deseas comprobar tu procedimiento.
+    </p>
+  </div>
+
+  <div class="content">
+
+    <div class="controls">
+      <label for="nivel">Nivel:</label>
+      <select id="nivel">
+        <option value="facil">Fácil</option>
+        <option value="medio">Medio</option>
+        <option value="avanzado">Avanzado</option>
+        <option value="experto">Experto</option>
+        <option value="aleatorio" selected>Aleatorio</option>
+      </select>
+
+      <button class="btn-generate" onclick="generarEjercicio()">Generar ejercicio</button>
+      <button class="btn-solution" onclick="mostrarSolucion()">Ver solución paso a paso</button>
+      <button class="btn-reset" onclick="ocultarSolucion()">Ocultar solución</button>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-title">
+        Ejercicio generado <span id="nivelBadge" class="badge">Aleatorio</span>
+      </div>
+      <div id="ejercicio" class="exercise">Presiona "Generar ejercicio"</div>
+    </div>
+
+    <div id="solucionBox" class="solution-box">
+      <h3>Solución paso a paso</h3>
+      <div id="solucion"></div>
+    </div>
+
+   
+
+
+
+<script>
+  let ejercicioActual = null;
+
+  function mcd(a, b){
+    a = Math.abs(a);
+    b = Math.abs(b);
+    while(b !== 0){
+      let t = b;
+      b = a % b;
+      a = t;
+    }
+    return a;
+  }
+
+  function randInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function elegir(arr){
+    return arr[randInt(0, arr.length - 1)];
+  }
+
+  // ==========================================================
+  // GENERADORES POR NIVEL
+  // ==========================================================
+
+  function generarFacil(){
+    let factor = randInt(2, 9);
+    let a = factor * randInt(2, 9);
+    let b = factor * randInt(2, 9);
+
+    let variable = elegir(["x","y","a","m","n"]);
+
+    let expr = `${a}${variable} + ${b}`;
+
+    let solucion = [
+      `Paso 1: Identificamos el factor común numérico.`,
+      `Los coeficientes son ${a} y ${b}.`,
+      `El máximo común divisor es MCD(${a}, ${b}) = ${factor}.`,
+      `Paso 2: Extraemos el factor común:`,
+      `<span class="math">${a}${variable} + ${b} = ${factor}(${a/factor}${variable} + ${b/factor})</span>`
+    ];
+
+    return {
+      nivel: "Fácil",
+      ejercicio: expr,
+      solucion: solucion
+    };
+  }
+
+  function generarMedio(){
+    let factorNum = randInt(2, 9);
+
+    let var1 = elegir(["x","a","m"]);
+    let var2 = elegir(["y","b","n"]);
+
+    let e1 = randInt(2, 5);
+    let e2 = randInt(1, 4);
+    let e3 = randInt(1, e1);
+    let e4 = randInt(1, 5);
+
+    let minE1 = Math.min(e1, e3);
+    let minE2 = Math.min(e2, e4);
+
+    let coef1 = factorNum * randInt(2, 9);
+    let coef2 = factorNum * randInt(2, 9);
+
+    let term1 = `${coef1}${var1}^${e1}${var2}^${e2}`;
+    let term2 = `${coef2}${var1}^${e3}${var2}^${e4}`;
+
+    let factorLiteral = `${var1}^${minE1}${var2}^${minE2}`;
+
+    let inside1 = `${coef1/factorNum}${var1}^${e1-minE1}${var2}^${e2-minE2}`;
+    let inside2 = `${coef2/factorNum}${var1}^${e3-minE1}${var2}^${e4-minE2}`;
+
+    inside1 = inside1.replace("^0","");
+    inside2 = inside2.replace("^0","");
+
+    let expr = `${term1} + ${term2}`;
+
+    let solucion = [
+      `Paso 1: Identificamos el factor común numérico.`,
+      `Ambos términos son múltiplos de ${factorNum}.`,
+      `Paso 2: Identificamos el factor común literal.`,
+      `El menor exponente en ${var1} es ${minE1} y en ${var2} es ${minE2}.`,
+      `Por tanto, el factor común literal es ${factorLiteral}.`,
+      `Paso 3: Extraemos el factor común total:`,
+      `<span class="math">${term1} + ${term2} = ${factorNum}${factorLiteral}(${inside1} + ${inside2})</span>`
+    ];
+
+    return {
+      nivel: "Medio",
+      ejercicio: expr,
+      solucion: solucion
+    };
+  }
+
+  function generarAvanzado(){
+    let a = elegir(["a","m","p"]);
+    let b = elegir(["b","n","q"]);
+    let x = elegir(["x","t","z"]);
+    let y = elegir(["y","s","w"]);
+
+    let expr = `${a}${x} + ${a}${y} + ${b}${x} + ${b}${y}`;
+
+    let solucion = [
+      `Paso 1: Agrupamos términos en dos partes:`,
+      `<span class="math">(${a}${x} + ${a}${y}) + (${b}${x} + ${b}${y})</span>`,
+      `Paso 2: Sacamos factor común en cada grupo:`,
+      `<span class="math">${a}(${x}+${y}) + ${b}(${x}+${y})</span>`,
+      `Paso 3: Ahora aparece un factor común polinómico (${x}+${y}):`,
+      `<span class="math">(${x}+${y})(${a}+${b})</span>`
+    ];
+
+    return {
+      nivel: "Avanzado",
+      ejercicio: expr,
+      solucion: solucion
+    };
+  }
+
+  function generarExperto(){
+    let factorNum = randInt(2, 12);
+
+    let vars = ["x","y","a","b","m","n"];
+    let v1 = elegir(vars);
+    let v2 = elegir(vars.filter(v => v !== v1));
+
+    let e1 = randInt(2, 6);
+    let e2 = randInt(1, 5);
+
+    let coef1 = factorNum * randInt(5, 15);
+    let coef2 = -factorNum * randInt(5, 15);
+    let coef3 = factorNum * randInt(5, 15);
+
+    let term1 = `${coef1}${v1}^${e1}${v2}^${e2}`;
+    let term2 = `${coef2}${v1}^${e1-1}${v2}^${e2+1}`;
+    let term3 = `${coef3}${v1}^${e1-2}${v2}^${e2}`;
+
+    let expr = `${term1} - ${Math.abs(coef2)}${v1}^${e1-1}${v2}^${e2+1} + ${term3}`;
+
+    let minExpV1 = Math.min(e1, e1-1, e1-2);
+    let minExpV2 = Math.min(e2, e2+1, e2);
+
+    let factorLiteral = `${v1}^${minExpV1}${v2}^${minExpV2}`;
+
+    let inside1 = `${coef1/factorNum}${v1}^${e1-minExpV1}${v2}^${e2-minExpV2}`;
+    let inside2 = `${coef2/factorNum}${v1}^${(e1-1)-minExpV1}${v2}^${(e2+1)-minExpV2}`;
+    let inside3 = `${coef3/factorNum}${v1}^${(e1-2)-minExpV1}${v2}^${e2-minExpV2}`;
+
+    inside1 = inside1.replace("^0","");
+    inside2 = inside2.replace("^0","");
+    inside3 = inside3.replace("^0","");
+
+    let solucion = [
+      `Paso 1: Identificamos el factor común numérico.`,
+      `Todos los coeficientes son múltiplos de ${factorNum}.`,
+      `Paso 2: Identificamos el factor común literal.`,
+      `El menor exponente de ${v1} es ${minExpV1} y el menor exponente de ${v2} es ${minExpV2}.`,
+      `Por tanto, el factor común literal es ${factorLiteral}.`,
+      `Paso 3: Extraemos el factor común total:`,
+      `<span class="math">${expr} = ${factorNum}${factorLiteral}(${inside1} + ${inside2} + ${inside3})</span>`,
+      `Paso 4: En este nivel, el objetivo principal es reconocer el factor común máximo.`
+    ];
+
+    return {
+      nivel: "Experto",
+      ejercicio: expr,
+      solucion: solucion
+    };
+  }
+
+  // ==========================================================
+  // FUNCIÓN PRINCIPAL
+  // ==========================================================
+
+  function generarEjercicio(){
+    ocultarSolucion();
+
+    let nivel = document.getElementById("nivel").value;
+    let badge = document.getElementById("nivelBadge");
+
+    if(nivel === "aleatorio"){
+      nivel = elegir(["facil","medio","avanzado","experto"]);
+    }
+
+    let resultado;
+
+    if(nivel === "facil"){
+      resultado = generarFacil();
+      badge.textContent = "Fácil";
+    }
+    if(nivel === "medio"){
+      resultado = generarMedio();
+      badge.textContent = "Medio";
+    }
+    if(nivel === "avanzado"){
+      resultado = generarAvanzado();
+      badge.textContent = "Avanzado";
+    }
+    if(nivel === "experto"){
+      resultado = generarExperto();
+      badge.textContent = "Experto";
+    }
+
+    ejercicioActual = resultado;
+
+    document.getElementById("ejercicio").textContent = resultado.ejercicio;
+    document.getElementById("solucion").innerHTML = "";
+  }
+
+  function mostrarSolucion(){
+    if(!ejercicioActual){
+      alert("Primero genera un ejercicio.");
+      return;
+    }
+
+    let box = document.getElementById("solucionBox");
+    let cont = document.getElementById("solucion");
+
+    cont.innerHTML = "";
+
+    ejercicioActual.solucion.forEach(step => {
+      let div = document.createElement("div");
+      div.className = "solution-step";
+      div.innerHTML = step;
+      cont.appendChild(div);
+    });
+
+    box.style.display = "block";
+  }
+
+  function ocultarSolucion(){
+    document.getElementById("solucionBox").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
