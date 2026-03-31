@@ -3,7 +3,7 @@ layout: post
 title: "Factorización por Factor Común (segunda parte): El Arte de Extraer Patrones Ocultos"
 description: "Aprende factorización por factor común a nivel avanzado con teoremas, estrategias, ejemplos resueltos paso a paso, agrupación y ejercicios progresivos."
 date: 2026-03-30T18:00:00-06:00
-author: axellpaz
+author: axell
 image: '/images/140.png'
 tags: [matemáticas,álgebra,secundaria,universidad]
 commissions: [cofoma]
