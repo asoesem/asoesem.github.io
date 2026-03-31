@@ -12,9 +12,6 @@ toc: true
 ---
 
 # Factorización por Factor Común (Nivel Avanzado)
-
-> **Meta de aprendizaje:** comprender y aplicar la factorización por factor común como técnica base para simplificar expresiones, resolver ecuaciones y preparar el camino para otros métodos de factorización.
-
 ---
 
 ## 1. ¿Qué significa “factorizar”?
@@ -33,11 +30,7 @@ $$
 6(x+2)
 $$
 
-Esto es útil porque:
-- simplifica cálculos,
-- permite cancelar factores en fracciones,
-- facilita resolver ecuaciones,
-- revela estructuras ocultas.
+Esto es útil porque nos permite simplificar cálculos, cancelar factores en fracciones, facilita resolver ecuaciones y revelar estructuras algebraicas ocultas.
 
 ---
 
@@ -87,7 +80,7 @@ $$
 
 Cuando factorizamos, buscamos:
 
-- **MCD numérico** (máximo común divisor de los coeficientes).
+- **MCD numérico** (máximo común divisor de los coeficientes numéricos).
 - **variables comunes**.
 - **menor exponente común**.
 - **signo negativo común** (si ayuda a ordenar el resultado).
@@ -100,11 +93,13 @@ Cuando factorizamos, buscamos:
 
 ### Ejemplo 1
 
-Factoriza:
+Factoriza la siguiente expresión:
 
 $$
 18x + 24
 $$
+
+Para factorizar la expresión anterior veamos los siguientes pasos:
 
 **Paso 1.** Hallar el MCD de 18 y 24.
 
@@ -142,9 +137,9 @@ $$
 
 ### Regla fundamental
 
-Si aparece una variable en varios términos, el exponente común es el **menor exponente compartido**.
+Siempre que aparece una variable en varios términos, el exponente común es el **menor exponente compartido**.
 
-Ejemplo:
+Por ejemplo:
 
 $$
 x^5 \text{ y } x^2 \Rightarrow \text{factor común } x^2
@@ -154,7 +149,7 @@ $$
 
 ### Ejemplo 2
 
-Factoriza:
+Factoricemos la siguiente expresión:
 
 $$
 12x^4y^3 + 18x^2y^5
@@ -202,13 +197,13 @@ $$
 
 ---
 
-## 7. Factor común con signo negativo (técnica elegante)
+## 7. Factor común con signo negativo 
 
 A veces conviene extraer un signo negativo para que el polinomio dentro del paréntesis quede más ordenado.
 
 ### Ejemplo 3
 
-Factoriza:
+Factoricemos la siguiente expresión algebraica:
 
 $$
 -5x^3 + 10x^2 - 15x
@@ -240,7 +235,7 @@ $$
 
 ---
 
-## 8. Factor común fraccionario (nivel avanzado)
+## 8. Factor común fraccionario 
 
 ### Ejemplo 4
 
@@ -252,13 +247,7 @@ $$
 
 **Paso 1.** Factor común numérico.
 
-Observamos que:
-
-$$
-\frac{3}{8}
-$$
-
-es un factor común adecuado.
+Observamos que: $$\frac{3}{8}$$ es un factor común adecuado.
 
 **Paso 2.** También hay factor común literal $x$.
 
@@ -522,7 +511,7 @@ $$
 
 # 14. Errores comunes (y cómo evitarlos)
 
-### ❌ Error 1: sacar un factor que no divide a todos los términos
+### Error 1: sacar un factor que no divide a todos los términos
 
 Ejemplo poco conveniente:
 
@@ -530,7 +519,7 @@ $$
 6x + 9 = 6(x+1.5)
 $$
 
-Esto es correcto, pero no es elegante. Mejor:
+Esto es correcto, pero no es lo adecuado. Mejor hacerlo de la siguiente manera:
 
 $$
 6x + 9 = 3(2x+3)
@@ -538,7 +527,7 @@ $$
 
 ---
 
-### ❌ Error 2: olvidar dividir correctamente
+### Error 2: olvidar dividir correctamente
 
 Ejemplo correcto:
 
@@ -554,7 +543,7 @@ $$
 
 ---
 
-### ❌ Error 3: no factorizar completamente
+### Error 3: no factorizar completamente
 
 Ejemplo incompleto:
 
@@ -572,8 +561,7 @@ $$
 
 # 15. Ejercicios de práctica (progresivos)
 
-> **Instrucción:** Factoriza completamente.  
-> Cada ejercicio aumenta el nivel de dificultad.
+**Instrucción:** Factoriza completamente cada uno de las siguientes expresiones algebraicas 
 
 1. $$8x + 12$$
 
@@ -601,15 +589,9 @@ $$
 
 La factorización por factor común no es una técnica básica: es una **habilidad estructural**.
 
-Cuando la dominas, puedes:
+Cuando la dominas, puedes simplificar expresiones complejas, resolver ecuaciones polinómicas, trabajar con fracciones algebraicas y detectar patrones escondidos dentro de dichas expresiones.
 
-- simplificar expresiones complejas,
-- resolver ecuaciones polinómicas,
-- trabajar con fracciones algebraicas,
-- detectar patrones escondidos.
-
-> **Regla final:** si una expresión parece difícil, casi siempre conviene preguntar primero:  
-> **¿hay algo común escondido aquí?**
+> **Regla final:** si una expresión parece difícil, casi siempre conviene preguntar primero: **¿hay algo común escondido aquí?**
 
 ---
 
