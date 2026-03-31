@@ -11,21 +11,27 @@ featured: true
 toc: true
 ---
 
-# Factorización por Factor Común (segunda parte)
+# Factorización por Factor Común (Nivel Avanzado)
+
 > **Meta de aprendizaje:** comprender y aplicar la factorización por factor común como técnica base para simplificar expresiones, resolver ecuaciones y preparar el camino para otros métodos de factorización.
 
 ---
 
 ## 1. ¿Qué significa “factorizar”?
+
 Factorizar es reescribir una expresión algebraica como un **producto**.
 
 Por ejemplo, la expresión:
 
-$6x + 12$
+$$
+6x + 12
+$$
 
 puede reescribirse como:
 
-$6(x + 2)$
+$$
+6(x+2)
+$$
 
 Esto es útil porque:
 - simplifica cálculos,
@@ -35,33 +41,45 @@ Esto es útil porque:
 
 ---
 
-## 2. Definición formal de Factor Común
+## 2. Definición formal de factor común
 
 ### Definición (Factor común)
+
 Sea una suma algebraica:
 
-$A_1 + A_2 + \cdots + A_n$
+$$
+A_1 + A_2 + \cdots + A_n
+$$
 
 Diremos que existe un **factor común** $F$ si cada término $A_i$ puede escribirse como:
 
-$A_i = F\cdot B_i$
+$$
+A_i = F \cdot B_i
+$$
 
 Entonces la expresión completa se puede escribir como:
 
-$A_1 + A_2 + \cdots + A_n = F(B_1 + B_2 + \cdots + B_n)$
+$$
+A_1 + A_2 + \cdots + A_n = F(B_1 + B_2 + \cdots + B_n)
+$$
 
 ---
 
-## 3. Teorema clave: Propiedad distributiva inversa
+## 3. Teorema clave: propiedad distributiva inversa
 
 ### Teorema (Distribución)
+
 La propiedad distributiva establece que:
 
-$a(b + c) = ab + ac$
+$$
+a(b+c)=ab+ac
+$$
 
-La factorización por factor común es aplicar la propiedad en sentido inverso:
+La factorización por factor común es aplicar esta propiedad en sentido inverso:
 
-$ab + ac = a(b + c)$
+$$
+ab+ac=a(b+c)
+$$
 
 ---
 
@@ -81,122 +99,190 @@ Cuando factorizamos, buscamos:
 ## 5. Factor común numérico (con criterio matemático)
 
 ### Ejemplo 1
+
 Factoriza:
 
-$18x + 24$
+$$
+18x + 24
+$$
 
-**Paso 1.** Hallar el MCD de 18 y 24:
+**Paso 1.** Hallar el MCD de 18 y 24.
 
-- $18 = 2 \cdot 3^2$
-- $24 = 2^3 \cdot 3$
+Descomposición prima:
 
-El MCD es:
+$$
+18 = 2 \cdot 3^2
+$$
 
-$\text{MCD}(18,24) = 2\cdot 3 = 6$
+$$
+24 = 2^3 \cdot 3
+$$
+
+Por tanto:
+
+$$
+\text{MCD}(18,24)=2\cdot 3=6
+$$
 
 **Paso 2.** Extraer el factor común:
 
-$18x + 24 = 6(3x + 4)$
+$$
+18x + 24 = 6(3x+4)
+$$
 
 **Resultado final:**
 
-$18x + 24 = 6(3x + 4)$
+$$
+18x + 24 = 6(3x+4)
+$$
 
 ---
 
 ## 6. Factor común con variables y exponentes
 
 ### Regla fundamental
+
 Si aparece una variable en varios términos, el exponente común es el **menor exponente compartido**.
 
 Ejemplo:
 
-$x^5$ y $x^2$ tienen factor común $x^2$.
+$$
+x^5 \text{ y } x^2 \Rightarrow \text{factor común } x^2
+$$
 
 ---
 
 ### Ejemplo 2
+
 Factoriza:
 
-$12x^4y^3 + 18x^2y^5$
+$$
+12x^4y^3 + 18x^2y^5
+$$
 
-**Paso 1.** MCD numérico:
+**Paso 1.** Factor común numérico:
 
-$\text{MCD}(12,18) = 6$
+$$
+\text{MCD}(12,18)=6
+$$
 
 **Paso 2.** Factor común de $x$:
 
-$x^4$ y $x^2$ $\Rightarrow$ factor común: $x^2$
+$$
+x^4 \text{ y } x^2 \Rightarrow x^2
+$$
 
 **Paso 3.** Factor común de $y$:
 
-$y^3$ y $y^5$ $\Rightarrow$ factor común: $y^3$
+$$
+y^3 \text{ y } y^5 \Rightarrow y^3
+$$
 
 **Paso 4.** Factor común total:
 
-$6x^2y^3$
+$$
+6x^2y^3
+$$
 
 **Paso 5.** Dividir cada término:
 
-$\dfrac{12x^4y^3}{6x^2y^3}=2x^2$
+$$
+\frac{12x^4y^3}{6x^2y^3}=2x^2
+$$
 
-$\dfrac{18x^2y^5}{6x^2y^3}=3y^2$
+$$
+\frac{18x^2y^5}{6x^2y^3}=3y^2
+$$
 
 **Resultado final:**
 
-$12x^4y^3 + 18x^2y^5 = 6x^2y^3(2x^2 + 3y^2)$
+$$
+12x^4y^3 + 18x^2y^5 = 6x^2y^3(2x^2+3y^2)
+$$
 
 ---
 
 ## 7. Factor común con signo negativo (técnica elegante)
 
-A veces conviene extraer un signo negativo para que el polinomio dentro del paréntesis quede “ordenado”.
+A veces conviene extraer un signo negativo para que el polinomio dentro del paréntesis quede más ordenado.
 
 ### Ejemplo 3
+
 Factoriza:
 
-$-5x^3 + 10x^2 - 15x$
+$$
+-5x^3 + 10x^2 - 15x
+$$
 
-**Paso 1.** Factor común numérico: $5$
+**Paso 1.** Factor común numérico:
 
-**Paso 2.** Factor común literal: $x$
+$$
+\text{MCD}(5,10,15)=5
+$$
+
+**Paso 2.** Factor común literal:
+
+$$
+x^3, x^2, x \Rightarrow x
+$$
 
 **Paso 3.** Extraer el factor común con signo negativo:
 
-$-5x(x^2 - 2x + 3)$
+$$
+-5x(x^2-2x+3)
+$$
 
 **Resultado final:**
 
-$-5x^3 + 10x^2 - 15x = -5x(x^2 - 2x + 3)$
+$$
+-5x^3 + 10x^2 - 15x = -5x(x^2-2x+3)
+$$
 
 ---
 
 ## 8. Factor común fraccionario (nivel avanzado)
 
 ### Ejemplo 4
+
 Factoriza:
 
-$\dfrac{3}{4}x^2 + \dfrac{9}{8}x$
+$$
+\frac{3}{4}x^2 + \frac{9}{8}x
+$$
 
-**Paso 1.** Factor común numérico:
+**Paso 1.** Factor común numérico.
 
-El factor común conveniente es $\dfrac{3}{8}$.
+Observamos que:
 
-**Paso 2.** Extraer $x$ también:
+$$
+\frac{3}{8}
+$$
 
-Factor común total:
+es un factor común adecuado.
 
-$\dfrac{3}{8}x$
+**Paso 2.** También hay factor común literal $x$.
+
+Entonces el factor común total es:
+
+$$
+\frac{3}{8}x
+$$
 
 **Paso 3.** Dividir cada término:
 
-$\dfrac{\frac{3}{4}x^2}{\frac{3}{8}x}=2x$
+$$
+\frac{\frac{3}{4}x^2}{\frac{3}{8}x}=2x
+$$
 
-$\dfrac{\frac{9}{8}x}{\frac{3}{8}x}=3$
+$$
+\frac{\frac{9}{8}x}{\frac{3}{8}x}=3
+$$
 
 **Resultado final:**
 
-$\dfrac{3}{4}x^2 + \dfrac{9}{8}x = \dfrac{3}{8}x(2x + 3)$
+$$
+\frac{3}{4}x^2 + \frac{9}{8}x = \frac{3}{8}x(2x+3)
+$$
 
 ---
 
@@ -205,106 +291,152 @@ $\dfrac{3}{4}x^2 + \dfrac{9}{8}x = \dfrac{3}{8}x(2x + 3)$
 Aquí el factor común no es un número ni una letra, sino un **polinomio completo**.
 
 ### Ejemplo 5
+
 Factoriza:
 
-$(x + 2)(x - 5) + 3(x + 2)$
+$$
+(x+2)(x-5) + 3(x+2)
+$$
 
-**Paso 1.** Identificar el factor repetido:
+**Paso 1.** Identificar el factor repetido.
 
-El término $(x + 2)$ aparece en ambos.
+El factor común es:
 
-**Paso 2.** Extraer factor común:
+$$
+(x+2)
+$$
 
-$(x + 2)[(x - 5) + 3]$
+**Paso 2.** Extraer el factor común:
+
+$$
+(x+2)\big((x-5)+3\big)
+$$
 
 **Paso 3.** Simplificar el paréntesis:
 
-$(x - 5) + 3 = x - 2$
+$$
+(x-5)+3=x-2
+$$
 
 **Resultado final:**
 
-$(x + 2)(x - 5) + 3(x + 2) = (x + 2)(x - 2)$
+$$
+(x+2)(x-5) + 3(x+2) = (x+2)(x-2)
+$$
 
 ---
 
 ## 10. Factorización por agrupación
 
-Cuando no hay un factor común evidente para todos los términos, agrupamos.
+Cuando no hay un factor común evidente en todos los términos, agrupamos.
 
 ### Ejemplo 6
+
 Factoriza:
 
-$ax + ay + bx + by$
+$$
+ax + ay + bx + by
+$$
 
-**Paso 1.** Agrupar:
+**Paso 1.** Agrupar términos:
 
-$(ax + ay) + (bx + by)$
+$$
+(ax+ay) + (bx+by)
+$$
 
 **Paso 2.** Sacar factor común en cada grupo:
 
-$a(x + y) + b(x + y)$
+$$
+a(x+y) + b(x+y)
+$$
 
-**Paso 3.** Ahora hay un factor común global $(x + y)$:
+**Paso 3.** Extraer el factor común global:
 
-$(x + y)(a + b)$
+$$
+(x+y)(a+b)
+$$
 
 **Resultado final:**
 
-$ax + ay + bx + by = (x + y)(a + b)$
+$$
+ax + ay + bx + by = (x+y)(a+b)
+$$
 
 ---
 
 ## 11. Factor común mixto (agrupación avanzada)
 
 ### Ejemplo 7
+
 Factoriza completamente:
 
-$6x^2 - 9xy + 4x - 6y$
+$$
+6x^2 - 9xy + 4x - 6y
+$$
 
 **Paso 1.** Agrupar:
 
-$(6x^2 - 9xy) + (4x - 6y)$
+$$
+(6x^2 - 9xy) + (4x - 6y)
+$$
 
-**Paso 2.** Factor común en cada grupo:
+**Paso 2.** Sacar factor común en cada grupo:
 
-$6x^2 - 9xy = 3x(2x - 3y)$
+$$
+6x^2 - 9xy = 3x(2x-3y)
+$$
 
-$4x - 6y = 2(2x - 3y)$
+$$
+4x - 6y = 2(2x-3y)
+$$
 
-**Paso 3.** Extraer el factor común polinómico $(2x - 3y)$:
+**Paso 3.** Extraer el factor común polinómico:
 
-$3x(2x - 3y) + 2(2x - 3y) = (2x - 3y)(3x + 2)$
+$$
+3x(2x-3y) + 2(2x-3y) = (2x-3y)(3x+2)
+$$
 
 **Resultado final:**
 
-$6x^2 - 9xy + 4x - 6y = (2x - 3y)(3x + 2)$
+$$
+6x^2 - 9xy + 4x - 6y = (2x-3y)(3x+2)
+$$
 
 ---
 
 ## 12. Factor común en fracciones algebraicas (simplificación)
 
 ### Ejemplo 8
+
 Simplifica:
 
-$\dfrac{12x^2y - 18xy^2}{6xy}$
+$$
+\frac{12x^2y - 18xy^2}{6xy}
+$$
 
 **Paso 1.** Factorizar el numerador:
 
-$12x^2y - 18xy^2 = 6xy(2x - 3y)$
+$$
+12x^2y - 18xy^2 = 6xy(2x-3y)
+$$
 
 **Paso 2.** Sustituir:
 
-$\dfrac{6xy(2x - 3y)}{6xy}$
+$$
+\frac{6xy(2x-3y)}{6xy}
+$$
 
-**Paso 3.** Cancelar el factor común $6xy$:
+**Paso 3.** Cancelar el factor común:
 
-Resultado:
-
-$2x - 3y$
+$$
+2x-3y
+$$
 
 **Conclusión:**
 
-$\dfrac{12x^2y - 18xy^2}{6xy} = 2x - 3y$
+$$
+\frac{12x^2y - 18xy^2}{6xy} = 2x-3y
+$$
 
 > Restricción: $x \ne 0$ y $y \ne 0$.
 
@@ -313,68 +445,128 @@ $\dfrac{12x^2y - 18xy^2}{6xy} = 2x - 3y$
 ## 13. Factor común como paso previo a resolver ecuaciones
 
 ### Teorema (Producto nulo)
+
 Si:
 
-$A \cdot B = 0$
+$$
+A \cdot B = 0
+$$
 
 Entonces:
 
-$A = 0$ o $B = 0$.
+$$
+A = 0 \quad \text{o} \quad B = 0
+$$
 
 ---
 
 ### Ejemplo 9
+
 Resuelve:
 
-$5x^3 - 10x^2 = 0$
+$$
+5x^3 - 10x^2 = 0
+$$
 
-**Paso 1.** Factor común:
+**Paso 1.** Extraer factor común:
 
-$5x^2(x - 2) = 0$
+$$
+5x^3 - 10x^2 = 5x^2(x-2)
+$$
 
-**Paso 2.** Producto nulo:
+Por tanto, la ecuación queda:
 
-- $5x^2 = 0 \Rightarrow x^2 = 0 \Rightarrow x = 0$
-- $x - 2 = 0 \Rightarrow x = 2$
+$$
+5x^2(x-2)=0
+$$
 
-**Solución:**
+**Paso 2.** Aplicar producto nulo.
 
-$x = 0$ o $x = 2$.
+Si:
+
+$$
+5x^2 = 0
+$$
+
+entonces:
+
+$$
+x^2 = 0
+$$
+
+y por tanto:
+
+$$
+x = 0
+$$
+
+Si:
+
+$$
+x-2 = 0
+$$
+
+entonces:
+
+$$
+x = 2
+$$
+
+**Solución final:**
+
+$$
+x = 0 \quad \text{o} \quad x = 2
+$$
 
 ---
 
 # 14. Errores comunes (y cómo evitarlos)
 
 ### ❌ Error 1: sacar un factor que no divide a todos los términos
+
 Ejemplo poco conveniente:
 
-$6x + 9 = 6(x + 1.5)$
+$$
+6x + 9 = 6(x+1.5)
+$$
 
-Mejor:
+Esto es correcto, pero no es elegante. Mejor:
 
-$6x + 9 = 3(2x + 3)$
+$$
+6x + 9 = 3(2x+3)
+$$
 
 ---
 
 ### ❌ Error 2: olvidar dividir correctamente
+
 Ejemplo correcto:
 
-$12x + 8 = 4(3x + 2)$
+$$
+12x + 8 = 4(3x+2)
+$$
 
 Ejemplo incorrecto:
 
-$12x + 8 = 4(12x + 8)$
+$$
+12x + 8 = 4(12x+8)
+$$
 
 ---
 
 ### ❌ Error 3: no factorizar completamente
+
 Ejemplo incompleto:
 
-$2x^2 - 8 = 2(x^2 - 4)$
+$$
+2x^2 - 8 = 2(x^2-4)
+$$
 
 Factorización completa:
 
-$2(x^2 - 4) = 2(x - 2)(x + 2)$
+$$
+2(x^2-4)=2(x-2)(x+2)
+$$
 
 ---
 
@@ -383,25 +575,25 @@ $2(x^2 - 4) = 2(x - 2)(x + 2)$
 > **Instrucción:** Factoriza completamente.  
 > Cada ejercicio aumenta el nivel de dificultad.
 
-1. $8x + 12$
+1. $$8x + 12$$
 
-2. $15a^2 + 25a$
+2. $$15a^2 + 25a$$
 
-3. $18m^3n^2 - 12m^2n$
+3. $$18m^3n^2 - 12m^2n$$
 
-4. $7x^2y - 14xy^2 + 21xy$
+4. $$7x^2y - 14xy^2 + 21xy$$
 
-5. $\dfrac{3}{5}x^2 + \dfrac{9}{10}x$
+5. $$\frac{3}{5}x^2 + \frac{9}{10}x$$
 
-6. $(x + 3)(x - 2) - 5(x + 3)$
+6. $$(x+3)(x-2) - 5(x+3)$$
 
-7. $4x^3 - 12x^2 + 9x - 27$
+7. $$4x^3 - 12x^2 + 9x - 27$$
 
-8. $6a^2b - 9ab^2 + 12a - 18b$
+8. $$6a^2b - 9ab^2 + 12a - 18b$$
 
-9. $10x^4y^3 - 15x^3y^5 + 25x^2y^3$
+9. $$10x^4y^3 - 15x^3y^5 + 25x^2y^3$$
 
-10. $3(x - 2)^3 - 6(x - 2)^2 + 9(x - 2)$
+10. $$3(x-2)^3 - 6(x-2)^2 + 9(x-2)$$
 
 ---
 
@@ -419,9 +611,10 @@ Cuando la dominas, puedes:
 > **Regla final:** si una expresión parece difícil, casi siempre conviene preguntar primero:  
 > **¿hay algo común escondido aquí?**
 
+---
 
 ## Practica aquí
 En el siguiente cuadro podrás generar un ejercicio de diversos niveles ¡ponte a prueba!
 
-
+<iframe src="factor_comun_widget.html" width="100%" height="500" style="border:none; border-radius:12px;"></iframe>
 ---
