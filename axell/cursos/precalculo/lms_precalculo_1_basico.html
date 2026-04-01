@@ -1,0 +1,3247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precálculo 1 · Nivel Básico — ASOESEM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+:root {
+  --primary: #23334f;
+  --primary-dark: #1a2638;
+  --primary-mid: #2c3b4b;
+  --accent: #ffbf00;
+  --accent-light: #ffd447;
+  --accent-glow: rgba(255,191,0,0.18);
+  --gold: #ffbf00;
+  --gold-light: #ffe080;
+  --bg: #f5f6f8;
+  --bg2: #e8eaef;
+  --surface: #ffffff;
+  --surface2: #f0f2f7;
+  --text: #1a2638;
+  --text-mid: #2c3b4b;
+  --text-light: #6b7c93;
+  --border: #d0d5de;
+  --success: #1a9e6e;
+  --danger: #d64045;
+  --warn: #e8923a;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(35,51,79,0.10);
+  --shadow-lg: 0 12px 48px rgba(35,51,79,0.16);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ─── TOPBAR ──────────────────────────────────────────── */
+#topbar {
+  background: var(--primary-dark);
+  color: white;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+#topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent-light);
+  cursor: pointer;
+}
+#topbar .brand .logo-icon {
+  width: 38px; height: 38px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+#topbar .course-title {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-body);
+}
+#topbar .progress-bar-mini {
+  display: flex; align-items: center; gap: 10px;
+}
+#topbar .progress-bar-mini span { font-size: 0.8rem; color: var(--accent-light); }
+#topbar .mini-bar {
+  width: 140px; height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+#topbar .mini-bar-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+/* ─── SIDEBAR ─────────────────────────────────────────── */
+#sidebar {
+  width: 290px;
+  background: var(--primary-dark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.sidebar-section-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-mono);
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-left: 3px solid transparent;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+}
+.sidebar-item:hover { background: rgba(255,191,0,0.08); color: white; }
+.sidebar-item.active {
+  background: rgba(255,191,0,0.12);
+  border-left-color: var(--accent);
+  color: var(--accent-light);
+}
+.sidebar-item.locked { opacity: 0.4; cursor: not-allowed; }
+.sidebar-item .item-icon { font-size: 1rem; width: 22px; text-align: center; }
+.sidebar-item .item-label { flex: 1; }
+.sidebar-item .item-badge {
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: rgba(255,191,0,0.12);
+  color: var(--accent-light);
+  font-family: var(--font-mono);
+}
+.sidebar-item .item-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+}
+.sidebar-item .item-check.done {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.sidebar-item .item-check.quiz-done {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--primary-dark);
+}
+
+/* ─── MAIN CONTENT ────────────────────────────────────── */
+#main-content {
+  flex: 1;
+  padding: 2.5rem 2rem;
+  max-width: 920px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ─── PAGES ───────────────────────────────────────────── */
+.page { display: none; animation: fadeIn 0.35s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── DASHBOARD ───────────────────────────────────────── */
+.dashboard-hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-mid) 100%);
+  border-radius: var(--radius);
+  padding: 3rem 2.5rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.dashboard-hero::before {
+  content: 'ℝ';
+  position: absolute; right: 2rem; top: 1rem;
+  font-size: 9rem; opacity: 0.07;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.dashboard-hero::after {
+  content: '';
+  position: absolute; bottom: -30px; left: -30px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,191,0,0.07);
+}
+.dashboard-hero .tag {
+  display: inline-block;
+  background: rgba(255,191,0,0.2);
+  color: var(--accent-light);
+  border: 1px solid rgba(255,191,0,0.4);
+  border-radius: 99px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.dashboard-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+.dashboard-hero p {
+  font-size: 1rem;
+  opacity: 0.8;
+  max-width: 540px;
+  margin-bottom: 1.5rem;
+}
+.hero-stats {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+}
+.hero-stat { text-align: left; }
+.hero-stat .val { font-size: 1.9rem; font-family: var(--font-display); font-weight: 700; color: var(--accent); }
+.hero-stat .lbl { font-size: 0.78rem; opacity: 0.6; }
+
+.course-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.course-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.course-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.course-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.course-card:hover::before { opacity: 1; }
+.course-card.locked { opacity: 0.55; cursor: not-allowed; }
+.course-card.locked:hover { transform: none; box-shadow: none; }
+.course-card .card-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-bottom: 0.4rem;
+}
+.course-card .card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+.course-card .card-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+.course-card .card-progress {
+  display: flex; align-items: center; gap: 8px;
+}
+.card-prog-bar {
+  flex: 1; height: 5px;
+  background: var(--bg2);
+  border-radius: 3px; overflow: hidden;
+}
+.card-prog-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.5s; }
+.card-prog-pct { font-size: 0.75rem; color: var(--text-light); font-family: var(--font-mono); }
+.card-status-badge {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 0.68rem; font-family: var(--font-mono);
+  padding: 2px 8px; border-radius: 99px;
+}
+.badge-todo { background: var(--bg2); color: var(--text-light); }
+.badge-progress { background: rgba(255,191,0,0.12); color: #b08900; border: 1px solid rgba(255,191,0,0.35); }
+.badge-done { background: rgba(26,158,110,0.12); color: var(--success); border: 1px solid rgba(26,158,110,0.3); }
+.badge-locked { background: rgba(90,130,133,0.1); color: var(--text-light); }
+
+/* ─── LESSON PAGE ─────────────────────────────────────── */
+.lesson-header {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-header .lesson-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #b08900;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+.lesson-header h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+.lesson-header .lesson-desc {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* ─── THEORY BLOCKS ───────────────────────────────────── */
+.theory-section { margin-bottom: 2.5rem; }
+.theory-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.definition-box {
+  background: linear-gradient(135deg, rgba(255,191,0,0.07), rgba(255,191,0,0.02));
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.2rem 1.4rem;
+  margin: 1.2rem 0;
+}
+.definition-box .def-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #c99500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+.definition-box .def-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.theorem-box {
+  background: linear-gradient(135deg, rgba(232,184,75,0.07), rgba(232,184,75,0.02));
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.2rem 1.4rem;
+  margin: 1.2rem 0;
+}
+.theorem-box .thm-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+.theorem-box .thm-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.note-box {
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.3rem;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+.note-box .note-icon { margin-right: 6px; }
+
+.math-display {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+  overflow-x: auto;
+}
+
+/* ─── STEP-BY-STEP EXERCISE ───────────────────────────── */
+.exercise-block {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+.exercise-header {
+  background: var(--primary);
+  color: white;
+  padding: 0.9rem 1.3rem;
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer;
+}
+.exercise-header .ex-num {
+  background: var(--accent);
+  color: var(--primary-dark);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 99px;
+}
+.exercise-header .ex-title {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 0.97rem;
+  font-weight: 700;
+}
+.exercise-header .ex-toggle { transition: transform 0.3s; }
+.exercise-header .ex-toggle.open { transform: rotate(180deg); }
+
+.exercise-body { padding: 1.3rem; display: none; }
+.exercise-body.open { display: block; }
+
+.exercise-statement {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  border-left: 3px solid var(--primary-mid);
+}
+
+.steps-container { margin-top: 0.5rem; }
+.step {
+  display: flex; gap: 14px;
+  margin-bottom: 1.1rem;
+  align-items: flex-start;
+}
+.step-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  background: var(--primary);
+  color: var(--accent-light);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.step-content { flex: 1; }
+.step-content .step-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: #8a6800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 3px;
+}
+.step-content p { font-size: 0.93rem; color: var(--text); }
+.step-result {
+  background: linear-gradient(90deg, rgba(26,158,110,0.08), transparent);
+  border-left: 3px solid var(--success);
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* ─── NUMBER LINE SVG ─────────────────────────────────── */
+.number-line-container {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+}
+
+/* ─── VENN DIAGRAM ────────────────────────────────────── */
+.diagram-container {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+/* ─── PROPERTIES TABLE ────────────────────────────────── */
+.prop-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+.prop-table th {
+  background: var(--primary);
+  color: white;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.prop-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.prop-table tr:hover td { background: var(--surface2); }
+.prop-table .prop-name { font-weight: 600; color: var(--primary-mid); }
+.prop-table .prop-formula { font-family: var(--font-mono); font-size: 0.85rem; }
+
+/* ─── QUIZ ────────────────────────────────────────────── */
+.quiz-locked-msg {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-light);
+}
+.quiz-locked-msg .lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.quiz-container { max-width: 720px; }
+.quiz-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%);
+  color: white;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 1.5rem 2rem;
+}
+.quiz-header h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.3rem; }
+.quiz-header p { opacity: 0.7; font-size: 0.88rem; }
+.quiz-body { background: var(--surface); border: 1.5px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 1.5rem 2rem; }
+
+.quiz-question {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 0.3s ease;
+}
+.quiz-question:last-of-type { border-bottom: none; }
+.q-visual {
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  margin: 0.8rem 0 1rem;
+  text-align: center;
+  overflow-x: auto;
+}
+.q-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8a6800;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.08em;
+}
+.q-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.q-options { display: grid; gap: 0.85rem; margin-top: 0.3rem; }
+.q-option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+.q-option:hover { border-color: var(--accent); background: rgba(255,191,0,0.05); }
+.q-option.selected { border-color: var(--accent); background: rgba(255,191,0,0.08); }
+.q-option.correct { border-color: var(--success); background: rgba(26,158,110,0.08); color: var(--success); }
+.q-option.wrong { border-color: var(--danger); background: rgba(214,64,69,0.06); color: var(--danger); }
+.q-option .opt-letter {
+  width: 26px; height: 26px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.q-option.selected .opt-letter { background: var(--accent); color: var(--primary-dark); }
+.q-option.correct .opt-letter { background: var(--success); color: white; }
+.q-option.wrong .opt-letter { background: var(--danger); color: white; }
+.q-explanation {
+  margin-top: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: var(--surface2);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  border-left: 3px solid var(--primary);
+  display: none;
+}
+.q-explanation.show { display: block; }
+
+.quiz-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1.5px solid var(--border);
+  margin-top: 0.5rem;
+}
+.quiz-progress-dots {
+  display: flex; gap: 5px; flex-wrap: wrap;
+}
+.q-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s;
+}
+.q-dot.answered { background: var(--accent); }
+.q-dot.current { background: var(--primary); }
+
+.quiz-results {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+.quiz-results .score-ring {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  margin: 0 auto 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.score-ring.pass { background: linear-gradient(135deg, rgba(26,158,110,0.15), rgba(26,158,110,0.05)); border: 3px solid var(--success); color: var(--success); }
+.score-ring.fail { background: linear-gradient(135deg, rgba(214,64,69,0.15), rgba(214,64,69,0.05)); border: 3px solid var(--danger); color: var(--danger); }
+.quiz-results h4 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--primary); }
+.quiz-results p { color: var(--text-light); font-size: 0.93rem; margin-bottom: 1.5rem; }
+
+/* ─── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-primary { background: var(--accent); color: var(--primary-dark); font-weight: 600; }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+.btn-secondary { background: var(--surface); border: 1.5px solid var(--border); color: var(--text-mid); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--primary); }
+.btn-dark { background: var(--primary); color: white; font-weight: 600; }
+.btn-dark:hover { background: var(--primary-mid); transform: translateY(-1px); }
+.btn-sm { padding: 0.4rem 0.9rem; font-size: 0.83rem; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
+
+/* ─── LESSON NAV ──────────────────────────────────────── */
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1.5px solid var(--border);
+}
+.lesson-complete-btn {
+  background: linear-gradient(135deg, var(--success), #13855c);
+  color: white; border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px; font-size: 0.95rem;
+  font-family: var(--font-body); font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.lesson-complete-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,158,110,0.3); }
+
+/* ─── TAGS / CHIPS ────────────────────────────────────── */
+.tag-chip {
+  display: inline-block;
+  background: rgba(255,191,0,0.12);
+  color: var(--primary-mid);
+  border: 1px solid rgba(255,191,0,0.3);
+  border-radius: 99px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  margin: 2px;
+}
+
+/* ─── ACCORDION ───────────────────────────────────────── */
+.accordion { margin: 0.8rem 0; }
+.accordion-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1.1rem;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--primary);
+  transition: all 0.2s;
+}
+.accordion-header:hover { border-color: var(--accent); }
+.accordion-header.open { border-radius: 8px 8px 0 0; border-color: var(--accent); background: rgba(255,191,0,0.05); }
+.accordion-body {
+  display: none;
+  padding: 1rem 1.1rem;
+  border: 1.5px solid var(--accent);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.92rem;
+}
+.accordion-body.open { display: block; }
+
+/* ─── SCROLLBAR ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  #sidebar { display: none; }
+  #main-content { padding: 1.5rem 1rem; }
+  .dashboard-hero h1 { font-size: 1.6rem; }
+  .course-cards { grid-template-columns: 1fr; }
+}
+
+/* ─── MATH INLINE ─────────────────────────────────────── */
+.math-inline { font-style: italic; }
+mjx-container { font-size: 1.05em !important; }
+
+/* ─── HIGHLIGHT ───────────────────────────────────────── */
+.hl-accent { color: #8a6800; font-weight: 600; }
+.hl-gold { color: var(--gold); font-weight: 600; }
+.hl-success { color: var(--success); font-weight: 600; }
+.hl-danger { color: var(--danger); }
+
+/* ─── CONJUNTOS DIAGRAM ───────────────────────────────── */
+.num-sets-visual {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1rem;
+  gap: 0;
+}
+.set-ring {
+  border-radius: 99px;
+  border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  position: relative;
+  transition: all 0.3s;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--primary-dark);
+  color: white;
+  padding: 0.9rem 1.4rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(80px); opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 9999;
+  max-width: 320px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div class="brand" onclick="showPage('dashboard')">
+    <div>
+      <div>ASOESEM</div>
+      <div class="course-title">Precálculo 1 · Nivel Básico</div>
+    </div>
+  </div>
+  <div class="progress-bar-mini">
+    <span id="pct-label">0%</span>
+    <div class="mini-bar"><div class="mini-bar-fill" id="mini-progress" style="width:0%"></div></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="app-layout">
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-section-title">Navegación</div>
+  <div class="sidebar-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+    <span class="item-icon">🏠</span>
+    <span class="item-label">Dashboard</span>
+  </div>
+
+  <div class="sidebar-section-title" style="margin-top:1rem">Módulo 1</div>
+  <div class="sidebar-item" onclick="navToLesson(1)" id="nav-l1">
+    <span class="item-icon">🔢</span>
+    <span class="item-label">Conjuntos Numéricos</span>
+    <span class="item-check" id="chk-l1"></span>
+  </div>
+  <div class="sidebar-item" onclick="navToQuiz(1)" id="nav-q1">
+    <span class="item-icon">📝</span>
+    <span class="item-label">Cuestionario 1</span>
+    <span class="item-check" id="chk-q1"></span>
+  </div>
+
+  <div class="sidebar-section-title" style="margin-top:1rem">Módulo 2</div>
+  <div class="sidebar-item locked" onclick="navToLesson(2)" id="nav-l2">
+    <span class="item-icon">📏</span>
+    <span class="item-label">Valor Absoluto</span>
+    <span class="item-check" id="chk-l2"></span>
+  </div>
+  <div class="sidebar-item locked" onclick="navToQuiz(2)" id="nav-q2">
+    <span class="item-icon">📝</span>
+    <span class="item-label">Cuestionario 2</span>
+    <span class="item-check" id="chk-q2"></span>
+  </div>
+
+  <div class="sidebar-section-title" style="margin-top:1rem">Módulo 3</div>
+  <div class="sidebar-item locked" onclick="navToLesson(3)" id="nav-l3">
+    <span class="item-icon">📐</span>
+    <span class="item-label">Distancia entre Puntos</span>
+    <span class="item-check" id="chk-l3"></span>
+  </div>
+  <div class="sidebar-item locked" onclick="navToQuiz(3)" id="nav-q3">
+    <span class="item-icon">📝</span>
+    <span class="item-label">Cuestionario 3</span>
+    <span class="item-check" id="chk-q3"></span>
+  </div>
+
+  <div class="sidebar-section-title" style="margin-top:1rem">Módulo 4</div>
+  <div class="sidebar-item locked" onclick="navToLesson(4)" id="nav-l4">
+    <span class="item-icon">⚙️</span>
+    <span class="item-label">Operaciones en ℝ</span>
+    <span class="item-check" id="chk-l4"></span>
+  </div>
+  <div class="sidebar-item locked" onclick="navToQuiz(4)" id="nav-q4">
+    <span class="item-icon">📝</span>
+    <span class="item-label">Cuestionario 4</span>
+    <span class="item-check" id="chk-q4"></span>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main-content">
+
+<!-- ══════════════════════════════════════════════════════
+     DASHBOARD
+══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-dashboard">
+  <div class="dashboard-hero">
+    <div class="tag">📚 ASOESEM · UNED</div>
+    <h1>Precálculo 1<br>Nivel Básico</h1>
+    <p>Domina los fundamentos matemáticos esenciales para el cálculo: conjuntos numéricos, valor absoluto, distancia y operaciones con números reales.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val">4</div>
+        <div class="lbl">Lecciones</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val" id="stat-completed">0</div>
+        <div class="lbl">Completadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val" id="stat-quizzes">0</div>
+        <div class="lbl">Cuestionarios</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val" id="stat-score">—</div>
+        <div class="lbl">Promedio</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);color:var(--primary);margin-bottom:1rem;font-size:1.15rem">Contenido del Curso</h3>
+  <div class="course-cards">
+    <div class="course-card" onclick="navToLesson(1)" id="card-l1">
+      <span class="card-status-badge badge-todo" id="badge-l1">Por iniciar</span>
+      <div class="card-num">LECCIÓN 01</div>
+      <div class="card-title">Conjuntos Numéricos</div>
+      <div class="card-desc">ℕ, ℤ, ℚ, irracionales y ℝ. Notación, propiedades y relaciones entre conjuntos.</div>
+      <div class="card-progress">
+        <div class="card-prog-bar"><div class="card-prog-fill" id="prog-l1" style="width:0%"></div></div>
+        <span class="card-prog-pct" id="pct-l1">0%</span>
+      </div>
+    </div>
+    <div class="course-card locked" onclick="navToLesson(2)" id="card-l2">
+      <span class="card-status-badge badge-locked" id="badge-l2">🔒 Bloqueado</span>
+      <div class="card-num">LECCIÓN 02</div>
+      <div class="card-title">Valor Absoluto</div>
+      <div class="card-desc">Recta numérica, relación de orden, definición y propiedades del valor absoluto.</div>
+      <div class="card-progress">
+        <div class="card-prog-bar"><div class="card-prog-fill" id="prog-l2" style="width:0%"></div></div>
+        <span class="card-prog-pct" id="pct-l2">0%</span>
+      </div>
+    </div>
+    <div class="course-card locked" onclick="navToLesson(3)" id="card-l3">
+      <span class="card-status-badge badge-locked" id="badge-l3">🔒 Bloqueado</span>
+      <div class="card-num">LECCIÓN 03</div>
+      <div class="card-title">Distancia entre Puntos</div>
+      <div class="card-desc">Fórmula y aplicación de la distancia entre dos puntos en la recta real.</div>
+      <div class="card-progress">
+        <div class="card-prog-bar"><div class="card-prog-fill" id="prog-l3" style="width:0%"></div></div>
+        <span class="card-prog-pct" id="pct-l3">0%</span>
+      </div>
+    </div>
+    <div class="course-card locked" onclick="navToLesson(4)" id="card-l4">
+      <span class="card-status-badge badge-locked" id="badge-l4">🔒 Bloqueado</span>
+      <div class="card-num">LECCIÓN 04</div>
+      <div class="card-title">Operaciones con ℝ</div>
+      <div class="card-desc">Propiedades, potencias, raíces n-ésimas, operaciones combinadas y racionalización.</div>
+      <div class="card-progress">
+        <div class="card-prog-bar"><div class="card-prog-fill" id="prog-l4" style="width:0%"></div></div>
+        <span class="card-prog-pct" id="pct-l4">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-top:0.5rem">
+    <span class="note-icon">💡</span>
+    <strong>Sistema de desbloqueo:</strong> Debes completar cada lección y su cuestionario para desbloquear la siguiente. Tu progreso se guarda automáticamente en este navegador.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     LECCIÓN 1: CONJUNTOS NUMÉRICOS
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-l1">
+  <div class="lesson-header">
+    <div class="lesson-num">LECCIÓN 01 · MÓDULO 1</div>
+    <h2>Conjuntos Numéricos</h2>
+    <p class="lesson-desc">Exploraremos los diferentes tipos de números que conforman el sistema numérico real, sus relaciones y propiedades fundamentales.</p>
+  </div>
+
+  <!-- SECCIÓN 1.1 -->
+  <div class="theory-section">
+    <h3>1.1 ¿Qué es un Conjunto?</h3>
+    <p>En matemáticas, un <strong>conjunto</strong> es una colección bien definida de objetos llamados <em>elementos</em> o <em>miembros</em>. La noción de conjunto fue formalizada por Georg Cantor a finales del siglo XIX y es la base de prácticamente toda la matemática moderna.</p>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.1</div>
+      <div class="def-title">Conjunto</div>
+      <p>Un <strong>conjunto</strong> es una colección bien determinada de objetos distintos, llamados <em>elementos</em>. Si \(a\) es un elemento del conjunto \(A\), escribimos \(a \in A\). Si \(a\) no es elemento, escribimos \(a \notin A\).</p>
+    </div>
+
+    <h4 style="color:var(--primary-mid);margin:1.2rem 0 0.6rem;font-family:var(--font-display)">Formas de representar un conjunto</h4>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        📋 Notación por Extensión (Listado) <span>▾</span>
+      </div>
+      <div class="accordion-body open">
+        <p>Se listan explícitamente todos sus elementos entre llaves.</p>
+        <div class="math-display">\[A = \{1, 2, 3, 4, 5\} \qquad B = \{a, e, i, o, u\}\]</div>
+        <p>Para conjuntos infinitos o muy grandes se usa elipsis: \(\mathbb{N} = \{1, 2, 3, 4, \ldots\}\)</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        📐 Notación por Comprensión (Regla) <span>▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>Se describe la propiedad que deben cumplir los elementos.</p>
+        <div class="math-display">\[A = \{x \mid P(x)\} \quad \text{o} \quad A = \{x : P(x)\}\]</div>
+        <p>donde \(P(x)\) es una proposición que define la propiedad. Por ejemplo:</p>
+        <div class="math-display">\[A = \{x \in \mathbb{Z} \mid -3 \leq x \leq 3\} = \{-3,-2,-1,0,1,2,3\}\]</div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">⚠️</span>
+      <strong>Conjunto vacío:</strong> El conjunto que no tiene ningún elemento se denota \(\emptyset\) o \(\{\}\). Es único y es subconjunto de cualquier conjunto.
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1.2 -->
+  <div class="theory-section">
+    <h3>1.2 Los Números Naturales (\(\mathbb{N}\))</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.2</div>
+      <div class="def-title">Números Naturales</div>
+      <p>Los <strong>números naturales</strong> son los números de contar. Según la convención más común en análisis matemático:</p>
+      <div class="math-display">\[\mathbb{N} = \{0, 1, 2, 3, 4, 5, \ldots\}\]</div>
+      <p>Nota: Algunos textos excluyen el 0. En cursos de precálculo UNED, \(\mathbb{N} = \{1, 2, 3, \ldots\}\).</p>
+    </div>
+
+    <p>Los números naturales satisfacen los <strong>Axiomas de Peano</strong>, que garantizan su estructura ordenada y la posibilidad de hacer aritmética. Propiedades clave:</p>
+    <ul style="margin: 0.8rem 0 0.8rem 1.5rem; line-height: 2">
+      <li>Son cerrados bajo la <strong>adición</strong> y <strong>multiplicación</strong>.</li>
+      <li>Tienen un elemento mínimo (0 o 1, según la convención).</li>
+      <li>Son infinitamente numerables (tienen la misma cardinalidad que \(\mathbb{Z}\)).</li>
+      <li><strong>No</strong> son cerrados bajo la resta: \(3 - 5 \notin \mathbb{N}\).</li>
+    </ul>
+  </div>
+
+  <!-- SECCIÓN 1.3 -->
+  <div class="theory-section">
+    <h3>1.3 Los Números Enteros (\(\mathbb{Z}\))</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.3</div>
+      <div class="def-title">Números Enteros</div>
+      <p>Los <strong>números enteros</strong> extienden a los naturales incorporando los números negativos:</p>
+      <div class="math-display">\[\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}\]</div>
+    </div>
+
+    <p>La letra \(\mathbb{Z}\) proviene del alemán <em>Zahlen</em> (números). Los enteros son cerrados bajo suma, resta y multiplicación, pero <strong>no</strong> bajo la división. Se tienen los subconjuntos:</p>
+    <div class="math-display">\[\mathbb{Z}^+ = \{1,2,3,\ldots\}, \quad \mathbb{Z}^- = \{-1,-2,-3,\ldots\}, \quad \mathbb{Z}_0 = \mathbb{Z} \setminus \{0\}\]</div>
+    <p>Claramente \(\mathbb{N} \subset \mathbb{Z}\) (los naturales son subconjunto de los enteros).</p>
+  </div>
+
+  <!-- SECCIÓN 1.4 -->
+  <div class="theory-section">
+    <h3>1.4 Los Números Racionales (\(\mathbb{Q}\))</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.4</div>
+      <div class="def-title">Números Racionales</div>
+      <p>Un número es <strong>racional</strong> si puede expresarse como el cociente de dos enteros con denominador no nulo:</p>
+      <div class="math-display">\[\mathbb{Q} = \left\{\frac{p}{q} \;\middle|\; p, q \in \mathbb{Z},\; q \neq 0\right\}\]</div>
+    </div>
+
+    <p>La letra \(\mathbb{Q}\) proviene del latín <em>quotiēns</em> (cociente). Toda fracción, decimal finito y decimal periódico es un número racional.</p>
+
+    <table class="prop-table">
+      <thead><tr><th>Tipo de racional</th><th>Forma decimal</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="prop-name">Fracción propia</td><td>\(\frac{p}{q},\; |p|< q\)</td><td>\(\frac{3}{4} = 0.75\)</td></tr>
+        <tr><td class="prop-name">Fracción impropia</td><td>\(\frac{p}{q},\; |p|\geq q\)</td><td>\(\frac{7}{3} = 2.\overline{3}\)</td></tr>
+        <tr><td class="prop-name">Entero</td><td>Decimal que termina en .000…</td><td>\(\frac{-6}{2} = -3\)</td></tr>
+        <tr><td class="prop-name">Decimal periódico</td><td>\(0.\overline{142857} = \frac{1}{7}\)</td><td>\(0.\overline{3} = \frac{1}{3}\)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="theorem-box">
+      <div class="thm-label">Propiedad importante</div>
+      <div class="thm-title">Densidad de los Racionales</div>
+      <p>Entre dos números racionales distintos siempre existe otro número racional. Formalmente: si \(a, b \in \mathbb{Q}\) con \(a < b\), entonces \(\frac{a+b}{2} \in \mathbb{Q}\) y \(a < \frac{a+b}{2} < b\).</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1.5 -->
+  <div class="theory-section">
+    <h3>1.5 Los Números Irracionales (\(\mathbb{I}\))</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.5</div>
+      <div class="def-title">Números Irracionales</div>
+      <p>Un número real es <strong>irracional</strong> si <em>no puede</em> expresarse como cociente de dos enteros. En notación: \(\mathbb{I} = \mathbb{R} \setminus \mathbb{Q}\).</p>
+    </div>
+
+    <p>Los números irracionales tienen representación decimal <strong>infinita no periódica</strong>. Los más famosos son:</p>
+
+    <div class="math-display">
+      \[\pi = 3.14159265358979\ldots \qquad e = 2.71828182845904\ldots\]
+      \[\sqrt{2} = 1.41421356237309\ldots \qquad \phi = \frac{1+\sqrt{5}}{2} = 1.61803398874989\ldots\]
+    </div>
+
+    <div class="theorem-box">
+      <div class="thm-label">Teorema</div>
+      <div class="thm-title">Irracionalidad de √2</div>
+      <p><strong>Demostración por contradicción:</strong> Supongamos que \(\sqrt{2} = \frac{p}{q}\) con \(\operatorname{mcd}(p,q)=1\). Entonces \(2q^2 = p^2\), lo que implica que \(p^2\) es par, por lo tanto \(p\) es par. Sea \(p = 2k\), entonces \(2q^2 = 4k^2 \Rightarrow q^2 = 2k^2\), luego \(q\) también es par. ¡Contradicción con \(\operatorname{mcd}(p,q)=1\)! Por lo tanto \(\sqrt{2} \notin \mathbb{Q}\). \(\square\)</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1.6 -->
+  <div class="theory-section">
+    <h3>1.6 Los Números Reales (\(\mathbb{R}\))</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.6</div>
+      <div class="def-title">Números Reales</div>
+      <p>El conjunto de los <strong>números reales</strong> es la unión de los racionales y los irracionales:</p>
+      <div class="math-display">\[\mathbb{R} = \mathbb{Q} \cup \mathbb{I}\]</div>
+      <p>donde \(\mathbb{Q} \cap \mathbb{I} = \emptyset\) (son conjuntos disjuntos).</p>
+    </div>
+
+    <!-- Diagrama SVG de conjuntos numéricos -->
+    <div class="diagram-container">
+      <p style="font-weight:700;color:var(--primary);margin-bottom:1rem;font-family:var(--font-display)">Jerarquía de los Conjuntos Numéricos</p>
+      <svg viewBox="0 0 580 240" style="width:100%;max-width:640px;font-family:'Source Serif 4',serif">
+        <!-- ℝ outer -->
+        <rect x="8" y="8" width="564" height="224" rx="14" fill="rgba(35,51,79,0.04)" stroke="#23334f" stroke-width="2.5"/>
+        <text x="548" y="34" fill="#23334f" font-size="18" font-weight="700" text-anchor="middle">ℝ</text>
+        <text x="548" y="52" fill="#6b7c93" font-size="11" text-anchor="middle">Reales</text>
+        <!-- ℚ -->
+        <rect x="26" y="30" width="430" height="185" rx="10" fill="rgba(44,59,75,0.07)" stroke="#2c3b4b" stroke-width="2"/>
+        <text x="418" y="54" fill="#2c3b4b" font-size="16" font-weight="700" text-anchor="middle">ℚ</text>
+        <text x="418" y="70" fill="#6b7c93" font-size="11" text-anchor="middle">Racionales</text>
+        <text x="340" y="200" fill="#6b7c93" font-size="12" text-anchor="middle">½, ¾, 0.3̄…</text>
+        <!-- ℤ -->
+        <rect x="46" y="54" width="260" height="140" rx="8" fill="rgba(255,191,0,0.07)" stroke="#8a6800" stroke-width="2"/>
+        <text x="272" y="78" fill="#8a6800" font-size="15" font-weight="700" text-anchor="middle">ℤ</text>
+        <text x="272" y="94" fill="#6b7c93" font-size="11" text-anchor="middle">Enteros</text>
+        <text x="200" y="182" fill="#6b7c93" font-size="12" text-anchor="middle">−1, −2, −3…</text>
+        <!-- ℕ innermost -->
+        <rect x="66" y="78" width="140" height="90" rx="7" fill="rgba(255,191,0,0.20)" stroke="#ffbf00" stroke-width="2.5"/>
+        <text x="136" y="118" fill="#23334f" font-size="18" font-weight="700" text-anchor="middle">ℕ</text>
+        <text x="136" y="140" fill="#23334f" font-size="13" text-anchor="middle">1, 2, 3…</text>
+        <!-- 𝕀 to the right, clearly outside ℚ -->
+        <text x="530" y="115" fill="#8a6800" font-size="26" font-weight="700" text-anchor="middle">𝕀</text>
+        <text x="530" y="138" fill="#8a6800" font-size="12" text-anchor="middle">Irrac.</text>
+        <text x="530" y="156" fill="#6b7c93" font-size="11" text-anchor="middle">√2, π, e…</text>
+      </svg>
+    </div>
+
+    <div class="theorem-box">
+      <div class="thm-label">Relación fundamental</div>
+      <div class="thm-title">Cadena de inclusiones</div>
+      <div class="math-display">\[\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}\]</div>
+      <p>Cada conjunto está contenido en el siguiente, pero ninguno es igual al anterior.</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1.7: INTERVALOS -->
+  <div class="theory-section">
+    <h3>1.7 Subconjuntos de ℝ: Intervalos</h3>
+    <p>Un <strong>intervalo</strong> es un subconjunto de \(\mathbb{R}\) formado por todos los números reales comprendidos entre dos valores dados. Usamos <strong>corchetes cuadrados</strong> según si los extremos están incluidos o excluidos.</p>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 1.7</div>
+      <div class="def-title">Tipos de Intervalos — Notación Estándar</div>
+      <p>Dados \(a, b \in \mathbb{R}\) con \(a < b\):</p>
+    </div>
+
+    <table class="prop-table">
+      <thead><tr><th>Tipo</th><th>Notación</th><th>Descripción</th><th>Representación</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="prop-name">Abierto</td>
+          <td>\(\left]a,\, b\right[\)</td>
+          <td>\(\{x \in \mathbb{R} \mid a < x < b\}\)</td>
+          <td>Ambos extremos excluidos ○———○</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Cerrado</td>
+          <td>\(\left[a,\, b\right]\)</td>
+          <td>\(\{x \in \mathbb{R} \mid a \leq x \leq b\}\)</td>
+          <td>Ambos extremos incluidos ●———●</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Semiabierto</td>
+          <td>\(\left[a,\, b\right[\)</td>
+          <td>\(\{x \in \mathbb{R} \mid a \leq x < b\}\)</td>
+          <td>Izquierda incluida, derecha excluida ●———○</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Semiabierto</td>
+          <td>\(\left]a,\, b\right]\)</td>
+          <td>\(\{x \in \mathbb{R} \mid a < x \leq b\}\)</td>
+          <td>Izquierda excluida, derecha incluida ○———●</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Infinito abierto</td>
+          <td>\(\left]a,\, +\infty\right[\)</td>
+          <td>\(\{x \in \mathbb{R} \mid x > a\}\)</td>
+          <td>○→→→→ (sin límite derecho)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Infinito cerrado</td>
+          <td>\(\left[a,\, +\infty\right[\)</td>
+          <td>\(\{x \in \mathbb{R} \mid x \geq a\}\)</td>
+          <td>●→→→→ (sin límite derecho)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Infinito izquierdo</td>
+          <td>\(\left]-\infty,\, b\right[\)</td>
+          <td>\(\{x \in \mathbb{R} \mid x < b\}\)</td>
+          <td>←←←○ (sin límite izquierdo)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Recta real completa</td>
+          <td>\(\left]-\infty,\, +\infty\right[\)</td>
+          <td>\(\mathbb{R}\)</td>
+          <td>←←←←→→→→ (toda la recta)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-box">
+      <span class="note-icon">⚠️</span>
+      <strong>Regla del infinito:</strong> Los símbolos \(-\infty\) y \(+\infty\) <strong>nunca</strong> son números reales, por lo tanto el corchete junto a ellos siempre es abierto: \(]\) a la izquierda de \(-\infty\) y \([\) a la derecha de \(+\infty\). <strong>Nunca se escribe</strong> \([-\infty, a]\) ni \([a, +\infty]\).
+    </div>
+
+    <!-- Visual SVG de intervalos -->
+    <div class="diagram-container" style="overflow-x:auto">
+      <p style="font-weight:700;color:var(--primary);margin-bottom:1rem;font-family:var(--font-display)">Representación visual de intervalos en la recta</p>
+      <svg viewBox="0 0 560 220" style="width:100%;max-width:560px;font-family:'Source Serif 4',serif;font-size:11px">
+        <!-- Axis labels -->
+        <text x="8" y="20" fill="#2c3b4b" font-weight="700" font-size="10">Intervalo</text>
+        <text x="320" y="20" fill="#2c3b4b" font-weight="700" font-size="10">Recta numérica</text>
+
+        <!-- Row 1: ]a,b[ abierto -->
+        <text x="8" y="45" fill="#23334f" font-size="11">]a, b[  abierto</text>
+        <line x1="220" y1="40" x2="520" y2="40" stroke="#ccc" stroke-width="1"/>
+        <line x1="310" y1="40" x2="430" y2="40" stroke="#ffbf00" stroke-width="4"/>
+        <circle cx="310" cy="40" r="5" fill="white" stroke="#ffbf00" stroke-width="2.5"/>
+        <circle cx="430" cy="40" r="5" fill="white" stroke="#ffbf00" stroke-width="2.5"/>
+        <text x="307" y="58" fill="#b08900" font-size="10">a</text>
+        <text x="427" y="58" fill="#b08900" font-size="10">b</text>
+
+        <!-- Row 2: [a,b] cerrado -->
+        <text x="8" y="85" fill="#23334f" font-size="11">[a, b]  cerrado</text>
+        <line x1="220" y1="80" x2="520" y2="80" stroke="#ccc" stroke-width="1"/>
+        <line x1="310" y1="80" x2="430" y2="80" stroke="#23334f" stroke-width="4"/>
+        <circle cx="310" cy="80" r="5" fill="#23334f" stroke="#23334f" stroke-width="2.5"/>
+        <circle cx="430" cy="80" r="5" fill="#23334f" stroke="#23334f" stroke-width="2.5"/>
+        <text x="307" y="98" fill="#23334f" font-size="10">a</text>
+        <text x="427" y="98" fill="#23334f" font-size="10">b</text>
+
+        <!-- Row 3: [a,b[ semiabierto -->
+        <text x="8" y="125" fill="#23334f" font-size="11">[a, b[  semiabierto</text>
+        <line x1="220" y1="120" x2="520" y2="120" stroke="#ccc" stroke-width="1"/>
+        <line x1="310" y1="120" x2="430" y2="120" stroke="#2c3b4b" stroke-width="4"/>
+        <circle cx="310" cy="120" r="5" fill="#2c3b4b" stroke="#2c3b4b" stroke-width="2.5"/>
+        <circle cx="430" cy="120" r="5" fill="white" stroke="#ffbf00" stroke-width="2.5"/>
+        <text x="307" y="138" fill="#23334f" font-size="10">a</text>
+        <text x="427" y="138" fill="#b08900" font-size="10">b</text>
+
+        <!-- Row 4: ]a,+∞[ infinito -->
+        <text x="8" y="165" fill="#23334f" font-size="11">]a, +∞[  infinito</text>
+        <line x1="220" y1="160" x2="520" y2="160" stroke="#ccc" stroke-width="1"/>
+        <line x1="310" y1="160" x2="510" y2="160" stroke="#ffbf00" stroke-width="4"/>
+        <circle cx="310" cy="160" r="5" fill="white" stroke="#ffbf00" stroke-width="2.5"/>
+        <polygon points="510,156 522,160 510,164" fill="#ffbf00"/>
+        <text x="307" y="178" fill="#b08900" font-size="10">a</text>
+        <text x="505" y="178" fill="#b08900" font-size="10">+∞</text>
+
+        <!-- Row 5: ]-∞,b] -->
+        <text x="8" y="205" fill="#23334f" font-size="11">]-∞, b]  infinito</text>
+        <line x1="220" y1="200" x2="520" y2="200" stroke="#ccc" stroke-width="1"/>
+        <line x1="230" y1="200" x2="430" y2="200" stroke="#23334f" stroke-width="4"/>
+        <polygon points="230,196 218,200 230,204" fill="#23334f"/>
+        <circle cx="430" cy="200" r="5" fill="#23334f" stroke="#23334f" stroke-width="2.5"/>
+        <text x="215" y="218" fill="#23334f" font-size="10">-∞</text>
+        <text x="427" y="218" fill="#23334f" font-size="10">b</text>
+      </svg>
+    </div>
+  </div>
+  <div class="theory-section">
+    <h3>1.8 Ejercicios Resueltos Paso a Paso</h3>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 1</span>
+        <span class="ex-title">Clasificar números en sus conjuntos</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body open">
+        <div class="exercise-statement">Clasifique cada número en todos los conjuntos a los que pertenece (\(\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{I}, \mathbb{R}\)): \(5, \quad -3, \quad \dfrac{2}{7}, \quad \sqrt{5}, \quad 0.6, \quad -\sqrt{9}\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(5\)</div>
+              <p>\(5\) es un número positivo sin decimales. Es de conteo → pertenece a \(\mathbb{N}\). Como \(\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}\), pertenece a todos.</p>
+              <div class="step-result">✓ \(5 \in \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(-3\)</div>
+              <p>\(-3\) es negativo, entonces \(-3 \notin \mathbb{N}\). Pero es entero: \(-3 \in \mathbb{Z}\). Como \(\mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}\):</p>
+              <div class="step-result">✓ \(-3 \in \mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(\frac{2}{7}\)</div>
+              <p>Es un cociente de enteros con denominador \(\neq 0\), por definición \(\frac{2}{7} \in \mathbb{Q}\). No es entero, así que \(\frac{2}{7} \notin \mathbb{Z}\).</p>
+              <div class="step-result">✓ \(\frac{2}{7} \in \mathbb{Q}, \mathbb{R}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(\sqrt{5}\)</div>
+              <p>¿Es \(\sqrt{5}\) racional? No existe \(\frac{p}{q}\) tal que \(\left(\frac{p}{q}\right)^2=5\) (5 no es cuadrado perfecto). Su decimal es \(2.2360679\ldots\) no periódico.</p>
+              <div class="step-result">✓ \(\sqrt{5} \in \mathbb{I}, \mathbb{R}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(0.6\)</div>
+              <p>Decimal finito: \(0.6 = \frac{6}{10} = \frac{3}{5}\). Es racional pero no entero.</p>
+              <div class="step-result">✓ \(0.6 \in \mathbb{Q}, \mathbb{R}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <div class="step-label">Analizar \(-\sqrt{9}\)</div>
+              <p>\(\sqrt{9} = 3\) (cuadrado perfecto), entonces \(-\sqrt{9} = -3 \in \mathbb{Z}\). (mismo caso que el número 2)</p>
+              <div class="step-result">✓ \(-\sqrt{9} \in \mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 2</span>
+        <span class="ex-title">Operaciones con conjuntos numéricos</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Determinar si las siguientes operaciones producen resultados en \(\mathbb{N}, \mathbb{Z}\) o solo en \(\mathbb{Q}\): (a) \(5 - 8\), (b) \(3 \div 4\), (c) \((-2)\times(-3)\)</div>
+
+        <!-- Visual: campos de cierre -->
+        <div class="diagram-container" style="margin:0.8rem 0">
+          <p style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:0.8rem;font-family:var(--font-display)">¿Dónde cae cada resultado?</p>
+          <svg viewBox="0 0 560 190" style="width:100%;max-width:620px;font-family:'Source Serif 4',serif">
+            <!-- ℝ box -->
+            <rect x="8" y="8" width="544" height="170" rx="12" fill="rgba(35,51,79,0.04)" stroke="#23334f" stroke-width="2"/>
+            <text x="18" y="32" fill="#23334f" font-size="18" font-weight="700">ℝ</text>
+            <!-- ℚ box -->
+            <rect x="24" y="42" width="400" height="118" rx="10" fill="rgba(44,59,75,0.06)" stroke="#2c3b4b" stroke-width="2"/>
+            <text x="34" y="66" fill="#2c3b4b" font-size="16" font-weight="700">ℚ</text>
+            <!-- ℤ box -->
+            <rect x="44" y="76" width="250" height="72" rx="8" fill="rgba(255,191,0,0.07)" stroke="#8a6800" stroke-width="2"/>
+            <text x="56" y="100" fill="#8a6800" font-size="16" font-weight="700">ℤ</text>
+            <!-- ℕ box -->
+            <rect x="64" y="94" width="120" height="44" rx="7" fill="rgba(255,191,0,0.18)" stroke="#ffbf00" stroke-width="2"/>
+            <text x="76" y="122" fill="#23334f" font-size="16" font-weight="700">ℕ</text>
+            <!-- (c) result = 6 -->
+            <circle cx="115" cy="116" r="16" fill="#1a9e6e"/>
+            <text x="108" y="122" fill="white" font-size="15" font-weight="700">6</text>
+            <text x="96" y="158" fill="#1a9e6e" font-size="13" font-weight="700">(c) ∈ ℕ</text>
+            <!-- (a) result = -3 -->
+            <circle cx="220" cy="116" r="18" fill="#23334f"/>
+            <text x="207" y="122" fill="white" font-size="14" font-weight="700">−3</text>
+            <text x="207" y="158" fill="#23334f" font-size="13" font-weight="700">(a) ∈ ℤ</text>
+            <!-- (b) result = 3/4 -->
+            <circle cx="360" cy="102" r="20" fill="#2c3b4b"/>
+            <text x="351" y="108" fill="#ffbf00" font-size="15" font-weight="700">¾</text>
+            <text x="345" y="148" fill="#2c3b4b" font-size="13" font-weight="700">(b) ∈ ℚ</text>
+            <!-- Irracionales label -->
+            <text x="475" y="108" fill="#8a6800" font-size="20" font-weight="700">𝕀</text>
+            <text x="464" y="130" fill="#8a6800" font-size="11">irrac.</text>
+          </svg>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Parte (a): \(5-8\)</div>
+              <p>Restamos dos naturales: \(5 - 8 = -3\). El resultado es negativo, por lo que <span class="hl-danger">sale de \(\mathbb{N}\)</span>. Pero \(-3 \in \mathbb{Z}\).</p>
+              <div class="step-result">✓ \(5 - 8 = -3 \in \mathbb{Z}\). Los naturales NO son cerrados bajo la resta.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Parte (b): \(3 \div 4\)</div>
+              <p>\(3 \div 4 = \frac{3}{4} = 0.75\). No es entero, sale de \(\mathbb{Z}\). Pero \(\frac{3}{4} \in \mathbb{Q}\).</p>
+              <div class="step-result">✓ \(3 \div 4 = \frac{3}{4} \in \mathbb{Q}\). Los enteros NO son cerrados bajo la división.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Parte (c): \((-2)\times(-3)\)</div>
+              <p>Producto de dos negativos: \((-2)\times(-3) = +6 \in \mathbb{N}\). </p>
+              <div class="step-result">✓ \((-2)(-3) = 6 \in \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}\). Los enteros SÍ son cerrados bajo la multiplicación.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 3</span>
+        <span class="ex-title">Escritura en notación por comprensión</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Escriba en notación por comprensión: \(A = \{2, 4, 6, 8, 10\}\) y \(B = \{\ldots, -4, -2, 0, 2, 4, \ldots\}\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Identificar patrón de A</div>
+              <p>Los elementos \(2,4,6,8,10\) son pares y positivos, el mayor es 10. Son múltiplos de 2 entre 1 y 10.</p>
+              <div class="step-result">\(A = \{x \in \mathbb{N} \mid x \text{ es par y } x \leq 10\} = \{2k \mid k \in \mathbb{N},\; 1 \leq k \leq 5\}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Identificar patrón de B</div>
+              <p>Son todos los enteros pares (múltiplos de 2), sin restricción.</p>
+              <div class="step-result">\(B = \{x \in \mathbb{Z} \mid x \text{ es par}\} = \{2k \mid k \in \mathbb{Z}\}\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-secondary" onclick="showPage('dashboard')">← Volver al dashboard</button>
+    <button class="lesson-complete-btn" onclick="completeLesson(1)">✓ Marcar lección como completada →</button>
+  </div>
+</div><!-- end page-l1 -->
+
+<!-- ══════════════════════════════════════════════════════
+     QUIZ 1
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-q1">
+  <div class="lesson-header">
+    <div class="lesson-num">CUESTIONARIO 01 · CONJUNTOS NUMÉRICOS</div>
+    <h2>Evaluación de la Lección 1</h2>
+    <p class="lesson-desc">10 preguntas sobre conjuntos numéricos. Necesitas al menos 7/10 para aprobar y desbloquear la siguiente lección.</p>
+  </div>
+  <div id="quiz1-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     LECCIÓN 2: VALOR ABSOLUTO
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-l2">
+  <div class="lesson-header">
+    <div class="lesson-num">LECCIÓN 02 · MÓDULO 2</div>
+    <h2>Valor Absoluto</h2>
+    <p class="lesson-desc">Estudiaremos la recta numérica real, la relación de orden en ℝ y las propiedades fundamentales del valor absoluto.</p>
+  </div>
+
+  <!-- SECCIÓN 2.1 -->
+  <div class="theory-section">
+    <h3>2.1 La Recta Numérica Real</h3>
+    <p>La <strong>recta numérica</strong> es una representación geométrica del conjunto \(\mathbb{R}\). Existe una correspondencia biunívoca (uno a uno) entre los números reales y los puntos de una línea recta. Esta correspondencia es posible gracias al <em>Axioma de Completitud</em> de los reales.</p>
+
+    <div class="number-line-container">
+      <svg viewBox="0 0 560 90" style="width:100%;max-width:620px">
+        <line x1="20" y1="44" x2="538" y2="44" stroke="#23334f" stroke-width="2"/>
+        <polygon points="536,39 552,44 536,49" fill="#23334f"/>
+        <!-- Ticks -->
+        <g stroke="#23334f" stroke-width="1.5">
+          <line x1="80" y1="36" x2="80" y2="52"/>  <text x="73" y="70" fill="#23334f" font-size="13">−4</text>
+          <line x1="130" y1="36" x2="130" y2="52"/> <text x="123" y="70" fill="#23334f" font-size="13">−3</text>
+          <line x1="180" y1="36" x2="180" y2="52"/> <text x="173" y="70" fill="#23334f" font-size="13">−2</text>
+          <line x1="230" y1="36" x2="230" y2="52"/> <text x="223" y="70" fill="#23334f" font-size="13">−1</text>
+          <line x1="280" y1="30" x2="280" y2="58"/> <text x="275" y="76" fill="#23334f" font-size="14" font-weight="700">0</text>
+          <line x1="330" y1="36" x2="330" y2="52"/> <text x="327" y="70" fill="#23334f" font-size="13">1</text>
+          <line x1="380" y1="36" x2="380" y2="52"/> <text x="377" y="70" fill="#23334f" font-size="13">2</text>
+          <line x1="430" y1="36" x2="430" y2="52"/> <text x="427" y="70" fill="#23334f" font-size="13">3</text>
+          <line x1="480" y1="36" x2="480" y2="52"/> <text x="477" y="70" fill="#23334f" font-size="13">4</text>
+        </g>
+        <!-- √2 marker -->
+        <line x1="351" y1="32" x2="351" y2="56" stroke="#ffbf00" stroke-width="2.5" stroke-dasharray="4"/>
+        <text x="340" y="26" fill="#b08900" font-size="12" font-weight="700">√2</text>
+        <!-- π marker -->
+        <line x1="437" y1="32" x2="437" y2="56" stroke="#ffbf00" stroke-width="2.5" stroke-dasharray="4"/>
+        <text x="431" y="26" fill="#b08900" font-size="12" font-weight="700">π</text>
+        <!-- -√2 marker -->
+        <line x1="209" y1="32" x2="209" y2="56" stroke="#ffbf00" stroke-width="2.5" stroke-dasharray="4"/>
+        <text x="193" y="26" fill="#b08900" font-size="12" font-weight="700">−√2</text>
+        <text x="10" y="47" fill="#23334f" font-size="14">←</text>
+      </svg>
+      <p style="font-size:0.88rem;color:var(--text-light);margin-top:0.6rem;text-align:center">Los puntos <span style="color:#b08900;font-weight:600">dorados discontinuos</span> representan irracionales; los enteros están en las marcas sólidas.</p>
+    </div>
+
+    <div class="definition-box">
+      <div class="def-label">Propiedad</div>
+      <div class="def-title">Completitud de ℝ</div>
+      <p>Todo número real tiene un punto en la recta y todo punto de la recta corresponde a un número real. No hay "huecos". Esto distingue a \(\mathbb{R}\) de \(\mathbb{Q}\), que sí tiene huecos (los irracionales).</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2.2 -->
+  <div class="theory-section">
+    <h3>2.2 Relación de Orden en los Números Reales</h3>
+    <p>En la recta numérica, existe un orden natural: los números más a la derecha son mayores. Esta idea se formaliza mediante los axiomas de orden.</p>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 2.1</div>
+      <div class="def-title">Relación de Orden</div>
+      <p>Dados \(a, b \in \mathbb{R}\), decimos que \(a < b\) (a es menor que b) si y solo si \(b - a\) es un número real positivo. Equivalentemente, \(a\) está a la izquierda de \(b\) en la recta numérica.</p>
+    </div>
+
+    <table class="prop-table">
+      <thead><tr><th>Símbolo</th><th>Significado</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>\(a < b\)</td><td>\(a\) es estrictamente menor que \(b\)</td><td>\(-3 < 1\)</td></tr>
+        <tr><td>\(a > b\)</td><td>\(a\) es estrictamente mayor que \(b\)</td><td>\(\pi > 3\)</td></tr>
+        <tr><td>\(a \leq b\)</td><td>\(a\) es menor o igual que \(b\)</td><td>\(2 \leq 2\)</td></tr>
+        <tr><td>\(a \geq b\)</td><td>\(a\) es mayor o igual que \(b\)</td><td>\(5 \geq -1\)</td></tr>
+        <tr><td>\(a = b\)</td><td>\(a\) y \(b\) representan el mismo número</td><td>\(\frac{4}{2} = 2\)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="theorem-box">
+      <div class="thm-label">Axiomas de Orden de ℝ</div>
+      <div class="thm-title">Propiedades del Orden</div>
+      <p>Para todo \(a, b, c \in \mathbb{R}\):</p>
+      <ul style="margin:0.5rem 0 0 1.2rem;line-height:2">
+        <li><strong>Tricotomía:</strong> exactamente una de: \(a < b\), \(a = b\) o \(a > b\).</li>
+        <li><strong>Transitividad:</strong> si \(a < b\) y \(b < c\), entonces \(a < c\).</li>
+        <li><strong>Monotonía aditiva:</strong> si \(a < b\), entonces \(a + c < b + c\).</li>
+        <li><strong>Monotonía multiplicativa:</strong> si \(a < b\) y \(c > 0\), entonces \(ac < bc\).</li>
+        <li><strong>Inversión por negativo:</strong> si \(a < b\) y \(c < 0\), entonces \(ac > bc\).</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">⚠️</span>
+      <strong>Regla importante:</strong> Al multiplicar o dividir una desigualdad por un número <em>negativo</em>, el sentido de la desigualdad se <strong>invierte</strong>. Por ejemplo: si \(-2x < 6\), entonces \(x > -3\).
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2.3 -->
+  <div class="theory-section">
+    <h3>2.3 Definición del Valor Absoluto</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 2.2</div>
+      <div class="def-title">Valor Absoluto</div>
+      <p>El <strong>valor absoluto</strong> de un número real \(x\), denotado \(|x|\), se define como:</p>
+      <div class="math-display">
+        \[|x| = \begin{cases} x & \text{si } x \geq 0 \\ -x & \text{si } x < 0 \end{cases}\]
+      </div>
+      <p>Geométricamente, \(|x|\) representa la <strong>distancia</strong> desde el origen hasta el punto \(x\) en la recta numérica.</p>
+    </div>
+
+    <p>Ejemplos directos:</p>
+    <div class="math-display">
+      \[|7| = 7, \quad |-7| = 7, \quad |0| = 0, \quad \left|-\frac{3}{4}\right| = \frac{3}{4}, \quad |\pi - 4| = 4 - \pi\]
+    </div>
+
+    <div class="note-box">
+      El último ejemplo: como \(\pi \approx 3.14 < 4\), entonces \(\pi - 4 < 0\), así que \(|\pi - 4| = -(\pi - 4) = 4 - \pi\).
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2.4 -->
+  <div class="theory-section">
+    <h3>2.4 Propiedades del Valor Absoluto</h3>
+
+    <div class="theorem-box">
+      <div class="thm-label">Teorema 2.1</div>
+      <div class="thm-title">Propiedades del Valor Absoluto</div>
+      <p>Para todo \(a, b \in \mathbb{R}\) y \(n \in \mathbb{Z}\):</p>
+    </div>
+
+    <table class="prop-table">
+      <thead><tr><th>#</th><th>Propiedad</th><th>Expresión Matemática</th></tr></thead>
+      <tbody>
+        <tr><td>P1</td><td class="prop-name">No negatividad</td><td>\(|a| \geq 0\) y \(|a| = 0 \Leftrightarrow a = 0\)</td></tr>
+        <tr><td>P2</td><td class="prop-name">Simetría</td><td>\(|-a| = |a|\)</td></tr>
+        <tr><td>P3</td><td class="prop-name">Multiplicatividad</td><td>\(|a \cdot b| = |a| \cdot |b|\)</td></tr>
+        <tr><td>P4</td><td class="prop-name">Cociente</td><td>\(\left|\dfrac{a}{b}\right| = \dfrac{|a|}{|b|},\; b \neq 0\)</td></tr>
+        <tr><td>P5</td><td class="prop-name">Potencia</td><td>\(|a^n| = |a|^n\)</td></tr>
+        <tr><td>P6</td><td class="prop-name">Desigualdad Triangular</td><td>\(|a + b| \leq |a| + |b|\)</td></tr>
+        <tr><td>P7</td><td class="prop-name">Desig. Triangular Inversa</td><td>\(\big||a| - |b|\big| \leq |a - b|\)</td></tr>
+        <tr><td>P8</td><td class="prop-name">Cuadrado</td><td>\(|a|^2 = a^2\)</td></tr>
+        <tr><td>P9</td><td class="prop-name">Raíz cuadrada</td><td>\(\sqrt{a^2} = |a|\)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="theorem-box">
+      <div class="thm-label">Teorema 2.2 (Muy importante)</div>
+      <div class="thm-title">Ecuaciones e Inecuaciones con Valor Absoluto</div>
+      <p>Sea \(k > 0\):</p>
+      <ul style="margin:0.5rem 0 0 1.2rem;line-height:2.2">
+        <li>\(|x| = k \Leftrightarrow x = k\) ó \(x = -k\)</li>
+        <li>\(|x| < k \Leftrightarrow -k < x < k \Leftrightarrow x \in \left]-k,\, k\right[\)</li>
+        <li>\(|x| > k \Leftrightarrow x < -k\) ó \(x > k \Leftrightarrow x \in \left]-\infty,\,-k\right[ \cup \left]k,\,+\infty\right[\)</li>
+        <li>\(|x| \leq k \Leftrightarrow -k \leq x \leq k \Leftrightarrow x \in \left[-k,\, k\right]\)</li>
+        <li>\(|x| \geq k \Leftrightarrow x \leq -k\) ó \(x \geq k \Leftrightarrow x \in \left]-\infty,\,-k\right] \cup \left[k,\,+\infty\right[\)</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">📌</span>
+      <strong>Notación de intervalos:</strong> Se usan <strong>corchetes cuadrados</strong> según el tipo de intervalo:
+      <ul style="margin:0.5rem 0 0 1.2rem;line-height:2">
+        <li><strong>Abierto:</strong> \(\left]a,\, b\right[\) — extremos excluidos (equivalente anglosajón: \((a,b)\))</li>
+        <li><strong>Cerrado:</strong> \(\left[a,\, b\right]\) — extremos incluidos</li>
+        <li><strong>Semiabierto:</strong> \(\left[a,\, b\right[\) ó \(\left]a,\, b\right]\) — un extremo incluido y otro excluido</li>
+        <li><strong>Infinito:</strong> \(\left]-\infty,\, a\right[\), \(\left]a,\,+\infty\right[\), etc. — el infinito <em>siempre</em> va con corchete abierto \(]\) ó \([\) porque \(\pm\infty \notin \mathbb{R}\)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EJERCICIOS L2 -->
+  <div class="theory-section">
+    <h3>2.5 Ejercicios Resueltos Paso a Paso</h3>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 1</span>
+        <span class="ex-title">Simplificación con valor absoluto</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body open">
+        <div class="exercise-statement">Simplificar: (a) \(|3-7|\) (b) \(\left|\frac{-15}{5}\right|\) (c) \(\sqrt{(-4)^2}\) (d) \(|-8| + |3|\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Parte (a)</div>
+              <p>Primero evaluamos la expresión interior: \(3 - 7 = -4\). Como \(-4 < 0\), por definición \(|{-4}| = -(-4) = 4\).</p>
+              <div class="step-result">\(|3-7| = |-4| = 4\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Parte (b)</div>
+              <p>Por la propiedad P4: \(\left|\frac{-15}{5}\right| = \frac{|-15|}{|5|} = \frac{15}{5} = 3\). O bien: \(\frac{-15}{5} = -3\), luego \(|-3|=3\).</p>
+              <div class="step-result">\(\left|\frac{-15}{5}\right| = 3\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Parte (c)</div>
+              <p>Por la propiedad P9: \(\sqrt{a^2} = |a|\). Entonces \(\sqrt{(-4)^2} = |-4| = 4\). <em>Nota:</em> No es \(-4\), porque la raíz cuadrada siempre devuelve valor no negativo.</p>
+              <div class="step-result">\(\sqrt{(-4)^2} = |-4| = 4\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-label">Parte (d)</div>
+              <p>\(|-8| = 8\) y \(|3| = 3\). Sumamos: \(8 + 3 = 11\).</p>
+              <div class="step-result">\(|-8| + |3| = 8 + 3 = 11\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 2</span>
+        <span class="ex-title">Resolver ecuación con valor absoluto</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Resolver: \(|2x - 3| = 7\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Aplicar definición</div>
+              <p>Por el Teorema 2.2: \(|2x-3|=7 \Leftrightarrow 2x-3=7\) ó \(2x-3=-7\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Resolver el caso 1</div>
+              <p>\(2x - 3 = 7 \Rightarrow 2x = 10 \Rightarrow x = 5\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Resolver el caso 2</div>
+              <p>\(2x - 3 = -7 \Rightarrow 2x = -4 \Rightarrow x = -2\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-label">Verificar</div>
+              <p>\(|2(5)-3| = |7| = 7\; ✓\) y \(|2(-2)-3| = |-7| = 7\; ✓\)</p>
+              <div class="step-result">Solución: \(x = 5\) ó \(x = -2\)</div>
+              <!-- Visual: soluciones en la recta -->
+              <div class="diagram-container" style="margin-top:1rem">
+                <svg viewBox="0 0 500 90" style="width:100%;max-width:600px;font-family:'Source Serif 4',serif">
+                  <line x1="25" y1="45" x2="475" y2="45" stroke="#23334f" stroke-width="2"/>
+                  <polygon points="473,40 488,45 473,50" fill="#23334f"/>
+                  <!-- x=-2 -->
+                  <circle cx="110" cy="45" r="10" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+                  <text x="100" y="28" fill="#8a6800" font-size="13" font-weight="700">x = −2</text>
+                  <!-- midpoint label -->
+                  <line x1="260" y1="36" x2="260" y2="54" stroke="#23334f" stroke-width="1.5"/>
+                  <text x="228" y="72" fill="#6b7c93" font-size="12">centro: c = 1.5</text>
+                  <!-- x=5 -->
+                  <circle cx="400" cy="45" r="10" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+                  <text x="388" y="28" fill="#8a6800" font-size="13" font-weight="700">x = 5</text>
+                  <!-- distance arrows -->
+                  <line x1="260" y1="16" x2="110" y2="16" stroke="#23334f" stroke-width="2" stroke-dasharray="5"/>
+                  <polygon points="110,11 95,16 110,21" fill="#23334f"/>
+                  <text x="152" y="12" fill="#23334f" font-size="12">|2x−3| = 7</text>
+                  <line x1="260" y1="16" x2="400" y2="16" stroke="#23334f" stroke-width="2" stroke-dasharray="5"/>
+                  <polygon points="400,11 415,16 400,21" fill="#23334f"/>
+                  <!-- ticks -->
+                  <g stroke="#23334f" stroke-width="1.5" fill="#6b7c93" font-size="13" text-anchor="middle">
+                    <line x1="110" y1="40" x2="110" y2="50"/><text x="110" y="70">−2</text>
+                    <line x1="400" y1="40" x2="400" y2="50"/><text x="400" y="70">5</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 3</span>
+        <span class="ex-title">Resolver inecuación con valor absoluto</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Resolver y representar en la recta: \(|x + 1| < 4\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Aplicar Teorema 2.2</div>
+              <p>\(|x+1| < 4 \Leftrightarrow -4 < x+1 < 4\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Restar 1 en todo</div>
+              <p>\(-4-1 < x+1-1 < 4-1 \Rightarrow -5 < x < 3\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Representación gráfica</div>
+              <svg viewBox="0 0 500 80" style="width:100%;max-width:600px;display:block;margin:0.8rem auto;font-family:'Source Serif 4',serif">
+                <line x1="25" y1="38" x2="475" y2="38" stroke="#23334f" stroke-width="2"/>
+                <polygon points="473,33 490,38 473,43" fill="#23334f"/>
+                <!-- interval highlight -->
+                <line x1="140" y1="38" x2="330" y2="38" stroke="#ffbf00" stroke-width="7" opacity="0.5"/>
+                <!-- -5 open circle -->
+                <circle cx="140" cy="38" r="8" fill="white" stroke="#ffbf00" stroke-width="3"/>
+                <!-- 3 open circle -->
+                <circle cx="330" cy="38" r="8" fill="white" stroke="#ffbf00" stroke-width="3"/>
+                <!-- Ticks -->
+                <g stroke="#23334f" stroke-width="1.5">
+                  <line x1="80" y1="30" x2="80" y2="46"/><text x="72" y="64" fill="#23334f" font-size="13">−6</text>
+                  <line x1="140" y1="28" x2="140" y2="48"/><text x="130" y="66" fill="#b08900" font-size="14" font-weight="700">−5</text>
+                  <line x1="210" y1="30" x2="210" y2="46"/><text x="203" y="64" fill="#23334f" font-size="13">−3</text>
+                  <line x1="260" y1="28" x2="260" y2="48"/><text x="255" y="64" fill="#23334f" font-size="13">−1</text>
+                  <line x1="295" y1="30" x2="295" y2="46"/><text x="292" y="64" fill="#23334f" font-size="13">1</text>
+                  <line x1="330" y1="28" x2="330" y2="48"/><text x="324" y="66" fill="#b08900" font-size="14" font-weight="700">3</text>
+                  <line x1="390" y1="30" x2="390" y2="46"/><text x="387" y="64" fill="#23334f" font-size="13">5</text>
+                </g>
+              </svg>
+              <div class="step-result">Solución: \(x \in \left]-5, 3\right[\). Los extremos se excluyen (círculos abiertos) porque la inecuación es estricta.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-secondary" onclick="navToLesson(1)">← Lección anterior</button>
+    <button class="lesson-complete-btn" onclick="completeLesson(2)">✓ Marcar lección como completada →</button>
+  </div>
+</div><!-- end page-l2 -->
+
+<!-- QUIZ 2 -->
+<div class="page" id="page-q2">
+  <div class="lesson-header">
+    <div class="lesson-num">CUESTIONARIO 02 · VALOR ABSOLUTO</div>
+    <h2>Evaluación de la Lección 2</h2>
+    <p class="lesson-desc">10 preguntas sobre la recta numérica, relación de orden y valor absoluto.</p>
+  </div>
+  <div id="quiz2-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     LECCIÓN 3: DISTANCIA
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-l3">
+  <div class="lesson-header">
+    <div class="lesson-num">LECCIÓN 03 · MÓDULO 3</div>
+    <h2>Distancia entre dos Puntos</h2>
+    <p class="lesson-desc">Aprenderemos a calcular la distancia entre dos puntos en la recta real, concepto directamente ligado al valor absoluto.</p>
+  </div>
+
+  <div class="theory-section">
+    <h3>3.1 Concepto de Distancia</h3>
+    <p>La distancia es una función que mide cuán separados están dos puntos. En la recta numérica, la distancia entre los puntos \(a\) y \(b\) es siempre un número <strong>no negativo</strong> que mide cuántas unidades hay entre ellos, independientemente de la dirección.</p>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 3.1</div>
+      <div class="def-title">Distancia en la Recta Real</div>
+      <p>La <strong>distancia</strong> entre dos puntos \(a\) y \(b\) de la recta real, denotada \(d(a,b)\), se define como:</p>
+      <div class="math-display">\[d(a, b) = |b - a| = |a - b|\]</div>
+      <p>Esta igualdad es válida porque \(|b-a| = |{-(a-b)}| = |a-b|\) (por la propiedad de simetría del valor absoluto).</p>
+    </div>
+
+    <div class="theorem-box">
+      <div class="thm-label">Propiedades de la Distancia</div>
+      <div class="thm-title">Axiomas de una Métrica</div>
+      <p>La función \(d: \mathbb{R} \times \mathbb{R} \to \mathbb{R}_{\geq 0}\) satisface:</p>
+      <ul style="margin:0.5rem 0 0 1.2rem;line-height:2.2">
+        <li><strong>No negatividad:</strong> \(d(a,b) \geq 0\)</li>
+        <li><strong>Identidad:</strong> \(d(a,b) = 0 \Leftrightarrow a = b\)</li>
+        <li><strong>Simetría:</strong> \(d(a,b) = d(b,a)\)</li>
+        <li><strong>Desigualdad triangular:</strong> \(d(a,c) \leq d(a,b) + d(b,c)\)</li>
+      </ul>
+    </div>
+
+    <!-- Visual de distancia -->
+    <div class="number-line-container">
+      <p style="font-weight:700;color:var(--primary);font-family:var(--font-display);margin-bottom:0.6rem">Visualización de \(d(-2, 5) = |5-(-2)| = 7\)</p>
+      <svg viewBox="0 0 540 90" style="width:100%;max-width:620px">
+        <line x1="20" y1="45" x2="515" y2="45" stroke="#23334f" stroke-width="2"/>
+        <polygon points="513,40 528,45 513,50" fill="#23334f"/>
+        <!-- interval -->
+        <line x1="140" y1="45" x2="390" y2="45" stroke="#ffbf00" stroke-width="6" opacity="0.4"/>
+        <!-- double arrow -->
+        <line x1="140" y1="22" x2="390" y2="22" stroke="#ffbf00" stroke-width="2.5"/>
+        <polygon points="140,16 125,22 140,28" fill="#ffbf00"/>
+        <polygon points="390,16 405,22 390,28" fill="#ffbf00"/>
+        <text x="230" y="17" fill="#b08900" font-size="14" font-weight="700">d = 7 unidades</text>
+        <!-- ticks -->
+        <g stroke="#23334f" stroke-width="1.5">
+          <line x1="60"  y1="38" x2="60"  y2="52"/><text x="55"  y="70" font-size="13" fill="#23334f">−4</text>
+          <line x1="100" y1="38" x2="100" y2="52"/><text x="95"  y="70" font-size="13" fill="#23334f">−3</text>
+          <line x1="140" y1="34" x2="140" y2="56"/><text x="131" y="74" font-size="13" fill="#2c3b4b" font-weight="700">−2</text>
+          <line x1="180" y1="38" x2="180" y2="52"/><text x="175" y="70" font-size="13" fill="#23334f">−1</text>
+          <line x1="220" y1="34" x2="220" y2="56"/><text x="215" y="70" font-size="13" fill="#23334f">0</text>
+          <line x1="260" y1="38" x2="260" y2="52"/><text x="257" y="70" font-size="13" fill="#23334f">1</text>
+          <line x1="300" y1="38" x2="300" y2="52"/><text x="297" y="70" font-size="13" fill="#23334f">2</text>
+          <line x1="340" y1="38" x2="340" y2="52"/><text x="337" y="70" font-size="13" fill="#23334f">3</text>
+          <line x1="390" y1="34" x2="390" y2="56"/><text x="386" y="74" font-size="13" fill="#2c3b4b" font-weight="700">5</text>
+          <line x1="430" y1="38" x2="430" y2="52"/><text x="427" y="70" font-size="13" fill="#23334f">6</text>
+        </g>
+        <!-- points -->
+        <circle cx="140" cy="45" r="7" fill="#23334f"/>
+        <circle cx="390" cy="45" r="7" fill="#23334f"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="theory-section">
+    <h3>3.2 Punto Medio</h3>
+    <div class="definition-box">
+      <div class="def-label">Definición 3.2</div>
+      <div class="def-title">Punto Medio</div>
+      <p>El <strong>punto medio</strong> entre \(a\) y \(b\) en la recta real es el punto \(m\) que equidista de ambos:</p>
+      <div class="math-display">\[m = \frac{a + b}{2}\]</div>
+      <p>Se puede verificar que \(d(a,m) = d(m,b) = \frac{d(a,b)}{2}\).</p>
+    </div>
+  </div>
+
+  <!-- EJERCICIOS L3 -->
+  <div class="theory-section">
+    <h3>3.3 Ejercicios Resueltos Paso a Paso</h3>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 1</span>
+        <span class="ex-title">Calcular distancias entre puntos</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body open">
+        <div class="exercise-statement">Calcular: (a) \(d(3, 8)\) (b) \(d(-5, -1)\) (c) \(d(-4, 6)\) (d) \(d(0, -\pi)\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Parte (a)</div>
+              <p>\(d(3,8) = |8 - 3| = |5| = 5\)</p>
+              <div class="step-result">\(d(3,8) = 5\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Parte (b)</div>
+              <p>\(d(-5,-1) = |{-1} - (-5)| = |-1+5| = |4| = 4\)</p>
+              <div class="step-result">\(d(-5,-1) = 4\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Parte (c)</div>
+              <p>\(d(-4,6) = |6-(-4)| = |6+4| = |10| = 10\)</p>
+              <div class="step-result">\(d(-4,6) = 10\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-label">Parte (d)</div>
+              <p>\(d(0,-\pi) = |-\pi - 0| = |-\pi| = \pi \approx 3.14159\ldots\)</p>
+              <div class="step-result">\(d(0,-\pi) = \pi\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 2</span>
+        <span class="ex-title">Hallar puntos a distancia dada</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Encontrar todos los puntos \(x \in \mathbb{R}\) que están a distancia 5 del punto 2, es decir, resolver \(d(x, 2) = 5\).</div>
+
+        <div class="diagram-container" style="margin:0.8rem 0">
+          <svg viewBox="0 0 520 100" style="width:100%;max-width:620px;font-family:'Source Serif 4',serif">
+            <line x1="18" y1="50" x2="500" y2="50" stroke="#23334f" stroke-width="2"/>
+            <polygon points="498,45 515,50 498,55" fill="#23334f"/>
+            <!-- d=5 brackets -->
+            <line x1="155" y1="20" x2="295" y2="20" stroke="#ffbf00" stroke-width="2.5"/>
+            <polygon points="155,14 140,20 155,26" fill="#ffbf00"/>
+            <polygon points="295,14 310,20 295,26" fill="#ffbf00"/>
+            <text x="195" y="16" fill="#8a6800" font-size="14" font-weight="700">d = 5</text>
+            <line x1="295" y1="20" x2="420" y2="20" stroke="#ffbf00" stroke-width="2.5"/>
+            <polygon points="295,14 280,20 295,26" fill="#ffbf00"/>
+            <polygon points="420,14 435,20 420,26" fill="#ffbf00"/>
+            <text x="342" y="16" fill="#8a6800" font-size="14" font-weight="700">d = 5</text>
+            <!-- x=-3 -->
+            <circle cx="155" cy="50" r="11" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+            <text x="131" y="78" fill="#8a6800" font-size="13" font-weight="700">x = −3</text>
+            <!-- center = 2 -->
+            <circle cx="295" cy="50" r="8" fill="#23334f"/>
+            <text x="288" y="78" fill="#23334f" font-size="13" font-weight="700">2</text>
+            <!-- x=7 -->
+            <circle cx="420" cy="50" r="11" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+            <text x="410" y="78" fill="#8a6800" font-size="13" font-weight="700">x = 7</text>
+            <!-- ticks -->
+            <g stroke="#23334f" stroke-width="1.5" fill="#6b7c93" font-size="12">
+              <line x1="80" y1="44" x2="80" y2="56"/><text x="70" y="74">−5</text>
+              <line x1="155" y1="42" x2="155" y2="58"/>
+              <line x1="295" y1="42" x2="295" y2="58"/>
+              <line x1="420" y1="42" x2="420" y2="58"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Plantear ecuación</div>
+              <p>\(d(x,2) = 5 \Leftrightarrow |x - 2| = 5\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Resolver (dos casos)</div>
+              <p>Caso 1: \(x - 2 = 5 \Rightarrow x = 7\)</p>
+              <p>Caso 2: \(x - 2 = -5 \Rightarrow x = -3\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Verificar</div>
+              <p>\(d(7,2) = |7-2| = 5\; ✓\) y \(d(-3,2) = |-3-2| = |-5| = 5\; ✓\)</p>
+              <div class="step-result">Los puntos son \(x = 7\) y \(x = -3\), que están simétricamente a 5 unidades del punto 2.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 3</span>
+        <span class="ex-title">Punto medio y verificación</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Encontrar el punto medio \(m\) entre \(a = -7\) y \(b = 3\), y verificar que \(d(a,m)=d(m,b)\).</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Calcular punto medio</div>
+              <p>\(m = \dfrac{a+b}{2} = \dfrac{-7+3}{2} = \dfrac{-4}{2} = -2\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Verificar distancias</div>
+              <p>\(d(a,m) = d(-7,-2) = |-2-(-7)| = |5| = 5\)</p>
+              <p>\(d(m,b) = d(-2,3) = |3-(-2)| = |5| = 5\) ✓</p>
+              <p>Además: \(d(a,b) = |3-(-7)| = 10 = 5+5\) ✓</p>
+              <div class="step-result">El punto medio es \(m = -2\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-secondary" onclick="navToLesson(2)">← Lección anterior</button>
+    <button class="lesson-complete-btn" onclick="completeLesson(3)">✓ Marcar lección como completada →</button>
+  </div>
+</div><!-- end page-l3 -->
+
+<!-- QUIZ 3 -->
+<div class="page" id="page-q3">
+  <div class="lesson-header">
+    <div class="lesson-num">CUESTIONARIO 03 · DISTANCIA ENTRE PUNTOS</div>
+    <h2>Evaluación de la Lección 3</h2>
+    <p class="lesson-desc">10 preguntas sobre distancia entre puntos y punto medio en la recta real.</p>
+  </div>
+  <div id="quiz3-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     LECCIÓN 4: OPERACIONES CON ℝ
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-l4">
+  <div class="lesson-header">
+    <div class="lesson-num">LECCIÓN 04 · MÓDULO 4</div>
+    <h2>Operaciones con Números Reales</h2>
+    <p class="lesson-desc">Propiedades fundamentales de ℝ, potencias, raíces n-ésimas, operaciones combinadas y racionalización.</p>
+  </div>
+
+  <!-- SECCIÓN 4.1 -->
+  <div class="theory-section">
+    <h3>4.1 Propiedades de los Números Reales</h3>
+    <p>\((\mathbb{R}, +, \cdot)\) forma un <strong>campo ordenado completo</strong>, la estructura algebraica más rica. Esto significa que satisface los axiomas de campo (suma y producto), los axiomas de orden, y el axioma de completitud.</p>
+
+    <table class="prop-table">
+      <thead><tr><th>Propiedad</th><th>Para la suma</th><th>Para el producto</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="prop-name">Cerradura</td>
+          <td>\(a+b \in \mathbb{R}\)</td>
+          <td>\(a \cdot b \in \mathbb{R}\)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Conmutatividad</td>
+          <td>\(a+b = b+a\)</td>
+          <td>\(a\cdot b = b\cdot a\)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Asociatividad</td>
+          <td>\((a+b)+c = a+(b+c)\)</td>
+          <td>\((a\cdot b)\cdot c = a\cdot(b\cdot c)\)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Elemento neutro</td>
+          <td>\(a + 0 = a\)</td>
+          <td>\(a \cdot 1 = a\)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Elemento inverso</td>
+          <td>\(a + (-a) = 0\)</td>
+          <td>\(a \cdot \frac{1}{a} = 1,\; a\neq 0\)</td>
+        </tr>
+        <tr>
+          <td class="prop-name">Distributividad</td>
+          <td colspan="2">\(a(b+c) = ab + ac\)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-box">
+      <span class="note-icon">💡</span>
+      <strong>Consecuencias importantes:</strong> \(a \cdot 0 = 0\), \(\; (-a)(-b) = ab\), \(\; (-a)b = -(ab)\), \(\; (-1)a = -a\). Estas no son axiomas sino <em>teoremas</em> deducibles de los axiomas.
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4.2 -->
+  <div class="theory-section">
+    <h3>4.2 Potencias y sus Propiedades</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 4.1</div>
+      <div class="def-title">Potencia de Exponente Natural</div>
+      <p>Si \(a \in \mathbb{R}\) y \(n \in \mathbb{N}\), entonces:</p>
+      <div class="math-display">\[a^n = \underbrace{a \cdot a \cdot a \cdots a}_{n \text{ veces}}, \quad a^0 = 1 \; (a \neq 0), \quad a^{-n} = \frac{1}{a^n} \; (a \neq 0)\]</div>
+    </div>
+
+    <table class="prop-table">
+      <thead><tr><th>#</th><th>Ley</th><th>Expresión</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>L1</td><td class="prop-name">Producto de potencias</td><td>\(a^m \cdot a^n = a^{m+n}\)</td><td>\(x^3 \cdot x^5 = x^8\)</td></tr>
+        <tr><td>L2</td><td class="prop-name">Cociente de potencias</td><td>\(\dfrac{a^m}{a^n} = a^{m-n}\)</td><td>\(\dfrac{y^7}{y^3} = y^4\)</td></tr>
+        <tr><td>L3</td><td class="prop-name">Potencia de potencia</td><td>\((a^m)^n = a^{mn}\)</td><td>\((z^2)^4 = z^8\)</td></tr>
+        <tr><td>L4</td><td class="prop-name">Potencia de producto</td><td>\((ab)^n = a^n b^n\)</td><td>\((2x)^3 = 8x^3\)</td></tr>
+        <tr><td>L5</td><td class="prop-name">Potencia de cociente</td><td>\(\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}\)</td><td>\(\left(\dfrac{x}{3}\right)^2 = \dfrac{x^2}{9}\)</td></tr>
+        <tr><td>L6</td><td class="prop-name">Exponente negativo</td><td>\(a^{-n} = \dfrac{1}{a^n}\)</td><td>\(2^{-3} = \dfrac{1}{8}\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 4.3 -->
+  <div class="theory-section">
+    <h3>4.3 Raíces n-ésimas y Exponentes Fraccionarios</h3>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 4.2</div>
+      <div class="def-title">Raíz n-ésima</div>
+      <p>La <strong>raíz n-ésima</strong> de \(a\), escrita \(\sqrt[n]{a}\), es el número \(b\) tal que \(b^n = a\). Se define:</p>
+      <div class="math-display">
+        \[\sqrt[n]{a} = a^{1/n}\]
+      </div>
+      <p>Para raíces pares (\(n\) par): requiere \(a \geq 0\). Para raíces impares: \(a \in \mathbb{R}\) cualquiera.</p>
+    </div>
+
+    <div class="definition-box">
+      <div class="def-label">Definición 4.3</div>
+      <div class="def-title">Exponente Fraccionario</div>
+      <p>Para \(a > 0\) y \(\frac{m}{n} \in \mathbb{Q}\) (fracción irreducible, \(n > 0\)):</p>
+      <div class="math-display">\[a^{m/n} = \left(a^{1/n}\right)^m = \left(\sqrt[n]{a}\right)^m = \sqrt[n]{a^m}\]</div>
+    </div>
+
+    <table class="prop-table">
+      <thead><tr><th>Propiedad</th><th>Expresión</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="prop-name">\(\sqrt[n]{ab}\)</td><td>\(= \sqrt[n]{a}\cdot\sqrt[n]{b}\)</td><td>\(\sqrt{12} = \sqrt{4}\sqrt{3} = 2\sqrt{3}\)</td></tr>
+        <tr><td class="prop-name">\(\sqrt[n]{a/b}\)</td><td>\(= \dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}\)</td><td>\(\sqrt{\frac{9}{4}} = \dfrac{3}{2}\)</td></tr>
+        <tr><td class="prop-name">\(\sqrt[m]{\sqrt[n]{a}}\)</td><td>\(= \sqrt[mn]{a}\)</td><td>\(\sqrt{\sqrt[3]{a}} = \sqrt[6]{a} = a^{1/6}\)</td></tr>
+        <tr><td class="prop-name">\((\sqrt[n]{a})^n\)</td><td>\(= a\) si \(n\) impar; \(= |a|\) si \(n\) par</td><td>\((\sqrt[3]{5})^3 = 5\)</td></tr>
+        <tr><td class="prop-name">\(\sqrt[n]{a^n}\)</td><td>\(= |a|\) si \(n\) par; \(= a\) si \(n\) impar</td><td>\(\sqrt{(-3)^2} = |-3| = 3\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 4.4 -->
+  <div class="theory-section">
+    <h3>4.4 Operaciones Combinadas y Jerarquía</h3>
+    <p>Cuando una expresión contiene múltiples operaciones, se aplica el siguiente orden de jerarquía (de mayor a menor prioridad):</p>
+
+    <div class="theorem-box">
+      <div class="thm-label">Regla</div>
+      <div class="thm-title">Jerarquía de Operaciones (PEMDAS/BODMAS)</div>
+      <ol style="margin: 0.5rem 0 0 1.2rem; line-height: 2.2">
+        <li><strong>Paréntesis</strong> y otros signos de agrupación (de adentro hacia afuera)</li>
+        <li><strong>Exponentes y raíces</strong> (de derecha a izquierda)</li>
+        <li><strong>Multiplicación y División</strong> (de izquierda a derecha)</li>
+        <li><strong>Suma y Resta</strong> (de izquierda a derecha)</li>
+      </ol>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">⚠️</span>
+      <strong>Errores comunes:</strong> (1) \(-3^2 = -(3^2) = -9\) y <strong>no</strong> \((-3)^2 = 9\). (2) \(\frac{1}{2}x\) y \(\frac{1}{2x}\) son diferentes. (3) \(2^{3^2} = 2^9 = 512\) (no \((2^3)^2 = 64\)).
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4.5 -->
+  <div class="theory-section">
+    <h3>4.5 Racionalización</h3>
+    <p><strong>Racionalizar</strong> significa eliminar radicales del denominador de una fracción. Se logra multiplicando numerador y denominador por el <em>conjugado</em> o por una expresión conveniente.</p>
+
+    <div class="definition-box">
+      <div class="def-label">Técnica 1</div>
+      <div class="def-title">Denominador con una raíz</div>
+      <p>Si el denominador es \(\sqrt{a}\), se multiplica por \(\dfrac{\sqrt{a}}{\sqrt{a}}\):</p>
+      <div class="math-display">\[\frac{b}{\sqrt{a}} = \frac{b}{\sqrt{a}} \cdot \frac{\sqrt{a}}{\sqrt{a}} = \frac{b\sqrt{a}}{a}\]</div>
+    </div>
+
+    <div class="definition-box">
+      <div class="def-label">Técnica 2</div>
+      <div class="def-title">Denominador binomio con raíz (conjugado)</div>
+      <p>Si el denominador es \(a + \sqrt{b}\), se multiplica por su conjugado \(a - \sqrt{b}\):</p>
+      <div class="math-display">\[\frac{c}{a + \sqrt{b}} \cdot \frac{a - \sqrt{b}}{a - \sqrt{b}} = \frac{c(a-\sqrt{b})}{a^2 - b}\]</div>
+      <p>Esto usa la identidad \((A+B)(A-B) = A^2 - B^2\).</p>
+    </div>
+  </div>
+
+  <!-- EJERCICIOS L4 -->
+  <div class="theory-section">
+    <h3>4.6 Ejercicios Resueltos Paso a Paso</h3>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 1</span>
+        <span class="ex-title">Simplificación con leyes de potencias</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body open">
+        <div class="exercise-statement">Simplificar: \(\dfrac{x^5 \cdot x^{-2}}{(x^2)^3}\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Simplificar numerador (L1)</div>
+              <p>Numerador: \(x^5 \cdot x^{-2} = x^{5+(-2)} = x^3\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Simplificar denominador (L3)</div>
+              <p>Denominador: \((x^2)^3 = x^{2 \cdot 3} = x^6\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Dividir (L2)</div>
+              <p>\(\dfrac{x^3}{x^6} = x^{3-6} = x^{-3} = \dfrac{1}{x^3}\)</p>
+              <div class="step-result">\(\dfrac{x^5 \cdot x^{-2}}{(x^2)^3} = \dfrac{1}{x^3}\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 2</span>
+        <span class="ex-title">Simplificación de radicales</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Simplificar: (a) \(\sqrt{72}\) (b) \(\sqrt[3]{-54}\) (c) \(\sqrt{x^5 y^4}\)</div>
+
+        <div class="diagram-container" style="margin:0.8rem 0">
+          <p style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:0.6rem;font-family:var(--font-display)">Árbol de factores — \(\sqrt{72}\)</p>
+          <svg viewBox="0 0 340 200" style="width:100%;max-width:420px;font-family:'JetBrains Mono',monospace">
+            <!-- root -->
+            <circle cx="170" cy="28" r="22" fill="#23334f"/>
+            <text x="156" y="35" fill="white" font-size="16" font-weight="700">72</text>
+            <!-- level 1 branches -->
+            <line x1="156" y1="48" x2="95" y2="80" stroke="#23334f" stroke-width="2"/>
+            <line x1="184" y1="48" x2="245" y2="80" stroke="#23334f" stroke-width="2"/>
+            <circle cx="95" cy="96" r="20" fill="#2c3b4b"/>
+            <text x="81" y="103" fill="#ffbf00" font-size="16" font-weight="700">36</text>
+            <circle cx="245" cy="96" r="20" fill="#2c3b4b"/>
+            <text x="238" y="103" fill="#ffbf00" font-size="16" font-weight="700">2</text>
+            <text x="222" y="128" fill="#1a9e6e" font-size="13">primo ✓</text>
+            <!-- level 2 branches -->
+            <line x1="80" y1="114" x2="55" y2="148" stroke="#23334f" stroke-width="2"/>
+            <line x1="110" y1="114" x2="135" y2="148" stroke="#23334f" stroke-width="2"/>
+            <circle cx="55" cy="164" r="20" fill="#8a6800"/>
+            <text x="43" y="171" fill="white" font-size="15" font-weight="700">6²</text>
+            <circle cx="135" cy="164" r="20" fill="rgba(35,51,79,0.15)" stroke="#23334f" stroke-width="1.5"/>
+            <text x="120" y="171" fill="#23334f" font-size="13">= 36</text>
+            <!-- result -->
+            <text x="10" y="198" fill="#23334f" font-size="14">√72 = √(36·2) = </text>
+            <text x="188" y="198" fill="#1a9e6e" font-size="15" font-weight="700">6√2</text>
+          </svg>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Parte (a): \(\sqrt{72}\)</div>
+              <p>Factorizar: \(72 = 36 \times 2\). Entonces \(\sqrt{72} = \sqrt{36 \cdot 2} = \sqrt{36}\cdot\sqrt{2} = 6\sqrt{2}\).</p>
+              <div class="step-result">\(\sqrt{72} = 6\sqrt{2}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Parte (b): \(\sqrt[3]{-54}\)</div>
+              <p>Factorizar: \(-54 = (-27)(2)\). Entonces \(\sqrt[3]{-54} = \sqrt[3]{-27}\cdot\sqrt[3]{2} = -3\sqrt[3]{2}\).</p>
+              <div class="step-result">\(\sqrt[3]{-54} = -3\sqrt[3]{2}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Parte (c): \(\sqrt{x^5 y^4}\)</div>
+              <p>Separar potencias pares e impares: \(\sqrt{x^5 y^4} = \sqrt{x^4 \cdot x \cdot y^4} = x^2 y^2 \sqrt{x}\) (asumiendo \(x \geq 0, y \geq 0\)).</p>
+              <div class="step-result">\(\sqrt{x^5 y^4} = x^2 y^2 \sqrt{x}\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 3</span>
+        <span class="ex-title">Operación combinada</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Evaluar: \(3^2 + 2 \cdot \left(4 - \sqrt{16}\right)^3 \div 8 - (-2)^3\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Paréntesis y raíz</div>
+              <p>\(\sqrt{16} = 4\), entonces \(4 - \sqrt{16} = 4 - 4 = 0\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Exponentes</div>
+              <p>\(3^2 = 9\), \(\;(0)^3 = 0\), \(\;(-2)^3 = -8\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Multiplicación y división</div>
+              <p>\(2 \cdot 0 \div 8 = 0 \div 8 = 0\)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-label">Suma y resta</div>
+              <p>\(9 + 0 - (-8) = 9 + 8 = 17\)</p>
+              <div class="step-result">Resultado: \(17\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <div class="exercise-header" onclick="toggleExercise(this)">
+        <span class="ex-num">Ej. 4</span>
+        <span class="ex-title">Racionalización del denominador</span>
+        <span class="ex-toggle">▾</span>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-statement">Racionalizar: (a) \(\dfrac{5}{\sqrt{3}}\) (b) \(\dfrac{4}{1+\sqrt{2}}\)</div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Parte (a): \(\frac{5}{\sqrt{3}}\)</div>
+              <p>Multiplicar por \(\frac{\sqrt{3}}{\sqrt{3}}\):</p>
+              <p>\(\dfrac{5}{\sqrt{3}} \cdot \dfrac{\sqrt{3}}{\sqrt{3}} = \dfrac{5\sqrt{3}}{(\sqrt{3})^2} = \dfrac{5\sqrt{3}}{3}\)</p>
+              <div class="step-result">\(\dfrac{5}{\sqrt{3}} = \dfrac{5\sqrt{3}}{3}\)</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Parte (b): conjugado</div>
+              <p>El conjugado de \(1 + \sqrt{2}\) es \(1 - \sqrt{2}\):</p>
+              <p>\(\dfrac{4}{1+\sqrt{2}} \cdot \dfrac{1-\sqrt{2}}{1-\sqrt{2}} = \dfrac{4(1-\sqrt{2})}{1^2 - (\sqrt{2})^2} = \dfrac{4(1-\sqrt{2})}{1-2} = \dfrac{4(1-\sqrt{2})}{-1}\)</p>
+              <p>\(= -4(1-\sqrt{2}) = -4 + 4\sqrt{2} = 4\sqrt{2} - 4\)</p>
+              <div class="step-result">\(\dfrac{4}{1+\sqrt{2}} = 4\sqrt{2} - 4\)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-secondary" onclick="navToLesson(3)">← Lección anterior</button>
+    <button class="lesson-complete-btn" onclick="completeLesson(4)">✓ Marcar lección como completada →</button>
+  </div>
+</div><!-- end page-l4 -->
+
+<!-- QUIZ 4 -->
+<div class="page" id="page-q4">
+  <div class="lesson-header">
+    <div class="lesson-num">CUESTIONARIO 04 · OPERACIONES EN ℝ</div>
+    <h2>Evaluación de la Lección 4</h2>
+    <p class="lesson-desc">10 preguntas sobre propiedades, potencias, raíces, operaciones combinadas y racionalización.</p>
+  </div>
+  <div id="quiz4-container"></div>
+</div>
+
+</main><!-- end main-content -->
+</div><!-- end app-layout -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// STATE & PROGRESS
+// ═══════════════════════════════════════════════════════
+const STORAGE_KEY = 'asoesem_precalc1';
+let state = {
+  lessonsCompleted: [false, false, false, false],
+  quizzesPassed: [false, false, false, false],
+  quizScores: [null, null, null, null],
+  quizAnswers: [{}, {}, {}, {}]
+};
+
+function loadState() {
+  const s = localStorage.getItem(STORAGE_KEY);
+  if (s) state = JSON.parse(s);
+}
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+loadState();
+
+// ═══════════════════════════════════════════════════════
+// QUIZ DATA
+// ═══════════════════════════════════════════════════════
+const quizData = [
+  // Quiz 1: Conjuntos Numéricos
+  [
+    {
+      q: "¿Cuál de los siguientes números NO pertenece a los números racionales (\\(\\mathbb{Q}\\))?",
+      opts: ["\\(\\frac{7}{3}\\)", "\\(0.\\overline{142857}\\)", "\\(\\sqrt{7}\\)", "\\(-5\\)"],
+      ans: 2,
+      exp: "\\(\\sqrt{7}\\) es irracional porque 7 no es un cuadrado perfecto. Los demás son racionales: \\(\\frac{7}{3}\\) es cociente de enteros, \\(0.\\overline{142857} = \\frac{1}{7}\\) es periódico, y \\(-5 = \\frac{-5}{1}\\)."
+    },
+    {
+      q: "¿Cuál es la relación correcta entre los conjuntos numéricos?",
+      visual: `<svg viewBox="0 0 560 190" style="width:100%;max-width:640px;font-family:'Source Serif 4',serif">
+        <!-- ℝ outer box -->
+        <rect x="8" y="8" width="544" height="150" rx="12" fill="rgba(35,51,79,0.04)" stroke="#23334f" stroke-width="2.5"/>
+        <text x="536" y="32" fill="#23334f" font-size="17" font-weight="700" text-anchor="middle">ℝ</text>
+        <!-- ℚ box -->
+        <rect x="24" y="26" width="420" height="118" rx="10" fill="rgba(44,59,75,0.07)" stroke="#2c3b4b" stroke-width="2"/>
+        <text x="418" y="48" fill="#2c3b4b" font-size="15" font-weight="700" text-anchor="middle">ℚ</text>
+        <!-- ℤ box -->
+        <rect x="42" y="46" width="260" height="82" rx="8" fill="rgba(255,191,0,0.07)" stroke="#8a6800" stroke-width="2"/>
+        <text x="272" y="68" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">ℤ</text>
+        <!-- ℕ innermost box -->
+        <rect x="60" y="66" width="130" height="48" rx="7" fill="rgba(255,191,0,0.20)" stroke="#ffbf00" stroke-width="2.5"/>
+        <text x="125" y="88" fill="#23334f" font-size="15" font-weight="700" text-anchor="middle">ℕ</text>
+        <text x="125" y="106" fill="#6b7c93" font-size="11" text-anchor="middle">1, 2, 3…</text>
+        <!-- ℤ sample outside ℕ -->
+        <text x="228" y="108" fill="#6b7c93" font-size="11" text-anchor="middle">−1, −2…</text>
+        <!-- ℚ sample outside ℤ -->
+        <text x="356" y="126" fill="#6b7c93" font-size="11" text-anchor="middle">½, ¾, −⅓…</text>
+        <!-- 𝕀 clearly outside ℚ, inside ℝ -->
+        <text x="500" y="82" fill="#8a6800" font-size="20" font-weight="700" text-anchor="middle">𝕀</text>
+        <text x="500" y="100" fill="#8a6800" font-size="11" text-anchor="middle">√2, π…</text>
+        <!-- Footer: below all rects -->
+        <text x="280" y="178" fill="#6b7c93" font-size="12" text-anchor="middle">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ  y  𝕀 ⊂ ℝ  pero  𝕀 ∩ ℚ = ∅</text>
+      </svg>`,
+      opts: ["\\(\\mathbb{Q} \\subset \\mathbb{Z} \\subset \\mathbb{N}\\)", "\\(\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}\\)", "\\(\\mathbb{Z} \\subset \\mathbb{N} \\subset \\mathbb{Q}\\)", "\\(\\mathbb{R} \\subset \\mathbb{Q} \\subset \\mathbb{Z}\\)"],
+      ans: 1,
+      exp: "La cadena correcta de inclusiones es \\(\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}\\). Cada conjunto está contenido en el siguiente y es un subconjunto propio."
+    },
+    {
+      q: "¿A cuántos conjuntos de la cadena \\(\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}\\) pertenece el número \\(-\\sqrt{4}\\)?",
+      opts: ["Solo a \\(\\mathbb{R}\\)", "A \\(\\mathbb{Q}\\) y \\(\\mathbb{R}\\)", "A \\(\\mathbb{Z}\\), \\(\\mathbb{Q}\\) y \\(\\mathbb{R}\\)", "A todos: \\(\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{R}\\)"],
+      ans: 2,
+      exp: "\\(-\\sqrt{4} = -2 \\in \\mathbb{Z}\\) (es negativo, no natural). Como \\(\\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}\\), pertenece a \\(\\mathbb{Z}, \\mathbb{Q}\\) y \\(\\mathbb{R}\\), es decir 3 conjuntos."
+    },
+    {
+      q: "El conjunto \\(A = \\{x \\in \\mathbb{Z} \\mid -1 \\leq x \\leq 3\\}\\) en notación por extensión es:",
+      opts: ["\\(\\{-1, 0, 1, 2, 3\\}\\)", "\\(\\{-1, 1, 2, 3\\}\\)", "\\(\\{0, 1, 2, 3\\}\\)", "\\(\\{-1, 0, 1, 2\\}\\)"],
+      ans: 0,
+      exp: "Los enteros desde -1 hasta 3 (inclusive ambos extremos) son: -1, 0, 1, 2, 3. Son 5 elementos."
+    },
+    {
+      q: "¿Cuál afirmación sobre el número \\(0.3131313131\\ldots = 0.\\overline{31}\\) es correcta?",
+      opts: ["Es irracional porque tiene infinitos decimales", "Es racional porque es decimal periódico", "Es natural", "Es irracional porque no termina"],
+      ans: 1,
+      exp: "Un decimal infinito periódico siempre es racional. Se puede demostrar: sea \\(x = 0.\\overline{31}\\), entonces \\(100x = 31.\\overline{31}\\), restando: \\(99x = 31\\), por tanto \\(x = \\frac{31}{99} \\in \\mathbb{Q}\\)."
+    },
+    {
+      q: "¿Cuál de estas operaciones produce un resultado fuera de \\(\\mathbb{N}\\)?",
+      opts: ["\\(3 + 7\\)", "\\(5 \\times 4\\)", "\\(6 - 9\\)", "\\(2 \\times 0\\)"],
+      ans: 2,
+      exp: "\\(6 - 9 = -3 \\notin \\mathbb{N}\\) (los naturales no son cerrados bajo la resta cuando el minuendo es menor que el sustraendo). Las demás operaciones dan resultados naturales."
+    },
+    {
+      q: "¿Qué propiedad afirma que entre dos racionales distintos siempre existe otro racional?",
+      opts: ["Completitud", "Densidad", "Tricotomía", "Transitividad"],
+      ans: 1,
+      exp: "La propiedad de **densidad** de \\(\\mathbb{Q}\\) establece que entre cualesquiera dos racionales distintos \\(a < b\\) siempre existe otro racional, por ejemplo \\(\\frac{a+b}{2}\\)."
+    },
+    {
+      q: "Si \\(A = \\{1, 2, 3\\}\\) y \\(B = \\{2, 3, 4, 5\\}\\), ¿cuál es \\(A \\cap B\\) (intersección)?",
+      visual: `<svg viewBox="0 0 440 225" style="width:100%;max-width:560px;font-family:'Source Serif 4',serif">
+        <!--
+          cx_A=155, cx_B=275, r=90
+          d=120 < 2r=180  →  real overlap of 60px
+          A spans x: 65–245   B spans x: 185–365
+          A-only zone:  x 65–185  (center ~125)
+          Intersection: x 185–245 (center ~215)
+          B-only zone:  x 245–365 (center ~305)
+        -->
+        <!-- A circle -->
+        <circle cx="155" cy="112" r="90" fill="rgba(35,51,79,0.09)" stroke="#23334f" stroke-width="2.5"/>
+        <!-- B circle -->
+        <circle cx="275" cy="112" r="90" fill="rgba(255,191,0,0.12)" stroke="#8a6800" stroke-width="2.5"/>
+        <!-- Labels ABOVE and OUTSIDE the circles -->
+        <text x="100" y="16" fill="#23334f" font-size="14" font-weight="700" text-anchor="middle">A = {1, 2, 3}</text>
+        <text x="330" y="16" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">B = {2, 3, 4, 5}</text>
+        <!-- A-only content — clearly left of B's left edge (x=185) -->
+        <text x="108" y="108" fill="#23334f" font-size="18" font-weight="700" text-anchor="middle">{1}</text>
+        <text x="108" y="130" fill="#6b7c93" font-size="12" text-anchor="middle">solo en A</text>
+        <!-- Intersection content — inside crescent center (x≈215) -->
+        <text x="215" y="105" fill="#1a9e6e" font-size="16" font-weight="700" text-anchor="middle">{2, 3}</text>
+        <text x="215" y="124" fill="#1a9e6e" font-size="12" text-anchor="middle">A ∩ B</text>
+        <!-- B-only content — clearly right of A's right edge (x=245) -->
+        <text x="322" y="108" fill="#8a6800" font-size="18" font-weight="700" text-anchor="middle">{4, 5}</text>
+        <text x="322" y="130" fill="#6b7c93" font-size="12" text-anchor="middle">solo en B</text>
+        <!-- Footer below both circles (circles bottom at y=202) -->
+        <text x="215" y="218" fill="#6b7c93" font-size="12" text-anchor="middle">La intersección A ∩ B contiene solo los elementos comunes</text>
+      </svg>`,
+      opts: ["\\(\\{1, 2, 3, 4, 5\\}\\)", "\\(\\{2, 3\\}\\)", "\\(\\{1, 4, 5\\}\\)", "\\(\\emptyset\\)"],
+      ans: 1,
+      exp: "La intersección \\(A \\cap B\\) contiene los elementos comunes a ambos conjuntos. Los elementos que aparecen en A y en B son 2 y 3."
+    },
+    {
+      q: "¿Qué representa \\(\\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}\\)?",
+      opts: ["Los reales son la intersección de racionales e irracionales", "Los reales son la unión de racionales e irracionales disjuntos", "Todo racional es irracional", "Los irracionales contienen a los racionales"],
+      ans: 1,
+      exp: "Los números reales son la unión de racionales \\(\\mathbb{Q}\\) e irracionales \\(\\mathbb{I}\\), siendo estos dos conjuntos **disjuntos** (\\(\\mathbb{Q} \\cap \\mathbb{I} = \\emptyset\\)): ningún número puede ser simultáneamente racional e irracional."
+    },
+    {
+      q: "¿Cuál de las siguientes fracciones es equivalente a \\(0.75\\)?",
+      opts: ["\\(\\frac{3}{5}\\)", "\\(\\frac{7}{10}\\)", "\\(\\frac{3}{4}\\)", "\\(\\frac{7}{9}\\)"],
+      ans: 2,
+      exp: "\\(0.75 = \\frac{75}{100} = \\frac{3}{4}\\) (simplificando por 25). Verificación: \\(\\frac{3}{4} = 0.75\\). ✓"
+    }
+  ],
+  // Quiz 2: Valor Absoluto
+  [
+    {
+      q: "¿Cuál es el valor de \\(|{-3.7}|\\)?",
+      opts: ["\\(-3.7\\)", "\\(3.7\\)", "\\(0\\)", "\\(-\\frac{37}{10}\\)"],
+      ans: 1,
+      exp: "Como \\(-3.7 < 0\\), por definición \\(|-3.7| = -(-3.7) = 3.7\\). El valor absoluto siempre devuelve un número no negativo."
+    },
+    {
+      q: "¿Qué representa geométricamente \\(|x|\\) en la recta real?",
+      visual: `<svg viewBox="0 0 500 130" style="width:100%;max-width:600px;font-family:'Source Serif 4',serif">
+        <!-- Number line -->
+        <line x1="30" y1="70" x2="470" y2="70" stroke="#23334f" stroke-width="2"/>
+        <polygon points="468,65 482,70 468,75" fill="#23334f"/>
+        <!-- Origin tick -->
+        <line x1="250" y1="60" x2="250" y2="80" stroke="#23334f" stroke-width="2.5"/>
+        <text x="250" y="96" fill="#23334f" font-size="14" font-weight="700" text-anchor="middle">0</text>
+        <!-- x = -3 point -->
+        <circle cx="100" cy="70" r="9" fill="#23334f"/>
+        <text x="100" y="115" fill="#2c3b4b" font-size="13" text-anchor="middle">x = −3</text>
+        <!-- x = 2.5 point -->
+        <circle cx="330" cy="70" r="9" fill="#23334f"/>
+        <text x="330" y="115" fill="#2c3b4b" font-size="13" text-anchor="middle">x = 2.5</text>
+        <!-- Arrow |x|=3 (above line) -->
+        <line x1="100" y1="40" x2="250" y2="40" stroke="#ffbf00" stroke-width="3"/>
+        <polygon points="100,34 86,40 100,46" fill="#ffbf00"/>
+        <polygon points="250,34 264,40 250,46" fill="#ffbf00"/>
+        <text x="175" y="32" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">|x| = 3</text>
+        <!-- Arrow |x|=2.5 (above line, separate level) -->
+        <line x1="250" y1="54" x2="330" y2="54" stroke="#ffbf00" stroke-width="2.5" stroke-dasharray="5"/>
+        <text x="290" y="50" fill="#8a6800" font-size="12" text-anchor="middle">|x| = 2.5</text>
+        <!-- Footer -->
+        <text x="250" y="130" fill="#6b7c93" font-size="12" text-anchor="middle">|x| mide la distancia de cada punto al origen 0</text>
+      </svg>`,
+      opts: ["El signo de x", "La posición de x", "La distancia de x al origen 0", "El negativo de x"],
+      ans: 2,
+      exp: "Geométricamente, \\(|x|\\) representa la distancia desde el punto \\(x\\) hasta el origen (0) en la recta numérica. Por eso siempre es no negativo."
+    },
+    {
+      q: "¿Cuánto vale \\(\\sqrt{(-5)^2}\\)?",
+      opts: ["\\(-5\\)", "\\(25\\)", "\\(5\\)", "\\(-25\\)"],
+      ans: 2,
+      exp: "Por la propiedad P9: \\(\\sqrt{a^2} = |a|\\). Por tanto \\(\\sqrt{(-5)^2} = |-5| = 5\\). La raíz cuadrada siempre produce un resultado no negativo."
+    },
+    {
+      q: "Si \\(|2x - 1| = 5\\), ¿cuáles son las soluciones?",
+      opts: ["\\(x = 3\\) o \\(x = 2\\)", "\\(x = 3\\) o \\(x = -2\\)", "\\(x = -3\\) o \\(x = 2\\)", "\\(x = 6\\) o \\(x = -4\\)"],
+      ans: 1,
+      exp: "\\(|2x-1|=5 \\Rightarrow 2x-1=5\\) o \\(2x-1=-5\\). Caso 1: \\(2x=6, x=3\\). Caso 2: \\(2x=-4, x=-2\\)."
+    },
+    {
+      q: "La desigualdad triangular establece que:",
+      opts: ["\\(|a+b| = |a| + |b|\\)", "\\(|a+b| \\leq |a| + |b|\\)", "\\(|a+b| \\geq |a| + |b|\\)", "\\(|a+b| < |a| - |b|\\)"],
+      ans: 1,
+      exp: "La desigualdad triangular dice \\(|a+b| \\leq |a|+|b|\\). La igualdad se cumple cuando \\(a\\) y \\(b\\) tienen el mismo signo (o alguno es cero)."
+    },
+    {
+      q: "¿Qué números satisfacen \\(|x| < 3\\)?",
+      visual: `<svg viewBox="0 0 500 110" style="width:100%;max-width:600px;font-family:'Source Serif 4',serif">
+        <!-- Number line -->
+        <line x1="30" y1="55" x2="470" y2="55" stroke="#23334f" stroke-width="2"/>
+        <polygon points="468,50 482,55 468,60" fill="#23334f"/>
+        <!-- Highlighted interval -->
+        <line x1="120" y1="55" x2="380" y2="55" stroke="#ffbf00" stroke-width="8" opacity="0.5"/>
+        <!-- Open endpoint circles -->
+        <circle cx="120" cy="55" r="9" fill="white" stroke="#ffbf00" stroke-width="3"/>
+        <circle cx="380" cy="55" r="9" fill="white" stroke="#ffbf00" stroke-width="3"/>
+        <!-- Origin -->
+        <line x1="250" y1="46" x2="250" y2="64" stroke="#23334f" stroke-width="2"/>
+        <text x="250" y="82" fill="#23334f" font-size="14" font-weight="700" text-anchor="middle">0</text>
+        <!-- Ticks and labels -->
+        <g stroke="#23334f" stroke-width="1.5">
+          <line x1="55"  y1="48" x2="55"  y2="62"/><text x="55"  y="80" fill="#6b7c93"  font-size="13" text-anchor="middle">−4</text>
+          <line x1="120" y1="46" x2="120" y2="64"/><text x="120" y="84" fill="#b08900" font-size="14" text-anchor="middle" font-weight="700">−3</text>
+          <line x1="380" y1="46" x2="380" y2="64"/><text x="380" y="84" fill="#b08900" font-size="14" text-anchor="middle" font-weight="700">3</text>
+          <line x1="445" y1="48" x2="445" y2="62"/><text x="445" y="80" fill="#6b7c93"  font-size="13" text-anchor="middle">4</text>
+        </g>
+        <!-- Label above -->
+        <text x="250" y="30" fill="#8a6800" font-size="16" font-weight="700" text-anchor="middle">]−3 , 3[</text>
+        <!-- Footer -->
+        <text x="250" y="106" fill="#6b7c93" font-size="12" text-anchor="middle">Círculos vacíos ○ = extremos excluidos (intervalo abierto)</text>
+      </svg>`,
+      opts: ["\\(x > 3\\) o \\(x < -3\\)", "\\(x \\in \\left]-3, 3\\right[\\)", "\\(x \\in \\left[-3, 3\\right]\\)", "\\(x = 3\\) o \\(x = -3\\)"],
+      ans: 1,
+      exp: "Por Teorema 2.2: \\(|x|<3 \\Leftrightarrow -3 < x < 3\\), que es el intervalo abierto \\(\\left]-3, 3\\right[\\). Los extremos se excluyen porque la inecuación es estricta."
+    },
+    {
+      q: "¿Cuál es la propiedad que afirma \\(|a \\cdot b| = |a| \\cdot |b|\\)?",
+      opts: ["Simetría", "Desigualdad triangular", "Multiplicatividad", "No negatividad"],
+      ans: 2,
+      exp: "La propiedad de **multiplicatividad** (P3) establece que el valor absoluto de un producto es el producto de los valores absolutos: \\(|ab|=|a||b|\\)."
+    },
+    {
+      q: "Si \\(a < b\\) y multiplicamos ambos lados por \\(-3\\), entonces:",
+      opts: ["\\(-3a < -3b\\)", "\\(-3a > -3b\\)", "\\(-3a = -3b\\)", "No se puede determinar"],
+      ans: 1,
+      exp: "Cuando se multiplica (o divide) una desigualdad por un número **negativo**, el sentido se invierte. Como \\(-3 < 0\\): \\(a < b \\Rightarrow -3a > -3b\\)."
+    },
+    {
+      q: "¿Cuál es el valor de \\(|\\pi - 4|\\)?",
+      opts: ["\\(\\pi - 4\\)", "\\(4 - \\pi\\)", "\\(0\\)", "\\(\\pi + 4\\)"],
+      ans: 1,
+      exp: "Como \\(\\pi \\approx 3.14159 < 4\\), tenemos \\(\\pi - 4 < 0\\). Por definición: \\(|\\pi - 4| = -(\\pi - 4) = 4 - \\pi \\approx 0.858\\)."
+    },
+    {
+      q: "¿Qué solución tiene la ecuación \\(|x + 4| = -2\\)?",
+      opts: ["\\(x = -6\\) o \\(x = -2\\)", "\\(x = -2\\)", "\\(x = 6\\) o \\(x = 2\\)", "No tiene solución"],
+      ans: 3,
+      exp: "El valor absoluto siempre es \\(\\geq 0\\), nunca puede ser negativo. Por tanto \\(|x+4| = -2\\) no tiene solución en \\(\\mathbb{R}\\). El conjunto solución es vacío \\(\\emptyset\\)."
+    }
+  ],
+  // Quiz 3: Distancia
+  [
+    {
+      q: "¿Cuál es \\(d(-3, 8)\\)?",
+      opts: ["5", "11", "-11", "\\(-5\\)"],
+      ans: 1,
+      exp: "\\(d(-3,8) = |8-(-3)| = |8+3| = |11| = 11\\). La distancia siempre es no negativa."
+    },
+    {
+      q: "¿Cuál es la fórmula correcta de la distancia entre puntos \\(a\\) y \\(b\\)?",
+      opts: ["\\(d(a,b) = a - b\\)", "\\(d(a,b) = |a - b|\\)", "\\(d(a,b) = a + b\\)", "\\(d(a,b) = |a| + |b|\\)"],
+      ans: 1,
+      exp: "La distancia entre \\(a\\) y \\(b\\) en la recta real es \\(d(a,b) = |a-b| = |b-a|\\). El valor absoluto garantiza que sea siempre no negativa."
+    },
+    {
+      q: "Si \\(d(x, 4) = 6\\), ¿cuáles son los valores de \\(x\\)?",
+      visual: `<svg viewBox="0 0 520 130" style="width:100%;max-width:620px;font-family:'Source Serif 4',serif">
+        <!-- Number line -->
+        <line x1="30" y1="75" x2="490" y2="75" stroke="#23334f" stroke-width="2"/>
+        <polygon points="488,70 502,75 488,80" fill="#23334f"/>
+        <!-- d=6 arrows above line -->
+        <line x1="105" y1="38" x2="275" y2="38" stroke="#ffbf00" stroke-width="2.5"/>
+        <polygon points="105,32 91,38 105,44" fill="#ffbf00"/>
+        <polygon points="275,32 289,38 275,44" fill="#ffbf00"/>
+        <text x="190" y="30" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">d = 6</text>
+        <line x1="275" y1="38" x2="425" y2="38" stroke="#ffbf00" stroke-width="2.5"/>
+        <polygon points="275,32 261,38 275,44" fill="#ffbf00"/>
+        <polygon points="425,32 439,38 425,44" fill="#ffbf00"/>
+        <text x="350" y="30" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">d = 6</text>
+        <!-- Vertical connectors arrow to line -->
+        <line x1="105" y1="44" x2="105" y2="66" stroke="#ffbf00" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="275" y1="44" x2="275" y2="66" stroke="#23334f" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="425" y1="44" x2="425" y2="66" stroke="#ffbf00" stroke-width="1.5" stroke-dasharray="4"/>
+        <!-- Points on line -->
+        <circle cx="105" cy="75" r="11" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+        <circle cx="275" cy="75" r="10" fill="#23334f"/>
+        <circle cx="425" cy="75" r="11" fill="#ffbf00" stroke="#8a6800" stroke-width="2"/>
+        <!-- Labels below -->
+        <text x="105"  y="102" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">x = −2</text>
+        <text x="275"  y="102" fill="#23334f" font-size="14" font-weight="700" text-anchor="middle">4</text>
+        <text x="425"  y="102" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">x = 10</text>
+        <text x="260" y="125" fill="#6b7c93" font-size="12" text-anchor="middle">Dos puntos a distancia 6 del punto 4</text>
+      </svg>`,
+      opts: ["\\(x = 10\\)", "\\(x = -2\\)", "\\(x = 10\\) o \\(x = -2\\)", "\\(x = 2\\) o \\(x = -10\\)"],
+      ans: 2,
+      exp: "\\(|x-4|=6 \\Rightarrow x-4=6\\) o \\(x-4=-6\\). Entonces \\(x=10\\) o \\(x=-2\\). Ambos puntos están a 6 unidades del punto 4."
+    },
+    {
+      q: "¿Cuál es el punto medio entre \\(-8\\) y \\(4\\)?",
+      opts: ["\\(-2\\)", "\\(2\\)", "\\(-4\\)", "\\(6\\)"],
+      ans: 0,
+      exp: "\\(m = \\frac{-8+4}{2} = \\frac{-4}{2} = -2\\). Verificación: \\(d(-8,-2)=6\\) y \\(d(-2,4)=6\\). ✓"
+    },
+    {
+      q: "¿Cuánto vale \\(d(-5, -5)\\)?",
+      opts: ["\\(10\\)", "\\(-10\\)", "\\(0\\)", "\\(5\\)"],
+      ans: 2,
+      exp: "\\(d(-5,-5) = |-5-(-5)| = |0| = 0\\). La distancia de un punto a sí mismo siempre es cero."
+    },
+    {
+      q: "¿Qué propiedad garantiza que la distancia siempre es no negativa?",
+      opts: ["Simetría", "No negatividad / Identidad", "Transitividad", "Densidad"],
+      ans: 1,
+      exp: "La propiedad de **no negatividad** establece que \\(d(a,b) \\geq 0\\) para todo par de puntos, y \\(d(a,b)=0 \\Leftrightarrow a=b\\)."
+    },
+    {
+      q: "Un punto \\(x\\) está a distancia menor que 2 del punto 3. ¿Qué conjunto describe esto?",
+      visual: `<svg viewBox="0 0 500 120" style="width:100%;max-width:600px;font-family:'Source Serif 4',serif">
+        <line x1="30" y1="62" x2="470" y2="62" stroke="#23334f" stroke-width="2"/>
+        <polygon points="468,57 482,62 468,67" fill="#23334f"/>
+        <line x1="140" y1="62" x2="340" y2="62" stroke="#ffbf00" stroke-width="8" opacity="0.5"/>
+        <circle cx="140" cy="62" r="9" fill="white" stroke="#ffbf00" stroke-width="3"/>
+        <circle cx="340" cy="62" r="9" fill="white" stroke="#ffbf00" stroke-width="3"/>
+        <circle cx="240" cy="62" r="8" fill="#23334f"/>
+        <line x1="140" y1="34" x2="240" y2="34" stroke="#23334f" stroke-width="2" stroke-dasharray="5"/>
+        <polygon points="140,28 126,34 140,40" fill="#23334f"/>
+        <polygon points="240,28 254,34 240,40" fill="#23334f"/>
+        <text x="190" y="26" fill="#23334f" font-size="13" text-anchor="middle">d &lt; 2</text>
+        <line x1="240" y1="34" x2="340" y2="34" stroke="#23334f" stroke-width="2" stroke-dasharray="5"/>
+        <polygon points="240,28 226,34 240,40" fill="#23334f"/>
+        <polygon points="340,28 354,34 340,40" fill="#23334f"/>
+        <text x="290" y="26" fill="#23334f" font-size="13" text-anchor="middle">d &lt; 2</text>
+        <g stroke="#23334f" stroke-width="1.5">
+          <line x1="60"  y1="55" x2="60"  y2="69"/><text x="60"  y="86" fill="#6b7c93" font-size="13" text-anchor="middle">0</text>
+          <line x1="140" y1="53" x2="140" y2="71"/><text x="140" y="90" fill="#b08900" font-size="14" text-anchor="middle" font-weight="700">1</text>
+          <line x1="240" y1="53" x2="240" y2="71"/><text x="240" y="90" fill="#23334f" font-size="14" text-anchor="middle" font-weight="700">3</text>
+          <line x1="340" y1="53" x2="340" y2="71"/><text x="340" y="90" fill="#b08900" font-size="14" text-anchor="middle" font-weight="700">5</text>
+          <line x1="420" y1="55" x2="420" y2="69"/><text x="420" y="86" fill="#6b7c93" font-size="13" text-anchor="middle">6</text>
+        </g>
+        <text x="250" y="112" fill="#8a6800" font-size="14" font-weight="700" text-anchor="middle">Solución: x ∈ ]1, 5[</text>
+      </svg>`,
+      opts: ["\\(x \\in \\left]1, 5\\right[\\)", "\\(x \\in \\left]-5, -1\\right[\\)", "\\(x \\in \\left]1, 5\\right[\\) cumple \\(d(x,3)<2\\)", "\\(x > 1\\)"],
+      ans: 2,
+      exp: "\\(d(x,3) < 2 \\Leftrightarrow |x-3|<2 \\Leftrightarrow -2 < x-3 < 2 \\Leftrightarrow 1 < x < 5\\). El conjunto es \\(\\left]1,5\\right[\\)."
+    },
+    {
+      q: "Si el punto medio entre \\(a\\) y \\(10\\) es \\(3\\), ¿cuánto vale \\(a\\)?",
+      opts: ["\\(-4\\)", "\\(4\\)", "\\(-3\\)", "\\(7\\)"],
+      ans: 0,
+      exp: "\\(\\frac{a+10}{2} = 3 \\Rightarrow a+10 = 6 \\Rightarrow a = -4\\). Verificación: punto medio entre -4 y 10 = \\(\\frac{6}{2}=3\\). ✓"
+    },
+    {
+      q: "¿Cuánto vale \\(d(\\sqrt{2}, 3\\sqrt{2})\\)?",
+      opts: ["\\(2\\sqrt{2}\\)", "\\(4\\sqrt{2}\\)", "\\(\\sqrt{2}\\)", "\\(3\\)"],
+      ans: 0,
+      exp: "\\(d(\\sqrt{2}, 3\\sqrt{2}) = |3\\sqrt{2} - \\sqrt{2}| = |2\\sqrt{2}| = 2\\sqrt{2}\\)."
+    },
+    {
+      q: "La desigualdad triangular para la distancia dice que:",
+      opts: ["\\(d(a,c) = d(a,b) + d(b,c)\\)", "\\(d(a,c) \\leq d(a,b) + d(b,c)\\)", "\\(d(a,c) \\geq d(a,b) + d(b,c)\\)", "\\(d(a,c) < d(a,b)\\)"],
+      ans: 1,
+      exp: "La **desigualdad triangular** establece que \\(d(a,c) \\leq d(a,b)+d(b,c)\\), con igualdad cuando \\(b\\) está entre \\(a\\) y \\(c\\). Es uno de los axiomas fundamentales de toda métrica."
+    }
+  ],
+  // Quiz 4: Operaciones
+  [
+    {
+      q: "Simplificar: \\(\\dfrac{a^4 \\cdot a^{-1}}{a^2}\\)",
+      opts: ["\\(a^5\\)", "\\(a^3\\)", "\\(a\\)", "\\(a^{-1}\\)"],
+      ans: 2,
+      exp: "Numerador: \\(a^4 \\cdot a^{-1} = a^{4-1} = a^3\\). Resultado: \\(\\frac{a^3}{a^2} = a^{3-2} = a^1 = a\\)."
+    },
+    {
+      q: "¿Qué propiedad de \\(\\mathbb{R}\\) justifica que \\(3(x+5) = 3x+15\\)?",
+      opts: ["Conmutatividad", "Asociatividad", "Distributividad", "Elemento neutro"],
+      ans: 2,
+      exp: "La propiedad **distributiva** establece que \\(a(b+c) = ab + ac\\). Aquí \\(a=3, b=x, c=5\\): \\(3(x+5) = 3x+15\\)."
+    },
+    {
+      q: "¿Cuánto vale \\((-2)^5\\)?",
+      visual: `<svg viewBox="0 0 480 130" style="width:100%;max-width:580px;font-family:'JetBrains Mono',monospace">
+        <rect x="10" y="10" width="460" height="110" rx="10" fill="rgba(35,51,79,0.04)" stroke="#d0d5de" stroke-width="1.5"/>
+        <text x="22" y="44" fill="#23334f" font-size="16" font-weight="700">n</text>
+        <text x="22" y="90" fill="#23334f" font-size="16" font-weight="700">(-2)ⁿ</text>
+        <line x1="58" y1="8" x2="58" y2="122" stroke="#d0d5de" stroke-width="1.5"/>
+        <line x1="10" y1="60" x2="470" y2="60" stroke="#d0d5de" stroke-width="1"/>
+        <g font-size="16" text-anchor="middle">
+          <text x="95"  y="44" fill="#2c3b4b">1</text><text x="95"  y="90" fill="#1a9e6e">−2</text>
+          <text x="158" y="44" fill="#2c3b4b">2</text><text x="158" y="90" fill="#23334f">4</text>
+          <text x="221" y="44" fill="#2c3b4b">3</text><text x="221" y="90" fill="#1a9e6e">−8</text>
+          <text x="284" y="44" fill="#2c3b4b">4</text><text x="284" y="90" fill="#23334f">16</text>
+          <text x="347" y="44" fill="#ffbf00" font-weight="700">5</text>
+          <text x="347" y="90" fill="#d64045" font-size="18" font-weight="700">?</text>
+          <text x="418" y="44" fill="#2c3b4b">6</text><text x="418" y="90" fill="#23334f">64</text>
+        </g>
+        <rect x="318" y="12" width="60" height="106" rx="6" fill="rgba(255,191,0,0.08)" stroke="#ffbf00" stroke-width="2" stroke-dasharray="4"/>
+        <text x="95" y="118" fill="#6b7c93" font-size="11">Alternan: neg, pos, neg, pos…</text>
+      </svg>`,
+      opts: ["\\(32\\)", "\\(-32\\)", "\\(10\\)", "\\(-10\\)"],
+      ans: 1,
+      exp: "\\((-2)^5 = (-2)(-2)(-2)(-2)(-2) = -32\\). Potencia impar de número negativo → resultado negativo."
+    },
+    {
+      q: "Simplificar: \\(\\sqrt[3]{27x^6}\\)",
+      opts: ["\\(3x^2\\)", "\\(3x^3\\)", "\\(9x^2\\)", "\\(3x^4\\)"],
+      ans: 0,
+      exp: "\\(\\sqrt[3]{27x^6} = \\sqrt[3]{27} \\cdot \\sqrt[3]{x^6} = 3 \\cdot x^{6/3} = 3x^2\\)."
+    },
+    {
+      q: "¿Cuál es el resultado de \\(-3^2 + (-3)^2\\)?",
+      opts: ["\\(0\\)", "\\(18\\)", "\\(-18\\)", "\\(-9\\)"],
+      ans: 0,
+      exp: "\\(-3^2 = -(3^2) = -9\\) (el exponente sólo afecta al 3). \\((-3)^2 = 9\\). Suma: \\(-9 + 9 = 0\\)."
+    },
+    {
+      q: "Racionalizar: \\(\\dfrac{6}{\\sqrt{3}}\\)",
+      opts: ["\\(2\\sqrt{3}\\)", "\\(6\\sqrt{3}\\)", "\\(\\frac{6}{3}\\sqrt{3}\\)", "\\(\\frac{\\sqrt{3}}{3}\\)"],
+      ans: 0,
+      exp: "\\(\\frac{6}{\\sqrt{3}} \\cdot \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}\\)."
+    },
+    {
+      q: "Evaluar con la jerarquía correcta: \\(2 + 3 \\times 4 - 1\\)",
+      visual: `<svg viewBox="0 0 480 130" style="width:100%;max-width:580px;font-family:'JetBrains Mono',monospace">
+        <rect x="10" y="8" width="460" height="114" rx="10" fill="rgba(35,51,79,0.03)" stroke="#d0d5de" stroke-width="1.5"/>
+        <!-- Column headers -->
+        <text x="22" y="34" fill="#6b7c93" font-size="13">Paso:</text>
+        <text x="22" y="72" fill="#6b7c93" font-size="13">Cálculo:</text>
+        <text x="22" y="100" fill="#6b7c93" font-size="13">Resultado:</text>
+        <!-- Dividers -->
+        <line x1="175" y1="5" x2="175" y2="124" stroke="#d0d5de" stroke-width="1.5"/>
+        <line x1="330" y1="5" x2="330" y2="124" stroke="#d0d5de" stroke-width="1.5"/>
+        <!-- Col 1: multiply first -->
+        <text x="200" y="34" fill="#23334f" font-size="14" font-weight="700">① × ÷ primero</text>
+        <text x="200" y="68" fill="#2c3b4b" font-size="13">3 × 4 = 12</text>
+        <text x="200" y="90" fill="#2c3b4b" font-size="13">2 + 12 − 1</text>
+        <text x="200" y="112" fill="#1a9e6e" font-size="15" font-weight="700">= 13 ✓</text>
+        <!-- Col 2: wrong order -->
+        <text x="345" y="34" fill="#d64045" font-size="14" font-weight="700">✗ Error común</text>
+        <text x="345" y="68" fill="#d64045" font-size="13">(2+3) × 4 − 1</text>
+        <text x="345" y="90" fill="#d64045" font-size="13">5 × 4 − 1</text>
+        <text x="345" y="112" fill="#d64045" font-size="15" font-weight="700">= 19 ✗</text>
+      </svg>`,
+      opts: ["\\(19\\)", "\\(13\\)", "\\(11\\)", "\\(20\\)"],
+      ans: 1,
+      exp: "Primero multiplicación: \\(3 \\times 4 = 12\\). Luego de izquierda a derecha: \\(2 + 12 - 1 = 13\\)."
+    },
+    {
+      q: "¿Cuál es la forma correcta de \\(a^{3/2}\\)?",
+      opts: ["\\(\\sqrt[3]{a^2}\\)", "\\(\\sqrt{a^3}\\)", "\\(a^3 \\cdot a^2\\)", "\\(\\frac{a^3}{a^2}\\)"],
+      ans: 1,
+      exp: "\\(a^{3/2} = a^{3 \\cdot (1/2)} = (a^3)^{1/2} = \\sqrt{a^3}\\). También se puede escribir \\(a\\sqrt{a}\\) (con \\(a\\geq 0\\))."
+    },
+    {
+      q: "¿Qué ocurre con el inverso aditivo de \\(a\\)?",
+      opts: ["\\(a + 1 = 0\\)", "\\(a + (-a) = 0\\)", "\\(a \\cdot (-a) = 1\\)", "\\(a + 0 = 1\\)"],
+      ans: 1,
+      exp: "El **inverso aditivo** de \\(a\\) es \\(-a\\), y su definición es \\(a + (-a) = 0\\) (el elemento neutro de la suma)."
+    },
+    {
+      q: "Racionalizar: \\(\\dfrac{1}{\\sqrt{5} - 2}\\)",
+      opts: ["\\(\\sqrt{5} + 2\\)", "\\(\\sqrt{5} - 2\\)", "\\(\\frac{1}{5-4}\\)", "\\(\\frac{\\sqrt{5}-2}{1}\\)"],
+      ans: 0,
+      exp: "Multiplicar por el conjugado \\(\\frac{\\sqrt{5}+2}{\\sqrt{5}+2}\\): \\(\\frac{\\sqrt{5}+2}{(\\sqrt{5})^2 - 2^2} = \\frac{\\sqrt{5}+2}{5-4} = \\frac{\\sqrt{5}+2}{1} = \\sqrt{5}+2\\)."
+    }
+  ]
+];
+
+// ═══════════════════════════════════════════════════════
+// QUIZ RENDERING
+// ═══════════════════════════════════════════════════════
+function renderQuiz(lessonIdx) {
+  const qContId = `quiz${lessonIdx}-container`;
+  const container = document.getElementById(qContId);
+  const questions = quizData[lessonIdx - 1];
+  const lessonDone = state.lessonsCompleted[lessonIdx - 1];
+
+  if (!lessonDone) {
+    container.innerHTML = `
+      <div class="quiz-locked-msg">
+        <div class="lock-icon">🔒</div>
+        <h4 style="font-family:var(--font-display);color:var(--primary);margin-bottom:0.5rem">Cuestionario bloqueado</h4>
+        <p>Debes completar la Lección ${lessonIdx} primero.</p>
+        <button class="btn btn-dark" style="margin-top:1rem" onclick="navToLesson(${lessonIdx})">Ir a la lección →</button>
+      </div>`;
+    return;
+  }
+
+  const prevScore = state.quizScores[lessonIdx - 1];
+  if (prevScore !== null && state.quizzesPassed[lessonIdx - 1]) {
+    // Already passed — show results + review
+    renderQuizPassed(lessonIdx, container, prevScore);
+    return;
+  }
+
+  // Build quiz HTML
+  let html = `<div class="quiz-container">
+    <div class="quiz-header">
+      <h3>📝 Cuestionario ${lessonIdx}</h3>
+      <p>Selecciona la respuesta correcta para cada pregunta. Al finalizar, presiona "Calificar".</p>
+    </div>
+    <div class="quiz-body">`;
+
+  questions.forEach((q, i) => {
+    html += `<div class="quiz-question" id="qq-${lessonIdx}-${i}">
+      <div class="q-num">PREGUNTA ${i + 1} DE 10</div>
+      <div class="q-text">${q.q}</div>
+      ${q.visual ? `<div class="q-visual">${q.visual}</div>` : ''}
+      <div class="q-options">`;
+    q.opts.forEach((opt, j) => {
+      const letters = ['A', 'B', 'C', 'D'];
+      html += `<div class="q-option" id="opt-${lessonIdx}-${i}-${j}" onclick="selectOption(${lessonIdx},${i},${j})">
+        <div class="opt-letter">${letters[j]}</div>
+        <span>${opt}</span>
+      </div>`;
+    });
+    html += `</div>
+      <div class="q-explanation" id="exp-${lessonIdx}-${i}">${q.exp}</div>
+    </div>`;
+  });
+
+  html += `
+    <div class="quiz-nav">
+      <div class="quiz-progress-dots" id="dots-${lessonIdx}">
+        ${questions.map((_,i) => `<div class="q-dot" id="dot-${lessonIdx}-${i}"></div>`).join('')}
+      </div>
+      <button class="btn btn-primary" onclick="submitQuiz(${lessonIdx})" id="submit-q${lessonIdx}">Calificar cuestionario →</button>
+    </div>
+    </div>
+  </div>`;
+
+  container.innerHTML = html;
+
+  // Restore previous selections if any
+  const saved = state.quizAnswers[lessonIdx - 1];
+  Object.keys(saved).forEach(i => {
+    const j = saved[i];
+    highlightOption(lessonIdx, parseInt(i), j, 'selected');
+    document.getElementById(`dot-${lessonIdx}-${i}`).classList.add('answered');
+  });
+
+  MathJax.typesetPromise([container]).catch(e => {});
+}
+
+function selectOption(lessonIdx, qIdx, optIdx) {
+  const qa = state.quizAnswers[lessonIdx - 1];
+  // Deselect previous
+  if (qa[qIdx] !== undefined) {
+    const prev = document.getElementById(`opt-${lessonIdx}-${qIdx}-${qa[qIdx]}`);
+    if (prev) prev.classList.remove('selected');
+  }
+  qa[qIdx] = optIdx;
+  saveState();
+  highlightOption(lessonIdx, qIdx, optIdx, 'selected');
+  document.getElementById(`dot-${lessonIdx}-${qIdx}`).classList.add('answered');
+}
+
+function highlightOption(lessonIdx, qIdx, optIdx, cls) {
+  const opt = document.getElementById(`opt-${lessonIdx}-${qIdx}-${optIdx}`);
+  if (opt) opt.classList.add(cls);
+}
+
+function submitQuiz(lessonIdx) {
+  const questions = quizData[lessonIdx - 1];
+  const answers = state.quizAnswers[lessonIdx - 1];
+  const answered = Object.keys(answers).length;
+
+  if (answered < 10) {
+    showToast(`⚠️ Responde las ${10 - answered} pregunta(s) pendiente(s) antes de calificar.`);
+    return;
+  }
+
+  let correct = 0;
+  questions.forEach((q, i) => {
+    const userAns = answers[i];
+    const isCorrect = userAns === q.ans;
+    if (isCorrect) correct++;
+
+    // Mark options
+    for (let j = 0; j < q.opts.length; j++) {
+      const opt = document.getElementById(`opt-${lessonIdx}-${i}-${j}`);
+      if (!opt) continue;
+      opt.onclick = null;
+      opt.style.cursor = 'default';
+      if (j === q.ans) opt.classList.add('correct');
+      else if (j === userAns && !isCorrect) opt.classList.add('wrong');
+    }
+    // Show explanation
+    document.getElementById(`exp-${lessonIdx}-${i}`).classList.add('show');
+  });
+
+  const score = correct;
+  const passed = score >= 7;
+  state.quizScores[lessonIdx - 1] = score;
+  state.quizzesPassed[lessonIdx - 1] = passed;
+  saveState();
+
+  // Remove submit button, show results
+  const submitBtn = document.getElementById(`submit-q${lessonIdx}`);
+  if (submitBtn) submitBtn.remove();
+
+  // Add result card at top
+  const qCont = document.getElementById(`quiz${lessonIdx}-container`);
+  const resultDiv = document.createElement('div');
+  resultDiv.innerHTML = buildResultHTML(score, passed, lessonIdx);
+  const quizBody = qCont.querySelector('.quiz-body');
+  quizBody.insertBefore(resultDiv, quizBody.firstChild);
+
+  if (passed) {
+    // Unlock next lesson
+    if (lessonIdx < 4) {
+      state.lessonsCompleted[lessonIdx] === undefined;
+      unlockNextLesson(lessonIdx + 1);
+    }
+    showToast(`🎉 ¡Aprobaste con ${score}/10! Siguiente lección desbloqueada.`);
+  } else {
+    showToast(`📚 Obtuviste ${score}/10. Necesitas 7 para aprobar. Revisa la lección y vuelve a intentarlo.`);
+  }
+
+  updateProgress();
+  updateStats();
+  MathJax.typesetPromise([qCont]).catch(e => {});
+}
+
+function buildResultHTML(score, passed, lessonIdx) {
+  const pct = Math.round((score/10)*100);
+  return `<div class="quiz-results">
+    <div class="score-ring ${passed?'pass':'fail'}">
+      <div>${score}/10</div>
+      <div style="font-size:0.65rem;font-family:var(--font-mono)">${pct}%</div>
+    </div>
+    <h4>${passed ? '¡Felicitaciones! ✨' : 'Sigue practicando 💪'}</h4>
+    <p>${passed
+      ? `Obtuviste <strong>${score} de 10</strong> respuestas correctas. ${lessonIdx < 4 ? 'Has desbloqueado la siguiente lección.' : '¡Has completado todo el curso!'}`
+      : `Obtuviste <strong>${score} de 10</strong>. Necesitas al menos 7. Revisa la lección y los ejercicios, luego podrás reintentar.`
+    }</p>
+    ${!passed ? `<button class="btn btn-dark" onclick="retryQuiz(${lessonIdx})">↺ Reintentar cuestionario</button>` : ''}
+    ${passed && lessonIdx < 4 ? `<button class="btn btn-primary" onclick="navToLesson(${lessonIdx+1})">Continuar con la Lección ${lessonIdx+1} →</button>` : ''}
+    ${passed && lessonIdx === 4 ? `<button class="btn btn-primary" onclick="showPage('dashboard')">🏆 Ver mis resultados finales</button>` : ''}
+  </div><hr style="border:none;border-top:1.5px solid var(--border);margin:1.5rem 0">`;
+}
+
+function renderQuizPassed(lessonIdx, container, score) {
+  container.innerHTML = `<div class="quiz-container">
+    <div class="quiz-header">
+      <h3>📝 Cuestionario ${lessonIdx} — Ya aprobado ✅</h3>
+      <p>Ya aprobaste este cuestionario con ${score}/10.</p>
+    </div>
+    <div class="quiz-body">
+      ${buildResultHTML(score, true, lessonIdx)}
+      <div style="text-align:center;padding:1rem 0">
+        <button class="btn btn-secondary" onclick="retryQuiz(${lessonIdx})">↺ Revisar / Reintentar</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function retryQuiz(lessonIdx) {
+  state.quizAnswers[lessonIdx - 1] = {};
+  state.quizScores[lessonIdx - 1] = null;
+  // Keep quizzesPassed to not re-lock
+  saveState();
+  renderQuiz(lessonIdx);
+}
+
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById(`page-${pageId}`).classList.add('active');
+  const navEl = document.getElementById(`nav-${pageId}`);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+
+  // Typeset math
+  const page = document.getElementById(`page-${pageId}`);
+  MathJax.typesetPromise([page]).catch(() => {});
+}
+
+function navToLesson(n) {
+  if (!isUnlocked(n, 'lesson')) {
+    showToast(`🔒 Debes completar la lección anterior y su cuestionario primero.`);
+    return;
+  }
+  showPage(`l${n}`);
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById(`nav-l${n}`).classList.add('active');
+}
+
+function navToQuiz(n) {
+  if (!isUnlocked(n, 'quiz')) {
+    showToast(`🔒 Debes completar la Lección ${n} primero para acceder al cuestionario.`);
+    return;
+  }
+  showPage(`q${n}`);
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById(`nav-q${n}`).classList.add('active');
+  renderQuiz(n);
+}
+
+function isUnlocked(n, type) {
+  if (n === 1) return true;
+  // Lesson n requires quiz n-1 passed
+  if (type === 'lesson') return state.quizzesPassed[n - 2] === true;
+  // Quiz n requires lesson n completed
+  if (type === 'quiz') return state.lessonsCompleted[n - 1] === true;
+  return false;
+}
+
+function completeLesson(n) {
+  state.lessonsCompleted[n - 1] = true;
+  saveState();
+  updateProgress();
+  updateSidebar();
+  updateStats();
+  showToast(`✅ Lección ${n} completada. ¡Ahora puedes hacer el cuestionario!`);
+  navToQuiz(n);
+}
+
+function unlockNextLesson(n) {
+  updateSidebar();
+}
+
+// ═══════════════════════════════════════════════════════
+// PROGRESS
+// ═══════════════════════════════════════════════════════
+function updateProgress() {
+  const done = state.lessonsCompleted.filter(Boolean).length;
+  const quizDone = state.quizzesPassed.filter(Boolean).length;
+  const total = (done + quizDone); // max 8
+  const pct = Math.round((total / 8) * 100);
+  document.getElementById('mini-progress').style.width = pct + '%';
+  document.getElementById('pct-label').textContent = pct + '%';
+
+  // Card progress bars
+  for (let i = 1; i <= 4; i++) {
+    let p = 0;
+    if (state.lessonsCompleted[i-1]) p += 50;
+    if (state.quizzesPassed[i-1]) p += 50;
+    document.getElementById(`prog-l${i}`).style.width = p + '%';
+    document.getElementById(`pct-l${i}`).textContent = p + '%';
+
+    const badge = document.getElementById(`badge-l${i}`);
+    const card = document.getElementById(`card-l${i}`);
+    if (p === 100) {
+      badge.className = 'card-status-badge badge-done'; badge.textContent = '✓ Completado';
+      card.classList.remove('locked');
+    } else if (p > 0) {
+      badge.className = 'card-status-badge badge-progress'; badge.textContent = 'En progreso';
+      card.classList.remove('locked');
+    } else if (isUnlocked(i, 'lesson')) {
+      badge.className = 'card-status-badge badge-todo'; badge.textContent = 'Por iniciar';
+      card.classList.remove('locked');
+    } else {
+      badge.className = 'card-status-badge badge-locked'; badge.textContent = '🔒 Bloqueado';
+      card.classList.add('locked');
+    }
+  }
+}
+
+function updateStats() {
+  document.getElementById('stat-completed').textContent = state.lessonsCompleted.filter(Boolean).length;
+  document.getElementById('stat-quizzes').textContent = state.quizzesPassed.filter(Boolean).length;
+  const scores = state.quizScores.filter(s => s !== null);
+  if (scores.length > 0) {
+    const avg = Math.round((scores.reduce((a,b) => a+b, 0) / scores.length) * 10) / 10;
+    document.getElementById('stat-score').textContent = avg + '/10';
+  }
+}
+
+function updateSidebar() {
+  for (let i = 1; i <= 4; i++) {
+    const navL = document.getElementById(`nav-l${i}`);
+    const navQ = document.getElementById(`nav-q${i}`);
+    const chkL = document.getElementById(`chk-l${i}`);
+    const chkQ = document.getElementById(`chk-q${i}`);
+
+    // Lessons
+    if (isUnlocked(i, 'lesson')) {
+      navL.classList.remove('locked');
+    }
+    if (state.lessonsCompleted[i-1]) {
+      chkL.className = 'item-check done'; chkL.textContent = '✓';
+    }
+
+    // Quizzes
+    if (isUnlocked(i, 'quiz')) {
+      navQ.classList.remove('locked');
+    }
+    if (state.quizzesPassed[i-1]) {
+      chkQ.className = 'item-check quiz-done'; chkQ.textContent = '★';
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// UI HELPERS
+// ═══════════════════════════════════════════════════════
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+function toggleExercise(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.ex-toggle');
+  body.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+function init() {
+  updateProgress();
+  updateStats();
+  updateSidebar();
+  showPage('dashboard');
+}
+
+init();
+</script>
+</body>
+</html>
