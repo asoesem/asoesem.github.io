@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Factorización por Factor Común (segunda parte): El Arte de Extraer Patrones Ocultos"
+title: "Factorización por Factor Común II: El Arte de Extraer Patrones Ocultos"
 description: "Aprende factorización por factor común a nivel avanzado con teoremas, estrategias, ejemplos resueltos paso a paso, agrupación y ejercicios progresivos."
 date: 2026-03-30T18:00:00-06:00
 author: axell
 image: '/images/140.png'
-tags: [matemáticas,álgebra,secundaria,universidad]
+tags: [precálculo, álgebra, factorización]
 commissions: [cofoma]
 featured: true
 toc: true
@@ -161,13 +161,13 @@ $$
 \text{MCD}(12,18)=6
 $$
 
-**Paso 2.** Factor común de $x$:
+**Paso 2.** Factor común de $$x$$:
 
 $$
 x^4 \text{ y } x^2 \Rightarrow x^2
 $$
 
-**Paso 3.** Factor común de $y$:
+**Paso 3.** Factor común de $$y$$:
 
 $$
 y^3 \text{ y } y^5 \Rightarrow y^3
