@@ -7,7 +7,7 @@ author: axell
 image: '/images/140.png'
 tags: [precálculo, álgebra, factorización]
 commissions: [cofoma]
-featured: true
+featured: false
 toc: true
 ---
 
