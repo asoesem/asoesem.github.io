@@ -30,7 +30,7 @@ image: '/images/36.jpg'
 ## Representantes estudiantes ante Asambleas Generales de la FEUNED
 * **Titular I de la ASOESEM ante la FEUNED**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
 * **Titular II de la ASOESEM ante la FEUNED**: [Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
-* **Titular III de la ASOESEM ante la FEUNED**: [Jordy Morales Araya](mailto:jordy.morales@uned.cr) <`jordy.morales@uned.cr`>
+* **Titular III de la ASOESEM ante la FEUNED**: [Sebastián Morales Araya](mailto:jordy.morales@uned.cr) <`jordy.morales@uned.cr`>
 * **Titular IV de la ASOESEM ante la FEUNED**: [Noemy Hernandez Esquivel](mailto:noemy.hernandez@uned.cr) <`noemy.hernandez@uned.cr`>
 * **Suplente I de la ASOESEM ante la FEUNED**: _Vacante_
 
