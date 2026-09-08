@@ -7,17 +7,16 @@ image: '/images/36.jpg'
 
 ## [Junta Directiva](mailto:asoesem@uned.ac.cr)
 
-* **Presidente**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
-* **Vicepresidente**: [Edwin Dalorzo Marin](mailto:edwin.dalorzo@uned.cr) <`edwin.dalorzo@uned.cr`>
-* **Secretario**: [Denis Vargas Guerrero](mailto:denis.vargas@uned.cr) <`denis.vargas@uned.cr`>
+* **Presidente**: [Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
+* **Vicepresidente**: [Steven Román Loaiciga](mailto:steven.roman@uned.cr) <`steven.roman@uned.cr`>
+* **Secretario**: _Vacante_
 * **Tesorero**: [Noemy Hernandez Esquivel](mailto:noemy.hernandez@uned.cr) <`noemy.hernandez@uned.cr`>
-* **Vocal**: [Allison Calderón Arias](mailto:atcalderonm@uned.cr) <`atcalderon@uned.cr`>
+* **Vocal**: [Sebastián Morales Araya](mailto:jordy.morales@uned.cr) <`jordy.morales@uned.cr`>
 
 
 ## Fiscalía
 
-* [Stefanny Leiva](mailto:stefanny.leiva@uned.cr) <`stefanny.leiva@uned.cr`>
-
+* [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
 
 ## Representantes estudiantiles recomendados por la ASOESEM, nombrados por la FEUNED
 
@@ -30,10 +29,10 @@ image: '/images/36.jpg'
 
 ## Representantes estudiantes ante Asambleas Generales de la FEUNED
 * **Titular I de la ASOESEM ante la FEUNED**: [Axell José Paz Soza](mailto:axell.paz@uned.cr) <`axell.paz@uned.cr`>
-* **Titular II de la ASOESEM ante la FEUNED**: [Edwin Dalorzo Marin](mailto:edwin.dalorzo@uned.cr) <`edwin.dalorzo@uned.cr`>
+* **Titular II de la ASOESEM ante la FEUNED**: [Allison Calderón Arias](mailto:atcalderon@uned.cr) <`atcalderon@uned.cr`>
 * **Titular III de la ASOESEM ante la FEUNED**: [Jordy Morales Araya](mailto:jordy.morales@uned.cr) <`jordy.morales@uned.cr`>
 * **Titular IV de la ASOESEM ante la FEUNED**: [Noemy Hernandez Esquivel](mailto:noemy.hernandez@uned.cr) <`noemy.hernandez@uned.cr`>
-* **Suplente I de la ASOESEM ante la FEUNED**: [Maria del Pilar Salguero Ortiz](mailto:mdsalguero@uned.cr) <`mdsalguero@uned.cr`>
+* **Suplente I de la ASOESEM ante la FEUNED**: _Vacante_
 
 
 ## Organigrama de la organización
