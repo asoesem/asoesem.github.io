@@ -94,8 +94,8 @@
     {"name": "Unión", "preview": "\\[\\bigcup_{i \\in \\{1,2,3\\}}{A_i}\\]", "code": "\\bigcup_{i \\in \\{1,2,3\\}}{A_i}", "category": "sets", "size": 2},
     {"name": "Intersección", "preview": "\\[\\bigcap_{i=1}^{3}{A_i}\\]", "code": "\\bigcap_{i=1}^{3}{A_i}", "category": "sets", "size": 2},
     {"name": "Intersección", "preview": "\\[\\bigcap_{i \\in \\{1,2,3\\}}{A_i}\\]", "code": "\\bigcap_{i \\in \\{1,2,3\\}}{A_i}", "category": "sets", "size": 2},
-    {"name": "Conjunto por notación", "preview": "\\[P = \\{2,3,5,7,11,13,17,23,...\\}\\]", "code": "P = \\{2,3,5,7,11,13,17,23,...\\}", "category": "sets", "size": 2},
-    {"name": "Conjunto por extensión", "preview": "\\[\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}\\]", "code": "\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}", "category": "sets", "size": 2}
+    {"name": "Conjunto por extensión", "preview": "\\[P = \\{2,3,5,7,11,13,17,23,...\\}\\]", "code": "P = \\{2,3,5,7,11,13,17,23,...\\}", "category": "sets", "size": 2},
+    {"name": "Conjunto por comprensión", "preview": "\\[\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}\\]", "code": "\\{ x|x \\in \\mathbb{Z} \\land 0 \\leq x \\leq 10 \\}", "category": "sets", "size": 2}
   ],
   "Funciones": [
     {"name": "Función", "preview": "\\[f(x)\\]", "code": "f(x)", "category": "functions", "size": 1},
